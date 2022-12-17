@@ -1,0 +1,16 @@
+<mat-card class="sidebar">
+  <mat-card-header>
+    <div mat-card-avatar class="user-sidebar-image"></div>
+    <div>
+      <mat-card-title>Flancito Lenane</mat-card-title>
+      <mat-card-subtitle>Frontend Developer</mat-card-subtitle>
+    </div>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-nav-list>
+      <a mat-list-item routerLink="{{option.link}}" *ngFor="let option of options" class="sidebar-option">
+        <mat-icon>{{ option.icon }}</mat-icon> {{ option.title }}
+      </a>
+    </mat-nav-list>
+  </mat-card-content>
+</mat-card>
