@@ -26,6 +26,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProfileComponent } from './profile/profile.component';
 import { EmploymentComponent } from './employment/employment.component';
 import { SettingsComponent } from './settings/settings.component';
+import { RoadmapItemComponent } from './roadmap/roadmap-item/roadmap-item.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { SettingsComponent } from './settings/settings.component';
     DashboardComponent,
     ProfileComponent,
     EmploymentComponent,
-    SettingsComponent
+    SettingsComponent,
+    RoadmapItemComponent
   ],
   imports: [
     BrowserModule,

@@ -2,6 +2,7 @@
 
 <mat-sidenav-container>
   <mat-sidenav opened mode="side"><app-sidebar></app-sidebar></mat-sidenav>
-  <mat-sidenav opened mode="side" position="end"><app-sidebar></app-sidebar></mat-sidenav>
-  <router-outlet></router-outlet>
+  <section class="main-content">
+    <router-outlet></router-outlet>
+  </section>
 </mat-sidenav-container>
