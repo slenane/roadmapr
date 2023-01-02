@@ -1,0 +1,29 @@
+mat-card-header {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  justify-content: space-between;
+
+  .roadmap-stack {
+    text-align: end;
+    padding-right: 1rem;
+
+    img {
+      height: 2rem;
+      width: 2rem;
+      border-radius: 50%;
+    }
+  }
+}
+
+mat-card-content {
+  padding: 0 1rem;
+
+  .card-actions {
+    display: grid;
+    grid-template-columns: 1fr auto;
+
+    mat-chip {
+      font-size: .7rem;
+    }
+  }
+}

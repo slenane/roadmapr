@@ -21,12 +21,18 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { LandingComponent } from './landing/landing.component';
-import { RoadmapComponent } from './roadmap/roadmap.component';
+import { RoadmapComponent } from './roadmap/components/roadmap.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProfileComponent } from './profile/profile.component';
 import { EmploymentComponent } from './employment/employment.component';
 import { SettingsComponent } from './settings/settings.component';
-import { RoadmapItemComponent } from './roadmap/roadmap-item/roadmap-item.component';
+import { RoadmapItemComponent } from './roadmap/components/roadmap-item/roadmap-item.component';
+import { ApiService } from './core/services/api.service';
+import { UrlService } from './core/services/url.service';
+import { RoadmapService } from './roadmap/services/roadmap.service';
+import { HttpClientModule } from '@angular/common/http';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { RoadmapStatisticsComponent } from './roadmap/components/roadmap-statistics/roadmap-statistics.component';
 
 @NgModule({
   declarations: [
@@ -39,9 +45,11 @@ import { RoadmapItemComponent } from './roadmap/roadmap-item/roadmap-item.compon
     ProfileComponent,
     EmploymentComponent,
     SettingsComponent,
-    RoadmapItemComponent
+    RoadmapItemComponent,
+    RoadmapStatisticsComponent,
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -58,9 +66,14 @@ import { RoadmapItemComponent } from './roadmap/roadmap-item/roadmap-item.compon
     MatChipsModule,
     MatSidenavModule,
     MatListModule,
-    MatCardModule
+    MatCardModule,
+    MatTooltipModule
   ],
-  providers: [],
+  providers: [
+    ApiService,
+    UrlService,
+    RoadmapService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

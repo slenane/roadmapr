@@ -4,7 +4,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { EmploymentComponent } from './employment/employment.component';
 import { LandingComponent } from './landing/landing.component';
 import { ProfileComponent } from './profile/profile.component';
-import { RoadmapComponent } from './roadmap/roadmap.component';
+import { RoadmapComponent } from './roadmap/components/roadmap.component';
 import { SettingsComponent } from './settings/settings.component';
 
 const routes: Routes = [
