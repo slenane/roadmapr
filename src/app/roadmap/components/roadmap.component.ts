@@ -22,8 +22,6 @@ export class RoadmapComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.roadmapData = this.generateRoadmap(DUMMY_ROADMAP, this.filterType);
-    console.log(DUMMY_ROADMAP);
-    console.log(this.roadmapData);
   }
 
   ngOnDestroy() {
@@ -43,23 +41,18 @@ export class RoadmapComponent implements OnInit, OnDestroy {
   //     })
   // }
 
-  generateRoadmap(roadmap: Roadmap, filter: string): any {
-    console.log(filter);
+  generateRoadmap(roadmap: any, filter: string): any {
     switch (filter) {
       case 'date':
         return this.sortByDate(roadmap);
     }
   }
 
-  sortByDate(roadmap: Roadmap): any {
-    const items = [];
+  sortByDate(roadmap: any): any[] {
+    const items: any[] = [];
+
     for (const category in roadmap) {
-      console.log(category, roadmap);
-      if (roadmap.hasOwnProperty(category)) {
-        for (const item of category) {
-          items.push(item);
-        }
-      }
+      roadmap[category].forEach((item: any) => items.push(item));
     }
 
     return items;

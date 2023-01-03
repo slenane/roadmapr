@@ -6,7 +6,10 @@ export const DUMMY_ROADMAP = {
       endDate: new Date('01/02/2022'),
       link: 'https://amazon.com',
       publisher: 'Apress',
-      stack: ['Angular'],
+      stack: [
+        { title: 'Angular', url: 'angularjs' },
+        { title: 'Android', url: 'android' },
+      ],
       startDate: new Date('05/02/2022'),
       title: 'Pro Angular',
       topics: ['Object-Oriented Programming'],
@@ -15,10 +18,18 @@ export const DUMMY_ROADMAP = {
   courses: [
     {
       description: 'This one is bound to get me a job',
+      endDate: new Date('09/10/2022'),
       link: 'https://udemy.com',
       instructor: 'Colt Steele',
       provider: 'Udemy',
-      stack: ['HTML', 'CSS', 'JavaScript', 'Bootstrap', 'MongoDB', 'Node.js'],
+      stack: [
+        { title: 'HTML', url: 'html5' },
+        { title: 'CSS', url: 'css3' },
+        { title: 'JavaScript', url: 'javascript' },
+        { title: 'Bootstrap', url: 'bootstrap' },
+        { title: 'MongoDB', url: 'mongodb' },
+        { title: 'Node.js', url: 'nodejs' }
+      ],
       startDate: new Date('05/10/2022'),
       title: 'Web Development Bootcamp',
       topics: ['Web Development', 'Functional Programming', 'Object-Oriented Programming'],
@@ -32,7 +43,14 @@ export const DUMMY_ROADMAP = {
       link: 'http://nuig.com',
       institution: 'National University of Ireland, Galway',
       modules: ['This one', 'That one'],
-      stack: ['HTML', 'CSS', 'JavaScript', 'Bootstrap', 'MongoDB', 'Node.js'],
+      stack: [
+        { title: 'HTML', url: 'html5' },
+        { title: 'CSS', url: 'css3' },
+        { title: 'JavaScript', url: 'javascript' },
+        { title: 'Bootstrap', url: 'bootstrap' },
+        { title: 'MongoDB', url: 'mongodb' },
+        { title: 'Node.js', url: 'nodejs' }
+      ],
       startDate: new Date('05/10/2018'),
       title: 'BSc. Computer Science',
       topics: ['Computers and that'],
@@ -41,11 +59,15 @@ export const DUMMY_ROADMAP = {
   tutorials: [
     {
       description: 'A tutorial that got me a job',
+      endDate: new Date('05/10/2022'),
       link: 'http://youtube.com',
       instructor: 'Traversy Media',
       github: 'http://github.com',
       provider: 'YouTube',
-      stack: ['Angular'],
+      stack: [
+        { title: 'Angular', url: 'angularjs' },
+      ],
+      startDate: new Date('05/10/2018'),
       title: 'Angular ToDo List',
       topics: ['Project structure'],
     }
