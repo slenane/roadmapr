@@ -12,7 +12,8 @@ import { DUMMY_ROADMAP } from '../constants/dummy.constants';
 })
 export class RoadmapComponent implements OnInit, OnDestroy {
   private ngUnsubscribe: Subject < void > = new Subject < void > ();
-  public roadmapData: [];
+  public roadmap = DUMMY_ROADMAP;
+  public roadmapItemArray: [];
   public filterType = 'date';
   public userId = 1;
 
@@ -21,7 +22,7 @@ export class RoadmapComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.roadmapData = this.generateRoadmap(DUMMY_ROADMAP, this.filterType);
+    this.roadmapItemArray = this.generateRoadmap(this.roadmap, this.filterType);
   }
 
   ngOnDestroy() {

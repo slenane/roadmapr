@@ -33,6 +33,7 @@ import { RoadmapService } from './roadmap/services/roadmap.service';
 import { HttpClientModule } from '@angular/common/http';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { RoadmapStatisticsComponent } from './roadmap/components/roadmap-statistics/roadmap-statistics.component';
+import { RoadmapUpdateComponent } from './roadmap/components/roadmap-update/roadmap-update.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { RoadmapStatisticsComponent } from './roadmap/components/roadmap-statist
     SettingsComponent,
     RoadmapItemComponent,
     RoadmapStatisticsComponent,
+    RoadmapUpdateComponent,
   ],
   imports: [
     HttpClientModule,

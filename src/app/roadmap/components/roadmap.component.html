@@ -1,29 +1,18 @@
 <div class="roadmap-container">
   <div class="roadmap-div">
-
-    <mat-card>
-      <mat-card-content>
-        <form class="roadmap-form">
-          <mat-form-field>
-            <input matInput placeholder="What are you currently working on?" value="">
-          </mat-form-field>
-        </form>
-        <mat-card-actions>
-          <button mat-raised-button color="primary">Add</button>
-        </mat-card-actions>
-      </mat-card-content>
-    </mat-card>
+    <app-roadmap-update></app-roadmap-update>
 
     <div class="roadmap-items">
       <app-roadmap-item
-        *ngFor="let data of roadmapData"
-        [data]="data"
-        ></app-roadmap-item>
+        *ngFor="let data of roadmapItemArray"
+        [data]="data">
+      </app-roadmap-item>
     </div>
-
   </div>
 
   <div class="roadmap-div">
-    <app-roadmap-statistics></app-roadmap-statistics>
+    <app-roadmap-statistics 
+      [data]="roadmap">
+    </app-roadmap-statistics>
   </div>
 </div>

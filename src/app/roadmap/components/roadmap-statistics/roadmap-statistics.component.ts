@@ -7,9 +7,12 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class RoadmapStatisticsComponent implements OnInit {
 
+  @Input() data: any;
+
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.data);
   }
 
 }

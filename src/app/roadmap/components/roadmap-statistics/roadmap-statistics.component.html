@@ -1,12 +1,11 @@
 <mat-card>
   <mat-card-content>
-    <p>Statistics</p>
+    <h3>Statistics</h3>
 
-    <p>Books read this year: 5</p>
-    <p>Courses taken this year: 2</p>
-    <p>Tutorials taken this year: 10</p>
-    <p>Degrees ongoing this year: 1</p>
-
+    <p>Books read this year: {{ data.books.length }}</p>
+    <p>Courses taken this year: {{ data.courses.length }}</p>
+    <p>Tutorials taken this year: {{ data.tutorials.length }}</p>
+    <p>Degrees ongoing this year: {{ data.degrees.length }}</p>
 
   </mat-card-content>
 </mat-card>
