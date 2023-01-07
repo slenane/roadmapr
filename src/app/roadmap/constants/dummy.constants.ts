@@ -13,6 +13,7 @@ export const DUMMY_ROADMAP = {
       startDate: new Date('05/02/2022'),
       title: 'Pro Angular',
       topics: ['Object-Oriented Programming'],
+      type: 'book'
     }
   ],
   courses: [
@@ -33,6 +34,7 @@ export const DUMMY_ROADMAP = {
       startDate: new Date('05/10/2022'),
       title: 'Web Development Bootcamp',
       topics: ['Web Development', 'Functional Programming', 'Object-Oriented Programming'],
+      type: 'course'
     }
   ],
   degrees: [
@@ -54,6 +56,7 @@ export const DUMMY_ROADMAP = {
       startDate: new Date('05/10/2018'),
       title: 'BSc. Computer Science',
       topics: ['Computers and that'],
+      type: 'degree'
     }
   ],
   tutorials: [
@@ -70,6 +73,7 @@ export const DUMMY_ROADMAP = {
       startDate: new Date('05/10/2018'),
       title: 'Angular ToDo List',
       topics: ['Project structure'],
+      type: 'tutorial'
     }
   ],
 };

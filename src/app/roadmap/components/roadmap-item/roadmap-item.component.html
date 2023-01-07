@@ -1,7 +1,7 @@
 <mat-card>
 
   <mat-card-header>
-    <mat-card-title>{{ data.title }}</mat-card-title>
+    <mat-card-title><img src="/assets/images/roadmap/{{data.type}}.png">{{ data.title }}</mat-card-title>
     <mat-card-subtitle>
       {{ data.author || data.provider || data.institution }} 
       ({{ data.startDate | date }} - {{ data.endDate || 'present' | date }})

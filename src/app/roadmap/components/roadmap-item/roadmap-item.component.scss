@@ -6,6 +6,13 @@ mat-card {
     grid-template-columns: auto 1fr;
     justify-content: space-between;
 
+    mat-card-title {
+      img {
+        height: 1rem;
+        margin-right: 0.3rem;
+      }
+    }
+
     mat-card-subtitle {
       font-size: 0.8rem;
     }

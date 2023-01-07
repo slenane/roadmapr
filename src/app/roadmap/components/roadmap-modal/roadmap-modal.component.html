@@ -1,0 +1,71 @@
+<h1 mat-dialog-title>Update your Roadmap</h1>
+<div mat-dialog-content>
+  <p>What are you working on?</p>
+  <form [formGroup]="data">
+    <mat-form-field appearance="fill">
+      <mat-label>Type</mat-label>
+      <mat-select formControlName="type">
+        <mat-option *ngFor="let type of roadmapTypes" [value]="type">
+          {{type}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Title</mat-label>
+      <input matInput formControlName="title">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Start date</mat-label>
+      <input matInput [matDatepicker]="startDate" formControlName="startDate">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+      <mat-datepicker #startDate></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>End date</mat-label>
+      <input matInput [matDatepicker]="endDate" formControlName="endDate">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+      <mat-datepicker #endDate></mat-datepicker>
+    </mat-form-field>
+ 
+    <mat-form-field appearance="fill">
+      <mat-label>Author</mat-label>
+      <input matInput formControlName="author">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Stack</mat-label>
+      <input matInput formControlName="stack">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description"></textarea> 
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Topics</mat-label>
+      <input matInput formControlName="topics">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Publisher</mat-label>
+      <input matInput formControlName="publisher">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>link</mat-label>
+      <input matInput formControlName="link">
+    </mat-form-field>
+
+  </form>
+
+</div>
+<div mat-dialog-actions class="actions">
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-raised-button color="primary" (click)="onSaveClick()" cdkFocusInitial>Save</button>
+</div>

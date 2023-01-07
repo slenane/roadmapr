@@ -11,6 +11,5 @@ export class RoadmapItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.data);
   }
 }

@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MenuComponent } from './shared/components/menu/menu.component';
 import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -34,6 +34,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { RoadmapStatisticsComponent } from './roadmap/components/roadmap-statistics/roadmap-statistics.component';
 import { RoadmapUpdateComponent } from './roadmap/components/roadmap-update/roadmap-update.component';
+import { RoadmapFiltersComponent } from './roadmap/components/roadmap-filters/roadmap-filters.component';
+import { RoadmapModalComponent } from './roadmap/components/roadmap-modal/roadmap-modal.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatSelectModule } from '@angular/material/select';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -49,6 +55,8 @@ import { RoadmapUpdateComponent } from './roadmap/components/roadmap-update/road
     RoadmapItemComponent,
     RoadmapStatisticsComponent,
     RoadmapUpdateComponent,
+    RoadmapFiltersComponent,
+    RoadmapModalComponent,
   ],
   imports: [
     HttpClientModule,
@@ -56,6 +64,7 @@ import { RoadmapUpdateComponent } from './roadmap/components/roadmap-update/road
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     MatButtonModule,
     MatToolbarModule,
     MatIconModule,
@@ -69,7 +78,11 @@ import { RoadmapUpdateComponent } from './roadmap/components/roadmap-update/road
     MatSidenavModule,
     MatListModule,
     MatCardModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule
   ],
   providers: [
     ApiService,
