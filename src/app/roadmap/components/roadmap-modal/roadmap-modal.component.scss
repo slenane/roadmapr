@@ -5,6 +5,17 @@ form {
   gap: 1rem;
 }
 
-.actions{
+.actions {
   float: right;
+}
+
+.options {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  align-items: center;
+
+  img {
+    height: 1.5rem;
+  }
 }

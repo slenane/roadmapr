@@ -1,5 +1,7 @@
-import {Component, Inject} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { ROADMAP_TYPES } from '../../constants/roadmap.constants';
+import { TECHNOLOGY_LIST } from '../../constants/technology-list.constants';
 
 @Component({
   selector: 'app-roadmap-modal',
@@ -7,7 +9,8 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
   styleUrls: ['./roadmap-modal.component.scss']
 })
 export class RoadmapModalComponent {
-  public roadmapTypes = ['book', 'course', 'degree', 'tutorial'];
+  public roadmapTypes = ROADMAP_TYPES;
+  public stack = TECHNOLOGY_LIST;
   public selectedType: string;
 
   constructor(

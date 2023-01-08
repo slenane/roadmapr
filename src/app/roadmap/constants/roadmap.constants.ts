@@ -1,0 +1,1 @@
+export const ROADMAP_TYPES = ['book', 'course', 'degree', 'tutorial'];

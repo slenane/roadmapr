@@ -13,7 +13,8 @@ import { DUMMY_ROADMAP } from '../constants/dummy.constants';
 export class RoadmapComponent implements OnInit, OnDestroy {
   private ngUnsubscribe: Subject < void > = new Subject < void > ();
   public roadmap = DUMMY_ROADMAP;
-  public roadmapItemArray: [];
+  public roadmapItemArray: any[];
+  public selectedFilter: null | string = null;
   public filterType = 'date';
   public userId = 1;
 
@@ -57,5 +58,9 @@ export class RoadmapComponent implements OnInit, OnDestroy {
     }
 
     return items;
+  }
+
+  filterRoadmap($event: null | string) {
+    this.selectedFilter = $event;
   }
 }

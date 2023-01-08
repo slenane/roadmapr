@@ -7,8 +7,8 @@ export const DUMMY_ROADMAP = {
       link: 'https://amazon.com',
       publisher: 'Apress',
       stack: [
-        { title: 'Angular', url: 'angularjs' },
-        { title: 'Android', url: 'android' },
+        { title: 'Angular', name: 'angularjs' },
+        { title: 'Android', name: 'android' },
       ],
       startDate: new Date('05/02/2022'),
       title: 'Pro Angular',
@@ -24,12 +24,12 @@ export const DUMMY_ROADMAP = {
       instructor: 'Colt Steele',
       provider: 'Udemy',
       stack: [
-        { title: 'HTML', url: 'html5' },
-        { title: 'CSS', url: 'css3' },
-        { title: 'JavaScript', url: 'javascript' },
-        { title: 'Bootstrap', url: 'bootstrap' },
-        { title: 'MongoDB', url: 'mongodb' },
-        { title: 'Node.js', url: 'nodejs' }
+        { title: 'HTML', name: 'html5' },
+        { title: 'CSS', name: 'css3' },
+        { title: 'JavaScript', name: 'javascript' },
+        { title: 'Bootstrap', name: 'bootstrap' },
+        { title: 'MongoDB', name: 'mongodb' },
+        { title: 'Node.js', name: 'nodejs' }
       ],
       startDate: new Date('05/10/2022'),
       title: 'Web Development Bootcamp',
@@ -46,12 +46,12 @@ export const DUMMY_ROADMAP = {
       institution: 'National University of Ireland, Galway',
       modules: ['This one', 'That one'],
       stack: [
-        { title: 'HTML', url: 'html5' },
-        { title: 'CSS', url: 'css3' },
-        { title: 'JavaScript', url: 'javascript' },
-        { title: 'Bootstrap', url: 'bootstrap' },
-        { title: 'MongoDB', url: 'mongodb' },
-        { title: 'Node.js', url: 'nodejs' }
+        { title: 'HTML', name: 'html5' },
+        { title: 'CSS', name: 'css3' },
+        { title: 'JavaScript', name: 'javascript' },
+        { title: 'Bootstrap', name: 'bootstrap' },
+        { title: 'MongoDB', name: 'mongodb' },
+        { title: 'Node.js', name: 'nodejs' }
       ],
       startDate: new Date('05/10/2018'),
       title: 'BSc. Computer Science',
@@ -68,7 +68,7 @@ export const DUMMY_ROADMAP = {
       github: 'http://github.com',
       provider: 'YouTube',
       stack: [
-        { title: 'Angular', url: 'angularjs' },
+        { title: 'Angular', name: 'angularjs' },
       ],
       startDate: new Date('05/10/2018'),
       title: 'Angular ToDo List',

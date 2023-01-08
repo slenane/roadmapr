@@ -1,14 +1,19 @@
 <div class="roadmap-container">
   <div class="roadmap-div">
-    <app-roadmap-filters></app-roadmap-filters>
+    <app-roadmap-filters
+      (filterRoadmap)="filterRoadmap($event)">
+    </app-roadmap-filters>
     <!-- <app-roadmap-update></app-roadmap-update> -->
 
-    <div class="roadmap-items">
-      <app-roadmap-item
+      <mat-accordion
+        class="roadmap-items" 
         *ngFor="let data of roadmapItemArray"
-        [data]="data">
-      </app-roadmap-item>
-    </div>
+        multi>
+        <app-roadmap-item
+          *ngIf="selectedFilter === null || selectedFilter === data.type"
+          [data]="data">
+        </app-roadmap-item>
+      </mat-accordion>
   </div>
 
   <div class="roadmap-div">

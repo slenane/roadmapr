@@ -1,6 +1,5 @@
 <h1 mat-dialog-title>Update your Roadmap</h1>
 <div mat-dialog-content>
-  <p>What are you working on?</p>
   <form [formGroup]="data">
     <mat-form-field appearance="fill">
       <mat-label>Type</mat-label>
@@ -39,7 +38,15 @@
 
     <mat-form-field appearance="fill">
       <mat-label>Stack</mat-label>
-      <input matInput formControlName="stack">
+      <mat-select formControlName="stack">
+        <mat-option *ngFor="let item of stack" [value]="item">
+          <div class="options">
+            <img src="/assets/images/technology/{{item.name}}-original.svg">
+            <span>{{item.title}}</span>
+          </div>
+           
+        </mat-option>
+      </mat-select>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
