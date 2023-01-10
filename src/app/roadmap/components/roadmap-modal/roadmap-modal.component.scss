@@ -3,6 +3,10 @@ form {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
+
+  .full-width {
+    grid-column: 1 / -1;
+  }
 }
 
 .actions {

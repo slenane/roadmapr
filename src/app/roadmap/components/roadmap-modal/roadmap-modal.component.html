@@ -36,17 +36,39 @@
       <input matInput formControlName="author">
     </mat-form-field>
 
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="fill" class="full-width">
       <mat-label>Stack</mat-label>
-      <mat-select formControlName="stack">
-        <mat-option *ngFor="let item of stack" [value]="item">
+      <mat-chip-list #chipList aria-label="Stack selection">
+        <mat-chip
+          *ngFor="let item of selectedTech"
+          [selectable]="selectable"
+          [removable]="removable"
+          (removed)="removeStackItem(item)">
+            <div class="options">
+              <img src="/assets/images/technology/{{item.name}}-original.svg">
+              <span>{{item.title}}</span>
+            </div>
+          <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+        </mat-chip>
+        <input
+          placeholder="Add to stack..."
+          #stackInput
+          [formControl]="stackCtrl"
+          [matAutocomplete]="auto"
+          [matChipInputFor]="chipList"
+          matChipInputAddOnBlur="false"
+          [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+          (matChipInputTokenEnd)="addStackItem($event)"
+          >
+      </mat-chip-list>
+      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectedStackItem($event)">
+        <mat-option *ngFor="let item of filteredStackItems | async" [value]="item">
           <div class="options">
             <img src="/assets/images/technology/{{item.name}}-original.svg">
             <span>{{item.title}}</span>
           </div>
-           
         </mat-option>
-      </mat-select>
+      </mat-autocomplete>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
@@ -76,3 +98,5 @@
   <button mat-button (click)="onNoClick()">Cancel</button>
   <button mat-raised-button color="primary" (click)="onSaveClick()" cdkFocusInitial>Save</button>
 </div>
+
+<!-- (blur)="addStackItemOnBlur($event)" -->
