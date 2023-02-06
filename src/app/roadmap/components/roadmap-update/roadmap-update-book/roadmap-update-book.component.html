@@ -1,0 +1,59 @@
+<form [formGroup]="bookForm">
+  <mat-form-field appearance="fill">
+    <mat-label>Title</mat-label>
+    <input #title matInput formControlName="title">
+    <mat-error *ngIf="bookForm.controls.title.invalid">Title required</mat-error>
+  </mat-form-field>
+  
+  <mat-form-field appearance="fill">
+    <mat-label>Author</mat-label>
+    <input #author matInput formControlName="author">
+    <mat-error *ngIf="bookForm.controls.author.invalid">Author required</mat-error>
+  </mat-form-field>
+  
+  <mat-form-field appearance="fill">
+    <mat-label>Start date</mat-label>
+    <input #startDateInput matInput [matDatepicker]="startDate" formControlName="startDate">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-error *ngIf="bookForm.controls.startDate.invalid">Start date required</mat-error>
+    <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+    <mat-datepicker #startDate></mat-datepicker>
+  </mat-form-field>
+  
+  <mat-form-field appearance="fill">
+    <mat-label>End date</mat-label>
+    <input matInput [matDatepicker]="endDate" formControlName="endDate">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+    <mat-datepicker #endDate></mat-datepicker>
+  </mat-form-field>
+  
+  <mat-form-field appearance="fill" class="full-width-grid-item">
+    <mat-label>Description</mat-label>
+    <textarea #description matInput formControlName="description"></textarea>
+    <mat-error *ngIf="bookForm.controls.description.invalid">Description required</mat-error>
+  </mat-form-field>
+  
+  <app-stack-selector 
+    #stack
+    class="full-width-grid-item">
+  </app-stack-selector>
+  
+  <mat-form-field appearance="fill" class="full-width-grid-item">
+    <mat-label>Topics</mat-label>
+    <input #topics matInput formControlName="topics">
+    <mat-error *ngIf="bookForm.controls.topics.invalid">At least one topic is required</mat-error>
+  </mat-form-field>
+  
+  <mat-form-field appearance="fill">
+    <mat-label>Publisher</mat-label>
+    <input #publisher matInput formControlName="publisher">
+    <mat-error *ngIf="bookForm.controls.publisher.invalid">Publisher required</mat-error>
+  </mat-form-field>
+  
+  <mat-form-field appearance="fill">
+    <mat-label>Link</mat-label>
+    <input #link matInput formControlName="link">
+    <mat-error *ngIf="bookForm.controls.link.invalid">Link is required to verify book</mat-error>
+  </mat-form-field>
+</form>

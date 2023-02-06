@@ -1,12 +1,26 @@
-<mat-card>
-  <mat-card-content>
-    <form class="roadmap-form">
-      <mat-form-field>
-        <input matInput placeholder="What are you currently working on?" value="">
-      </mat-form-field>
-    </form>
-    <mat-card-actions>
-      <button mat-raised-button color="primary">Add</button>
-    </mat-card-actions>
-  </mat-card-content>
-</mat-card>
+<h1 mat-dialog-title>Update your Roadmap</h1>
+<div mat-dialog-content>
+  <form [formGroup]="roadmapForm">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Type</mat-label>
+      <mat-select formControlName="type">
+        <mat-option *ngFor="let type of roadmapTypes" [value]="type">
+          <div class="type-option">
+            <img src="/assets/images/roadmap/{{type}}.png" class="app-roadmap-type-icon">
+            {{type | titlecase}}
+          </div>
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <app-roadmap-update-book #book *ngIf="selectedType === 'book'"></app-roadmap-update-book>
+    <app-roadmap-update-course #course *ngIf="selectedType === 'course'"></app-roadmap-update-course>
+    <app-roadmap-update-degree #degree *ngIf="selectedType === 'degree'"></app-roadmap-update-degree>
+    <app-roadmap-update-tutorial #tutorial *ngIf="selectedType === 'tutorial'"></app-roadmap-update-tutorial>
+  </form>
+
+</div>
+<div mat-dialog-actions class="actions">
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-raised-button color="primary" (click)="onSaveClick()" cdkFocusInitial>Save</button>
+</div>

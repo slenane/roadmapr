@@ -1,0 +1,35 @@
+<mat-form-field appearance="fill" class="full-width">
+  <mat-label>Stack</mat-label>
+  <mat-chip-list #chipList aria-label="Stack selection">
+    <mat-chip
+      *ngFor="let item of selectedStack"
+      [selectable]="selectable"
+      [removable]="removable"
+      (removed)="removeStackItem(item)">
+        <div class="options">
+          <img src="/assets/images/stack/{{item.name}}-original.svg">
+          <span>{{item.title}}</span>
+        </div>
+      <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+    </mat-chip>
+    <input
+      placeholder="Start typing to find stack..."
+      #stackInput
+      [formControl]="stackCtrl"
+      [matAutocomplete]="auto"
+      [matChipInputFor]="chipList"
+      matChipInputAddOnBlur="false"
+      [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+      (matChipInputTokenEnd)="addStackItem($event)"
+      required
+      >
+  </mat-chip-list>
+  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectedStackItem($event)" required>
+    <mat-option *ngFor="let item of filteredStackItems | async" [value]="item">
+      <div class="options">
+        <img src="/assets/images/stack/{{item.name}}-original.svg">
+        <span>{{item.title}}</span>
+      </div>
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>

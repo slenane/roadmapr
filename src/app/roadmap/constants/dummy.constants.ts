@@ -41,10 +41,8 @@ export const DUMMY_ROADMAP = {
     {
       description: 'This was a long one alright',
       endDate: new Date('05/10/2022'),
-      gpa: '3.5 GPA',
       link: 'http://nuig.com',
       institution: 'National University of Ireland, Galway',
-      modules: ['This one', 'That one'],
       stack: [
         { title: 'HTML', name: 'html5' },
         { title: 'CSS', name: 'css3' },

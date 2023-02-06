@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RoadmapModalComponent } from './roadmap-modal.component';
+import { StackSelectorComponent } from './stack-selector.component';
 
-describe('RoadmapModalComponent', () => {
-  let component: RoadmapModalComponent;
-  let fixture: ComponentFixture<RoadmapModalComponent>;
+describe('StackSelectorComponent', () => {
+  let component: StackSelectorComponent;
+  let fixture: ComponentFixture<StackSelectorComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RoadmapModalComponent ]
+      declarations: [ StackSelectorComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(RoadmapModalComponent);
+    fixture = TestBed.createComponent(StackSelectorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

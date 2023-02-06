@@ -1,9 +1,10 @@
-.type-option {
+.options {
   display: grid;
   grid-template-columns: auto 1fr;
+  gap: 1rem;
   align-items: center;
-}
 
-.actions {
-  float: right;
+  img {
+    height: 1.5rem;
+  }
 }

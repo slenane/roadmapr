@@ -35,13 +35,17 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { RoadmapStatisticsComponent } from './roadmap/components/roadmap-statistics/roadmap-statistics.component';
 import { RoadmapUpdateComponent } from './roadmap/components/roadmap-update/roadmap-update.component';
 import { RoadmapFiltersComponent } from './roadmap/components/roadmap-filters/roadmap-filters.component';
-import { RoadmapModalComponent } from './roadmap/components/roadmap-modal/roadmap-modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { RoadmapUpdateBookComponent } from './roadmap/components/roadmap-update/roadmap-update-book/roadmap-update-book.component';
+import { RoadmapUpdateCourseComponent } from './roadmap/components/roadmap-update/roadmap-update-course/roadmap-update-course.component';
+import { RoadmapUpdateDegreeComponent } from './roadmap/components/roadmap-update/roadmap-update-degree/roadmap-update-degree.component';
+import { RoadmapUpdateTutorialComponent } from './roadmap/components/roadmap-update/roadmap-update-tutorial/roadmap-update-tutorial.component';
+import { StackSelectorComponent } from './shared/components/stack-selector/stack-selector.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +62,11 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     RoadmapStatisticsComponent,
     RoadmapUpdateComponent,
     RoadmapFiltersComponent,
-    RoadmapModalComponent,
+    RoadmapUpdateBookComponent,
+    RoadmapUpdateCourseComponent,
+    RoadmapUpdateDegreeComponent,
+    RoadmapUpdateTutorialComponent,
+    StackSelectorComponent,
   ],
   imports: [
     HttpClientModule,

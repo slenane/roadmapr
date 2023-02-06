@@ -8,7 +8,6 @@ mat-card {
 
     mat-card-title {
       img {
-        height: 1rem;
         margin-right: 0.3rem;
       }
     }
@@ -20,13 +19,6 @@ mat-card {
     .roadmap-stack {
       text-align: end;
       padding-right: 1rem;
-  
-      img {
-        height: 1.5rem;
-        width: 1.5rem;
-        border-radius: 50%;
-        margin: 0 .1rem;
-      }
     }
   }
   
