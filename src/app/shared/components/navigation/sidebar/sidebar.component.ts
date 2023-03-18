@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { SIDEBAR_OPTIONS } from "../../../constants/sidebar.constants";
+import { SIDEBAR_OPTIONS } from "src/app/shared/constants/sidebar.constants";
 
 @Component({
   selector: "app-sidebar",

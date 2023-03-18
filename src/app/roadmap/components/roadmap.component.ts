@@ -1,26 +1,25 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from "@angular/core";
 // import { Subject, takeUntil } from 'rxjs';
-import { Subject } from 'rxjs';
-import { Roadmap } from '../store/roadmap.models';
+import { Subject } from "rxjs";
+// import { Roadmap } from '../store/roadmap.models';
 // import { RoadmapService} from 'src/app/roadmap/services/roadmap.service';
-import { DUMMY_ROADMAP } from '../constants/dummy.constants';
+import { DUMMY_ROADMAP } from "../constants/dummy.constants";
 
 @Component({
-  selector: 'app-roadmap',
-  templateUrl: './roadmap.component.html',
-  styleUrls: ['./roadmap.component.scss']
+  selector: "app-roadmap",
+  templateUrl: "./roadmap.component.html",
+  styleUrls: ["./roadmap.component.scss"],
 })
 export class RoadmapComponent implements OnInit, OnDestroy {
-  private ngUnsubscribe: Subject < void > = new Subject < void > ();
+  private ngUnsubscribe: Subject<void> = new Subject<void>();
   public roadmap = DUMMY_ROADMAP;
   public roadmapItemArray: any[];
   public selectedFilter: null | string = null;
-  public filterType = 'date';
+  public filterType = "date";
   public userId = 1;
 
-  constructor(
-    // private roadmapService: RoadmapService
-  ) { }
+  constructor() // private roadmapService: RoadmapService
+  {}
 
   ngOnInit(): void {
     this.roadmapItemArray = this.generateRoadmap(this.roadmap, this.filterType);
@@ -45,7 +44,7 @@ export class RoadmapComponent implements OnInit, OnDestroy {
 
   generateRoadmap(roadmap: any, filter: string): any {
     switch (filter) {
-      case 'date':
+      case "date":
         return this.sortByDate(roadmap);
     }
   }

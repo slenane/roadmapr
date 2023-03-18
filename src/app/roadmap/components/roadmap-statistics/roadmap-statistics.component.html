@@ -1,11 +1,7 @@
 <mat-card>
   <mat-card-content>
     <h3>Statistics</h3>
-
-    <p>Books read this year: {{ data.books.length }}</p>
-    <p>Courses taken this year: {{ data.courses.length }}</p>
-    <p>Tutorials taken this year: {{ data.tutorials.length }}</p>
-    <p>Degrees ongoing this year: {{ data.degrees.length }}</p>
-
+    <app-line-chart [labels]="labels" [config]="config" [data]="lineChartData">
+    </app-line-chart>
   </mat-card-content>
 </mat-card>
