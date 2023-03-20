@@ -8,7 +8,7 @@ import { MONTH_NAMES } from "../../constants/roadmap.constants";
   styleUrls: ["./roadmap-statistics.component.scss"],
 })
 export class RoadmapStatisticsComponent implements OnInit {
-  public labels = MONTH_NAMES;
+  public labels = MONTH_NAMES.splice(0, new Date().getMonth() + 1);
   public config = {
     type: "line",
     aspectRatio: "1.5",
@@ -20,7 +20,6 @@ export class RoadmapStatisticsComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    console.log(this.data);
     this.generateLineChartData(this.data);
   }
 
@@ -30,21 +29,17 @@ export class RoadmapStatisticsComponent implements OnInit {
       this.lineChartData.push({
         label: type.charAt(0).toUpperCase() + type.slice(1),
         data: this.generateDataPoints(data[type]),
-        borderColor: CHART_COLORS[count],
+        backgroundColor: CHART_COLORS[count],
+        borderColor: CHART_COLORS[count++],
         tension: 0.1,
       });
-      count++;
     }
   }
 
   generateDataPoints(list: any): any[] {
-    const dataPoints: any = [
-      ...this.labels.map(() => {
-        return {
-          value: 0,
-        };
-      }),
-    ];
+    const month = new Date().getMonth();
+    const dataPoints: any = [];
+    for (let i = 0; i < month; i++) dataPoints.push(0);
 
     list.forEach((item: any) => {
       if (new Date(item.startDate).getFullYear() === new Date().getFullYear()) {
@@ -53,7 +48,7 @@ export class RoadmapStatisticsComponent implements OnInit {
           i < dataPoints.length;
           i++
         ) {
-          dataPoints[i].value++;
+          dataPoints[i]++;
         }
       } else if (
         new Date(item.endDate).getFullYear() === new Date().getFullYear()
@@ -63,12 +58,11 @@ export class RoadmapStatisticsComponent implements OnInit {
           i < dataPoints.length;
           i++
         ) {
-          dataPoints[i].value++;
+          dataPoints[i]++;
         }
       }
     });
 
-    console.log(dataPoints);
-    return dataPoints.map((point: any) => point.value);
+    return dataPoints;
   }
 }
