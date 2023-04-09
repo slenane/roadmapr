@@ -4,7 +4,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { LandingComponent } from "./landing/landing.component";
+import { LandingComponent } from "./core/components/landing/landing.component";
 import { RoadmapComponent } from "./roadmap/components/roadmap.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { ProfileComponent } from "./profile/profile.component";
@@ -24,6 +24,10 @@ import { RoadmapUpdateDegreeComponent } from "./roadmap/components/roadmap-updat
 import { RoadmapUpdateTutorialComponent } from "./roadmap/components/roadmap-update/roadmap-update-tutorial/roadmap-update-tutorial.component";
 import { MaterialModule } from "./material/material.module";
 import { SharedModule } from "./shared/shared.module";
+import { LogInComponent } from "./core/components/log-in/log-in.component";
+import { RegisterComponent } from "./core/components/register/register.component";
+import { AuthService } from "./core/services/auth.service";
+import { AuthGuardService } from "./auth-guard.service";
 
 @NgModule({
   declarations: [
@@ -42,6 +46,8 @@ import { SharedModule } from "./shared/shared.module";
     RoadmapUpdateCourseComponent,
     RoadmapUpdateDegreeComponent,
     RoadmapUpdateTutorialComponent,
+    LogInComponent,
+    RegisterComponent,
   ],
   imports: [
     HttpClientModule,
@@ -53,7 +59,13 @@ import { SharedModule } from "./shared/shared.module";
     MaterialModule,
     SharedModule,
   ],
-  providers: [ApiService, UrlService, RoadmapService],
+  providers: [
+    ApiService,
+    UrlService,
+    RoadmapService,
+    AuthService,
+    AuthGuardService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

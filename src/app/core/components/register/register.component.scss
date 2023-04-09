@@ -1,0 +1,17 @@
+.auth-container {
+  height: 100%;
+  padding: 0 10%;
+  display: grid;
+  background-color: white;
+  text-align: center;
+  align-content: center;
+
+  .mat-form-field {
+    width: 100%;
+  }
+
+  .form-action {
+    margin-top: 1rem;
+    text-align: center;
+  }
+}

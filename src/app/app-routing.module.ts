@@ -1,24 +1,47 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { EmploymentComponent } from './employment/employment.component';
-import { LandingComponent } from './landing/landing.component';
-import { ProfileComponent } from './profile/profile.component';
-import { RoadmapComponent } from './roadmap/components/roadmap.component';
-import { SettingsComponent } from './settings/settings.component';
+import { NgModule } from "@angular/core";
+import { RouterModule, Routes } from "@angular/router";
+import { DashboardComponent } from "./dashboard/dashboard.component";
+import { EmploymentComponent } from "./employment/employment.component";
+import { LandingComponent } from "./core/components/landing/landing.component";
+import { ProfileComponent } from "./profile/profile.component";
+import { RoadmapComponent } from "./roadmap/components/roadmap.component";
+import { SettingsComponent } from "./settings/settings.component";
+import { AuthGuardService } from "./auth-guard.service";
 
 const routes: Routes = [
-  { path: '', component: LandingComponent },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'employment', component: EmploymentComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'roadmap', component: RoadmapComponent },
-  { path: 'settings', component: SettingsComponent },
-  { path: '**', redirectTo: '' },
+  { path: "", component: LandingComponent },
+  { path: "register", component: LandingComponent },
+  { path: "login", component: LandingComponent },
+  {
+    path: "dashboard",
+    component: DashboardComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: "employment",
+    component: EmploymentComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: "profile",
+    component: ProfileComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: "roadmap",
+    component: RoadmapComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: "settings",
+    component: SettingsComponent,
+    canActivate: [AuthGuardService],
+  },
+  { path: "**", redirectTo: "" },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

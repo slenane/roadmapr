@@ -1,17 +1,18 @@
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class ApiService {
+  constructor(private http: HttpClient) {}
 
-  constructor(
-    private http: HttpClient,
-  ) {}
+  public get(url: string, queryParams?: any): Observable<any> {
+    return this.http.get(url, queryParams);
+  }
 
-  public get(url: string): Observable <any> {
-    return this.http.get(url);
+  public post(url: string, queryParams: any): Observable<any> {
+    return this.http.post(url, queryParams);
   }
 }

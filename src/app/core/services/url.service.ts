@@ -1,18 +1,13 @@
-import { Injectable } from '@angular/core';
-// import { Observable } from 'rxjs';
-// import { HttpClient } from '@angular/common/http';
-import { GET_ROADMAP } from '../constants/http.constants';
+import { Injectable } from "@angular/core";
+import { ENDPOINTS } from "../constants/http.constants";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class UrlService {
+  constructor() {}
 
-  constructor(
-    // private http: HttpClient,
-  ) {}
-
-  public generate(endpoint: string, data: {}): string {
-    return `http://localhost:5000${GET_ROADMAP}`;
+  public generate(endpoint: string, data?: {}): string {
+    return `http://localhost:3000${ENDPOINTS[endpoint]}`;
   }
 }

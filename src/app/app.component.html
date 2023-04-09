@@ -1,10 +1,19 @@
-<app-menu></app-menu>
+<ng-container
+  *ngIf="authenticated$ | async; then authenticated; else notAuthenticated"
+></ng-container>
 
-<mat-sidenav-container>
-  <mat-sidenav opened mode="side">
-    <app-sidebar></app-sidebar>
-  </mat-sidenav>
-  <section class="main-content">
-    <router-outlet></router-outlet>
-  </section>
-</mat-sidenav-container>
+<ng-template #notAuthenticated>
+  <app-landing></app-landing>
+</ng-template>
+
+<ng-template #authenticated>
+  <app-menu></app-menu>
+  <mat-sidenav-container>
+    <mat-sidenav opened mode="side">
+      <app-sidebar></app-sidebar>
+    </mat-sidenav>
+    <section class="main-content">
+      <router-outlet></router-outlet>
+    </section>
+  </mat-sidenav-container>
+</ng-template>
