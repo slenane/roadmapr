@@ -1,0 +1,25 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title> Skills </mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div class="skills-grid__title">Stack</div>
+    <div class="skills-grid">
+      <div class="skill-item" *ngFor="let item of stack">
+        <img
+          class="stack-image"
+          src="/assets/images/stack/{{ item.name }}-original.svg"
+        />
+        <span class="stack-title">{{ item.title }}</span>
+      </div>
+    </div>
+
+    <div class="skills-grid__title">Languages Spoken</div>
+    <div class="skills-grid">
+      <div class="skill-item" *ngFor="let language of languagesSpoken">
+        <span class="fi fi-{{ language }}"></span>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

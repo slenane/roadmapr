@@ -40,7 +40,8 @@ export class RoadmapUpdateComponent implements OnInit {
         return this.course.getData();
       case "degree":
         return this.degree.getData();
-      // case 'tutorial': return this.tutorial.getData();
+      case "tutorial":
+        return this.tutorial.getData();
     }
   }
 
@@ -50,8 +51,6 @@ export class RoadmapUpdateComponent implements OnInit {
 
   onSaveClick(): void {
     const data = { ...this.getFormData(), type: this.selectedType };
-    console.log(data);
-    return;
-    this.dialogRef.close(true);
+    this.dialogRef.close(data);
   }
 }

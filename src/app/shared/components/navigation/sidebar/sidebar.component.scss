@@ -1,10 +1,9 @@
 mat-card {
   width: 200px;
   padding: 0;
-  
+
   mat-card-header {
-    background-image: url('/assets/images/cover.jpg');
-    background-size: cover;
+    background-color: lightgrey;
     background-repeat: no-repeat;
     border-radius: 4px 4px 0 0;
     height: 4.5rem;
@@ -15,21 +14,19 @@ mat-card {
 
     .user-sidebar-image {
       margin-top: 3.2rem;
-      background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-      background-size: cover;
       background-position: center;
     }
 
     .mat-card-title {
       font-size: 15px;
-      margin-bottom: .5rem;
+      margin-bottom: 0.5rem;
     }
 
     .mat-card-subtitle {
       font-size: 12px;
     }
   }
-  
+
   mat-card-content {
     margin-top: 3.2rem;
 
@@ -38,7 +35,7 @@ mat-card {
       height: 40px;
 
       mat-icon {
-        margin-right: .5rem;
+        margin-right: 0.5rem;
       }
     }
   }

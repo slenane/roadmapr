@@ -1,0 +1,33 @@
+.skills-grid__title {
+  text-align: center;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 1rem;
+
+  &__title {
+    font-weight: 500;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .skill-item {
+    display: grid;
+    grid-template-columns: 1fr;
+    text-align: center;
+    justify-items: center;
+
+    .stack-image {
+      height: 3rem;
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  .fi {
+    height: 3rem;
+    width: 3rem;
+  }
+}

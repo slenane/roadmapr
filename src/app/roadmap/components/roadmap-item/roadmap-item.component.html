@@ -9,7 +9,7 @@
     </mat-card-title>
     <mat-card-subtitle>
       {{ data.author || data.provider || data.institution }}
-      ({{ data.startDate | date }} - {{ data.endDate || "present" | date }})
+      ({{ data.startDate | date }} - {{ (data.endDate | date) || "Present" }})
     </mat-card-subtitle>
 
     <div class="roadmap-stack">

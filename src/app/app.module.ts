@@ -28,6 +28,9 @@ import { LogInComponent } from "./core/components/log-in/log-in.component";
 import { RegisterComponent } from "./core/components/register/register.component";
 import { AuthService } from "./core/services/auth.service";
 import { AuthGuardService } from "./auth-guard.service";
+import { ProfileOverviewComponent } from './profile/profile-overview/profile-overview.component';
+import { ProfileSkillsComponent } from './profile/profile-skills/profile-skills.component';
+import { ProfileInfoComponent } from './profile/profile-info/profile-info.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +51,9 @@ import { AuthGuardService } from "./auth-guard.service";
     RoadmapUpdateTutorialComponent,
     LogInComponent,
     RegisterComponent,
+    ProfileOverviewComponent,
+    ProfileSkillsComponent,
+    ProfileInfoComponent,
   ],
   imports: [
     HttpClientModule,
