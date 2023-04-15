@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { STACK_LIST } from "src/app/roadmap/constants/stack-list.constants";
+import * as COUNTRY_LIST from "src/assets/json/countries.json";
 
 @Component({
   selector: "app-profile-skills",
@@ -8,6 +9,7 @@ import { STACK_LIST } from "src/app/roadmap/constants/stack-list.constants";
 })
 export class ProfileSkillsComponent implements OnInit {
   public stackList = STACK_LIST;
+  public countryList: any = COUNTRY_LIST;
   public stack: any = [];
 
   @Input() skills: any;

@@ -1,0 +1,58 @@
+mat-card {
+  padding: 0;
+}
+
+mat-card-header {
+  background-color: lightgrey;
+  background-repeat: no-repeat;
+  border-radius: 4px 4px 0 0;
+  height: 6rem;
+  display: grid;
+  grid-template-columns: repeat(1fr);
+  justify-items: center;
+  text-align: center;
+
+  .user-sidebar-image {
+    margin-top: 3.9rem;
+    background-position: center;
+    height: 4rem;
+    width: 4rem;
+  }
+
+  .mat-card-title {
+    font-size: 15px;
+    margin: 0.5rem 0;
+  }
+
+  .mat-card-subtitle {
+    font-size: 12px;
+  }
+}
+
+mat-card-content {
+  margin-top: 4rem;
+  padding: 1rem;
+}
+
+.bio-grid__title {
+  text-align: center;
+}
+
+.bio-grid {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  justify-content: left;
+  gap: 1rem;
+  margin-bottom: 1rem;
+
+  &__title {
+    font-weight: 500;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .social-image {
+    height: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+}

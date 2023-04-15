@@ -1,1 +1,63 @@
-<p>profile-info works!</p>
+<mat-card>
+  <mat-card-header
+    [style.background]="'url(' + user.coverImage + ')'"
+    [style.backgroundSize]="'cover'"
+  >
+    <div
+      mat-card-avatar
+      class="user-sidebar-image"
+      [style.background]="'url(' + user.profileImage + ')'"
+      [style.backgroundSize]="'cover'"
+    ></div>
+    <div>
+      <mat-card-title>{{ user.name }}</mat-card-title>
+      <mat-card-subtitle>{{ user.summary }}</mat-card-subtitle>
+    </div>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="bio-grid__title">Bio</div>
+    <div class="bio-grid bio-grid__bio" *ngIf="user.bio">
+      <p>{{ user.bio }}</p>
+    </div>
+
+    <div class="bio-grid__title">Social</div>
+    <div class="bio-grid bio-grid__social">
+      <div class="social-link github-link" *ngIf="user.github">
+        <a href="{{ user.github }}" target="_blank">
+          <img
+            class="social-image"
+            src="/assets/images/stack/github-original.svg"
+            alt="Github Icon"
+          />
+        </a>
+      </div>
+      <div class="social-link twitter-link" *ngIf="user.twitter">
+        <a href="{{ user.twitter }}" target="_blank">
+          <img
+            class="social-image"
+            src="/assets/images/social/twitter.png"
+            alt="twitter Icon"
+          />
+        </a>
+      </div>
+      <div class="social-link linkedIn-link" *ngIf="user.linkedIn">
+        <a href="{{ user.linkedIn }}" target="_blank">
+          <img
+            class="social-image"
+            src="/assets/images/social/linkedin.png"
+            alt="linkedIn Icon"
+          />
+        </a>
+      </div>
+      <div class="social-link cv-link" *ngIf="user.cv">
+        <a href="{{ user.cv }}" target="_blank">
+          <img
+            class="social-image"
+            src="/assets/images/social/cv.png"
+            alt="cv Icon"
+          />
+        </a>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

@@ -1,38 +1,26 @@
-mat-card {
-  margin: 1rem 0;
-  
-  mat-card-header {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    justify-content: space-between;
+mat-card-header {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  justify-content: space-between;
 
-    mat-card-title {
-      img {
-        margin-right: 0.3rem;
-      }
-    }
-
-    mat-card-subtitle {
-      font-size: 0.8rem;
-    }
-  
-    .roadmap-stack {
-      text-align: end;
-      padding-right: 1rem;
+  mat-card-title {
+    img {
+      margin-right: 0.3rem;
     }
   }
-  
-  mat-card-content {
-    padding: 0 1rem;
-  
-    .card-actions {
-      display: grid;
-      grid-template-columns: 1fr auto;
-  
-      mat-chip {
-        font-size: .7rem;
-      }
+
+  mat-card-subtitle {
+    font-size: 0.8rem;
+    margin-bottom: 0;
+  }
+
+  .roadmap-stack {
+    text-align: end;
+    padding-right: 1rem;
+
+    img {
+      height: 1.2rem;
+      width: 1.2rem;
     }
   }
 }
-

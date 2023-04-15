@@ -1,17 +1,19 @@
 app-menu {
   position: fixed;
-  width: 100%;
-  z-index: 100;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
 }
 
 mat-sidenav-container {
-  height: 100%;
-  margin: 5rem 1rem 1rem;
-  position: relative;
+  margin-top: 5rem;
 
   mat-sidenav {
-    margin-top: 5rem;
-    position: fixed
+    position: fixed;
+    top: 5rem;
+    height: 100vh;
+    overflow: auto;
   }
 
   .mat-drawer-side {
@@ -19,10 +21,10 @@ mat-sidenav-container {
   }
 
   .mat-drawer {
-    background-color: #FAFAFA;
+    background-color: #fafafa;
   }
 
   .main-content {
-    margin-left: 1rem;
+    margin: 0 1rem 2rem;
   }
 }

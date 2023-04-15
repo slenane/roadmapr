@@ -1,9 +1,16 @@
 section {
-  margin-bottom: 1rem;
-}
-
-.profile-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(9, 1fr);
   gap: 1rem;
+  margin-bottom: 1rem;
+
+  .user-container {
+    grid-column: 1 / 3;
+  }
+
+  .overview-div {
+    grid-column: 3 / 7;
+    display: grid;
+    gap: 1rem;
+  }
 }

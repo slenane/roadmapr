@@ -19,6 +19,9 @@
     <div class="skills-grid">
       <div class="skill-item" *ngFor="let language of languagesSpoken">
         <span class="fi fi-{{ language }}"></span>
+        <span class="language-title">{{
+          countryList[language.toUpperCase()]
+        }}</span>
       </div>
     </div>
   </mat-card-content>

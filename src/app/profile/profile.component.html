@@ -1,14 +1,24 @@
 <section>
-  <app-profile-overview
-    *ngIf="user && user.roadmap"
-    [roadmap]="user.roadmap"
-  ></app-profile-overview>
-</section>
+  <app-profile-info
+    *ngIf="user"
+    class="user-container"
+    [user]="user"
+  ></app-profile-info>
 
-<section class="profile-grid">
-  <app-profile-skills
-    *ngIf="user && user.skills && user.languagesSpoken"
-    [skills]="user.skills"
-    [languagesSpoken]="user.languagesSpoken"
-  ></app-profile-skills>
+  <div class="overview-div">
+    <app-profile-overview
+      *ngIf="user"
+      class="overview-container"
+      [roadmap]="user.roadmap"
+    ></app-profile-overview>
+
+    <app-profile-skills
+      *ngIf="user"
+      class="skills-container"
+      [skills]="user.skills"
+      [languagesSpoken]="user.languagesSpoken"
+    ></app-profile-skills>
+  </div>
+
+  <div class="advertising-div"></div>
 </section>

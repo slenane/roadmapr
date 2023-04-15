@@ -4,6 +4,11 @@ import { Subject } from "rxjs";
 // import { Roadmap } from '../store/roadmap.models';
 // import { RoadmapService} from 'src/app/roadmap/services/roadmap.service';
 import { DUMMY_ROADMAP } from "../constants/dummy.constants";
+import {
+  CdkDragDrop,
+  moveItemInArray,
+  transferArrayItem,
+} from "@angular/cdk/drag-drop";
 
 @Component({
   selector: "app-roadmap",
@@ -13,16 +18,22 @@ import { DUMMY_ROADMAP } from "../constants/dummy.constants";
 export class RoadmapComponent implements OnInit, OnDestroy {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
   public roadmap = DUMMY_ROADMAP;
-  public roadmapItemArray: any[];
+  public todoArray: any[];
+  public inProgressArray: any[];
+  public doneArray: any[];
   public selectedFilter: null | string = null;
   public filterType = "date";
   public userId = 1;
 
-  constructor() // private roadmapService: RoadmapService
-  {}
+  constructor() {} // private roadmapService: RoadmapService
 
   ngOnInit(): void {
-    this.roadmapItemArray = this.generateRoadmap(this.roadmap, this.filterType);
+    const roadmap = this.generateRoadmap(this.roadmap, this.filterType);
+    this.todoArray = roadmap.filter((item: any) => !item.startDate);
+    this.inProgressArray = roadmap.filter(
+      (item: any) => item.startDate && !item.endDate
+    );
+    this.doneArray = roadmap.filter((item: any) => item.endDate);
   }
 
   ngOnDestroy() {
@@ -61,5 +72,22 @@ export class RoadmapComponent implements OnInit, OnDestroy {
 
   filterRoadmap($event: null | string) {
     this.selectedFilter = $event;
+  }
+
+  drop(event: CdkDragDrop<any[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    }
   }
 }

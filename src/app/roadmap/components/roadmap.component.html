@@ -1,22 +1,66 @@
-<div class="roadmap-container">
+<app-roadmap-filters (filterRoadmap)="filterRoadmap($event)">
+</app-roadmap-filters>
+<div cdkDropListGroup class="roadmap-container">
   <div class="roadmap-div">
-    <app-roadmap-filters (filterRoadmap)="filterRoadmap($event)">
-    </app-roadmap-filters>
+    <h2>To Do</h2>
 
-    <mat-accordion
+    <div
+      cdkDropList
+      #todoList="cdkDropList"
+      [cdkDropListData]="todoArray"
       class="roadmap-items"
-      *ngFor="let data of roadmapItemArray"
-      multi
+      (cdkDropListDropped)="drop($event)"
     >
-      <app-roadmap-item
-        *ngIf="selectedFilter === null || selectedFilter === data.type"
-        [data]="data"
-      >
-      </app-roadmap-item>
-    </mat-accordion>
+      <div class="roadmap-item" *ngFor="let data of todoArray">
+        <app-roadmap-item
+          *ngIf="selectedFilter === null || selectedFilter === data.type"
+          [data]="data"
+          cdkDrag
+        >
+        </app-roadmap-item>
+      </div>
+    </div>
   </div>
 
   <div class="roadmap-div">
-    <app-roadmap-statistics [data]="roadmap"> </app-roadmap-statistics>
+    <h2>In Progress</h2>
+
+    <div
+      cdkDropList
+      #inProgressList="cdkDropList"
+      [cdkDropListData]="inProgressArray"
+      class="roadmap-items"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <div class="roadmap-item" *ngFor="let data of inProgressArray">
+        <app-roadmap-item
+          *ngIf="selectedFilter === null || selectedFilter === data.type"
+          [data]="data"
+          cdkDrag
+        >
+        </app-roadmap-item>
+      </div>
+    </div>
+  </div>
+
+  <div class="roadmap-div">
+    <h2>Done</h2>
+
+    <div
+      cdkDropList
+      #doneList="cdkDropList"
+      [cdkDropListData]="doneArray"
+      class="roadmap-items"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <div class="roadmap-item" *ngFor="let data of doneArray">
+        <app-roadmap-item
+          *ngIf="selectedFilter === null || selectedFilter === data.type"
+          [data]="data"
+          cdkDrag
+        >
+        </app-roadmap-item>
+      </div>
+    </div>
   </div>
 </div>

@@ -6,6 +6,14 @@ export interface UserDetails {
   name: string;
   exp: number;
   iat: number;
+  profileImage: string;
+  coverImage: string;
+  summary: string;
+  bio: string;
+  github: string;
+  linkedIn: string;
+  twitter: string;
+  cv: string;
   roadmap: Roadmap;
   skills: object;
   languagesSpoken: object;
