@@ -1,6 +1,7 @@
-import { Component, EventEmitter, OnInit, Output } from "@angular/core";
+import { Component, EventEmitter, OnInit, Output, Input } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { RoadmapUpdateComponent } from "../roadmap-update/roadmap-update.component";
+import { RoadmapService } from "../../services/roadmap.service";
 
 @Component({
   selector: "app-roadmap-filters",
@@ -15,9 +16,13 @@ export class RoadmapFiltersComponent implements OnInit {
     { title: "Tutorials", type: "tutorial" },
   ];
 
+  @Input() roadmapId: string;
   @Output() filterRoadmap: EventEmitter<null | string> = new EventEmitter();
 
-  constructor(public dialog: MatDialog) {}
+  constructor(
+    public dialog: MatDialog,
+    private roadmapService: RoadmapService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -27,7 +32,10 @@ export class RoadmapFiltersComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log("The dialog was closed", result);
+      const topics = result.topics.split(", ");
+      this.roadmapService
+        .updateRoadmap(this.roadmapId, { ...result, topics })
+        .subscribe((res) => console.log(res));
     });
   }
 }

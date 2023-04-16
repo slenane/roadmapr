@@ -1,5 +1,5 @@
 const GET_ROADMAP = "/roadmap/",
-  UPDATE_ROADMAP = "/roadmap/update",
+  UPDATE_ROADMAP = "/roadmap/",
   REGISTER = "/register",
   LOGIN = "/login",
   PROFILE = "/profile";

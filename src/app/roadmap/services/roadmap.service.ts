@@ -16,7 +16,7 @@ export class RoadmapService {
     );
   }
 
-  public updateRoadmap(id: number, data: any): Observable<any> {
+  public updateRoadmap(id: string, data: any): Observable<any> {
     return this.apiService.post(this.urlService.generate("UPDATE_ROADMAP"), {
       id,
       data,

@@ -1,4 +1,8 @@
-<app-roadmap-filters (filterRoadmap)="filterRoadmap($event)">
+<app-roadmap-filters
+  *ngIf="roadmap"
+  [roadmapId]="roadmap._id"
+  (filterRoadmap)="filterRoadmap($event)"
+>
 </app-roadmap-filters>
 <div cdkDropListGroup class="roadmap-container">
   <div class="roadmap-div">

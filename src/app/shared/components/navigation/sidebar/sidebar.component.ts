@@ -1,5 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { AuthService } from "src/app/core/services/auth.service";
 import { SIDEBAR_OPTIONS } from "src/app/shared/constants/sidebar.constants";
 
 @Component({
@@ -9,14 +8,8 @@ import { SIDEBAR_OPTIONS } from "src/app/shared/constants/sidebar.constants";
 })
 export class SidebarComponent implements OnInit {
   public options = SIDEBAR_OPTIONS;
-  public user: any;
 
-  constructor(private authService: AuthService) {}
+  constructor() {}
 
-  ngOnInit(): void {
-    this.authService.getProfile().subscribe({
-      next: (user) => (this.user = user),
-      error: (err) => console.error(err),
-    });
-  }
+  ngOnInit(): void {}
 }

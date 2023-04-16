@@ -3,6 +3,8 @@ export interface Roadmap {
   courses: Course[];
   degrees: Degree[];
   tutorials: Tutorial[];
+  user: string;
+  _id: string;
 }
 
 export interface Book {
@@ -15,6 +17,8 @@ export interface Book {
   startDate: Date;
   title: String;
   topics: String[];
+  roadmap: string;
+  _id: string;
 }
 
 export interface Course {
@@ -27,6 +31,8 @@ export interface Course {
   startDate: Date;
   title: String;
   topics: String[];
+  roadmap: string;
+  _id: string;
 }
 
 export interface Degree {
@@ -40,6 +46,8 @@ export interface Degree {
   startDate: Date;
   title: String;
   topics: String[];
+  roadmap: string;
+  _id: string;
 }
 
 export interface Tutorial {
@@ -51,4 +59,6 @@ export interface Tutorial {
   stack: String[];
   title: String;
   topics: String[];
+  roadmap: string;
+  _id: string;
 }
