@@ -10,6 +10,7 @@ import {
 import { AuthService } from "src/app/core/services/auth.service";
 import { UserDetails } from "src/app/core/store/auth.models";
 import { Roadmap } from "../store/roadmap.models";
+import { DUMMY_ROADMAP } from "../constants/dummy.constants";
 
 @Component({
   selector: "app-roadmap",
@@ -25,6 +26,7 @@ export class RoadmapComponent implements OnInit, OnDestroy {
   public filterType = "date";
   public user: UserDetails | null;
   public roadmap: Roadmap;
+  public recommendations = DUMMY_ROADMAP;
 
   constructor(private authService: AuthService) {} // private roadmapService: RoadmapService
 
@@ -59,7 +61,10 @@ export class RoadmapComponent implements OnInit, OnDestroy {
   getRoadmapConfig(): void {
     const roadmap = this.generateRoadmap(this.roadmap, this.filterType);
     console.log(roadmap);
-    this.todoArray = roadmap.filter((item: any) => !item.startDate);
+    this.todoArray = [
+      ...roadmap.filter((item: any) => !item.startDate),
+      ...this.generateRoadmap(this.recommendations, this.filterType),
+    ];
     this.inProgressArray = roadmap.filter(
       (item: any) => item.startDate && !item.endDate
     );
@@ -78,7 +83,9 @@ export class RoadmapComponent implements OnInit, OnDestroy {
     const categories = ["books", "courses", "degrees", "tutorials"];
 
     for (const category of categories) {
-      roadmap[category].forEach((item: any) => items.push(item));
+      if (roadmap[category]) {
+        roadmap[category].forEach((item: any) => items.push(item));
+      }
     }
 
     return items;

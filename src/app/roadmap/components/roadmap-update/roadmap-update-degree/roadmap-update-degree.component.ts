@@ -10,8 +10,8 @@ import { StackSelectorComponent } from "src/app/shared/components/stack-selector
 export class RoadmapUpdateDegreeComponent implements OnInit {
   public degreeForm = new FormGroup({
     title: new FormControl("", Validators.required),
-    startDate: new FormControl<Date>(new Date(), Validators.required),
-    endDate: new FormControl<Date>(new Date()),
+    startDate: new FormControl<Date | null>(null),
+    endDate: new FormControl<Date | null>(null),
     description: new FormControl("", Validators.required),
     topics: new FormControl("", Validators.required),
     link: new FormControl("", Validators.required),
@@ -21,7 +21,6 @@ export class RoadmapUpdateDegreeComponent implements OnInit {
 
   @ViewChild("stack") stack: StackSelectorComponent;
   @ViewChild("title") title: ElementRef;
-  @ViewChild("startDateInput") startDateInput: ElementRef;
   @ViewChild("description") description: ElementRef;
   @ViewChild("topics") topics: ElementRef;
   @ViewChild("link") link: ElementRef;

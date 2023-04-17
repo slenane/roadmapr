@@ -1,6 +1,30 @@
 mat-card {
   padding: 1rem 0;
 
+  &.recommendation {
+    border-top: 3px solid gold;
+    padding: 1rem 0 0.5rem;
+  }
+
+  .chips {
+    text-align: end;
+
+    .users-chip {
+      background-color: gold;
+      margin-right: 0.2rem;
+    }
+
+    .recommendation-chip {
+      background-color: gold;
+      margin-right: 0.5rem;
+    }
+
+    .mat-standard-chip {
+      min-height: 24px;
+      font-size: 0.8rem;
+    }
+  }
+
   mat-card-header {
     display: grid;
     grid-template-columns: auto 1fr;

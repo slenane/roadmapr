@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card [ngClass]="{ recommendation: data.recommendation }">
   <mat-card-header>
     <mat-card-title>
       <img
@@ -9,7 +9,6 @@
     </mat-card-title>
     <mat-card-subtitle>
       {{ data.author || data.provider || data.institution }}
-      <!-- ({{ data.startDate | date }} - {{ (data.endDate | date) || "Present" }}) -->
     </mat-card-subtitle>
 
     <div class="roadmap-stack">
@@ -21,14 +20,16 @@
       />
     </div>
   </mat-card-header>
-
-  <!-- <mat-card-content>
-    <p>{{ data.description }}</p>
-
-    <div class="card-actions">
-      <mat-chip-list>
-        <mat-chip *ngFor="let item of data.topics">{{ item }}</mat-chip>
-      </mat-chip-list>
-    </div>
-  </mat-card-content> -->
+  <div class="chips" *ngIf="data.recommendation">
+    <mat-chip class="users-chip"> 1K+ Users </mat-chip>
+    <mat-chip
+      class="recommendation-chip"
+      (removed)="removeRecommendation(data)"
+    >
+      Recommended
+      <button matChipRemove [attr.aria-label]="'Remove recommendation'">
+        <mat-icon>cancel</mat-icon>
+      </button>
+    </mat-chip>
+  </div>
 </mat-card>

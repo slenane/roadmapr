@@ -11,8 +11,8 @@ export class RoadmapUpdateCourseComponent implements OnInit {
   public courseForm = new FormGroup({
     title: new FormControl("", Validators.required),
     instructor: new FormControl("", Validators.required),
-    startDate: new FormControl<Date>(new Date(), Validators.required),
-    endDate: new FormControl<Date>(new Date()),
+    startDate: new FormControl<Date | null>(null),
+    endDate: new FormControl<Date | null>(null),
     description: new FormControl("", Validators.required),
     topics: new FormControl("", Validators.required),
     link: new FormControl("", Validators.required),
@@ -22,7 +22,6 @@ export class RoadmapUpdateCourseComponent implements OnInit {
   @ViewChild("stack") stack: StackSelectorComponent;
   @ViewChild("title") title: ElementRef;
   @ViewChild("instructor") instructor: ElementRef;
-  @ViewChild("startDateInput") startDateInput: ElementRef;
   @ViewChild("description") description: ElementRef;
   @ViewChild("topics") topics: ElementRef;
   @ViewChild("link") link: ElementRef;
