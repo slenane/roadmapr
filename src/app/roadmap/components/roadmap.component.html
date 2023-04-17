@@ -2,6 +2,7 @@
   *ngIf="roadmap"
   [roadmapId]="roadmap._id"
   (filterRoadmap)="filterRoadmap($event)"
+  (updateRoadmap)="createRoadmapItem($event)"
 >
 </app-roadmap-filters>
 <div cdkDropListGroup class="roadmap-container">
@@ -22,6 +23,12 @@
           cdkDrag
         >
         </app-roadmap-item>
+      </div>
+      <div
+        class="roadmap-item recommendation"
+        *ngFor="let data of recommendationsArray"
+      >
+        <app-roadmap-item [data]="data"> </app-roadmap-item>
       </div>
     </div>
   </div>

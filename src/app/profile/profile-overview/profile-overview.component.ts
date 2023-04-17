@@ -7,9 +7,45 @@ import { Roadmap } from "src/app/roadmap/store/roadmap.models";
   styleUrls: ["./profile-overview.component.scss"],
 })
 export class ProfileOverviewComponent implements OnInit {
+  public books = 0;
+  public courses = 0;
+  public degrees = 0;
+  public tutorials = 0;
+
   @Input() roadmap: Roadmap;
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getOverviewValues();
+  }
+
+  getOverviewValues() {
+    console.log(this.roadmap);
+    const roadmap = [
+      ...this.roadmap.books,
+      ...this.roadmap.courses,
+      ...this.roadmap.degrees,
+      ...this.roadmap.tutorials,
+    ];
+
+    roadmap.forEach((item: any) => {
+      if (item.endDate) {
+        switch (item.type) {
+          case "book":
+            this.books++;
+            break;
+          case "course":
+            this.courses++;
+            break;
+          case "degree":
+            this.degrees++;
+            break;
+          case "tutorial":
+            this.tutorials++;
+            break;
+        }
+      }
+    });
+  }
 }

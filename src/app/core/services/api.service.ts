@@ -15,4 +15,8 @@ export class ApiService {
   public post(url: string, queryParams: any): Observable<any> {
     return this.http.post(url, queryParams);
   }
+
+  public patch(url: string, queryParams: any): Observable<any> {
+    return this.http.patch(url, queryParams);
+  }
 }

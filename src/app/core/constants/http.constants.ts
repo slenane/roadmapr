@@ -1,13 +1,17 @@
 const GET_ROADMAP = "/roadmap/",
-  UPDATE_ROADMAP = "/roadmap/",
+  CREATE_ROADMAP_ITEM = "/roadmap/",
+  UPDATE_ROADMAP_ITEM = "/roadmap/",
   REGISTER = "/register",
   LOGIN = "/login",
   PROFILE = "/profile";
 
 export const ENDPOINTS: any = {
   GET_ROADMAP,
-  UPDATE_ROADMAP,
+  CREATE_ROADMAP_ITEM,
+  UPDATE_ROADMAP_ITEM,
   REGISTER,
   LOGIN,
   PROFILE,
 };
+
+export const BASE_URL = "http://localhost:3000";

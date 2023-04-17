@@ -14,6 +14,10 @@
     .roadmap-item {
       cursor: move;
       margin-bottom: 0.5rem;
+
+      &.recommendation {
+        cursor: initial;
+      }
     }
 
     .roadmap-item:last-child {

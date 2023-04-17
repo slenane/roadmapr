@@ -1,6 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { StackSelectorComponent } from "src/app/shared/components/stack-selector/stack-selector.component";
+import { COMMA, ENTER } from "@angular/cdk/keycodes";
+import { MatChipInputEvent } from "@angular/material/chips";
 
 @Component({
   selector: "app-roadmap-update-course",
@@ -8,6 +10,9 @@ import { StackSelectorComponent } from "src/app/shared/components/stack-selector
   styleUrls: ["./roadmap-update-course.component.scss"],
 })
 export class RoadmapUpdateCourseComponent implements OnInit {
+  addOnBlur = true;
+  readonly separatorKeysCodes = [ENTER, COMMA] as const;
+
   public courseForm = new FormGroup({
     title: new FormControl("", Validators.required),
     instructor: new FormControl("", Validators.required),
@@ -18,6 +23,10 @@ export class RoadmapUpdateCourseComponent implements OnInit {
     link: new FormControl("", Validators.required),
     provider: new FormControl("", Validators.required),
   });
+
+  get topicsArray(): any {
+    return this.courseForm.get("topics");
+  }
 
   @ViewChild("stack") stack: StackSelectorComponent;
   @ViewChild("title") title: ElementRef;
@@ -30,6 +39,28 @@ export class RoadmapUpdateCourseComponent implements OnInit {
   constructor(private el: ElementRef) {}
 
   ngOnInit(): void {}
+
+  addTopic(event: MatChipInputEvent): void {
+    const input = event.input;
+    const value = event.value;
+
+    if ((value || "").trim()) {
+      this.topicsArray.setValue([...this.topicsArray.value, value.trim()]);
+      this.topicsArray.updateValueAndValidity();
+    }
+
+    // Reset the input value
+    if (input) input.value = "";
+  }
+
+  removeTopic(topic: any): void {
+    const index = this.topicsArray.value.indexOf(topic);
+
+    if (index >= 0) {
+      this.topicsArray.value.splice(index, 1);
+      this.topicsArray.updateValueAndValidity();
+    }
+  }
 
   focusError() {
     for (const key of Object.keys(this.courseForm.controls)) {

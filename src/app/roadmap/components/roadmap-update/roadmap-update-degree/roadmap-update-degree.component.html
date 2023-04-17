@@ -41,12 +41,34 @@
 
   <app-stack-selector #stack class="full-width-grid-item"> </app-stack-selector>
 
-  <mat-form-field appearance="fill" class="full-width-grid-item">
-    <mat-label>Topics</mat-label>
-    <input #topics matInput formControlName="topics" />
-    <mat-error *ngIf="degreeForm.controls.topics.invalid"
-      >At least one topic is required</mat-error
+  <mat-form-field class="full-width-grid-item" appearance="fill">
+    <mat-label>Modules</mat-label>
+    <mat-chip-list
+      #modulesGrid
+      aria-label="Enter modules"
+      formControlName="modules"
     >
+      <mat-chip
+        #modules
+        *ngFor="let module of modulesArray.value"
+        (removed)="removeModule(module)"
+      >
+        {{ module }}
+        <button matChipRemove>
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip>
+      <input
+        placeholder="New module..."
+        [matChipInputFor]="modulesGrid"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        [matChipInputAddOnBlur]="addOnBlur"
+        (matChipInputTokenEnd)="addModule($event)"
+      />
+      <!-- <mat-error *ngIf="tutorialForm.controls.modules.invalid"
+        >At least one topic is required</mat-error
+      > -->
+    </mat-chip-list>
   </mat-form-field>
 
   <mat-form-field appearance="fill">

@@ -16,10 +16,22 @@ export class RoadmapService {
     );
   }
 
-  public updateRoadmap(id: string, data: any): Observable<any> {
-    return this.apiService.post(this.urlService.generate("UPDATE_ROADMAP"), {
-      id,
-      data,
-    });
+  public createRoadmapItem(id: string, data: any): Observable<any> {
+    return this.apiService.post(
+      this.urlService.generate("CREATE_ROADMAP_ITEM"),
+      {
+        id,
+        data,
+      }
+    );
+  }
+
+  public updateRoadmapItem(id: string, data: any): Observable<any> {
+    return this.apiService.patch(
+      this.urlService.generate("UPDATE_ROADMAP_ITEM", id),
+      {
+        data,
+      }
+    );
   }
 }

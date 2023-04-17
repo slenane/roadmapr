@@ -11,6 +11,7 @@ import { AuthService } from "src/app/core/services/auth.service";
 import { UserDetails } from "src/app/core/store/auth.models";
 import { Roadmap } from "../store/roadmap.models";
 import { DUMMY_ROADMAP } from "../constants/dummy.constants";
+import { RoadmapService } from "../services/roadmap.service";
 
 @Component({
   selector: "app-roadmap",
@@ -22,13 +23,17 @@ export class RoadmapComponent implements OnInit, OnDestroy {
   public todoArray: any[];
   public inProgressArray: any[];
   public doneArray: any[];
+  public recommendationsArray: any[];
   public selectedFilter: null | string = null;
   public filterType = "date";
   public user: UserDetails | null;
   public roadmap: Roadmap;
   public recommendations = DUMMY_ROADMAP;
 
-  constructor(private authService: AuthService) {} // private roadmapService: RoadmapService
+  constructor(
+    private authService: AuthService,
+    private roadmapService: RoadmapService
+  ) {}
 
   ngOnInit(): void {
     this.authService.getProfile().subscribe({
@@ -61,14 +66,15 @@ export class RoadmapComponent implements OnInit, OnDestroy {
   getRoadmapConfig(): void {
     const roadmap = this.generateRoadmap(this.roadmap, this.filterType);
     console.log(roadmap);
-    this.todoArray = [
-      ...roadmap.filter((item: any) => !item.startDate),
-      ...this.generateRoadmap(this.recommendations, this.filterType),
-    ];
+    this.todoArray = roadmap.filter((item: any) => !item.startDate);
     this.inProgressArray = roadmap.filter(
       (item: any) => item.startDate && !item.endDate
     );
     this.doneArray = roadmap.filter((item: any) => item.endDate);
+    this.recommendationsArray = this.generateRoadmap(
+      this.recommendations,
+      this.filterType
+    );
   }
 
   generateRoadmap(roadmap: any, filter: string): any {
@@ -95,6 +101,29 @@ export class RoadmapComponent implements OnInit, OnDestroy {
     this.selectedFilter = $event;
   }
 
+  createRoadmapItem(item: any) {
+    this.roadmapService
+      .createRoadmapItem(item.id, item.data)
+      .subscribe((res) => console.log(res));
+  }
+
+  transferRoadmapItem(item: any) {
+    this.roadmapService
+      .updateRoadmapItem(this.roadmap._id, item)
+      .subscribe((res) => {
+        console.log(res);
+      });
+  }
+
+  transferItem(event: CdkDragDrop<any[]>) {
+    transferArrayItem(
+      event.previousContainer.data,
+      event.container.data,
+      event.previousIndex,
+      event.currentIndex
+    );
+  }
+
   drop(event: CdkDragDrop<any[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(
@@ -103,12 +132,21 @@ export class RoadmapComponent implements OnInit, OnDestroy {
         event.currentIndex
       );
     } else {
-      transferArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
+      const item = event.previousContainer.data[event.previousIndex];
+      if (event.container.id === "cdk-drop-list-0") {
+        if (item.startDate) item.startDate = null;
+        if (item.endDate) item.endDate = null;
+      }
+      if (event.container.id === "cdk-drop-list-1") {
+        if (item.endDate) item.endDate = null;
+        if (!item.startDate) item.startDate = new Date();
+      }
+      if (event.container.id === "cdk-drop-list-2") {
+        if (!item.startDate) item.startDate = new Date();
+        item.endDate = new Date();
+      }
+      this.transferRoadmapItem(item);
+      this.transferItem(event);
     }
   }
 }

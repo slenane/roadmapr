@@ -1,6 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { StackSelectorComponent } from "src/app/shared/components/stack-selector/stack-selector.component";
+import { COMMA, ENTER } from "@angular/cdk/keycodes";
+import { MatChipInputEvent } from "@angular/material/chips";
 
 @Component({
   selector: "app-roadmap-update-degree",
@@ -8,21 +10,28 @@ import { StackSelectorComponent } from "src/app/shared/components/stack-selector
   styleUrls: ["./roadmap-update-degree.component.scss"],
 })
 export class RoadmapUpdateDegreeComponent implements OnInit {
+  addOnBlur = true;
+  readonly separatorKeysCodes = [ENTER, COMMA] as const;
+
   public degreeForm = new FormGroup({
     title: new FormControl("", Validators.required),
     startDate: new FormControl<Date | null>(null),
     endDate: new FormControl<Date | null>(null),
     description: new FormControl("", Validators.required),
-    topics: new FormControl("", Validators.required),
+    modules: new FormControl("", Validators.required),
     link: new FormControl("", Validators.required),
     gpa: new FormControl("", Validators.required),
     institution: new FormControl("", Validators.required),
   });
 
+  get modulesArray(): any {
+    return this.degreeForm.get("modules");
+  }
+
   @ViewChild("stack") stack: StackSelectorComponent;
   @ViewChild("title") title: ElementRef;
   @ViewChild("description") description: ElementRef;
-  @ViewChild("topics") topics: ElementRef;
+  @ViewChild("modules") modules: ElementRef;
   @ViewChild("link") link: ElementRef;
   @ViewChild("gpa") gpa: ElementRef;
   @ViewChild("institution") institution: ElementRef;
@@ -30,6 +39,28 @@ export class RoadmapUpdateDegreeComponent implements OnInit {
   constructor(private el: ElementRef) {}
 
   ngOnInit(): void {}
+
+  addModule(event: MatChipInputEvent): void {
+    const input = event.input;
+    const value = event.value;
+
+    if ((value || "").trim()) {
+      this.modulesArray.setValue([...this.modulesArray.value, value.trim()]);
+      this.modulesArray.updateValueAndValidity();
+    }
+
+    // Reset the input value
+    if (input) input.value = "";
+  }
+
+  removeModule(module: any): void {
+    const index = this.modulesArray.value.indexOf(module);
+
+    if (index >= 0) {
+      this.modulesArray.value.splice(index, 1);
+      this.modulesArray.updateValueAndValidity();
+    }
+  }
 
   focusError() {
     for (const key of Object.keys(this.degreeForm.controls)) {

@@ -41,12 +41,34 @@
 
   <app-stack-selector #stack class="full-width-grid-item"> </app-stack-selector>
 
-  <mat-form-field appearance="fill" class="full-width-grid-item">
+  <mat-form-field class="full-width-grid-item" appearance="fill">
     <mat-label>Topics</mat-label>
-    <input #topics matInput formControlName="topics" />
-    <mat-error *ngIf="courseForm.controls.topics.invalid"
-      >At least one topic is required</mat-error
+    <mat-chip-list
+      #topicsGrid
+      aria-label="Enter topics"
+      formControlName="topics"
     >
+      <mat-chip
+        #topics
+        *ngFor="let topic of topicsArray.value"
+        (removed)="removeTopic(topic)"
+      >
+        {{ topic }}
+        <button matChipRemove>
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip>
+      <input
+        placeholder="New topic..."
+        [matChipInputFor]="topicsGrid"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        [matChipInputAddOnBlur]="addOnBlur"
+        (matChipInputTokenEnd)="addTopic($event)"
+      />
+      <!-- <mat-error *ngIf="tutorialForm.controls.topics.invalid"
+        >At least one topic is required</mat-error
+      > -->
+    </mat-chip-list>
   </mat-form-field>
 
   <mat-form-field appearance="fill">

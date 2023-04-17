@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { ENDPOINTS } from "../constants/http.constants";
+import { BASE_URL, ENDPOINTS } from "../constants/http.constants";
 
 @Injectable({
   providedIn: "root",
@@ -7,7 +7,11 @@ import { ENDPOINTS } from "../constants/http.constants";
 export class UrlService {
   constructor() {}
 
-  public generate(endpoint: string, data?: {}): string {
-    return `http://localhost:3000${ENDPOINTS[endpoint]}`;
+  public generate(endpoint: string, data?: any): string {
+    const params = data ? data : "";
+    console.log(params);
+    const url = BASE_URL + ENDPOINTS[endpoint] + params;
+
+    return url;
   }
 }
