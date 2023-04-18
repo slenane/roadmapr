@@ -10,6 +10,10 @@ import { RoadmapUpdateTutorialComponent } from "./components/roadmap-update/road
 import { RoadmapUpdateComponent } from "./components/roadmap-update/roadmap-update.component";
 import { RoadmapComponent } from "./components/roadmap.component";
 import { RoadmapService } from "./services/roadmap.service";
+import { SharedModule } from "../shared/shared.module";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { CoreModule } from "../core/core.module";
+import { CommonModule } from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -23,7 +27,25 @@ import { RoadmapService } from "./services/roadmap.service";
     RoadmapUpdateTutorialComponent,
     RoadmapUpdateDegreeComponent,
   ],
-  imports: [SharedModule, MaterialModule],
+  exports: [
+    RoadmapFiltersComponent,
+    RoadmapItemComponent,
+    RoadmapComponent,
+    RoadmapStatisticsComponent,
+    RoadmapUpdateBookComponent,
+    RoadmapUpdateComponent,
+    RoadmapUpdateCourseComponent,
+    RoadmapUpdateTutorialComponent,
+    RoadmapUpdateDegreeComponent,
+  ],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MaterialModule,
+    SharedModule,
+    CoreModule,
+  ],
   providers: [RoadmapService],
 })
-export class SharedModule {}
+export class RoadmapModule {}

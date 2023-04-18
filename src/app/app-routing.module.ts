@@ -3,7 +3,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { EmploymentComponent } from "./employment/employment.component";
 import { LandingComponent } from "./core/components/landing/landing.component";
-import { ProfileComponent } from "./profile/profile.component";
+import { ProfileComponent } from "./profile/components/profile.component";
 import { RoadmapComponent } from "./roadmap/components/roadmap.component";
 import { SettingsComponent } from "./settings/settings.component";
 import { AuthGuardService } from "./auth-guard.service";

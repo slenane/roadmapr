@@ -8,7 +8,7 @@ import {
   transferArrayItem,
 } from "@angular/cdk/drag-drop";
 import { AuthService } from "src/app/core/services/auth.service";
-import { UserDetails } from "src/app/core/store/auth.models";
+import { User } from "src/app/core/store/auth.models";
 import { Roadmap } from "../store/roadmap.models";
 import { DUMMY_ROADMAP } from "../constants/dummy.constants";
 import { RoadmapService } from "../services/roadmap.service";
@@ -26,7 +26,7 @@ export class RoadmapComponent implements OnInit, OnDestroy {
   public recommendationsArray: any[];
   public selectedFilter: null | string = null;
   public filterType = "date";
-  public user: UserDetails | null;
+  public user: User | null;
   public roadmap: Roadmap;
   public recommendations = DUMMY_ROADMAP;
 

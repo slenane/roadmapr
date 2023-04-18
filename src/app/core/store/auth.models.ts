@@ -1,6 +1,6 @@
 import { Roadmap } from "../../roadmap/store/roadmap.models";
 
-export interface UserDetails {
+export interface User {
   _id: string;
   email: string;
   name: string;
@@ -28,4 +28,13 @@ export interface TokenPayload {
   password: string;
   name?: string;
   username?: string;
+}
+
+export interface Auth {
+  user?: User | null;
+  token?: string | null;
+  isLoggedIn: boolean;
+  isLoading: boolean;
+  errorMessage: string | null;
+  hasError: boolean;
 }

@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable } from "rxjs";
 import { map } from "rxjs/operators";
 import { Router, UrlSerializer } from "@angular/router";
-import { UserDetails, TokenResponse, TokenPayload } from "../store/auth.models";
+import { User, TokenResponse, TokenPayload } from "../store/auth.models";
 import { ApiService } from "./api.service";
 import { UrlService } from "./url.service";
 
@@ -23,7 +23,7 @@ export class AuthService {
     private router: Router
   ) {}
 
-  public getUserDetails(): UserDetails | null {
+  public getUser(): User | null {
     const token = this.getToken();
     let payload;
     if (token) {
@@ -36,7 +36,7 @@ export class AuthService {
   }
 
   public isLoggedIn(): boolean {
-    const user = this.getUserDetails();
+    const user = this.getUser();
     if (user) {
       this.authenticated.next(true);
       return user.exp > Date.now() / 1000;
