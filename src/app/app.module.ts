@@ -13,11 +13,10 @@ import { SharedModule } from "./shared/shared.module";
 import { AuthGuardService } from "./auth-guard.service";
 import { EffectsModule } from "@ngrx/effects";
 import { StoreModule } from "@ngrx/store";
-import { RoadmapEffects } from "./roadmap/store/roadmap.effects";
-import { AuthEffects } from "./core/store/auth.effects";
 import { CoreModule } from "./core/core.module";
 import { RoadmapModule } from "./roadmap/roadmap.module";
 import { ProfileModule } from "./profile/profile.module";
+import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 
 @NgModule({
   declarations: [
@@ -27,8 +26,19 @@ import { ProfileModule } from "./profile/profile.module";
     SettingsComponent,
   ],
   imports: [
-    StoreModule.forRoot({}),
-    EffectsModule.forRoot([RoadmapEffects, AuthEffects]),
+    StoreModule.forRoot(
+      {},
+      {
+        runtimeChecks: {
+          strictStateImmutability: true,
+          strictActionImmutability: true,
+          strictStateSerializability: false,
+          strictActionSerializability: false,
+        },
+      }
+    ),
+    EffectsModule.forRoot([]),
+    StoreDevtoolsModule.instrument({}),
     CoreModule,
     RoadmapModule,
     ProfileModule,

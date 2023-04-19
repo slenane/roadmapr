@@ -23,6 +23,7 @@
     "@ngrx/core": "^1.2.0",
     "@ngrx/effects": "^14.3.3",
     "@ngrx/store": "^14.3.3",
+    "@ngrx/store-devtools": "^14.3.3",
     "chart.js": "^4.2.1",
     "flag-icons": "^6.6.6",
     "install": "^0.13.0",

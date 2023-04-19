@@ -1,78 +1,30 @@
-import { Auth } from "./auth.models";
-import { AuthActionTypes, AuthActions } from "./auth.actions";
+import { User, Action } from "./auth.models";
+import * as authActions from "./auth.actions";
+import { createReducer, on } from "@ngrx/store";
 
-const initialState: Auth = {
+export interface State {
+  user?: User | null;
+  token?: string | null;
+  isLoggedIn: boolean;
+  isLoading: boolean;
+  errorMessage: string | null;
+  hasError: boolean;
+}
+
+const initialState: State = {
   isLoggedIn: false,
   isLoading: false,
   errorMessage: null,
   hasError: false,
 };
 
-export function AuthReducer(
-  state: Auth = initialState,
-  action: AuthActions
-): Auth {
-  switch (action.type) {
-    case AuthActionTypes.REGISTER:
-      return {
-        ...state,
-        hasError: false,
-        errorMessage: null,
-        isLoading: true,
-      };
+const authReducer = createReducer(
+  initialState,
+  on(authActions.RegisterSuccess, (state, { payload }) => {
+    return { ...state, token: payload.token };
+  })
+);
 
-    case AuthActionTypes.REGISTER_SUCCESS:
-      return {
-        ...state,
-        isLoggedIn: true,
-        user: action.payload.user,
-        token: action.payload.accessToken,
-        isLoading: false,
-      };
-
-    case AuthActionTypes.REGISTER_ERROR:
-      return {
-        ...state,
-        errorMessage: action.payload,
-        hasError: true,
-        isLoading: false,
-      };
-
-    case AuthActionTypes.LOGIN:
-      return {
-        ...state,
-        hasError: false,
-        errorMessage: null,
-        isLoading: true,
-      };
-
-    case AuthActionTypes.LOGIN_SUCCESS:
-      return {
-        ...state,
-        isLoggedIn: true,
-        user: action.payload.user,
-        token: action.payload.accessToken,
-        isLoading: false,
-      };
-
-    case AuthActionTypes.LOGIN_ERROR:
-      return {
-        ...state,
-        errorMessage: action.payload,
-        hasError: true,
-        isLoading: false,
-      };
-
-    case AuthActionTypes.LOGOUT:
-      return {
-        ...state,
-        isLoggedIn: false,
-        user: null,
-        token: null,
-        isLoading: false,
-      };
-
-    default:
-      return state;
-  }
-}
+export const reducer = (state: State | undefined, action: Action) => {
+  return authReducer(state, action);
+};
