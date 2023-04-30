@@ -10,10 +10,8 @@ import { Roadmap } from "../store/roadmap.models";
 export class RoadmapService {
   constructor(private apiService: ApiService, private urlService: UrlService) {}
 
-  public getRoadmap(id: number): Observable<Roadmap> {
-    return this.apiService.get(
-      this.urlService.generate("GET_ROADMAP", { roadmapId: id })
-    );
+  public getRoadmap(id: string): Observable<Roadmap> {
+    return this.apiService.get(this.urlService.generate("GET_ROADMAP", id));
   }
 
   public createRoadmapItem(id: string, data: any): Observable<any> {

@@ -1,32 +1,35 @@
-import { Action } from "@ngrx/store";
-import { Roadmap, Book, Course, Degree, Tutorial } from "./roadmap.models";
+import { props, createAction } from "@ngrx/store";
+import { Roadmap } from "./roadmap.models";
 
-export enum RoadmapActionTypes {
-  GET_ROADMAP = "[Roadmap] Get Roadmap",
-  GET_ROADMAP_SUCCESS = "[Roadmap] Roadmap Loaded Successfully",
+export const GET_ROADMAP = "[Roadmap] Get Roadmap";
+const GET_ROADMAP_SUCCESS = "[Roadmap] Roadmap Loaded Successfully",
+  GET_ROADMAP_ERROR = "[Auth] Registration Error";
 
-  //   GET_ROADMAP_ITEM = "[Roadmap] Get Roadmap Item",
-  //   GET_ROADMAP_ITEM_SUCCESS = "[Roadmap] Roadmap Item Loaded Successfully",
+export const GetRoadmap = createAction(GET_ROADMAP, props<{ id: number }>());
 
-  //   ADD_ROADMAP_ITEM = "[Roadmap] Add Roadmap Item",
-  //   ADD_ROADMAP_ITEM_SUCCESS = "[Roadmap] Roadmap Item Added SuccessFully",
+export const GetRoadmapSuccess = createAction(
+  GET_ROADMAP_SUCCESS,
+  props<{ payload: Roadmap }>()
+);
 
-  //   EDIT_ROADMAP_ITEM = "[Roadmap] Edit Roadmap Item",
-  //   EDIT_ROADMAP_ITEM_SUCCESS = "[Roadmap] Roadmap Item Edited SuccessFully",
+export const GetRoadmapError = createAction(
+  GET_ROADMAP_ERROR,
+  props<{ payload: string }>()
+);
 
-  //   REMOVE_ROADMAP_ITEM = "[Roadmap] Remove Roadmap Item",
-  //   REMOVE_ROADMAP_ITEM_SUCCESS = "[Roadmap] Roadmap Item Removed SuccessFully",
-}
+// export enum RoadmapActionTypes {
 
-export class GetRoadmap implements Action {
-  readonly type = RoadmapActionTypes.GET_ROADMAP;
-  constructor() {}
-}
+//   GET_ROADMAP_ITEM = "[Roadmap] Get Roadmap Item",
+//   GET_ROADMAP_ITEM_SUCCESS = "[Roadmap] Roadmap Item Loaded Successfully",
 
-export class GetRoadmapSuccess implements Action {
-  readonly type = RoadmapActionTypes.GET_ROADMAP_SUCCESS;
-  constructor(public payload: Roadmap) {}
-}
+//   ADD_ROADMAP_ITEM = "[Roadmap] Add Roadmap Item",
+//   ADD_ROADMAP_ITEM_SUCCESS = "[Roadmap] Roadmap Item Added SuccessFully",
+
+//   EDIT_ROADMAP_ITEM = "[Roadmap] Edit Roadmap Item",
+//   EDIT_ROADMAP_ITEM_SUCCESS = "[Roadmap] Roadmap Item Edited SuccessFully",
+
+//   REMOVE_ROADMAP_ITEM = "[Roadmap] Remove Roadmap Item",
+//   REMOVE_ROADMAP_ITEM_SUCCESS = "[Roadmap] Roadmap Item Removed SuccessFully",
 
 // export class GetRoadmapItem implements Action {
 //   readonly type = RoadmapActionTypes.GET_ROADMAP_ITEM;
@@ -67,11 +70,3 @@ export class GetRoadmapSuccess implements Action {
 //   readonly type = RoadmapActionTypes.REMOVE_ROADMAP_ITEM_SUCCESS;
 //   constructor(public payload: Book | Course | Degree | Tutorial) {}
 // }
-
-export type All = GetRoadmap | GetRoadmapSuccess;
-//   | AddRoadmapItem
-//   | AddRoadmapItemSuccess
-//   | EditRoadmapItem
-//   | EditRoadmapItemSuccess
-//   | RemoveRoadmapItem
-//   | RemoveRoadmapItemSuccess;

@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { AuthService } from "src/app/core/services/auth.service";
 import { TokenPayload } from "src/app/core/store/auth.models";
-import { Router } from "@angular/router";
+import { AuthStoreService } from "../../services/auth-store.service";
 
 @Component({
   selector: "app-log-in",
@@ -14,18 +13,11 @@ export class LogInComponent implements OnInit {
     password: "",
   };
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authStoreService: AuthStoreService) {}
 
   ngOnInit(): void {}
 
   login() {
-    this.authService.login(this.credentials).subscribe(
-      () => {
-        this.router.navigateByUrl("/profile");
-      },
-      (err) => {
-        console.error(err);
-      }
-    );
+    this.authStoreService.login(this.credentials);
   }
 }

@@ -1,17 +1,16 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
-// import { Subject, takeUntil } from 'rxjs';
 import { Subject } from "rxjs";
-// import { RoadmapService} from 'src/app/roadmap/services/roadmap.service';
+import { filter } from "rxjs/operators";
 import {
   CdkDragDrop,
   moveItemInArray,
   transferArrayItem,
 } from "@angular/cdk/drag-drop";
-import { AuthService } from "src/app/core/services/auth.service";
 import { User } from "src/app/core/store/auth.models";
 import { Roadmap } from "../store/roadmap.models";
 import { DUMMY_ROADMAP } from "../constants/dummy.constants";
 import { RoadmapService } from "../services/roadmap.service";
+import { RoadmapStoreService } from "../services/roadmap-store.service";
 
 @Component({
   selector: "app-roadmap",
@@ -28,22 +27,22 @@ export class RoadmapComponent implements OnInit, OnDestroy {
   public filterType = "date";
   public user: User | null;
   public roadmap: Roadmap;
+  public roadmapId: string = "6434207863105b3b3fe7cd8e";
   public recommendations = DUMMY_ROADMAP;
 
   constructor(
-    private authService: AuthService,
-    private roadmapService: RoadmapService
+    private roadmapService: RoadmapService,
+    private roadmapStoreService: RoadmapStoreService
   ) {}
 
   ngOnInit(): void {
-    this.authService.getProfile().subscribe({
-      next: (user) => {
-        this.user = user;
-        this.roadmap = user.roadmap;
+    this.roadmapStoreService
+      .getRoadmap(this.roadmapId)
+      .pipe(filter((state) => state != null))
+      .subscribe((roadmap: Roadmap) => {
+        this.roadmap = roadmap;
         this.getRoadmapConfig();
-      },
-      error: (err) => console.error(err),
-    });
+      });
   }
 
   ngOnDestroy() {
@@ -51,21 +50,8 @@ export class RoadmapComponent implements OnInit, OnDestroy {
     this.ngUnsubscribe.complete();
   }
 
-  // getRoadmapData() {
-  //   this.roadmapService.getRoadmap(this.userId)
-  //     .pipe(takeUntil(this.ngUnsubscribe))
-  //     .subscribe({
-  //       next: (data: Roadmap) => {
-  //         this.roadmapData = data;
-  //         console.log(this.roadmapData);
-  //         // this.generateRoadmap(this.roadmapData);
-  //       }
-  //     })
-  // }
-
   getRoadmapConfig(): void {
     const roadmap = this.generateRoadmap(this.roadmap, this.filterType);
-    console.log(roadmap);
     this.todoArray = roadmap.filter((item: any) => !item.startDate);
     this.inProgressArray = roadmap.filter(
       (item: any) => item.startDate && !item.endDate

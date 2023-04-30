@@ -1,12 +1,12 @@
 import { Injectable } from "@angular/core";
-import { Action } from "@ngrx/store";
+// import { Action } from "@ngrx/store";
 import { Router } from "@angular/router";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { Observable, of } from "rxjs";
+import { of } from "rxjs";
 import { map, switchMap, catchError, tap } from "rxjs/operators";
 import { AuthService } from "../services/auth.service";
-import * as AuthActions from "./auth.actions";
-import { TokenPayload, User } from "./auth.models";
+import * as authActions from "./auth.actions";
+// import { TokenPayload, User } from "./auth.models";
 
 @Injectable()
 export class AuthEffects {
@@ -18,13 +18,27 @@ export class AuthEffects {
 
   register$ = createEffect((): any =>
     this.actions$.pipe(
-      ofType(AuthActions.REGISTER),
+      ofType(authActions.REGISTER),
       switchMap(({ userDetails }) => this.authService.register(userDetails)),
       map((payload) => {
         this.router.navigateByUrl("/profile");
-        return AuthActions.RegisterSuccess(payload);
+        console.log(payload);
+        return authActions.RegisterSuccess(payload);
       }),
-      catchError((error) => of(AuthActions.RegisterError(error)))
+      catchError((error) => of(authActions.RegisterError(error)))
+    )
+  );
+
+  login$ = createEffect((): any =>
+    this.actions$.pipe(
+      ofType(authActions.LOGIN),
+      switchMap(({ userDetails }) => this.authService.login(userDetails)),
+      map((payload) => {
+        this.router.navigateByUrl("/profile");
+        console.log(payload);
+        return authActions.LoginSuccess(payload);
+      }),
+      catchError((error) => of(authActions.LoginError(error)))
     )
   );
 }

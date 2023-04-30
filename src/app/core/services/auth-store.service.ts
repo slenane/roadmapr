@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import * as AuthActions from "../store/auth.actions";
+import * as authActions from "../store/auth.actions";
 import * as fromAuth from "../store/auth.reducer";
 import { Store } from "@ngrx/store";
 
@@ -11,7 +11,14 @@ export class AuthStoreService {
 
   register(userDetails: any) {
     this.store.dispatch({
-      type: AuthActions.REGISTER,
+      type: authActions.REGISTER,
+      userDetails,
+    });
+  }
+
+  login(userDetails: any) {
+    this.store.dispatch({
+      type: authActions.LOGIN,
       userDetails,
     });
   }

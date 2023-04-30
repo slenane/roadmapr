@@ -11,7 +11,7 @@ const REGISTER_SUCCESS = "[Auth] Registered Successfully",
   LOGOUT_SUCCESS = "[Auth] Logged Out Successfully",
   LOGOUT_ERROR = "[Auth] Log Out Error";
 
-export const Register = createAction(REGISTER, props<{ formData: User }>());
+export const Register = createAction(REGISTER, props<{ userDetails: User }>());
 
 export const RegisterSuccess = createAction(
   REGISTER_SUCCESS,
@@ -23,11 +23,11 @@ export const RegisterError = createAction(
   props<{ payload: string }>()
 );
 
-export const Login = createAction(LOGIN, props<{ formData: User }>());
+export const Login = createAction(LOGIN, props<{ userDetails: User }>());
 
 export const LoginSuccess = createAction(
   LOGIN_SUCCESS,
-  props<{ payload: any }>()
+  props<{ payload: { token: string } }>()
 );
 
 export const LoginError = createAction(

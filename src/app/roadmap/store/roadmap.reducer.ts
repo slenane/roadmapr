@@ -1,12 +1,29 @@
 import { Roadmap } from "./roadmap.models";
-import { RoadmapActionTypes, All } from "./roadmap.actions";
+import * as roadmapActions from "./roadmap.actions";
+import { createReducer, on } from "@ngrx/store";
 
-export const RoadmapReducer = (state: Roadmap, action: All) => {
-  switch (action.type) {
-    case RoadmapActionTypes.GET_ROADMAP_SUCCESS:
-      return action.payload;
+interface Action {
+  type: string;
+}
 
-    default:
-      return state;
-  }
+const initialState: Roadmap = {
+  books: [],
+  courses: [],
+  degrees: [],
+  tutorials: [],
+  user: "",
+  _id: "",
 };
+
+const roadmapReducer = createReducer(
+  initialState,
+  on(roadmapActions.GetRoadmapSuccess, (state, { payload }) => {
+    return { ...state, ...payload };
+  })
+);
+
+export const reducer = (state: Roadmap | undefined, action: Action) => {
+  return roadmapReducer(state, action);
+};
+
+export const getRoadmap = (state: Roadmap) => state;

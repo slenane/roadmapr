@@ -6,25 +6,27 @@ export interface State {
   user?: User | null;
   token?: string | null;
   isLoggedIn: boolean;
-  isLoading: boolean;
-  errorMessage: string | null;
-  hasError: boolean;
 }
 
 const initialState: State = {
   isLoggedIn: false,
-  isLoading: false,
-  errorMessage: null,
-  hasError: false,
 };
 
 const authReducer = createReducer(
   initialState,
   on(authActions.RegisterSuccess, (state, { payload }) => {
-    return { ...state, token: payload.token };
+    console.log(state, payload);
+    return { ...state, isLoggedIn: true, token: payload.token };
+  }),
+  on(authActions.LoginSuccess, (state, payload) => {
+    console.log(state, payload);
+    return { ...state, isLoggedIn: true };
+    // return { ...state, isLoggedIn: true, token: payload.token };
   })
 );
 
 export const reducer = (state: State | undefined, action: Action) => {
   return authReducer(state, action);
 };
+
+// export const getUserToken = () => reducer.state

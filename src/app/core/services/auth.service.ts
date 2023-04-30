@@ -47,7 +47,6 @@ export class AuthService {
   }
 
   public register(user: TokenPayload): Observable<any> {
-    console.log(user);
     return this.request("post", "REGISTER", user);
   }
 

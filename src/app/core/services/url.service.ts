@@ -9,7 +9,6 @@ export class UrlService {
 
   public generate(endpoint: string, data?: any): string {
     const params = data ? data : "";
-    console.log(params);
     const url = BASE_URL + ENDPOINTS[endpoint] + params;
 
     return url;
