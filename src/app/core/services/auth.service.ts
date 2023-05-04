@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable } from "rxjs";
-import { map } from "rxjs/operators";
-import { Router, UrlSerializer } from "@angular/router";
-import { User, TokenResponse, TokenPayload } from "../store/auth.models";
+// import { map } from "rxjs/operators";
+import { Router } from "@angular/router";
+import { User, TokenPayload } from "../store/auth.models";
 import { ApiService } from "./api.service";
 import { UrlService } from "./url.service";
 
@@ -47,44 +47,44 @@ export class AuthService {
   }
 
   public register(user: TokenPayload): Observable<any> {
-    return this.request("post", "REGISTER", user);
+    return this.apiService.post(this.urlService.generate("REGISTER"), user);
   }
 
   public login(user: TokenPayload): Observable<any> {
-    return this.request("post", "LOGIN", user);
+    return this.apiService.post(this.urlService.generate("LOGIN"), user);
   }
 
-  public getProfile(): Observable<any> {
-    return this.request("get", "PROFILE");
-  }
+  // public getProfile(): Observable<any> {
+  //   return this.request("get", "PROFILE");
+  // }
 
-  private request(
-    method: "post" | "get",
-    type: "LOGIN" | "REGISTER" | "PROFILE",
-    user?: TokenPayload
-  ): Observable<any> {
-    let base: any;
+  // private request(
+  //   method: "post" | "get",
+  //   type: "LOGIN" | "REGISTER" | "PROFILE",
+  //   user?: TokenPayload
+  // ): Observable<any> {
+  //   let base: any;
 
-    if (method === "post") {
-      base = this.apiService.post(this.urlService.generate(type), user);
-    } else {
-      base = this.apiService.get(this.urlService.generate(type), {
-        headers: { Authorization: `Bearer ${this.getToken()}` },
-      });
-    }
+  //   if (method === "post") {
+  //     base = this.apiService.post(this.urlService.generate(type), user);
+  //   } else {
+  //     base = this.apiService.get(this.urlService.generate(type), {
+  //       headers: { Authorization: `Bearer ${this.getToken()}` },
+  //     });
+  //   }
 
-    const request = base.pipe(
-      map((data: TokenResponse) => {
-        if (data.token) {
-          this.authenticated.next(true);
-          this.saveToken(data.token);
-        }
-        return data;
-      })
-    );
+  //   const request = base.pipe(
+  //     map((data: TokenResponse) => {
+  //       if (data.token) {
+  //         this.authenticated.next(true);
+  //         this.saveToken(data.token);
+  //       }
+  //       return data;
+  //     })
+  //   );
 
-    return request;
-  }
+  //   return request;
+  // }
 
   private saveToken(token: string): void {
     localStorage.setItem("user-token", token);

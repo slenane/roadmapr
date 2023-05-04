@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { User } from "src/app/core/store/auth.models";
-import { AuthService } from "src/app/core/services/auth.service";
+import { Profile } from "../store/profile.models";
+import { ProfileStoreService } from "../services/profile-store.service";
+import { filter } from "rxjs/operators";
 
 @Component({
   selector: "app-profile",
@@ -8,16 +9,27 @@ import { AuthService } from "src/app/core/services/auth.service";
   styleUrls: ["./profile.component.scss"],
 })
 export class ProfileComponent implements OnInit {
-  public user: User;
+  public user: Profile;
+  public userId: string = "6434207863105b3b3fe7cd91";
 
-  constructor(private authService: AuthService) {}
+  constructor(private profileStoreService: ProfileStoreService) {}
 
   ngOnInit(): void {
-    this.authService.getProfile().subscribe({
-      next: (user) => {
+    this.profileStoreService
+      .getProfile(this.userId)
+      .pipe(filter((state) => state != null))
+      .subscribe((user: Profile) => {
+        console.log("USER --->", user);
         this.user = user;
-      },
-      error: (err) => console.error(err),
-    });
+
+        console.log(this.user.skills);
+      });
+
+    // this.authService.getProfile().subscribe({
+    //   next: (user) => {
+    //     this.user = user;
+    //   },
+    //   error: (err) => console.error(err),
+    // });
   }
 }

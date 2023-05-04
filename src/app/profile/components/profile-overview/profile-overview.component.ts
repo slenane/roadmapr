@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { Roadmap } from "src/app/roadmap/store/roadmap.models";
+// import { Roadmap } from "src/app/roadmap/store/roadmap.models";
 
 @Component({
   selector: "app-profile-overview",
@@ -12,7 +12,7 @@ export class ProfileOverviewComponent implements OnInit {
   public degrees = 0;
   public tutorials = 0;
 
-  @Input() roadmap: Roadmap;
+  // @Input() roadmap: Roadmap;
 
   constructor() {}
 
@@ -21,31 +21,29 @@ export class ProfileOverviewComponent implements OnInit {
   }
 
   getOverviewValues() {
-    console.log(this.roadmap);
-    const roadmap = [
-      ...this.roadmap.books,
-      ...this.roadmap.courses,
-      ...this.roadmap.degrees,
-      ...this.roadmap.tutorials,
-    ];
-
-    roadmap.forEach((item: any) => {
-      if (item.endDate) {
-        switch (item.type) {
-          case "book":
-            this.books++;
-            break;
-          case "course":
-            this.courses++;
-            break;
-          case "degree":
-            this.degrees++;
-            break;
-          case "tutorial":
-            this.tutorials++;
-            break;
-        }
-      }
-    });
+    // const roadmap = [
+    //   ...this.roadmap.books,
+    //   ...this.roadmap.courses,
+    //   ...this.roadmap.degrees,
+    //   ...this.roadmap.tutorials,
+    // ];
+    // roadmap.forEach((item: any) => {
+    //   if (item.endDate) {
+    //     switch (item.type) {
+    //       case "book":
+    //         this.books++;
+    //         break;
+    //       case "course":
+    //         this.courses++;
+    //         break;
+    //       case "degree":
+    //         this.degrees++;
+    //         break;
+    //       case "tutorial":
+    //         this.tutorials++;
+    //         break;
+    //     }
+    //   }
+    // });
   }
 }

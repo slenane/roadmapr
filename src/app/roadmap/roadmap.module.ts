@@ -18,6 +18,7 @@ import { StoreModule } from "@ngrx/store";
 import { EffectsModule } from "@ngrx/effects";
 import * as fromRoadmap from "./store/roadmap.reducer";
 import { RoadmapEffects } from "./store/roadmap.effects";
+import { RoadmapStoreService } from "./services/roadmap-store.service";
 
 @NgModule({
   declarations: [
@@ -52,6 +53,6 @@ import { RoadmapEffects } from "./store/roadmap.effects";
     StoreModule.forFeature("roadmap", fromRoadmap.reducer),
     EffectsModule.forFeature([RoadmapEffects]),
   ],
-  providers: [RoadmapService],
+  providers: [RoadmapService, RoadmapStoreService],
 })
 export class RoadmapModule {}

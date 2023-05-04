@@ -8,6 +8,12 @@ import { ProfileInfoComponent } from "./components/profile-info/profile-info.com
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CoreModule } from "../core/core.module";
 import { CommonModule } from "@angular/common";
+import { ProfileStoreService } from "./services/profile-store.service";
+import { ProfileService } from "./services/profile.service";
+import { StoreModule } from "@ngrx/store";
+import { EffectsModule } from "@ngrx/effects";
+import * as fromProfile from "./store/profile.reducer";
+import { ProfileEffects } from "./store/profile.effects";
 
 @NgModule({
   declarations: [
@@ -29,6 +35,9 @@ import { CommonModule } from "@angular/common";
     MaterialModule,
     SharedModule,
     CoreModule,
+    StoreModule.forFeature("profile", fromProfile.reducer),
+    EffectsModule.forFeature([ProfileEffects]),
   ],
+  providers: [ProfileStoreService, ProfileService],
 })
 export class ProfileModule {}

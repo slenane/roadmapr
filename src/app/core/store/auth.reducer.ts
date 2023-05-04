@@ -18,10 +18,9 @@ const authReducer = createReducer(
     console.log(state, payload);
     return { ...state, isLoggedIn: true, token: payload.token };
   }),
-  on(authActions.LoginSuccess, (state, payload) => {
+  on(authActions.LoginSuccess, (state, payload: any) => {
     console.log(state, payload);
-    return { ...state, isLoggedIn: true };
-    // return { ...state, isLoggedIn: true, token: payload.token };
+    return { ...state, isLoggedIn: true, token: payload.token };
   })
 );
 

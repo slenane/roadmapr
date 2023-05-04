@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { User } from "src/app/core/store/auth.models";
+import { Profile } from "../../store/profile.models";
 
 @Component({
   selector: "app-profile-info",
@@ -7,7 +7,7 @@ import { User } from "src/app/core/store/auth.models";
   styleUrls: ["./profile-info.component.scss"],
 })
 export class ProfileInfoComponent implements OnInit {
-  @Input() user: User;
+  @Input() user: Profile;
 
   constructor() {}
 
