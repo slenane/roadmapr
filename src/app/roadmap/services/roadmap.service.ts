@@ -15,10 +15,10 @@ export class RoadmapService {
   }
 
   public createRoadmapItem(id: string, data: any): Observable<any> {
+    console.log(data);
     return this.apiService.post(
-      this.urlService.generate("CREATE_ROADMAP_ITEM"),
+      this.urlService.generate("CREATE_ROADMAP_ITEM", id),
       {
-        id,
         data,
       }
     );

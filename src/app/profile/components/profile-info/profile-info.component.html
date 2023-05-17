@@ -1,15 +1,19 @@
 <mat-card *ngIf="user">
   <mat-card-header
-    [style.background]="user.coverImage ? 'url(' + user.coverImage + ')' : ''"
-    [style.backgroundSize]="'cover'"
+    [ngStyle]="{
+      backgroundImage: user.coverImage ? 'url(' + user.coverImage + ')' : '',
+      backgroundSize: 'cover !important'
+    }"
   >
     <div
       mat-card-avatar
       class="user-sidebar-image"
-      [style.background]="
-        user.profileImage ? 'url(' + user.profileImage + ')' : ''
-      "
-      [style.backgroundSize]="'cover'"
+      [ngStyle]="{
+        backgroundImage: user.profileImage
+          ? 'url(' + user.profileImage + ')'
+          : '',
+        backgroundSize: 'cover !important'
+      }"
     ></div>
     <div>
       <mat-card-title>{{ user.name }}</mat-card-title>

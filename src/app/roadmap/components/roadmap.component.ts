@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Subject } from "rxjs";
-import { filter } from "rxjs/operators";
+import { filter, takeUntil } from "rxjs/operators";
 import {
   CdkDragDrop,
   moveItemInArray,
@@ -38,9 +38,13 @@ export class RoadmapComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.roadmapStoreService
       .getRoadmap(this.roadmapId)
-      .pipe(filter((state) => state != null))
+      .pipe(
+        filter((state) => state != null),
+        takeUntil(this.ngUnsubscribe)
+      )
       .subscribe((roadmap: Roadmap) => {
         this.roadmap = roadmap;
+        console.log(this.roadmap);
         this.getRoadmapConfig();
       });
   }
@@ -52,7 +56,9 @@ export class RoadmapComponent implements OnInit, OnDestroy {
 
   getRoadmapConfig(): void {
     const roadmap = this.generateRoadmap(this.roadmap, this.filterType);
-    this.todoArray = roadmap.filter((item: any) => !item.startDate);
+    this.todoArray = roadmap.filter(
+      (item: any) => !item.startDate && !item.endDate
+    );
     this.inProgressArray = roadmap.filter(
       (item: any) => item.startDate && !item.endDate
     );

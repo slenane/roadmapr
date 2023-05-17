@@ -11,12 +11,14 @@ mat-card-header {
   grid-template-columns: repeat(1fr);
   justify-items: center;
   text-align: center;
+  background-size: cover;
 
   .user-sidebar-image {
     margin-top: 3.9rem;
     background-position: center;
     height: 4rem;
     width: 4rem;
+    background-size: cover;
   }
 
   .mat-card-title {

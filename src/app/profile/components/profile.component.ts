@@ -19,10 +19,8 @@ export class ProfileComponent implements OnInit {
       .getProfile(this.userId)
       .pipe(filter((state) => state != null))
       .subscribe((user: Profile) => {
-        console.log("USER --->", user);
+        console.log(user);
         this.user = user;
-
-        console.log(this.user.skills);
       });
 
     // this.authService.getProfile().subscribe({

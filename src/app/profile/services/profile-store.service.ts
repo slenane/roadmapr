@@ -13,7 +13,6 @@ export class ProfileStoreService {
   constructor(private store: Store<Profile>) {}
 
   getProfile(id: string): Observable<any> {
-    console.log("PING", id);
     this.store.dispatch({
       type: profileActions.GET_PROFILE,
       id,
