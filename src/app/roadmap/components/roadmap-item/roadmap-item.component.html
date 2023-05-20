@@ -1,4 +1,7 @@
-<mat-card [ngClass]="{ recommendation: data.recommendation }">
+<mat-card
+  [ngClass]="{ recommendation: data.recommendation }"
+  (click)="openItemDetails()"
+>
   <mat-card-header>
     <mat-card-title>
       <img

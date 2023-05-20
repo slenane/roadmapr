@@ -39,7 +39,12 @@
     >
   </mat-form-field>
 
-  <app-stack-selector #stack class="full-width-grid-item"> </app-stack-selector>
+  <app-stack-selector
+    #stack
+    [data]="data && data.stack"
+    class="full-width-grid-item"
+  >
+  </app-stack-selector>
 
   <mat-form-field appearance="fill" class="full-width-grid-item">
     <mat-label>Topics</mat-label>

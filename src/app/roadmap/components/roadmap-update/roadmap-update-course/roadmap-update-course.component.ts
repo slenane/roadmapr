@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
+import { Component, ElementRef, Input, OnInit, ViewChild } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { StackSelectorComponent } from "src/app/shared/components/stack-selector/stack-selector.component";
 import { COMMA, ENTER } from "@angular/cdk/keycodes";
@@ -28,6 +28,8 @@ export class RoadmapUpdateCourseComponent implements OnInit {
     return this.courseForm.get("topics");
   }
 
+  @Input("data") data: any;
+
   @ViewChild("stack") stack: StackSelectorComponent;
   @ViewChild("title") title: ElementRef;
   @ViewChild("instructor") instructor: ElementRef;
@@ -38,7 +40,20 @@ export class RoadmapUpdateCourseComponent implements OnInit {
 
   constructor(private el: ElementRef) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.data) {
+      this.courseForm.patchValue({
+        title: this.data.title,
+        instructor: this.data.instructor,
+        startDate: this.data.startData,
+        endDate: this.data.endDate,
+        description: this.data.description,
+        topics: this.data.topics,
+        link: this.data.link,
+        provider: this.data.provider,
+      });
+    }
+  }
 
   addTopic(event: MatChipInputEvent): void {
     const input = event.input;

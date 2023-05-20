@@ -18,18 +18,22 @@
 
     <app-roadmap-update-book
       #book
+      [data]="data"
       *ngIf="selectedType === 'book'"
     ></app-roadmap-update-book>
     <app-roadmap-update-course
       #course
+      [data]="data"
       *ngIf="selectedType === 'course'"
     ></app-roadmap-update-course>
     <app-roadmap-update-degree
       #degree
+      [data]="data"
       *ngIf="selectedType === 'degree'"
     ></app-roadmap-update-degree>
     <app-roadmap-update-tutorial
       #tutorial
+      [data]="data"
       *ngIf="selectedType === 'tutorial'"
     ></app-roadmap-update-tutorial>
   </form>

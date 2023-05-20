@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
+import { Component, ElementRef, Input, OnInit, ViewChild } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { StackSelectorComponent } from "src/app/shared/components/stack-selector/stack-selector.component";
 import { COMMA, ENTER } from "@angular/cdk/keycodes";
@@ -28,6 +28,8 @@ export class RoadmapUpdateBookComponent implements OnInit {
     return this.bookForm.get("topics");
   }
 
+  @Input("data") data: any;
+
   @ViewChild("stack") stack: StackSelectorComponent;
   @ViewChild("title") title: ElementRef;
   @ViewChild("author") author: ElementRef;
@@ -38,7 +40,20 @@ export class RoadmapUpdateBookComponent implements OnInit {
 
   constructor(private el: ElementRef) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.data) {
+      this.bookForm.patchValue({
+        title: this.data.title,
+        author: this.data.author,
+        startDate: this.data.startData,
+        endDate: this.data.endDate,
+        description: this.data.description,
+        topics: this.data.topics,
+        link: this.data.link,
+        publisher: this.data.publisher,
+      });
+    }
+  }
 
   addTopic(event: MatChipInputEvent): void {
     const input = event.input;

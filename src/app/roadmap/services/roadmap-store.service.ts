@@ -22,4 +22,27 @@ export class RoadmapStoreService {
       .select(roadmapSelectors.getRoadmap)
       .pipe(filter((data) => !!data));
   }
+
+  createRoadmapItem(id: string, data: any) {
+    this.store.dispatch({
+      type: roadmapActions.CREATE_ROADMAP_ITEM,
+      id,
+      data,
+    });
+  }
+
+  updateRoadmapItem(data: any) {
+    this.store.dispatch({
+      type: roadmapActions.UPDATE_ROADMAP_ITEM,
+      data,
+    });
+  }
+
+  removeRoadmapItem(id: string, data: any) {
+    this.store.dispatch({
+      type: roadmapActions.REMOVE_ROADMAP_ITEM,
+      id,
+      data,
+    });
+  }
 }

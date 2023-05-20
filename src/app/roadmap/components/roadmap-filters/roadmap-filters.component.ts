@@ -23,7 +23,7 @@ export class RoadmapFiltersComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  openDialog(): void {
+  addItem(): void {
     const dialogRef = this.dialog.open(RoadmapUpdateComponent, {
       width: "60vw",
     });

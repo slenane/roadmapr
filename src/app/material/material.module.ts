@@ -19,6 +19,7 @@ import { MatSelectModule } from "@angular/material/select";
 import { MatNativeDateModule } from "@angular/material/core";
 import { MatExpansionModule } from "@angular/material/expansion";
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
+import { MatMenuModule } from "@angular/material/menu";
 import { DragDropModule } from "@angular/cdk/drag-drop";
 
 @NgModule({
@@ -43,6 +44,7 @@ import { DragDropModule } from "@angular/cdk/drag-drop";
     MatSelectModule,
     MatExpansionModule,
     MatAutocompleteModule,
+    MatMenuModule,
     DragDropModule,
   ],
   providers: [],

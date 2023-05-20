@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { Component, Inject, OnInit, ViewChild } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { MatDialogRef } from "@angular/material/dialog";
+import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { ROADMAP_TYPES } from "../../constants/roadmap.constants";
 import { RoadmapUpdateBookComponent } from "./roadmap-update-book/roadmap-update-book.component";
 import { RoadmapUpdateCourseComponent } from "./roadmap-update-course/roadmap-update-course.component";
@@ -24,9 +24,16 @@ export class RoadmapUpdateComponent implements OnInit {
   @ViewChild("degree") degree: RoadmapUpdateDegreeComponent;
   @ViewChild("tutorial") tutorial: RoadmapUpdateTutorialComponent;
 
-  constructor(public dialogRef: MatDialogRef<RoadmapUpdateComponent>) {}
+  constructor(
+    public dialogRef: MatDialogRef<RoadmapUpdateComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {}
 
   ngOnInit(): void {
+    if (this.data?.type) {
+      this.selectedType = this.data.type;
+      this.roadmapForm.patchValue({ type: this.data.type });
+    }
     this.roadmapForm.controls.type.valueChanges.subscribe(
       (type: any) => (this.selectedType = type)
     );
@@ -50,7 +57,11 @@ export class RoadmapUpdateComponent implements OnInit {
   }
 
   onSaveClick(): void {
-    const data = { ...this.getFormData(), type: this.selectedType };
+    const data = {
+      ...this.data,
+      ...this.getFormData(),
+      type: this.selectedType,
+    };
     this.dialogRef.close(data);
   }
 }

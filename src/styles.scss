@@ -35,9 +35,20 @@ app-root {
   margin-right: 0.5rem;
 }
 
+.app-roadmap-type-icon__large {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
 .app-roadmap-stack-icon {
+  border-radius: 50%;
   height: 1.2rem;
   width: 1.2rem;
-  border-radius: 50%;
   margin: 0 0.1rem;
+}
+
+.app-roadmap-stack-icon__large {
+  height: 2rem;
+  width: 2rem;
+  margin: 0 0.3rem;
 }

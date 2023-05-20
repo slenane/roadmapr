@@ -2,8 +2,18 @@ import { props, createAction } from "@ngrx/store";
 import { Roadmap } from "./roadmap.models";
 
 export const GET_ROADMAP = "[Roadmap] Get Roadmap";
+export const CREATE_ROADMAP_ITEM = "[Roadmap] Create Roadmap Item";
+export const UPDATE_ROADMAP_ITEM = "[Roadmap] Create Roadmap Item";
+export const REMOVE_ROADMAP_ITEM = "[Roadmap] Create Roadmap Item";
+
 const GET_ROADMAP_SUCCESS = "[Roadmap] Roadmap Loaded Successfully",
-  GET_ROADMAP_ERROR = "[Auth] Registration Error";
+  GET_ROADMAP_ERROR = "[Auth] Registration Error",
+  CREATE_ROADMAP_ITEM_SUCCESS = "[Auth] Roadmap Item Created Successfully",
+  CREATE_ROADMAP_ITEM_ERROR = "[Auth] Roadmap Item Creation Error",
+  UPDATE_ROADMAP_ITEM_SUCCESS = "[Auth] Roadmap Item Updated Error",
+  UPDATE_ROADMAP_ITEM_ERROR = "[Auth] Roadmap Item Update Error",
+  REMOVE_ROADMAP_ITEM_SUCCESS = "[Auth] Roadmap Item Removed Error",
+  REMOVE_ROADMAP_ITEM_ERROR = "[Auth] Roadmap Item Removal Error";
 
 export const GetRoadmap = createAction(GET_ROADMAP, props<{ id: number }>());
 
@@ -17,56 +27,47 @@ export const GetRoadmapError = createAction(
   props<{ payload: string }>()
 );
 
-// export enum RoadmapActionTypes {
+export const CreateRoadmapItem = createAction(
+  CREATE_ROADMAP_ITEM,
+  props<{ id: string; data: any }>()
+);
 
-//   GET_ROADMAP_ITEM = "[Roadmap] Get Roadmap Item",
-//   GET_ROADMAP_ITEM_SUCCESS = "[Roadmap] Roadmap Item Loaded Successfully",
+export const CreateRoadmapItemSuccess = createAction(
+  CREATE_ROADMAP_ITEM_SUCCESS,
+  props<{ payload: { data: any } }>()
+);
 
-//   ADD_ROADMAP_ITEM = "[Roadmap] Add Roadmap Item",
-//   ADD_ROADMAP_ITEM_SUCCESS = "[Roadmap] Roadmap Item Added SuccessFully",
+export const CreateRoadmapItemError = createAction(
+  CREATE_ROADMAP_ITEM_ERROR,
+  props<{ payload: string }>()
+);
 
-//   EDIT_ROADMAP_ITEM = "[Roadmap] Edit Roadmap Item",
-//   EDIT_ROADMAP_ITEM_SUCCESS = "[Roadmap] Roadmap Item Edited SuccessFully",
+export const UpdateRoadmapItem = createAction(
+  UPDATE_ROADMAP_ITEM,
+  props<{ id: string; data: any }>()
+);
 
-//   REMOVE_ROADMAP_ITEM = "[Roadmap] Remove Roadmap Item",
-//   REMOVE_ROADMAP_ITEM_SUCCESS = "[Roadmap] Roadmap Item Removed SuccessFully",
+export const UpdateRoadmapItemSuccess = createAction(
+  UPDATE_ROADMAP_ITEM_SUCCESS,
+  props<{ payload: { data: any } }>()
+);
 
-// export class GetRoadmapItem implements Action {
-//   readonly type = RoadmapActionTypes.GET_ROADMAP_ITEM;
-//   constructor(public payload: Book | Course | Degree | Tutorial) {}
-// }
+export const UpdateRoadmapItemError = createAction(
+  UPDATE_ROADMAP_ITEM_ERROR,
+  props<{ payload: string }>()
+);
 
-// export class GetRoadmapItemSuccess implements Action {
-//   readonly type = RoadmapActionTypes.GET_ROADMAP_ITEM_SUCCESS;
-//   constructor(public payload: Book | Course | Degree | Tutorial) {}
-// }
+export const RemoveRoadmapItem = createAction(
+  REMOVE_ROADMAP_ITEM,
+  props<{ id: string; data: any }>()
+);
 
-// export class AddRoadmapItem implements Action {
-//   readonly type = RoadmapActionTypes.ADD_ROADMAP_ITEM;
-//   constructor(public payload: Book | Course | Degree | Tutorial) {}
-// }
+export const RemoveRoadmapItemSuccess = createAction(
+  REMOVE_ROADMAP_ITEM_SUCCESS,
+  props<{ payload: { data: any } }>()
+);
 
-// export class AddRoadmapItemSuccess implements Action {
-//   readonly type = RoadmapActionTypes.ADD_ROADMAP_ITEM_SUCCESS;
-//   constructor(public payload: Book | Course | Degree | Tutorial) {}
-// }
-
-// export class EditRoadmapItem implements Action {
-//   readonly type = RoadmapActionTypes.EDIT_ROADMAP_ITEM;
-//   constructor(public payload: Book | Course | Degree | Tutorial) {}
-// }
-
-// export class EditRoadmapItemSuccess implements Action {
-//   readonly type = RoadmapActionTypes.EDIT_ROADMAP_ITEM_SUCCESS;
-//   constructor(public payload: Book | Course | Degree | Tutorial) {}
-// }
-
-// export class RemoveRoadmapItem implements Action {
-//   readonly type = RoadmapActionTypes.REMOVE_ROADMAP_ITEM;
-//   constructor(public id: number) {}
-// }
-
-// export class RemoveRoadmapItemSuccess implements Action {
-//   readonly type = RoadmapActionTypes.REMOVE_ROADMAP_ITEM_SUCCESS;
-//   constructor(public payload: Book | Course | Degree | Tutorial) {}
-// }
+export const RemoveRoadmapItemError = createAction(
+  REMOVE_ROADMAP_ITEM_ERROR,
+  props<{ payload: string }>()
+);

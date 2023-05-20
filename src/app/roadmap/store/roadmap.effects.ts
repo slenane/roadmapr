@@ -25,4 +25,48 @@ export class RoadmapEffects {
       catchError((error) => of(roadmapActions.GetRoadmapError(error)))
     )
   );
+
+  createRoadmapItem$ = createEffect((): any =>
+    this.actions$.pipe(
+      ofType(roadmapActions.CREATE_ROADMAP_ITEM),
+      switchMap(({ roadmapId, data }) => {
+        return this.roadmapService.createRoadmapItem(roadmapId, data);
+      }),
+      map((payload) => {
+        return roadmapActions.CreateRoadmapItemSuccess({ payload });
+      }),
+      catchError((error) => of(roadmapActions.CreateRoadmapItemError(error)))
+    )
+  );
+
+  updateRoadmapItem$ = createEffect((): any =>
+    this.actions$.pipe(
+      ofType(roadmapActions.UPDATE_ROADMAP_ITEM),
+      switchMap((payload: any) => {
+        return this.roadmapService.updateRoadmapItem(
+          payload.data.roadmap,
+          payload.data
+        );
+      }),
+      map((payload) => {
+        return roadmapActions.UpdateRoadmapItemSuccess({ payload });
+      }),
+      catchError((error) => of(roadmapActions.UpdateRoadmapItemError(error)))
+    )
+  );
+
+  removeRoadmapItem$ = createEffect((): any =>
+    this.actions$.pipe(
+      ofType(roadmapActions.REMOVE_ROADMAP_ITEM),
+      switchMap(({ roadmapId, itemId }) => {
+        console.log(itemId);
+        return this.roadmapService.removeRoadmapItem(roadmapId, itemId);
+      }),
+      map((payload) => {
+        console.log(payload);
+        return roadmapActions.RemoveRoadmapItemSuccess({ payload });
+      }),
+      catchError((error) => of(roadmapActions.RemoveRoadmapItemError(error)))
+    )
+  );
 }

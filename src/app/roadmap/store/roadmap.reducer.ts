@@ -19,6 +19,12 @@ const roadmapReducer = createReducer(
   initialState,
   on(roadmapActions.GetRoadmapSuccess, (state, { payload }) => {
     return { ...state, ...payload };
+  }),
+  on(roadmapActions.CreateRoadmapItemSuccess, (state: any, data: any) => {
+    return { ...state, ...data.payload };
+  }),
+  on(roadmapActions.UpdateRoadmapItemSuccess, (state: any, data: any) => {
+    return { ...state, ...data.payload };
   })
 );
 

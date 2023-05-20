@@ -10,26 +10,43 @@ import { Roadmap } from "../store/roadmap.models";
 export class RoadmapService {
   constructor(private apiService: ApiService, private urlService: UrlService) {}
 
-  public getRoadmap(id: string): Observable<Roadmap> {
-    return this.apiService.get(this.urlService.generate("GET_ROADMAP", id));
+  public getRoadmap(roadmapId: string): Observable<Roadmap> {
+    return this.apiService.get(
+      this.urlService.generate("GET_ROADMAP", roadmapId)
+    );
   }
 
-  public createRoadmapItem(id: string, data: any): Observable<any> {
-    console.log(data);
+  public createRoadmapItem(roadmapId: string, data: any): Observable<any> {
+    console.log(roadmapId, data);
     return this.apiService.post(
-      this.urlService.generate("CREATE_ROADMAP_ITEM", id),
+      this.urlService.generate("CREATE_ROADMAP_ITEM", roadmapId),
       {
         data,
       }
     );
   }
 
-  public updateRoadmapItem(id: string, data: any): Observable<any> {
+  public updateRoadmapItem(roadmapId: string, data: any): Observable<any> {
     return this.apiService.patch(
-      this.urlService.generate("UPDATE_ROADMAP_ITEM", id),
+      this.urlService.generate("UPDATE_ROADMAP_ITEM", roadmapId),
       {
         data,
       }
     );
   }
+
+  public removeRoadmapItem(roadmapId: string, itemId: string): Observable<any> {
+    return this.apiService.patch(
+      this.urlService.generate("UPDATE_ROADMAP_ITEM", roadmapId),
+      {
+        itemId,
+      }
+    );
+  }
+
+  // public getAmazonProducts() {
+  //   return this.apiService.get(
+  //     "https://www.amazon.es/Eloquent-JavaScript-Modern-Introduction-Programming/dp/1593279507"
+  //   );
+  // }
 }

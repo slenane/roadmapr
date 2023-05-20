@@ -94,9 +94,7 @@ export class RoadmapComponent implements OnInit, OnDestroy {
   }
 
   createRoadmapItem(item: any) {
-    this.roadmapService
-      .createRoadmapItem(item.id, item.data)
-      .subscribe((res) => console.log(res));
+    this.roadmapStoreService.createRoadmapItem(item.id, item.data);
   }
 
   transferRoadmapItem(item: any) {
@@ -124,7 +122,7 @@ export class RoadmapComponent implements OnInit, OnDestroy {
         event.currentIndex
       );
     } else {
-      const item = event.previousContainer.data[event.previousIndex];
+      const item = { ...event.previousContainer.data[event.previousIndex] };
       if (event.container.id === "cdk-drop-list-0") {
         if (item.startDate) item.startDate = null;
         if (item.endDate) item.endDate = null;

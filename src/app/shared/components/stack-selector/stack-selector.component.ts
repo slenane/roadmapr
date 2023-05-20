@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from "@angular/core";
+import { Component, ElementRef, Input, OnInit, ViewChild } from "@angular/core";
 import { STACK_LIST } from "src/app/roadmap/constants/stack-list.constants";
 import {
   MatAutocompleteSelectedEvent,
@@ -13,7 +13,7 @@ import { MatChipInputEvent } from "@angular/material/chips";
   templateUrl: "./stack-selector.component.html",
   styleUrls: ["./stack-selector.component.scss"],
 })
-export class StackSelectorComponent {
+export class StackSelectorComponent implements OnInit {
   public selectedStack: any[] = [];
   public stackCtrl = new FormControl("", Validators.required);
   public filteredStackItems: Observable<any[]>;
@@ -23,6 +23,8 @@ export class StackSelectorComponent {
   public separatorKeysCodes: number[] = [13, 16];
   public stack: any[] = [...STACK_LIST];
 
+  @Input("data") data: any;
+
   @ViewChild("stackInput") stackInput: ElementRef<HTMLInputElement>;
   @ViewChild("auto") matAutocomplete: MatAutocomplete;
 
@@ -31,6 +33,10 @@ export class StackSelectorComponent {
       startWith(null),
       map((item: any) => (item ? this._filter(item) : this.stack.slice()))
     );
+  }
+
+  ngOnInit() {
+    if (this.data) this.selectedStack = this.data;
   }
 
   addStackItem(event: MatChipInputEvent): void {

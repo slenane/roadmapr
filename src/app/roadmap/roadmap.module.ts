@@ -19,6 +19,7 @@ import { EffectsModule } from "@ngrx/effects";
 import * as fromRoadmap from "./store/roadmap.reducer";
 import { RoadmapEffects } from "./store/roadmap.effects";
 import { RoadmapStoreService } from "./services/roadmap-store.service";
+import { RoadmapItemDetailsComponent } from "./components/roadmap-item/roadmap-item-details/roadmap-item-details.component";
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { RoadmapStoreService } from "./services/roadmap-store.service";
     RoadmapUpdateCourseComponent,
     RoadmapUpdateTutorialComponent,
     RoadmapUpdateDegreeComponent,
+    RoadmapItemDetailsComponent,
   ],
   exports: [
     RoadmapFiltersComponent,
@@ -42,6 +44,7 @@ import { RoadmapStoreService } from "./services/roadmap-store.service";
     RoadmapUpdateCourseComponent,
     RoadmapUpdateTutorialComponent,
     RoadmapUpdateDegreeComponent,
+    RoadmapItemDetailsComponent,
   ],
   imports: [
     CommonModule,
