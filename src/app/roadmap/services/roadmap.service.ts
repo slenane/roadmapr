@@ -17,7 +17,6 @@ export class RoadmapService {
   }
 
   public createRoadmapItem(roadmapId: string, data: any): Observable<any> {
-    console.log(roadmapId, data);
     return this.apiService.post(
       this.urlService.generate("CREATE_ROADMAP_ITEM", roadmapId),
       {
@@ -35,18 +34,12 @@ export class RoadmapService {
     );
   }
 
-  public removeRoadmapItem(roadmapId: string, itemId: string): Observable<any> {
-    return this.apiService.patch(
-      this.urlService.generate("UPDATE_ROADMAP_ITEM", roadmapId),
+  public removeRoadmapItem(roadmapId: string, data: any): Observable<any> {
+    return this.apiService.post(
+      this.urlService.generate("REMOVE_ROADMAP_ITEM", roadmapId),
       {
-        itemId,
+        data,
       }
     );
   }
-
-  // public getAmazonProducts() {
-  //   return this.apiService.get(
-  //     "https://www.amazon.es/Eloquent-JavaScript-Modern-Introduction-Programming/dp/1593279507"
-  //   );
-  // }
 }

@@ -23,10 +23,10 @@ export class RoadmapStoreService {
       .pipe(filter((data) => !!data));
   }
 
-  createRoadmapItem(id: string, data: any) {
+  createRoadmapItem(roadmapId: string, data: any) {
     this.store.dispatch({
       type: roadmapActions.CREATE_ROADMAP_ITEM,
-      id,
+      roadmapId,
       data,
     });
   }
@@ -38,10 +38,9 @@ export class RoadmapStoreService {
     });
   }
 
-  removeRoadmapItem(id: string, data: any) {
+  removeRoadmapItem(data: any) {
     this.store.dispatch({
       type: roadmapActions.REMOVE_ROADMAP_ITEM,
-      id,
       data,
     });
   }

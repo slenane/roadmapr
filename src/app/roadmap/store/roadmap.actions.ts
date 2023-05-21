@@ -3,8 +3,8 @@ import { Roadmap } from "./roadmap.models";
 
 export const GET_ROADMAP = "[Roadmap] Get Roadmap";
 export const CREATE_ROADMAP_ITEM = "[Roadmap] Create Roadmap Item";
-export const UPDATE_ROADMAP_ITEM = "[Roadmap] Create Roadmap Item";
-export const REMOVE_ROADMAP_ITEM = "[Roadmap] Create Roadmap Item";
+export const UPDATE_ROADMAP_ITEM = "[Roadmap] Update Roadmap Item";
+export const REMOVE_ROADMAP_ITEM = "[Roadmap] Remove Roadmap Item";
 
 const GET_ROADMAP_SUCCESS = "[Roadmap] Roadmap Loaded Successfully",
   GET_ROADMAP_ERROR = "[Auth] Registration Error",
@@ -29,7 +29,7 @@ export const GetRoadmapError = createAction(
 
 export const CreateRoadmapItem = createAction(
   CREATE_ROADMAP_ITEM,
-  props<{ id: string; data: any }>()
+  props<{ roadmapId: string; data: any }>()
 );
 
 export const CreateRoadmapItemSuccess = createAction(

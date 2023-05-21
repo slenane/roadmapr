@@ -11,6 +11,9 @@ import { Roadmap } from "../store/roadmap.models";
 import { DUMMY_ROADMAP } from "../constants/dummy.constants";
 import { RoadmapService } from "../services/roadmap.service";
 import { RoadmapStoreService } from "../services/roadmap-store.service";
+import { Store } from "@ngrx/store";
+import { Profile } from "src/app/profile/store/profile.models";
+import * as profileSelectors from "src/app/profile/store/profile.selectors";
 
 @Component({
   selector: "app-roadmap",
@@ -27,25 +30,32 @@ export class RoadmapComponent implements OnInit, OnDestroy {
   public filterType = "date";
   public user: User | null;
   public roadmap: Roadmap;
-  public roadmapId: string = "6434207863105b3b3fe7cd8e";
+  public roadmapId: string;
   public recommendations = DUMMY_ROADMAP;
 
   constructor(
     private roadmapService: RoadmapService,
-    private roadmapStoreService: RoadmapStoreService
+    private roadmapStoreService: RoadmapStoreService,
+    private store: Store<Profile>
   ) {}
 
   ngOnInit(): void {
-    this.roadmapStoreService
-      .getRoadmap(this.roadmapId)
-      .pipe(
-        filter((state) => state != null),
-        takeUntil(this.ngUnsubscribe)
-      )
-      .subscribe((roadmap: Roadmap) => {
-        this.roadmap = roadmap;
-        console.log(this.roadmap);
-        this.getRoadmapConfig();
+    this.store
+      .select(profileSelectors.getProfile)
+      .pipe(filter((data) => !!data))
+      .subscribe((user) => {
+        this.roadmapId = user.roadmap?._id || "6434207863105b3b3fe7cd8e";
+
+        this.roadmapStoreService
+          .getRoadmap(this.roadmapId)
+          .pipe(
+            filter((state) => state != null),
+            takeUntil(this.ngUnsubscribe)
+          )
+          .subscribe((roadmap: Roadmap) => {
+            this.roadmap = roadmap;
+            this.getRoadmapConfig();
+          });
       });
   }
 

@@ -13,7 +13,7 @@ export class RoadmapEffects {
     private roadmapService: RoadmapService
   ) {}
 
-  getRoadmap$ = createEffect(() =>
+  getRoadmap$ = createEffect((): any =>
     this.actions$.pipe(
       ofType(roadmapActions.GET_ROADMAP),
       switchMap((payload: any) => {
@@ -58,12 +58,13 @@ export class RoadmapEffects {
   removeRoadmapItem$ = createEffect((): any =>
     this.actions$.pipe(
       ofType(roadmapActions.REMOVE_ROADMAP_ITEM),
-      switchMap(({ roadmapId, itemId }) => {
-        console.log(itemId);
-        return this.roadmapService.removeRoadmapItem(roadmapId, itemId);
+      switchMap((payload: any) => {
+        return this.roadmapService.removeRoadmapItem(
+          payload.data.roadmap,
+          payload.data
+        );
       }),
       map((payload) => {
-        console.log(payload);
         return roadmapActions.RemoveRoadmapItemSuccess({ payload });
       }),
       catchError((error) => of(roadmapActions.RemoveRoadmapItemError(error)))

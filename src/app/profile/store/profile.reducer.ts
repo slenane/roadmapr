@@ -20,6 +20,7 @@ const initialState: Profile = {
   cv: "",
   skills: [],
   languagesSpoken: [],
+  roadmap: undefined,
 };
 
 const profileReducer = createReducer(

@@ -20,9 +20,7 @@ export class RoadmapItemDetailsComponent implements OnInit {
     public dialog: MatDialog
   ) {}
 
-  ngOnInit(): void {
-    console.log(this.data);
-  }
+  ngOnInit(): void {}
 
   onCancel(): void {
     this.dialogRef.close(false);
@@ -42,9 +40,8 @@ export class RoadmapItemDetailsComponent implements OnInit {
     });
   }
 
-  deleteItem() {}
-
-  // onSave(): void {
-  //   this.dialogRef.close(this.data);
-  // }
+  deleteItem() {
+    this.roadmapStoreService.removeRoadmapItem(this.data);
+    this.dialogRef.close(false);
+  }
 }
