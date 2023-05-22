@@ -4,7 +4,8 @@ const GET_ROADMAP = "/roadmap/",
   REMOVE_ROADMAP_ITEM = "/roadmap/remove/",
   REGISTER = "/register",
   LOGIN = "/login",
-  GET_PROFILE = "/profile/";
+  GET_PROFILE = "/profile/",
+  UPDATE_PROFILE = "/profile/";
 
 export const ENDPOINTS: any = {
   GET_ROADMAP,
@@ -14,6 +15,7 @@ export const ENDPOINTS: any = {
   REGISTER,
   LOGIN,
   GET_PROFILE,
+  UPDATE_PROFILE,
 };
 
 export const BASE_URL = "http://localhost:3000";

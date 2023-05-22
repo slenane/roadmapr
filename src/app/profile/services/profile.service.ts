@@ -13,4 +13,13 @@ export class ProfileService {
   public getProfile(id: string): Observable<Profile> {
     return this.apiService.get(this.urlService.generate("GET_PROFILE", id));
   }
+
+  public updateProfile(id: string, data: any): Observable<Profile> {
+    return this.apiService.patch(
+      this.urlService.generate("UPDATE_PROFILE", id),
+      {
+        data,
+      }
+    );
+  }
 }

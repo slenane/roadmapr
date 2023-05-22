@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from "@angular/core";
-// import { Roadmap } from "src/app/roadmap/store/roadmap.models";
+import { Component, OnInit, Input, SimpleChanges } from "@angular/core";
+import { Roadmap } from "src/app/roadmap/store/roadmap.models";
 
 @Component({
   selector: "app-profile-overview",
@@ -12,38 +12,33 @@ export class ProfileOverviewComponent implements OnInit {
   public degrees = 0;
   public tutorials = 0;
 
-  // @Input() roadmap: Roadmap;
+  @Input() roadmap: Roadmap;
 
   constructor() {}
 
-  ngOnInit(): void {
-    this.getOverviewValues();
+  ngOnInit(): void {}
+
+  ngOnChanges() {
+    if (this.roadmap) this.getOverviewValues();
   }
 
   getOverviewValues() {
-    // const roadmap = [
-    //   ...this.roadmap.books,
-    //   ...this.roadmap.courses,
-    //   ...this.roadmap.degrees,
-    //   ...this.roadmap.tutorials,
-    // ];
-    // roadmap.forEach((item: any) => {
-    //   if (item.endDate) {
-    //     switch (item.type) {
-    //       case "book":
-    //         this.books++;
-    //         break;
-    //       case "course":
-    //         this.courses++;
-    //         break;
-    //       case "degree":
-    //         this.degrees++;
-    //         break;
-    //       case "tutorial":
-    //         this.tutorials++;
-    //         break;
-    //     }
-    //   }
-    // });
+    this.books = 0;
+    this.courses = 0;
+    this.degrees = 0;
+    this.tutorials = 0;
+
+    this.roadmap.books.forEach((item) => {
+      if (item.endDate) this.books++;
+    });
+    this.roadmap.courses.forEach((item) => {
+      if (item.endDate) this.courses++;
+    });
+    this.roadmap.degrees.forEach((item) => {
+      if (item.endDate) this.degrees++;
+    });
+    this.roadmap.tutorials.forEach((item) => {
+      if (item.endDate) this.tutorials++;
+    });
   }
 }

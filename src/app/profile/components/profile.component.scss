@@ -1,4 +1,4 @@
-section {
+.profile {
   display: grid;
   grid-template-columns: repeat(9, 1fr);
   gap: 1rem;
@@ -13,4 +13,11 @@ section {
     display: grid;
     gap: 1rem;
   }
+}
+
+.profile-edit {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 1rem;
+  margin-bottom: 1rem;
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, EventEmitter, OnInit, Input, Output } from "@angular/core";
 import { Profile } from "../../store/profile.models";
 
 @Component({
@@ -8,6 +8,7 @@ import { Profile } from "../../store/profile.models";
 })
 export class ProfileInfoComponent implements OnInit {
   @Input() user: Profile;
+  @Output() editProfile: EventEmitter<any> = new EventEmitter();
 
   constructor() {}
 

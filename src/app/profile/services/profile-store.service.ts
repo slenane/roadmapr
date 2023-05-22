@@ -22,4 +22,12 @@ export class ProfileStoreService {
       .select(profileSelectors.getProfile)
       .pipe(filter((data) => !!data));
   }
+
+  updateProfile(id: string, data: any) {
+    this.store.dispatch({
+      type: profileActions.UPDATE_PROFILE,
+      id,
+      data,
+    });
+  }
 }

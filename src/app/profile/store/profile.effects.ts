@@ -25,4 +25,17 @@ export class ProfileEffects {
       catchError((error) => of(profileActions.GetProfileError(error)))
     )
   );
+
+  updateProfile$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(profileActions.UPDATE_PROFILE),
+      switchMap((payload: any) => {
+        return this.profileService.updateProfile(payload.id, payload.data);
+      }),
+      map((payload: Profile) => {
+        return profileActions.GetProfileSuccess({ payload });
+      }),
+      catchError((error) => of(profileActions.GetProfileError(error)))
+    )
+  );
 }

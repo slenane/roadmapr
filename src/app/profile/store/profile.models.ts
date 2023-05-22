@@ -1,7 +1,10 @@
 export interface Profile {
   _id: string;
   email: string;
+  username: string;
   name: string;
+  location: string;
+  nationality: string;
   profileImage: string;
   coverImage: string;
   summary: string;

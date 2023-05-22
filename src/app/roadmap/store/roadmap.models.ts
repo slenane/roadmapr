@@ -52,11 +52,13 @@ export interface Degree {
 
 export interface Tutorial {
   description: String;
+  endDate: Date;
   link: String;
   instructor: String;
   github: String;
   provider: String;
   stack: String[];
+  startDate: Date;
   title: String;
   topics: String[];
   roadmap: string;

@@ -1,7 +1,7 @@
 <h1 mat-dialog-title>Update your Roadmap</h1>
 <div mat-dialog-content>
   <form [formGroup]="roadmapForm">
-    <mat-form-field appearance="fill" class="full-width">
+    <mat-form-field appearance="outline" class="full-width">
       <mat-label>Select Type</mat-label>
       <mat-select formControlName="type">
         <mat-option *ngFor="let type of roadmapTypes" [value]="type">

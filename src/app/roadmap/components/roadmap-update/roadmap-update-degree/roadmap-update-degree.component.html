@@ -1,5 +1,5 @@
 <form [formGroup]="degreeForm">
-  <mat-form-field appearance="fill">
+  <mat-form-field appearance="outline">
     <mat-label>Title</mat-label>
     <input #title matInput formControlName="title" />
     <mat-error *ngIf="degreeForm.controls.title.invalid"
@@ -7,7 +7,7 @@
     >
   </mat-form-field>
 
-  <mat-form-field appearance="fill">
+  <mat-form-field appearance="outline">
     <mat-label>Institution</mat-label>
     <input #institution matInput formControlName="institution" />
     <mat-error *ngIf="degreeForm.controls.institution.invalid"
@@ -15,7 +15,7 @@
     >
   </mat-form-field>
 
-  <mat-form-field appearance="fill">
+  <mat-form-field appearance="outline">
     <mat-label>Start date</mat-label>
     <input matInput [matDatepicker]="startDate" formControlName="startDate" />
     <mat-hint>MM/DD/YYYY</mat-hint>
@@ -23,7 +23,7 @@
     <mat-datepicker #startDate></mat-datepicker>
   </mat-form-field>
 
-  <mat-form-field appearance="fill">
+  <mat-form-field appearance="outline">
     <mat-label>End date</mat-label>
     <input matInput [matDatepicker]="endDate" formControlName="endDate" />
     <mat-hint>MM/DD/YYYY</mat-hint>
@@ -31,7 +31,7 @@
     <mat-datepicker #endDate></mat-datepicker>
   </mat-form-field>
 
-  <mat-form-field appearance="fill" class="full-width-grid-item">
+  <mat-form-field appearance="outline" class="full-width-grid-item">
     <mat-label>Description</mat-label>
     <textarea #description matInput formControlName="description"></textarea>
     <mat-error *ngIf="degreeForm.controls.description.invalid"
@@ -46,7 +46,7 @@
   >
   </app-stack-selector>
 
-  <mat-form-field class="full-width-grid-item" appearance="fill">
+  <mat-form-field class="full-width-grid-item" appearance="outline">
     <mat-label>Modules</mat-label>
     <mat-chip-list
       #modulesGrid
@@ -76,13 +76,13 @@
     </mat-chip-list>
   </mat-form-field>
 
-  <mat-form-field appearance="fill">
+  <mat-form-field appearance="outline">
     <mat-label>GPA</mat-label>
     <input #gpa matInput formControlName="gpa" />
     <mat-error *ngIf="degreeForm.controls.gpa.invalid">GPA required</mat-error>
   </mat-form-field>
 
-  <mat-form-field appearance="fill">
+  <mat-form-field appearance="outline">
     <mat-label>Link</mat-label>
     <input #link matInput formControlName="link" />
     <mat-error *ngIf="degreeForm.controls.link.invalid"
