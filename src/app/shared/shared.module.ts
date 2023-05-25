@@ -8,16 +8,19 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AppRoutingModule } from "../app-routing.module";
 import { HttpClientModule } from "@angular/common/http";
 import { BrowserModule } from "@angular/platform-browser";
+// import { FileUploadComponent } from "./components/file-upload/file-upload.component";
 
 @NgModule({
   declarations: [
     ChartComponent,
+    // FileUploadComponent,
     MenuComponent,
     SidebarComponent,
     StackSelectorComponent,
   ],
   exports: [
     ChartComponent,
+    // FileUploadComponent,
     MenuComponent,
     SidebarComponent,
     StackSelectorComponent,

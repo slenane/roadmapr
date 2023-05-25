@@ -1,0 +1,102 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title> Edit Profile </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="profileForm" class="profile-edit">
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input #name matInput formControlName="name" />
+        <mat-error *ngIf="profileForm.controls.name.invalid"
+          >Name required</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Profile Image</mat-label>
+        <input matInput formControlName="profileImage" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Username</mat-label>
+        <input #username matInput formControlName="username" />
+        <mat-error *ngIf="profileForm.controls.username.invalid"
+          >Username required</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Cover Image</mat-label>
+        <input matInput formControlName="coverImage" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input #email matInput formControlName="email" />
+        <mat-error *ngIf="profileForm.controls.email.invalid"
+          >Email required</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Location</mat-label>
+        <input #location matInput formControlName="location" />
+        <mat-error *ngIf="profileForm.controls.location.invalid"
+          >Location required</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Nationality</mat-label>
+        <input #nationality matInput formControlName="nationality" />
+        <mat-error *ngIf="profileForm.controls.nationality.invalid"
+          >Nationality required</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Summary</mat-label>
+        <input #summary matInput formControlName="summary" />
+        <mat-error *ngIf="profileForm.controls.summary.invalid"
+          >Summary required</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Bio</mat-label>
+        <input matInput formControlName="bio" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>CV</mat-label>
+        <input matInput formControlName="cv" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>GitHub</mat-label>
+        <input matInput formControlName="github" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>LinkedIn</mat-label>
+        <input matInput formControlName="linkedIn" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Twitter</mat-label>
+        <input matInput formControlName="twitter" />
+      </mat-form-field>
+    </form>
+    <div class="actions">
+      <button mat-button (click)="onCancel()">Cancel</button>
+      <button
+        type="button"
+        mat-raised-button
+        color="primary"
+        (click)="onSave()"
+        cdkFocusInitial
+        >Save</button
+      >
+    </div>
+  </mat-card-content>
+</mat-card>

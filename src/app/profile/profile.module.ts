@@ -14,6 +14,7 @@ import { StoreModule } from "@ngrx/store";
 import { EffectsModule } from "@ngrx/effects";
 import * as fromProfile from "./store/profile.reducer";
 import { ProfileEffects } from "./store/profile.effects";
+import { ProfileEditComponent } from "./components/profile-edit/profile-edit.component";
 
 @NgModule({
   declarations: [
@@ -21,12 +22,14 @@ import { ProfileEffects } from "./store/profile.effects";
     ProfileOverviewComponent,
     ProfileSkillsComponent,
     ProfileInfoComponent,
+    ProfileEditComponent,
   ],
   exports: [
     ProfileComponent,
     ProfileOverviewComponent,
     ProfileSkillsComponent,
     ProfileInfoComponent,
+    ProfileEditComponent,
   ],
   imports: [
     CommonModule,

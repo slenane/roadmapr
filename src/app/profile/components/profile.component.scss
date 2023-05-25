@@ -15,9 +15,13 @@
   }
 }
 
-.profile-edit {
+.edit-profile {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  column-gap: 1rem;
+  grid-template-columns: repeat(9, 1fr);
+  gap: 1rem;
   margin-bottom: 1rem;
+
+  .edit-profile-container {
+    grid-column: 1 / 7;
+  }
 }

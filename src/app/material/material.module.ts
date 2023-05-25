@@ -21,6 +21,7 @@ import { MatExpansionModule } from "@angular/material/expansion";
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { MatMenuModule } from "@angular/material/menu";
 import { DragDropModule } from "@angular/cdk/drag-drop";
+import { MatProgressBarModule } from "@angular/material/progress-bar";
 
 @NgModule({
   exports: [
@@ -46,6 +47,7 @@ import { DragDropModule } from "@angular/cdk/drag-drop";
     MatAutocompleteModule,
     MatMenuModule,
     DragDropModule,
+    MatProgressBarModule,
   ],
   providers: [],
   bootstrap: [],
