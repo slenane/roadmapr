@@ -7,7 +7,7 @@ interface Action {
 }
 
 const initialState: Projects = {
-  projects: [],
+  projectList: [],
   user: "",
   _id: "",
 };
