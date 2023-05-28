@@ -20,12 +20,15 @@ import { StackSelectorComponent } from "src/app/shared/components/stack-selector
 export class ProjectUpdateComponent implements OnInit {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
   public projectForm = new FormGroup({
-    description: new FormControl("", Validators.required),
-    github: new FormControl("", Validators.required),
+    description: new FormControl(""),
+    github: new FormControl(""),
     endDate: new FormControl<Date | null>(null),
-    link: new FormControl("", Validators.required),
+    link: new FormControl(""),
+    notes: new FormControl(""),
     startDate: new FormControl<Date | null>(null),
+    tagLine: new FormControl(""),
     title: new FormControl("", Validators.required),
+    todo: new FormControl(""),
     topics: new FormControl(""),
   });
 
@@ -37,7 +40,6 @@ export class ProjectUpdateComponent implements OnInit {
   @ViewChild("title") title: ElementRef;
   @ViewChild("description") description: ElementRef;
   @ViewChild("github") github: ElementRef;
-  @ViewChild("topics") topics: ElementRef;
   @ViewChild("link") link: ElementRef;
 
   constructor(

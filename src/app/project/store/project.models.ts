@@ -9,9 +9,12 @@ export interface Project {
   endDate?: Date;
   github: String;
   link?: String;
+  notes: String;
   stack: any[];
   startDate?: Date;
   title: String;
+  tagLine: String;
+  todo: String;
   topics: String[];
   _id: string;
 }

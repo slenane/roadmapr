@@ -8,10 +8,6 @@ mat-card {
 
     .mat-card-title {
       font-size: 1rem;
-
-      img {
-        margin-right: 0.3rem;
-      }
     }
 
     mat-card-subtitle {
@@ -23,5 +19,9 @@ mat-card {
       text-align: end;
       padding-right: 1rem;
     }
+  }
+
+  mat-card-content {
+    padding: 0 1rem;
   }
 }

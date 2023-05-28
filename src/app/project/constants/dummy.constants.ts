@@ -4,9 +4,9 @@ export const DUMMY_PROJECTS: Projects = {
   projectList: [
     {
       description: "Goal tracker",
-      // endDate?: Date;
       github: "www.github.com",
-      // link?: String;
+      link: "www.link.com",
+      notes: "",
       stack: [
         { title: "HTML", name: "html5" },
         { title: "CSS", name: "css3" },
@@ -15,16 +15,20 @@ export const DUMMY_PROJECTS: Projects = {
         { title: "MongoDB", name: "mongodb" },
         { title: "Node.js", name: "nodejs" },
       ],
-      // startDate?: Date;
+      startDate: new Date(
+        "Sun May 28 2023 19:34:42 GMT+0200 (Central European Summer Time)"
+      ),
+      tagLine: "Application to easily track goals",
       title: "Goal Tracker",
+      todo: "",
       topics: ["Lifestyle"],
       _id: "1",
     },
     {
       description: "Collection of chess.com's daily puzzle",
-      // endDate?: Date;
       github: "www.github.com",
-      // link?: String;
+      link: "www.link.com",
+      notes: "",
       stack: [
         { title: "HTML", name: "html5" },
         { title: "CSS", name: "css3" },
@@ -33,16 +37,20 @@ export const DUMMY_PROJECTS: Projects = {
         { title: "MongoDB", name: "mongodb" },
         { title: "Node.js", name: "nodejs" },
       ],
-      // startDate?: Date;
+      tagLine: "Chess.com puzzles directly from your browser",
       title: "Daily Chess Puzzle",
+      todo: "",
       topics: ["Games"],
       _id: "2",
     },
     {
       description: "Store",
-      // endDate?: Date;
+      endDate: new Date(
+        "Sun May 28 2023 19:34:42 GMT+0200 (Central European Summer Time)"
+      ),
       github: "www.github.com",
-      // link?: String;
+      link: "www.link.com",
+      notes: "",
       stack: [
         { title: "HTML", name: "html5" },
         { title: "CSS", name: "css3" },
@@ -51,8 +59,12 @@ export const DUMMY_PROJECTS: Projects = {
         { title: "MongoDB", name: "mongodb" },
         { title: "Node.js", name: "nodejs" },
       ],
-      // startDate?: Date;
+      startDate: new Date(
+        "Sun May 28 2023 19:34:42 GMT+0200 (Central European Summer Time)"
+      ),
+      tagLine: "Store with shopify integration",
       title: "Sacred Tribe Energy Healing",
+      todo: "",
       topics: ["Retail"],
       _id: "3",
     },
