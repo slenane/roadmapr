@@ -1,20 +1,22 @@
 import { NgModule } from "@angular/core";
 import { MaterialModule } from "../material/material.module";
-import { ProjectComponent } from "./components/project.component";
-// import { RoadmapService } from "./services/roadmap.service";
+import { ProjectsComponent } from "./components/projects.component";
 import { SharedModule } from "../shared/shared.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CoreModule } from "../core/core.module";
 import { CommonModule } from "@angular/common";
-// import { StoreModule } from "@ngrx/store";
-// import { EffectsModule } from "@ngrx/effects";
-// import * as fromRoadmap from "./store/roadmap.reducer";
-// import { RoadmapEffects } from "./store/roadmap.effects";
-// import { RoadmapStoreService } from "./services/roadmap-store.service";
+import { ProjectService } from "./services/project.service";
+import { StoreModule } from "@ngrx/store";
+import { EffectsModule } from "@ngrx/effects";
+import * as fromProject from "./store/project.reducer";
+import { ProjectEffects } from "./store/project.effects";
+import { ProjectStoreService } from "./services/project-store.service";
+import { ProjectComponent } from "./components/project/project.component";
+import { ProjectDetailsComponent } from "./components/project/project-details/project-details.component";
 
 @NgModule({
-  declarations: [ProjectComponent],
-  exports: [ProjectComponent],
+  declarations: [ProjectsComponent, ProjectComponent, ProjectDetailsComponent],
+  exports: [ProjectsComponent, ProjectComponent, ProjectDetailsComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -22,9 +24,9 @@ import { CommonModule } from "@angular/common";
     MaterialModule,
     SharedModule,
     CoreModule,
-    // StoreModule.forFeature("project", fromRoadmap.reducer),
-    // EffectsModule.forFeature([RoadmapEffects]),
+    StoreModule.forFeature("project", fromProject.reducer),
+    EffectsModule.forFeature([ProjectEffects]),
   ],
-  // providers: [RoadmapService, RoadmapStoreService],
+  providers: [ProjectService, ProjectStoreService],
 })
 export class ProjectModule {}

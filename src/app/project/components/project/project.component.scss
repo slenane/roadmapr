@@ -1,0 +1,27 @@
+mat-card {
+  padding: 1rem 0;
+
+  mat-card-header {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    justify-content: space-between;
+
+    .mat-card-title {
+      font-size: 1rem;
+
+      img {
+        margin-right: 0.3rem;
+      }
+    }
+
+    mat-card-subtitle {
+      font-size: 1rem;
+      margin-bottom: 0;
+    }
+
+    .project-stack {
+      text-align: end;
+      padding-right: 1rem;
+    }
+  }
+}

@@ -1,0 +1,56 @@
+<!-- <app-roadmap-filters
+  *ngIf="roadmap"
+  [roadmapId]="roadmap._id"
+  (filterRoadmap)="filterRoadmap($event)"
+  (updateRoadmap)="createRoadmapItem($event)"
+>
+</app-roadmap-filters> -->
+<div cdkDropListGroup class="project-container">
+  <div class="project-div">
+    <h2>To Do</h2>
+
+    <div
+      cdkDropList
+      #todoList="cdkDropList"
+      [cdkDropListData]="todoArray"
+      class="project-items"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <div class="project-item" *ngFor="let data of todoArray">
+        <app-project [data]="data" cdkDrag> </app-project>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-div">
+    <h2>In Progress</h2>
+
+    <div
+      cdkDropList
+      #inProgressList="cdkDropList"
+      [cdkDropListData]="inProgressArray"
+      class="project-items"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <div class="project-item" *ngFor="let data of inProgressArray">
+        <app-project [data]="data" cdkDrag> </app-project>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-div">
+    <h2>Done</h2>
+
+    <div
+      cdkDropList
+      #doneList="cdkDropList"
+      [cdkDropListData]="doneArray"
+      class="project-items"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <div class="project-item" *ngFor="let data of doneArray">
+        <app-project [data]="data" cdkDrag> </app-project>
+      </div>
+    </div>
+  </div>
+</div>

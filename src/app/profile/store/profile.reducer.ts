@@ -24,6 +24,7 @@ const initialState: Profile = {
   skills: [],
   languagesSpoken: [],
   roadmap: undefined,
+  project: undefined,
 };
 
 const profileReducer = createReducer(

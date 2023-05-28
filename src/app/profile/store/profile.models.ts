@@ -16,4 +16,5 @@ export interface Profile {
   skills: any[];
   languagesSpoken: any[];
   roadmap: any;
+  project: any;
 }

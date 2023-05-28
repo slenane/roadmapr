@@ -13,7 +13,7 @@ export interface Book {
   endDate: Date;
   link: String;
   publisher: String;
-  stack: String[];
+  stack: any[];
   startDate: Date;
   title: String;
   topics: String[];
@@ -27,7 +27,7 @@ export interface Course {
   link: String;
   instructor: String;
   provider: String;
-  stack: String[];
+  stack: any[];
   startDate: Date;
   title: String;
   topics: String[];
@@ -42,7 +42,7 @@ export interface Degree {
   link: String;
   institution: String;
   modules: String[];
-  stack: String[];
+  stack: any[];
   startDate: Date;
   title: String;
   topics: String[];
@@ -57,7 +57,7 @@ export interface Tutorial {
   instructor: String;
   github: String;
   provider: String;
-  stack: String[];
+  stack: any[];
   startDate: Date;
   title: String;
   topics: String[];

@@ -1,10 +1,11 @@
 .options {
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: 1rem;
+  gap: 0.5rem;
   align-items: center;
+  font-size: 0.8rem;
 
   img {
-    height: 1.5rem;
+    height: 1.2rem;
   }
 }

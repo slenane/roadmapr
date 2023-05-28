@@ -19,7 +19,7 @@ export class RoadmapUpdateTutorialComponent implements OnInit {
     startDate: new FormControl<Date | null>(null),
     endDate: new FormControl<Date | null>(null),
     description: new FormControl("", Validators.required),
-    topics: new FormControl([], Validators.required),
+    topics: new FormControl([]),
     link: new FormControl("", Validators.required),
     github: new FormControl("", Validators.required),
     provider: new FormControl("", Validators.required),

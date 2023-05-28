@@ -7,13 +7,13 @@ export const UPDATE_ROADMAP_ITEM = "[Roadmap] Update Roadmap Item";
 export const REMOVE_ROADMAP_ITEM = "[Roadmap] Remove Roadmap Item";
 
 const GET_ROADMAP_SUCCESS = "[Roadmap] Roadmap Loaded Successfully",
-  GET_ROADMAP_ERROR = "[Auth] Registration Error",
-  CREATE_ROADMAP_ITEM_SUCCESS = "[Auth] Roadmap Item Created Successfully",
-  CREATE_ROADMAP_ITEM_ERROR = "[Auth] Roadmap Item Creation Error",
-  UPDATE_ROADMAP_ITEM_SUCCESS = "[Auth] Roadmap Item Updated Error",
-  UPDATE_ROADMAP_ITEM_ERROR = "[Auth] Roadmap Item Update Error",
-  REMOVE_ROADMAP_ITEM_SUCCESS = "[Auth] Roadmap Item Removed Error",
-  REMOVE_ROADMAP_ITEM_ERROR = "[Auth] Roadmap Item Removal Error";
+  GET_ROADMAP_ERROR = "[Roadmap] Roadmap Load Error",
+  CREATE_ROADMAP_ITEM_SUCCESS = "[Roadmap] Roadmap Item Created Successfully",
+  CREATE_ROADMAP_ITEM_ERROR = "[Roadmap] Roadmap Item Creation Error",
+  UPDATE_ROADMAP_ITEM_SUCCESS = "[Roadmap] Roadmap Item Updated Error",
+  UPDATE_ROADMAP_ITEM_ERROR = "[Roadmap] Roadmap Item Update Error",
+  REMOVE_ROADMAP_ITEM_SUCCESS = "[Roadmap] Roadmap Item Removed Error",
+  REMOVE_ROADMAP_ITEM_ERROR = "[Roadmap] Roadmap Item Removal Error";
 
 export const GetRoadmap = createAction(GET_ROADMAP, props<{ id: number }>());
 

@@ -17,6 +17,7 @@ import { CoreModule } from "./core/core.module";
 import { RoadmapModule } from "./roadmap/roadmap.module";
 import { ProfileModule } from "./profile/profile.module";
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
+import { ProjectModule } from "./project/project.module";
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { StoreDevtoolsModule } from "@ngrx/store-devtools";
     CoreModule,
     RoadmapModule,
     ProfileModule,
+    ProjectModule,
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,

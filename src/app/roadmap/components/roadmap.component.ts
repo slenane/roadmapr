@@ -104,7 +104,9 @@ export class RoadmapComponent implements OnInit, OnDestroy {
   }
 
   createRoadmapItem(item: any) {
-    this.roadmapStoreService.createRoadmapItem(item.id, item.data);
+    if (item.data) {
+      this.roadmapStoreService.createRoadmapItem(item.id, item.data);
+    }
   }
 
   transferRoadmapItem(item: any) {

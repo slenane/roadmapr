@@ -6,6 +6,9 @@ import { RoadmapUpdateBookComponent } from "./roadmap-update-book/roadmap-update
 import { RoadmapUpdateCourseComponent } from "./roadmap-update-course/roadmap-update-course.component";
 import { RoadmapUpdateDegreeComponent } from "./roadmap-update-degree/roadmap-update-degree.component";
 import { RoadmapUpdateTutorialComponent } from "./roadmap-update-tutorial/roadmap-update-tutorial.component";
+import { RoadmapService } from "../../services/roadmap.service";
+import { takeUntil } from "rxjs/operators";
+import { Subject } from "rxjs";
 
 @Component({
   selector: "app-roadmap-update",
@@ -13,10 +16,12 @@ import { RoadmapUpdateTutorialComponent } from "./roadmap-update-tutorial/roadma
   styleUrls: ["./roadmap-update.component.scss"],
 })
 export class RoadmapUpdateComponent implements OnInit {
+  private ngUnsubscribe: Subject<void> = new Subject<void>();
   public roadmapTypes = ROADMAP_TYPES;
   public selectedType: string = "";
   public roadmapForm = new FormGroup({
-    type: new FormControl("", Validators.required),
+    type: new FormControl(),
+    link: new FormControl(),
   });
 
   @ViewChild("book") book: RoadmapUpdateBookComponent;
@@ -25,6 +30,7 @@ export class RoadmapUpdateComponent implements OnInit {
   @ViewChild("tutorial") tutorial: RoadmapUpdateTutorialComponent;
 
   constructor(
+    private roadmapService: RoadmapService,
     public dialogRef: MatDialogRef<RoadmapUpdateComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
@@ -37,6 +43,29 @@ export class RoadmapUpdateComponent implements OnInit {
     this.roadmapForm.controls.type.valueChanges.subscribe(
       (type: any) => (this.selectedType = type)
     );
+  }
+
+  ngOnDestroy() {
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
+  }
+
+  fetchDetails() {
+    this.roadmapService
+      .getItemDetailsFromLink(this.roadmapForm.value.link)
+      .pipe(takeUntil(this.ngUnsubscribe))
+      .subscribe((res: any) => {
+        if (res.type) {
+          this.selectedType = res.type;
+          this.roadmapForm.patchValue({ type: res.type });
+        }
+        console.log(res.type);
+        this.data = {
+          ...this.data,
+          ...res,
+        };
+        console.log(this.data);
+      });
   }
 
   getFormData(): any {

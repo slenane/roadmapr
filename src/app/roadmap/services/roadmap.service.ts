@@ -42,4 +42,10 @@ export class RoadmapService {
       }
     );
   }
+
+  public getItemDetailsFromLink(link: string): Observable<any> {
+    return this.apiService.post(this.urlService.generate("GET_ITEM_DETAILS"), {
+      link,
+    });
+  }
 }
