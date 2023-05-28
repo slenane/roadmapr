@@ -6,6 +6,7 @@ import {
 } from "@angular/material/dialog";
 // import { RoadmapUpdateComponent } from "../../roadmap-update/roadmap-update.component";
 import { ProjectStoreService } from "src/app/project/services/project-store.service";
+import { ProjectUpdateComponent } from "../../update-project/project-update.component";
 
 @Component({
   selector: "app-project-details",
@@ -26,22 +27,22 @@ export class ProjectDetailsComponent implements OnInit {
     this.dialogRef.close(false);
   }
 
-  // editItem() {
-  //   const dialogRef = this.dialog.open(RoadmapUpdateComponent, {
-  //     width: "60vw",
-  //     data: this.data,
-  //   });
+  editItem() {
+    const dialogRef = this.dialog.open(ProjectUpdateComponent, {
+      width: "60vw",
+      data: this.data,
+    });
 
-  //   dialogRef.afterClosed().subscribe((result) => {
-  //     if (result.roadmap) {
-  //       this.data = result;
-  //       this.projectStoreService.updateRoadmapItem(result);
-  //     }
-  //   });
-  // }
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result.roadmap) {
+        this.data = result;
+        this.projectStoreService.updateProject(result);
+      }
+    });
+  }
 
-  // deleteItem() {
-  //   this.projectStoreService.removeRoadmapItem(this.data);
-  //   this.dialogRef.close(false);
-  // }
+  deleteItem() {
+    this.projectStoreService.removeProject(this.data);
+    this.dialogRef.close(false);
+  }
 }

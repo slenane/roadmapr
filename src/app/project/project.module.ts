@@ -13,10 +13,21 @@ import { ProjectEffects } from "./store/project.effects";
 import { ProjectStoreService } from "./services/project-store.service";
 import { ProjectComponent } from "./components/project/project.component";
 import { ProjectDetailsComponent } from "./components/project/project-details/project-details.component";
+import { ProjectUpdateComponent } from "./components/update-project/project-update.component";
 
 @NgModule({
-  declarations: [ProjectsComponent, ProjectComponent, ProjectDetailsComponent],
-  exports: [ProjectsComponent, ProjectComponent, ProjectDetailsComponent],
+  declarations: [
+    ProjectsComponent,
+    ProjectComponent,
+    ProjectDetailsComponent,
+    ProjectUpdateComponent,
+  ],
+  exports: [
+    ProjectsComponent,
+    ProjectComponent,
+    ProjectDetailsComponent,
+    ProjectUpdateComponent,
+  ],
   imports: [
     CommonModule,
     FormsModule,

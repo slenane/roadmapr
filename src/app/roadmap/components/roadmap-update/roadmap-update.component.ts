@@ -7,7 +7,7 @@ import { RoadmapUpdateCourseComponent } from "./roadmap-update-course/roadmap-up
 import { RoadmapUpdateDegreeComponent } from "./roadmap-update-degree/roadmap-update-degree.component";
 import { RoadmapUpdateTutorialComponent } from "./roadmap-update-tutorial/roadmap-update-tutorial.component";
 import { RoadmapService } from "../../services/roadmap.service";
-import { takeUntil } from "rxjs/operators";
+// import { takeUntil } from "rxjs/operators";
 import { Subject } from "rxjs";
 
 @Component({
@@ -50,23 +50,23 @@ export class RoadmapUpdateComponent implements OnInit {
     this.ngUnsubscribe.complete();
   }
 
-  fetchDetails() {
-    this.roadmapService
-      .getItemDetailsFromLink(this.roadmapForm.value.link)
-      .pipe(takeUntil(this.ngUnsubscribe))
-      .subscribe((res: any) => {
-        if (res.type) {
-          this.selectedType = res.type;
-          this.roadmapForm.patchValue({ type: res.type });
-        }
-        console.log(res.type);
-        this.data = {
-          ...this.data,
-          ...res,
-        };
-        console.log(this.data);
-      });
-  }
+  // fetchDetails() {
+  //   this.roadmapService
+  //     .getItemDetailsFromLink(this.roadmapForm.value.link)
+  //     .pipe(takeUntil(this.ngUnsubscribe))
+  //     .subscribe((res: any) => {
+  //       if (res.type) {
+  //         this.selectedType = res.type;
+  //         this.roadmapForm.patchValue({ type: res.type });
+  //       }
+  //       console.log(res.type);
+  //       this.data = {
+  //         ...this.data,
+  //         ...res,
+  //       };
+  //       console.log(this.data);
+  //     });
+  // }
 
   getFormData(): any {
     switch (this.selectedType) {

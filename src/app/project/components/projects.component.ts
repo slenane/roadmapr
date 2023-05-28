@@ -14,6 +14,8 @@ import { Store } from "@ngrx/store";
 import { Profile } from "src/app/profile/store/profile.models";
 import * as profileSelectors from "src/app/profile/store/profile.selectors";
 import { DUMMY_PROJECTS } from "../constants/dummy.constants";
+import { MatDialog } from "@angular/material/dialog";
+import { ProjectUpdateComponent } from "./update-project/project-update.component";
 
 @Component({
   selector: "app-projects",
@@ -33,7 +35,8 @@ export class ProjectsComponent implements OnInit, OnDestroy {
   constructor(
     private projectService: ProjectService,
     private projectStoreService: ProjectStoreService,
-    private store: Store<Profile>
+    private store: Store<Profile>,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -85,10 +88,16 @@ export class ProjectsComponent implements OnInit, OnDestroy {
     }
   }
 
-  createProject(item: any) {
-    if (item.data) {
-      this.projectStoreService.createProject(item.id, item.data);
-    }
+  addProject() {
+    const dialogRef = this.dialog.open(ProjectUpdateComponent, {
+      width: "60vw",
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result.data) {
+        this.projectStoreService.createProject(result.id, result.data);
+      }
+    });
   }
 
   transferProject(item: any) {

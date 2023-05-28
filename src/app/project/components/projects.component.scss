@@ -1,3 +1,7 @@
+.actions {
+  text-align: right;
+}
+
 .project-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -14,10 +18,6 @@
     .project-item {
       cursor: move;
       margin-bottom: 0.5rem;
-
-      &.recommendation {
-        cursor: initial;
-      }
     }
 
     .project-item:last-child {
