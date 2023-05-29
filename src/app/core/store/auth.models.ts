@@ -1,3 +1,4 @@
+import { Projects } from "src/app/projects/store/projects.models";
 import { Roadmap } from "../../roadmap/store/roadmap.models";
 
 export interface Action {
@@ -12,13 +13,16 @@ export interface User {
   iat: number;
   profileImage: string;
   coverImage: string;
-  summary: string;
+  role: string;
   bio: string;
   github: string;
   linkedIn: string;
   twitter: string;
   cv: string;
+  // employment: Employment;
   roadmap: Roadmap;
+  Projects: Projects;
+  // settings: Settings;
   skills: object;
   languagesSpoken: object;
 }

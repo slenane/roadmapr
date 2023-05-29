@@ -55,10 +55,15 @@
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>Summary</mat-label>
-        <input #summary matInput formControlName="summary" />
-        <mat-error *ngIf="profileForm.controls.summary.invalid"
-          >Summary required</mat-error
+        <mat-label>Role</mat-label>
+
+        <mat-select #role formControlName="role">
+          <mat-option *ngFor="let role of roles" [value]="role">
+            <div class="type-option"> {{ role }} </div>
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="profileForm.controls.role.invalid"
+          >Role required</mat-error
         >
       </mat-form-field>
 

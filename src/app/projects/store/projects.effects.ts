@@ -2,22 +2,22 @@ import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { of } from "rxjs";
 import { map, switchMap, catchError } from "rxjs/operators";
-import { ProjectService } from "../services/project.service";
-import * as projectActions from "./project.actions";
-import { Project, Projects } from "./project.models";
+import { ProjectsService } from "../services/projects.service";
+import * as projectActions from "./projects.actions";
+import { Projects } from "./projects.models";
 
 @Injectable()
 export class ProjectEffects {
   constructor(
     private actions$: Actions,
-    private projectService: ProjectService
+    private projectsService: ProjectsService
   ) {}
 
   getProject$ = createEffect((): any =>
     this.actions$.pipe(
       ofType(projectActions.GET_PROJECTS),
       switchMap((payload: any) => {
-        return this.projectService.getProjects(payload.id);
+        return this.projectsService.getProjects(payload.id);
       }),
       map((payload: Projects) => {
         return projectActions.GetProjectsSuccess({ payload });
@@ -29,10 +29,11 @@ export class ProjectEffects {
   createProject$ = createEffect((): any =>
     this.actions$.pipe(
       ofType(projectActions.CREATE_PROJECT),
-      switchMap(({ projectId, data }) => {
-        return this.projectService.createProject(projectId, data);
+      switchMap(({ projectsId, data }) => {
+        return this.projectsService.createProject(projectsId, data);
       }),
       map((payload) => {
+        console.log(payload);
         return projectActions.CreateProjectSuccess({ payload });
       }),
       catchError((error) => of(projectActions.CreateProjectError(error)))
@@ -43,7 +44,7 @@ export class ProjectEffects {
     this.actions$.pipe(
       ofType(projectActions.UPDATE_PROJECT),
       switchMap((payload: any) => {
-        return this.projectService.updateProject(
+        return this.projectsService.updateProject(
           payload.data.project,
           payload.data
         );
@@ -59,7 +60,7 @@ export class ProjectEffects {
     this.actions$.pipe(
       ofType(projectActions.REMOVE_PROJECT),
       switchMap((payload: any) => {
-        return this.projectService.removeProject(
+        return this.projectsService.removeProject(
           payload.data.project,
           payload.data
         );

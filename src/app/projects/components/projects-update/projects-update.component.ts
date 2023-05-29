@@ -14,10 +14,10 @@ import { StackSelectorComponent } from "src/app/shared/components/stack-selector
 
 @Component({
   selector: "app-project-update",
-  templateUrl: "./project-update.component.html",
-  styleUrls: ["./project-update.component.scss"],
+  templateUrl: "./projects-update.component.html",
+  styleUrls: ["./projects-update.component.scss"],
 })
-export class ProjectUpdateComponent implements OnInit {
+export class ProjectsUpdateComponent implements OnInit {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
   public projectForm = new FormGroup({
     description: new FormControl(""),
@@ -44,7 +44,7 @@ export class ProjectUpdateComponent implements OnInit {
 
   constructor(
     private el: ElementRef,
-    public dialogRef: MatDialogRef<ProjectUpdateComponent>,
+    public dialogRef: MatDialogRef<ProjectsUpdateComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 

@@ -44,7 +44,7 @@ export class RoadmapComponent implements OnInit, OnDestroy {
       .select(profileSelectors.getProfile)
       .pipe(filter((data) => !!data))
       .subscribe((user) => {
-        this.roadmapId = user.roadmap?._id || "6434207863105b3b3fe7cd8e";
+        this.roadmapId = user.roadmap;
 
         this.roadmapStoreService
           .getRoadmap(this.roadmapId)

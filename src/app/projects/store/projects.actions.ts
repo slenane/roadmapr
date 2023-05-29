@@ -1,5 +1,5 @@
 import { props, createAction } from "@ngrx/store";
-import { Project, Projects } from "./project.models";
+import { Projects } from "./projects.models";
 
 export const GET_PROJECTS = "[Project] Get Project";
 export const CREATE_PROJECT = "[Project] Create Project";
@@ -29,7 +29,7 @@ export const GetProjectsError = createAction(
 
 export const CreateProject = createAction(
   CREATE_PROJECT,
-  props<{ projectId: string; data: any }>()
+  props<{ projectsId: string; data: any }>()
 );
 
 export const CreateProjectSuccess = createAction(

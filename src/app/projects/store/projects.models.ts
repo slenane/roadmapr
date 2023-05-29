@@ -1,10 +1,10 @@
 export interface Projects {
-  projectList: Project[];
+  projectList: ProjectItem[];
   user: string;
   _id: string;
 }
 
-export interface Project {
+export interface ProjectItem {
   description: String;
   endDate?: Date;
   github: String;

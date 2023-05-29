@@ -1,4 +1,4 @@
-import { Projects } from "../store/project.models";
+import { Projects } from "../store/projects.models";
 
 export const DUMMY_PROJECTS: Projects = {
   projectList: [

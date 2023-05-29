@@ -5,8 +5,8 @@ import {
   MatDialog,
 } from "@angular/material/dialog";
 // import { RoadmapUpdateComponent } from "../../roadmap-update/roadmap-update.component";
-import { ProjectStoreService } from "src/app/project/services/project-store.service";
-import { ProjectUpdateComponent } from "../../update-project/project-update.component";
+import { ProjectsStoreService } from "src/app/projects/services/projects-store.service";
+import { ProjectsUpdateComponent } from "../../projects-update/projects-update.component";
 
 @Component({
   selector: "app-project-details",
@@ -15,7 +15,7 @@ import { ProjectUpdateComponent } from "../../update-project/project-update.comp
 })
 export class ProjectDetailsComponent implements OnInit {
   constructor(
-    private projectStoreService: ProjectStoreService,
+    private projectsStoreService: ProjectsStoreService,
     public dialogRef: MatDialogRef<ProjectDetailsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialog: MatDialog
@@ -28,7 +28,7 @@ export class ProjectDetailsComponent implements OnInit {
   }
 
   editItem() {
-    const dialogRef = this.dialog.open(ProjectUpdateComponent, {
+    const dialogRef = this.dialog.open(ProjectsUpdateComponent, {
       width: "60vw",
       data: this.data,
     });
@@ -36,13 +36,13 @@ export class ProjectDetailsComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (result.roadmap) {
         this.data = result;
-        this.projectStoreService.updateProject(result);
+        this.projectsStoreService.updateProject(result);
       }
     });
   }
 
   deleteItem() {
-    this.projectStoreService.removeProject(this.data);
+    this.projectsStoreService.removeProject(this.data);
     this.dialogRef.close(false);
   }
 }

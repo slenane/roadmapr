@@ -7,7 +7,7 @@ export interface Profile {
   nationality: string;
   profileImage: string;
   coverImage: string;
-  summary: string;
+  role: string;
   bio: string;
   github: string;
   linkedIn: string;
@@ -15,6 +15,6 @@ export interface Profile {
   cv: string;
   skills: any[];
   languagesSpoken: any[];
-  roadmap: any;
-  project: any;
+  roadmap: string;
+  projects: string;
 }

@@ -3,7 +3,7 @@ import * as authActions from "./auth.actions";
 import { createReducer, on } from "@ngrx/store";
 
 export interface State {
-  user?: User | null;
+  user?: String | null;
   token?: string | null;
   isLoggedIn: boolean;
 }
@@ -14,13 +14,23 @@ const initialState: State = {
 
 const authReducer = createReducer(
   initialState,
-  on(authActions.RegisterSuccess, (state, { payload }) => {
+  on(authActions.RegisterSuccess, (state, payload: any) => {
     console.log(state, payload);
-    return { ...state, isLoggedIn: true, token: payload.token };
+    return {
+      ...state,
+      isLoggedIn: true,
+      ...(payload.user ? { user: payload.user._id } : {}),
+      ...(payload.token ? { token: payload.token } : {}),
+    };
   }),
   on(authActions.LoginSuccess, (state, payload: any) => {
     console.log(state, payload);
-    return { ...state, isLoggedIn: true, token: payload.token };
+    return {
+      ...state,
+      isLoggedIn: true,
+      ...(payload.user ? { user: payload.user._id } : {}),
+      ...(payload.token ? { token: payload.token } : {}),
+    };
   })
 );
 

@@ -7,15 +7,15 @@ import {
   transferArrayItem,
 } from "@angular/cdk/drag-drop";
 import { User } from "src/app/core/store/auth.models";
-import { Project, Projects } from "../store/project.models";
-import { ProjectService } from "../services/project.service";
-import { ProjectStoreService } from "../services/project-store.service";
+import { Projects } from "../store/projects.models";
+import { ProjectsService } from "../services/projects.service";
+import { ProjectsStoreService } from "../services/projects-store.service";
 import { Store } from "@ngrx/store";
 import { Profile } from "src/app/profile/store/profile.models";
 import * as profileSelectors from "src/app/profile/store/profile.selectors";
-import { DUMMY_PROJECTS } from "../constants/dummy.constants";
+// import { DUMMY_PROJECTS } from "../constants/dummy.constants";
 import { MatDialog } from "@angular/material/dialog";
-import { ProjectUpdateComponent } from "./update-project/project-update.component";
+import { ProjectsUpdateComponent } from "./projects-update/projects-update.component";
 
 @Component({
   selector: "app-projects",
@@ -30,36 +30,34 @@ export class ProjectsComponent implements OnInit, OnDestroy {
   public filterType = "date";
   public user: User | null;
   public projects: Projects;
-  public projectId: string;
+  public projectsId: string;
 
   constructor(
-    private projectService: ProjectService,
-    private projectStoreService: ProjectStoreService,
+    private projectService: ProjectsService,
+    private projectsStoreService: ProjectsStoreService,
     private store: Store<Profile>,
     public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
-    this.projects = DUMMY_PROJECTS;
-    this.getProjectsConfig();
+    this.store
+      .select(profileSelectors.getProfile)
+      .pipe(filter((data) => !!data))
+      .subscribe((user) => {
+        console.log(user);
+        this.projectsId = user.projects;
 
-    // this.store
-    //   .select(profileSelectors.getProfile)
-    //   .pipe(filter((data) => !!data))
-    //   .subscribe((user) => {
-    //     this.projectId = user.project?._id || "6434207863105b3b3fe7cd8e";
-
-    //     this.projectStoreService
-    //       .getProjects(this.projectId)
-    //       .pipe(
-    //         filter((state) => state != null),
-    //         takeUntil(this.ngUnsubscribe)
-    //       )
-    //       .subscribe((projects: Project[]) => {
-    //         this.projects = projects;
-    //         this.getProjectsConfig();
-    //       });
-    //   });
+        this.projectsStoreService
+          .getProjects(this.projectsId)
+          .pipe(
+            filter((state) => state != null),
+            takeUntil(this.ngUnsubscribe)
+          )
+          .subscribe((projects: Projects) => {
+            this.projects = projects;
+            this.getProjectsConfig();
+          });
+      });
   }
 
   ngOnDestroy() {
@@ -89,20 +87,21 @@ export class ProjectsComponent implements OnInit, OnDestroy {
   }
 
   addProject() {
-    const dialogRef = this.dialog.open(ProjectUpdateComponent, {
+    const dialogRef = this.dialog.open(ProjectsUpdateComponent, {
       width: "60vw",
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      if (result.data) {
-        this.projectStoreService.createProject(result.id, result.data);
+      if (result) {
+        console.log(this.projectsId, result);
+        this.projectsStoreService.createProject(this.projectsId, result);
       }
     });
   }
 
   transferProject(item: any) {
     this.projectService
-      .updateProject(this.projectId, item)
+      .updateProject(this.projectsId, item)
       .subscribe((res: any) => {
         console.log(res);
       });

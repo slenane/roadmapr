@@ -10,6 +10,7 @@ import {
 import { Profile } from "../../store/profile.models";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { ProfileStoreService } from "../../services/profile-store.service";
+import { DEV_ROLES } from "../../constants/profile.constants";
 
 @Component({
   selector: "app-profile-edit",
@@ -17,6 +18,8 @@ import { ProfileStoreService } from "../../services/profile-store.service";
   styleUrls: ["./profile-edit.component.scss"],
 })
 export class ProfileEditComponent implements OnInit {
+  public roles = DEV_ROLES;
+
   public profileForm = new FormGroup({
     bio: new FormControl(""),
     coverImage: new FormControl(""),
@@ -28,7 +31,7 @@ export class ProfileEditComponent implements OnInit {
     name: new FormControl("", Validators.required),
     nationality: new FormControl("", Validators.required),
     profileImage: new FormControl(""),
-    summary: new FormControl("", Validators.required),
+    role: new FormControl("", Validators.required),
     twitter: new FormControl(""),
     username: new FormControl("", Validators.required),
   });
@@ -41,7 +44,7 @@ export class ProfileEditComponent implements OnInit {
   @ViewChild("location") location: ElementRef;
   @ViewChild("name") name: ElementRef;
   @ViewChild("nationality") nationality: ElementRef;
-  @ViewChild("summary") summary: ElementRef;
+  @ViewChild("role") role: ElementRef;
   @ViewChild("username") username: ElementRef;
 
   constructor(private profileStoreService: ProfileStoreService) {}
@@ -62,7 +65,7 @@ export class ProfileEditComponent implements OnInit {
       name: user.name,
       nationality: user.nationality,
       profileImage: user.profileImage,
-      summary: user.summary,
+      role: user.role,
       twitter: user.twitter,
       username: user.username,
     });

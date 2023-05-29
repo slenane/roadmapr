@@ -15,7 +15,7 @@ const initialState: Profile = {
   nationality: "",
   profileImage: "",
   coverImage: "",
-  summary: "",
+  role: "",
   bio: "",
   github: "",
   linkedIn: "",
@@ -23,8 +23,8 @@ const initialState: Profile = {
   cv: "",
   skills: [],
   languagesSpoken: [],
-  roadmap: undefined,
-  project: undefined,
+  roadmap: "",
+  projects: "",
 };
 
 const profileReducer = createReducer(

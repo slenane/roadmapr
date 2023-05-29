@@ -5,28 +5,28 @@ import { SharedModule } from "../shared/shared.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CoreModule } from "../core/core.module";
 import { CommonModule } from "@angular/common";
-import { ProjectService } from "./services/project.service";
+import { ProjectsService } from "./services/projects.service";
 import { StoreModule } from "@ngrx/store";
 import { EffectsModule } from "@ngrx/effects";
-import * as fromProject from "./store/project.reducer";
-import { ProjectEffects } from "./store/project.effects";
-import { ProjectStoreService } from "./services/project-store.service";
+import * as fromProject from "./store/projects.reducer";
+import { ProjectEffects } from "./store/projects.effects";
+import { ProjectsStoreService } from "./services/projects-store.service";
 import { ProjectComponent } from "./components/project/project.component";
 import { ProjectDetailsComponent } from "./components/project/project-details/project-details.component";
-import { ProjectUpdateComponent } from "./components/update-project/project-update.component";
+import { ProjectsUpdateComponent } from "./components/projects-update/projects-update.component";
 
 @NgModule({
   declarations: [
     ProjectsComponent,
     ProjectComponent,
     ProjectDetailsComponent,
-    ProjectUpdateComponent,
+    ProjectsUpdateComponent,
   ],
   exports: [
     ProjectsComponent,
     ProjectComponent,
     ProjectDetailsComponent,
-    ProjectUpdateComponent,
+    ProjectsUpdateComponent,
   ],
   imports: [
     CommonModule,
@@ -38,6 +38,6 @@ import { ProjectUpdateComponent } from "./components/update-project/project-upda
     StoreModule.forFeature("project", fromProject.reducer),
     EffectsModule.forFeature([ProjectEffects]),
   ],
-  providers: [ProjectService, ProjectStoreService],
+  providers: [ProjectsService, ProjectsStoreService],
 })
-export class ProjectModule {}
+export class ProjectsModule {}

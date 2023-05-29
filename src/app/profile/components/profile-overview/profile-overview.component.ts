@@ -12,7 +12,7 @@ export class ProfileOverviewComponent implements OnInit {
   public degrees = 0;
   public tutorials = 0;
 
-  @Input() roadmap: Roadmap;
+  @Input() roadmap: string;
 
   constructor() {}
 
@@ -23,22 +23,21 @@ export class ProfileOverviewComponent implements OnInit {
   }
 
   getOverviewValues() {
-    this.books = 0;
-    this.courses = 0;
-    this.degrees = 0;
-    this.tutorials = 0;
-
-    this.roadmap.books.forEach((item) => {
-      if (item.endDate) this.books++;
-    });
-    this.roadmap.courses.forEach((item) => {
-      if (item.endDate) this.courses++;
-    });
-    this.roadmap.degrees.forEach((item) => {
-      if (item.endDate) this.degrees++;
-    });
-    this.roadmap.tutorials.forEach((item) => {
-      if (item.endDate) this.tutorials++;
-    });
+    // this.books = 0;
+    // this.courses = 0;
+    // this.degrees = 0;
+    // this.tutorials = 0;
+    // this.roadmap.books.forEach((item) => {
+    //   if (item.endDate) this.books++;
+    // });
+    // this.roadmap.courses.forEach((item) => {
+    //   if (item.endDate) this.courses++;
+    // });
+    // this.roadmap.degrees.forEach((item) => {
+    //   if (item.endDate) this.degrees++;
+    // });
+    // this.roadmap.tutorials.forEach((item) => {
+    //   if (item.endDate) this.tutorials++;
+    // });
   }
 }

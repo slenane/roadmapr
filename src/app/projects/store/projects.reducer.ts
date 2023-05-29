@@ -1,5 +1,5 @@
-import { Projects } from "./project.models";
-import * as projectActions from "./project.actions";
+import { Projects } from "./projects.models";
+import * as projectActions from "./projects.actions";
 import { createReducer, on } from "@ngrx/store";
 
 interface Action {

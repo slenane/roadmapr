@@ -10,7 +10,7 @@ import { filter } from "rxjs/operators";
 })
 export class ProfileComponent implements OnInit {
   public user: Profile;
-  public userId: string = "6434207863105b3b3fe7cd91";
+  public userId: string = "647522fd836548bcea3ff34a";
   public isEditing: boolean = false;
 
   constructor(private profileStoreService: ProfileStoreService) {}
@@ -20,7 +20,6 @@ export class ProfileComponent implements OnInit {
       .getProfile(this.userId)
       .pipe(filter((state) => state != null))
       .subscribe((user: Profile) => {
-        console.log(user);
         this.user = user;
       });
   }

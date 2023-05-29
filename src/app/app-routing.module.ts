@@ -4,7 +4,7 @@ import { DashboardComponent } from "./dashboard/dashboard.component";
 import { EmploymentComponent } from "./employment/employment.component";
 import { LandingComponent } from "./core/components/landing/landing.component";
 import { ProfileComponent } from "./profile/components/profile.component";
-import { ProjectsComponent } from "./project/components/projects.component";
+import { ProjectsComponent } from "./projects/components/projects.component";
 import { RoadmapComponent } from "./roadmap/components/roadmap.component";
 import { SettingsComponent } from "./settings/settings.component";
 import { AuthGuardService } from "./auth-guard.service";

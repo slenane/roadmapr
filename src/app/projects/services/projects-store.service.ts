@@ -1,16 +1,16 @@
 import { Injectable } from "@angular/core";
-import * as projectActions from "../store/project.actions";
-import * as projectSelectors from "../store/project.selectors";
+import * as projectActions from "../store/projects.actions";
+import * as projectSelectors from "../store/projects.selectors";
 import { Store } from "@ngrx/store";
-import { Project } from "../store/project.models";
+import { Projects } from "../store/projects.models";
 import { Observable } from "rxjs";
 import { filter } from "rxjs/operators";
 
 @Injectable({
   providedIn: "root",
 })
-export class ProjectStoreService {
-  constructor(private store: Store<Project>) {}
+export class ProjectsStoreService {
+  constructor(private store: Store<Projects>) {}
 
   getProjects(id: string): Observable<any> {
     this.store.dispatch({
@@ -23,10 +23,10 @@ export class ProjectStoreService {
       .pipe(filter((data) => !!data));
   }
 
-  createProject(projectId: string, data: any) {
+  createProject(projectsId: string, data: any) {
     this.store.dispatch({
       type: projectActions.CREATE_PROJECT,
-      projectId,
+      projectsId,
       data,
     });
   }
