@@ -1,21 +1,21 @@
 import { props, createAction } from "@ngrx/store";
 import { Projects } from "./projects.models";
 
-export const GET_PROJECTS = "[Project] Get Project";
-export const CREATE_PROJECT = "[Project] Create Project";
-export const UPDATE_PROJECT = "[Project] Update Project";
-export const REMOVE_PROJECT = "[Project] Remove Project";
+export const GET_PROJECTS = "[Projects] Get Projects";
+export const CREATE_PROJECT = "[Projects] Create Project";
+export const UPDATE_PROJECT = "[Projects] Update Project";
+export const REMOVE_PROJECT = "[Projects] Remove Project";
 
-const GET_PROJECTS_SUCCESS = "[Project] Project Loaded Successfully",
-  GET_PROJECTS_ERROR = "[Project] Registration Error",
-  CREATE_PROJECT_SUCCESS = "[Project] Project Created Successfully",
-  CREATE_PROJECT_ERROR = "[Project] Project Creation Error",
-  UPDATE_PROJECT_SUCCESS = "[Project] Project Updated Error",
-  UPDATE_PROJECT_ERROR = "[Project] Project Update Error",
-  REMOVE_PROJECT_SUCCESS = "[Project] Project Removed Error",
-  REMOVE_PROJECT_ERROR = "[Project] Project Removal Error";
+const GET_PROJECTS_SUCCESS = "[Projects] Projects Loaded Successfully",
+  GET_PROJECTS_ERROR = "[Projects] Projects Load Error",
+  CREATE_PROJECT_SUCCESS = "[Projects] Project Created Successfully",
+  CREATE_PROJECT_ERROR = "[Projects] Project Creation Error",
+  UPDATE_PROJECT_SUCCESS = "[Projects] Project Updated Error",
+  UPDATE_PROJECT_ERROR = "[Projects] Project Update Error",
+  REMOVE_PROJECT_SUCCESS = "[Projects] Project Removed Error",
+  REMOVE_PROJECT_ERROR = "[Projects] Project Removal Error";
 
-export const GetProject = createAction(GET_PROJECTS, props<{ id: number }>());
+export const GetProjects = createAction(GET_PROJECTS, props<{ id: number }>());
 
 export const GetProjectsSuccess = createAction(
   GET_PROJECTS_SUCCESS,

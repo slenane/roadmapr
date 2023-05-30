@@ -35,7 +35,7 @@ import { ProjectsUpdateComponent } from "./components/projects-update/projects-u
     MaterialModule,
     SharedModule,
     CoreModule,
-    StoreModule.forFeature("project", fromProject.reducer),
+    StoreModule.forFeature("projects", fromProject.reducer),
     EffectsModule.forFeature([ProjectEffects]),
   ],
   providers: [ProjectsService, ProjectsStoreService],

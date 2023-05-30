@@ -12,7 +12,7 @@ export const SIDEBAR_OPTIONS = [
   {
     title: "Projects",
     icon: "code",
-    link: "/project",
+    link: "/projects",
   },
   {
     title: "Employment",

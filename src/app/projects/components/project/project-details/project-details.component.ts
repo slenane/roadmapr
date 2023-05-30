@@ -34,9 +34,9 @@ export class ProjectDetailsComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      if (result.roadmap) {
-        this.data = result;
-        this.projectsStoreService.updateProject(result);
+      if (result) {
+        this.data = { ...this.data, ...result };
+        this.projectsStoreService.updateProject(this.data);
       }
     });
   }

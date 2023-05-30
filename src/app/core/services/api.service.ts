@@ -14,6 +14,7 @@ export class ApiService {
   }
 
   public post(url: string, queryParams: any): Observable<any> {
+    console.log(url, queryParams);
     return this.http.post(url, queryParams);
   }
 

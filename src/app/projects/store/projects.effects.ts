@@ -13,10 +13,11 @@ export class ProjectEffects {
     private projectsService: ProjectsService
   ) {}
 
-  getProject$ = createEffect((): any =>
+  getProjects$ = createEffect((): any =>
     this.actions$.pipe(
       ofType(projectActions.GET_PROJECTS),
       switchMap((payload: any) => {
+        console.log(payload);
         return this.projectsService.getProjects(payload.id);
       }),
       map((payload: Projects) => {
@@ -45,7 +46,7 @@ export class ProjectEffects {
       ofType(projectActions.UPDATE_PROJECT),
       switchMap((payload: any) => {
         return this.projectsService.updateProject(
-          payload.data.project,
+          payload.data.projects,
           payload.data
         );
       }),
@@ -61,7 +62,7 @@ export class ProjectEffects {
       ofType(projectActions.REMOVE_PROJECT),
       switchMap((payload: any) => {
         return this.projectsService.removeProject(
-          payload.data.project,
+          payload.data.projects,
           payload.data
         );
       }),

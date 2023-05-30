@@ -17,6 +17,7 @@ export class ProjectsService {
   }
 
   public createProject(projectsId: string, data: any): Observable<any> {
+    console.log(projectsId, data);
     return this.apiService.post(
       this.urlService.generate("CREATE_PROJECT", projectsId),
       {

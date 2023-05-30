@@ -38,9 +38,6 @@ export class ProjectsUpdateComponent implements OnInit {
 
   @ViewChild("stack") stack: StackSelectorComponent;
   @ViewChild("title") title: ElementRef;
-  @ViewChild("description") description: ElementRef;
-  @ViewChild("github") github: ElementRef;
-  @ViewChild("link") link: ElementRef;
 
   constructor(
     private el: ElementRef,
@@ -55,8 +52,11 @@ export class ProjectsUpdateComponent implements OnInit {
         github: this.data.github,
         endDate: this.data.endDate,
         link: this.data.link,
+        notes: this.data.notes,
         startDate: this.data.startDate,
+        tagLine: this.data.tagLine,
         title: this.data.title,
+        todo: this.data.todo,
         topics: this.data.topics,
       });
     }

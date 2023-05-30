@@ -44,7 +44,6 @@ export class ProjectsComponent implements OnInit, OnDestroy {
       .select(profileSelectors.getProfile)
       .pipe(filter((data) => !!data))
       .subscribe((user) => {
-        console.log(user);
         this.projectsId = user.projects;
 
         this.projectsStoreService
@@ -93,7 +92,6 @@ export class ProjectsComponent implements OnInit, OnDestroy {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        console.log(this.projectsId, result);
         this.projectsStoreService.createProject(this.projectsId, result);
       }
     });

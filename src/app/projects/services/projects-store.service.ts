@@ -24,6 +24,7 @@ export class ProjectsStoreService {
   }
 
   createProject(projectsId: string, data: any) {
+    console.log(projectsId, data);
     this.store.dispatch({
       type: projectActions.CREATE_PROJECT,
       projectsId,
