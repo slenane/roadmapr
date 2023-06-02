@@ -1,0 +1,74 @@
+<h1 mat-dialog-title>Update Employment</h1>
+<div mat-dialog-content>
+  <form [formGroup]="employmentForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Role</mat-label>
+      <input cdkFocusInitial #role matInput formControlName="role" />
+      <mat-error *ngIf="employmentForm.controls.role.invalid"
+        >Role required</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>company</mat-label>
+      <input #company matInput formControlName="company" />
+      <mat-error *ngIf="employmentForm.controls.company.invalid"
+        >Company required</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Start date</mat-label>
+      <input matInput [matDatepicker]="startDate" formControlName="startDate" />
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="startDate"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #startDate></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>End date</mat-label>
+      <input matInput [matDatepicker]="endDate" formControlName="endDate" />
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+      <mat-datepicker #endDate></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width-grid-item">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description"></textarea>
+    </mat-form-field>
+
+    <app-stack-selector
+      #stack
+      [data]="data && data.stack"
+      class="full-width-grid-item"
+    >
+    </app-stack-selector>
+
+    <mat-form-field appearance="outline" class="full-width-grid-item">
+      <mat-label>Topics</mat-label>
+      <textarea matInput formControlName="topics"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Link to Company</mat-label>
+      <input matInput #companyLink formControlName="companyLink" />
+      <mat-error *ngIf="employmentForm.controls.companyLink.invalid"
+        >Company Link required</mat-error
+      >
+    </mat-form-field>
+  </form>
+  <div mat-dialog-actions class="actions">
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="onSaveClick()"
+      cdkFocusInitial
+      >Save</button
+    >
+  </div>
+</div>

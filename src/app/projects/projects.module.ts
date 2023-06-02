@@ -10,7 +10,7 @@ import { StoreModule } from "@ngrx/store";
 import { EffectsModule } from "@ngrx/effects";
 import * as fromProject from "./store/projects.reducer";
 import { ProjectEffects } from "./store/projects.effects";
-import { ProjectsStoreService } from "./services/projects-store.service";
+import { ProjectsStoreService } from "../projects/services/projects-store.service";
 import { ProjectComponent } from "./components/project/project.component";
 import { ProjectDetailsComponent } from "./components/project/project-details/project-details.component";
 import { ProjectsUpdateComponent } from "./components/projects-update/projects-update.component";

@@ -15,7 +15,6 @@ const initialState: State = {
 const authReducer = createReducer(
   initialState,
   on(authActions.RegisterSuccess, (state, payload: any) => {
-    console.log(state, payload);
     return {
       ...state,
       isLoggedIn: true,
@@ -24,7 +23,6 @@ const authReducer = createReducer(
     };
   }),
   on(authActions.LoginSuccess, (state, payload: any) => {
-    console.log(state, payload);
     return {
       ...state,
       isLoggedIn: true,

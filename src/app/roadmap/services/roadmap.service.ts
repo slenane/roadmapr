@@ -12,13 +12,13 @@ export class RoadmapService {
 
   public getRoadmap(roadmapId: string): Observable<Roadmap> {
     return this.apiService.get(
-      this.urlService.generate("GET_ROADMAP", roadmapId)
+      this.urlService.generate("ROADMAP_GET", roadmapId)
     );
   }
 
   public createRoadmapItem(roadmapId: string, data: any): Observable<any> {
     return this.apiService.post(
-      this.urlService.generate("CREATE_ROADMAP_ITEM", roadmapId),
+      this.urlService.generate("ROADMAP_CREATE", roadmapId),
       {
         data,
       }
@@ -27,7 +27,7 @@ export class RoadmapService {
 
   public updateRoadmapItem(roadmapId: string, data: any): Observable<any> {
     return this.apiService.patch(
-      this.urlService.generate("UPDATE_ROADMAP_ITEM", roadmapId),
+      this.urlService.generate("ROADMAP_UPDATE", roadmapId),
       {
         data,
       }
@@ -36,7 +36,7 @@ export class RoadmapService {
 
   public removeRoadmapItem(roadmapId: string, data: any): Observable<any> {
     return this.apiService.post(
-      this.urlService.generate("REMOVE_ROADMAP_ITEM", roadmapId),
+      this.urlService.generate("ROADMAP_REMOVE", roadmapId),
       {
         data,
       }

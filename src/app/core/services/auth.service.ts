@@ -47,12 +47,12 @@ export class AuthService {
   }
 
   public register(user: TokenPayload): Observable<any> {
-    return this.request("post", "REGISTER", user);
+    return this.request("post", "AUTH_REGISTER", user);
     // return this.apiService.post(this.urlService.generate("REGISTER"), user);
   }
 
   public login(user: TokenPayload): Observable<any> {
-    return this.request("post", "LOGIN", user);
+    return this.request("post", "AUTH_LOGIN", user);
     // return this.apiService.post(this.urlService.generate("LOGIN"), user);
   }
 
@@ -62,7 +62,7 @@ export class AuthService {
 
   private request(
     method: "post" | "get",
-    type: "LOGIN" | "REGISTER" | "PROFILE",
+    type: "AUTH_LOGIN" | "AUTH_REGISTER",
     user?: TokenPayload
   ): Observable<any> {
     let base: any;

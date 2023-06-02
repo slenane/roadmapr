@@ -1,0 +1,13 @@
+.actions {
+  text-align: right;
+}
+
+.employment-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1rem;
+
+  .employment-item {
+    margin-bottom: 1rem;
+  }
+}

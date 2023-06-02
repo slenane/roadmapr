@@ -1,0 +1,35 @@
+<div class="actions">
+  <button mat-raised-button color="primary" (click)="addEmployment()"
+    >Add</button
+  >
+</div>
+<div class="employment-container">
+  <div class="employment-grid__1">
+    <div class="programming-experience">
+      <h1>Experience</h1>
+      <div
+        class="employment-item"
+        *ngFor="let data of employment?.employmentList"
+      >
+        <app-employment-item [data]="data"> </app-employment-item>
+      </div>
+    </div>
+
+    <!-- <div class="other-experience">
+      <h1>Other Experience</h1>
+      <mat-card> DING </mat-card>
+    </div> -->
+  </div>
+  <div class="employment-grid__2">
+    <mat-card>
+      <mat-card-header>Explore</mat-card-header>
+      <mat-card-content>
+        <ul>
+          <li>Software Developer</li>
+          <li>Junior JavaScript Developer</li>
+          <li>UI/UX Designer</li>
+        </ul>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

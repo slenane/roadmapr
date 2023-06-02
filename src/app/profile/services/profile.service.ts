@@ -11,12 +11,12 @@ export class ProfileService {
   constructor(private apiService: ApiService, private urlService: UrlService) {}
 
   public getProfile(id: string): Observable<Profile> {
-    return this.apiService.get(this.urlService.generate("GET_PROFILE", id));
+    return this.apiService.get(this.urlService.generate("PROFILE_GET", id));
   }
 
   public updateProfile(id: string, data: any): Observable<Profile> {
     return this.apiService.patch(
-      this.urlService.generate("UPDATE_PROFILE", id),
+      this.urlService.generate("PROFILE_UPDATE", id),
       {
         data,
       }

@@ -42,20 +42,25 @@ export class ProjectsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.store
       .select(profileSelectors.getProfile)
-      .pipe(filter((data) => !!data))
+      .pipe(
+        filter((data) => !!data),
+        takeUntil(this.ngUnsubscribe)
+      )
       .subscribe((user) => {
         this.projectsId = user.projects;
 
-        this.projectsStoreService
-          .getProjects(this.projectsId)
-          .pipe(
-            filter((state) => state != null),
-            takeUntil(this.ngUnsubscribe)
-          )
-          .subscribe((projects: Projects) => {
-            this.projects = projects;
-            this.getProjectsConfig();
-          });
+        if (this.projectsId) {
+          this.projectsStoreService
+            .getProjects(this.projectsId)
+            .pipe(
+              filter((state) => state != null),
+              takeUntil(this.ngUnsubscribe)
+            )
+            .subscribe((projects: Projects) => {
+              this.projects = projects;
+              if (this.projects.projectList.length) this.getProjectsConfig();
+            });
+        }
       });
   }
 
@@ -92,6 +97,7 @@ export class ProjectsComponent implements OnInit, OnDestroy {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
+        console.log(this.projects, result);
         this.projectsStoreService.createProject(this.projectsId, result);
       }
     });

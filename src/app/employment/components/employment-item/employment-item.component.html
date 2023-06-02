@@ -1,0 +1,19 @@
+<mat-card (click)="openItemDetails()">
+  <mat-card-header>
+    <mat-card-title>
+      {{ data.role }}
+    </mat-card-title>
+
+    <div class="tech-stack">
+      <img
+        *ngFor="let tech of data.stack"
+        class="app-card-stack-icon"
+        matTooltip="{{ tech.title }}"
+        src="/assets/images/stack/{{ tech.name }}-original.svg"
+      />
+    </div>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-card-subtitle> {{ data.company }} </mat-card-subtitle>
+  </mat-card-content>
+</mat-card>

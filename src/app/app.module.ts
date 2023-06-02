@@ -5,7 +5,6 @@ import { AppComponent } from "./app.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { DashboardComponent } from "./dashboard/dashboard.component";
-import { EmploymentComponent } from "./employment/employment.component";
 import { SettingsComponent } from "./settings/settings.component";
 import { HttpClientModule } from "@angular/common/http";
 import { MaterialModule } from "./material/material.module";
@@ -18,14 +17,10 @@ import { RoadmapModule } from "./roadmap/roadmap.module";
 import { ProfileModule } from "./profile/profile.module";
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 import { ProjectsModule } from "./projects/projects.module";
+import { EmploymentModule } from "./employment/employment.module";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    DashboardComponent,
-    EmploymentComponent,
-    SettingsComponent,
-  ],
+  declarations: [AppComponent, DashboardComponent, SettingsComponent],
   imports: [
     StoreModule.forRoot(
       {},
@@ -41,6 +36,7 @@ import { ProjectsModule } from "./projects/projects.module";
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({}),
     CoreModule,
+    EmploymentModule,
     RoadmapModule,
     ProfileModule,
     ProjectsModule,

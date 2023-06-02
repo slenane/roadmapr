@@ -22,7 +22,6 @@ export class AuthEffects {
       switchMap(({ userDetails }) => this.authService.register(userDetails)),
       map((payload) => {
         this.router.navigateByUrl("/profile");
-        console.log(payload);
         return authActions.RegisterSuccess(payload);
       }),
       catchError((error) => of(authActions.RegisterError(error)))
@@ -35,7 +34,6 @@ export class AuthEffects {
       switchMap(({ userDetails }) => this.authService.login(userDetails)),
       map((payload) => {
         this.router.navigateByUrl("/profile");
-        console.log(payload);
         return authActions.LoginSuccess(payload);
       }),
       catchError((error) => of(authActions.LoginError(error)))

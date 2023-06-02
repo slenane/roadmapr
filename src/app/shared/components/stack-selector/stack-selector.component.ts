@@ -36,7 +36,10 @@ export class StackSelectorComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.data) this.selectedStack = this.data;
+    if (this.data) {
+      this.selectedStack = [...this.data];
+      this.updateStackList();
+    }
   }
 
   addStackItem(event: MatChipInputEvent): void {
@@ -55,6 +58,7 @@ export class StackSelectorComponent implements OnInit {
     if (item) {
       const index = this.selectedStack.indexOf(item);
       if (index >= 0) this.selectedStack.splice(index, 1);
+      this.updateStackList();
     }
   }
 
@@ -63,9 +67,18 @@ export class StackSelectorComponent implements OnInit {
     const current = this.stack.find(
       (item) => item.title === event.option.viewValue
     );
-    this.selectedStack.push(current);
+    if (!this.selectedStack.includes(current)) {
+      this.selectedStack.push(current);
+      this.updateStackList();
+    }
     this.stackInput.nativeElement.value = "";
     this.stackCtrl.setValue("");
+  }
+
+  updateStackList() {
+    // this.stack = this.stack.filter((item) => {
+    //   return this.selectedStack.includes(item);
+    // });
   }
 
   private _filter(value: string): any[] {

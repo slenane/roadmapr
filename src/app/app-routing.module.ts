@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { DashboardComponent } from "./dashboard/dashboard.component";
-import { EmploymentComponent } from "./employment/employment.component";
+import { EmploymentComponent } from "./employment/components/employment.component";
 import { LandingComponent } from "./core/components/landing/landing.component";
 import { ProfileComponent } from "./profile/components/profile.component";
 import { ProjectsComponent } from "./projects/components/projects.component";
