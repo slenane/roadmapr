@@ -17,7 +17,6 @@ export class ProjectEffects {
     this.actions$.pipe(
       ofType(projectActions.GET_PROJECTS),
       switchMap((payload: any) => {
-        console.log(payload);
         return this.projectsService.getProjects(payload.id);
       }),
       map((payload: Projects) => {
@@ -34,7 +33,6 @@ export class ProjectEffects {
         return this.projectsService.createProject(projectsId, data);
       }),
       map((payload) => {
-        console.log(payload);
         return projectActions.CreateProjectSuccess({ payload });
       }),
       catchError((error) => of(projectActions.CreateProjectError(error)))

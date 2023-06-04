@@ -17,7 +17,6 @@ export class EmploymentEffects {
     this.actions$.pipe(
       ofType(employmentActions.GET_EMPLOYMENT),
       switchMap((payload: any) => {
-        console.log(payload);
         return this.employmentService.getEmployment(payload.id);
       }),
       map((payload: Employment) => {
@@ -34,7 +33,6 @@ export class EmploymentEffects {
         return this.employmentService.createEmploymentItem(employmentId, data);
       }),
       map((payload) => {
-        console.log(payload);
         return employmentActions.CreateEmploymentItemSuccess({ payload });
       }),
       catchError((error) =>

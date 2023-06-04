@@ -20,7 +20,6 @@ export class EmploymentService {
     employmentId: string,
     data: any
   ): Observable<any> {
-    console.log(employmentId, data);
     return this.apiService.post(
       this.urlService.generate("EMPLOYMENT_CREATE", employmentId),
       {

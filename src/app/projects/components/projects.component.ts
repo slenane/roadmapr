@@ -97,7 +97,6 @@ export class ProjectsComponent implements OnInit, OnDestroy {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        console.log(this.projects, result);
         this.projectsStoreService.createProject(this.projectsId, result);
       }
     });

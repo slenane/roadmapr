@@ -15,7 +15,6 @@ const initialState: Employment = {
 const employmentReducer = createReducer(
   initialState,
   on(employmentActions.GetEmploymentSuccess, (state, { payload }) => {
-    console.log(payload);
     return { ...state, ...payload };
   }),
   on(employmentActions.CreateEmploymentItemSuccess, (state: any, data: any) => {
