@@ -1,0 +1,51 @@
+<div class="settings">
+  <mat-card>
+    <mat-card-header><h1>Update Settings</h1></mat-card-header>
+    <mat-card-content>
+      <form class="form-grid" [formGroup]="settingsForm">
+        <mat-form-field appearance="outline">
+          <mat-label>Username</mat-label>
+          <input
+            cdkFocusInitial
+            #username
+            matInput
+            formControlName="username"
+          />
+          <mat-error *ngIf="settingsForm.controls.username.invalid"
+            >Username required</mat-error
+          >
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input #email matInput formControlName="email" />
+          <mat-error *ngIf="settingsForm.controls.email.invalid"
+            >Email required</mat-error
+          >
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Theme</mat-label>
+          <mat-select formControlName="notifications">
+            <mat-option value="light">Light</mat-option>
+            <mat-option value="dark">Dark</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <h4>Notifications</h4>
+        <mat-checkbox formControlName="notifications"
+          >Receive notifications by email</mat-checkbox
+        >
+      </form>
+      <div mat-dialog-actions class="actions">
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="onSaveClick()"
+          cdkFocusInitial
+          >Save</button
+        >
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -5,7 +5,6 @@ import { AppComponent } from "./app.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { DashboardComponent } from "./dashboard/dashboard.component";
-import { SettingsComponent } from "./settings/settings.component";
 import { HttpClientModule } from "@angular/common/http";
 import { MaterialModule } from "./material/material.module";
 import { SharedModule } from "./shared/shared.module";
@@ -18,9 +17,10 @@ import { ProfileModule } from "./profile/profile.module";
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 import { ProjectsModule } from "./projects/projects.module";
 import { EmploymentModule } from "./employment/employment.module";
+import { SettingsModule } from "./settings/settings.module";
 
 @NgModule({
-  declarations: [AppComponent, DashboardComponent, SettingsComponent],
+  declarations: [AppComponent, DashboardComponent],
   imports: [
     StoreModule.forRoot(
       {},
@@ -40,6 +40,7 @@ import { EmploymentModule } from "./employment/employment.module";
     RoadmapModule,
     ProfileModule,
     ProjectsModule,
+    SettingsModule,
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,

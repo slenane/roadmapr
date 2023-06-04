@@ -1,5 +1,6 @@
 import { Projects } from "src/app/projects/store/projects.models";
 import { Roadmap } from "../../roadmap/store/roadmap.models";
+import { Employment } from "src/app/employment/store/employment.models";
 
 export interface Action {
   type: string;
@@ -19,10 +20,9 @@ export interface User {
   linkedIn: string;
   twitter: string;
   cv: string;
-  // employment: Employment;
+  employment: Employment;
   roadmap: Roadmap;
   Projects: Projects;
-  // settings: Settings;
   skills: object;
   languagesSpoken: object;
 }

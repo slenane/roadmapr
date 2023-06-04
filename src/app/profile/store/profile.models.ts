@@ -1,6 +1,5 @@
 export interface Profile {
   _id: string;
-  email: string;
   username: string;
   name: string;
   location: string;
@@ -18,4 +17,7 @@ export interface Profile {
   roadmap: string;
   projects: string;
   employment: string;
+  theme: string;
+  notifications: boolean;
+  email: string;
 }

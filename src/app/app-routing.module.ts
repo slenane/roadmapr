@@ -6,7 +6,7 @@ import { LandingComponent } from "./core/components/landing/landing.component";
 import { ProfileComponent } from "./profile/components/profile.component";
 import { ProjectsComponent } from "./projects/components/projects.component";
 import { RoadmapComponent } from "./roadmap/components/roadmap.component";
-import { SettingsComponent } from "./settings/settings.component";
+import { SettingsComponent } from "./settings/components/settings.component";
 import { AuthGuardService } from "./auth-guard.service";
 
 const routes: Routes = [

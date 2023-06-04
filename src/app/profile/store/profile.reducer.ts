@@ -8,7 +8,6 @@ interface Action {
 
 const initialState: Profile = {
   _id: "",
-  email: "",
   name: "",
   username: "",
   location: "",
@@ -26,6 +25,9 @@ const initialState: Profile = {
   roadmap: "",
   projects: "",
   employment: "",
+  theme: "",
+  notifications: false,
+  email: "",
 };
 
 const profileReducer = createReducer(

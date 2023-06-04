@@ -3,7 +3,7 @@ import { User } from "src/app/core/store/auth.models";
 import { Subject } from "rxjs";
 import { filter, takeUntil } from "rxjs/operators";
 import { Employment } from "../store/employment.models";
-import { EmploymentService } from "../services/employment.service";
+// import { EmploymentService } from "../services/employment.service";
 import { EmploymentStoreService } from "../services/employment-store.service";
 import { Store } from "@ngrx/store";
 import { Profile } from "src/app/profile/store/profile.models";
@@ -24,7 +24,7 @@ export class EmploymentComponent implements OnInit {
   public employmentId: string;
 
   constructor(
-    private employmentService: EmploymentService,
+    // private employmentService: EmploymentService,
     private employmentStoreService: EmploymentStoreService,
     private store: Store<Profile>,
     public dialog: MatDialog
@@ -66,7 +66,6 @@ export class EmploymentComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        console.log(this.employment, result);
         this.employmentStoreService.createEmploymentItem(
           this.employmentId,
           result

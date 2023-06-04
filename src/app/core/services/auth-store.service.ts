@@ -7,7 +7,7 @@ import { Store } from "@ngrx/store";
   providedIn: "root",
 })
 export class AuthStoreService {
-  constructor(private store: Store<fromAuth.State>) {}
+  constructor(private store: Store<fromAuth.Auth>) {}
 
   register(userDetails: any) {
     this.store.dispatch({

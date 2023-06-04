@@ -1,0 +1,14 @@
+.settings {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1rem;
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .actions {
+    text-align: end;
+  }
+}

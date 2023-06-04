@@ -2,13 +2,13 @@ import { User, Action } from "./auth.models";
 import * as authActions from "./auth.actions";
 import { createReducer, on } from "@ngrx/store";
 
-export interface State {
+export interface Auth {
   user?: String | null;
   token?: string | null;
   isLoggedIn: boolean;
 }
 
-const initialState: State = {
+const initialState: Auth = {
   isLoggedIn: false,
 };
 
@@ -32,8 +32,8 @@ const authReducer = createReducer(
   })
 );
 
-export const reducer = (state: State | undefined, action: Action) => {
+export const reducer = (state: Auth | undefined, action: Action) => {
   return authReducer(state, action);
 };
 
-// export const getUserToken = () => reducer.state
+export const getUserId = (state: Auth) => state.user;
