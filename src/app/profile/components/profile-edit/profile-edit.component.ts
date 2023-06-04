@@ -24,7 +24,6 @@ export class ProfileEditComponent implements OnInit {
     bio: new FormControl(""),
     coverImage: new FormControl(""),
     cv: new FormControl(""),
-    email: new FormControl("", Validators.required),
     github: new FormControl(""),
     linkedIn: new FormControl(""),
     location: new FormControl("", Validators.required),
@@ -40,7 +39,6 @@ export class ProfileEditComponent implements OnInit {
   @Input() userId: string;
   @Output() editProfile: EventEmitter<any> = new EventEmitter();
 
-  @ViewChild("email") email: ElementRef;
   @ViewChild("location") location: ElementRef;
   @ViewChild("name") name: ElementRef;
   @ViewChild("nationality") nationality: ElementRef;
@@ -58,7 +56,6 @@ export class ProfileEditComponent implements OnInit {
       bio: user.bio,
       coverImage: user.coverImage,
       cv: user.cv,
-      email: user.email,
       github: user.github,
       linkedIn: user.linkedIn,
       location: user.location,

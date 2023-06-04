@@ -31,14 +31,6 @@
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>Email</mat-label>
-        <input #email matInput formControlName="email" />
-        <mat-error *ngIf="profileForm.controls.email.invalid"
-          >Email required</mat-error
-        >
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
         <mat-label>Location</mat-label>
         <input #location matInput formControlName="location" />
         <mat-error *ngIf="profileForm.controls.location.invalid"

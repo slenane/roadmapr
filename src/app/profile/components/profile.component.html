@@ -1,10 +1,12 @@
+<div class="edit-profile-button">
+  <button mat-raised-button color="primary" (click)="editProfile(true)"
+    >Edit Profile</button
+  >
+</div>
+
 <div *ngIf="user">
   <section class="profile" *ngIf="!isEditing">
-    <app-profile-info
-      class="user-container"
-      [user]="user"
-      (editProfile)="editProfile(true)"
-    ></app-profile-info>
+    <app-profile-info class="user-container" [user]="user"></app-profile-info>
 
     <div class="overview-div">
       <app-profile-overview

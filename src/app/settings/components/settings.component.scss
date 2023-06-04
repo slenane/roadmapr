@@ -8,6 +8,14 @@
     grid-template-columns: 1fr;
   }
 
+  .update-password-container {
+    margin-bottom: 1rem;
+
+    .update-password-text {
+      margin-right: 1rem;
+    }
+  }
+
   .actions {
     text-align: end;
   }

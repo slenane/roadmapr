@@ -23,7 +23,7 @@ export class SettingsComponent implements OnInit {
     username: new FormControl("", Validators.required),
     email: new FormControl("", Validators.required),
     // password: new FormControl("", Validators.required),
-    theme: new FormControl(""),
+    theme: new FormControl("light"),
     notifications: new FormControl(true),
   });
 

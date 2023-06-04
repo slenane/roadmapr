@@ -24,16 +24,26 @@
           >
         </mat-form-field>
 
+        <div class="update-password-container">
+          <span class="update-password-text">Update Password</span>
+          <button
+            mat-raised-button
+            color="primary"
+            class="update-password-button"
+            >Update Password</button
+          >
+        </div>
+
         <mat-form-field appearance="outline">
           <mat-label>Theme</mat-label>
-          <mat-select formControlName="notifications">
+          <mat-select formControlName="theme">
             <mat-option value="light">Light</mat-option>
             <mat-option value="dark">Dark</mat-option>
           </mat-select>
         </mat-form-field>
 
         <h4>Notifications</h4>
-        <mat-checkbox formControlName="notifications"
+        <mat-checkbox formControlName="notifications" color="primary"
           >Receive notifications by email</mat-checkbox
         >
       </form>

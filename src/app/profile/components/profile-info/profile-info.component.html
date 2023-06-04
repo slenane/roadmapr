@@ -21,12 +21,6 @@
     </div>
   </mat-card-header>
   <mat-card-content>
-    <div class="bio-grid bio-grid__edit">
-      <button mat-raised-button color="primary" (click)="editProfile.emit()"
-        >Edit Profile</button
-      >
-    </div>
-
     <div class="bio-grid bio-grid__bio" *ngIf="user.bio">
       <p>{{ user.bio }}</p>
     </div>
