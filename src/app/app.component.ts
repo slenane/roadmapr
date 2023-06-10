@@ -9,10 +9,15 @@ import { Observable } from "rxjs";
 })
 export class AppComponent implements OnInit {
   public authenticated$: Observable<boolean>;
+  public navbarCollapsed: boolean = false;
 
   constructor(public authService: AuthService) {}
 
   ngOnInit(): void {
     this.authenticated$ = this.authService.isAuthenticated;
+  }
+
+  collapseNavbar(value: any) {
+    this.navbarCollapsed = value;
   }
 }

@@ -6,7 +6,7 @@ export const SIDEBAR_OPTIONS = [
   },
   {
     title: "Roadmap",
-    icon: "view_column",
+    icon: "view_kanban",
     link: "/roadmap",
   },
   {
@@ -21,12 +21,7 @@ export const SIDEBAR_OPTIONS = [
   },
   {
     title: "Profile",
-    icon: "person",
+    icon: "person_outline",
     link: "/profile",
-  },
-  {
-    title: "Settings",
-    icon: "settings",
-    link: "/settings",
   },
 ];

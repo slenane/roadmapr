@@ -7,13 +7,10 @@
 </ng-template>
 
 <ng-template #authenticated>
-  <app-menu></app-menu>
-  <mat-sidenav-container>
-    <mat-sidenav opened mode="side">
-      <app-sidebar></app-sidebar>
-    </mat-sidenav>
+  <div class="app-content-main" [ngClass]="{ collapsed: navbarCollapsed }">
+    <app-sidebar (onCollapseNavbar)="collapseNavbar($event)"></app-sidebar>
     <section class="main-content">
       <router-outlet></router-outlet>
     </section>
-  </mat-sidenav-container>
+  </div>
 </ng-template>
