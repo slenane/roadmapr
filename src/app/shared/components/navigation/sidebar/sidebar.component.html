@@ -7,25 +7,25 @@
       chevron_right
     </span>
   </button>
-  <div class="sidebar-header">
-    <img
-      *ngIf="displayLargeLogo"
-      class="menu-brand"
-      src="/assets/images/logo/logo.png"
-      routerLink="/dashboard"
-      alt="RoadMapr Logo"
-    />
-    <img
-      *ngIf="!displayLargeLogo"
-      class="menu-brand"
-      src="/assets/images/logo/logo-icon.png"
-      routerLink="/dashboard"
-      alt="RoadMapr Logo Icon"
-    />
-  </div>
-
   <div class="sidebar-content">
     <div class="sidebar-content-1">
+      <img
+        *ngIf="displayLargeLogo"
+        class="menu-brand"
+        src="/assets/images/logo/logo.png"
+        routerLink="/dashboard"
+        alt="RoadMapr Logo"
+      />
+      <img
+        *ngIf="!displayLargeLogo"
+        class="menu-brand"
+        src="/assets/images/logo/logo-icon.png"
+        routerLink="/dashboard"
+        alt="RoadMapr Logo Icon"
+      />
+    </div>
+
+    <div class="sidebar-content-2">
       <mat-nav-list>
         <a
           mat-list-item
@@ -46,7 +46,7 @@
         </a>
       </mat-nav-list>
     </div>
-    <div class="sidebar-content-2">
+    <div class="sidebar-content-3">
       <mat-nav-list>
         <a
           mat-list-item
