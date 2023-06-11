@@ -34,9 +34,6 @@
   <mat-form-field appearance="outline" class="full-width-grid-item">
     <mat-label>Description</mat-label>
     <textarea #description matInput formControlName="description"></textarea>
-    <mat-error *ngIf="tutorialForm.controls.description.invalid"
-      >Description required</mat-error
-    >
   </mat-form-field>
 
   <app-stack-selector
@@ -70,26 +67,12 @@
         [matChipInputAddOnBlur]="addOnBlur"
         (matChipInputTokenEnd)="addTopic($event)"
       />
-      <!-- <mat-error *ngIf="tutorialForm.controls.topics.invalid"
-        >At least one topic is required</mat-error
-      > -->
     </mat-chip-list>
-  </mat-form-field>
-
-  <mat-form-field appearance="outline" class="full-width-grid-item">
-    <mat-label>Provider</mat-label>
-    <input #provider matInput formControlName="provider" />
-    <mat-error *ngIf="tutorialForm.controls.provider.invalid"
-      >Provider required</mat-error
-    >
   </mat-form-field>
 
   <mat-form-field appearance="outline">
     <mat-label>Github</mat-label>
     <input #github matInput formControlName="github" />
-    <mat-error *ngIf="tutorialForm.controls.github.invalid"
-      >Github required</mat-error
-    >
   </mat-form-field>
 
   <mat-form-field appearance="outline">

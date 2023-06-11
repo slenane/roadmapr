@@ -6,13 +6,9 @@ import {
   moveItemInArray,
   transferArrayItem,
 } from "@angular/cdk/drag-drop";
-import { User } from "src/app/core/store/auth.models";
 import { Projects } from "../store/projects.models";
 import { ProjectsService } from "../services/projects.service";
 import { ProjectsStoreService } from "../services/projects-store.service";
-import { Store } from "@ngrx/store";
-import { Profile } from "src/app/profile/store/profile.models";
-import * as profileSelectors from "src/app/profile/store/profile.selectors";
 // import { DUMMY_PROJECTS } from "../constants/dummy.constants";
 import { MatDialog } from "@angular/material/dialog";
 import { ProjectsUpdateComponent } from "./projects-update/projects-update.component";
@@ -28,39 +24,25 @@ export class ProjectsComponent implements OnInit, OnDestroy {
   public inProgressArray: any[];
   public doneArray: any[];
   public filterType = "date";
-  public user: User | null;
   public projects: Projects;
   public projectsId: string;
 
   constructor(
     private projectService: ProjectsService,
     private projectsStoreService: ProjectsStoreService,
-    private store: Store<Profile>,
     public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
-    this.store
-      .select(profileSelectors.getProfile)
+    this.projectsStoreService
+      .getProjects(this.projectsId ? this.projectsId : "")
       .pipe(
-        filter((data) => !!data),
+        filter((state) => state != null),
         takeUntil(this.ngUnsubscribe)
       )
-      .subscribe((user) => {
-        this.projectsId = user.projects;
-
-        if (this.projectsId) {
-          this.projectsStoreService
-            .getProjects(this.projectsId)
-            .pipe(
-              filter((state) => state != null),
-              takeUntil(this.ngUnsubscribe)
-            )
-            .subscribe((projects: Projects) => {
-              this.projects = projects;
-              if (this.projects.projectList.length) this.getProjectsConfig();
-            });
-        }
+      .subscribe((projects: Projects) => {
+        this.projects = projects;
+        if (this.projects.projectList.length) this.getProjectsConfig();
       });
   }
 

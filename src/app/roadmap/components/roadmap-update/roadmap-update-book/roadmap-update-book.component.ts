@@ -18,10 +18,9 @@ export class RoadmapUpdateBookComponent implements OnInit {
     author: new FormControl("", Validators.required),
     startDate: new FormControl<Date | null>(null),
     endDate: new FormControl<Date | null>(null),
-    description: new FormControl("", Validators.required),
+    description: new FormControl(""),
     topics: new FormControl(""),
     link: new FormControl("", Validators.required),
-    publisher: new FormControl("", Validators.required),
   });
 
   get topicsArray(): any {
@@ -33,10 +32,7 @@ export class RoadmapUpdateBookComponent implements OnInit {
   @ViewChild("stack") stack: StackSelectorComponent;
   @ViewChild("title") title: ElementRef;
   @ViewChild("author") author: ElementRef;
-  @ViewChild("description") description: ElementRef;
-  @ViewChild("topics") topics: ElementRef;
   @ViewChild("link") link: ElementRef;
-  @ViewChild("publisher") publisher: ElementRef;
 
   constructor(private el: ElementRef) {}
 
@@ -50,7 +46,6 @@ export class RoadmapUpdateBookComponent implements OnInit {
         description: this.data.description,
         topics: this.data.topics,
         link: this.data.link,
-        publisher: this.data.publisher,
       });
     }
   }

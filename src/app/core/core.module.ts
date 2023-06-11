@@ -14,6 +14,7 @@ import { StoreModule } from "@ngrx/store";
 import * as fromAuth from "./store/auth.reducer";
 import { EffectsModule } from "@ngrx/effects";
 import { AuthEffects } from "./store/auth.effects";
+import { HttpInterceptProviders } from "./services/http-interceptors";
 
 @NgModule({
   declarations: [LandingComponent, LogInComponent, RegisterComponent],
@@ -27,6 +28,12 @@ import { AuthEffects } from "./store/auth.effects";
     StoreModule.forFeature("auth", fromAuth.reducer),
     EffectsModule.forFeature([AuthEffects]),
   ],
-  providers: [AuthService, AuthStoreService, UrlService, ApiService],
+  providers: [
+    AuthService,
+    AuthStoreService,
+    UrlService,
+    ApiService,
+    HttpInterceptProviders,
+  ],
 })
 export class CoreModule {}

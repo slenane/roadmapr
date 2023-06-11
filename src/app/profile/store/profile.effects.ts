@@ -16,8 +16,8 @@ export class ProfileEffects {
   getProfile$ = createEffect(() =>
     this.actions$.pipe(
       ofType(profileActions.GET_PROFILE),
-      switchMap((payload: any) => {
-        return this.profileService.getProfile(payload.id);
+      switchMap(() => {
+        return this.profileService.getProfile();
       }),
       map((payload: Profile) => {
         return profileActions.GetProfileSuccess({ payload });

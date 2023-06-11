@@ -12,10 +12,9 @@ import { filter } from "rxjs/operators";
 export class ProfileStoreService {
   constructor(private store: Store<Profile>) {}
 
-  getProfile(id: string): Observable<any> {
+  getProfile(): Observable<any> {
     this.store.dispatch({
       type: profileActions.GET_PROFILE,
-      id,
     });
 
     return this.store

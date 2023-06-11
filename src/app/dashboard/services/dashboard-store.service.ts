@@ -12,10 +12,9 @@ import { filter } from "rxjs/operators";
 export class DashboardStoreService {
   constructor(private store: Store<Dashboard>) {}
 
-  getDashboard(id: string): Observable<any> {
+  getDashboard(): Observable<any> {
     this.store.dispatch({
       type: dashboardActions.GET_DASHBOARD,
-      id,
     });
 
     return this.store

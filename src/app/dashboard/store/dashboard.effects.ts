@@ -16,8 +16,8 @@ export class DashboardEffects {
   getDashboard$ = createEffect(() =>
     this.actions$.pipe(
       ofType(dashboardActions.GET_DASHBOARD),
-      switchMap((payload: any) => {
-        return this.dashboardService.getDashboard(payload.id);
+      switchMap(() => {
+        return this.dashboardService.getDashboard();
       }),
       map((payload: Dashboard) => {
         return dashboardActions.GetDashboardSuccess({ payload });

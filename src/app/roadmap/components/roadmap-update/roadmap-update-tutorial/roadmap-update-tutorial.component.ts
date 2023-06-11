@@ -18,11 +18,10 @@ export class RoadmapUpdateTutorialComponent implements OnInit {
     instructor: new FormControl("", Validators.required),
     startDate: new FormControl<Date | null>(null),
     endDate: new FormControl<Date | null>(null),
-    description: new FormControl("", Validators.required),
+    description: new FormControl(""),
     topics: new FormControl([]),
     link: new FormControl("", Validators.required),
-    github: new FormControl("", Validators.required),
-    provider: new FormControl("", Validators.required),
+    github: new FormControl(""),
   });
 
   get topicsArray(): any {
@@ -34,11 +33,7 @@ export class RoadmapUpdateTutorialComponent implements OnInit {
   @ViewChild("stack") stack: StackSelectorComponent;
   @ViewChild("title") title: ElementRef;
   @ViewChild("instructor") instructor: ElementRef;
-  @ViewChild("description") description: ElementRef;
-  @ViewChild("topics") topics: ElementRef;
   @ViewChild("link") link: ElementRef;
-  @ViewChild("github") github: ElementRef;
-  @ViewChild("provider") provider: ElementRef;
 
   constructor(private el: ElementRef) {}
 
@@ -53,7 +48,6 @@ export class RoadmapUpdateTutorialComponent implements OnInit {
         topics: this.data.topics,
         link: this.data.link,
         github: this.data.github,
-        provider: this.data.provider,
       });
     }
   }

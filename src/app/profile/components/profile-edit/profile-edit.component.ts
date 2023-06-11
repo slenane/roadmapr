@@ -77,7 +77,7 @@ export class ProfileEditComponent implements OnInit {
   }
 
   onSave() {
-    this.profileStoreService.updateProfile(this.userId, {
+    this.profileStoreService.updateProfile(this.user._id, {
       ...this.profileForm.value,
     });
     this.editProfile.emit(false);

@@ -10,7 +10,7 @@ import { Dashboard } from "../store/dashboard.models";
 export class DashboardService {
   constructor(private apiService: ApiService, private urlService: UrlService) {}
 
-  public getDashboard(id: string): Observable<Dashboard> {
-    return this.apiService.get(this.urlService.generate("DASHBOARD_GET", id));
+  public getDashboard(): Observable<Dashboard> {
+    return this.apiService.get(this.urlService.generate("DASHBOARD_GET"));
   }
 }

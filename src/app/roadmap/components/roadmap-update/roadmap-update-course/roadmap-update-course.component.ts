@@ -18,10 +18,9 @@ export class RoadmapUpdateCourseComponent implements OnInit {
     instructor: new FormControl("", Validators.required),
     startDate: new FormControl<Date | null>(null),
     endDate: new FormControl<Date | null>(null),
-    description: new FormControl("", Validators.required),
+    description: new FormControl(""),
     topics: new FormControl(""),
     link: new FormControl("", Validators.required),
-    provider: new FormControl("", Validators.required),
   });
 
   get topicsArray(): any {
@@ -33,10 +32,7 @@ export class RoadmapUpdateCourseComponent implements OnInit {
   @ViewChild("stack") stack: StackSelectorComponent;
   @ViewChild("title") title: ElementRef;
   @ViewChild("instructor") instructor: ElementRef;
-  @ViewChild("description") description: ElementRef;
-  @ViewChild("topics") topics: ElementRef;
   @ViewChild("link") link: ElementRef;
-  @ViewChild("provider") provider: ElementRef;
 
   constructor(private el: ElementRef) {}
 
@@ -50,7 +46,6 @@ export class RoadmapUpdateCourseComponent implements OnInit {
         description: this.data.description,
         topics: this.data.topics,
         link: this.data.link,
-        provider: this.data.provider,
       });
     }
   }

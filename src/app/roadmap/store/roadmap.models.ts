@@ -12,7 +12,6 @@ export interface Book {
   description: String;
   endDate: Date;
   link: String;
-  publisher: String;
   stack: any[];
   startDate: Date;
   title: String;
@@ -26,7 +25,6 @@ export interface Course {
   endDate?: Date;
   link: String;
   instructor: String;
-  provider: String;
   stack: any[];
   startDate: Date;
   title: String;
@@ -38,10 +36,8 @@ export interface Course {
 export interface Degree {
   description: String;
   endDate: Date;
-  gpa: String;
   link: String;
   institution: String;
-  modules: String[];
   stack: any[];
   startDate: Date;
   title: String;
@@ -56,7 +52,6 @@ export interface Tutorial {
   link: String;
   instructor: String;
   github: String;
-  provider: String;
   stack: any[];
   startDate: Date;
   title: String;

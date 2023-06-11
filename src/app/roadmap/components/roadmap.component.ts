@@ -6,14 +6,10 @@ import {
   moveItemInArray,
   transferArrayItem,
 } from "@angular/cdk/drag-drop";
-import { User } from "src/app/core/store/auth.models";
 import { Roadmap } from "../store/roadmap.models";
 import { DUMMY_ROADMAP } from "../constants/dummy.constants";
 import { RoadmapService } from "../services/roadmap.service";
 import { RoadmapStoreService } from "../services/roadmap-store.service";
-import { Store } from "@ngrx/store";
-import { Profile } from "src/app/profile/store/profile.models";
-import * as profileSelectors from "src/app/profile/store/profile.selectors";
 
 @Component({
   selector: "app-roadmap",
@@ -28,34 +24,25 @@ export class RoadmapComponent implements OnInit, OnDestroy {
   public recommendationsArray: any[];
   public selectedFilter: null | string = null;
   public filterType = "date";
-  public user: User | null;
   public roadmap: Roadmap;
   public roadmapId: string;
   public recommendations = DUMMY_ROADMAP;
 
   constructor(
     private roadmapService: RoadmapService,
-    private roadmapStoreService: RoadmapStoreService,
-    private store: Store<Profile>
+    private roadmapStoreService: RoadmapStoreService
   ) {}
 
   ngOnInit(): void {
-    this.store
-      .select(profileSelectors.getProfile)
-      .pipe(filter((data) => !!data))
-      .subscribe((user) => {
-        this.roadmapId = user.roadmap;
-
-        this.roadmapStoreService
-          .getRoadmap(this.roadmapId)
-          .pipe(
-            filter((state) => state != null),
-            takeUntil(this.ngUnsubscribe)
-          )
-          .subscribe((roadmap: Roadmap) => {
-            this.roadmap = roadmap;
-            this.getRoadmapConfig();
-          });
+    this.roadmapStoreService
+      .getRoadmap(this.roadmapId ? this.roadmapId : "")
+      .pipe(
+        filter((state) => state != null),
+        takeUntil(this.ngUnsubscribe)
+      )
+      .subscribe((roadmap: Roadmap) => {
+        this.roadmap = roadmap;
+        this.getRoadmapConfig();
       });
   }
 

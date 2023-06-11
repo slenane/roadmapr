@@ -17,25 +17,21 @@ export class RoadmapUpdateDegreeComponent implements OnInit {
     title: new FormControl("", Validators.required),
     startDate: new FormControl<Date | null>(null),
     endDate: new FormControl<Date | null>(null),
-    description: new FormControl("", Validators.required),
-    modules: new FormControl("", Validators.required),
+    description: new FormControl(""),
     link: new FormControl("", Validators.required),
-    gpa: new FormControl("", Validators.required),
+    topics: new FormControl(""),
     institution: new FormControl("", Validators.required),
   });
 
-  get modulesArray(): any {
-    return this.degreeForm.get("modules");
+  get topicsArray(): any {
+    return this.degreeForm.get("topics");
   }
 
   @Input("data") data: any;
 
   @ViewChild("stack") stack: StackSelectorComponent;
   @ViewChild("title") title: ElementRef;
-  @ViewChild("description") description: ElementRef;
-  @ViewChild("modules") modules: ElementRef;
   @ViewChild("link") link: ElementRef;
-  @ViewChild("gpa") gpa: ElementRef;
   @ViewChild("institution") institution: ElementRef;
 
   constructor(private el: ElementRef) {}
@@ -47,33 +43,32 @@ export class RoadmapUpdateDegreeComponent implements OnInit {
         startDate: this.data.startData,
         endDate: this.data.endDate,
         description: this.data.description,
-        modules: this.data.modules,
+        topics: this.data.modules,
         link: this.data.link,
-        gpa: this.data.gpa,
         institution: this.data.institution,
       });
     }
   }
 
-  addModule(event: MatChipInputEvent): void {
+  addTopic(event: MatChipInputEvent): void {
     const input = event.input;
     const value = event.value;
 
     if ((value || "").trim()) {
-      this.modulesArray.setValue([...this.modulesArray.value, value.trim()]);
-      this.modulesArray.updateValueAndValidity();
+      this.topicsArray.setValue([...this.topicsArray.value, value.trim()]);
+      this.topicsArray.updateValueAndValidity();
     }
 
     // Reset the input value
     if (input) input.value = "";
   }
 
-  removeModule(module: any): void {
-    const index = this.modulesArray.value.indexOf(module);
+  removeTopic(topic: any): void {
+    const index = this.topicsArray.value.indexOf(topic);
 
     if (index >= 0) {
-      this.modulesArray.value.splice(index, 1);
-      this.modulesArray.updateValueAndValidity();
+      this.topicsArray.value.splice(index, 1);
+      this.topicsArray.updateValueAndValidity();
     }
   }
 

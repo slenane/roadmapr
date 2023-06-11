@@ -10,8 +10,8 @@ import { Profile } from "../store/profile.models";
 export class ProfileService {
   constructor(private apiService: ApiService, private urlService: UrlService) {}
 
-  public getProfile(id: string): Observable<Profile> {
-    return this.apiService.get(this.urlService.generate("PROFILE_GET", id));
+  public getProfile(): Observable<Profile> {
+    return this.apiService.get(this.urlService.generate("PROFILE_GET"));
   }
 
   public updateProfile(id: string, data: any): Observable<Profile> {
