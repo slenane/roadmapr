@@ -7,7 +7,25 @@ interface Action {
 }
 
 const initialState: Dashboard = {
-  _id: "",
+  roadmap: {
+    books: [],
+    courses: [],
+    degrees: [],
+    tutorials: [],
+    user: "",
+    _id: "",
+  },
+  employment: {
+    employmentList: [],
+    user: "",
+    _id: "",
+  },
+  projects: {
+    projectList: [],
+    user: "",
+    _id: "",
+  },
+  github: [],
 };
 
 const DashboardReducer = createReducer(

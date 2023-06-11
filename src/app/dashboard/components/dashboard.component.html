@@ -1,19 +1,37 @@
 <h1>Dashboard</h1>
 
-<mat-card class="roadmap-container" *ngIf="dashboard && dashboard.roadmap">
-  <p>Books count: {{ dashboard.roadmap.books.length || 0 }}</p>
-  <p>Courses count: {{ dashboard.roadmap.courses.length || 0 }}</p>
-  <p>Degrees count: {{ dashboard.roadmap.degrees.length || 0 }}</p>
-  <p>Tutorials count: {{ dashboard.roadmap.tutorials.length || 0 }}</p>
-</mat-card>
+<div class="dashboard-content">
+  <mat-card class="roadmap-container" *ngIf="dashboard && dashboard.roadmap">
+    <mat-card-header> <h2> Roadmap </h2></mat-card-header>
+    <mat-card-content>
+      <p>Books: {{ dashboard.roadmap.books.length || 0 }}</p>
+      <p>Courses: {{ dashboard.roadmap.courses.length || 0 }}</p>
+      <p>Degrees: {{ dashboard.roadmap.degrees.length || 0 }}</p>
+      <p>Tutorials: {{ dashboard.roadmap.tutorials.length || 0 }}</p>
+    </mat-card-content>
+  </mat-card>
 
-<mat-card class="projects-container" *ngIf="dashboard && dashboard.projects">
-  <p>Projects count: {{ dashboard.projects.length || 0 }}</p>
-</mat-card>
+  <mat-card class="projects-container" *ngIf="dashboard && dashboard.projects">
+    <mat-card-header><h2>Projects</h2></mat-card-header>
+    <mat-card-content>
+      <p>Projects count: {{ dashboard.projects.length || 0 }}</p>
+    </mat-card-content>
+  </mat-card>
 
-<mat-card
-  class="employment-container"
-  *ngIf="dashboard && dashboard.employment"
->
-  <p>Jobs count: {{ dashboard.employment.length || 0 }}</p>
-</mat-card>
+  <mat-card
+    class="employment-container"
+    *ngIf="dashboard && dashboard.employment"
+  >
+    <mat-card-header><h2>Employment</h2></mat-card-header>
+    <mat-card-content>
+      <p>Jobs count: {{ dashboard.employment.length || 0 }}</p>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="github-container" *ngIf="dashboard && dashboard.github">
+    <mat-card-header><h2>Github</h2></mat-card-header>
+    <mat-card-content>
+      <p>Repo count: {{ dashboard.github.length || 0 }}</p>
+    </mat-card-content>
+  </mat-card>
+</div>

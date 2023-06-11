@@ -41,6 +41,7 @@ export class RoadmapComponent implements OnInit, OnDestroy {
         takeUntil(this.ngUnsubscribe)
       )
       .subscribe((roadmap: Roadmap) => {
+        console.log(roadmap);
         this.roadmap = roadmap;
         this.getRoadmapConfig();
       });

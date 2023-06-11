@@ -21,6 +21,7 @@ export class DashboardComponent implements OnInit {
       .pipe(filter((state) => state != null))
       .subscribe((dashboard: Dashboard) => {
         this.dashboard = dashboard;
+        console.log(dashboard);
       });
   }
 
