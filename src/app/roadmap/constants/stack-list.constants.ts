@@ -153,7 +153,7 @@ export const STACK_LIST = [
   { title: "Minitab", name: "minitab" },
   { title: "Mocha", name: "mocha" },
   { title: "MODX", name: "modx" },
-  { title: "MongoDB ", name: "mongodb" },
+  { title: "MongoDB", name: "mongodb" },
   { title: "Moodle", name: "moodle" },
   { title: "MS-DOS", name: "msdos" },
   { title: "MySQL ", name: "mysql" },

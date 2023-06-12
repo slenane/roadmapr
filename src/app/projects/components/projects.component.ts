@@ -41,6 +41,7 @@ export class ProjectsComponent implements OnInit, OnDestroy {
         takeUntil(this.ngUnsubscribe)
       )
       .subscribe((projects: Projects) => {
+        console.log(projects);
         this.projects = projects;
         if (this.projects.projectList.length) this.getProjectsConfig();
       });
@@ -79,14 +80,14 @@ export class ProjectsComponent implements OnInit, OnDestroy {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.projectsStoreService.createProject(this.projectsId, result);
+        this.projectsStoreService.createProject(this.projects._id, result);
       }
     });
   }
 
   transferProject(item: any) {
     this.projectService
-      .updateProject(this.projectsId, item)
+      .updateProject(this.projects._id, item)
       .subscribe((res: any) => {
         console.log(res);
       });

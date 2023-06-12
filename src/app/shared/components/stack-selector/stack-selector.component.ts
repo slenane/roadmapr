@@ -76,9 +76,9 @@ export class StackSelectorComponent implements OnInit {
   }
 
   updateStackList() {
-    // this.stack = this.stack.filter((item) => {
-    //   return this.selectedStack.includes(item);
-    // });
+    this.stack = this.stack.filter((item) => {
+      return !this.selectedStack.includes(item);
+    });
   }
 
   private _filter(value: string): any[] {

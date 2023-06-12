@@ -2,7 +2,6 @@ import { NgModule } from "@angular/core";
 import { MaterialModule } from "../material/material.module";
 import { SharedModule } from "../shared/shared.module";
 import { ProfileComponent } from "./components/profile.component";
-import { ProfileOverviewComponent } from "./components/profile-overview/profile-overview.component";
 import { ProfileSkillsComponent } from "./components/profile-skills/profile-skills.component";
 import { ProfileInfoComponent } from "./components/profile-info/profile-info.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -19,14 +18,12 @@ import { ProfileEditComponent } from "./components/profile-edit/profile-edit.com
 @NgModule({
   declarations: [
     ProfileComponent,
-    ProfileOverviewComponent,
     ProfileSkillsComponent,
     ProfileInfoComponent,
     ProfileEditComponent,
   ],
   exports: [
     ProfileComponent,
-    ProfileOverviewComponent,
     ProfileSkillsComponent,
     ProfileInfoComponent,
     ProfileEditComponent,

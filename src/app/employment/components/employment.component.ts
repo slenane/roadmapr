@@ -47,7 +47,7 @@ export class EmploymentComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         this.employmentStoreService.createEmploymentItem(
-          this.employmentId,
+          this.employment._id,
           result
         );
       }
