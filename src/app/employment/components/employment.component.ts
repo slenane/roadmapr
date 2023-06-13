@@ -16,6 +16,7 @@ export class EmploymentComponent implements OnInit {
   public filterType = "date";
   public employment: Employment;
   public employmentId: string;
+  public employmentList: any[];
 
   constructor(
     private employmentStoreService: EmploymentStoreService,
@@ -31,12 +32,30 @@ export class EmploymentComponent implements OnInit {
       )
       .subscribe((employment: Employment) => {
         this.employment = employment;
+        if (this.employment.employmentList.length) {
+          this.sortEmploymentList([...this.employment.employmentList]);
+        }
       });
   }
 
   ngOnDestroy() {
     this.ngUnsubscribe.next();
     this.ngUnsubscribe.complete();
+  }
+
+  sortEmploymentList(list: any[]) {
+    const previousEmployment = list.filter((item) => item.endDate);
+    const currentEmployment = list.filter((item) => !item.endDate);
+
+    this.employmentList = [
+      ...currentEmployment.sort(
+        (a, b) =>
+          new Date(b.startDate).getTime() - new Date(a.startDate).getTime()
+      ),
+      ...previousEmployment.sort(
+        (a, b) => new Date(b.endDate).getTime() - new Date(a.endDate).getTime()
+      ),
+    ];
   }
 
   addEmployment() {

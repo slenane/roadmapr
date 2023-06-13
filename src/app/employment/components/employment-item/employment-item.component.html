@@ -1,4 +1,4 @@
-<mat-card (click)="openItemDetails()">
+<!-- <mat-card (click)="openItemDetails()">
   <mat-card-header>
     <mat-card-title>
       {{ data.role }}
@@ -14,6 +14,52 @@
     </div>
   </mat-card-header>
   <mat-card-content>
-    <mat-card-subtitle> {{ data.company }} </mat-card-subtitle>
+    <mat-card-subtitle>
+      {{ data.company }}
+      <i
+        >({{ data.startDate | date }} -
+        {{ (data.endDate | date) || "Present" }})</i
+      ></mat-card-subtitle
+    >
+  </mat-card-content>
+</mat-card> -->
+
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      {{ data.role }}
+    </mat-card-title>
+
+    <div class="tech-stack">
+      <img
+        *ngFor="let tech of data.stack"
+        class="app-card-stack-icon"
+        matTooltip="{{ tech.title }}"
+        src="/assets/images/stack/{{ tech.name }}-original.svg"
+      />
+    </div>
+
+    <div class="actions">
+      <button mat-button [matMenuTriggerFor]="menu"
+        ><mat-icon>more_horiz</mat-icon></button
+      >
+
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="editItem()">Edit</button>
+        <button mat-menu-item (click)="deleteItem()">Delete</button>
+      </mat-menu>
+    </div>
+
+    <mat-card-subtitle>
+      {{ data.company }}
+      <i
+        >({{ data.startDate | date }} -
+        {{ (data.endDate | date) || "Present" }})</i
+      ></mat-card-subtitle
+    >
+  </mat-card-header>
+  <mat-card-content>
+    <div class="description_title">Description</div>
+    <p class="description">{{ data.description }}</p>
   </mat-card-content>
 </mat-card>

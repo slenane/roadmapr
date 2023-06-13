@@ -7,18 +7,10 @@
   <div class="employment-grid__1">
     <div class="programming-experience">
       <h1>Experience</h1>
-      <div
-        class="employment-item"
-        *ngFor="let data of employment?.employmentList"
-      >
+      <div class="employment-item" *ngFor="let data of employmentList">
         <app-employment-item [data]="data"> </app-employment-item>
       </div>
     </div>
-
-    <!-- <div class="other-experience">
-      <h1>Other Experience</h1>
-      <mat-card> DING </mat-card>
-    </div> -->
   </div>
   <div class="employment-grid__2">
     <mat-card>

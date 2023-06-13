@@ -3,7 +3,7 @@ mat-card {
 
   mat-card-header {
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: auto 1fr auto;
     justify-content: space-between;
 
     .mat-card-title {
@@ -22,6 +22,14 @@ mat-card {
   }
 
   mat-card-content {
-    padding: 0 1rem;
+    padding: 1rem;
+
+    .description_title {
+      font-weight: 500;
+    }
+
+    .description {
+      white-space: pre-line;
+    }
   }
 }

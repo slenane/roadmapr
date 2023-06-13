@@ -11,7 +11,6 @@ import { EmploymentEffects } from "./store/employment.effects";
 import { EmploymentService } from "./services/employment.service";
 import { EmploymentStoreService } from "./services/employment-store.service";
 import { EmploymentComponent } from "./components/employment.component";
-import { EmploymentItemDetailsComponent } from "./components/employment-item/employment-item-details/employment-item-details.component";
 import { EmploymentItemComponent } from "./components/employment-item/employment-item.component";
 import { EmploymentUpdateComponent } from "./components/employment-update/employment-update.component";
 
@@ -20,13 +19,11 @@ import { EmploymentUpdateComponent } from "./components/employment-update/employ
     EmploymentComponent,
     EmploymentUpdateComponent,
     EmploymentItemComponent,
-    EmploymentItemDetailsComponent,
   ],
   exports: [
     EmploymentComponent,
     EmploymentUpdateComponent,
     EmploymentItemComponent,
-    EmploymentItemDetailsComponent,
   ],
   imports: [
     CommonModule,
