@@ -12,11 +12,16 @@ import { EffectsModule } from "@ngrx/effects";
 import * as fromDashboard from "./store/dashboard.reducer";
 import { DashboardEffects } from "./store/dashboard.effects";
 import { DashboardStackComponent } from "./components/dashboard-stack/dashboard-stack.component";
-import { DashboardDistributionSliderComponent } from './components/dashboard-distribution-slider/dashboard-distribution-slider.component';
-// import { NgChartsModule } from "ng2-charts";
+import { DashboardSkillDistributionComponent } from "./components/dashboard-skill-distribution/dashboard-skill-distribution.component";
+import { DashboardGithubComponent } from "./components/dashboard-github/dashboard-github.component";
 
 @NgModule({
-  declarations: [DashboardComponent, DashboardStackComponent, DashboardDistributionSliderComponent],
+  declarations: [
+    DashboardComponent,
+    DashboardStackComponent,
+    DashboardSkillDistributionComponent,
+    DashboardGithubComponent,
+  ],
   exports: [DashboardComponent],
   imports: [
     CommonModule,
@@ -25,7 +30,6 @@ import { DashboardDistributionSliderComponent } from './components/dashboard-dis
     MaterialModule,
     SharedModule,
     CoreModule,
-    // NgChartsModule,
     StoreModule.forFeature("dashboard", fromDashboard.reducer),
     EffectsModule.forFeature([DashboardEffects]),
   ],

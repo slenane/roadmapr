@@ -3,6 +3,7 @@ import { DashboardStoreService } from "../services/dashboard-store.service";
 import { filter, takeUntil } from "rxjs/operators";
 import { Subject } from "rxjs";
 import { Dashboard } from "../store/dashboard.models";
+import { GITHUB_DATA } from "../constants/dashboard.constants";
 
 @Component({
   selector: "app-dashboard",
@@ -14,6 +15,7 @@ export class DashboardComponent implements OnInit {
   public dashboard: any = {};
   public stack: any = {};
   public distribution: any = {};
+  public github: any = [];
 
   constructor(private dashboardStoreService: DashboardStoreService) {}
 
@@ -45,6 +47,9 @@ export class DashboardComponent implements OnInit {
           projects: dashboard.projects,
           employment: dashboard.employment,
         });
+        if (this.dashboard.projects.length) {
+          this.github = [...GITHUB_DATA];
+        }
       });
   }
 

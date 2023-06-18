@@ -1,0 +1,27 @@
+.slider {
+  margin-top: 1rem;
+
+  .labels {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .distribution-slider {
+    width: 100%;
+    padding-top: 0;
+    margin-top: -15px;
+  }
+}
+
+::ng-deep .mat-slider-disabled {
+  .mat-slider-thumb {
+    background-color: transparent !important;
+    background-image: url("/assets/images/up-arrow.svg") !important;
+    width: 40px;
+    height: 40px;
+    background-size: cover;
+    right: -20px;
+    bottom: -20px;
+    border: none;
+  }
+}

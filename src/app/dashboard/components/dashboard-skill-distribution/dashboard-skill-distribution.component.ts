@@ -2,11 +2,11 @@ import { Component, OnInit, Input, SimpleChanges } from "@angular/core";
 import { DEVELOPER_TYPE_DESCRIPTIONS } from "../../constants/distribution.constants";
 
 @Component({
-  selector: "app-dashboard-distribution-slider",
-  templateUrl: "./dashboard-distribution-slider.component.html",
-  styleUrls: ["./dashboard-distribution-slider.component.scss"],
+  selector: "app-dashboard-skill-distribution",
+  templateUrl: "./dashboard-skill-distribution.component.html",
+  styleUrls: ["./dashboard-skill-distribution.component.scss"],
 })
-export class DashboardDistributionSliderComponent implements OnInit {
+export class DashboardSkillDistributionComponent implements OnInit {
   percentage: number = 50;
   description: string = "";
 

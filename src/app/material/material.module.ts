@@ -26,6 +26,8 @@ import { CdkTreeModule } from "@angular/cdk/tree";
 import { MatTreeModule } from "@angular/material/tree";
 import { MatSliderModule } from "@angular/material/slider";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { MatPaginatorModule } from "@angular/material/paginator";
+import { MatSortModule } from "@angular/material/sort";
 
 @NgModule({
   exports: [
@@ -56,6 +58,8 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
     MatTreeModule,
     MatSliderModule,
     MatSnackBarModule,
+    MatPaginatorModule,
+    MatSortModule,
   ],
   providers: [],
   bootstrap: [],

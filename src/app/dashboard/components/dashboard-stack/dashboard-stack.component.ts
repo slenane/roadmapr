@@ -38,6 +38,13 @@ export class DashboardStackComponent implements OnInit, OnChanges {
     if (values.length) {
       new Chart("stackDoughnut", {
         type: "doughnut",
+        options: {
+          plugins: {
+            legend: {
+              display: false,
+            },
+          },
+        },
         data: {
           labels: values.map((row: any) => row.language.title),
           datasets: [
