@@ -43,33 +43,6 @@
   >
   </app-stack-selector>
 
-  <mat-form-field class="full-width-grid-item" appearance="outline">
-    <mat-label>Topics</mat-label>
-    <mat-chip-list
-      #topicsGrid
-      aria-label="Enter topics"
-      formControlName="topics"
-    >
-      <mat-chip
-        #topics
-        *ngFor="let topic of topicsArray.value"
-        (removed)="removeTopic(topic)"
-      >
-        {{ topic }}
-        <button matChipRemove>
-          <mat-icon>cancel</mat-icon>
-        </button>
-      </mat-chip>
-      <input
-        placeholder="New topic..."
-        [matChipInputFor]="topicsGrid"
-        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-        [matChipInputAddOnBlur]="addOnBlur"
-        (matChipInputTokenEnd)="addTopic($event)"
-      />
-    </mat-chip-list>
-  </mat-form-field>
-
   <mat-form-field appearance="outline">
     <mat-label>Github</mat-label>
     <input #github matInput formControlName="github" />

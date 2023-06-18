@@ -19,13 +19,8 @@ export class RoadmapUpdateBookComponent implements OnInit {
     startDate: new FormControl<Date | null>(null),
     endDate: new FormControl<Date | null>(null),
     description: new FormControl(""),
-    topics: new FormControl(""),
     link: new FormControl("", Validators.required),
   });
-
-  get topicsArray(): any {
-    return this.bookForm.get("topics");
-  }
 
   @Input("data") data: any;
 
@@ -44,31 +39,8 @@ export class RoadmapUpdateBookComponent implements OnInit {
         startDate: this.data.startData,
         endDate: this.data.endDate,
         description: this.data.description,
-        topics: this.data.topics,
         link: this.data.link,
       });
-    }
-  }
-
-  addTopic(event: MatChipInputEvent): void {
-    const input = event.input;
-    const value = event.value;
-
-    if ((value || "").trim()) {
-      this.topicsArray.setValue([...this.topicsArray.value, value.trim()]);
-      this.topicsArray.updateValueAndValidity();
-    }
-
-    // Reset the input value
-    if (input) input.value = "";
-  }
-
-  removeTopic(topic: any): void {
-    const index = this.topicsArray.value.indexOf(topic);
-
-    if (index >= 0) {
-      this.topicsArray.value.splice(index, 1);
-      this.topicsArray.updateValueAndValidity();
     }
   }
 

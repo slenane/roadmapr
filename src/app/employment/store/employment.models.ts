@@ -13,7 +13,6 @@ export interface EmploymentItem {
   role: String;
   stack: StackItem[];
   startDate: Date;
-  topics: String[];
   employment: String;
   _id: string;
 }

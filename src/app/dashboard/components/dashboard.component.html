@@ -1,19 +1,35 @@
-<div class="dashboard-content">
-  <app-dashboard-stack
-    class="stack-container"
-    *ngIf="stack"
-    [data]="stack"
-  ></app-dashboard-stack>
+<div class="dashboard">
+  <app-dashboard-filters></app-dashboard-filters>
 
-  <app-dashboard-skill-distribution
-    class="skills-distribution-container"
-    *ngIf="distribution"
-    [data]="distribution"
-  ></app-dashboard-skill-distribution>
+  <div class="dashboard-content">
+    <app-dashboard-timeline
+      class="timeline-container"
+      *ngIf="timeline"
+      [data]="timeline"
+    ></app-dashboard-timeline>
 
-  <app-dashboard-github
-    class="github-container"
-    *ngIf="github"
-    [data]="github"
-  ></app-dashboard-github>
+    <app-dashboard-stack-radar
+      class="stack-radar-container"
+      *ngIf="radar"
+      [data]="radar"
+    ></app-dashboard-stack-radar>
+
+    <app-dashboard-stack
+      class="stack-container"
+      *ngIf="stack"
+      [data]="stack"
+    ></app-dashboard-stack>
+
+    <app-dashboard-skill-distribution
+      class="skills-distribution-container"
+      *ngIf="distribution"
+      [data]="distribution"
+    ></app-dashboard-skill-distribution>
+
+    <app-dashboard-github
+      class="github-container"
+      *ngIf="github"
+      [data]="github"
+    ></app-dashboard-github>
+  </div>
 </div>

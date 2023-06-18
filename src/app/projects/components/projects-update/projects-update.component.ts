@@ -29,12 +29,7 @@ export class ProjectsUpdateComponent implements OnInit {
     tagLine: new FormControl(""),
     title: new FormControl("", Validators.required),
     todo: new FormControl(""),
-    topics: new FormControl(""),
   });
-
-  get topicsArray(): any {
-    return this.projectForm.get("topics");
-  }
 
   @ViewChild("stack") stack: StackSelectorComponent;
   @ViewChild("title") title: ElementRef;
@@ -57,7 +52,6 @@ export class ProjectsUpdateComponent implements OnInit {
         tagLine: this.data.tagLine,
         title: this.data.title,
         todo: this.data.todo,
-        topics: this.data.topics,
       });
     }
   }
@@ -65,28 +59,6 @@ export class ProjectsUpdateComponent implements OnInit {
   ngOnDestroy() {
     this.ngUnsubscribe.next();
     this.ngUnsubscribe.complete();
-  }
-
-  addTopic(event: MatChipInputEvent): void {
-    const input = event.input;
-    const value = event.value;
-
-    if ((value || "").trim()) {
-      this.topicsArray.setValue([...this.topicsArray.value, value.trim()]);
-      this.topicsArray.updateValueAndValidity();
-    }
-
-    // Reset the input value
-    if (input) input.value = "";
-  }
-
-  removeTopic(topic: any): void {
-    const index = this.topicsArray.value.indexOf(topic);
-
-    if (index >= 0) {
-      this.topicsArray.value.splice(index, 1);
-      this.topicsArray.updateValueAndValidity();
-    }
   }
 
   focusError() {

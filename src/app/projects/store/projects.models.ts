@@ -15,6 +15,5 @@ export interface ProjectItem {
   title: String;
   tagLine: String;
   todo: String;
-  topics: String[];
   _id: string;
 }

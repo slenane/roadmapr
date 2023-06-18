@@ -28,6 +28,7 @@ import { MatSliderModule } from "@angular/material/slider";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatSortModule } from "@angular/material/sort";
+import { MatButtonToggleModule } from "@angular/material/button-toggle";
 
 @NgModule({
   exports: [
@@ -60,6 +61,7 @@ import { MatSortModule } from "@angular/material/sort";
     MatSnackBarModule,
     MatPaginatorModule,
     MatSortModule,
+    MatButtonToggleModule,
   ],
   providers: [],
   bootstrap: [],

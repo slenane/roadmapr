@@ -1,0 +1,42 @@
+<div class="filters">
+  <p>
+    Type
+    <mat-button-toggle-group
+      name="type"
+      aria-label="Type"
+      [value]="selectedType"
+    >
+      <mat-button-toggle value="all" selected>All</mat-button-toggle>
+      <mat-button-toggle value="back">Backend</mat-button-toggle>
+      <mat-button-toggle value="front">Frontend</mat-button-toggle>
+    </mat-button-toggle-group>
+  </p>
+
+  <p>
+    Status
+    <mat-button-toggle-group
+      name="status"
+      aria-label="Status"
+      [value]="selectedStatus"
+    >
+      <mat-button-toggle value="all" selected>All</mat-button-toggle>
+      <mat-button-toggle value="inprogress">In Progress</mat-button-toggle>
+      <mat-button-toggle value="completed">Completed</mat-button-toggle>
+    </mat-button-toggle-group>
+  </p>
+
+  <p>
+    Period
+    <mat-button-toggle-group
+      name="period"
+      aria-label="Period"
+      [value]="selectedPeriod"
+    >
+      <mat-button-toggle value="all" selected>All</mat-button-toggle>
+      <mat-button-toggle value="one">Last Month</mat-button-toggle>
+      <mat-button-toggle value="three">Last 3 Months</mat-button-toggle>
+      <mat-button-toggle value="six">Last 6 Months</mat-button-toggle>
+      <mat-button-toggle value="year">Last Year</mat-button-toggle>
+    </mat-button-toggle-group>
+  </p>
+</div>

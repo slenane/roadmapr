@@ -21,7 +21,6 @@ export const DUMMY_PROJECTS: Projects = {
       tagLine: "Application to easily track goals",
       title: "Goal Tracker",
       todo: "",
-      topics: ["Lifestyle"],
       _id: "1",
     },
     {
@@ -40,7 +39,6 @@ export const DUMMY_PROJECTS: Projects = {
       tagLine: "Chess.com puzzles directly from your browser",
       title: "Daily Chess Puzzle",
       todo: "",
-      topics: ["Games"],
       _id: "2",
     },
     {
@@ -65,7 +63,6 @@ export const DUMMY_PROJECTS: Projects = {
       tagLine: "Store with shopify integration",
       title: "Sacred Tribe Energy Healing",
       todo: "",
-      topics: ["Retail"],
       _id: "3",
     },
   ],

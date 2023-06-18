@@ -15,7 +15,6 @@ export interface Book {
   stack: any[];
   startDate: Date;
   title: String;
-  topics: String[];
   roadmap: string;
   _id: string;
 }
@@ -28,7 +27,6 @@ export interface Course {
   stack: any[];
   startDate: Date;
   title: String;
-  topics: String[];
   roadmap: string;
   _id: string;
 }
@@ -41,7 +39,6 @@ export interface Degree {
   stack: any[];
   startDate: Date;
   title: String;
-  topics: String[];
   roadmap: string;
   _id: string;
 }
@@ -55,7 +52,6 @@ export interface Tutorial {
   stack: any[];
   startDate: Date;
   title: String;
-  topics: String[];
   roadmap: string;
   _id: string;
 }

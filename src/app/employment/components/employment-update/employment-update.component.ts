@@ -26,12 +26,7 @@ export class EmploymentUpdateComponent implements OnInit {
     endDate: new FormControl<Date | null>(null),
     role: new FormControl("", Validators.required),
     startDate: new FormControl<Date | null>(null),
-    topics: new FormControl(""),
   });
-
-  get topicsArray(): any {
-    return this.employmentForm.get("topics");
-  }
 
   @ViewChild("stack") stack: StackSelectorComponent;
   @ViewChild("role") role: ElementRef;
@@ -60,28 +55,6 @@ export class EmploymentUpdateComponent implements OnInit {
   ngOnDestroy() {
     this.ngUnsubscribe.next();
     this.ngUnsubscribe.complete();
-  }
-
-  addTopic(event: MatChipInputEvent): void {
-    const input = event.input;
-    const value = event.value;
-
-    if ((value || "").trim()) {
-      this.topicsArray.setValue([...this.topicsArray.value, value.trim()]);
-      this.topicsArray.updateValueAndValidity();
-    }
-
-    // Reset the input value
-    if (input) input.value = "";
-  }
-
-  removeTopic(topic: any): void {
-    const index = this.topicsArray.value.indexOf(topic);
-
-    if (index >= 0) {
-      this.topicsArray.value.splice(index, 1);
-      this.topicsArray.updateValueAndValidity();
-    }
   }
 
   focusError() {
