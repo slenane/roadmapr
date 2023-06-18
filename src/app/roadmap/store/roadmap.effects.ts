@@ -5,12 +5,14 @@ import { map, switchMap, catchError } from "rxjs/operators";
 import { RoadmapService } from "../services/roadmap.service";
 import * as roadmapActions from "./roadmap.actions";
 import { Roadmap } from "./roadmap.models";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Injectable()
 export class RoadmapEffects {
   constructor(
     private actions$: Actions,
-    private roadmapService: RoadmapService
+    private roadmapService: RoadmapService,
+    private snackBar: MatSnackBar
   ) {}
 
   getRoadmap$ = createEffect((): any =>
@@ -33,9 +35,18 @@ export class RoadmapEffects {
         return this.roadmapService.createRoadmapItem(roadmapId, data);
       }),
       map((payload) => {
+        this.snackBar.open("Roadmap Updated", "Dismiss", {
+          duration: 5000,
+        });
         return roadmapActions.CreateRoadmapItemSuccess({ payload });
       }),
-      catchError((error) => of(roadmapActions.CreateRoadmapItemError(error)))
+      catchError((error) => {
+        this.snackBar.open("Roadmap Update Error", "Dismiss", {
+          duration: 10000,
+          panelClass: ["snackbar-error"],
+        });
+        return of(roadmapActions.CreateRoadmapItemError(error));
+      })
     )
   );
 
@@ -49,9 +60,18 @@ export class RoadmapEffects {
         );
       }),
       map((payload) => {
+        this.snackBar.open("Roadmap Item Updated", "Dismiss", {
+          duration: 5000,
+        });
         return roadmapActions.UpdateRoadmapItemSuccess({ payload });
       }),
-      catchError((error) => of(roadmapActions.UpdateRoadmapItemError(error)))
+      catchError((error) => {
+        this.snackBar.open("Roadmap Update Error", "Dismiss", {
+          duration: 10000,
+          panelClass: ["snackbar-error"],
+        });
+        return of(roadmapActions.UpdateRoadmapItemError(error));
+      })
     )
   );
 
@@ -65,9 +85,18 @@ export class RoadmapEffects {
         );
       }),
       map((payload) => {
+        this.snackBar.open("Roadmap Item Removed", "Dismiss", {
+          duration: 5000,
+        });
         return roadmapActions.RemoveRoadmapItemSuccess({ payload });
       }),
-      catchError((error) => of(roadmapActions.RemoveRoadmapItemError(error)))
+      catchError((error) => {
+        this.snackBar.open("Roadmap Update Error", "Dismiss", {
+          duration: 10000,
+          panelClass: ["snackbar-error"],
+        });
+        return of(roadmapActions.RemoveRoadmapItemError(error));
+      })
     )
   );
 }

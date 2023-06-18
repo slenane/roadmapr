@@ -5,12 +5,14 @@ import { map, switchMap, catchError } from "rxjs/operators";
 import { SettingsService } from "../services/settings.service";
 import * as settingsActions from "./settings.actions";
 import { Settings } from "./settings.models";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Injectable()
 export class SettingsEffects {
   constructor(
     private actions$: Actions,
-    private settingsService: SettingsService
+    private settingsService: SettingsService,
+    private snackBar: MatSnackBar
   ) {}
 
   getSettings$ = createEffect(() =>
@@ -33,9 +35,18 @@ export class SettingsEffects {
         return this.settingsService.updateSettings(payload.id, payload.data);
       }),
       map((payload: Settings) => {
+        this.snackBar.open("Settings Updated", "Dismiss", {
+          duration: 5000,
+        });
         return settingsActions.GetSettingsSuccess({ payload });
       }),
-      catchError((error) => of(settingsActions.GetSettingsError(error)))
+      catchError((error) => {
+        this.snackBar.open("Settings Update Error", "Dismiss", {
+          duration: 10000,
+          panelClass: ["snackbar-error"],
+        });
+        return of(settingsActions.GetSettingsError(error));
+      })
     )
   );
 }

@@ -25,6 +25,7 @@ import { MatProgressBarModule } from "@angular/material/progress-bar";
 import { CdkTreeModule } from "@angular/cdk/tree";
 import { MatTreeModule } from "@angular/material/tree";
 import { MatSliderModule } from "@angular/material/slider";
+import { MatSnackBarModule } from "@angular/material/snack-bar";
 
 @NgModule({
   exports: [
@@ -54,6 +55,7 @@ import { MatSliderModule } from "@angular/material/slider";
     CdkTreeModule,
     MatTreeModule,
     MatSliderModule,
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [],

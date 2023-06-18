@@ -5,12 +5,14 @@ import { map, switchMap, catchError } from "rxjs/operators";
 import { ProfileService } from "../services/profile.service";
 import * as profileActions from "./profile.actions";
 import { Profile } from "./profile.models";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Injectable()
 export class ProfileEffects {
   constructor(
     private actions$: Actions,
-    private profileService: ProfileService
+    private profileService: ProfileService,
+    private snackBar: MatSnackBar
   ) {}
 
   getProfile$ = createEffect(() =>
@@ -33,9 +35,18 @@ export class ProfileEffects {
         return this.profileService.updateProfile(payload.id, payload.data);
       }),
       map((payload: Profile) => {
+        this.snackBar.open("Profile Updated", "Dismiss", {
+          duration: 5000,
+        });
         return profileActions.GetProfileSuccess({ payload });
       }),
-      catchError((error) => of(profileActions.GetProfileError(error)))
+      catchError((error) => {
+        this.snackBar.open("Profile Update Error", "Dismiss", {
+          duration: 10000,
+          panelClass: ["snackbar-error"],
+        });
+        return of(profileActions.GetProfileError(error));
+      })
     )
   );
 }

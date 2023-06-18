@@ -5,12 +5,14 @@ import { map, switchMap, catchError } from "rxjs/operators";
 import { ProjectsService } from "../services/projects.service";
 import * as projectActions from "./projects.actions";
 import { Projects } from "./projects.models";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Injectable()
 export class ProjectEffects {
   constructor(
     private actions$: Actions,
-    private projectsService: ProjectsService
+    private projectsService: ProjectsService,
+    private snackBar: MatSnackBar
   ) {}
 
   getProjects$ = createEffect((): any =>
@@ -33,9 +35,18 @@ export class ProjectEffects {
         return this.projectsService.createProject(projectsId, data);
       }),
       map((payload) => {
+        this.snackBar.open("Projects Updated", "Dismiss", {
+          duration: 5000,
+        });
         return projectActions.CreateProjectSuccess({ payload });
       }),
-      catchError((error) => of(projectActions.CreateProjectError(error)))
+      catchError((error) => {
+        this.snackBar.open("Project Update Error", "Dismiss", {
+          duration: 10000,
+          panelClass: ["snackbar-error"],
+        });
+        return of(projectActions.CreateProjectError(error));
+      })
     )
   );
 
@@ -49,9 +60,18 @@ export class ProjectEffects {
         );
       }),
       map((payload) => {
+        this.snackBar.open("Projects Updated", "Dismiss", {
+          duration: 5000,
+        });
         return projectActions.UpdateProjectSuccess({ payload });
       }),
-      catchError((error) => of(projectActions.UpdateProjectError(error)))
+      catchError((error) => {
+        this.snackBar.open("Project Update Error", "Dismiss", {
+          duration: 10000,
+          panelClass: ["snackbar-error"],
+        });
+        return of(projectActions.UpdateProjectError(error));
+      })
     )
   );
 
@@ -65,9 +85,18 @@ export class ProjectEffects {
         );
       }),
       map((payload) => {
+        this.snackBar.open("Project Removed", "Dismiss", {
+          duration: 5000,
+        });
         return projectActions.RemoveProjectSuccess({ payload });
       }),
-      catchError((error) => of(projectActions.RemoveProjectError(error)))
+      catchError((error) => {
+        this.snackBar.open("Project Update Error", "Dismiss", {
+          duration: 10000,
+          panelClass: ["snackbar-error"],
+        });
+        return of(projectActions.RemoveProjectError(error));
+      })
     )
   );
 }

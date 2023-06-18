@@ -56,3 +56,14 @@ app-root {
 .material-symbols-outlined {
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 20;
 }
+
+.mat-snack-bar-container {
+  &.snackbar-error {
+    background-color: red;
+    color: white;
+  }
+
+  .mat-simple-snackbar-action button {
+    color: white;
+  }
+}

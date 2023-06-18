@@ -5,12 +5,14 @@ import { map, switchMap, catchError } from "rxjs/operators";
 import { EmploymentService } from "../services/employment.service";
 import * as employmentActions from "./employment.actions";
 import { Employment } from "./employment.models";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Injectable()
 export class EmploymentEffects {
   constructor(
     private actions$: Actions,
-    private employmentService: EmploymentService
+    private employmentService: EmploymentService,
+    private snackBar: MatSnackBar
   ) {}
 
   getEmployment$ = createEffect((): any =>
@@ -33,11 +35,18 @@ export class EmploymentEffects {
         return this.employmentService.createEmploymentItem(employmentId, data);
       }),
       map((payload) => {
+        this.snackBar.open("Employment Updated", "Dismiss", {
+          duration: 5000,
+        });
         return employmentActions.CreateEmploymentItemSuccess({ payload });
       }),
-      catchError((error) =>
-        of(employmentActions.CreateEmploymentItemError(error))
-      )
+      catchError((error) => {
+        this.snackBar.open("Employment Update Error", "Dismiss", {
+          duration: 10000,
+          panelClass: ["snackbar-error"],
+        });
+        return of(employmentActions.CreateEmploymentItemError(error));
+      })
     )
   );
 
@@ -51,11 +60,18 @@ export class EmploymentEffects {
         );
       }),
       map((payload) => {
+        this.snackBar.open("Employment Updated", "Dismiss", {
+          duration: 5000,
+        });
         return employmentActions.UpdateEmploymentItemSuccess({ payload });
       }),
-      catchError((error) =>
-        of(employmentActions.UpdateEmploymentItemError(error))
-      )
+      catchError((error) => {
+        this.snackBar.open("Employment Update Error", "Dismiss", {
+          duration: 10000,
+          panelClass: ["snackbar-error"],
+        });
+        return of(employmentActions.UpdateEmploymentItemError(error));
+      })
     )
   );
 
@@ -69,11 +85,18 @@ export class EmploymentEffects {
         );
       }),
       map((payload) => {
+        this.snackBar.open("Employment Removed", "Dismiss", {
+          duration: 5000,
+        });
         return employmentActions.RemoveEmploymentItemSuccess({ payload });
       }),
-      catchError((error) =>
-        of(employmentActions.RemoveEmploymentItemError(error))
-      )
+      catchError((error) => {
+        this.snackBar.open("Employment Update Error", "Dismiss", {
+          duration: 10000,
+          panelClass: ["snackbar-error"],
+        });
+        return of(employmentActions.RemoveEmploymentItemError(error));
+      })
     )
   );
 }
