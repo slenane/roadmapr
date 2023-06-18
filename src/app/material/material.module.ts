@@ -22,6 +22,9 @@ import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { MatMenuModule } from "@angular/material/menu";
 import { DragDropModule } from "@angular/cdk/drag-drop";
 import { MatProgressBarModule } from "@angular/material/progress-bar";
+import { CdkTreeModule } from "@angular/cdk/tree";
+import { MatTreeModule } from "@angular/material/tree";
+import { MatSliderModule } from "@angular/material/slider";
 
 @NgModule({
   exports: [
@@ -48,6 +51,9 @@ import { MatProgressBarModule } from "@angular/material/progress-bar";
     MatMenuModule,
     DragDropModule,
     MatProgressBarModule,
+    CdkTreeModule,
+    MatTreeModule,
+    MatSliderModule,
   ],
   providers: [],
   bootstrap: [],

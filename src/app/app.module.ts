@@ -18,6 +18,7 @@ import { ProjectsModule } from "./projects/projects.module";
 import { EmploymentModule } from "./employment/employment.module";
 import { SettingsModule } from "./settings/settings.module";
 import { DashboardModule } from "./dashboard/dashboard.module";
+import { NgChartsModule } from "ng2-charts";
 
 @NgModule({
   declarations: [AppComponent],
@@ -50,6 +51,7 @@ import { DashboardModule } from "./dashboard/dashboard.module";
     ReactiveFormsModule,
     MaterialModule,
     SharedModule,
+    NgChartsModule,
   ],
   providers: [AuthGuardService],
   bootstrap: [AppComponent],

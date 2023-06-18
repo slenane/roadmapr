@@ -1,6 +1,11 @@
-import { Employment } from "src/app/employment/store/employment.models";
-import { Projects } from "src/app/projects/store/projects.models";
-import { Roadmap } from "src/app/roadmap/store/roadmap.models";
+import { EmploymentItem } from "src/app/employment/store/employment.models";
+import { ProjectItem } from "src/app/projects/store/projects.models";
+import {
+  Book,
+  Course,
+  Degree,
+  Tutorial,
+} from "src/app/roadmap/store/roadmap.models";
 
 interface Github {
   name: string;
@@ -13,8 +18,13 @@ interface Github {
 }
 
 export interface Dashboard {
-  roadmap: Roadmap;
-  employment: Employment;
-  projects: Projects;
+  roadmap: {
+    books: Book[];
+    courses: Course[];
+    degrees: Degree[];
+    tutorials: Tutorial[];
+  };
+  employment: EmploymentItem[];
+  projects: ProjectItem[];
   github: Github[];
 }

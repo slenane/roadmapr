@@ -41,7 +41,6 @@ export class ProjectsComponent implements OnInit, OnDestroy {
         takeUntil(this.ngUnsubscribe)
       )
       .subscribe((projects: Projects) => {
-        console.log(projects);
         this.projects = projects;
         if (this.projects.projectList.length) this.getProjectsConfig();
       });

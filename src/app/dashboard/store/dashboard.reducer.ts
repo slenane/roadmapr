@@ -12,19 +12,9 @@ const initialState: Dashboard = {
     courses: [],
     degrees: [],
     tutorials: [],
-    user: "",
-    _id: "",
   },
-  employment: {
-    employmentList: [],
-    user: "",
-    _id: "",
-  },
-  projects: {
-    projectList: [],
-    user: "",
-    _id: "",
-  },
+  employment: [],
+  projects: [],
   github: [],
 };
 

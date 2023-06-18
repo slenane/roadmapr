@@ -1,0 +1,22 @@
+<mat-card>
+  <mat-card-title>Distribution</mat-card-title>
+  <mat-card-content>
+    <div class="slider">
+      <div class="labels">
+        <span>Backend</span>
+        <span>Full-stack</span>
+        <span>Frontend</span>
+      </div>
+      <mat-slider
+        class="slider"
+        max="100"
+        min="0"
+        disabled="true"
+        [value]="percentage"
+      >
+      </mat-slider>
+    </div>
+
+    <p>{{ description }}</p>
+  </mat-card-content>
+</mat-card>

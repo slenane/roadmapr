@@ -1,3 +1,9 @@
-<div class="chart-container">
-  <canvas id="MyChart">{{ chart }}</canvas>
-</div>
+<canvas
+  baseChart
+  [datasets]="chartData"
+  [labels]="chartLabels"
+  [options]="chartOptions"
+  [legend]="chartLegend"
+  [type]="chartType"
+>
+</canvas>

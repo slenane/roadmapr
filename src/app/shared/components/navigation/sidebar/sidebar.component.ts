@@ -22,7 +22,7 @@ export class SidebarComponent implements OnInit {
     this.navbarCollapsed = !this.navbarCollapsed;
     this.onCollapseNavbar.emit(this.navbarCollapsed);
     if (this.navbarCollapsed) this.displayLargeLogo = false;
-    else setTimeout(() => (this.displayLargeLogo = true), 100); // Make transition smoother
+    else setTimeout(() => (this.displayLargeLogo = true), 200); // Make transition smoother
   }
 
   logout(): void {

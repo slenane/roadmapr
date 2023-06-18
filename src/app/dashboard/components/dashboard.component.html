@@ -1,7 +1,19 @@
 <h1>Dashboard</h1>
 
 <div class="dashboard-content">
-  <mat-card class="roadmap-container" *ngIf="dashboard && dashboard.roadmap">
+  <app-dashboard-stack
+    class="stack-container"
+    *ngIf="stack"
+    [data]="stack"
+  ></app-dashboard-stack>
+
+  <app-dashboard-distribution-slider
+    class="slider-container"
+    *ngIf="distribution"
+    [data]="distribution"
+  ></app-dashboard-distribution-slider>
+
+  <!-- <mat-card class="roadmap-container" *ngIf="dashboard && dashboard.roadmap">
     <mat-card-header> <h2> Roadmap </h2></mat-card-header>
     <mat-card-content>
       <p>Books: {{ dashboard.roadmap.books.length || 0 }}</p>
@@ -31,7 +43,7 @@
   <mat-card class="github-container" *ngIf="dashboard && dashboard.github">
     <mat-card-header><h2>Github</h2></mat-card-header>
     <mat-card-content>
-      <p>Repo count: {{ dashboard.github.length || 0 }}</p>
+      <p>Public Repo count: {{ dashboard.github.length || 0 }}</p>
     </mat-card-content>
-  </mat-card>
+  </mat-card> -->
 </div>
