@@ -1,0 +1,11 @@
+.filters {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  margin-bottom: 1rem;
+
+  mat-chip-list {
+    mat-chip {
+      cursor: pointer;
+    }
+  }
+}

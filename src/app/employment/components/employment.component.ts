@@ -5,6 +5,12 @@ import { Employment } from "../store/employment.models";
 import { EmploymentStoreService } from "../services/employment-store.service";
 import { MatDialog } from "@angular/material/dialog";
 import { EmploymentUpdateComponent } from "./employment-update/employment-update.component";
+import { EmploymentService } from "../services/employment.service";
+import {
+  CdkDragDrop,
+  moveItemInArray,
+  transferArrayItem,
+} from "@angular/cdk/drag-drop";
 
 @Component({
   selector: "app-employment",
@@ -13,12 +19,18 @@ import { EmploymentUpdateComponent } from "./employment-update/employment-update
 })
 export class EmploymentComponent implements OnInit {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
+  public selectedFilter: null | string = null;
   public filterType = "date";
   public employment: Employment;
   public employmentId: string;
   public employmentList: any[];
 
+  public todoArray: any[];
+  public inProgressArray: any[];
+  public doneArray: any[];
+
   constructor(
+    private employmentService: EmploymentService,
     private employmentStoreService: EmploymentStoreService,
     public dialog: MatDialog
   ) {}
@@ -31,9 +43,11 @@ export class EmploymentComponent implements OnInit {
         takeUntil(this.ngUnsubscribe)
       )
       .subscribe((employment: Employment) => {
+        console.log(employment);
         this.employment = employment;
         if (this.employment.employmentList.length) {
-          this.sortEmploymentList([...this.employment.employmentList]);
+          this.sortEmploymentList([...employment.employmentList]);
+          this.getEmploymentConfig();
         }
       });
   }
@@ -41,6 +55,31 @@ export class EmploymentComponent implements OnInit {
   ngOnDestroy() {
     this.ngUnsubscribe.next();
     this.ngUnsubscribe.complete();
+  }
+
+  getEmploymentConfig(): void {
+    const employment = this.generateEmployment(
+      this.employmentList,
+      this.filterType
+    );
+    this.todoArray = employment.filter(
+      (item: any) => !item.startDate && !item.endDate
+    );
+    this.inProgressArray = employment.filter(
+      (item: any) => item.startDate && !item.endDate
+    );
+    this.doneArray = employment.filter((item: any) => item.endDate);
+  }
+
+  generateEmployment(employment: any, filter: string): any {
+    switch (filter) {
+      case "date":
+        return employment;
+    }
+  }
+
+  filterEmployment($event: null | string) {
+    this.selectedFilter = $event;
   }
 
   sortEmploymentList(list: any[]) {
@@ -58,18 +97,52 @@ export class EmploymentComponent implements OnInit {
     ];
   }
 
-  addEmployment() {
-    const dialogRef = this.dialog.open(EmploymentUpdateComponent, {
-      width: "60vw",
-    });
+  addEmployment(item: any) {
+    if (item.data) {
+      this.employmentStoreService.createEmploymentItem(item.id, item.data);
+    }
+  }
 
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result) {
-        this.employmentStoreService.createEmploymentItem(
-          this.employment._id,
-          result
-        );
+  transferEmployment(item: any) {
+    this.employmentService
+      .updateEmploymentItem(this.employment._id, item)
+      .subscribe((res: any) => {
+        console.log(res);
+      });
+  }
+
+  transferItem(event: CdkDragDrop<any[]>) {
+    transferArrayItem(
+      event.previousContainer.data,
+      event.container.data,
+      event.previousIndex,
+      event.currentIndex
+    );
+  }
+
+  drop(event: CdkDragDrop<any[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    } else {
+      const item = { ...event.previousContainer.data[event.previousIndex] };
+      if (event.container.id === "cdk-drop-list-0") {
+        if (item.startDate) item.startDate = null;
+        if (item.endDate) item.endDate = null;
       }
-    });
+      if (event.container.id === "cdk-drop-list-1") {
+        if (item.endDate) item.endDate = null;
+        if (!item.startDate) item.startDate = new Date();
+      }
+      if (event.container.id === "cdk-drop-list-2") {
+        if (!item.startDate) item.startDate = new Date();
+        item.endDate = new Date();
+      }
+      this.transferEmployment(item);
+      this.transferItem(event);
+    }
   }
 }

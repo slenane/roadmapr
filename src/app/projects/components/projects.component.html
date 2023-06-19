@@ -1,13 +1,10 @@
-<!-- <app-roadmap-filters
-  *ngIf="roadmap"
-  [roadmapId]="roadmap._id"
-  (filterRoadmap)="filterRoadmap($event)"
-  (updateRoadmap)="createRoadmapItem($event)"
+<app-projects-filters
+  *ngIf="projects"
+  [projectsId]="projects._id"
+  (filterProjects)="filterProjects($event)"
+  (updateProjects)="addProject($event)"
 >
-</app-roadmap-filters> -->
-<div class="actions">
-  <button mat-raised-button color="primary" (click)="addProject()">Add</button>
-</div>
+</app-projects-filters>
 
 <div cdkDropListGroup class="project-container">
   <div class="project-div">

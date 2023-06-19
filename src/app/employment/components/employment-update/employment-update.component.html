@@ -49,6 +49,18 @@
     </app-stack-selector>
 
     <mat-form-field appearance="outline">
+      <mat-label>Type</mat-label>
+
+      <mat-select #type formControlName="type">
+        <mat-option value="employment"> Employment </mat-option>
+        <mat-option value="freelance"> Freelance </mat-option>
+      </mat-select>
+      <mat-error *ngIf="employmentForm.controls.type.invalid"
+        >Type required</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
       <mat-label>Link to Company</mat-label>
       <input matInput #companyLink formControlName="companyLink" />
       <mat-error *ngIf="employmentForm.controls.companyLink.invalid"

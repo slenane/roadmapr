@@ -26,12 +26,14 @@ export class EmploymentUpdateComponent implements OnInit {
     endDate: new FormControl<Date | null>(null),
     role: new FormControl("", Validators.required),
     startDate: new FormControl<Date | null>(null),
+    type: new FormControl("", Validators.required),
   });
 
   @ViewChild("stack") stack: StackSelectorComponent;
   @ViewChild("role") role: ElementRef;
   @ViewChild("company") company: ElementRef;
   @ViewChild("companyLink") companyLink: ElementRef;
+  @ViewChild("type") type: ElementRef;
 
   constructor(
     private el: ElementRef,
@@ -48,6 +50,7 @@ export class EmploymentUpdateComponent implements OnInit {
         endDate: this.data.endDate,
         startDate: this.data.startDate,
         role: this.data.role,
+        type: this.data.type,
       });
     }
   }

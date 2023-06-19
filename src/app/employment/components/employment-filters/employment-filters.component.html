@@ -1,0 +1,13 @@
+<div class="filters">
+  <mat-chip-list>
+    <mat-chip (click)="filterEmployment.emit(null)">All</mat-chip>
+    <mat-chip
+      *ngFor="let filter of filters"
+      (click)="filterEmployment.emit(filter.type)"
+    >
+      {{ filter.title }}
+    </mat-chip>
+  </mat-chip-list>
+
+  <button mat-raised-button color="primary" (click)="addItem()">Add</button>
+</div>

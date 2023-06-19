@@ -1,26 +1,72 @@
-<div class="actions">
-  <button mat-raised-button color="primary" (click)="addEmployment()"
-    >Add</button
-  >
-</div>
-<div class="employment-container">
-  <div class="employment-grid__1">
-    <div class="programming-experience">
-      <div class="employment-item" *ngFor="let data of employmentList">
-        <app-employment-item [data]="data"> </app-employment-item>
+<app-employment-filters
+  *ngIf="employment"
+  [employmentId]="employment._id"
+  (filterEmployment)="filterEmployment($event)"
+  (updateEmployment)="addEmployment($event)"
+>
+</app-employment-filters>
+
+<div cdkDropListGroup class="employment-container">
+  <div class="employment-div">
+    <h2>To Do</h2>
+
+    <div
+      cdkDropList
+      #todoList="cdkDropList"
+      [cdkDropListData]="todoArray"
+      class="employment-items"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <div class="employment-item" *ngFor="let data of todoArray">
+        <app-employment-item
+          *ngIf="selectedFilter === null || selectedFilter === data.type"
+          [data]="data"
+          cdkDrag
+        >
+        </app-employment-item>
       </div>
     </div>
   </div>
-  <div class="employment-grid__2">
-    <mat-card>
-      <mat-card-header>Explore</mat-card-header>
-      <mat-card-content>
-        <ul>
-          <li>Software Developer</li>
-          <li>Junior JavaScript Developer</li>
-          <li>UI/UX Designer</li>
-        </ul>
-      </mat-card-content>
-    </mat-card>
+
+  <div class="employment-div">
+    <h2>In Progress</h2>
+
+    <div
+      cdkDropList
+      #inProgressList="cdkDropList"
+      [cdkDropListData]="inProgressArray"
+      class="employment-items"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <div class="employment-item" *ngFor="let data of inProgressArray">
+        <app-employment-item
+          *ngIf="selectedFilter === null || selectedFilter === data.type"
+          [data]="data"
+          cdkDrag
+        >
+        </app-employment-item>
+      </div>
+    </div>
+  </div>
+
+  <div class="employment-div">
+    <h2>Done</h2>
+
+    <div
+      cdkDropList
+      #doneList="cdkDropList"
+      [cdkDropListData]="doneArray"
+      class="employment-items"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <div class="employment-item" *ngFor="let data of doneArray">
+        <app-employment-item
+          *ngIf="selectedFilter === null || selectedFilter === data.type"
+          [data]="data"
+          cdkDrag
+        >
+        </app-employment-item>
+      </div>
+    </div>
   </div>
 </div>

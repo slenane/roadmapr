@@ -14,6 +14,7 @@ import { ProjectsStoreService } from "../projects/services/projects-store.servic
 import { ProjectComponent } from "./components/project/project.component";
 import { ProjectDetailsComponent } from "./components/project/project-details/project-details.component";
 import { ProjectsUpdateComponent } from "./components/projects-update/projects-update.component";
+import { ProjectsFiltersComponent } from "./components/projects-filters/projects-filters.component";
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ProjectsUpdateComponent } from "./components/projects-update/projects-u
     ProjectComponent,
     ProjectDetailsComponent,
     ProjectsUpdateComponent,
+    ProjectsFiltersComponent,
   ],
   exports: [
     ProjectsComponent,

@@ -20,12 +20,14 @@ import { ProjectsUpdateComponent } from "./projects-update/projects-update.compo
 })
 export class ProjectsComponent implements OnInit, OnDestroy {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
-  public todoArray: any[];
-  public inProgressArray: any[];
-  public doneArray: any[];
+  public selectedFilter: null | string = null;
   public filterType = "date";
   public projects: Projects;
   public projectsId: string;
+
+  public todoArray: any[];
+  public inProgressArray: any[];
+  public doneArray: any[];
 
   constructor(
     private projectService: ProjectsService,
@@ -72,16 +74,14 @@ export class ProjectsComponent implements OnInit, OnDestroy {
     }
   }
 
-  addProject() {
-    const dialogRef = this.dialog.open(ProjectsUpdateComponent, {
-      width: "60vw",
-    });
+  filterProjects($event: null | string) {
+    this.selectedFilter = $event;
+  }
 
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result) {
-        this.projectsStoreService.createProject(this.projects._id, result);
-      }
-    });
+  addProject(item: any) {
+    if (item.data) {
+      this.projectsStoreService.createProject(item.id, item.data);
+    }
   }
 
   transferProject(item: any) {

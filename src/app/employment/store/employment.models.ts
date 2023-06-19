@@ -14,5 +14,6 @@ export interface EmploymentItem {
   stack: StackItem[];
   startDate: Date;
   employment: String;
+  type: "employment" | "freelance";
   _id: string;
 }

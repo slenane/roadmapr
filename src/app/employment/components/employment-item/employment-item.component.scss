@@ -3,7 +3,7 @@ mat-card {
 
   mat-card-header {
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: auto 1fr;
     justify-content: space-between;
 
     .mat-card-title {
@@ -22,14 +22,42 @@ mat-card {
   }
 
   mat-card-content {
-    padding: 1rem;
-
-    .description_title {
-      font-weight: 500;
-    }
-
-    .description {
-      white-space: pre-line;
-    }
+    padding: 0 1rem;
   }
 }
+
+// mat-card {
+//   padding: 1rem 0;
+
+//   mat-card-header {
+//     display: grid;
+//     grid-template-columns: auto 1fr auto;
+//     justify-content: space-between;
+
+//     .mat-card-title {
+//       font-size: 1rem;
+//     }
+
+//     mat-card-subtitle {
+//       font-size: 1rem;
+//       margin-bottom: 0;
+//     }
+
+//     .tech-stack {
+//       text-align: end;
+//       padding-right: 1rem;
+//     }
+//   }
+
+//   mat-card-content {
+//     padding: 1rem;
+
+//     .description_title {
+//       font-weight: 500;
+//     }
+
+//     .description {
+//       white-space: pre-line;
+//     }
+//   }
+// }

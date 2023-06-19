@@ -13,12 +13,14 @@ import { EmploymentStoreService } from "./services/employment-store.service";
 import { EmploymentComponent } from "./components/employment.component";
 import { EmploymentItemComponent } from "./components/employment-item/employment-item.component";
 import { EmploymentUpdateComponent } from "./components/employment-update/employment-update.component";
+import { EmploymentFiltersComponent } from './components/employment-filters/employment-filters.component';
 
 @NgModule({
   declarations: [
     EmploymentComponent,
     EmploymentUpdateComponent,
     EmploymentItemComponent,
+    EmploymentFiltersComponent,
   ],
   exports: [
     EmploymentComponent,
