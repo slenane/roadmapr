@@ -2,6 +2,7 @@
   *ngIf="projects"
   [projectsId]="projects._id"
   (filterProjects)="filterProjects($event)"
+  (onUpdateView)="updateView($event)"
   (updateProjects)="addProject($event)"
 >
 </app-projects-filters>
@@ -18,7 +19,8 @@
       (cdkDropListDropped)="drop($event)"
     >
       <div class="project-item" *ngFor="let data of todoArray">
-        <app-project [data]="data" cdkDrag> </app-project>
+        <app-project [data]="data" [selectedView]="selectedView" cdkDrag>
+        </app-project>
       </div>
     </div>
   </div>
@@ -34,7 +36,8 @@
       (cdkDropListDropped)="drop($event)"
     >
       <div class="project-item" *ngFor="let data of inProgressArray">
-        <app-project [data]="data" cdkDrag> </app-project>
+        <app-project [data]="data" [selectedView]="selectedView" cdkDrag>
+        </app-project>
       </div>
     </div>
   </div>
@@ -50,7 +53,8 @@
       (cdkDropListDropped)="drop($event)"
     >
       <div class="project-item" *ngFor="let data of doneArray">
-        <app-project [data]="data" cdkDrag> </app-project>
+        <app-project [data]="data" [selectedView]="selectedView" cdkDrag>
+        </app-project>
       </div>
     </div>
   </div>

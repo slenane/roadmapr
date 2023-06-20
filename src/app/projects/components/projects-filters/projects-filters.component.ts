@@ -8,6 +8,7 @@ import { ProjectsUpdateComponent } from "../projects-update/projects-update.comp
   styleUrls: ["./projects-filters.component.scss"],
 })
 export class ProjectsFiltersComponent implements OnInit {
+  public selectedView: "dense" | "sparse" = "dense";
   // public filters = [
   //   { title: "Employment", type: "employment" },
   //   { title: "Freelance", type: "freelance" },
@@ -15,6 +16,7 @@ export class ProjectsFiltersComponent implements OnInit {
 
   @Input() projectsId: string;
   @Output() filterProjects: EventEmitter<null | string> = new EventEmitter();
+  @Output() onUpdateView: EventEmitter<any> = new EventEmitter();
   @Output() updateProjects: EventEmitter<any> = new EventEmitter();
 
   constructor(public dialog: MatDialog) {}

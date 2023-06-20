@@ -8,6 +8,8 @@ import { EmploymentUpdateComponent } from "../employment-update/employment-updat
   styleUrls: ["./employment-filters.component.scss"],
 })
 export class EmploymentFiltersComponent implements OnInit {
+  public selectedType: "all" | "employment" | "freelance" = "all";
+  public selectedView: "dense" | "sparse" = "dense";
   public filters = [
     { title: "Employment", type: "employment" },
     { title: "Freelance", type: "freelance" },
@@ -15,6 +17,7 @@ export class EmploymentFiltersComponent implements OnInit {
 
   @Input() employmentId: string;
   @Output() filterEmployment: EventEmitter<null | string> = new EventEmitter();
+  @Output() onUpdateView: EventEmitter<any> = new EventEmitter();
   @Output() updateEmployment: EventEmitter<any> = new EventEmitter();
 
   constructor(public dialog: MatDialog) {}

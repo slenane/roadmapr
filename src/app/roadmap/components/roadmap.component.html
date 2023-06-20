@@ -2,6 +2,7 @@
   *ngIf="roadmap"
   [roadmapId]="roadmap._id"
   (filterRoadmap)="filterRoadmap($event)"
+  (onUpdateView)="updateView($event)"
   (updateRoadmap)="createRoadmapItem($event)"
 >
 </app-roadmap-filters>
@@ -20,6 +21,7 @@
         <app-roadmap-item
           *ngIf="selectedFilter === null || selectedFilter === data.type"
           [data]="data"
+          [selectedView]="selectedView"
           cdkDrag
         >
         </app-roadmap-item>
@@ -47,6 +49,7 @@
         <app-roadmap-item
           *ngIf="selectedFilter === null || selectedFilter === data.type"
           [data]="data"
+          [selectedView]="selectedView"
           cdkDrag
         >
         </app-roadmap-item>
@@ -68,6 +71,7 @@
         <app-roadmap-item
           *ngIf="selectedFilter === null || selectedFilter === data.type"
           [data]="data"
+          [selectedView]="selectedView"
           cdkDrag
         >
         </app-roadmap-item>

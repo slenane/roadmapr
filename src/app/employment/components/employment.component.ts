@@ -20,6 +20,7 @@ import {
 export class EmploymentComponent implements OnInit {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
   public selectedFilter: null | string = null;
+  public selectedView: "dense" | "sparse" = "dense";
   public filterType = "date";
   public employment: Employment;
   public employmentId: string;
@@ -80,6 +81,10 @@ export class EmploymentComponent implements OnInit {
 
   filterEmployment($event: null | string) {
     this.selectedFilter = $event;
+  }
+
+  updateView($event: any) {
+    this.selectedView = $event;
   }
 
   sortEmploymentList(list: any[]) {

@@ -8,6 +8,9 @@ import { RoadmapUpdateComponent } from "../roadmap-update/roadmap-update.compone
   styleUrls: ["./roadmap-filters.component.scss"],
 })
 export class RoadmapFiltersComponent implements OnInit {
+  public selectedView: "dense" | "sparse" = "dense";
+  public selectedType: "all" | "book" | "course" | "degree" | "tutorial" =
+    "all";
   public filters = [
     { title: "Books", type: "book" },
     { title: "Courses", type: "course" },
@@ -17,6 +20,7 @@ export class RoadmapFiltersComponent implements OnInit {
 
   @Input() roadmapId: string;
   @Output() filterRoadmap: EventEmitter<null | string> = new EventEmitter();
+  @Output() onUpdateView: EventEmitter<any> = new EventEmitter();
   @Output() updateRoadmap: EventEmitter<any> = new EventEmitter();
 
   constructor(public dialog: MatDialog) {}

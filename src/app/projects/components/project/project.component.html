@@ -14,6 +14,35 @@
     </div>
   </mat-card-header>
   <mat-card-content>
-    <mat-card-subtitle> {{ data.tagLine }} </mat-card-subtitle>
+    <mat-card-subtitle>
+      {{ data.tagLine }}
+    </mat-card-subtitle>
+
+    <div class="content" *ngIf="selectedView === 'sparse'">
+      <div class="timeline" *ngIf="data.startDate">
+        <div class="timeline_title">Timeline</div>
+        <p class="timeline_text"
+          >{{ data.startDate | date }} -
+          {{ (data.endDate | date) || "Present" }}</p
+        >
+      </div>
+
+      <div class="description" *ngIf="data.description">
+        <div class="description_title">Description</div>
+        <p class="description_text">{{ data.description }}</p>
+      </div>
+
+      <p class="actions">
+        <a href="data.link" *ngIf="data.link">
+          <button mat-raised-button color="primary" type="button">Link</button>
+        </a>
+
+        <a href="data.github" *ngIf="data.github">
+          <button mat-raised-button color="default" type="button"
+            >GitHub</button
+          >
+        </a>
+      </p>
+    </div>
   </mat-card-content>
 </mat-card>

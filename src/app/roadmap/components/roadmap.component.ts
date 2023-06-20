@@ -18,14 +18,16 @@ import { RoadmapStoreService } from "../services/roadmap-store.service";
 })
 export class RoadmapComponent implements OnInit, OnDestroy {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
+  public selectedFilter: null | string = null;
+  public selectedView: "dense" | "sparse" = "dense";
+  public filterType = "date";
+  public roadmap: Roadmap;
+  public roadmapId: string;
+
   public todoArray: any[];
   public inProgressArray: any[];
   public doneArray: any[];
   public recommendationsArray: any[];
-  public selectedFilter: null | string = null;
-  public filterType = "date";
-  public roadmap: Roadmap;
-  public roadmapId: string;
   public recommendations = DUMMY_ROADMAP;
 
   constructor(
@@ -88,6 +90,10 @@ export class RoadmapComponent implements OnInit, OnDestroy {
 
   filterRoadmap($event: null | string) {
     this.selectedFilter = $event;
+  }
+
+  updateView($event: any) {
+    this.selectedView = $event;
   }
 
   createRoadmapItem(item: any) {

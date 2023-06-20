@@ -1,4 +1,4 @@
-<mat-card
+<!-- <mat-card
   [ngClass]="{ recommendation: data.recommendation }"
   (click)="openItemDetails()"
 >
@@ -35,4 +35,73 @@
       </button>
     </mat-chip>
   </div>
+</mat-card> -->
+
+<mat-card
+  [ngClass]="{ recommendation: data.recommendation }"
+  (click)="openItemDetails()"
+>
+  <mat-card-header>
+    <mat-card-title>
+      <img
+        src="/assets/images/roadmap/{{ data.type }}.png"
+        class="app-roadmap-type-icon"
+      />
+      {{ data.title }}
+    </mat-card-title>
+
+    <div class="roadmap-stack">
+      <img
+        *ngFor="let tech of data.stack"
+        class="app-card-stack-icon"
+        matTooltip="{{ tech.title }}"
+        src="/assets/images/stack/{{ tech.name }}-original.svg"
+      />
+    </div>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-card-subtitle>
+      {{ data.author || data.instructor }}
+    </mat-card-subtitle>
+
+    <div class="content" *ngIf="selectedView === 'sparse'">
+      <div class="timeline" *ngIf="data.startDate">
+        <div class="timeline_title">Timeline</div>
+        <p class="timeline_text"
+          >{{ data.startDate | date }} -
+          {{ (data.endDate | date) || "Present" }}</p
+        >
+      </div>
+
+      <div class="description" *ngIf="data.description">
+        <div class="description_title">Description</div>
+        <p class="description_text">{{ data.description }}</p>
+      </div>
+
+      <p class="actions">
+        <a href="data.link" *ngIf="data.link">
+          <button mat-raised-button color="primary" type="button">Link</button>
+        </a>
+
+        <a href="data.github" *ngIf="data.github">
+          <button mat-raised-button color="default" type="button"
+            >GitHub</button
+          >
+        </a>
+      </p>
+    </div>
+
+    <div class="chips" *ngIf="data.recommendation">
+      <mat-chip class="users-chip"> 1K+ Users </mat-chip>
+      <mat-chip
+        class="recommendation-chip"
+        (removed)="removeRecommendation(data)"
+      >
+        Recommended
+        <button matChipRemove [attr.aria-label]="'Remove recommendation'">
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip>
+    </div>
+  </mat-card-content>
 </mat-card>

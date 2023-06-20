@@ -23,5 +23,29 @@ mat-card {
 
   mat-card-content {
     padding: 0 1rem;
+
+    .mat-card-subtitle {
+      margin-bottom: 0;
+    }
+
+    .content {
+      padding-top: 1rem;
+
+      .timeline_title,
+      .description_title {
+        font-weight: 500;
+      }
+
+      .description {
+        white-space: pre-line;
+      }
+
+      .actions {
+        display: grid;
+        grid-template-columns: auto auto;
+        justify-content: end;
+        gap: 0.5rem;
+      }
+    }
   }
 }

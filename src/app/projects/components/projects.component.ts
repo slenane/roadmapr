@@ -21,6 +21,7 @@ import { ProjectsUpdateComponent } from "./projects-update/projects-update.compo
 export class ProjectsComponent implements OnInit, OnDestroy {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
   public selectedFilter: null | string = null;
+  public selectedView: "dense" | "sparse" = "dense";
   public filterType = "date";
   public projects: Projects;
   public projectsId: string;
@@ -76,6 +77,10 @@ export class ProjectsComponent implements OnInit, OnDestroy {
 
   filterProjects($event: null | string) {
     this.selectedFilter = $event;
+  }
+
+  updateView($event: any) {
+    this.selectedView = $event;
   }
 
   addProject(item: any) {
