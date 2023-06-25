@@ -21,6 +21,12 @@ export class RoadmapComponent implements OnInit, OnDestroy {
   public selectedFilterType: null | string = null;
   public selectedFilterLanguage: null | string = null;
   public selectedView: "compact" | "expanded" = "compact";
+  public typeConfig = [
+    { title: "Books", name: "book" },
+    { title: "Courses", name: "course" },
+    { title: "Degrees", name: "degree" },
+    { title: "Tutorials", name: "tutorial" },
+  ];
   public filterType = "date";
   public languageFilterData: any = {};
   public roadmap: Roadmap;

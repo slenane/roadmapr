@@ -1,15 +1,16 @@
 <div class="roadmap">
   <div class="header">
-    <app-roadmap-filters
+    <app-drop-list-filters
       *ngIf="roadmap"
-      [roadmapId]="roadmap._id"
-      [languageFilterData]="languageFilterData"
+      [parentId]="roadmap._id"
+      [typeConfig]="typeConfig"
+      [languageConfig]="languageFilterData"
       (onFilterLanguage)="filterByLanguage($event)"
       (onFilterType)="filterByType($event)"
       (onUpdateView)="updateView($event)"
       (onUpdate)="createRoadmapItem($event)"
     >
-    </app-roadmap-filters>
+    </app-drop-list-filters>
 
     <div class="group-header">
       <h2>To Do</h2>

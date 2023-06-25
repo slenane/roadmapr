@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AppRoutingModule } from "../app-routing.module";
 import { HttpClientModule } from "@angular/common/http";
 import { BrowserModule } from "@angular/platform-browser";
+import { DropListFiltersComponent } from "./components/drop-list-filters/drop-list-filters.component";
 // import { NgChartsModule } from "ng2-charts";
 // import { FileUploadComponent } from "./components/file-upload/file-upload.component";
 
@@ -18,6 +19,7 @@ import { BrowserModule } from "@angular/platform-browser";
     MenuComponent,
     SidebarComponent,
     StackSelectorComponent,
+    DropListFiltersComponent,
   ],
   exports: [
     // ChartComponent,
@@ -25,6 +27,7 @@ import { BrowserModule } from "@angular/platform-browser";
     MenuComponent,
     SidebarComponent,
     StackSelectorComponent,
+    DropListFiltersComponent,
   ],
   imports: [
     MaterialModule,
