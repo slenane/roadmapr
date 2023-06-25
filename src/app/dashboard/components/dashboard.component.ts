@@ -31,26 +31,26 @@ export class DashboardComponent implements OnInit {
       )
       .subscribe((dashboard: Dashboard) => {
         this.dashboard = dashboard;
-        const [roadmap, employment, projects] =
+        const [education, employment, projects] =
           this.filterAndExtractData(dashboard);
 
-        if (roadmap.length || projects.length) {
-          this.stack = this.extractStackData({ roadmap, projects });
+        if (education.length || projects.length) {
+          this.stack = this.extractStackData({ education, projects });
         }
-        if (roadmap.length || projects.length || employment.length) {
+        if (education.length || projects.length || employment.length) {
           this.distribution = this.extractStackData({
-            roadmap,
+            education,
             projects,
             employment,
           });
 
           this.radar = this.extractStackRadarData({
-            personal: [...roadmap, ...projects],
+            personal: [...education, ...projects],
             professional: employment,
           });
 
           this.timeline = this.extractTimelineData({
-            roadmap,
+            education,
             projects,
             employment,
           });
@@ -118,7 +118,7 @@ export class DashboardComponent implements OnInit {
 
   extractTimelineData(data: any) {
     const personalStartDate = this.getStartDate([
-      ...data.roadmap,
+      ...data.education,
       ...data.projects,
     ]);
     const professionalStartDate = this.getStartDate([...data.employment]);
@@ -139,16 +139,16 @@ export class DashboardComponent implements OnInit {
   }
 
   filterAndExtractData(dashboard: Dashboard) {
-    const roadmap = [
-      ...dashboard.roadmap.books.filter((item) => !!item.startDate),
-      ...dashboard.roadmap.courses.filter((item) => !!item.startDate),
-      ...dashboard.roadmap.degrees.filter((item) => !!item.startDate),
-      ...dashboard.roadmap.tutorials.filter((item) => !!item.startDate),
+    const education = [
+      ...dashboard.education.books.filter((item) => !!item.startDate),
+      ...dashboard.education.courses.filter((item) => !!item.startDate),
+      ...dashboard.education.degrees.filter((item) => !!item.startDate),
+      ...dashboard.education.tutorials.filter((item) => !!item.startDate),
     ];
     const projects = dashboard.projects.filter((item) => !!item.startDate);
     const employment = dashboard.employment.filter((item) => !!item.startDate);
 
-    return [roadmap, employment, projects];
+    return [education, employment, projects];
   }
 
   getStartDate(data: any) {

@@ -49,7 +49,7 @@ export class DashboardStackComponent implements OnInit, OnChanges {
           labels: values.map((row: any) => row.language.title),
           datasets: [
             {
-              label: "Projects & Roadmap Items",
+              label: "Projects & Education",
               data: values.map((row: any) => row.count),
             },
           ],

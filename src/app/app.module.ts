@@ -11,7 +11,7 @@ import { AuthGuardService } from "./auth-guard.service";
 import { EffectsModule } from "@ngrx/effects";
 import { StoreModule } from "@ngrx/store";
 import { CoreModule } from "./core/core.module";
-import { RoadmapModule } from "./roadmap/roadmap.module";
+import { EducationModule } from "./education/education.module";
 import { ProfileModule } from "./profile/profile.module";
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 import { ProjectsModule } from "./projects/projects.module";
@@ -39,7 +39,7 @@ import { NgChartsModule } from "ng2-charts";
     CoreModule,
     EmploymentModule,
     DashboardModule,
-    RoadmapModule,
+    EducationModule,
     ProfileModule,
     ProjectsModule,
     SettingsModule,

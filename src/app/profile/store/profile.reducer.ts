@@ -22,7 +22,7 @@ const initialState: Profile = {
   cv: "",
   skills: [],
   languagesSpoken: [],
-  roadmap: "",
+  education: "",
   projects: "",
   employment: "",
   theme: "",

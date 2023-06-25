@@ -1,0 +1,87 @@
+<div class="Education drag-group">
+  <div class="drag-group-header">
+    <app-drop-list-filters
+      *ngIf="education"
+      [type]="'education'"
+      [parentId]="education._id"
+      [typeConfig]="typeConfig"
+      [languageConfig]="languageFilterData"
+      (onFilterLanguage)="filterByLanguage($event)"
+      (onFilterType)="filterByType($event)"
+      (onUpdateView)="updateView($event)"
+      (onUpdate)="createEducationItem($event)"
+    >
+    </app-drop-list-filters>
+
+    <div class="drag-group-titles">
+      <h2>To Do</h2>
+      <h2>In Progress</h2>
+      <h2>Done</h2>
+    </div>
+  </div>
+
+  <div class="scroll" cdkScrollable>
+    <div cdkDropListGroup class="drag-group-container">
+      <div
+        cdkDropList
+        #todoList="cdkDropList"
+        [cdkDropListData]="todoArray"
+        class="drag-group-items"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div *ngFor="let data of todoArray" class="drag-group-item" cdkDrag>
+          <app-education-item
+            *ngIf="matchesFilters(data)"
+            [data]="data"
+            [selectedView]="selectedView"
+          >
+          </app-education-item>
+        </div>
+        <div
+          class="drag-group-item recommendation"
+          *ngFor="let data of recommendationsArray"
+        >
+          <app-education-item [data]="data"> </app-education-item>
+        </div>
+      </div>
+
+      <div
+        cdkDropList
+        #inProgressList="cdkDropList"
+        [cdkDropListData]="inProgressArray"
+        class="drag-group-items"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div
+          *ngFor="let data of inProgressArray"
+          class="drag-group-item"
+          cdkDrag
+        >
+          <app-education-item
+            *ngIf="matchesFilters(data)"
+            [data]="data"
+            [selectedView]="selectedView"
+          >
+          </app-education-item>
+        </div>
+      </div>
+
+      <div
+        cdkDropList
+        #doneList="cdkDropList"
+        [cdkDropListData]="doneArray"
+        class="drag-group-items"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div *ngFor="let data of doneArray" class="drag-group-item" cdkDrag>
+          <app-education-item
+            *ngIf="matchesFilters(data)"
+            [data]="data"
+            [selectedView]="selectedView"
+          >
+          </app-education-item>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

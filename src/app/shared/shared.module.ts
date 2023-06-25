@@ -1,6 +1,5 @@
 import { NgModule } from "@angular/core";
-import { MenuComponent } from "./components/navigation/menu/menu.component";
-import { SidebarComponent } from "./components/navigation/sidebar/sidebar.component";
+import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { StackSelectorComponent } from "./components/stack-selector/stack-selector.component";
 // import { ChartComponent } from "./components/charts/chart.component";
 import { MaterialModule } from "../material/material.module";
@@ -16,7 +15,6 @@ import { DropListFiltersComponent } from "./components/drop-list-filters/drop-li
   declarations: [
     // ChartComponent,
     // FileUploadComponent,
-    MenuComponent,
     SidebarComponent,
     StackSelectorComponent,
     DropListFiltersComponent,
@@ -24,7 +22,6 @@ import { DropListFiltersComponent } from "./components/drop-list-filters/drop-li
   exports: [
     // ChartComponent,
     // FileUploadComponent,
-    MenuComponent,
     SidebarComponent,
     StackSelectorComponent,
     DropListFiltersComponent,

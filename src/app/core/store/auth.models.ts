@@ -1,5 +1,5 @@
 import { Projects } from "src/app/projects/store/projects.models";
-import { Roadmap } from "../../roadmap/store/roadmap.models";
+import { Education } from "../../education/store/education.models";
 import { Employment } from "src/app/employment/store/employment.models";
 
 export interface Action {
@@ -21,7 +21,7 @@ export interface User {
   twitter: string;
   cv: string;
   employment: Employment;
-  roadmap: Roadmap;
+  education: Education;
   Projects: Projects;
   skills: object;
   languagesSpoken: object;

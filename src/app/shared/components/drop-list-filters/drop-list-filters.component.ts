@@ -10,7 +10,7 @@ import {
 import { MatDialog } from "@angular/material/dialog";
 import { EmploymentUpdateComponent } from "src/app/employment/components/employment-update/employment-update.component";
 import { ProjectsUpdateComponent } from "src/app/projects/components/projects-update/projects-update.component";
-import { RoadmapUpdateComponent } from "src/app/roadmap/components/roadmap-update/roadmap-update.component";
+import { EducationUpdateComponent } from "src/app/education/components/education-update/education-update.component";
 
 @Component({
   selector: "app-drop-list-filters",
@@ -29,7 +29,7 @@ export class DropListFiltersComponent implements OnInit, OnChanges {
     { title: "Tutorials", type: "tutorial" },
   ];
 
-  @Input() type: "employment" | "roadmap" | "projects";
+  @Input() type: "employment" | "education" | "projects";
   @Input() parentId: string;
   @Input() typeConfig: any[];
   @Input() languageConfig: any[];
@@ -91,8 +91,8 @@ export class DropListFiltersComponent implements OnInit, OnChanges {
       dialogRef = this.dialog.open(EmploymentUpdateComponent, {
         width: "60vw",
       });
-    else if (this.type === "roadmap")
-      dialogRef = this.dialog.open(RoadmapUpdateComponent, { width: "60vw" });
+    else if (this.type === "education")
+      dialogRef = this.dialog.open(EducationUpdateComponent, { width: "60vw" });
     else
       dialogRef = this.dialog.open(ProjectsUpdateComponent, { width: "60vw" });
 

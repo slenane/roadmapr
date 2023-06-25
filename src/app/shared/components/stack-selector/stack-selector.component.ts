@@ -1,5 +1,5 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from "@angular/core";
-import { STACK_LIST } from "src/app/roadmap/constants/stack-list.constants";
+import { STACK_LIST } from "src/app/shared/constants/stack-list.constants";
 import {
   MatAutocompleteSelectedEvent,
   MatAutocomplete,

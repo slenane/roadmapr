@@ -14,7 +14,7 @@ export interface Profile {
   cv: string;
   skills: any[];
   languagesSpoken: any[];
-  roadmap: string;
+  education: string;
   projects: string;
   employment: string;
   theme: string;

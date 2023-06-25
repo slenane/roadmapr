@@ -5,7 +5,7 @@ import {
   Course,
   Degree,
   Tutorial,
-} from "src/app/roadmap/store/roadmap.models";
+} from "src/app/education/store/education.models";
 
 interface Github {
   name: string;
@@ -18,7 +18,7 @@ interface Github {
 }
 
 export interface Dashboard {
-  roadmap: {
+  education: {
     books: Book[];
     courses: Course[];
     degrees: Degree[];

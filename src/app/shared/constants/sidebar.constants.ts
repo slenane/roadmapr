@@ -5,9 +5,9 @@ export const SIDEBAR_OPTIONS = [
     link: "/dashboard",
   },
   {
-    title: "Roadmap",
-    icon: "view_kanban",
-    link: "/roadmap",
+    title: "Education",
+    icon: "school",
+    link: "/education",
   },
   {
     title: "Projects",

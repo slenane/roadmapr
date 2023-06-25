@@ -30,13 +30,13 @@ app-root {
   grid-column: 1 / -1;
 }
 
-.app-roadmap-type-icon {
+.app-education-type-icon {
   height: 1rem;
   width: 1rem;
   margin-right: 0.5rem;
 }
 
-.app-roadmap-type-icon__large {
+.app-education-type-icon__large {
   height: 1.5rem;
   width: 1.5rem;
 }
@@ -74,7 +74,7 @@ mat-button-toggle-group {
     line-height: 35px;
     padding: 0 10px;
 
-    .app-roadmap-type-icon {
+    .app-education-type-icon {
       margin-right: 0.2rem;
     }
 

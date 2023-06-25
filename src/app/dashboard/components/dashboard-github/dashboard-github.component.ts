@@ -9,7 +9,7 @@ import {
 import { MatPaginator } from "@angular/material/paginator";
 import { MatSort } from "@angular/material/sort";
 import { MatTableDataSource } from "@angular/material/table";
-import { STACK_LIST } from "src/app/roadmap/constants/stack-list.constants";
+import { STACK_LIST } from "src/app/shared/constants/stack-list.constants";
 
 @Component({
   selector: "app-dashboard-github",

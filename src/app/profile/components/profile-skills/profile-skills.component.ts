@@ -5,7 +5,7 @@ import {
   SimpleChanges,
   OnChanges,
 } from "@angular/core";
-import { STACK_LIST } from "src/app/roadmap/constants/stack-list.constants";
+import { STACK_LIST } from "src/app/shared/constants/stack-list.constants";
 import * as COUNTRY_LIST from "src/assets/json/countries.json";
 
 @Component({

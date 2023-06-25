@@ -7,7 +7,7 @@ interface Action {
 }
 
 const initialState: Dashboard = {
-  roadmap: {
+  education: {
     books: [],
     courses: [],
     degrees: [],

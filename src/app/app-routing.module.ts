@@ -5,7 +5,7 @@ import { EmploymentComponent } from "./employment/components/employment.componen
 import { LandingComponent } from "./core/components/landing/landing.component";
 import { ProfileComponent } from "./profile/components/profile.component";
 import { ProjectsComponent } from "./projects/components/projects.component";
-import { RoadmapComponent } from "./roadmap/components/roadmap.component";
+import { EducationComponent } from "./education/components/education.component";
 import { SettingsComponent } from "./settings/components/settings.component";
 import { AuthGuardService } from "./auth-guard.service";
 
@@ -19,8 +19,8 @@ const routes: Routes = [
     canActivate: [AuthGuardService],
   },
   {
-    path: "roadmap",
-    component: RoadmapComponent,
+    path: "education",
+    component: EducationComponent,
     canActivate: [AuthGuardService],
   },
   {

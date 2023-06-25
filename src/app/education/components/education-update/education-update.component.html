@@ -1,0 +1,69 @@
+<h1 mat-dialog-title>Update your Education</h1>
+<div mat-dialog-content>
+  <form [formGroup]="educationForm">
+    <!-- <p>Find item by link</p>
+    <div class="find-by-link-grid">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Link to Course</mat-label>
+        <input matInput formControlName="link" />
+      </mat-form-field>
+      <div class="action">
+        <button mat-raised-button color="primary" (click)="fetchDetails()"
+          >Go</button
+        >
+      </div>
+    </div>
+
+    <div class="input-divider">OR</div> -->
+
+    <div>
+      <!-- <p>Enter details manually</p> -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Select Type</mat-label>
+        <mat-select formControlName="type">
+          <mat-option *ngFor="let type of educationTypes" [value]="type">
+            <div class="type-option">
+              <img
+                src="/assets/images/icons/{{ type }}.png"
+                class="app-education-type-icon"
+              />
+              {{ type | titlecase }}
+            </div>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <app-education-update-book
+        #book
+        [data]="data"
+        *ngIf="selectedType === 'book'"
+      ></app-education-update-book>
+      <app-education-update-course
+        #course
+        [data]="data"
+        *ngIf="selectedType === 'course'"
+      ></app-education-update-course>
+      <app-education-update-degree
+        #degree
+        [data]="data"
+        *ngIf="selectedType === 'degree'"
+      ></app-education-update-degree>
+      <app-education-update-tutorial
+        #tutorial
+        [data]="data"
+        *ngIf="selectedType === 'tutorial'"
+      ></app-education-update-tutorial>
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions class="actions">
+  <button mat-raised-button (click)="onNoClick()">Cancel</button>
+  <button
+    mat-raised-button
+    *ngIf="educationForm.controls.type.value"
+    color="primary"
+    (click)="onSaveClick()"
+    cdkFocusInitial
+    >Save</button
+  >
+</div>
