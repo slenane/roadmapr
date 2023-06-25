@@ -1,10 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+  box-sizing: border-box;
+}
 
 html,
 body {
   height: 100%;
   font-size: 14px;
-  box-sizing: border-box;
 }
 
 body {
@@ -40,17 +41,17 @@ app-root {
   width: 1.5rem;
 }
 
-.app-card-stack-icon {
+.app-stack-icon {
   border-radius: 50%;
   height: 1.2rem;
   width: 1.2rem;
   margin: 0 0.1rem;
 }
 
-.app-card-stack-icon__large {
+.app-stack-icon__large {
   height: 2rem;
   width: 2rem;
-  margin: 0 0.3rem;
+  margin: 0 0.5rem 0.5rem;
 }
 
 .material-symbols-outlined {
@@ -65,5 +66,25 @@ app-root {
 
   .mat-simple-snackbar-action button {
     color: white;
+  }
+}
+
+mat-button-toggle-group {
+  .mat-button-toggle-appearance-standard .mat-button-toggle-label-content {
+    line-height: 35px;
+    padding: 0 10px;
+
+    .app-roadmap-type-icon {
+      margin-right: 0.2rem;
+    }
+
+    .app-stack-icon {
+      border-radius: 0%;
+      margin: 0;
+    }
+
+    .toggle-view {
+      color: #5f6368;
+    }
   }
 }

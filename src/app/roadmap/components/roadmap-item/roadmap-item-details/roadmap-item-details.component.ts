@@ -13,6 +13,8 @@ import { RoadmapStoreService } from "src/app/roadmap/services/roadmap-store.serv
   styleUrls: ["./roadmap-item-details.component.scss"],
 })
 export class RoadmapItemDetailsComponent implements OnInit {
+  public providerType: string = "Provider";
+
   constructor(
     private roadmapStoreService: RoadmapStoreService,
     public dialogRef: MatDialogRef<RoadmapItemDetailsComponent>,
@@ -20,7 +22,12 @@ export class RoadmapItemDetailsComponent implements OnInit {
     public dialog: MatDialog
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.data) {
+      if (this.data.author) this.providerType = "Author";
+      else if (this.data.instructor) this.providerType = "Instructor";
+    }
+  }
 
   onCancel(): void {
     this.dialogRef.close(false);

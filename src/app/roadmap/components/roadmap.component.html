@@ -1,80 +1,83 @@
-<app-roadmap-filters
-  *ngIf="roadmap"
-  [roadmapId]="roadmap._id"
-  (filterRoadmap)="filterRoadmap($event)"
-  (onUpdateView)="updateView($event)"
-  (updateRoadmap)="createRoadmapItem($event)"
->
-</app-roadmap-filters>
-<div cdkDropListGroup class="roadmap-container">
-  <div class="roadmap-div">
-    <h2>To Do</h2>
-
-    <div
-      cdkDropList
-      #todoList="cdkDropList"
-      [cdkDropListData]="todoArray"
-      class="roadmap-items"
-      (cdkDropListDropped)="drop($event)"
+<div class="roadmap">
+  <div class="header">
+    <app-roadmap-filters
+      *ngIf="roadmap"
+      [roadmapId]="roadmap._id"
+      [languageFilterData]="languageFilterData"
+      (onFilterLanguage)="filterByLanguage($event)"
+      (onFilterType)="filterByType($event)"
+      (onUpdateView)="updateView($event)"
+      (onUpdate)="createRoadmapItem($event)"
     >
-      <div class="roadmap-item" *ngFor="let data of todoArray">
-        <app-roadmap-item
-          *ngIf="selectedFilter === null || selectedFilter === data.type"
-          [data]="data"
-          [selectedView]="selectedView"
-          cdkDrag
-        >
-        </app-roadmap-item>
-      </div>
+    </app-roadmap-filters>
+
+    <div class="group-header">
+      <h2>To Do</h2>
+      <h2>In Progress</h2>
+      <h2>Done</h2>
+    </div>
+  </div>
+
+  <div class="scroll" cdkScrollable>
+    <div cdkDropListGroup class="roadmap-container">
       <div
-        class="roadmap-item recommendation"
-        *ngFor="let data of recommendationsArray"
+        cdkDropList
+        #todoList="cdkDropList"
+        [cdkDropListData]="todoArray"
+        class="roadmap-items"
+        (cdkDropListDropped)="drop($event)"
       >
-        <app-roadmap-item [data]="data"> </app-roadmap-item>
-      </div>
-    </div>
-  </div>
-
-  <div class="roadmap-div">
-    <h2>In Progress</h2>
-
-    <div
-      cdkDropList
-      #inProgressList="cdkDropList"
-      [cdkDropListData]="inProgressArray"
-      class="roadmap-items"
-      (cdkDropListDropped)="drop($event)"
-    >
-      <div class="roadmap-item" *ngFor="let data of inProgressArray">
-        <app-roadmap-item
-          *ngIf="selectedFilter === null || selectedFilter === data.type"
-          [data]="data"
-          [selectedView]="selectedView"
-          cdkDrag
+        <div class="roadmap-item" *ngFor="let data of todoArray">
+          <app-roadmap-item
+            *ngIf="matchesFilters(data)"
+            [data]="data"
+            [selectedView]="selectedView"
+            cdkDrag
+          >
+          </app-roadmap-item>
+        </div>
+        <div
+          class="roadmap-item recommendation"
+          *ngFor="let data of recommendationsArray"
         >
-        </app-roadmap-item>
+          <app-roadmap-item [data]="data"> </app-roadmap-item>
+        </div>
       </div>
-    </div>
-  </div>
 
-  <div class="roadmap-div">
-    <h2>Done</h2>
+      <div
+        cdkDropList
+        #inProgressList="cdkDropList"
+        [cdkDropListData]="inProgressArray"
+        class="roadmap-items"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div class="roadmap-item" *ngFor="let data of inProgressArray">
+          <app-roadmap-item
+            *ngIf="matchesFilters(data)"
+            [data]="data"
+            [selectedView]="selectedView"
+            cdkDrag
+          >
+          </app-roadmap-item>
+        </div>
+      </div>
 
-    <div
-      cdkDropList
-      #doneList="cdkDropList"
-      [cdkDropListData]="doneArray"
-      class="roadmap-items"
-      (cdkDropListDropped)="drop($event)"
-    >
-      <div class="roadmap-item" *ngFor="let data of doneArray">
-        <app-roadmap-item
-          *ngIf="selectedFilter === null || selectedFilter === data.type"
-          [data]="data"
-          [selectedView]="selectedView"
-          cdkDrag
-        >
-        </app-roadmap-item>
+      <div
+        cdkDropList
+        #doneList="cdkDropList"
+        [cdkDropListData]="doneArray"
+        class="roadmap-items"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div class="roadmap-item" *ngFor="let data of doneArray">
+          <app-roadmap-item
+            *ngIf="matchesFilters(data)"
+            [data]="data"
+            [selectedView]="selectedView"
+            cdkDrag
+          >
+          </app-roadmap-item>
+        </div>
       </div>
     </div>
   </div>

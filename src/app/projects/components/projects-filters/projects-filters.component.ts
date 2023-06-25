@@ -9,10 +9,11 @@ import { ProjectsUpdateComponent } from "../projects-update/projects-update.comp
 })
 export class ProjectsFiltersComponent implements OnInit {
   public selectedView: "dense" | "sparse" = "dense";
-  // public filters = [
-  //   { title: "Employment", type: "employment" },
-  //   { title: "Freelance", type: "freelance" },
-  // ];
+  public selectedType: "all" = "all";
+  public filters = [
+    //   { title: "Employment", type: "employment" },
+    //   { title: "Freelance", type: "freelance" },
+  ];
 
   @Input() projectsId: string;
   @Output() filterProjects: EventEmitter<null | string> = new EventEmitter();

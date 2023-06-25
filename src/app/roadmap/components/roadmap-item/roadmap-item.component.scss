@@ -11,12 +11,11 @@ mat-card {
     grid-template-columns: auto 1fr;
     justify-content: space-between;
 
-    .mat-card-title {
+    mat-card-title {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: center;
       font-size: 1rem;
-
-      img {
-        margin-right: 0.3rem;
-      }
     }
 
     mat-card-subtitle {
@@ -56,24 +55,28 @@ mat-card {
         gap: 0.5rem;
       }
     }
-  }
 
-  .chips {
-    text-align: end;
+    mat-chip-list {
+      display: grid;
+      justify-content: end;
 
-    .users-chip {
-      background-color: gold;
-      margin-right: 0.2rem;
-    }
+      mat-chip {
+        background-color: gold;
+      }
 
-    .recommendation-chip {
-      background-color: gold;
-      margin-right: 0.5rem;
-    }
+      .users-chip {
+        margin-right: 0.2rem;
+      }
 
-    .mat-standard-chip {
-      min-height: 24px;
-      font-size: 0.8rem;
+      .recommendation-chip {
+        background-color: gold;
+        margin-right: 0.5rem;
+      }
+
+      .mat-standard-chip {
+        min-height: 24px;
+        font-size: 0.8rem;
+      }
     }
   }
 }

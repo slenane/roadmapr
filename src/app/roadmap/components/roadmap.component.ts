@@ -18,9 +18,11 @@ import { RoadmapStoreService } from "../services/roadmap-store.service";
 })
 export class RoadmapComponent implements OnInit, OnDestroy {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
-  public selectedFilter: null | string = null;
-  public selectedView: "dense" | "sparse" = "dense";
+  public selectedFilterType: null | string = null;
+  public selectedFilterLanguage: null | string = null;
+  public selectedView: "compact" | "expanded" = "compact";
   public filterType = "date";
+  public languageFilterData: any = {};
   public roadmap: Roadmap;
   public roadmapId: string;
 
@@ -45,6 +47,7 @@ export class RoadmapComponent implements OnInit, OnDestroy {
       .subscribe((roadmap: Roadmap) => {
         this.roadmap = roadmap;
         this.getRoadmapConfig();
+        this.getLanguageFilterData();
       });
   }
 
@@ -88,8 +91,53 @@ export class RoadmapComponent implements OnInit, OnDestroy {
     return items;
   }
 
-  filterRoadmap($event: null | string) {
-    this.selectedFilter = $event;
+  getLanguageFilterData() {
+    const roadmap: any[] = this.generateRoadmap(this.roadmap, this.filterType);
+    const languageData: any[] = [];
+    const languages: any[] = [];
+
+    roadmap.forEach((item) => {
+      item.stack.forEach((language: any) => {
+        if (!languageData[language.name]) {
+          languageData[language.name] = {
+            count: 0,
+          };
+          languages.push(language);
+        }
+        languageData[language.name].count++;
+      });
+    });
+
+    const sortable = [];
+
+    for (let item in languageData) {
+      sortable.push([item, languageData[item].count]);
+    }
+
+    this.languageFilterData = [
+      ...[...sortable.sort((a, b) => b[1] - a[1]).splice(0, 10)].map((item) => {
+        return languages.find((language) => language.name === item[0]);
+      }),
+    ];
+  }
+
+  filterByType($event: null | string) {
+    this.selectedFilterType = $event;
+  }
+
+  filterByLanguage($event: null | string) {
+    this.selectedFilterLanguage = $event;
+  }
+
+  matchesFilters(data: any) {
+    return (
+      (this.selectedFilterType === null ||
+        this.selectedFilterType === data.type) &&
+      (this.selectedFilterLanguage === null ||
+        data.stack.find(
+          (item: any) => item.name === this.selectedFilterLanguage
+        ))
+    );
   }
 
   updateView($event: any) {

@@ -1,8 +1,24 @@
 <div class="filter-container">
   <div class="filters">
-    <mat-chip-list>
-      <mat-chip (click)="filterProjects.emit(null)">All</mat-chip>
-    </mat-chip-list>
+    <span>
+      Type
+      <mat-button-toggle-group
+        name="type"
+        aria-label="Type"
+        [value]="selectedType"
+      >
+        <mat-button-toggle value="all" (click)="filterProjects.emit(null)">
+          All</mat-button-toggle
+        >
+        <!-- <mat-button-toggle
+          *ngFor="let filter of filters"
+          (click)="filterProjects.emit(filter.type)"
+          [value]="filter.type"
+        >
+          {{ filter.title }}
+        </mat-button-toggle> -->
+      </mat-button-toggle-group>
+    </span>
 
     <span>
       View
@@ -26,7 +42,7 @@
         <mat-button-toggle
           #tooltip="matTooltip"
           matTooltipShowDelay="500"
-          matTooltip="Sparse View"
+          matTooltip="Expanded View"
           matTooltipPosition="below"
           (click)="onUpdateView.emit('sparse')"
           value="sparse"

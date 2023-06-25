@@ -5,14 +5,20 @@
 
   .filters {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: auto auto auto;
     gap: 1rem;
     justify-content: flex-start;
+    font-size: 0.9rem;
 
-    mat-chip-list {
-      mat-chip {
-        cursor: pointer;
-      }
+    .filter-type {
+      font-weight: 500;
+      // font-size: 1rem;
+      margin-right: 0.5rem;
+    }
+
+    .toggle-view {
+      color: #5f6368;
+      font-weight: 300;
     }
   }
 }

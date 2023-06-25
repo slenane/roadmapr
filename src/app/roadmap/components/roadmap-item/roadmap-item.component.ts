@@ -23,7 +23,7 @@ export class RoadmapItemComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (
-      changes.selectedView.currentValue &&
+      changes.selectedView &&
       changes.selectedView.currentValue != changes.selectedView.previousValue
     ) {
       this.selectedView = changes.selectedView.currentValue;
@@ -36,7 +36,7 @@ export class RoadmapItemComponent implements OnInit, OnChanges {
 
   openItemDetails() {
     this.dialog.open(RoadmapItemDetailsComponent, {
-      width: "60vw",
+      width: "50vw",
       data: this.data,
     });
   }

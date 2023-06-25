@@ -29,6 +29,7 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatSortModule } from "@angular/material/sort";
 import { MatButtonToggleModule } from "@angular/material/button-toggle";
+import { ScrollingModule } from "@angular/cdk/scrolling";
 
 @NgModule({
   exports: [
@@ -62,6 +63,7 @@ import { MatButtonToggleModule } from "@angular/material/button-toggle";
     MatPaginatorModule,
     MatSortModule,
     MatButtonToggleModule,
+    ScrollingModule,
   ],
   providers: [],
   bootstrap: [],
