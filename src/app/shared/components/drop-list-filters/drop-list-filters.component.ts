@@ -1,4 +1,12 @@
-import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  SimpleChanges,
+  OnChanges,
+} from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { EmploymentUpdateComponent } from "src/app/employment/components/employment-update/employment-update.component";
 import { ProjectsUpdateComponent } from "src/app/projects/components/projects-update/projects-update.component";
@@ -9,7 +17,8 @@ import { RoadmapUpdateComponent } from "src/app/roadmap/components/roadmap-updat
   templateUrl: "./drop-list-filters.component.html",
   styleUrls: ["./drop-list-filters.component.scss"],
 })
-export class DropListFiltersComponent implements OnInit {
+export class DropListFiltersComponent implements OnInit, OnChanges {
+  public sortedStack: any[] = [];
   public selectedView: "compact" | "expanded" = "compact";
   public selectedLanguage: any = null;
   public selectedType: null | "book" | "course" | "degree" | "tutorial" = null;
@@ -32,6 +41,28 @@ export class DropListFiltersComponent implements OnInit {
   constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {}
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (
+      changes.selectedView &&
+      changes.selectedView.currentValue != changes.selectedView.previousValue
+    ) {
+      this.selectedView = changes.selectedView.currentValue;
+    }
+    if (
+      changes.languageConfig &&
+      changes.languageConfig.currentValue !=
+        changes.languageConfig.previousValue
+    ) {
+      if (this.languageConfig) {
+        this.sortedStack = this.sortStack([...this.languageConfig]);
+      }
+    }
+  }
+
+  sortStack(stack: any) {
+    return stack.sort((a: any, b: any) => a.name.localeCompare(b.name));
+  }
 
   filterType($event: any) {
     if (this.selectedType === $event) {

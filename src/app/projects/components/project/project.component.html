@@ -1,12 +1,17 @@
 <mat-card (click)="openItemDetails()">
   <mat-card-header>
     <mat-card-title>
+      <img
+        src="/assets/images/icons/{{ data.type }}.png"
+        matTooltip="{{ data.type }}"
+        class="app-roadmap-type-icon"
+      />
       {{ data.title }}
     </mat-card-title>
 
     <div class="project-stack">
       <img
-        *ngFor="let tech of data.stack"
+        *ngFor="let tech of sortedStack"
         class="app-stack-icon"
         matTooltip="{{ tech.title }}"
         src="/assets/images/stack/{{ tech.name }}-original.svg"

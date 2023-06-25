@@ -2,14 +2,12 @@ import {
   Component,
   ElementRef,
   Inject,
-  Input,
   OnInit,
   ViewChild,
 } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { Subject } from "rxjs";
-import { MatChipInputEvent } from "@angular/material/chips";
 import { StackSelectorComponent } from "src/app/shared/components/stack-selector/stack-selector.component";
 
 @Component({
@@ -24,11 +22,10 @@ export class ProjectsUpdateComponent implements OnInit {
     github: new FormControl(""),
     endDate: new FormControl<Date | null>(null),
     link: new FormControl(""),
-    notes: new FormControl(""),
     startDate: new FormControl<Date | null>(null),
     tagLine: new FormControl(""),
     title: new FormControl("", Validators.required),
-    todo: new FormControl(""),
+    type: new FormControl(""),
   });
 
   @ViewChild("stack") stack: StackSelectorComponent;
@@ -47,11 +44,10 @@ export class ProjectsUpdateComponent implements OnInit {
         github: this.data.github,
         endDate: this.data.endDate,
         link: this.data.link,
-        notes: this.data.notes,
         startDate: this.data.startDate,
         tagLine: this.data.tagLine,
         title: this.data.title,
-        todo: this.data.todo,
+        type: this.data.type,
       });
     }
   }

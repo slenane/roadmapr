@@ -14,6 +14,7 @@ import { ProjectDetailsComponent } from "./project-details/project-details.compo
   styleUrls: ["./project.component.scss"],
 })
 export class ProjectComponent implements OnInit, OnChanges {
+  public sortedStack: any[] = [];
   @Input() selectedView: any;
   @Input() data: any;
 
@@ -28,12 +29,24 @@ export class ProjectComponent implements OnInit, OnChanges {
     ) {
       this.selectedView = changes.selectedView.currentValue;
     }
+    if (
+      changes.data &&
+      changes.data.currentValue != changes.data.previousValue
+    ) {
+      if (this.data.stack) {
+        this.sortedStack = this.sortStack([...this.data.stack]);
+      }
+    }
+  }
+
+  sortStack(stack: any) {
+    return stack.sort((a: any, b: any) => a.name.localeCompare(b.name));
   }
 
   openItemDetails() {
     this.dialog.open(ProjectDetailsComponent, {
       width: "50vw",
-      data: this.data,
+      data: { ...this.data, stack: this.sortedStack },
     });
   }
 }

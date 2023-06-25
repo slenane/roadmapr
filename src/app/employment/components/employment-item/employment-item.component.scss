@@ -8,8 +8,11 @@ mat-card {
     grid-template-columns: auto 1fr;
     justify-content: space-between;
 
-    .mat-card-title {
+    mat-card-title {
       font-size: 1rem;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: center;
     }
 
     mat-card-subtitle {
@@ -40,6 +43,13 @@ mat-card {
 
       .description {
         white-space: pre-line;
+      }
+
+      .actions {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        justify-content: end;
+        gap: 0.5rem;
       }
     }
   }

@@ -2,12 +2,10 @@ import {
   Component,
   ElementRef,
   Inject,
-  Input,
   OnInit,
   ViewChild,
 } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { MatChipInputEvent } from "@angular/material/chips";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { Subject } from "rxjs";
 import { StackSelectorComponent } from "src/app/shared/components/stack-selector/stack-selector.component";
@@ -21,7 +19,7 @@ export class EmploymentUpdateComponent implements OnInit {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
   public employmentForm = new FormGroup({
     company: new FormControl("", Validators.required),
-    companyLink: new FormControl("", Validators.required),
+    companyLink: new FormControl(""),
     description: new FormControl(""),
     github: new FormControl(""),
     project: new FormControl(""),

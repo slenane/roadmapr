@@ -29,7 +29,7 @@
         [value]="selectedLanguage"
       >
         <mat-button-toggle
-          *ngFor="let language of languageConfig"
+          *ngFor="let language of sortedStack"
           #tooltip="matTooltip"
           matTooltipShowDelay="500"
           matTooltip="{{ language.title }}"

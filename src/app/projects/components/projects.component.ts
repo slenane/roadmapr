@@ -9,9 +9,7 @@ import {
 import { Projects } from "../store/projects.models";
 import { ProjectsService } from "../services/projects.service";
 import { ProjectsStoreService } from "../services/projects-store.service";
-// import { DUMMY_PROJECTS } from "../constants/dummy.constants";
 import { MatDialog } from "@angular/material/dialog";
-import { ProjectsUpdateComponent } from "./projects-update/projects-update.component";
 
 @Component({
   selector: "app-projects",
@@ -20,8 +18,13 @@ import { ProjectsUpdateComponent } from "./projects-update/projects-update.compo
 })
 export class ProjectsComponent implements OnInit, OnDestroy {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
+  public selectedFilterType: null | string = null;
   public selectedFilterLanguage: null | string = null;
   public selectedView: "compact" | "expanded" = "compact";
+  public typeConfig = [
+    { title: "Personal", name: "personal" },
+    { title: "Educational", name: "educational" },
+  ];
   public filterType = "date";
   public projects: Projects;
   public projectsId: string;
@@ -113,6 +116,10 @@ export class ProjectsComponent implements OnInit, OnDestroy {
     ];
   }
 
+  filterByType($event: null | string) {
+    this.selectedFilterType = $event;
+  }
+
   filterByLanguage($event: null | string) {
     this.selectedFilterLanguage = $event;
   }
@@ -123,8 +130,12 @@ export class ProjectsComponent implements OnInit, OnDestroy {
 
   matchesFilters(data: any) {
     return (
-      this.selectedFilterLanguage === null ||
-      data.stack.find((item: any) => item.name === this.selectedFilterLanguage)
+      (this.selectedFilterType === null ||
+        this.selectedFilterType === data.type) &&
+      (this.selectedFilterLanguage === null ||
+        data.stack.find(
+          (item: any) => item.name === this.selectedFilterLanguage
+        ))
     );
   }
 

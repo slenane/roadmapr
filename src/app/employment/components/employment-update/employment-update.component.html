@@ -1,7 +1,7 @@
 <h1 mat-dialog-title>Update Employment</h1>
 <div mat-dialog-content>
   <form [formGroup]="employmentForm">
-    <mat-form-field appearance="outline" class="full-width">
+    <mat-form-field appearance="outline" class="full-width-grid-item">
       <mat-label>Select Type</mat-label>
       <mat-select #type formControlName="type">
         <mat-option value="employment">
@@ -95,17 +95,16 @@
         <input matInput formControlName="project" />
       </mat-form-field>
 
-      <mat-form-field appearance="outline">
+      <mat-form-field
+        appearance="outline"
+        *ngIf="employmentForm.controls.type.value === 'employment'"
+      >
         <mat-label>Link to Company</mat-label>
-        <input matInput #companyLink formControlName="companyLink" />
-        <mat-error *ngIf="employmentForm.controls.companyLink.invalid"
-          >Company Link required</mat-error
-        >
+        <input matInput formControlName="companyLink" />
       </mat-form-field>
     </ng-container>
   </form>
   <div mat-dialog-actions class="actions">
-    <button mat-button (click)="onNoClick()">Cancel</button>
     <button
       *ngIf="employmentForm.controls.type.value"
       mat-raised-button
@@ -114,5 +113,6 @@
       cdkFocusInitial
       >Save</button
     >
+    <button mat-raised-button (click)="onNoClick()">Cancel</button>
   </div>
 </div>

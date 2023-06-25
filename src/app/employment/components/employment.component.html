@@ -29,12 +29,11 @@
         class="drag-group-items"
         (cdkDropListDropped)="drop($event)"
       >
-        <div *ngFor="let data of todoArray">
+        <div *ngFor="let data of todoArray" class="drag-group-item" cdkDrag>
           <app-employment-item
             *ngIf="matchesFilters(data)"
             [data]="data"
             [selectedView]="selectedView"
-            cdkDrag
           >
           </app-employment-item>
         </div>
@@ -47,12 +46,15 @@
         class="drag-group-items"
         (cdkDropListDropped)="drop($event)"
       >
-        <div *ngFor="let data of inProgressArray">
+        <div
+          *ngFor="let data of inProgressArray"
+          class="drag-group-item"
+          cdkDrag
+        >
           <app-employment-item
             *ngIf="matchesFilters(data)"
             [data]="data"
             [selectedView]="selectedView"
-            cdkDrag
           >
           </app-employment-item>
         </div>
@@ -65,12 +67,11 @@
         class="drag-group-items"
         (cdkDropListDropped)="drop($event)"
       >
-        <div *ngFor="let data of doneArray">
+        <div *ngFor="let data of doneArray" class="drag-group-item" cdkDrag>
           <app-employment-item
             *ngIf="matchesFilters(data)"
             [data]="data"
             [selectedView]="selectedView"
-            cdkDrag
           >
           </app-employment-item>
         </div>

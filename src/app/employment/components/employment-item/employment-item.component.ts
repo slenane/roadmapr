@@ -15,6 +15,7 @@ import { EmploymentItemDetailsComponent } from "./employment-item-details/employ
   styleUrls: ["./employment-item.component.scss"],
 })
 export class EmploymentItemComponent implements OnInit, OnChanges {
+  public sortedStack: any[] = [];
   @Input() selectedView: any;
   @Input() data: any;
 
@@ -32,12 +33,24 @@ export class EmploymentItemComponent implements OnInit, OnChanges {
     ) {
       this.selectedView = changes.selectedView.currentValue;
     }
+    if (
+      changes.data &&
+      changes.data.currentValue != changes.data.previousValue
+    ) {
+      if (this.data.stack) {
+        this.sortedStack = this.sortStack([...this.data.stack]);
+      }
+    }
+  }
+
+  sortStack(stack: any) {
+    return stack.sort((a: any, b: any) => a.name.localeCompare(b.name));
   }
 
   openItemDetails() {
     this.dialog.open(EmploymentItemDetailsComponent, {
       width: "50vw",
-      data: this.data,
+      data: { ...this.data, stack: this.sortedStack },
     });
   }
 }

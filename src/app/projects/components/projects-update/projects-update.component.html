@@ -1,6 +1,29 @@
 <h1 mat-dialog-title>Update Projects</h1>
 <div mat-dialog-content>
   <form [formGroup]="projectForm">
+    <mat-form-field appearance="outline" class="full-width-grid-item">
+      <mat-label>Select Type</mat-label>
+      <mat-select #type formControlName="type">
+        <mat-option value="personal">
+          <img
+            src="/assets/images/icons/personal.png"
+            class="app-roadmap-type-icon"
+          />
+          Personal
+        </mat-option>
+        <mat-option value="educational">
+          <img
+            src="/assets/images/icons/educational.png"
+            class="app-roadmap-type-icon"
+          />
+          Educational
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="projectForm.controls.type.invalid"
+        >Type required</mat-error
+      >
+    </mat-form-field>
+
     <mat-form-field appearance="outline">
       <mat-label>Title</mat-label>
       <input cdkFocusInitial #title matInput formControlName="title" />
@@ -66,13 +89,14 @@
     </mat-form-field>
   </form>
   <div mat-dialog-actions class="actions">
-    <button mat-button (click)="onNoClick()">Cancel</button>
     <button
       mat-raised-button
+      *ngIf="projectForm.controls.type.value"
       color="primary"
       (click)="onSaveClick()"
       cdkFocusInitial
       >Save</button
     >
+    <button mat-raised-button (click)="onNoClick()">Cancel</button>
   </div>
 </div>

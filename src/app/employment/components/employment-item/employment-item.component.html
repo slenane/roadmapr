@@ -12,7 +12,7 @@
 
     <div class="tech-stack">
       <img
-        *ngFor="let tech of data.stack"
+        *ngFor="let tech of sortedStack"
         class="app-stack-icon"
         matTooltip="{{ tech.title }}"
         src="/assets/images/stack/{{ tech.name }}-original.svg"
@@ -31,6 +31,26 @@
 
       <div class="description_title">Description</div>
       <p class="description">{{ data.description }}</p>
+
+      <p class="actions">
+        <a href="data.companyLink" *ngIf="data.companyLink">
+          <button mat-raised-button color="primary" type="button"
+            >See Company</button
+          >
+        </a>
+
+        <a href="data.github" *ngIf="data.github">
+          <button mat-raised-button color="default" type="button"
+            >GitHub</button
+          >
+        </a>
+
+        <a href="data.project" *ngIf="data.project">
+          <button mat-raised-button color="default" type="button"
+            >Live Project</button
+          >
+        </a>
+      </p>
     </div>
   </mat-card-content>
 </mat-card>

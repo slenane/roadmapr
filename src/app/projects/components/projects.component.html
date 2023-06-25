@@ -3,8 +3,10 @@
     <app-drop-list-filters
       *ngIf="projects"
       [parentId]="projects._id"
+      [typeConfig]="typeConfig"
       [languageConfig]="languageFilterData"
       (onFilterLanguage)="filterByLanguage($event)"
+      (onFilterType)="filterByType($event)"
       (onUpdateView)="updateView($event)"
       (onUpdate)="createProject($event)"
     >
@@ -26,12 +28,11 @@
         class="drag-group-items"
         (cdkDropListDropped)="drop($event)"
       >
-        <div *ngFor="let data of todoArray">
+        <div *ngFor="let data of todoArray" class="drag-group-item" cdkDrag>
           <app-project
             *ngIf="matchesFilters(data)"
             [data]="data"
             [selectedView]="selectedView"
-            cdkDrag
           >
           </app-project>
         </div>
@@ -44,12 +45,15 @@
         class="drag-group-items"
         (cdkDropListDropped)="drop($event)"
       >
-        <div *ngFor="let data of inProgressArray">
+        <div
+          *ngFor="let data of inProgressArray"
+          class="drag-group-item"
+          cdkDrag
+        >
           <app-project
             *ngIf="matchesFilters(data)"
             [data]="data"
             [selectedView]="selectedView"
-            cdkDrag
           >
           </app-project>
         </div>
@@ -62,12 +66,11 @@
         class="drag-group-items"
         (cdkDropListDropped)="drop($event)"
       >
-        <div *ngFor="let data of doneArray">
+        <div *ngFor="let data of doneArray" class="drag-group-item" cdkDrag>
           <app-project
             *ngIf="matchesFilters(data)"
             [data]="data"
             [selectedView]="selectedView"
-            cdkDrag
           >
           </app-project>
         </div>

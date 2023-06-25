@@ -6,6 +6,8 @@ import { EmploymentStoreService } from "../services/employment-store.service";
 import { MatDialog } from "@angular/material/dialog";
 import { EmploymentService } from "../services/employment.service";
 import {
+  CdkDropListGroup,
+  CdkDropList,
   CdkDragDrop,
   moveItemInArray,
   transferArrayItem,
