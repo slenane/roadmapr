@@ -1,14 +1,24 @@
 .dashboard {
+  height: 100vh;
   display: grid;
   gap: 1rem;
 
-  &-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 1rem;
+  app-dashboard-filters {
+    margin: 1rem 1rem 0;
+  }
 
-    mat-card {
-      margin-bottom: 1rem;
+  .scroll {
+    overflow: auto;
+    padding: 0 1rem 1rem 1rem;
+
+    .dashboard-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1rem;
+
+      mat-card {
+        margin-bottom: 1rem;
+      }
     }
   }
 }
