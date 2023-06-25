@@ -4,7 +4,7 @@
   margin-bottom: 1rem;
   gap: 1rem;
 
-  .title {
+  .role {
     display: grid;
     grid-template-columns: auto 1fr;
     gap: 0.5rem;
@@ -57,7 +57,7 @@
 
   .body-actions {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto auto;
     justify-content: end;
     gap: 1rem;
   }

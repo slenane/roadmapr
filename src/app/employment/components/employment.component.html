@@ -1,75 +1,79 @@
-<app-employment-filters
-  *ngIf="employment"
-  [employmentId]="employment._id"
-  (filterEmployment)="filterEmployment($event)"
-  (onUpdateView)="updateView($event)"
-  (updateEmployment)="addEmployment($event)"
->
-</app-employment-filters>
-
-<div cdkDropListGroup class="employment-container">
-  <div class="employment-div">
-    <h2>To Do</h2>
-
-    <div
-      cdkDropList
-      #todoList="cdkDropList"
-      [cdkDropListData]="todoArray"
-      class="employment-items"
-      (cdkDropListDropped)="drop($event)"
+<div class="employment drag-group">
+  <div class="drag-group-header">
+    <app-drop-list-filters
+      *ngIf="employment"
+      [type]="'employment'"
+      [parentId]="employment._id"
+      [typeConfig]="typeConfig"
+      [languageConfig]="languageFilterData"
+      (onFilterLanguage)="filterByLanguage($event)"
+      (onFilterType)="filterByType($event)"
+      (onUpdateView)="updateView($event)"
+      (onUpdate)="createEmploymentItem($event)"
     >
-      <div class="employment-item" *ngFor="let data of todoArray">
-        <app-employment-item
-          *ngIf="selectedFilter === null || selectedFilter === data.type"
-          [data]="data"
-          [selectedView]="selectedView"
-          cdkDrag
-        >
-        </app-employment-item>
-      </div>
+    </app-drop-list-filters>
+
+    <div class="drag-group-titles">
+      <h2>To Do</h2>
+      <h2>In Progress</h2>
+      <h2>Done</h2>
     </div>
   </div>
 
-  <div class="employment-div">
-    <h2>In Progress</h2>
-
-    <div
-      cdkDropList
-      #inProgressList="cdkDropList"
-      [cdkDropListData]="inProgressArray"
-      class="employment-items"
-      (cdkDropListDropped)="drop($event)"
-    >
-      <div class="employment-item" *ngFor="let data of inProgressArray">
-        <app-employment-item
-          *ngIf="selectedFilter === null || selectedFilter === data.type"
-          [data]="data"
-          [selectedView]="selectedView"
-          cdkDrag
-        >
-        </app-employment-item>
+  <div class="scroll" cdkScrollable>
+    <div cdkDropListGroup class="drag-group-container">
+      <div
+        cdkDropList
+        #todoList="cdkDropList"
+        [cdkDropListData]="todoArray"
+        class="drag-group-items"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div *ngFor="let data of todoArray">
+          <app-employment-item
+            *ngIf="matchesFilters(data)"
+            [data]="data"
+            [selectedView]="selectedView"
+            cdkDrag
+          >
+          </app-employment-item>
+        </div>
       </div>
-    </div>
-  </div>
 
-  <div class="employment-div">
-    <h2>Done</h2>
+      <div
+        cdkDropList
+        #inProgressList="cdkDropList"
+        [cdkDropListData]="inProgressArray"
+        class="drag-group-items"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div *ngFor="let data of inProgressArray">
+          <app-employment-item
+            *ngIf="matchesFilters(data)"
+            [data]="data"
+            [selectedView]="selectedView"
+            cdkDrag
+          >
+          </app-employment-item>
+        </div>
+      </div>
 
-    <div
-      cdkDropList
-      #doneList="cdkDropList"
-      [cdkDropListData]="doneArray"
-      class="employment-items"
-      (cdkDropListDropped)="drop($event)"
-    >
-      <div class="employment-item" *ngFor="let data of doneArray">
-        <app-employment-item
-          *ngIf="selectedFilter === null || selectedFilter === data.type"
-          [data]="data"
-          [selectedView]="selectedView"
-          cdkDrag
-        >
-        </app-employment-item>
+      <div
+        cdkDropList
+        #doneList="cdkDropList"
+        [cdkDropListData]="doneArray"
+        class="drag-group-items"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div *ngFor="let data of doneArray">
+          <app-employment-item
+            *ngIf="matchesFilters(data)"
+            [data]="data"
+            [selectedView]="selectedView"
+            cdkDrag
+          >
+          </app-employment-item>
+        </div>
       </div>
     </div>
   </div>

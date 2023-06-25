@@ -1,11 +1,11 @@
 <div class="content">
   <div class="header">
-    <div class="title">
+    <div class="role">
       <img
         src="/assets/images/icons/{{ data.type }}.png"
         class="app-roadmap-type-icon__large"
       />
-      <h2>{{ data.title }}</h2>
+      <h2>{{ data.role }}</h2>
     </div>
 
     <div class="actions">
@@ -23,10 +23,8 @@
   <div class="body">
     <div class="column">
       <div class="row">
-        <div class="grid-item__title">{{ providerType }}</div>
-        <p>{{
-          data.author || data.provider || data.instructor || data.institution
-        }}</p>
+        <div class="grid-item__title">Company</div>
+        <p>{{ data.company }}</p>
       </div>
 
       <div class="row">
@@ -59,9 +57,16 @@
         <a *ngIf="data.github" target="_blank" href="{{ data.github }}">
           <button mat-raised-button color="black">See Repo</button>
         </a>
-        <a *ngIf="data.link" target="_blank" href="{{ data.link }}">
+        <a *ngIf="data.project" target="_blank" href="{{ data.project }}">
+          <button mat-raised-button color="secondary">See Live Project</button>
+        </a>
+        <a
+          *ngIf="data.companyLink"
+          target="_blank"
+          href="{{ data.companyLink }}"
+        >
           <button mat-raised-button cdkFocusInitial color="primary"
-            >See {{ data.type }}</button
+            >See Company</button
           >
         </a>
         <a>

@@ -6,8 +6,8 @@ import {
   OnChanges,
 } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
-import { EmploymentUpdateComponent } from "../employment-update/employment-update.component";
 import { EmploymentStoreService } from "../../services/employment-store.service";
+import { EmploymentItemDetailsComponent } from "./employment-item-details/employment-item-details.component";
 
 @Component({
   selector: "app-employment-item",
@@ -34,21 +34,10 @@ export class EmploymentItemComponent implements OnInit, OnChanges {
     }
   }
 
-  editItem() {
-    const dialogRef = this.dialog.open(EmploymentUpdateComponent, {
-      width: "60vw",
+  openItemDetails() {
+    this.dialog.open(EmploymentItemDetailsComponent, {
+      width: "50vw",
       data: this.data,
     });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result) {
-        this.data = { ...this.data, ...result };
-        this.employmentStoreService.updateEmploymentItem(this.data);
-      }
-    });
-  }
-
-  deleteItem() {
-    this.employmentStoreService.removeEmploymentItem(this.data);
   }
 }

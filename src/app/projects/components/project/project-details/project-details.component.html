@@ -1,6 +1,8 @@
 <div class="content">
   <div class="header">
-    <h2>{{ data.title }}</h2>
+    <div class="title">
+      <h2>{{ data.title }}</h2>
+    </div>
 
     <div class="actions">
       <button mat-button [matMenuTriggerFor]="menu"
@@ -13,41 +15,50 @@
       </mat-menu>
     </div>
   </div>
+
   <div class="body">
-    <div class="grid-column">
-      <div class="grid-row">
+    <div class="column">
+      <div class="row">
+        <div class="grid-item__title">Timeline</div>
         <p>
-          <span>{{ data.startDate | date }}</span>
-          <span *ngIf="data.startDate && data.endDate"> - </span>
-          <span>{{ data.endDate | date }}</span>
+          {{ data.startDate | date }} - {{ (data.endDate | date) || "Present" }}
         </p>
       </div>
 
-      <div class="grid-row">
-        <div class="grid-item__title">Description</div>
-        <p>{{ data.description }}</p>
-      </div>
-
-      <div class="grid-column">
+      <div class="row">
         <div class="grid-item__title">Stack</div>
-        <div class="skills-grid">
-          <div class="skill-item" *ngFor="let item of data.stack">
-            <img
-              class="stack-image"
-              src="/assets/images/stack/{{ item.name }}-original.svg"
-            />
-            <span class="stack-title">{{ item.title }}</span>
-          </div>
+        <div class="roadmap-stack">
+          <img
+            *ngFor="let tech of data.stack"
+            class="app-stack-icon__large"
+            matTooltip="{{ tech.title }}"
+            src="/assets/images/stack/{{ tech.name }}-original.svg"
+          />
         </div>
       </div>
     </div>
-    <div class="footer">
-      <a target="_blank" href="{{ data.link }}">
-        <button mat-raised-button color="primary">See Project</button>
-      </a>
-      <button mat-raised-button color="default" (click)="onCancel()"
-        >Close</button
-      >
+
+    <div class="column description-column">
+      <div class="row">
+        <div class="grid-item__title">Description</div>
+        <p class="description-text">{{ data.description }}</p>
+      </div>
+
+      <div class="body-actions">
+        <a *ngIf="data.github" target="_blank" href="{{ data.github }}">
+          <button mat-raised-button color="black">See Repo</button>
+        </a>
+        <a *ngIf="data.link" target="_blank" href="{{ data.link }}">
+          <button mat-raised-button cdkFocusInitial color="primary"
+            >See Live Project</button
+          >
+        </a>
+        <a>
+          <button mat-raised-button color="default" (click)="onCancel()"
+            >Close</button
+          >
+        </a>
+      </div>
     </div>
   </div>
 </div>

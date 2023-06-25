@@ -25,6 +25,7 @@ export class RoadmapItemDetailsComponent implements OnInit {
   ngOnInit(): void {
     if (this.data) {
       if (this.data.author) this.providerType = "Author";
+      else if (this.data.institution) this.providerType = "Institution";
       else if (this.data.instructor) this.providerType = "Instructor";
     }
   }

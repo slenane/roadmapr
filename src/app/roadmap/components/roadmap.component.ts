@@ -28,7 +28,7 @@ export class RoadmapComponent implements OnInit, OnDestroy {
     { title: "Tutorials", name: "tutorial" },
   ];
   public filterType = "date";
-  public languageFilterData: any = {};
+  public languageFilterData: any = [];
   public roadmap: Roadmap;
   public roadmapId: string;
 
@@ -135,6 +135,10 @@ export class RoadmapComponent implements OnInit, OnDestroy {
     this.selectedFilterLanguage = $event;
   }
 
+  updateView($event: any) {
+    this.selectedView = $event;
+  }
+
   matchesFilters(data: any) {
     return (
       (this.selectedFilterType === null ||
@@ -144,10 +148,6 @@ export class RoadmapComponent implements OnInit, OnDestroy {
           (item: any) => item.name === this.selectedFilterLanguage
         ))
     );
-  }
-
-  updateView($event: any) {
-    this.selectedView = $event;
   }
 
   createRoadmapItem(item: any) {

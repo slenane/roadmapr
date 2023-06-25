@@ -1,5 +1,7 @@
 mat-card {
+  cursor: grab;
   padding: 1rem 0;
+  margin-bottom: 0.5rem;
 
   mat-card-header {
     display: grid;
@@ -31,6 +33,7 @@ mat-card {
     .content {
       padding-top: 1rem;
 
+      .timeline_title,
       .description_title {
         font-weight: 500;
       }

@@ -1,8 +1,6 @@
 import { NgModule } from "@angular/core";
 import { MaterialModule } from "../material/material.module";
-import { RoadmapFiltersComponent } from "./components/roadmap-filters/roadmap-filters.component";
 import { RoadmapItemComponent } from "./components/roadmap-item/roadmap-item.component";
-import { RoadmapStatisticsComponent } from "./components/roadmap-statistics/roadmap-statistics.component";
 import { RoadmapUpdateBookComponent } from "./components/roadmap-update/roadmap-update-book/roadmap-update-book.component";
 import { RoadmapUpdateCourseComponent } from "./components/roadmap-update/roadmap-update-course/roadmap-update-course.component";
 import { RoadmapUpdateDegreeComponent } from "./components/roadmap-update/roadmap-update-degree/roadmap-update-degree.component";
@@ -23,10 +21,8 @@ import { RoadmapItemDetailsComponent } from "./components/roadmap-item/roadmap-i
 
 @NgModule({
   declarations: [
-    RoadmapFiltersComponent,
     RoadmapItemComponent,
     RoadmapComponent,
-    RoadmapStatisticsComponent,
     RoadmapUpdateBookComponent,
     RoadmapUpdateComponent,
     RoadmapUpdateCourseComponent,
@@ -35,10 +31,8 @@ import { RoadmapItemDetailsComponent } from "./components/roadmap-item/roadmap-i
     RoadmapItemDetailsComponent,
   ],
   exports: [
-    RoadmapFiltersComponent,
     RoadmapItemComponent,
     RoadmapComponent,
-    RoadmapStatisticsComponent,
     RoadmapUpdateBookComponent,
     RoadmapUpdateComponent,
     RoadmapUpdateCourseComponent,

@@ -32,7 +32,7 @@ export class ProjectComponent implements OnInit, OnChanges {
 
   openItemDetails() {
     this.dialog.open(ProjectDetailsComponent, {
-      width: "60vw",
+      width: "50vw",
       data: this.data,
     });
   }

@@ -1,5 +1,7 @@
 mat-card {
+  cursor: grab;
   padding: 1rem 0;
+  margin-bottom: 0.5rem;
 
   &.recommendation {
     border-top: 3px solid gold;

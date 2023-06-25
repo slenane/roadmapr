@@ -4,7 +4,6 @@ import { filter, takeUntil } from "rxjs/operators";
 import { Employment } from "../store/employment.models";
 import { EmploymentStoreService } from "../services/employment-store.service";
 import { MatDialog } from "@angular/material/dialog";
-import { EmploymentUpdateComponent } from "./employment-update/employment-update.component";
 import { EmploymentService } from "../services/employment.service";
 import {
   CdkDragDrop,
@@ -19,9 +18,15 @@ import {
 })
 export class EmploymentComponent implements OnInit {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
-  public selectedFilter: null | string = null;
-  public selectedView: "dense" | "sparse" = "dense";
+  public selectedFilterType: null | string = null;
+  public selectedFilterLanguage: null | string = null;
+  public selectedView: "compact" | "expanded" = "compact";
+  public typeConfig = [
+    { title: "Employment", name: "employment" },
+    { title: "Freelance", name: "freelance" },
+  ];
   public filterType = "date";
+  public languageFilterData: any = [];
   public employment: Employment;
   public employmentId: string;
   public employmentList: any[];
@@ -49,6 +54,7 @@ export class EmploymentComponent implements OnInit {
         if (this.employment.employmentList.length) {
           this.sortEmploymentList([...employment.employmentList]);
           this.getEmploymentConfig();
+          this.getLanguageFilterData();
         }
       });
   }
@@ -79,12 +85,60 @@ export class EmploymentComponent implements OnInit {
     }
   }
 
-  filterEmployment($event: null | string) {
-    this.selectedFilter = $event;
+  getLanguageFilterData() {
+    const employment: any[] = this.generateEmployment(
+      this.employmentList,
+      this.filterType
+    );
+    const languageData: any[] = [];
+    const languages: any[] = [];
+
+    employment.forEach((item) => {
+      item.stack.forEach((language: any) => {
+        if (!languageData[language.name]) {
+          languageData[language.name] = {
+            count: 0,
+          };
+          languages.push(language);
+        }
+        languageData[language.name].count++;
+      });
+    });
+
+    const sortable = [];
+
+    for (let item in languageData) {
+      sortable.push([item, languageData[item].count]);
+    }
+
+    this.languageFilterData = [
+      ...[...sortable.sort((a, b) => b[1] - a[1]).splice(0, 10)].map((item) => {
+        return languages.find((language) => language.name === item[0]);
+      }),
+    ];
+  }
+
+  filterByType($event: null | string) {
+    this.selectedFilterType = $event;
+  }
+
+  filterByLanguage($event: null | string) {
+    this.selectedFilterLanguage = $event;
   }
 
   updateView($event: any) {
     this.selectedView = $event;
+  }
+
+  matchesFilters(data: any) {
+    return (
+      (this.selectedFilterType === null ||
+        this.selectedFilterType === data.type) &&
+      (this.selectedFilterLanguage === null ||
+        data.stack.find(
+          (item: any) => item.name === this.selectedFilterLanguage
+        ))
+    );
   }
 
   sortEmploymentList(list: any[]) {
@@ -102,7 +156,7 @@ export class EmploymentComponent implements OnInit {
     ];
   }
 
-  addEmployment(item: any) {
+  createEmploymentItem(item: any) {
     if (item.data) {
       this.employmentStoreService.createEmploymentItem(item.id, item.data);
     }

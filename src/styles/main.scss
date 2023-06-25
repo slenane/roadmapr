@@ -1,0 +1,90 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  font-size: 14px;
+}
+
+body {
+  background: #fafafa;
+  margin: 0;
+}
+
+app-root {
+  width: 100%;
+  position: absolute;
+}
+
+.mat-option {
+  font-size: 14px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.full-width-grid-item {
+  grid-column: 1 / -1;
+}
+
+.app-roadmap-type-icon {
+  height: 1rem;
+  width: 1rem;
+  margin-right: 0.5rem;
+}
+
+.app-roadmap-type-icon__large {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.app-stack-icon {
+  border-radius: 50%;
+  height: 1.2rem;
+  width: 1.2rem;
+  margin: 0 0.1rem;
+}
+
+.app-stack-icon__large {
+  height: 2rem;
+  width: 2rem;
+  margin: 0 0.5rem 0.5rem;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 20;
+}
+
+.mat-snack-bar-container {
+  &.snackbar-error {
+    background-color: red;
+    color: white;
+  }
+
+  .mat-simple-snackbar-action button {
+    color: white;
+  }
+}
+
+mat-button-toggle-group {
+  .mat-button-toggle-appearance-standard .mat-button-toggle-label-content {
+    line-height: 35px;
+    padding: 0 10px;
+
+    .app-roadmap-type-icon {
+      margin-right: 0.2rem;
+    }
+
+    .app-stack-icon {
+      border-radius: 0%;
+      margin: 0;
+    }
+
+    .toggle-view {
+      color: #5f6368;
+    }
+  }
+}

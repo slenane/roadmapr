@@ -20,11 +20,13 @@ import { ProjectsUpdateComponent } from "./projects-update/projects-update.compo
 })
 export class ProjectsComponent implements OnInit, OnDestroy {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
-  public selectedFilter: null | string = null;
-  public selectedView: "dense" | "sparse" = "dense";
+  public selectedFilterLanguage: null | string = null;
+  public selectedView: "compact" | "expanded" = "compact";
   public filterType = "date";
   public projects: Projects;
   public projectsId: string;
+
+  public languageFilterData: any = [];
 
   public todoArray: any[];
   public inProgressArray: any[];
@@ -45,7 +47,10 @@ export class ProjectsComponent implements OnInit, OnDestroy {
       )
       .subscribe((projects: Projects) => {
         this.projects = projects;
-        if (this.projects.projectList.length) this.getProjectsConfig();
+        if (this.projects.projectList.length) {
+          this.getProjectsConfig();
+          this.getLanguageFilterData();
+        }
       });
   }
 
@@ -75,15 +80,55 @@ export class ProjectsComponent implements OnInit, OnDestroy {
     }
   }
 
-  filterProjects($event: null | string) {
-    this.selectedFilter = $event;
+  getLanguageFilterData() {
+    const projects: any[] = this.generateProjects(
+      this.projects.projectList,
+      this.filterType
+    );
+    const languageData: any[] = [];
+    const languages: any[] = [];
+
+    projects.forEach((item) => {
+      item.stack.forEach((language: any) => {
+        if (!languageData[language.name]) {
+          languageData[language.name] = {
+            count: 0,
+          };
+          languages.push(language);
+        }
+        languageData[language.name].count++;
+      });
+    });
+
+    const sortable = [];
+
+    for (let item in languageData) {
+      sortable.push([item, languageData[item].count]);
+    }
+
+    this.languageFilterData = [
+      ...[...sortable.sort((a, b) => b[1] - a[1]).splice(0, 20)].map((item) => {
+        return languages.find((language) => language.name === item[0]);
+      }),
+    ];
+  }
+
+  filterByLanguage($event: null | string) {
+    this.selectedFilterLanguage = $event;
   }
 
   updateView($event: any) {
     this.selectedView = $event;
   }
 
-  addProject(item: any) {
+  matchesFilters(data: any) {
+    return (
+      this.selectedFilterLanguage === null ||
+      data.stack.find((item: any) => item.name === this.selectedFilterLanguage)
+    );
+  }
+
+  createProject(item: any) {
     if (item.data) {
       this.projectsStoreService.createProject(item.id, item.data);
     }

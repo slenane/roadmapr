@@ -5,14 +5,14 @@
   <mat-card-header>
     <mat-card-title>
       <img
-        src="/assets/images/roadmap/{{ data.type }}.png"
+        src="/assets/images/icons/{{ data.type }}.png"
         matTooltip="{{ data.type }}"
         class="app-roadmap-type-icon"
       />
       {{ data.title }}
     </mat-card-title>
     <mat-card-subtitle>
-      {{ data.author || data.instructor }}
+      {{ data.author || data.instructor || data.provider || data.institution }}
     </mat-card-subtitle>
 
     <div class="roadmap-stack">
