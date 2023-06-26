@@ -1,42 +1,81 @@
-<div class="filters">
-  <p>
-    Type
-    <mat-button-toggle-group
-      name="type"
-      aria-label="Type"
-      [value]="selectedType"
-    >
-      <mat-button-toggle value="all" selected>All</mat-button-toggle>
-      <mat-button-toggle value="back">Backend</mat-button-toggle>
-      <mat-button-toggle value="front">Frontend</mat-button-toggle>
-    </mat-button-toggle-group>
-  </p>
+<div class="filter-container">
+  <div class="row language-select">
+    <div>
+      <span class="filter-type">Language</span>
+      <mat-button-toggle-group
+        name="language"
+        aria-label="Language"
+        [value]="selectedLanguage"
+      >
+        <mat-button-toggle
+          *ngFor="let language of sortedStack"
+          #tooltip="matTooltip"
+          matTooltipShowDelay="500"
+          matTooltip="{{ language.title }}"
+          matTooltipPosition="below"
+          (click)="filterLanguage(language.name)"
+          [value]="language.name"
+        >
+          <img
+            class="app-stack-icon"
+            src="/assets/images/stack/{{ language.name }}-original.svg"
+            alt="Stack Icon"
+          />
+        </mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+    <div> More filters v </div>
+  </div>
+  <div class="row filters">
+    <div *ngIf="typeConfig">
+      <span class="filter-type">Type</span>
+      <mat-button-toggle-group
+        name="type"
+        aria-label="Type"
+        [value]="selectedType"
+      >
+        <mat-button-toggle
+          *ngFor="let type of typeConfig"
+          (click)="filterType(type.name)"
+          [value]="type.name"
+        >
+          {{ type.title }}
+        </mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
 
-  <p>
-    Status
-    <mat-button-toggle-group
-      name="status"
-      aria-label="Status"
-      [value]="selectedStatus"
-    >
-      <mat-button-toggle value="all" selected>All</mat-button-toggle>
-      <mat-button-toggle value="inprogress">In Progress</mat-button-toggle>
-      <mat-button-toggle value="completed">Completed</mat-button-toggle>
-    </mat-button-toggle-group>
-  </p>
+    <div>
+      <span class="filter-type">Status</span>
+      <mat-button-toggle-group
+        name="status"
+        aria-label="Status"
+        [value]="selectedStatus"
+      >
+        <mat-button-toggle
+          *ngFor="let status of statusConfig"
+          (click)="filterStatus(status.name)"
+          [value]="status.name"
+        >
+          {{ status.title }}
+        </mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
 
-  <p>
-    Period
-    <mat-button-toggle-group
-      name="period"
-      aria-label="Period"
-      [value]="selectedPeriod"
-    >
-      <mat-button-toggle value="all" selected>All</mat-button-toggle>
-      <mat-button-toggle value="one">Last Month</mat-button-toggle>
-      <mat-button-toggle value="three">Last 3 Months</mat-button-toggle>
-      <mat-button-toggle value="six">Last 6 Months</mat-button-toggle>
-      <mat-button-toggle value="year">Last Year</mat-button-toggle>
-    </mat-button-toggle-group>
-  </p>
+    <div>
+      <span class="filter-type">Period</span>
+      <mat-button-toggle-group
+        name="period"
+        aria-label="Period"
+        [value]="selectedPeriod"
+      >
+        <mat-button-toggle
+          *ngFor="let time of timeConfig"
+          (click)="filterPeriod(time.name)"
+          [value]="time.name"
+        >
+          {{ time.title }}
+        </mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+  </div>
 </div>

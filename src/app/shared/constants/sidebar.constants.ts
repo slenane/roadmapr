@@ -1,6 +1,6 @@
 export const SIDEBAR_OPTIONS = [
   {
-    title: "Dashboard",
+    title: "Roadmap",
     icon: "timeline",
     link: "/dashboard",
   },

@@ -1,6 +1,25 @@
-.filters {
+.filter-container {
   display: grid;
-  grid-template-columns: auto auto auto;
-  justify-content: start;
+  grid-template-columns: 1fr;
   gap: 1rem;
+
+  .row {
+    display: grid;
+    gap: 1rem;
+    justify-content: flex-start;
+    font-size: 0.9rem;
+
+    &.filters {
+      grid-template-columns: auto auto auto;
+    }
+
+    &.language-select {
+      grid-template-columns: 1fr auto;
+    }
+
+    .filter-type {
+      font-weight: 500;
+      margin-right: 0.5rem;
+    }
+  }
 }

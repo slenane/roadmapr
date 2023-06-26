@@ -22,12 +22,6 @@ export class DropListFiltersComponent implements OnInit, OnChanges {
   public selectedView: "compact" | "expanded" = "compact";
   public selectedLanguage: any = null;
   public selectedType: null | "book" | "course" | "degree" | "tutorial" = null;
-  public filters = [
-    { title: "Books", type: "book" },
-    { title: "Courses", type: "course" },
-    { title: "Degrees", type: "degree" },
-    { title: "Tutorials", type: "tutorial" },
-  ];
 
   @Input() type: "employment" | "education" | "projects";
   @Input() parentId: string;
@@ -55,6 +49,7 @@ export class DropListFiltersComponent implements OnInit, OnChanges {
         changes.languageConfig.previousValue
     ) {
       if (this.languageConfig) {
+        console.log(this.languageConfig);
         this.sortedStack = this.sortStack([...this.languageConfig]);
       }
     }

@@ -15,6 +15,7 @@ export class DashboardComponent implements OnInit {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
   public dashboard: any = {};
   public stack: any = {};
+  public stackList: any = {};
   public distribution: any = {};
   public timeline: any = {};
   public radar: any = {};
@@ -44,6 +45,14 @@ export class DashboardComponent implements OnInit {
             employment,
           });
 
+          this.stackList = this.extractStackList({
+            education,
+            projects,
+            employment,
+          });
+
+          console.log(this.stackList);
+
           this.radar = this.extractStackRadarData({
             personal: [...education, ...projects],
             professional: employment,
@@ -65,6 +74,20 @@ export class DashboardComponent implements OnInit {
   ngOnDestroy() {
     this.ngUnsubscribe.next();
     this.ngUnsubscribe.complete();
+  }
+
+  extractStackList(data: any) {
+    const stack: any = [];
+    for (const section in data) {
+      data[section].forEach((item: any) => {
+        item.stack.forEach((language: any) => {
+          if (!stack.find((curr: any) => curr.name === language.name)) {
+            stack.push(language);
+          }
+        });
+      });
+    }
+    return stack;
   }
 
   extractStackData(data: any) {
