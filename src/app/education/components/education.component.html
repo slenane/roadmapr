@@ -4,6 +4,7 @@
       *ngIf="education"
       [type]="'education'"
       [parentId]="education._id"
+      [selectedView]="selectedView"
       [typeConfig]="typeConfig"
       [languageConfig]="languageFilterData"
       (onFilterLanguage)="filterByLanguage($event)"

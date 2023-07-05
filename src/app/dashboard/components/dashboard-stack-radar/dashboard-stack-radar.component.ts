@@ -32,47 +32,55 @@ export class DashboardStackRadarComponent implements OnInit, OnChanges {
   }
 
   generateChartData(data: any): void {
-    const personal = [...Object.values(data.personal)];
-    const professional = [...Object.values(data.professional)];
-    const labels = Array.from(
-      new Set([
-        ...personal.map((row: any) => row.language.title),
-        ...professional.map((row: any) => row.language.title),
-      ])
-    );
+    if (data?.personal || data?.professional) {
+      const personal = [
+        ...(Object.keys(data?.personal) ? Object.values(data?.personal) : []),
+      ];
+      const professional = [
+        ...(Object.keys(data?.professional)
+          ? Object.values(data?.professional)
+          : []),
+      ];
+      const labels = Array.from(
+        new Set([
+          ...personal.map((row: any) => row.language.title),
+          ...professional.map((row: any) => row.language.title),
+        ])
+      ).sort((a: any, b: any) => a.localeCompare(b));
 
-    let personalData = [],
-      professionalData = [];
+      let personalData = [],
+        professionalData = [];
 
-    for (const label of labels) {
-      const personalItem: any = personal.find(
-        (item: any) => item.language.title === label
-      );
-      const professionalItem: any = professional.find(
-        (item: any) => item.language.title === label
-      );
-      personalData.push(personalItem?.duration || 0);
-      professionalData.push(professionalItem?.duration || 0);
-    }
+      for (const label of labels) {
+        const personalItem: any = personal.find(
+          (item: any) => item.language.title === label
+        );
+        const professionalItem: any = professional.find(
+          (item: any) => item.language.title === label
+        );
+        personalData.push(personalItem?.duration || 0);
+        professionalData.push(professionalItem?.duration || 0);
+      }
 
-    if (personal.length || professional.length) {
-      new Chart("stackRadar", {
-        type: "radar",
-        options: {},
-        data: {
-          labels: labels,
-          datasets: [
-            {
-              label: "Personal Days",
-              data: personalData,
-            },
-            {
-              label: "Professional",
-              data: professionalData,
-            },
-          ],
-        },
-      });
+      if (personal.length || professional.length) {
+        new Chart("stackRadar", {
+          type: "radar",
+          options: {},
+          data: {
+            labels: labels,
+            datasets: [
+              {
+                label: "Personal Days",
+                data: personalData,
+              },
+              {
+                label: "Professional Days",
+                data: professionalData,
+              },
+            ],
+          },
+        });
+      }
     }
   }
 }

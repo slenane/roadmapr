@@ -19,13 +19,13 @@ import { EducationUpdateComponent } from "src/app/education/components/education
 })
 export class DropListFiltersComponent implements OnInit, OnChanges {
   public sortedStack: any[] = [];
-  public selectedView: "compact" | "expanded" = "compact";
   public selectedLanguage: any = null;
   public selectedType: null | "book" | "course" | "degree" | "tutorial" = null;
 
   @Input() type: "employment" | "education" | "projects";
   @Input() parentId: string;
   @Input() typeConfig: any[];
+  @Input() selectedView: "compact" | "expanded";
   @Input() languageConfig: any[];
   @Output() onFilterType: EventEmitter<null | string> = new EventEmitter();
   @Output() onFilterLanguage: EventEmitter<null | string> = new EventEmitter();
@@ -49,7 +49,6 @@ export class DropListFiltersComponent implements OnInit, OnChanges {
         changes.languageConfig.previousValue
     ) {
       if (this.languageConfig) {
-        console.log(this.languageConfig);
         this.sortedStack = this.sortStack([...this.languageConfig]);
       }
     }
@@ -94,5 +93,12 @@ export class DropListFiltersComponent implements OnInit, OnChanges {
     dialogRef.afterClosed().subscribe((result: any) => {
       this.onUpdate.emit({ id: this.parentId, data: result });
     });
+  }
+
+  clearFilters() {
+    this.onFilterLanguage.emit(null);
+    this.selectedLanguage = null;
+    this.onFilterType.emit(null);
+    this.selectedType = null;
   }
 }

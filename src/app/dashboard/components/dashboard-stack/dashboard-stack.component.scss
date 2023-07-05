@@ -1,4 +1,8 @@
 mat-card-content {
   display: grid;
   justify-content: center;
+
+  .stack-container {
+    width: 100%;
+  }
 }

@@ -15,7 +15,7 @@ export class DashboardComponent implements OnInit {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
   public dashboard: any = {};
   public stack: any = {};
-  public stackList: any = {};
+  public stackList: any = [];
   public distribution: any = {};
   public timeline: any = {};
   public radar: any = {};
@@ -50,8 +50,6 @@ export class DashboardComponent implements OnInit {
             projects,
             employment,
           });
-
-          console.log(this.stackList);
 
           this.radar = this.extractStackRadarData({
             personal: [...education, ...projects],

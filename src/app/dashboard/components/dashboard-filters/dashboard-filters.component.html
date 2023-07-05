@@ -1,5 +1,108 @@
 <div class="filter-container">
-  <div class="row language-select">
+  <mat-accordion>
+    <mat-expansion-panel
+      (opened)="showAllFilters = true"
+      (closed)="showAllFilters = false"
+      hideToggle
+    >
+      <mat-expansion-panel-header>
+        <div class="header">
+          <div class="row language-select">
+            <div>
+              <span class="filter-type">Language</span>
+              <mat-button-toggle-group
+                name="language"
+                aria-label="Language"
+                [value]="selectedLanguage"
+              >
+                <mat-button-toggle
+                  *ngFor="let language of sortedStack"
+                  #tooltip="matTooltip"
+                  matTooltipShowDelay="500"
+                  matTooltip="{{ language.title }}"
+                  matTooltipPosition="below"
+                  (click)="filterLanguage($event, language.name)"
+                  [value]="language.name"
+                >
+                  <img
+                    class="app-stack-icon"
+                    src="/assets/images/stack/{{ language.name }}-original.svg"
+                    alt="Stack Icon"
+                  />
+                </mat-button-toggle>
+              </mat-button-toggle-group>
+            </div>
+          </div>
+          <div class="more-filters">
+            <span
+              >{{ showAllFilters === true ? "Fewer" : "More" }} Filters</span
+            >
+            <span class="material-symbols-outlined">
+              {{
+                showAllFilters === true
+                  ? "keyboard_arrow_up"
+                  : "keyboard_arrow_down"
+              }}
+            </span>
+          </div>
+        </div>
+      </mat-expansion-panel-header>
+      <div class="row filters">
+        <div *ngIf="typeConfig">
+          <span class="filter-type">Type</span>
+          <mat-button-toggle-group
+            name="type"
+            aria-label="Type"
+            [value]="selectedType"
+          >
+            <mat-button-toggle
+              *ngFor="let type of typeConfig"
+              (click)="filterType(type.name)"
+              [value]="type.name"
+            >
+              {{ type.title }}
+            </mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>
+
+        <div>
+          <span class="filter-type">Status</span>
+          <mat-button-toggle-group
+            name="status"
+            aria-label="Status"
+            [value]="selectedStatus"
+          >
+            <mat-button-toggle
+              *ngFor="let status of statusConfig"
+              (click)="filterStatus(status.name)"
+              [value]="status.name"
+            >
+              {{ status.title }}
+            </mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>
+
+        <div>
+          <span class="filter-type">Period</span>
+          <mat-button-toggle-group
+            name="period"
+            aria-label="Period"
+            [value]="selectedPeriod"
+          >
+            <mat-button-toggle
+              *ngFor="let time of timeConfig"
+              (click)="filterPeriod(time.name)"
+              [value]="time.name"
+            >
+              {{ time.title }}
+            </mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <!-- <div class="row language-select">
     <div>
       <span class="filter-type">Language</span>
       <mat-button-toggle-group
@@ -77,5 +180,5 @@
         </mat-button-toggle>
       </mat-button-toggle-group>
     </div>
-  </div>
+  </div> -->
 </div>

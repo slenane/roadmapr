@@ -1,11 +1,12 @@
 .filter-container {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr auto auto;
   gap: 1rem;
 
   .filters {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto auto auto auto;
+    align-items: center;
     gap: 1rem;
     justify-content: flex-start;
     font-size: 0.9rem;
@@ -17,7 +18,23 @@
 
     .toggle-view {
       color: #5f6368;
-      font-weight: 300;
+
+      .material-symbols-outlined.view {
+        font-size: 1.5rem;
+
+        &.compact {
+          margin-right: 0.2rem;
+        }
+      }
+    }
+
+    .mat-chip {
+      font-size: 0.9rem;
+      cursor: pointer;
+
+      .mat-chip-trailing-icon {
+        margin-left: 4px;
+      }
     }
   }
 }

@@ -14,6 +14,7 @@ import {
   styleUrls: ["./dashboard-filters.component.scss"],
 })
 export class DashboardFiltersComponent implements OnInit, OnChanges {
+  public showAllFilters: boolean = false;
   public sortedStack: any[] = [];
   public selectedView: "compact" | "expanded" = "compact";
   public selectedLanguage: any = null;
@@ -28,15 +29,15 @@ export class DashboardFiltersComponent implements OnInit, OnChanges {
   ];
   public timeConfig = [
     { title: "Last Month", name: "month" },
-    { title: "Last 3 Month", name: "three" },
-    { title: "Last 6 Month", name: "six" },
+    { title: "Last 3 Months", name: "three" },
+    { title: "Last 6 Months", name: "six" },
     { title: "Last Year", name: "year" },
   ];
   public selectedStatus: any;
   public selectedPeriod: any;
 
   // @Input() typeConfig: any[];
-  @Input() languageConfig: any[];
+  @Input() languageConfig: any[] = [];
   @Output() onFilterType: EventEmitter<null | string> = new EventEmitter();
   @Output() onFilterLanguage: EventEmitter<null | string> = new EventEmitter();
   @Output() onFilterStatus: EventEmitter<null | string> = new EventEmitter();
@@ -72,13 +73,16 @@ export class DashboardFiltersComponent implements OnInit, OnChanges {
     }
   }
 
-  filterLanguage($event: any) {
-    if (this.selectedLanguage === $event) {
+  filterLanguage($event: any, language: string) {
+    console.log($event);
+    $event.stopPropagation();
+
+    if (this.selectedLanguage === language) {
       this.onFilterLanguage.emit(null);
       this.selectedLanguage = null;
     } else {
-      this.onFilterLanguage.emit($event);
-      this.selectedLanguage = $event;
+      this.onFilterLanguage.emit(language);
+      this.selectedLanguage = language;
     }
   }
 
