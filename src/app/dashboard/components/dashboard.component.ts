@@ -5,6 +5,8 @@ import { Subject } from "rxjs";
 import { Dashboard } from "../store/dashboard.models";
 import { GITHUB_DATA } from "../constants/dashboard.constants";
 import * as moment from "moment";
+import { ProfileStoreService } from "src/app/profile/services/profile-store.service";
+import { Profile } from "src/app/profile/store/profile.models";
 
 @Component({
   selector: "app-dashboard",
@@ -13,17 +15,32 @@ import * as moment from "moment";
 })
 export class DashboardComponent implements OnInit {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
+  public user: Profile;
   public dashboard: any = {};
   public stack: any = {};
   public stackList: any = [];
   public distribution: any = {};
   public timeline: any = {};
+  public overviewData: any = {};
   public radar: any = {};
   public github: any = [];
 
-  constructor(private dashboardStoreService: DashboardStoreService) {}
+  constructor(
+    private dashboardStoreService: DashboardStoreService,
+    private profileStoreService: ProfileStoreService
+  ) {}
 
   ngOnInit(): void {
+    this.profileStoreService
+      .getProfile()
+      .pipe(
+        filter((state) => state != null),
+        takeUntil(this.ngUnsubscribe)
+      )
+      .subscribe((user: Profile) => {
+        this.user = user;
+      });
+
     this.dashboardStoreService
       .getDashboard()
       .pipe(
@@ -57,6 +74,12 @@ export class DashboardComponent implements OnInit {
           });
 
           this.timeline = this.extractTimelineData({
+            education,
+            projects,
+            employment,
+          });
+
+          this.overviewData = this.extractOverviewData({
             education,
             projects,
             employment,
@@ -159,6 +182,20 @@ export class DashboardComponent implements OnInit {
     };
   }
 
+  extractOverviewData(data: any) {
+    return {
+      startDate: this.getTotalTime(
+        this.getStartDate([
+          ...data.education,
+          ...data.projects,
+          ...data.employment,
+        ])
+      ),
+      totalCourses: data.education.length,
+      totalProjects: data.projects.length,
+    };
+  }
+
   filterAndExtractData(dashboard: Dashboard) {
     const education = [
       ...dashboard.education.books.filter((item) => !!item.startDate),
@@ -193,9 +230,11 @@ export class DashboardComponent implements OnInit {
 
     const years = Math.floor(totalDays / 365);
     const remainingDays = totalDays % 365;
-    const months = Math.floor(remainingDays / 30);
-    const days = remainingDays % 30;
 
-    return `${years} years, ${months} months, ${days} days`;
+    return years > 0
+      ? `${years} year${years > 1 ? "s" : ""}, ${remainingDays} day${
+          remainingDays !== 1 ? "s" : ""
+        }`
+      : `${remainingDays} day${remainingDays !== 1 ? "s" : ""}`;
   }
 }

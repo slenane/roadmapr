@@ -14,9 +14,11 @@ import { DashboardEffects } from "./store/dashboard.effects";
 import { DashboardStackComponent } from "./components/dashboard-stack/dashboard-stack.component";
 import { DashboardSkillDistributionComponent } from "./components/dashboard-skill-distribution/dashboard-skill-distribution.component";
 import { DashboardGithubComponent } from "./components/dashboard-github/dashboard-github.component";
-import { DashboardFiltersComponent } from './components/dashboard-filters/dashboard-filters.component';
-import { DashboardTimelineComponent } from './components/dashboard-timeline/dashboard-timeline.component';
-import { DashboardStackRadarComponent } from './components/dashboard-stack-radar/dashboard-stack-radar.component';
+import { DashboardFiltersComponent } from "./components/dashboard-filters/dashboard-filters.component";
+import { DashboardTimelineComponent } from "./components/dashboard-timeline/dashboard-timeline.component";
+import { DashboardStackRadarComponent } from "./components/dashboard-stack-radar/dashboard-stack-radar.component";
+import { DashboardUserComponent } from "./components/dashboard-user/dashboard-user.component";
+import { DashboardOverviewComponent } from "./components/dashboard-overview/dashboard-overview.component";
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { DashboardStackRadarComponent } from './components/dashboard-stack-radar
     DashboardFiltersComponent,
     DashboardTimelineComponent,
     DashboardStackRadarComponent,
+    DashboardUserComponent,
+    DashboardOverviewComponent,
   ],
   exports: [DashboardComponent],
   imports: [
