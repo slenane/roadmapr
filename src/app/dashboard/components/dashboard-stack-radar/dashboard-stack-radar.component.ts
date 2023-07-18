@@ -51,6 +51,7 @@ export class DashboardStackRadarComponent implements OnInit, OnChanges {
       let personalData = [],
         professionalData = [];
 
+      console.log(labels);
       for (const label of labels) {
         const personalItem: any = personal.find(
           (item: any) => item.language.title === label
@@ -58,23 +59,29 @@ export class DashboardStackRadarComponent implements OnInit, OnChanges {
         const professionalItem: any = professional.find(
           (item: any) => item.language.title === label
         );
-        personalData.push(personalItem?.duration || 0);
-        professionalData.push(professionalItem?.duration || 0);
+        console.log(personalItem);
+        console.log(professionalItem);
+        personalData.push(personalItem?.count || 0);
+        professionalData.push(professionalItem?.count || 0);
       }
 
       if (personal.length || professional.length) {
         new Chart("stackRadar", {
           type: "radar",
-          options: {},
+          options: {
+            plugins: {
+              legend: { display: false },
+            },
+          },
           data: {
             labels: labels,
             datasets: [
               {
-                label: "Personal Days",
+                label: "Personal Experience",
                 data: personalData,
               },
               {
-                label: "Professional Days",
+                label: "Professional Experience",
                 data: professionalData,
               },
             ],

@@ -1,8 +1,47 @@
-mat-card-content {
+.header {
   display: grid;
-  justify-content: center;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-weight: 500;
 
-  .stack-container {
-    width: 100%;
+  .content-title {
+    font-size: 1rem;
+  }
+}
+
+.body {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    gap: 0.5rem;
+
+    &__title {
+      font-weight: 500;
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .skill-item {
+      display: grid;
+      grid-template-columns: 1fr;
+      text-align: center;
+      justify-items: center;
+
+      .stack-title {
+        font-weight: 300;
+        font-size: 0.9rem;
+      }
+
+      .stack-image {
+        height: 2rem;
+        margin-bottom: 0.5rem;
+      }
+    }
   }
 }

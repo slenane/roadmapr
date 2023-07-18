@@ -1,41 +1,51 @@
 <div class="dashboard">
-  <app-dashboard-filters [languageConfig]="stackList"></app-dashboard-filters>
+  <!-- <app-dashboard-filters [languageConfig]="stackList"></app-dashboard-filters> -->
 
   <div class="scroll" cdkScrollable>
     <div class="dashboard-content">
-      <app-dashboard-user [user]="user"></app-dashboard-user>
+      <div class="grid-section">
+        <app-dashboard-user
+          [user]="user"
+          [data]="overviewData"
+        ></app-dashboard-user>
 
-      <app-dashboard-overview [data]="overviewData"></app-dashboard-overview>
+        <app-dashboard-github
+          class="github-container"
+          *ngIf="github"
+          [data]="github"
+        ></app-dashboard-github>
+      </div>
 
-      <!-- <app-dashboard-stack-radar
-        class="stack-radar-container"
-        *ngIf="radar"
-        [data]="radar"
-      ></app-dashboard-stack-radar> -->
+      <div class="grid-section">
+        <div class="section-title">Skill Distribution</div>
+        <div class="grid-section-inner">
+          <app-dashboard-stack-radar
+            class="stack-radar-container"
+            *ngIf="radar"
+            [data]="radar"
+          ></app-dashboard-stack-radar>
 
-      <!-- <app-dashboard-stack
-        class="stack-container"
-        *ngIf="stack"
-        [data]="stack"
-      ></app-dashboard-stack> -->
+          <div>
+            <app-dashboard-skill-distribution
+              class="skills-distribution-container"
+              *ngIf="distribution"
+              [data]="distribution"
+            ></app-dashboard-skill-distribution>
 
-      <!-- <app-dashboard-skill-distribution
-        class="skills-distribution-container"
-        *ngIf="distribution"
-        [data]="distribution"
-      ></app-dashboard-skill-distribution> -->
+            <app-dashboard-stack
+              class="stack-container"
+              *ngIf="stack"
+              [data]="stack"
+            ></app-dashboard-stack>
+          </div>
+        </div>
 
-      <!-- <app-dashboard-github
-        class="github-container"
-        *ngIf="github"
-        [data]="github"
-      ></app-dashboard-github> -->
+        <app-dashboard-overview
+          class="overview-container"
+          *ngIf="stack"
+          [data]="stack"
+        ></app-dashboard-overview>
+      </div>
     </div>
   </div>
 </div>
-
-<!-- <app-dashboard-timeline
-          class="timeline-container"
-          *ngIf="timeline"
-          [data]="timeline"
-        ></app-dashboard-timeline> -->

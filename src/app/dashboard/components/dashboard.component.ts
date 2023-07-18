@@ -73,11 +73,11 @@ export class DashboardComponent implements OnInit {
             professional: employment,
           });
 
-          this.timeline = this.extractTimelineData({
-            education,
-            projects,
-            employment,
-          });
+          // this.timeline = this.extractTimelineData({
+          //   education,
+          //   projects,
+          //   employment,
+          // });
 
           this.overviewData = this.extractOverviewData({
             education,
@@ -136,51 +136,68 @@ export class DashboardComponent implements OnInit {
     data.personal.forEach((item: any) => {
       item.stack.forEach((language: any) => {
         if (!stack["personal"][language.name]) {
-          stack["personal"][language.name] = { duration: 0, language };
+          stack["personal"][language.name] = { count: 0, language };
         }
-        stack["personal"][language.name].duration += this.getDays(
-          item.startDate,
-          item.endDate
-        );
+        stack["personal"][language.name].count++;
       });
     });
 
     data.professional.forEach((item: any) => {
       item.stack.forEach((language: any) => {
         if (!stack["professional"][language.name]) {
-          stack["professional"][language.name] = { duration: 0, language };
+          stack["professional"][language.name] = { count: 0, language };
         }
-        stack["professional"][language.name].duration += this.getDays(
-          item.startDate,
-          item.endDate
-        );
+        stack["professional"][language.name].count++;
       });
     });
+    // data.personal.forEach((item: any) => {
+    //   item.stack.forEach((language: any) => {
+    //     if (!stack["personal"][language.name]) {
+    //       stack["personal"][language.name] = { duration: 0, language };
+    //     }
+    //     stack["personal"][language.name].duration += this.getDays(
+    //       item.startDate,
+    //       item.endDate
+    //     );
+    //   });
+    // });
+
+    // data.professional.forEach((item: any) => {
+    //   item.stack.forEach((language: any) => {
+    //     if (!stack["professional"][language.name]) {
+    //       stack["professional"][language.name] = { duration: 0, language };
+    //     }
+    //     stack["professional"][language.name].duration += this.getDays(
+    //       item.startDate,
+    //       item.endDate
+    //     );
+    //   });
+    // });
 
     return stack;
   }
 
-  extractTimelineData(data: any) {
-    const personalStartDate = this.getStartDate([
-      ...data.education,
-      ...data.projects,
-    ]);
-    const professionalStartDate = this.getStartDate([...data.employment]);
+  // extractTimelineData(data: any) {
+  //   const personalStartDate = this.getStartDate([
+  //     ...data.education,
+  //     ...data.projects,
+  //   ]);
+  //   const professionalStartDate = this.getStartDate([...data.employment]);
 
-    const personalTotalTime = this.getTotalTime(personalStartDate);
-    const professionalTotalTime = this.getTotalTime(professionalStartDate);
+  //   const personalTotalTime = this.getTotalTime(personalStartDate);
+  //   const professionalTotalTime = this.getTotalTime(professionalStartDate);
 
-    return {
-      personal: {
-        startDate: personalStartDate,
-        totalTime: personalTotalTime,
-      },
-      professional: {
-        startDate: professionalStartDate,
-        totalTime: professionalTotalTime,
-      },
-    };
-  }
+  //   return {
+  //     personal: {
+  //       startDate: personalStartDate,
+  //       totalTime: personalTotalTime,
+  //     },
+  //     professional: {
+  //       startDate: professionalStartDate,
+  //       totalTime: professionalTotalTime,
+  //     },
+  //   };
+  // }
 
   extractOverviewData(data: any) {
     return {

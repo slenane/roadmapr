@@ -19,6 +19,7 @@ import { DashboardTimelineComponent } from "./components/dashboard-timeline/dash
 import { DashboardStackRadarComponent } from "./components/dashboard-stack-radar/dashboard-stack-radar.component";
 import { DashboardUserComponent } from "./components/dashboard-user/dashboard-user.component";
 import { DashboardOverviewComponent } from "./components/dashboard-overview/dashboard-overview.component";
+import { DashboardUserOverviewComponent } from "./components/dashboard-user/dashboard-user-overview/dashboard-user-overview.component";
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { DashboardOverviewComponent } from "./components/dashboard-overview/dash
     DashboardStackRadarComponent,
     DashboardUserComponent,
     DashboardOverviewComponent,
+    DashboardUserOverviewComponent,
   ],
   exports: [DashboardComponent],
   imports: [

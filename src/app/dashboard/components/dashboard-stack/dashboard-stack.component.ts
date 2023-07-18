@@ -13,7 +13,7 @@ import Chart from "chart.js/auto";
   styleUrls: ["./dashboard-stack.component.scss"],
 })
 export class DashboardStackComponent implements OnInit, OnChanges {
-  public stack: any = {};
+  public stack: any = [];
   public chart: Chart;
 
   @Input() data: any;
@@ -27,6 +27,7 @@ export class DashboardStackComponent implements OnInit, OnChanges {
       changes.data.currentValue &&
       changes.data.currentValue != changes.data.previousValue
     ) {
+      this.stack = [...Object.values(this.data)];
       this.generateChartData(changes.data.currentValue);
     }
   }

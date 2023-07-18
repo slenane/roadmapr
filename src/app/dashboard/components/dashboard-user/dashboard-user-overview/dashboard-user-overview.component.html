@@ -1,0 +1,56 @@
+<div class="overview-container">
+  <div class="overview-section education">
+    <div class="header"
+      ><span class="material-symbols-outlined">school</span>
+    </div>
+    <div class="content">
+      <div class="content-body">
+        <div>
+          <div class="subtitle"> Education </div>
+          <div class="subtitle-value">
+            <div class="count">{{ data.totalCourses }}</div>
+            <div class="trend"
+              ><span class="material-symbols-outlined"> arrow_drop_up </span>
+              1</div
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="overview-section projects">
+    <div class="header">
+      <span class="material-symbols-outlined">code</span>
+    </div>
+    <div class="content">
+      <div class="content-body">
+        <div>
+          <div class="subtitle"> Projects </div>
+
+          <div class="subtitle-value">
+            <div class="count">{{ data.totalProjects }}</div>
+            <div class="trend down"
+              ><span class="material-symbols-outlined"> arrow_drop_down </span>
+              2</div
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="overview-section experience">
+    <div class="header">
+      <span class="material-symbols-outlined">timer</span>
+    </div>
+    <div class="content">
+      <div class="content-body">
+        <div>
+          <div class="subtitle"> Experience </div>
+          <div class="subtitle-value">
+            {{ data.startDate }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

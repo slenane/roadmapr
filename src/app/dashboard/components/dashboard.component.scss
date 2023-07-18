@@ -2,7 +2,7 @@
   height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr;
-  gap: 1rem;
+  gap: 2rem;
 
   app-dashboard-filters {
     margin: 1rem 1rem 0;
@@ -10,15 +10,30 @@
 
   .scroll {
     overflow: auto;
-    padding: 0 1rem 1rem 1rem;
+    // padding: 0 1rem 1rem 1rem;
+    padding: 1rem;
 
     .dashboard-content {
       display: grid;
       grid-template-columns: 1fr 3fr;
       gap: 1rem;
 
-      mat-card {
-        margin-bottom: 1rem;
+      .grid-section {
+        display: grid;
+        grid-template-columns: 1fr;
+        align-content: start;
+        gap: 2rem;
+
+        .section-title {
+          font-size: 1.2rem;
+          font-weight: 500;
+        }
+
+        &-inner {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 2rem;
+        }
       }
     }
   }

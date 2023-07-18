@@ -1,22 +1,22 @@
-<mat-card>
-  <mat-card-title>Skill Distribution</mat-card-title>
-  <mat-card-content>
-    <div class="slider">
-      <div class="labels">
-        <span>Backend</span>
-        <span>Full-stack</span>
-        <span>Frontend</span>
-      </div>
-      <mat-slider
-        class="distribution-slider"
-        max="100"
-        min="0"
-        disabled="true"
-        [value]="percentage"
-      >
-      </mat-slider>
+<!-- <mat-card> -->
+<mat-card-title>Tendencies</mat-card-title>
+<mat-card-content>
+  <div class="slider">
+    <div class="labels">
+      <span>Backend</span>
+      <span>Full-stack</span>
+      <span>Frontend</span>
     </div>
+    <mat-slider
+      class="distribution-slider"
+      max="100"
+      min="0"
+      disabled="true"
+      [value]="percentage"
+    >
+    </mat-slider>
+  </div>
 
-    <p>{{ description }}</p>
-  </mat-card-content>
-</mat-card>
+  <!-- <p>{{ description }}</p> -->
+</mat-card-content>
+<!-- </mat-card> -->

@@ -1,8 +1,11 @@
 table {
   width: 100%;
 
-  .mat-column-language,
-  .mat-column-url {
+  .link {
+    text-decoration: none;
+  }
+
+  .mat-column-language {
     width: 5rem;
     text-align: center;
   }

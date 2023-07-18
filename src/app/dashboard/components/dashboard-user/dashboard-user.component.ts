@@ -8,6 +8,7 @@ import { Profile } from "src/app/profile/store/profile.models";
 })
 export class DashboardUserComponent implements OnInit {
   @Input() user: Profile;
+  @Input() data: any;
 
   constructor() {}
 

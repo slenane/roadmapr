@@ -1,35 +1,21 @@
 .overview-container {
-  margin: 1rem;
+  padding: 1rem;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1rem;
+  gap: 0.5rem;
 
   .overview-section {
     display: grid;
     grid-template-columns: auto 1fr;
     gap: 1rem;
-    padding: 1rem;
+    padding: 0.5rem 1rem;
     align-items: center;
-
-    // &.education {
-    //   // background-color: #ff5a00;
-    //   background-image: linear-gradient(225deg, #ff985c 10%, #ff5a00 100%);
-    //   color: white;
-    // }
-    // &.projects {
-    //   // background-color: #00a5d8;
-    //   background-image: linear-gradient(225deg, #95cbdc 10%, #00a5d8 100%);
-    //   color: white;
-    // }
-    // &.experience {
-    //   // background-color: #f7da51;
-    //   background-image: linear-gradient(225deg, #eddb7f 10%, #f7da51 100%);
-    //   color: white;
-    // }
+    border: 1px solid lightgrey;
+    border-radius: 4px;
 
     .header {
       .material-symbols-outlined {
-        background-color: lightgrey;
+        background-color: rgb(243, 243, 243);
         border-radius: 4px;
         padding: 0.5rem;
       }
@@ -40,10 +26,6 @@
         display: grid;
         grid-template-columns: 1fr;
         gap: 0.5rem;
-
-        .border {
-          border-left: 1px solid grey;
-        }
 
         .subtitle {
           font-size: 1rem;
