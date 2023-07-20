@@ -21,5 +21,25 @@
     <div class="user-role">{{ user.role }}</div>
   </div>
 
-  <app-dashboard-user-overview [data]="data"></app-dashboard-user-overview>
+  <div class="user-overview-container">
+    <app-icon-card
+      [icon]="'school'"
+      [title]="'Education'"
+      [value]="12"
+      [trend]="1"
+    ></app-icon-card>
+
+    <app-icon-card
+      [icon]="'code'"
+      [title]="'Projects'"
+      [value]="6"
+      [trend]="2"
+    ></app-icon-card>
+
+    <app-icon-card
+      [icon]="'timer'"
+      [title]="'Experience'"
+      [value]="'3 years, 19 days'"
+    ></app-icon-card>
+  </div>
 </mat-card>

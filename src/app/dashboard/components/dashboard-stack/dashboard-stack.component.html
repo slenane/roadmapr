@@ -1,18 +1,15 @@
-<!-- <mat-card> -->
-<div class="header"
-  ><span class="material-symbols-outlined">ballot</span>
-  <div class="content-title">Stack</div></div
->
-<div class="body">
-  <!-- <div class="stack-container"><canvas id="stackDoughnut"></canvas></div> -->
-  <div class="skills-grid">
-    <div class="skill-item" *ngFor="let item of stack">
-      <img
-        class="stack-image"
-        src="/assets/images/stack/{{ item.language.name }}-original.svg"
-      />
-      <span class="stack-title">{{ item.title }}</span>
+<mat-card>
+  <div class="header"> <div class="content-title">Stack</div></div>
+  <div class="body">
+    <!-- <div class="stack-container"><canvas id="stackDoughnut"></canvas></div> -->
+    <div class="skills-grid">
+      <div class="skill-item" *ngFor="let item of stack">
+        <img
+          class="stack-image"
+          src="/assets/images/stack/{{ item.language.name }}-original.svg"
+        />
+        <span class="stack-title">{{ item.title }}</span>
+      </div>
     </div>
   </div>
-</div>
-<!-- </mat-card> -->
+</mat-card>

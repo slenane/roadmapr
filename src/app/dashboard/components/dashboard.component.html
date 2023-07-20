@@ -1,6 +1,4 @@
 <div class="dashboard">
-  <!-- <app-dashboard-filters [languageConfig]="stackList"></app-dashboard-filters> -->
-
   <div class="scroll" cdkScrollable>
     <div class="dashboard-content">
       <div class="grid-section">
@@ -17,7 +15,17 @@
       </div>
 
       <div class="grid-section">
-        <div class="section-title">Skill Distribution</div>
+        <app-dashboard-filters
+          [languageConfig]="stackList"
+        ></app-dashboard-filters>
+
+        <app-dashboard-education-overview
+          *ngIf="stack"
+          [data]="stack"
+        ></app-dashboard-education-overview>
+
+        <app-dashboard-projects-overview></app-dashboard-projects-overview>
+
         <div class="grid-section-inner">
           <app-dashboard-stack-radar
             class="stack-radar-container"
@@ -25,7 +33,7 @@
             [data]="radar"
           ></app-dashboard-stack-radar>
 
-          <div>
+          <div class="grid-1fr">
             <app-dashboard-skill-distribution
               class="skills-distribution-container"
               *ngIf="distribution"
@@ -39,12 +47,6 @@
             ></app-dashboard-stack>
           </div>
         </div>
-
-        <app-dashboard-overview
-          class="overview-container"
-          *ngIf="stack"
-          [data]="stack"
-        ></app-dashboard-overview>
       </div>
     </div>
   </div>

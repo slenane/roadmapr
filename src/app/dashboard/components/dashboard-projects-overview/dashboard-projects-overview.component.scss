@@ -1,0 +1,9 @@
+.projects-overview-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+
+  mat-card-title {
+    font-size: 1rem;
+  }
+}

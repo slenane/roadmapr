@@ -1,0 +1,21 @@
+mat-card-title {
+  font-size: 1rem;
+}
+
+.overview-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 4fr 2fr;
+  gap: 0.5rem;
+
+  #overviewChart {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  .education-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+}

@@ -1,0 +1,15 @@
+<div class="card">
+  <div class="icon">
+    <span class="material-symbols-outlined"> {{ icon }}</span>
+  </div>
+  <div class="content">
+    <div class="title"> {{ title }} </div>
+    <div class="value">
+      {{ value }}
+    </div>
+  </div>
+  <div *ngIf="trend" class="trend"
+    ><span class="material-symbols-outlined"> arrow_drop_up </span>
+    {{ trend }}</div
+  >
+</div>

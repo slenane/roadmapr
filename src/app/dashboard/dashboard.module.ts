@@ -15,11 +15,10 @@ import { DashboardStackComponent } from "./components/dashboard-stack/dashboard-
 import { DashboardSkillDistributionComponent } from "./components/dashboard-skill-distribution/dashboard-skill-distribution.component";
 import { DashboardGithubComponent } from "./components/dashboard-github/dashboard-github.component";
 import { DashboardFiltersComponent } from "./components/dashboard-filters/dashboard-filters.component";
-import { DashboardTimelineComponent } from "./components/dashboard-timeline/dashboard-timeline.component";
 import { DashboardStackRadarComponent } from "./components/dashboard-stack-radar/dashboard-stack-radar.component";
 import { DashboardUserComponent } from "./components/dashboard-user/dashboard-user.component";
-import { DashboardOverviewComponent } from "./components/dashboard-overview/dashboard-overview.component";
-import { DashboardUserOverviewComponent } from "./components/dashboard-user/dashboard-user-overview/dashboard-user-overview.component";
+import { DashboardEducationOverviewComponent } from "./components/dashboard-education-overview/dashboard-education-overview.component";
+import { DashboardProjectsOverviewComponent } from "./components/dashboard-projects-overview/dashboard-projects-overview.component";
 
 @NgModule({
   declarations: [
@@ -28,11 +27,10 @@ import { DashboardUserOverviewComponent } from "./components/dashboard-user/dash
     DashboardSkillDistributionComponent,
     DashboardGithubComponent,
     DashboardFiltersComponent,
-    DashboardTimelineComponent,
     DashboardStackRadarComponent,
     DashboardUserComponent,
-    DashboardOverviewComponent,
-    DashboardUserOverviewComponent,
+    DashboardEducationOverviewComponent,
+    DashboardProjectsOverviewComponent,
   ],
   exports: [DashboardComponent],
   imports: [

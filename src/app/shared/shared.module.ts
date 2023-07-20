@@ -8,6 +8,7 @@ import { AppRoutingModule } from "../app-routing.module";
 import { HttpClientModule } from "@angular/common/http";
 import { BrowserModule } from "@angular/platform-browser";
 import { DropListFiltersComponent } from "./components/drop-list-filters/drop-list-filters.component";
+import { IconCardComponent } from "./components/icon-card/icon-card.component";
 // import { NgChartsModule } from "ng2-charts";
 // import { FileUploadComponent } from "./components/file-upload/file-upload.component";
 
@@ -18,6 +19,7 @@ import { DropListFiltersComponent } from "./components/drop-list-filters/drop-li
     SidebarComponent,
     StackSelectorComponent,
     DropListFiltersComponent,
+    IconCardComponent,
   ],
   exports: [
     // ChartComponent,
@@ -25,6 +27,7 @@ import { DropListFiltersComponent } from "./components/drop-list-filters/drop-li
     SidebarComponent,
     StackSelectorComponent,
     DropListFiltersComponent,
+    IconCardComponent,
   ],
   imports: [
     MaterialModule,

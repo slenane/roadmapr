@@ -8,11 +8,11 @@ import {
 import Chart from "chart.js/auto";
 
 @Component({
-  selector: "app-dashboard-overview",
-  templateUrl: "./dashboard-overview.component.html",
-  styleUrls: ["./dashboard-overview.component.scss"],
+  selector: "app-dashboard-education-overview",
+  templateUrl: "./dashboard-education-overview.component.html",
+  styleUrls: ["./dashboard-education-overview.component.scss"],
 })
-export class DashboardOverviewComponent implements OnInit, OnChanges {
+export class DashboardEducationOverviewComponent implements OnInit, OnChanges {
   public chart: Chart;
 
   @Input() data: any;
@@ -36,8 +36,11 @@ export class DashboardOverviewComponent implements OnInit, OnChanges {
       options: {
         responsive: true,
         plugins: {
+          legend: {
+            display: false,
+          },
           title: {
-            display: true,
+            display: false,
           },
         },
       },
@@ -70,14 +73,6 @@ export class DashboardOverviewComponent implements OnInit, OnChanges {
             data: [1, 2, 5, 7, 8, 9, 11],
             borderColor: "#ffcb53",
             backgroundColor: "#ffcb53",
-            tension: 0.5,
-          },
-          {
-            label: "Projects",
-            data: [1, 1, 1, 1, 2, 2, 2],
-            borderColor: "orange",
-            backgroundColor: "orange",
-            borderDash: [5, 5],
             tension: 0.5,
           },
         ],

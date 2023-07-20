@@ -1,0 +1,36 @@
+<mat-card>
+  <mat-card-title>Education Overview</mat-card-title>
+
+  <div class="overview-container">
+    <canvas id="overviewChart"></canvas>
+
+    <div class="education-container">
+      <app-icon-card
+        [icon]="'menu_book'"
+        [title]="'Books'"
+        [value]="3"
+        [trend]="1"
+      ></app-icon-card>
+
+      <app-icon-card
+        [icon]="'workspace_premium'"
+        [title]="'Courses'"
+        [value]="2"
+        [trend]="2"
+      ></app-icon-card>
+
+      <app-icon-card
+        [icon]="'school'"
+        [title]="'Degrees'"
+        [value]="0"
+      ></app-icon-card>
+
+      <app-icon-card
+        [icon]="'terminal'"
+        [title]="'Tutorials'"
+        [value]="5"
+        [trend]="2"
+      ></app-icon-card>
+    </div>
+  </div>
+</mat-card>
