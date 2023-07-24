@@ -1,26 +1,28 @@
 <mat-card>
-  <mat-card-title>GitHub</mat-card-title>
+  <mat-card-title>
+    <img
+      class="github-icon"
+      src="/assets/images/stack/github-original.svg"
+      alt="Github Icon"
+    />GitHub</mat-card-title
+  >
   <mat-card-content>
-    <p>Public Repositories: {{ data.length }}</p>
+    <!-- <p>Public Repositories: {{ data.length }}</p> -->
 
-    <table mat-table [dataSource]="dataSource" matSort>
+    <table mat-table [dataSource]="dataSource" class="compact-table" matSort>
       <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Public Repos
+        </th>
         <td mat-cell *matCellDef="let repo">
           <a href="{{ repo.url }}" class="link" target="_blank"
-            >{{ repo.name }}
+            ><img
+              class="language-icon"
+              src="/assets/images/stack/{{ repo.language }}-original.svg"
+              alt="Stack Icon"
+            />{{ repo.name }}
           </a>
         </td>
-      </ng-container>
-
-      <ng-container matColumnDef="language">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Language </th>
-        <td mat-cell *matCellDef="let repo">
-          <img
-            class="language-icon"
-            src="/assets/images/stack/{{ repo.language }}-original.svg"
-            alt="Stack Icon"
-        /></td>
       </ng-container>
 
       <!-- <ng-container matColumnDef="url">

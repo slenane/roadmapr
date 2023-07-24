@@ -17,7 +17,7 @@ import { STACK_LIST } from "src/app/shared/constants/stack-list.constants";
   styleUrls: ["./dashboard-github.component.scss"],
 })
 export class DashboardGithubComponent implements OnInit, OnChanges {
-  public displayedColumns: string[] = ["name", "language"];
+  public displayedColumns: string[] = ["name"];
   public dataSource: MatTableDataSource<any>;
   public mostRecent: any[] = [];
   public stack: any[] = [...STACK_LIST];

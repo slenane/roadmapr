@@ -31,7 +31,7 @@ export class DashboardEducationOverviewComponent implements OnInit, OnChanges {
   }
 
   generateChartData(data: any): void {
-    new Chart("overviewChart", {
+    new Chart("educationOverviewChart", {
       type: "line",
       options: {
         responsive: true,

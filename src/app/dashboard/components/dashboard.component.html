@@ -24,28 +24,28 @@
           [data]="stack"
         ></app-dashboard-education-overview>
 
-        <app-dashboard-projects-overview></app-dashboard-projects-overview>
+        <!-- <app-dashboard-projects-overview></app-dashboard-projects-overview> -->
 
+        <h4>Skills Breakdown</h4>
         <div class="grid-section-inner">
-          <app-dashboard-stack-radar
-            class="stack-radar-container"
-            *ngIf="radar"
-            [data]="radar"
-          ></app-dashboard-stack-radar>
-
           <div class="grid-1fr">
-            <app-dashboard-skill-distribution
-              class="skills-distribution-container"
-              *ngIf="distribution"
-              [data]="distribution"
-            ></app-dashboard-skill-distribution>
-
             <app-dashboard-stack
               class="stack-container"
               *ngIf="stack"
               [data]="stack"
             ></app-dashboard-stack>
+
+            <app-dashboard-skill-distribution
+              class="skills-distribution-container"
+              *ngIf="distribution"
+              [data]="distribution"
+            ></app-dashboard-skill-distribution>
           </div>
+          <app-dashboard-stack-radar
+            class="stack-radar-container"
+            *ngIf="radar"
+            [data]="radar"
+          ></app-dashboard-stack-radar>
         </div>
       </div>
     </div>

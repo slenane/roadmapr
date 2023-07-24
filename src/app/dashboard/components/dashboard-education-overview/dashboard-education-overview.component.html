@@ -1,36 +1,38 @@
-<mat-card>
-  <mat-card-title>Education Overview</mat-card-title>
+<!-- <mat-card> -->
+<h4>Education Breakdown</h4>
 
-  <div class="overview-container">
-    <canvas id="overviewChart"></canvas>
-
-    <div class="education-container">
-      <app-icon-card
-        [icon]="'menu_book'"
-        [title]="'Books'"
-        [value]="3"
-        [trend]="1"
-      ></app-icon-card>
-
-      <app-icon-card
-        [icon]="'workspace_premium'"
-        [title]="'Courses'"
-        [value]="2"
-        [trend]="2"
-      ></app-icon-card>
-
-      <app-icon-card
-        [icon]="'school'"
-        [title]="'Degrees'"
-        [value]="0"
-      ></app-icon-card>
-
-      <app-icon-card
-        [icon]="'terminal'"
-        [title]="'Tutorials'"
-        [value]="5"
-        [trend]="2"
-      ></app-icon-card>
-    </div>
+<div class="overview-container">
+  <div class="chart-container">
+    <canvas id="educationOverviewChart"></canvas>
   </div>
-</mat-card>
+
+  <div class="education-container">
+    <app-icon-card
+      [icon]="'menu_book'"
+      [title]="'Books'"
+      [value]="3"
+      [trend]="1"
+    ></app-icon-card>
+
+    <app-icon-card
+      [icon]="'workspace_premium'"
+      [title]="'Courses'"
+      [value]="2"
+      [trend]="2"
+    ></app-icon-card>
+
+    <app-icon-card
+      [icon]="'school'"
+      [title]="'Degrees'"
+      [value]="0"
+    ></app-icon-card>
+
+    <app-icon-card
+      [icon]="'terminal'"
+      [title]="'Tutorials'"
+      [value]="5"
+      [trend]="2"
+    ></app-icon-card>
+  </div>
+</div>
+<!-- </mat-card> -->
