@@ -14,7 +14,6 @@ import Chart from "chart.js/auto";
 })
 export class DashboardStackComponent implements OnInit, OnChanges {
   public stack: any = [];
-  public chart: Chart;
 
   @Input() data: any;
 
@@ -27,35 +26,10 @@ export class DashboardStackComponent implements OnInit, OnChanges {
       changes.data.currentValue &&
       changes.data.currentValue != changes.data.previousValue
     ) {
-      this.stack = [...Object.values(this.data)];
-      this.generateChartData(changes.data.currentValue);
-    }
-  }
-
-  generateChartData(data: any): void {
-    data = [...Object.values(data)];
-    const values = [...data.sort((a: any, b: any) => b.count - a.count)];
-
-    if (values.length) {
-      new Chart("stackDoughnut", {
-        type: "doughnut",
-        options: {
-          plugins: {
-            legend: {
-              display: false,
-            },
-          },
-        },
-        data: {
-          labels: values.map((row: any) => row.language.title),
-          datasets: [
-            {
-              label: "Projects & Education",
-              data: values.map((row: any) => row.count),
-            },
-          ],
-        },
-      });
+      // const values = [...data.sort((a: any, b: any) => b.count - a.count)];
+      this.stack = [...Object.values(this.data)].sort(
+        (a: any, b: any) => b.count - a.count
+      );
     }
   }
 }

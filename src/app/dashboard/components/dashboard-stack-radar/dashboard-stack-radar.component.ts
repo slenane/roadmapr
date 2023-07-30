@@ -51,7 +51,6 @@ export class DashboardStackRadarComponent implements OnInit, OnChanges {
       let personalData = [],
         professionalData = [];
 
-      console.log(labels);
       for (const label of labels) {
         const personalItem: any = personal.find(
           (item: any) => item.language.title === label
@@ -59,8 +58,6 @@ export class DashboardStackRadarComponent implements OnInit, OnChanges {
         const professionalItem: any = professional.find(
           (item: any) => item.language.title === label
         );
-        console.log(personalItem);
-        console.log(professionalItem);
         personalData.push(personalItem?.count || 0);
         professionalData.push(professionalItem?.count || 0);
       }

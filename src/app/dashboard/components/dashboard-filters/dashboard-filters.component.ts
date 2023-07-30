@@ -28,10 +28,10 @@ export class DashboardFiltersComponent implements OnInit, OnChanges {
     { title: "Completed", name: "completed" },
   ];
   public timeConfig = [
-    { title: "Last Month", name: "month" },
-    { title: "Last 3 Months", name: "three" },
-    { title: "Last 6 Months", name: "six" },
-    { title: "Last Year", name: "year" },
+    { title: "1 Month", name: "month" },
+    { title: "3 Months", name: "three" },
+    { title: "6 Months", name: "six" },
+    { title: "1 Year", name: "year" },
   ];
   public selectedStatus: any;
   public selectedPeriod: any;

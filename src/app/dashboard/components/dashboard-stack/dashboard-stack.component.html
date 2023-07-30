@@ -1,15 +1,24 @@
-<!-- <mat-card> -->
-<div class="header"> <div class="content-title">Stack</div></div>
-<div class="body">
-  <!-- <div class="stack-container"><canvas id="stackDoughnut"></canvas></div> -->
-  <div class="skills-grid">
-    <div class="skill-item" *ngFor="let item of stack">
-      <img
-        class="stack-image"
-        src="/assets/images/stack/{{ item.language.name }}-original.svg"
-      />
-      <span class="stack-title">{{ item.title }}</span>
-    </div>
-  </div>
+<!-- <div class="header"> <div class="content-title">Stack</div></div>
+<div class="body"> -->
+<div class="skills-grid">
+  <mat-card class="skill-item" *ngFor="let item of stack">
+    <img
+      class="stack-image"
+      src="/assets/images/stack/{{ item.language.name }}-original.svg"
+    />
+    <span class="stack-title">{{ item.language.title }}</span>
+  </mat-card>
 </div>
-<!-- </mat-card> -->
+<!-- <div class="stack-cards">
+  <mat-card class="stack-card" *ngFor="let item of stack">
+    <img
+      class="stack-image"
+      src="/assets/images/stack/{{ item.language.name }}-original.svg"
+    />
+    <div>
+      <span class="stack-title">{{ item.language.title }}</span>
+      <span class="stack-count">{{ item.count }}</span>
+    </div>
+  </mat-card>
+</div> -->
+<!-- </div> -->

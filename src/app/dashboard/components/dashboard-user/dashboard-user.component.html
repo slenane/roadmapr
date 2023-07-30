@@ -21,7 +21,37 @@
     <div class="user-role">{{ user.role }}</div>
   </div>
 
-  <div class="user-overview-container">
+  <div class="bio-grid bio-grid__social">
+    <div class="social-link github-link" *ngIf="user.github">
+      <a href="{{ user.github }}" target="_blank">
+        <img
+          class="social-image"
+          src="/assets/images/stack/github-original.svg"
+          alt="Github Icon"
+        />
+      </a>
+    </div>
+    <div class="social-link twitter-link" *ngIf="user.twitter">
+      <a href="{{ user.twitter }}" target="_blank">
+        <img
+          class="social-image"
+          src="/assets/images/icons/twitter.png"
+          alt="twitter Icon"
+        />
+      </a>
+    </div>
+    <div class="social-link linkedIn-link" *ngIf="user.linkedIn">
+      <a href="{{ user.linkedIn }}" target="_blank">
+        <img
+          class="social-image"
+          src="/assets/images/icons/linkedin.png"
+          alt="linkedIn Icon"
+        />
+      </a>
+    </div>
+  </div>
+
+  <!-- <div class="user-overview-container">
     <app-icon-card
       [icon]="'school'"
       [title]="'Education'"
@@ -41,5 +71,5 @@
       [title]="'Experience'"
       [value]="'3 years, 19 days'"
     ></app-icon-card>
-  </div>
+  </div> -->
 </mat-card>

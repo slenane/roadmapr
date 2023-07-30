@@ -1,9 +1,21 @@
-<div class="projects-overview-container">
-  <mat-card>
-    <mat-card-title>Personal Projects</mat-card-title>
-  </mat-card>
+<div class="overview-container">
+  <div class="chart-container">
+    <canvas id="projectOverviewChart"></canvas>
+  </div>
 
-  <mat-card>
-    <mat-card-title>Educational Projects</mat-card-title>
-  </mat-card>
+  <div class="project-container">
+    <app-icon-card
+      [icon]="'menu_book'"
+      [title]="'Personal Projects'"
+      [value]="3"
+    ></app-icon-card>
+    <mat-card> Recent / Current project </mat-card>
+
+    <app-icon-card
+      [icon]="'workspace_premium'"
+      [title]="'Educational Projects'"
+      [value]="5"
+    ></app-icon-card>
+    <mat-card> Recent / Current project </mat-card>
+  </div>
 </div>

@@ -1,53 +1,78 @@
 <div class="dashboard">
+  <div class="user-section">
+    <app-dashboard-user
+      [user]="user"
+      [data]="overviewData"
+    ></app-dashboard-user>
+
+    <div class="user-overview-container">
+      <app-icon-card
+        [icon]="'school'"
+        [title]="'Education'"
+        [value]="12"
+        [trend]="1"
+      ></app-icon-card>
+
+      <app-icon-card
+        [icon]="'code'"
+        [title]="'Projects'"
+        [value]="6"
+        [trend]="2"
+      ></app-icon-card>
+
+      <app-icon-card
+        [icon]="'timer'"
+        [title]="'Experience'"
+        [value]="'3 years, 19 days'"
+      ></app-icon-card>
+
+      <app-icon-card
+        [icon]="'timer'"
+        [title]="'Professional Experience'"
+        [value]="'1 years, 249 days'"
+      ></app-icon-card>
+    </div>
+  </div>
+
   <div class="scroll" cdkScrollable>
-    <div class="dashboard-content">
-      <div class="grid-section">
-        <app-dashboard-user
-          [user]="user"
-          [data]="overviewData"
-        ></app-dashboard-user>
+    <app-dashboard-filters [languageConfig]="stackList"></app-dashboard-filters>
 
-        <app-dashboard-github
-          class="github-container"
-          *ngIf="github"
-          [data]="github"
-        ></app-dashboard-github>
-      </div>
+    <div class="grid-1fr-1fr">
+      <app-dashboard-stack-radar
+        class="stack-radar-container"
+        *ngIf="radar"
+        [data]="radar"
+      ></app-dashboard-stack-radar>
 
-      <div class="grid-section">
-        <app-dashboard-filters
-          [languageConfig]="stackList"
-        ></app-dashboard-filters>
+      <app-dashboard-stack
+        class="stack-container"
+        *ngIf="stack"
+        [data]="stack"
+      ></app-dashboard-stack>
+    </div>
 
-        <app-dashboard-education-overview
-          *ngIf="stack"
-          [data]="stack"
-        ></app-dashboard-education-overview>
+    <app-dashboard-education-overview
+      *ngIf="stack"
+      [data]="stack"
+    ></app-dashboard-education-overview>
 
-        <!-- <app-dashboard-projects-overview></app-dashboard-projects-overview> -->
+    <app-dashboard-projects-overview
+      [data]="stack"
+    ></app-dashboard-projects-overview>
 
-        <h4>Skills Breakdown</h4>
-        <div class="grid-section-inner">
-          <div class="grid-1fr">
-            <app-dashboard-stack
-              class="stack-container"
-              *ngIf="stack"
-              [data]="stack"
-            ></app-dashboard-stack>
-
-            <app-dashboard-skill-distribution
-              class="skills-distribution-container"
-              *ngIf="distribution"
-              [data]="distribution"
-            ></app-dashboard-skill-distribution>
-          </div>
-          <app-dashboard-stack-radar
-            class="stack-radar-container"
-            *ngIf="radar"
-            [data]="radar"
-          ></app-dashboard-stack-radar>
-        </div>
-      </div>
+    <div class="grid-1fr-1fr">
+      <app-dashboard-github
+        class="github-container"
+        *ngIf="github"
+        [data]="github"
+      ></app-dashboard-github>
     </div>
   </div>
 </div>
+
+<!--         
+                <app-dashboard-skill-distribution
+                  class="skills-distribution-container"
+                  *ngIf="distribution"
+                  [data]="distribution"
+                ></app-dashboard-skill-distribution> -->

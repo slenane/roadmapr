@@ -1,9 +1,17 @@
-.projects-overview-container {
+.overview-container {
+  width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 2fr 4fr;
   gap: 1rem;
+  position: relative;
 
-  mat-card-title {
-    font-size: 1rem;
+  .chart-container {
+    width: 100%;
+  }
+
+  .project-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
   }
 }

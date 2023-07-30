@@ -1,5 +1,5 @@
 .user-card {
-  padding: 0;
+  padding: 0.5rem;
   position: relative;
 
   .header {
@@ -43,5 +43,23 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 0.5rem;
+  }
+
+  .bio-grid {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1rem auto;
+
+    &__title {
+      font-weight: 500;
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .social-image {
+      height: 1.5rem;
+    }
   }
 }

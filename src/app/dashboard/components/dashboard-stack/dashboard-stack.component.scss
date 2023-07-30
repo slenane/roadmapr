@@ -1,47 +1,75 @@
-.header {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 1rem;
-  align-items: center;
-  margin-bottom: 1rem;
-  font-weight: 500;
+// .header {
+//   display: grid;
+//   grid-template-columns: auto 1fr;
+//   gap: 1rem;
+//   align-items: center;
+//   margin-bottom: 1rem;
+//   font-weight: 500;
 
-  .content-title {
+//   .content-title {
+//     font-size: 1rem;
+//   }
+// }
+
+// .body {
+//   display: grid;
+//   grid-template-columns: 1fr;
+//   gap: 1rem;
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  gap: 1rem;
+
+  &__title {
+    font-weight: 500;
     font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .skill-item {
+    display: grid;
+    grid-template-columns: 1fr;
+    text-align: center;
+    justify-items: center;
+    position: relative;
+
+    .stack-title {
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    .stack-image {
+      height: 1.5rem;
+      margin-bottom: 1rem;
+    }
   }
 }
 
-.body {
+.stack-cards {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 1rem;
 
-  .skills-grid {
+  .stack-card {
     display: grid;
-    grid-template-columns: repeat(5, auto);
-    gap: 0.5rem;
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
 
-    &__title {
+    .stack-title {
       font-weight: 500;
-      font-size: 1rem;
-      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
     }
 
-    .skill-item {
-      display: grid;
-      grid-template-columns: 1fr;
-      text-align: center;
-      justify-items: center;
+    .stack-count {
+      margin-left: 1rem;
+      font-weight: 300;
+      font-size: 0.9rem;
+    }
 
-      .stack-title {
-        font-weight: 300;
-        font-size: 0.9rem;
-      }
-
-      .stack-image {
-        height: 2rem;
-        margin-bottom: 0.5rem;
-      }
+    .stack-image {
+      height: 1.5rem;
     }
   }
 }
+// }

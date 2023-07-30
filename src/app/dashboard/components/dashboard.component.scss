@@ -1,42 +1,41 @@
 .dashboard {
   height: 100vh;
   display: grid;
-  grid-template-rows: auto 1fr;
-  gap: 2rem;
+  grid-template-columns: 2fr 7fr;
+  // gap: 1rem;
+
+  .user-section {
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-content: start;
+    gap: 1rem;
+
+    .user-overview-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+  }
 
   .scroll {
     overflow: auto;
     padding: 1rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-content: start;
+    gap: 3rem;
 
-    .dashboard-content {
+    .section-title {
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+
+    .grid-1fr-1fr {
       display: grid;
-      grid-template-columns: 2fr 7fr;
-      gap: 2rem;
-
-      .grid-section {
-        display: grid;
-        grid-template-columns: 1fr;
-        align-content: start;
-        gap: 2rem;
-
-        .section-title {
-          font-size: 1.2rem;
-          font-weight: 500;
-        }
-
-        &-inner {
-          display: grid;
-          grid-template-columns: 2fr 3fr;
-          gap: 2rem;
-        }
-      }
-
-      .grid-1fr {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 2rem;
-        align-content: start;
-      }
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 1rem;
     }
   }
 }
