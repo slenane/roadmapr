@@ -48,11 +48,12 @@
   >
   </app-stack-selector>
 
-  <mat-form-field appearance="outline">
-    <mat-label>Link</mat-label>
+  <mat-form-field appearance="outline" class="full-width-grid-item">
+    <mat-label>Link to Course</mat-label>
     <input #link matInput formControlName="link" />
+    <mat-hint>Link is required for us to make better recommendations</mat-hint>
     <mat-error *ngIf="courseForm.controls.link.invalid"
-      >Link is required to verify course</mat-error
+      >Please add link to course</mat-error
     >
   </mat-form-field>
 </form>

@@ -22,14 +22,17 @@ export class ProjectsUpdateComponent implements OnInit {
     github: new FormControl(""),
     endDate: new FormControl<Date | null>(null),
     link: new FormControl(""),
+    notes: new FormControl(""),
     startDate: new FormControl<Date | null>(null),
     tagLine: new FormControl(""),
     title: new FormControl("", Validators.required),
-    type: new FormControl(""),
+    todo: new FormControl(""),
+    type: new FormControl("", Validators.required),
   });
 
   @ViewChild("stack") stack: StackSelectorComponent;
   @ViewChild("title") title: ElementRef;
+  @ViewChild("type") type: ElementRef;
 
   constructor(
     private el: ElementRef,
@@ -44,9 +47,11 @@ export class ProjectsUpdateComponent implements OnInit {
         github: this.data.github,
         endDate: this.data.endDate,
         link: this.data.link,
+        notes: this.data.notes,
         startDate: this.data.startDate,
         tagLine: this.data.tagLine,
         title: this.data.title,
+        todo: this.data.todo,
         type: this.data.type,
       });
     }
@@ -76,6 +81,10 @@ export class ProjectsUpdateComponent implements OnInit {
   onSaveClick(): void {
     const stack = this.stack.getData() || [];
 
-    this.dialogRef.close({ ...this.projectForm.value, stack });
+    if (this.projectForm.valid && stack.length) {
+      return this.dialogRef.close({ ...this.projectForm.value, stack });
+    } else {
+      this.focusError();
+    }
   }
 }

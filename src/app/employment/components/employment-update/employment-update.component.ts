@@ -18,13 +18,13 @@ import { StackSelectorComponent } from "src/app/shared/components/stack-selector
 export class EmploymentUpdateComponent implements OnInit {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
   public employmentForm = new FormGroup({
+    role: new FormControl("", Validators.required),
     company: new FormControl("", Validators.required),
     companyLink: new FormControl(""),
     description: new FormControl(""),
     github: new FormControl(""),
     project: new FormControl(""),
     endDate: new FormControl<Date | null>(null),
-    role: new FormControl("", Validators.required),
     startDate: new FormControl<Date | null>(null),
     type: new FormControl("", Validators.required),
   });
@@ -44,12 +44,12 @@ export class EmploymentUpdateComponent implements OnInit {
   ngOnInit(): void {
     if (this.data) {
       this.employmentForm.patchValue({
+        role: this.data.role,
         company: this.data.company,
         companyLink: this.data.companyLink,
         description: this.data.description,
         endDate: this.data.endDate,
         startDate: this.data.startDate,
-        role: this.data.role,
         type: this.data.type,
       });
     }
@@ -82,6 +82,10 @@ export class EmploymentUpdateComponent implements OnInit {
   onSaveClick(): void {
     const stack = this.stack.getData() || [];
 
-    this.dialogRef.close({ ...this.employmentForm.value, stack });
+    if (this.employmentForm.valid && stack.length) {
+      return this.dialogRef.close({ ...this.employmentForm.value, stack });
+    } else {
+      this.focusError();
+    }
   }
 }

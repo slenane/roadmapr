@@ -86,11 +86,13 @@ export class EducationUpdateComponent implements OnInit {
   }
 
   onSaveClick(): void {
-    const data = {
-      ...this.data,
-      ...this.getFormData(),
-      type: this.selectedType,
-    };
-    this.dialogRef.close(data);
+    const formData = this.getFormData();
+    if (formData) {
+      this.dialogRef.close({
+        ...this.data,
+        ...formData,
+        type: this.selectedType,
+      });
+    }
   }
 }

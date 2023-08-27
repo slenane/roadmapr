@@ -36,7 +36,7 @@ export class EducationItemDetailsComponent implements OnInit {
 
   editItem() {
     const dialogRef = this.dialog.open(EducationUpdateComponent, {
-      width: "60vw",
+      width: "50vw",
       data: this.data,
     });
 
