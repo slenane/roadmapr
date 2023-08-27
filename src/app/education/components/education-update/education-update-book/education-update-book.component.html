@@ -48,11 +48,12 @@
   >
   </app-stack-selector>
 
-  <mat-form-field appearance="outline">
-    <mat-label>Link</mat-label>
+  <mat-form-field appearance="outline" class="full-width-grid-item">
+    <mat-label>Amazon Link</mat-label>
     <input #link matInput formControlName="link" />
+    <mat-hint>Link is required for us to make better recommendations</mat-hint>
     <mat-error *ngIf="bookForm.controls.link.invalid"
-      >Link is required to verify book</mat-error
+      >Please add Amazon link</mat-error
     >
   </mat-form-field>
 </form>

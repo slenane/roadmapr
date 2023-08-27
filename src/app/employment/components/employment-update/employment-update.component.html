@@ -1,4 +1,12 @@
-<h1 mat-dialog-title>Update Employment</h1>
+<div class="employment-header">
+  <div class="icon">
+    <span class="material-symbols-outlined"> work </span>
+  </div>
+  <div class="text">
+    <h1>Update Work Experience</h1>
+    <p>Share where you've been working</p>
+  </div>
+</div>
 <div mat-dialog-content>
   <form [formGroup]="employmentForm">
     <mat-form-field appearance="outline" class="full-width-grid-item">
@@ -34,7 +42,7 @@
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>company</mat-label>
+        <mat-label>Company</mat-label>
         <input #company matInput formControlName="company" />
         <mat-error *ngIf="employmentForm.controls.company.invalid"
           >Company required</mat-error
@@ -91,28 +99,29 @@
         appearance="outline"
         *ngIf="employmentForm.controls.type.value === 'freelance'"
       >
-        <mat-label>Project Live Link</mat-label>
+        <mat-label>Project Link</mat-label>
         <input matInput formControlName="project" />
       </mat-form-field>
 
       <mat-form-field
         appearance="outline"
         *ngIf="employmentForm.controls.type.value === 'employment'"
+        class="full-width-grid-item"
       >
         <mat-label>Link to Company</mat-label>
         <input matInput formControlName="companyLink" />
       </mat-form-field>
     </ng-container>
   </form>
-  <div mat-dialog-actions class="actions">
-    <button
-      *ngIf="employmentForm.controls.type.value"
-      mat-raised-button
-      color="primary"
-      (click)="onSaveClick()"
-      cdkFocusInitial
-      >Save</button
-    >
-    <button mat-raised-button (click)="onNoClick()">Cancel</button>
-  </div>
+</div>
+<div mat-dialog-actions class="actions">
+  <button mat-raised-button (click)="onNoClick()">Cancel</button>
+  <button
+    *ngIf="employmentForm.controls.type.value"
+    mat-raised-button
+    color="primary"
+    (click)="onSaveClick()"
+    cdkFocusInitial
+    >Save Experience</button
+  >
 </div>

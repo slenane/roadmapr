@@ -1,4 +1,12 @@
-<h1 mat-dialog-title>Update your Education</h1>
+<div class="education-header">
+  <div class="icon">
+    <span class="material-symbols-outlined"> school </span>
+  </div>
+  <div class="text">
+    <h1>Update Education</h1>
+    <p>Share what you've been learning</p>
+  </div>
+</div>
 <div mat-dialog-content>
   <form [formGroup]="educationForm">
     <!-- <p>Find item by link</p>
@@ -64,6 +72,6 @@
     color="primary"
     (click)="onSaveClick()"
     cdkFocusInitial
-    >Save</button
+    >Save {{ selectedType | titlecase }}</button
   >
 </div>

@@ -1,4 +1,12 @@
-<h1 mat-dialog-title>Update Projects</h1>
+<div class="projects-header">
+  <div class="icon">
+    <span class="material-symbols-outlined"> code </span>
+  </div>
+  <div class="text">
+    <h1>Update Projects</h1>
+    <p>Share what you've been working on</p>
+  </div>
+</div>
 <div mat-dialog-content>
   <form [formGroup]="projectForm">
     <mat-form-field appearance="outline" class="full-width-grid-item">
@@ -24,79 +32,88 @@
       >
     </mat-form-field>
 
-    <mat-form-field appearance="outline">
-      <mat-label>Title</mat-label>
-      <input cdkFocusInitial #title matInput formControlName="title" />
-      <mat-error *ngIf="projectForm.controls.title.invalid"
-        >Title required</mat-error
+    <ng-container *ngIf="projectForm.controls.type.value">
+      <mat-form-field appearance="outline">
+        <mat-label>Title</mat-label>
+        <input cdkFocusInitial #title matInput formControlName="title" />
+        <mat-error *ngIf="projectForm.controls.title.invalid"
+          >Title required</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Tagline</mat-label>
+        <input matInput formControlName="tagLine" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Start date</mat-label>
+        <input
+          matInput
+          [matDatepicker]="startDate"
+          formControlName="startDate"
+        />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="startDate"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #startDate></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>End date</mat-label>
+        <input matInput [matDatepicker]="endDate" formControlName="endDate" />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="endDate"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #endDate></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width-grid-item">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description"></textarea>
+      </mat-form-field>
+
+      <app-stack-selector
+        #stack
+        [data]="data && data.stack"
+        class="full-width-grid-item"
       >
-    </mat-form-field>
+      </app-stack-selector>
 
-    <mat-form-field appearance="outline">
-      <mat-label>Tagline</mat-label>
-      <input matInput formControlName="tagLine" />
-    </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>GitHub Link</mat-label>
+        <input matInput formControlName="github" />
+      </mat-form-field>
 
-    <mat-form-field appearance="outline">
-      <mat-label>Start date</mat-label>
-      <input matInput [matDatepicker]="startDate" formControlName="startDate" />
-      <mat-hint>MM/DD/YYYY</mat-hint>
-      <mat-datepicker-toggle
-        matSuffix
-        [for]="startDate"
-      ></mat-datepicker-toggle>
-      <mat-datepicker #startDate></mat-datepicker>
-    </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Link to Project</mat-label>
+        <input matInput formControlName="link" />
+      </mat-form-field>
 
-    <mat-form-field appearance="outline">
-      <mat-label>End date</mat-label>
-      <input matInput [matDatepicker]="endDate" formControlName="endDate" />
-      <mat-hint>MM/DD/YYYY</mat-hint>
-      <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
-      <mat-datepicker #endDate></mat-datepicker>
-    </mat-form-field>
+      <mat-form-field appearance="outline" class="full-width-grid-item">
+        <mat-label>Todo</mat-label>
+        <textarea matInput formControlName="todo"></textarea>
+      </mat-form-field>
 
-    <mat-form-field appearance="outline" class="full-width-grid-item">
-      <mat-label>Description</mat-label>
-      <textarea matInput formControlName="description"></textarea>
-    </mat-form-field>
-
-    <app-stack-selector
-      #stack
-      [data]="data && data.stack"
-      class="full-width-grid-item"
-    >
-    </app-stack-selector>
-
-    <mat-form-field appearance="outline">
-      <mat-label>GitHub Link</mat-label>
-      <input matInput formControlName="github" />
-    </mat-form-field>
-
-    <mat-form-field appearance="outline">
-      <mat-label>Link to Project</mat-label>
-      <input matInput formControlName="link" />
-    </mat-form-field>
-
-    <mat-form-field appearance="outline" class="full-width-grid-item">
-      <mat-label>Todo</mat-label>
-      <textarea matInput formControlName="todo"></textarea>
-    </mat-form-field>
-
-    <mat-form-field appearance="outline" class="full-width-grid-item">
-      <mat-label>Notes</mat-label>
-      <textarea matInput formControlName="notes"></textarea>
-    </mat-form-field>
+      <mat-form-field appearance="outline" class="full-width-grid-item">
+        <mat-label>Notes</mat-label>
+        <textarea matInput formControlName="notes"></textarea>
+      </mat-form-field>
+    </ng-container>
   </form>
-  <div mat-dialog-actions class="actions">
-    <button
-      mat-raised-button
-      *ngIf="projectForm.controls.type.value"
-      color="primary"
-      (click)="onSaveClick()"
-      cdkFocusInitial
-      >Save</button
-    >
-    <button mat-raised-button (click)="onNoClick()">Cancel</button>
-  </div>
+</div>
+<div mat-dialog-actions class="actions">
+  <button mat-raised-button (click)="onNoClick()">Cancel</button>
+  <button
+    mat-raised-button
+    *ngIf="projectForm.controls.type.value"
+    color="primary"
+    (click)="onSaveClick()"
+    cdkFocusInitial
+    >Save Project</button
+  >
 </div>

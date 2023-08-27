@@ -28,7 +28,7 @@ export class EmploymentItemDetailsComponent implements OnInit {
 
   editItem() {
     const dialogRef = this.dialog.open(EmploymentUpdateComponent, {
-      width: "60vw",
+      width: "50vw",
       data: this.data,
     });
 
