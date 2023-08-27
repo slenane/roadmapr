@@ -9,8 +9,8 @@ import { SIDEBAR_OPTIONS } from "src/app/shared/constants/sidebar.constants";
 })
 export class SidebarComponent implements OnInit {
   public options = SIDEBAR_OPTIONS;
-  public navbarCollapsed: boolean = false;
-  public displayLargeLogo: boolean = true;
+  public navbarCollapsed: boolean = true;
+  public displayLargeLogo: boolean = false;
 
   @Output() onCollapseNavbar: EventEmitter<boolean> = new EventEmitter();
 

@@ -9,7 +9,7 @@ import { Observable } from "rxjs";
 })
 export class AppComponent implements OnInit {
   public authenticated$: Observable<boolean>;
-  public navbarCollapsed: boolean = false;
+  public navbarCollapsed: boolean = true;
 
   constructor(public authService: AuthService) {}
 
