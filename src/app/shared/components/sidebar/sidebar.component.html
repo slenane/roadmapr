@@ -64,16 +64,26 @@
           >
           <span *ngIf="!navbarCollapsed">Settings</span>
         </a>
-        <a mat-list-item (click)="logout()" class="sidebar-option">
+        <a mat-list-item class="sidebar-option">
           <span
             class="material-symbols-outlined"
             #tooltip="matTooltip"
             matTooltipShowDelay="500"
             matTooltip="{{ navbarCollapsed ? 'Logout' : null }}"
             matTooltipPosition="right"
+            [matMenuTriggerFor]="logoutMenu"
             >logout</span
           >
-          <span *ngIf="!navbarCollapsed">Logout</span>
+          <span *ngIf="!navbarCollapsed" [matMenuTriggerFor]="logoutMenu"
+            >Logout</span
+          >
+          <mat-menu #logoutMenu="matMenu">
+            <span class="confirmation-message"
+              >Are you sure you want to logout?</span
+            >
+            <button mat-menu-item (click)="logout()">Yes</button>
+            <button mat-menu-item>No</button>
+          </mat-menu>
         </a>
       </mat-nav-list>
     </div>
