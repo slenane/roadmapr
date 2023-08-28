@@ -30,6 +30,13 @@
         class="drag-group-items"
         (cdkDropListDropped)="drop($event)"
       >
+        <div class="no-item-message" *ngIf="todoArray?.length === 0">
+          <span class="material-symbols-outlined"> add </span>
+          <p class="message-primary">No Future Employment Plans</p>
+          <p class="message-secondary"
+            >Securing work ahead of time will help keep you motivated</p
+          >
+        </div>
         <div *ngFor="let data of todoArray" class="drag-group-item" cdkDrag>
           <app-employment-item
             *ngIf="matchesFilters(data)"
@@ -47,6 +54,13 @@
         class="drag-group-items"
         (cdkDropListDropped)="drop($event)"
       >
+        <div class="no-item-message" *ngIf="inProgressArray?.length === 0">
+          <span class="material-symbols-outlined"> add </span>
+          <p class="message-primary">No Employment in Progress</p>
+          <p class="message-secondary"
+            >Keep your CV up to date and keep learning!</p
+          >
+        </div>
         <div
           *ngFor="let data of inProgressArray"
           class="drag-group-item"
@@ -68,6 +82,14 @@
         class="drag-group-items"
         (cdkDropListDropped)="drop($event)"
       >
+        <div class="no-item-message" *ngIf="doneArray?.length === 0">
+          <span class="material-symbols-outlined"> add </span>
+          <p class="message-primary">No Completed Employment</p>
+          <p class="message-secondary"
+            >Freelance work is a great way to earn money while developing your
+            skills</p
+          >
+        </div>
         <div *ngFor="let data of doneArray" class="drag-group-item" cdkDrag>
           <app-employment-item
             *ngIf="matchesFilters(data)"

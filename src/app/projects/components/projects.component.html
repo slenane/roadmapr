@@ -29,6 +29,13 @@
         class="drag-group-items"
         (cdkDropListDropped)="drop($event)"
       >
+        <div class="no-item-message" *ngIf="todoArray?.length === 0">
+          <span class="material-symbols-outlined"> add </span>
+          <p class="message-primary">No Projects in To Do</p>
+          <p class="message-secondary"
+            >Adding project ideas will help keep you focused on your goals</p
+          >
+        </div>
         <div *ngFor="let data of todoArray" class="drag-group-item" cdkDrag>
           <app-project
             *ngIf="matchesFilters(data)"
@@ -46,6 +53,13 @@
         class="drag-group-items"
         (cdkDropListDropped)="drop($event)"
       >
+        <div class="no-item-message" *ngIf="inProgressArray?.length === 0">
+          <span class="material-symbols-outlined"> add </span>
+          <p class="message-primary">No Projects in Progress</p>
+          <p class="message-secondary"
+            >Working on projects is the best way to improve your skills</p
+          >
+        </div>
         <div
           *ngFor="let data of inProgressArray"
           class="drag-group-item"
@@ -67,6 +81,13 @@
         class="drag-group-items"
         (cdkDropListDropped)="drop($event)"
       >
+        <div class="no-item-message" *ngIf="doneArray?.length === 0">
+          <span class="material-symbols-outlined"> add </span>
+          <p class="message-primary">No Completed Projects</p>
+          <p class="message-secondary"
+            >Working on projects is the best way to improve your skills</p
+          >
+        </div>
         <div *ngFor="let data of doneArray" class="drag-group-item" cdkDrag>
           <app-project
             *ngIf="matchesFilters(data)"
