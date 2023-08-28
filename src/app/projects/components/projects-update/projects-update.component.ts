@@ -26,7 +26,6 @@ export class ProjectsUpdateComponent implements OnInit {
     startDate: new FormControl<Date | null>(null),
     tagLine: new FormControl(""),
     title: new FormControl("", Validators.required),
-    todo: new FormControl(""),
     type: new FormControl("", Validators.required),
   });
 
@@ -51,7 +50,6 @@ export class ProjectsUpdateComponent implements OnInit {
         startDate: this.data.startDate,
         tagLine: this.data.tagLine,
         title: this.data.title,
-        todo: this.data.todo,
         type: this.data.type,
       });
     }
