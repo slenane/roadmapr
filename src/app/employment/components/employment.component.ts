@@ -6,8 +6,6 @@ import { EmploymentStoreService } from "../services/employment-store.service";
 import { MatDialog } from "@angular/material/dialog";
 import { EmploymentService } from "../services/employment.service";
 import {
-  CdkDropListGroup,
-  CdkDropList,
   CdkDragDrop,
   moveItemInArray,
   transferArrayItem,
@@ -51,7 +49,6 @@ export class EmploymentComponent implements OnInit {
         takeUntil(this.ngUnsubscribe)
       )
       .subscribe((employment: Employment) => {
-        console.log(employment);
         this.employment = employment;
         if (this.employment.employmentList.length) {
           this.sortEmploymentList([...employment.employmentList]);
