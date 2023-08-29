@@ -1,4 +1,4 @@
-<div class="Education drag-group">
+<div class="education drag-group">
   <div class="drag-group-header">
     <app-drop-list-filters
       *ngIf="education"
@@ -30,6 +30,13 @@
         class="drag-group-items"
         (cdkDropListDropped)="drop($event)"
       >
+        <div class="no-item-message" *ngIf="todoArray?.length === 0">
+          <span class="material-symbols-outlined"> add </span>
+          <p class="message-primary">No Future Education Plans</p>
+          <p class="message-secondary"
+            >Making plans for future learning wil help keep you on track</p
+          >
+        </div>
         <div *ngFor="let data of todoArray" class="drag-group-item" cdkDrag>
           <app-education-item
             *ngIf="matchesFilters(data)"
@@ -53,6 +60,14 @@
         class="drag-group-items"
         (cdkDropListDropped)="drop($event)"
       >
+        <div class="no-item-message" *ngIf="inProgressArray?.length === 0">
+          <span class="material-symbols-outlined"> add </span>
+          <p class="message-primary">No Education In Progress</p>
+          <p class="message-secondary"
+            >Taking a course is the best way to get started in software
+            development</p
+          >
+        </div>
         <div
           *ngFor="let data of inProgressArray"
           class="drag-group-item"
@@ -74,6 +89,11 @@
         class="drag-group-items"
         (cdkDropListDropped)="drop($event)"
       >
+        <div class="no-item-message" *ngIf="doneArray?.length === 0">
+          <span class="material-symbols-outlined"> add </span>
+          <p class="message-primary">No Completed Education</p>
+          <p class="message-secondary">Keep working towards your goals</p>
+        </div>
         <div *ngFor="let data of doneArray" class="drag-group-item" cdkDrag>
           <app-education-item
             *ngIf="matchesFilters(data)"

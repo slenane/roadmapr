@@ -35,6 +35,31 @@
         border-radius: 4px;
         display: block;
 
+        .no-item-message {
+          height: 100%;
+          width: 100%;
+          background: #ffffff94;
+          display: grid;
+          justify-content: center;
+          align-content: center;
+          text-align: center;
+          padding: 0 1rem;
+
+          .material-symbols-outlined {
+            font-size: 5rem;
+          }
+
+          .message-primary {
+            font-weight: 500;
+            font-size: 1.2rem;
+            color: rgba(0, 0, 0, 0.8);
+          }
+
+          .message-secondary {
+            font-weight: 300;
+          }
+        }
+
         .cdk-drag-preview {
           box-sizing: border-box;
           border-radius: 4px;

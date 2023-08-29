@@ -52,8 +52,15 @@ export class EducationComponent implements OnInit, OnDestroy {
       )
       .subscribe((education: Education) => {
         this.education = education;
-        this.getEducationConfig();
-        this.getLanguageFilterData();
+
+        const educationArray: any[] = this.generateEducation(
+          this.education,
+          this.filterType
+        );
+        if (educationArray.length) {
+          this.getEducationConfig(educationArray);
+          this.getLanguageFilterData();
+        }
       });
   }
 
@@ -62,8 +69,7 @@ export class EducationComponent implements OnInit, OnDestroy {
     this.ngUnsubscribe.complete();
   }
 
-  getEducationConfig(): void {
-    const education = this.generateEducation(this.education, this.filterType);
+  getEducationConfig(education: any[]): void {
     this.todoArray = education.filter(
       (item: any) => !item.startDate && !item.endDate
     );

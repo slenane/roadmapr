@@ -3,7 +3,7 @@
     <mat-card-title>
       <img
         src="/assets/images/icons/{{ data.type }}.png"
-        matTooltip="{{ data.type }}"
+        matTooltip="{{ data.type | titlecase }}"
         class="app-education-type-icon"
       />
       {{ data.role }}
