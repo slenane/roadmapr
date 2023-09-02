@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit, ViewChild } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
-import { EDUCATION_TYPES } from "../../constants/education.constants";
+import { EDUCATION_TYPES_SINGLE } from "../../constants/education.constants";
 import { EducationUpdateBookComponent } from "./education-update-book/education-update-book.component";
 import { EducationUpdateCourseComponent } from "./education-update-course/education-update-course.component";
 import { EducationUpdateDegreeComponent } from "./education-update-degree/education-update-degree.component";
@@ -17,7 +17,7 @@ import { Subject } from "rxjs";
 })
 export class EducationUpdateComponent implements OnInit {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
-  public educationTypes = EDUCATION_TYPES;
+  public educationTypes = EDUCATION_TYPES_SINGLE;
   public selectedType: string = "";
   public educationForm = new FormGroup({
     type: new FormControl(),

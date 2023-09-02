@@ -10,7 +10,7 @@ mat-card {
 
   mat-card-header {
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: auto 1fr auto;
     justify-content: space-between;
 
     mat-card-title {
@@ -28,6 +28,29 @@ mat-card {
     .education-stack {
       text-align: end;
       padding-right: 1rem;
+
+      &.pin-displayed {
+        padding-right: 0.3rem;
+      }
+    }
+
+    .pin {
+      font-size: 1.4rem;
+      margin-right: 1rem;
+      cursor: pointer;
+
+      &-angle {
+        transform: rotate(45deg);
+      }
+
+      &-pinned {
+        fill: 1;
+      }
+
+      &:hover {
+        border-radius: 50%;
+        background-color: #eeeeee;
+      }
     }
   }
 

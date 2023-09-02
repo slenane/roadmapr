@@ -10,6 +10,7 @@ import { Education } from "../store/education.models";
 import { DUMMY_EDUCATION } from "../constants/dummy.constants";
 import { EducationService } from "../services/education.service";
 import { EducationStoreService } from "../services/education-store.service";
+import { EDUCATION_TYPES } from "../constants/education.constants";
 
 @Component({
   selector: "app-education",
@@ -27,10 +28,10 @@ export class EducationComponent implements OnInit, OnDestroy {
     { title: "Degrees", name: "degree" },
     { title: "Tutorials", name: "tutorial" },
   ];
-  public filterType = "date";
   public languageFilterData: any = [];
   public education: Education;
   public educationId: string;
+  public educationArray: any[] = [];
 
   public todoArray: any[];
   public inProgressArray: any[];
@@ -52,13 +53,14 @@ export class EducationComponent implements OnInit, OnDestroy {
       )
       .subscribe((education: Education) => {
         this.education = education;
+        console.log(this.education);
 
-        const educationArray: any[] = this.generateEducation(
-          this.education,
-          this.filterType
-        );
-        if (educationArray.length) {
-          this.getEducationConfig(educationArray);
+        this.educationArray = this.generateEducationArray(this.education);
+
+        console.log(this.educationArray);
+
+        if (this.educationArray.length) {
+          this.getEducationConfig(this.educationArray);
           this.getLanguageFilterData();
         }
       });
@@ -70,29 +72,26 @@ export class EducationComponent implements OnInit, OnDestroy {
   }
 
   getEducationConfig(education: any[]): void {
-    this.todoArray = education.filter(
-      (item: any) => !item.startDate && !item.endDate
+    this.todoArray = this.sortPinnedItems(
+      education.filter((item: any) => !item.startDate && !item.endDate)
     );
-    this.inProgressArray = education.filter(
-      (item: any) => item.startDate && !item.endDate
+
+    this.inProgressArray = this.sortPinnedItems(
+      education.filter((item: any) => item.startDate && !item.endDate)
     );
-    this.doneArray = education.filter((item: any) => item.endDate);
-    this.recommendationsArray = this.generateEducation(
-      this.recommendations,
-      this.filterType
+
+    this.doneArray = this.sortPinnedItems(
+      education.filter((item: any) => item.endDate)
+    );
+
+    this.recommendationsArray = this.generateEducationArray(
+      this.recommendations
     );
   }
 
-  generateEducation(education: any, filter: string): any {
-    switch (filter) {
-      case "date":
-        return this.sortByDate(education);
-    }
-  }
-
-  sortByDate(education: any): any[] {
+  generateEducationArray(education: any): any {
     const items: any[] = [];
-    const categories = ["books", "courses", "degrees", "tutorials"];
+    const categories = EDUCATION_TYPES;
 
     for (const category of categories) {
       if (education[category]) {
@@ -103,11 +102,18 @@ export class EducationComponent implements OnInit, OnDestroy {
     return items;
   }
 
+  sortPinnedItems(arr: any[]): any[] {
+    return arr.sort((a: any, b: any): number => {
+      if (a.pin.pinned && !b.pin.pinned) return -1;
+      else if (!a.pin.pinned && b.pin.pinned) return 1;
+      else if (a.pin.position < b.pin.position) return -1;
+      else if (a.pin.position > b.pin.position) return 1;
+      else return 0;
+    });
+  }
+
   getLanguageFilterData() {
-    const education: any[] = this.generateEducation(
-      this.education,
-      this.filterType
-    );
+    const education: any[] = this.generateEducationArray(this.education);
     const languageData: any[] = [];
     const languages: any[] = [];
 
@@ -205,6 +211,32 @@ export class EducationComponent implements OnInit, OnDestroy {
       }
       this.transferEducationItem(item);
       this.transferItem(event);
+    }
+  }
+
+  onPinToggle(data: any) {
+    const itemList = this.findItemList(data._id);
+    let nextPinPosition = 0;
+
+    this[itemList].forEach((item) => {
+      if (item.pin && item.pin.pinned && item.pin.position >= nextPinPosition) {
+        nextPinPosition = item.pin.position + 1;
+      }
+    });
+
+    this.educationStoreService.updateEducationItem({
+      ...data,
+      pin: { ...data.pin, position: nextPinPosition },
+    });
+  }
+
+  findItemList(id: number): "todoArray" | "inProgressArray" | "doneArray" {
+    if (this.todoArray.find((item) => item._id === id)) {
+      return "todoArray";
+    } else if (this.inProgressArray.find((item) => item._id === id)) {
+      return "inProgressArray";
+    } else {
+      return "doneArray";
     }
   }
 }

@@ -15,6 +15,10 @@ export interface Book {
   stack: any[];
   startDate: Date;
   title: String;
+  pin: {
+    pinned: boolean;
+    position: number;
+  };
   education: string;
   _id: string;
 }
@@ -27,6 +31,10 @@ export interface Course {
   stack: any[];
   startDate: Date;
   title: String;
+  pin: {
+    pinned: boolean;
+    position: number;
+  };
   education: string;
   _id: string;
 }
@@ -39,6 +47,10 @@ export interface Degree {
   stack: any[];
   startDate: Date;
   title: String;
+  pin: {
+    pinned: boolean;
+    position: number;
+  };
   education: string;
   _id: string;
 }
@@ -52,6 +64,10 @@ export interface Tutorial {
   stack: any[];
   startDate: Date;
   title: String;
+  pin: {
+    pinned: boolean;
+    position: number;
+  };
   education: string;
   _id: string;
 }
