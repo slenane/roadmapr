@@ -1,6 +1,10 @@
 <div class="content">
   <div class="header">
     <div class="title">
+      <img
+        src="/assets/images/icons/{{ data.type }}.png"
+        class="app-education-type-icon__large"
+      />
       <h2>{{ data.title }}</h2>
     </div>
 
@@ -46,7 +50,13 @@
 
       <div class="body-actions">
         <a *ngIf="data.github" target="_blank" href="{{ data.github }}">
-          <button mat-raised-button color="black">See Repo</button>
+          <button mat-raised-button color="black">
+            <img
+              class="github-icon"
+              src="/assets/images/stack/github-original.svg"
+              alt="Github Icon"
+            />See Repo</button
+          >
         </a>
         <a *ngIf="data.link" target="_blank" href="{{ data.link }}">
           <button mat-raised-button cdkFocusInitial color="primary"
