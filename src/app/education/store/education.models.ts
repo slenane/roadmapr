@@ -1,73 +1,20 @@
 export interface Education {
-  books: Book[];
-  courses: Course[];
-  degrees: Degree[];
-  tutorials: Tutorial[];
+  items: EducationItem[];
   user: string;
   _id: string;
 }
 
-export interface Book {
+export interface EducationItem {
   author: String;
   description: String;
   endDate: Date;
+  github?: String;
   link: String;
+  pinned_position?: number;
   stack: any[];
   startDate: Date;
   title: String;
-  pin: {
-    pinned: boolean;
-    position: number;
-  };
-  education: string;
-  _id: string;
-}
-
-export interface Course {
-  description: String;
-  endDate?: Date;
-  link: String;
-  instructor: String;
-  stack: any[];
-  startDate: Date;
-  title: String;
-  pin: {
-    pinned: boolean;
-    position: number;
-  };
-  education: string;
-  _id: string;
-}
-
-export interface Degree {
-  description: String;
-  endDate: Date;
-  link: String;
-  institution: String;
-  stack: any[];
-  startDate: Date;
-  title: String;
-  pin: {
-    pinned: boolean;
-    position: number;
-  };
-  education: string;
-  _id: string;
-}
-
-export interface Tutorial {
-  description: String;
-  endDate: Date;
-  link: String;
-  instructor: String;
-  github: String;
-  stack: any[];
-  startDate: Date;
-  title: String;
-  pin: {
-    pinned: boolean;
-    position: number;
-  };
+  type: String;
   education: string;
   _id: string;
 }

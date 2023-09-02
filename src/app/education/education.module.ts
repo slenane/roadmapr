@@ -1,10 +1,6 @@
 import { NgModule } from "@angular/core";
 import { MaterialModule } from "../material/material.module";
 import { EducationItemComponent } from "./components/education-item/education-item.component";
-import { EducationUpdateBookComponent } from "./components/education-update/education-update-book/education-update-book.component";
-import { EducationUpdateCourseComponent } from "./components/education-update/education-update-course/education-update-course.component";
-import { EducationUpdateDegreeComponent } from "./components/education-update/education-update-degree/education-update-degree.component";
-import { EducationUpdateTutorialComponent } from "./components/education-update/education-update-tutorial/education-update-tutorial.component";
 import { EducationUpdateComponent } from "./components/education-update/education-update.component";
 import { EducationComponent } from "./components/education.component";
 import { EducationService } from "./services/education.service";
@@ -23,21 +19,13 @@ import { EducationItemDetailsComponent } from "./components/education-item/educa
   declarations: [
     EducationItemComponent,
     EducationComponent,
-    EducationUpdateBookComponent,
     EducationUpdateComponent,
-    EducationUpdateCourseComponent,
-    EducationUpdateTutorialComponent,
-    EducationUpdateDegreeComponent,
     EducationItemDetailsComponent,
   ],
   exports: [
     EducationItemComponent,
     EducationComponent,
-    EducationUpdateBookComponent,
     EducationUpdateComponent,
-    EducationUpdateCourseComponent,
-    EducationUpdateTutorialComponent,
-    EducationUpdateDegreeComponent,
     EducationItemDetailsComponent,
   ],
   imports: [

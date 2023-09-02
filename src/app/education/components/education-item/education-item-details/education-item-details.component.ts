@@ -13,7 +13,7 @@ import { EducationStoreService } from "src/app/education/services/education-stor
   styleUrls: ["./education-item-details.component.scss"],
 })
 export class EducationItemDetailsComponent implements OnInit {
-  public providerType: string = "Provider";
+  public authorType: string = "Author";
 
   constructor(
     private educationStoreService: EducationStoreService,
@@ -24,9 +24,8 @@ export class EducationItemDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.data) {
-      if (this.data.author) this.providerType = "Author";
-      else if (this.data.institution) this.providerType = "Institution";
-      else if (this.data.instructor) this.providerType = "Instructor";
+      if (this.data.institution) this.authorType = "Institution";
+      else if (this.data.instructor) this.authorType = "Instructor";
     }
   }
 
@@ -41,9 +40,9 @@ export class EducationItemDetailsComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      if (result.education) {
-        this.data = result;
-        this.educationStoreService.updateEducationItem(result);
+      if (result) {
+        this.data = { ...this.data, ...result };
+        this.educationStoreService.updateEducationItem(this.data);
       }
     });
   }

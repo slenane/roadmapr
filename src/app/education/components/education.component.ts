@@ -53,15 +53,15 @@ export class EducationComponent implements OnInit, OnDestroy {
       )
       .subscribe((education: Education) => {
         this.education = education;
-        console.log(this.education);
-
-        this.educationArray = this.generateEducationArray(this.education);
-
-        console.log(this.educationArray);
+        this.educationArray = this.education.items;
 
         if (this.educationArray.length) {
           this.getEducationConfig(this.educationArray);
           this.getLanguageFilterData();
+        } else {
+          this.todoArray = [];
+          this.inProgressArray = [];
+          this.doneArray = [];
         }
       });
   }
@@ -84,36 +84,23 @@ export class EducationComponent implements OnInit, OnDestroy {
       education.filter((item: any) => item.endDate)
     );
 
-    this.recommendationsArray = this.generateEducationArray(
-      this.recommendations
-    );
-  }
-
-  generateEducationArray(education: any): any {
-    const items: any[] = [];
-    const categories = EDUCATION_TYPES;
-
-    for (const category of categories) {
-      if (education[category]) {
-        education[category].forEach((item: any) => items.push(item));
-      }
-    }
-
-    return items;
+    // this.recommendationsArray = this.generateEducationArray(
+    //   this.recommendations
+    // );
   }
 
   sortPinnedItems(arr: any[]): any[] {
     return arr.sort((a: any, b: any): number => {
-      if (a.pin.pinned && !b.pin.pinned) return -1;
-      else if (!a.pin.pinned && b.pin.pinned) return 1;
-      else if (a.pin.position < b.pin.position) return -1;
-      else if (a.pin.position > b.pin.position) return 1;
+      if (a?.pinned_position && !b?.pinned_position) return -1;
+      else if (!a?.pinned_position && b?.pinned_position) return 1;
+      else if (a.pinned_position < b.pinned_position) return -1;
+      else if (a.pinned_position > b.pinned_position) return 1;
       else return 0;
     });
   }
 
   getLanguageFilterData() {
-    const education: any[] = this.generateEducationArray(this.education);
+    const education: any[] = this.educationArray;
     const languageData: any[] = [];
     const languages: any[] = [];
 
@@ -215,19 +202,24 @@ export class EducationComponent implements OnInit, OnDestroy {
   }
 
   onPinToggle(data: any) {
-    const itemList = this.findItemList(data._id);
-    let nextPinPosition = 0;
+    if (data?.pinned_position) {
+      delete data.pinned_position;
+      this.educationStoreService.updateEducationItem(data);
+    } else {
+      const itemList = this.findItemList(data._id);
+      let nextPinPosition = 0;
 
-    this[itemList].forEach((item) => {
-      if (item.pin && item.pin.pinned && item.pin.position >= nextPinPosition) {
-        nextPinPosition = item.pin.position + 1;
-      }
-    });
+      this[itemList].forEach((item) => {
+        if (item.pinned_position && item.pinned_position >= nextPinPosition) {
+          nextPinPosition = item.pinned_position + 1;
+        }
+      });
 
-    this.educationStoreService.updateEducationItem({
-      ...data,
-      pin: { ...data.pin, position: nextPinPosition },
-    });
+      this.educationStoreService.updateEducationItem({
+        ...data,
+        pinned_position: nextPinPosition,
+      });
+    }
   }
 
   findItemList(id: number): "todoArray" | "inProgressArray" | "doneArray" {

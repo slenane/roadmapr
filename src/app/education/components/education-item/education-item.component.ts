@@ -42,7 +42,7 @@ export class EducationItemComponent implements OnInit, OnChanges {
       if (this.data.stack) {
         this.sortedStack = this.sortStack([...this.data.stack]);
       }
-      if (this.data.pin) this.isPinned = this.data.pin.pinned;
+      if (this.data?.pinned_position) this.isPinned = true;
     }
   }
 
@@ -72,9 +72,6 @@ export class EducationItemComponent implements OnInit, OnChanges {
   togglePin(event: Event) {
     event.stopPropagation();
     this.isPinned = !this.isPinned;
-    this.pinItem.emit({
-      ...this.data,
-      pin: { pinned: this.isPinned, position: undefined },
-    });
+    this.pinItem.emit(this.data);
   }
 }

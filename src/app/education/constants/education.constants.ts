@@ -1,14 +1,16 @@
 export const BOOK = "book",
-  BOOKS = "books",
   COURSE = "course",
-  COURSES = "courses",
   DEGREE = "degree",
-  DEGREES = "degrees",
-  TUTORIAL = "tutorial",
-  TUTORIALS = "tutorials";
+  TUTORIAL = "tutorial";
 
-export const EDUCATION_TYPES = [BOOKS, COURSES, DEGREES, TUTORIALS];
-export const EDUCATION_TYPES_SINGLE = [BOOK, COURSE, DEGREE, TUTORIAL];
+export const EDUCATION_TYPES = [BOOK, COURSE, DEGREE, TUTORIAL];
+
+export const EDUCATION_TYPE_CONFIG = [
+  { title: "Books", name: BOOK },
+  { title: "Courses", name: COURSE },
+  { title: "Degrees", name: DEGREE },
+  { title: "Tutorials", name: TUTORIAL },
+];
 
 export const MONTH_NAMES = [
   "Jan",

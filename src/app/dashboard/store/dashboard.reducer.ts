@@ -8,10 +8,7 @@ interface Action {
 
 const initialState: Dashboard = {
   education: {
-    books: [],
-    courses: [],
-    degrees: [],
-    tutorials: [],
+    items: [],
   },
   employment: [],
   projects: [],
