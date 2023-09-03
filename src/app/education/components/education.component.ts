@@ -92,11 +92,24 @@ export class EducationComponent implements OnInit, OnDestroy {
 
   sortPinnedItems(arr: any[]): any[] {
     return arr.sort((a: any, b: any): number => {
-      if (a?.pinned_position && !b?.pinned_position) return -1;
-      else if (!a?.pinned_position && b?.pinned_position) return 1;
-      else if (a.pinned_position < b.pinned_position) return -1;
-      else if (a.pinned_position > b.pinned_position) return 1;
-      else return 0;
+      if (
+        typeof a?.pinned_position === "number" &&
+        typeof b?.pinned_position !== "number"
+      ) {
+        return -1;
+      } else if (
+        typeof a?.pinned_position !== "number" &&
+        typeof b?.pinned_position === "number"
+      ) {
+        return 1;
+      } else if (
+        typeof a?.pinned_position === "number" &&
+        typeof b?.pinned_position === "number"
+      ) {
+        if (a.pinned_position < b.pinned_position) return -1;
+        else if (a.pinned_position > b.pinned_position) return 1;
+        else return 0;
+      } else return 0;
     });
   }
 
@@ -213,7 +226,10 @@ export class EducationComponent implements OnInit, OnDestroy {
       let nextPinPosition = 0;
 
       this[itemList].forEach((item) => {
-        if (item.pinned_position && item.pinned_position >= nextPinPosition) {
+        if (
+          typeof item?.pinned_position === "number" &&
+          item.pinned_position >= nextPinPosition
+        ) {
           nextPinPosition = item.pinned_position + 1;
         }
       });
