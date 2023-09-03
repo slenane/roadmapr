@@ -7,10 +7,13 @@ import {
   transferArrayItem,
 } from "@angular/cdk/drag-drop";
 import { Education } from "../store/education.models";
-import { DUMMY_EDUCATION } from "../constants/dummy.constants";
+// import { DUMMY_EDUCATION } from "../constants/dummy.constants";
 import { EducationService } from "../services/education.service";
 import { EducationStoreService } from "../services/education-store.service";
-import { EDUCATION_TYPES } from "../constants/education.constants";
+import {
+  EDUCATION_TYPE_CONFIG,
+  STATUS,
+} from "../constants/education.constants";
 
 @Component({
   selector: "app-education",
@@ -22,22 +25,17 @@ export class EducationComponent implements OnInit, OnDestroy {
   public selectedFilterType: null | string = null;
   public selectedFilterLanguage: null | string = null;
   public selectedView: "compact" | "expanded" = "compact";
-  public typeConfig = [
-    { title: "Books", name: "book" },
-    { title: "Courses", name: "course" },
-    { title: "Degrees", name: "degree" },
-    { title: "Tutorials", name: "tutorial" },
-  ];
+  public typeConfig = EDUCATION_TYPE_CONFIG;
   public languageFilterData: any = [];
   public education: Education;
   public educationId: string;
   public educationArray: any[] = [];
 
-  public todoArray: any[];
-  public inProgressArray: any[];
-  public doneArray: any[];
-  public recommendationsArray: any[];
-  public recommendations = DUMMY_EDUCATION;
+  public todo: any[];
+  public inProgress: any[];
+  public done: any[];
+  public recommendations: any[];
+  // public recommendations = DUMMY_EDUCATION;
 
   constructor(
     private educationService: EducationService,
@@ -59,10 +57,6 @@ export class EducationComponent implements OnInit, OnDestroy {
         if (this.educationArray.length) {
           this.getEducationConfig(this.educationArray);
           this.getLanguageFilterData();
-        } else {
-          this.todoArray = [];
-          this.inProgressArray = [];
-          this.doneArray = [];
         }
       });
   }
@@ -73,43 +67,50 @@ export class EducationComponent implements OnInit, OnDestroy {
   }
 
   getEducationConfig(education: any[]): void {
-    this.todoArray = this.sortPinnedItems(
-      education.filter((item: any) => !item.startDate && !item.endDate)
-    );
+    const todoArray: any[] = [],
+      inProgressArray: any[] = [],
+      doneArray: any[] = [];
 
-    this.inProgressArray = this.sortPinnedItems(
-      education.filter((item: any) => item.startDate && !item.endDate)
-    );
+    education.forEach((item) => {
+      if (item.status === STATUS.TODO) todoArray.push(item);
+      else if (item.status === STATUS.IN_PROGRESS) inProgressArray.push(item);
+      else if (item.status === STATUS.DONE) doneArray.push(item);
+    });
 
-    this.doneArray = this.sortPinnedItems(
-      education.filter((item: any) => item.endDate)
-    );
+    this.todo = this.getSortedList(todoArray);
+    this.inProgress = this.getSortedList(inProgressArray);
+    this.done = this.getSortedList(doneArray);
 
-    // this.recommendationsArray = this.generateEducationArray(
+    // this.recommendations = this.generateEducationArray(
     //   this.recommendations
     // );
   }
 
+  getSortedList(arr: any[]) {
+    const pinned: any[] = [],
+      regular: any[] = [];
+
+    arr.forEach((item: any) => {
+      if (typeof item?.pinned_position === "number") pinned.push(item);
+      else regular.push(item);
+    });
+
+    return [...this.sortPinnedItems(pinned), ...this.sortItems(regular)];
+  }
+
   sortPinnedItems(arr: any[]): any[] {
     return arr.sort((a: any, b: any): number => {
-      if (
-        typeof a?.pinned_position === "number" &&
-        typeof b?.pinned_position !== "number"
-      ) {
-        return -1;
-      } else if (
-        typeof a?.pinned_position !== "number" &&
-        typeof b?.pinned_position === "number"
-      ) {
-        return 1;
-      } else if (
-        typeof a?.pinned_position === "number" &&
-        typeof b?.pinned_position === "number"
-      ) {
-        if (a.pinned_position < b.pinned_position) return -1;
-        else if (a.pinned_position > b.pinned_position) return 1;
-        else return 0;
-      } else return 0;
+      if (a.pinned_position < b.pinned_position) return -1;
+      else if (a.pinned_position > b.pinned_position) return 1;
+      else return 0;
+    });
+  }
+
+  sortItems(arr: any[]): any[] {
+    return arr.sort((a: any, b: any): number => {
+      if (a.position < b.position) return -1;
+      else if (a.position > b.position) return 1;
+      else return 0;
     });
   }
 
@@ -172,46 +173,41 @@ export class EducationComponent implements OnInit, OnDestroy {
     }
   }
 
-  transferEducationItem(item: any) {
-    this.educationService
-      .updateEducationItem(this.education._id, item)
-      .subscribe((res) => {
-        console.log(res);
-      });
-  }
-
-  transferItem(event: CdkDragDrop<any[]>) {
-    transferArrayItem(
-      event.previousContainer.data,
-      event.container.data,
-      event.previousIndex,
-      event.currentIndex
-    );
-  }
-
   drop(event: CdkDragDrop<any[]>) {
     if (event.previousContainer === event.container) {
+      console.log(event);
       moveItemInArray(
         event.container.data,
         event.previousIndex,
         event.currentIndex
       );
     } else {
+      console.log(event);
       const item = { ...event.previousContainer.data[event.previousIndex] };
-      if (event.container.id === "cdk-drop-list-0") {
+      if (event.container.id === STATUS.TODO) {
         if (item.startDate) item.startDate = null;
         if (item.endDate) item.endDate = null;
+        item.status = STATUS.TODO;
       }
-      if (event.container.id === "cdk-drop-list-1") {
+      if (event.container.id === STATUS.IN_PROGRESS) {
         if (item.endDate) item.endDate = null;
         if (!item.startDate) item.startDate = new Date();
+        item.status = STATUS.IN_PROGRESS;
       }
-      if (event.container.id === "cdk-drop-list-2") {
+      if (event.container.id === STATUS.DONE) {
         if (!item.startDate) item.startDate = new Date();
         item.endDate = new Date();
+        item.status = STATUS.DONE;
       }
-      this.transferEducationItem(item);
-      this.transferItem(event);
+
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+
+      this.educationStoreService.updateEducationItem(item);
     }
   }
 
@@ -222,7 +218,7 @@ export class EducationComponent implements OnInit, OnDestroy {
         pinned_position: null,
       });
     } else {
-      const itemList = this.findItemList(data._id);
+      const itemList: "todo" | "inProgress" | "done" = data.status;
       let nextPinPosition = 0;
 
       this[itemList].forEach((item) => {
@@ -238,16 +234,6 @@ export class EducationComponent implements OnInit, OnDestroy {
         ...data,
         pinned_position: nextPinPosition,
       });
-    }
-  }
-
-  findItemList(id: number): "todoArray" | "inProgressArray" | "doneArray" {
-    if (this.todoArray.find((item) => item._id === id)) {
-      return "todoArray";
-    } else if (this.inProgressArray.find((item) => item._id === id)) {
-      return "inProgressArray";
-    } else {
-      return "doneArray";
     }
   }
 }

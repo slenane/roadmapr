@@ -15,6 +15,8 @@ export interface EducationItem {
   startDate: Date;
   title: String;
   type: String;
+  status: "todo" | "inProgress" | "done";
+  position: Number;
   education: string;
   _id: string;
 }
