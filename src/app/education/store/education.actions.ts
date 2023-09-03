@@ -4,6 +4,8 @@ import { Education } from "./education.models";
 export const GET_EDUCATION = "[Education] Get Education";
 export const CREATE_EDUCATION_ITEM = "[Education] Create Education Item";
 export const UPDATE_EDUCATION_ITEM = "[Education] Update Education Item";
+export const BULK_UPDATE_EDUCATION_ITEMS =
+  "[Education] Bulk Update Education Items";
 export const REMOVE_EDUCATION_ITEM = "[Education] Remove Education Item";
 
 const GET_EDUCATION_SUCCESS = "[Education] Education Loaded Successfully",
@@ -13,6 +15,10 @@ const GET_EDUCATION_SUCCESS = "[Education] Education Loaded Successfully",
   CREATE_EDUCATION_ITEM_ERROR = "[Education] Education Item Creation Error",
   UPDATE_EDUCATION_ITEM_SUCCESS = "[Education] Education Item Updated Error",
   UPDATE_EDUCATION_ITEM_ERROR = "[Education] Education Item Update Error",
+  BULK_UPDATE_EDUCATION_ITEMS_SUCCESS =
+    "[Education] Education Items Updated Error",
+  BULK_UPDATE_EDUCATION_ITEMS_ERROR =
+    "[Education] Education Items Update Error",
   REMOVE_EDUCATION_ITEM_SUCCESS = "[Education] Education Item Removed Error",
   REMOVE_EDUCATION_ITEM_ERROR = "[Education] Education Item Removal Error";
 
@@ -48,7 +54,7 @@ export const CreateEducationItemError = createAction(
 
 export const UpdateEducationItem = createAction(
   UPDATE_EDUCATION_ITEM,
-  props<{ id: string; data: any }>()
+  props<{ data: any }>()
 );
 
 export const UpdateEducationItemSuccess = createAction(
@@ -58,6 +64,21 @@ export const UpdateEducationItemSuccess = createAction(
 
 export const UpdateEducationItemError = createAction(
   UPDATE_EDUCATION_ITEM_ERROR,
+  props<{ payload: string }>()
+);
+
+export const BulkUpdateEducationItems = createAction(
+  BULK_UPDATE_EDUCATION_ITEMS,
+  props<{ id: string; data: any[] }>()
+);
+
+export const BulkUpdateEducationItemsSuccess = createAction(
+  BULK_UPDATE_EDUCATION_ITEMS_SUCCESS,
+  props<{ payload: { data: any } }>()
+);
+
+export const BulkUpdateEducationItemsError = createAction(
+  BULK_UPDATE_EDUCATION_ITEMS_ERROR,
   props<{ payload: string }>()
 );
 

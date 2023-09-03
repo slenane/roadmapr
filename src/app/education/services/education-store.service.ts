@@ -32,9 +32,16 @@ export class EducationStoreService {
   }
 
   updateEducationItem(data: any) {
-    console.log(data);
     this.store.dispatch({
       type: educationActions.UPDATE_EDUCATION_ITEM,
+      data,
+    });
+  }
+
+  bulkUpdateEducationItems(educationId: string, data: any[]) {
+    this.store.dispatch({
+      type: educationActions.BULK_UPDATE_EDUCATION_ITEMS,
+      educationId,
       data,
     });
   }

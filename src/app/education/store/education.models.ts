@@ -10,7 +10,7 @@ export interface EducationItem {
   endDate: Date;
   github?: String;
   link: String;
-  pinned_position?: number;
+  pinned: boolean;
   stack: any[];
   startDate: Date;
   title: String;

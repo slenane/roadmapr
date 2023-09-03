@@ -77,33 +77,13 @@ export class EducationComponent implements OnInit, OnDestroy {
       else if (item.status === STATUS.DONE) doneArray.push(item);
     });
 
-    this.todo = this.getSortedList(todoArray);
-    this.inProgress = this.getSortedList(inProgressArray);
-    this.done = this.getSortedList(doneArray);
+    this.todo = this.sortItems(todoArray);
+    this.inProgress = this.sortItems(inProgressArray);
+    this.done = this.sortItems(doneArray);
 
     // this.recommendations = this.generateEducationArray(
     //   this.recommendations
     // );
-  }
-
-  getSortedList(arr: any[]) {
-    const pinned: any[] = [],
-      regular: any[] = [];
-
-    arr.forEach((item: any) => {
-      if (typeof item?.pinned_position === "number") pinned.push(item);
-      else regular.push(item);
-    });
-
-    return [...this.sortPinnedItems(pinned), ...this.sortItems(regular)];
-  }
-
-  sortPinnedItems(arr: any[]): any[] {
-    return arr.sort((a: any, b: any): number => {
-      if (a.pinned_position < b.pinned_position) return -1;
-      else if (a.pinned_position > b.pinned_position) return 1;
-      else return 0;
-    });
   }
 
   sortItems(arr: any[]): any[] {
@@ -169,17 +149,63 @@ export class EducationComponent implements OnInit, OnDestroy {
 
   createEducationItem(item: any) {
     if (item.data) {
-      this.educationStoreService.createEducationItem(item.id, item.data);
+      const newItem = { ...item.data };
+      newItem.pinned = false;
+
+      if (!newItem.startDate && !newItem.endDate) {
+        newItem.status = STATUS.TODO;
+        newItem.position = this.todo.length;
+      } else if (newItem.startDate && !newItem.endDate) {
+        newItem.status = STATUS.IN_PROGRESS;
+        newItem.position = this.inProgress.length;
+      } else {
+        newItem.status = STATUS.DONE;
+        newItem.position = this.done.length;
+      }
+
+      this.educationStoreService.createEducationItem(item.id, newItem);
     }
   }
 
   drop(event: CdkDragDrop<any[]>) {
     if (event.previousContainer === event.container) {
-      console.log(event);
+      let itemList: "todo" | "inProgress" | "done";
+      let updatedItems = [];
+
+      if (event.container.id === STATUS.TODO) {
+        itemList = "todo";
+      } else if (event.container.id === STATUS.IN_PROGRESS) {
+        itemList = "inProgress";
+      } else itemList = "done";
+
+      const dropped = this[itemList][event.previousIndex];
+
+      let permittedPosition: number = event.currentIndex;
+
+      if (!dropped.pinned) {
+        if (event.currentIndex <= this.getLastPinnedIndex(itemList))
+          permittedPosition = this.getLastPinnedIndex(itemList) + 1;
+      }
+
+      updatedItems.push(
+        { _id: dropped._id, position: permittedPosition },
+        ...this.incrementFollowingItems(
+          itemList,
+          dropped,
+          permittedPosition,
+          event.previousIndex
+        )
+      );
+
       moveItemInArray(
         event.container.data,
         event.previousIndex,
-        event.currentIndex
+        permittedPosition
+      );
+
+      this.educationStoreService.bulkUpdateEducationItems(
+        this.education._id,
+        updatedItems
       );
     } else {
       console.log(event);
@@ -212,28 +238,57 @@ export class EducationComponent implements OnInit, OnDestroy {
   }
 
   onPinToggle(data: any) {
-    if (typeof data?.pinned_position === "number") {
-      this.educationStoreService.updateEducationItem({
-        ...data,
-        pinned_position: null,
-      });
-    } else {
-      const itemList: "todo" | "inProgress" | "done" = data.status;
-      let nextPinPosition = 0;
+    const initialItemPosition = data.position;
+    const updatedItems = [];
 
-      this[itemList].forEach((item) => {
-        if (
-          typeof item?.pinned_position === "number" &&
-          item.pinned_position >= nextPinPosition
-        ) {
-          nextPinPosition = item.pinned_position + 1;
-        }
-      });
+    const updatedItem = {
+      _id: data._id,
+      pinned: !data?.pinned,
+      position: this.getLastPinnedIndex(data.status),
+    };
 
-      this.educationStoreService.updateEducationItem({
-        ...data,
-        pinned_position: nextPinPosition,
-      });
-    }
+    updatedItems.push(
+      updatedItem,
+      ...this.incrementFollowingItems(
+        data.status,
+        updatedItem,
+        updatedItem.position,
+        initialItemPosition
+      )
+    );
+
+    this.educationStoreService.bulkUpdateEducationItems(
+      this.education._id,
+      updatedItems
+    );
+  }
+
+  getLastPinnedIndex(itemList: "todo" | "inProgress" | "done") {
+    let index = 0;
+    this[itemList].forEach((item) => {
+      if (item.pinned && item.position > index) index = item.position;
+    });
+    return index;
+  }
+
+  incrementFollowingItems(
+    itemList: "todo" | "inProgress" | "done",
+    updatedItem: any,
+    index: number,
+    upperLimit: number
+  ) {
+    let incrementedItems: any[] = [];
+
+    this[itemList].forEach((item) => {
+      if (
+        item.position < upperLimit &&
+        item.position >= index &&
+        item._id !== updatedItem._id
+      ) {
+        incrementedItems.push({ _id: item._id, position: item.position + 1 });
+      }
+    });
+
+    return incrementedItems;
   }
 }
