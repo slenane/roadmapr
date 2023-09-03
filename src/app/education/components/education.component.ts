@@ -52,6 +52,7 @@ export class EducationComponent implements OnInit, OnDestroy {
         takeUntil(this.ngUnsubscribe)
       )
       .subscribe((education: Education) => {
+        console.log(education);
         this.education = education;
         this.educationArray = this.education.items;
 
@@ -202,9 +203,11 @@ export class EducationComponent implements OnInit, OnDestroy {
   }
 
   onPinToggle(data: any) {
-    if (data?.pinned_position) {
-      delete data.pinned_position;
-      this.educationStoreService.updateEducationItem(data);
+    if (typeof data?.pinned_position === "number") {
+      this.educationStoreService.updateEducationItem({
+        ...data,
+        pinned_position: null,
+      });
     } else {
       const itemList = this.findItemList(data._id);
       let nextPinPosition = 0;

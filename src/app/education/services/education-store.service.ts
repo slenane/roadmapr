@@ -32,6 +32,7 @@ export class EducationStoreService {
   }
 
   updateEducationItem(data: any) {
+    console.log(data);
     this.store.dispatch({
       type: educationActions.UPDATE_EDUCATION_ITEM,
       data,
