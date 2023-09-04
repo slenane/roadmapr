@@ -47,7 +47,6 @@ export class EducationUpdateComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log(this.data);
     if (this.data?.type) {
       this.selectedType = this.data.type;
       this.educationForm.patchValue({

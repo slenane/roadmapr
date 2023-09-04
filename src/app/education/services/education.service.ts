@@ -38,7 +38,6 @@ export class EducationService {
     educationId: string,
     data: any
   ): Observable<any> {
-    console.log(educationId, data);
     return this.apiService.patch(
       this.urlService.generate("EDUCATION_BULK_UPDATE", educationId),
       {

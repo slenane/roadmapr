@@ -8,7 +8,7 @@ import {
 } from "@angular/cdk/drag-drop";
 import { Education } from "../store/education.models";
 // import { DUMMY_EDUCATION } from "../constants/dummy.constants";
-import { EducationService } from "../services/education.service";
+// import { EducationService } from "../services/education.service";
 import { EducationStoreService } from "../services/education-store.service";
 import {
   EDUCATION_TYPE_CONFIG,
@@ -38,7 +38,7 @@ export class EducationComponent implements OnInit, OnDestroy {
   // public recommendations = DUMMY_EDUCATION;
 
   constructor(
-    private educationService: EducationService,
+    // private educationService: EducationService,
     private educationStoreService: EducationStoreService
   ) {}
 
@@ -168,73 +168,95 @@ export class EducationComponent implements OnInit, OnDestroy {
   }
 
   drop(event: CdkDragDrop<any[]>) {
-    if (event.previousContainer === event.container) {
-      let itemList: "todo" | "inProgress" | "done";
-      let updatedItems = [];
+    const currentContainer = event.container;
+    const previousContainer = event.previousContainer;
+    const currentIndex = event.currentIndex;
+    const previousIndex = event.previousIndex;
 
-      if (event.container.id === STATUS.TODO) {
-        itemList = "todo";
-      } else if (event.container.id === STATUS.IN_PROGRESS) {
-        itemList = "inProgress";
-      } else itemList = "done";
+    const currentItemList: "todo" | "inProgress" | "done" = this.getItemList(
+      currentContainer.id
+    );
+    const previousItemList: "todo" | "inProgress" | "done" = this.getItemList(
+      previousContainer.id
+    );
+    const droppedItem =
+      previousContainer === currentContainer
+        ? { ...this[currentItemList][previousIndex] }
+        : { ...this[previousItemList][previousIndex] };
 
-      const dropped = this[itemList][event.previousIndex];
+    let permittedPosition: number = currentIndex;
 
-      let permittedPosition: number = event.currentIndex;
-
-      if (!dropped.pinned) {
-        if (event.currentIndex <= this.getLastPinnedIndex(itemList))
-          permittedPosition = this.getLastPinnedIndex(itemList) + 1;
+    if (!droppedItem.pinned) {
+      if (
+        this.getLastPinnedIndex(currentItemList) >= 0 &&
+        currentIndex <= this.getLastPinnedIndex(currentItemList)
+      ) {
+        permittedPosition = this.getLastPinnedIndex(currentItemList) + 1;
       }
+    }
 
-      updatedItems.push(
-        { _id: dropped._id, position: permittedPosition },
-        ...this.incrementFollowingItems(
-          itemList,
-          dropped,
-          permittedPosition,
-          event.previousIndex
-        )
-      );
+    const updatedItems: any[] = [];
 
-      moveItemInArray(
-        event.container.data,
-        event.previousIndex,
-        permittedPosition
-      );
+    if (previousContainer === currentContainer) {
+      moveItemInArray(currentContainer.data, previousIndex, permittedPosition);
 
-      this.educationStoreService.bulkUpdateEducationItems(
-        this.education._id,
-        updatedItems
-      );
+      currentContainer.data.forEach((item) => {
+        updatedItems.push({
+          _id: item._id,
+          position: this[currentItemList].indexOf(item),
+        });
+      });
     } else {
-      console.log(event);
-      const item = { ...event.previousContainer.data[event.previousIndex] };
-      if (event.container.id === STATUS.TODO) {
-        if (item.startDate) item.startDate = null;
-        if (item.endDate) item.endDate = null;
-        item.status = STATUS.TODO;
+      if (currentContainer.id === STATUS.TODO) {
+        if (droppedItem.startDate) droppedItem.startDate = null;
+        if (droppedItem.endDate) droppedItem.endDate = null;
       }
-      if (event.container.id === STATUS.IN_PROGRESS) {
-        if (item.endDate) item.endDate = null;
-        if (!item.startDate) item.startDate = new Date();
-        item.status = STATUS.IN_PROGRESS;
+      if (currentContainer.id === STATUS.IN_PROGRESS) {
+        if (droppedItem.endDate) droppedItem.endDate = null;
+        if (!droppedItem.startDate) droppedItem.startDate = new Date();
       }
-      if (event.container.id === STATUS.DONE) {
-        if (!item.startDate) item.startDate = new Date();
-        item.endDate = new Date();
-        item.status = STATUS.DONE;
+      if (currentContainer.id === STATUS.DONE) {
+        if (!droppedItem.startDate) droppedItem.startDate = new Date();
+        droppedItem.endDate = new Date();
       }
 
       transferArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
+        previousContainer.data,
+        currentContainer.data,
+        previousIndex,
+        currentIndex
       );
 
-      this.educationStoreService.updateEducationItem(item);
+      updatedItems.push({
+        _id: droppedItem._id,
+        status: currentItemList,
+        endDate: droppedItem.endDate,
+        startDate: droppedItem.startDate,
+        position: permittedPosition,
+      });
+
+      currentContainer.data.forEach((item) => {
+        if (item._id !== droppedItem._id) {
+          updatedItems.push({
+            _id: item._id,
+            position: this[currentItemList].indexOf(item),
+          });
+        }
+      });
+      previousContainer.data.forEach((item) => {
+        if (item._id !== droppedItem._id) {
+          updatedItems.push({
+            _id: item._id,
+            position: this[previousItemList].indexOf(item),
+          });
+        }
+      });
     }
+
+    this.educationStoreService.bulkUpdateEducationItems(
+      this.education._id,
+      updatedItems
+    );
   }
 
   onPinToggle(data: any) {
@@ -244,14 +266,17 @@ export class EducationComponent implements OnInit, OnDestroy {
     const updatedItem = {
       _id: data._id,
       pinned: !data?.pinned,
-      position: this.getLastPinnedIndex(data.status),
+      position:
+        this.getLastPinnedIndex(data.status) >= 0
+          ? this.getLastPinnedIndex(data.status)
+          : 0,
     };
 
     updatedItems.push(
       updatedItem,
       ...this.incrementFollowingItems(
         data.status,
-        updatedItem,
+        updatedItem._id,
         updatedItem.position,
         initialItemPosition
       )
@@ -263,17 +288,24 @@ export class EducationComponent implements OnInit, OnDestroy {
     );
   }
 
+  getItemList(list: string): "todo" | "inProgress" | "done" {
+    if (list === STATUS.TODO) return "todo";
+    else if (list === STATUS.IN_PROGRESS) return "inProgress";
+    else return "done";
+  }
+
   getLastPinnedIndex(itemList: "todo" | "inProgress" | "done") {
-    let index = 0;
+    let index: any;
     this[itemList].forEach((item) => {
-      if (item.pinned && item.position > index) index = item.position;
+      if (item.pinned && (typeof index !== "number" || item.position > index))
+        index = item.position;
     });
     return index;
   }
 
   incrementFollowingItems(
     itemList: "todo" | "inProgress" | "done",
-    updatedItem: any,
+    itemId: number,
     index: number,
     upperLimit: number
   ) {
@@ -283,9 +315,13 @@ export class EducationComponent implements OnInit, OnDestroy {
       if (
         item.position < upperLimit &&
         item.position >= index &&
-        item._id !== updatedItem._id
+        item._id !== itemId
       ) {
-        incrementedItems.push({ _id: item._id, position: item.position + 1 });
+        incrementedItems.push({
+          _id: item._id,
+          name: item.title,
+          position: item.position + 1,
+        });
       }
     });
 
