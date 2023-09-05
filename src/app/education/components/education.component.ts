@@ -201,10 +201,12 @@ export class EducationComponent implements OnInit, OnDestroy {
       moveItemInArray(currentContainer.data, previousIndex, permittedPosition);
 
       currentContainer.data.forEach((item) => {
-        updatedItems.push({
-          _id: item._id,
-          position: this[currentItemList].indexOf(item),
-        });
+        if (item.position !== this[currentItemList].indexOf(item)) {
+          updatedItems.push({
+            _id: item._id,
+            position: this[currentItemList].indexOf(item),
+          });
+        }
       });
     } else {
       if (currentContainer.id === STATUS.TODO) {
@@ -236,7 +238,10 @@ export class EducationComponent implements OnInit, OnDestroy {
       });
 
       currentContainer.data.forEach((item) => {
-        if (item._id !== droppedItem._id) {
+        if (
+          item._id !== droppedItem._id &&
+          item.position !== this[currentItemList].indexOf(item)
+        ) {
           updatedItems.push({
             _id: item._id,
             position: this[currentItemList].indexOf(item),
@@ -244,7 +249,10 @@ export class EducationComponent implements OnInit, OnDestroy {
         }
       });
       previousContainer.data.forEach((item) => {
-        if (item._id !== droppedItem._id) {
+        if (
+          item._id !== droppedItem._id &&
+          item.position !== this[previousItemList].indexOf(item)
+        ) {
           updatedItems.push({
             _id: item._id,
             position: this[previousItemList].indexOf(item),
@@ -253,10 +261,12 @@ export class EducationComponent implements OnInit, OnDestroy {
       });
     }
 
-    this.educationStoreService.bulkUpdateEducationItems(
-      this.education._id,
-      updatedItems
-    );
+    if (updatedItems.length) {
+      this.educationStoreService.bulkUpdateEducationItems(
+        this.education._id,
+        updatedItems
+      );
+    }
   }
 
   onPinToggle(data: any) {
