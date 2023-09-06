@@ -7,10 +7,7 @@ interface Action {
 }
 
 const initialState: Education = {
-  books: [],
-  courses: [],
-  degrees: [],
-  tutorials: [],
+  items: [],
   user: "",
   _id: "",
 };
@@ -26,6 +23,12 @@ const educationReducer = createReducer(
   on(educationActions.UpdateEducationItemSuccess, (state: any, data: any) => {
     return { ...state, ...data.payload };
   }),
+  on(
+    educationActions.BulkUpdateEducationItemsSuccess,
+    (state: any, data: any) => {
+      return { ...state, ...data.payload };
+    }
+  ),
   on(educationActions.RemoveEducationItemSuccess, (state: any, data: any) => {
     return { ...state, ...data.payload };
   })

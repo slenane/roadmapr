@@ -4,6 +4,8 @@ import {
   OnInit,
   SimpleChanges,
   OnChanges,
+  Output,
+  EventEmitter,
 } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { ProjectDetailsComponent } from "./project-details/project-details.component";
@@ -15,8 +17,12 @@ import { ProjectDetailsComponent } from "./project-details/project-details.compo
 })
 export class ProjectComponent implements OnInit, OnChanges {
   public sortedStack: any[] = [];
+  public pinDisplayed: boolean = false;
+  public isPinned: boolean = false;
+
   @Input() selectedView: any;
   @Input() data: any;
+  @Output() pinItem: EventEmitter<any> = new EventEmitter();
 
   constructor(public dialog: MatDialog) {}
 
@@ -36,6 +42,7 @@ export class ProjectComponent implements OnInit, OnChanges {
       if (this.data.stack) {
         this.sortedStack = this.sortStack([...this.data.stack]);
       }
+      if (this.data?.pinned) this.isPinned = true;
     }
   }
 
@@ -48,5 +55,19 @@ export class ProjectComponent implements OnInit, OnChanges {
       width: "50vw",
       data: { ...this.data, stack: this.sortedStack },
     });
+  }
+
+  showPin() {
+    this.pinDisplayed = true;
+  }
+
+  hidePin() {
+    this.pinDisplayed = false;
+  }
+
+  togglePin(event: Event) {
+    event.stopPropagation();
+    this.isPinned = !this.isPinned;
+    this.pinItem.emit(this.data);
   }
 }

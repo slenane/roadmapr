@@ -38,6 +38,14 @@ export class EducationStoreService {
     });
   }
 
+  bulkUpdateEducationItems(educationId: string, data: any[]) {
+    this.store.dispatch({
+      type: educationActions.BULK_UPDATE_EDUCATION_ITEMS,
+      educationId,
+      data,
+    });
+  }
+
   removeEducationItem(data: any) {
     this.store.dispatch({
       type: educationActions.REMOVE_EDUCATION_ITEM,

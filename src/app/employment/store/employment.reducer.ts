@@ -23,6 +23,12 @@ const employmentReducer = createReducer(
   on(employmentActions.UpdateEmploymentItemSuccess, (state: any, data: any) => {
     return { ...state, ...data.payload };
   }),
+  on(
+    employmentActions.BulkUpdateEmploymentItemsSuccess,
+    (state: any, data: any) => {
+      return { ...state, ...data.payload };
+    }
+  ),
   on(employmentActions.RemoveEmploymentItemSuccess, (state: any, data: any) => {
     return { ...state, ...data.payload };
   })

@@ -75,6 +75,28 @@ export class ProjectEffects {
     )
   );
 
+  bulkUpdateProjectItems$ = createEffect((): any =>
+    this.actions$.pipe(
+      ofType(projectActions.BULK_UPDATE_PROJECT_ITEMS),
+      switchMap(({ projectsId, data }) => {
+        return this.projectsService.bulkUpdateProjectItems(projectsId, data);
+      }),
+      map((payload) => {
+        this.snackBar.open("Project Items Updated", "Dismiss", {
+          duration: 5000,
+        });
+        return projectActions.BulkUpdateProjectItemsSuccess({ payload });
+      }),
+      catchError((error) => {
+        this.snackBar.open("Project Update Error", "Dismiss", {
+          duration: 10000,
+          panelClass: ["snackbar-error"],
+        });
+        return of(projectActions.BulkUpdateProjectItemsError(error));
+      })
+    )
+  );
+
   removeProject$ = createEffect((): any =>
     this.actions$.pipe(
       ofType(projectActions.REMOVE_PROJECT),

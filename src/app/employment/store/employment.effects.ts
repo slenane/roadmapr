@@ -75,6 +75,31 @@ export class EmploymentEffects {
     )
   );
 
+  bulkUpdateEmploymentItems$ = createEffect((): any =>
+    this.actions$.pipe(
+      ofType(employmentActions.BULK_UPDATE_EMPLOYMENT_ITEMS),
+      switchMap(({ employmentId, data }) => {
+        return this.employmentService.bulkUpdateEmploymentItems(
+          employmentId,
+          data
+        );
+      }),
+      map((payload) => {
+        this.snackBar.open("Employment Items Updated", "Dismiss", {
+          duration: 5000,
+        });
+        return employmentActions.BulkUpdateEmploymentItemsSuccess({ payload });
+      }),
+      catchError((error) => {
+        this.snackBar.open("Employment Update Error", "Dismiss", {
+          duration: 10000,
+          panelClass: ["snackbar-error"],
+        });
+        return of(employmentActions.BulkUpdateEmploymentItemsError(error));
+      })
+    )
+  );
+
   removeEmploymentItem$ = createEffect((): any =>
     this.actions$.pipe(
       ofType(employmentActions.REMOVE_EMPLOYMENT_ITEM),

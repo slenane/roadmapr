@@ -1,15 +1,16 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Subject } from "rxjs";
 import { filter, takeUntil } from "rxjs/operators";
-import {
-  CdkDragDrop,
-  moveItemInArray,
-  transferArrayItem,
-} from "@angular/cdk/drag-drop";
+import { CdkDragDrop } from "@angular/cdk/drag-drop";
 import { Education } from "../store/education.models";
-import { DUMMY_EDUCATION } from "../constants/dummy.constants";
-import { EducationService } from "../services/education.service";
+// import { DUMMY_EDUCATION } from "../constants/dummy.constants";
+// import { EducationService } from "../services/education.service";
 import { EducationStoreService } from "../services/education-store.service";
+import {
+  EDUCATION_TYPE_CONFIG,
+  STATUS,
+} from "../constants/education.constants";
+import { DropListService } from "src/app/core/services/drop-list.service";
 
 @Component({
   selector: "app-education",
@@ -21,26 +22,22 @@ export class EducationComponent implements OnInit, OnDestroy {
   public selectedFilterType: null | string = null;
   public selectedFilterLanguage: null | string = null;
   public selectedView: "compact" | "expanded" = "compact";
-  public typeConfig = [
-    { title: "Books", name: "book" },
-    { title: "Courses", name: "course" },
-    { title: "Degrees", name: "degree" },
-    { title: "Tutorials", name: "tutorial" },
-  ];
-  public filterType = "date";
+  public typeConfig = EDUCATION_TYPE_CONFIG;
   public languageFilterData: any = [];
   public education: Education;
   public educationId: string;
+  public educationArray: any[] = [];
 
-  public todoArray: any[];
-  public inProgressArray: any[];
-  public doneArray: any[];
-  public recommendationsArray: any[];
-  public recommendations = DUMMY_EDUCATION;
+  public todo: any[];
+  public inProgress: any[];
+  public done: any[];
+  public recommendations: any[];
+  // public recommendations = DUMMY_EDUCATION;
 
   constructor(
-    private educationService: EducationService,
-    private educationStoreService: EducationStoreService
+    // private educationService: EducationService,
+    private educationStoreService: EducationStoreService,
+    private dropListService: DropListService
   ) {}
 
   ngOnInit(): void {
@@ -52,13 +49,10 @@ export class EducationComponent implements OnInit, OnDestroy {
       )
       .subscribe((education: Education) => {
         this.education = education;
+        this.educationArray = this.education.items;
 
-        const educationArray: any[] = this.generateEducation(
-          this.education,
-          this.filterType
-        );
-        if (educationArray.length) {
-          this.getEducationConfig(educationArray);
+        if (this.educationArray.length) {
+          this.getEducationConfig(this.educationArray);
           this.getLanguageFilterData();
         }
       });
@@ -70,44 +64,35 @@ export class EducationComponent implements OnInit, OnDestroy {
   }
 
   getEducationConfig(education: any[]): void {
-    this.todoArray = education.filter(
-      (item: any) => !item.startDate && !item.endDate
-    );
-    this.inProgressArray = education.filter(
-      (item: any) => item.startDate && !item.endDate
-    );
-    this.doneArray = education.filter((item: any) => item.endDate);
-    this.recommendationsArray = this.generateEducation(
-      this.recommendations,
-      this.filterType
-    );
+    const todoArray: any[] = [],
+      inProgressArray: any[] = [],
+      doneArray: any[] = [];
+
+    education.forEach((item) => {
+      if (item.status === STATUS.IN_PROGRESS) inProgressArray.push(item);
+      else if (item.status === STATUS.DONE) doneArray.push(item);
+      else todoArray.push(item);
+    });
+
+    this.todo = this.sortItems(todoArray);
+    this.inProgress = this.sortItems(inProgressArray);
+    this.done = this.sortItems(doneArray);
+
+    // this.recommendations = this.generateEducationArray(
+    //   this.recommendations
+    // );
   }
 
-  generateEducation(education: any, filter: string): any {
-    switch (filter) {
-      case "date":
-        return this.sortByDate(education);
-    }
-  }
-
-  sortByDate(education: any): any[] {
-    const items: any[] = [];
-    const categories = ["books", "courses", "degrees", "tutorials"];
-
-    for (const category of categories) {
-      if (education[category]) {
-        education[category].forEach((item: any) => items.push(item));
-      }
-    }
-
-    return items;
+  sortItems(arr: any[]): any[] {
+    return arr.sort((a: any, b: any): number => {
+      if (a.position < b.position) return -1;
+      else if (a.position > b.position) return 1;
+      else return 0;
+    });
   }
 
   getLanguageFilterData() {
-    const education: any[] = this.generateEducation(
-      this.education,
-      this.filterType
-    );
+    const education: any[] = this.educationArray;
     const languageData: any[] = [];
     const languages: any[] = [];
 
@@ -161,50 +146,43 @@ export class EducationComponent implements OnInit, OnDestroy {
 
   createEducationItem(item: any) {
     if (item.data) {
-      this.educationStoreService.createEducationItem(item.id, item.data);
+      const newItem = { ...item.data };
+      newItem.pinned = false;
+
+      if (!newItem.startDate && !newItem.endDate) {
+        newItem.status = STATUS.TODO;
+        newItem.position = this.todo.length;
+      } else if (newItem.startDate && !newItem.endDate) {
+        newItem.status = STATUS.IN_PROGRESS;
+        newItem.position = this.inProgress.length;
+      } else {
+        newItem.status = STATUS.DONE;
+        newItem.position = this.done.length;
+      }
+
+      this.educationStoreService.createEducationItem(item.id, newItem);
     }
   }
 
-  transferEducationItem(item: any) {
-    this.educationService
-      .updateEducationItem(this.education._id, item)
-      .subscribe((res) => {
-        console.log(res);
-      });
-  }
-
-  transferItem(event: CdkDragDrop<any[]>) {
-    transferArrayItem(
-      event.previousContainer.data,
-      event.container.data,
-      event.previousIndex,
-      event.currentIndex
-    );
-  }
-
   drop(event: CdkDragDrop<any[]>) {
-    if (event.previousContainer === event.container) {
-      moveItemInArray(
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
+    const updatedItems = this.dropListService.drop(event);
+
+    if (updatedItems.length) {
+      this.educationStoreService.bulkUpdateEducationItems(
+        this.education._id,
+        updatedItems
       );
-    } else {
-      const item = { ...event.previousContainer.data[event.previousIndex] };
-      if (event.container.id === "cdk-drop-list-0") {
-        if (item.startDate) item.startDate = null;
-        if (item.endDate) item.endDate = null;
-      }
-      if (event.container.id === "cdk-drop-list-1") {
-        if (item.endDate) item.endDate = null;
-        if (!item.startDate) item.startDate = new Date();
-      }
-      if (event.container.id === "cdk-drop-list-2") {
-        if (!item.startDate) item.startDate = new Date();
-        item.endDate = new Date();
-      }
-      this.transferEducationItem(item);
-      this.transferItem(event);
+    }
+  }
+
+  onPinToggle(data: any, itemList: any[]) {
+    const updatedItems = this.dropListService.onPinToggle(itemList, data);
+
+    if (updatedItems) {
+      this.educationStoreService.bulkUpdateEducationItems(
+        this.education._id,
+        updatedItems
+      );
     }
   }
 }

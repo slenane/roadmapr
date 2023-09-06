@@ -14,6 +14,9 @@ export interface ProjectItem {
   startDate?: Date;
   title: String;
   tagLine: String;
-  todo: String;
+  type: String;
+  pinned: boolean;
+  status: "todo" | "inProgress" | "done";
+  position: Number;
   _id: string;
 }

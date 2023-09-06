@@ -23,6 +23,9 @@ const projectReducer = createReducer(
   on(projectActions.UpdateProjectSuccess, (state: any, data: any) => {
     return { ...state, ...data.payload };
   }),
+  on(projectActions.BulkUpdateProjectItemsSuccess, (state: any, data: any) => {
+    return { ...state, ...data.payload };
+  }),
   on(projectActions.RemoveProjectSuccess, (state: any, data: any) => {
     return { ...state, ...data.payload };
   })

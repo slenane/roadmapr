@@ -57,6 +57,10 @@ app-root {
 .material-symbols-outlined {
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 20;
   color: #00000087;
+
+  &__filled {
+    font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 20;
+  }
 }
 
 .mat-snack-bar-container {

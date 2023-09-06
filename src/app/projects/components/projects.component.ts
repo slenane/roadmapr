@@ -1,15 +1,12 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Subject } from "rxjs";
 import { filter, takeUntil } from "rxjs/operators";
-import {
-  CdkDragDrop,
-  moveItemInArray,
-  transferArrayItem,
-} from "@angular/cdk/drag-drop";
+import { CdkDragDrop } from "@angular/cdk/drag-drop";
 import { Projects } from "../store/projects.models";
 import { ProjectsService } from "../services/projects.service";
 import { ProjectsStoreService } from "../services/projects-store.service";
-import { MatDialog } from "@angular/material/dialog";
+import { PROJECT_TYPE_CONFIG, STATUS } from "../constants/projects.constants";
+import { DropListService } from "src/app/core/services/drop-list.service";
 
 @Component({
   selector: "app-projects",
@@ -21,24 +18,21 @@ export class ProjectsComponent implements OnInit, OnDestroy {
   public selectedFilterType: null | string = null;
   public selectedFilterLanguage: null | string = null;
   public selectedView: "compact" | "expanded" = "compact";
-  public typeConfig = [
-    { title: "Personal", name: "personal" },
-    { title: "Educational", name: "educational" },
-  ];
-  public filterType = "date";
+  public typeConfig = PROJECT_TYPE_CONFIG;
   public projects: Projects;
   public projectsId: string;
+  public projectsArray: any[] = [];
 
   public languageFilterData: any = [];
 
-  public todoArray: any[];
-  public inProgressArray: any[];
-  public doneArray: any[];
+  public todo: any[];
+  public inProgress: any[];
+  public done: any[];
 
   constructor(
     private projectService: ProjectsService,
     private projectsStoreService: ProjectsStoreService,
-    public dialog: MatDialog
+    private dropListService: DropListService
   ) {}
 
   ngOnInit(): void {
@@ -49,9 +43,12 @@ export class ProjectsComponent implements OnInit, OnDestroy {
         takeUntil(this.ngUnsubscribe)
       )
       .subscribe((projects: Projects) => {
+        console.log(projects);
         this.projects = projects;
-        if (this.projects.projectList.length) {
-          this.getProjectsConfig();
+        this.projectsArray = this.projects.projectList;
+
+        if (this.projectsArray.length) {
+          this.getProjectsConfig(this.projectsArray);
           this.getLanguageFilterData();
         }
       });
@@ -62,32 +59,32 @@ export class ProjectsComponent implements OnInit, OnDestroy {
     this.ngUnsubscribe.complete();
   }
 
-  getProjectsConfig(): void {
-    const projects = this.generateProjects(
-      this.projects.projectList,
-      this.filterType
-    );
-    this.todoArray = projects.filter(
-      (item: any) => !item.startDate && !item.endDate
-    );
-    this.inProgressArray = projects.filter(
-      (item: any) => item.startDate && !item.endDate
-    );
-    this.doneArray = projects.filter((item: any) => item.endDate);
+  getProjectsConfig(projects: any[]): void {
+    const todoArray: any[] = [],
+      inProgressArray: any[] = [],
+      doneArray: any[] = [];
+
+    projects.forEach((item) => {
+      if (item.status === STATUS.IN_PROGRESS) inProgressArray.push(item);
+      else if (item.status === STATUS.DONE) doneArray.push(item);
+      else todoArray.push(item);
+    });
+
+    this.todo = this.sortItems(todoArray);
+    this.inProgress = this.sortItems(inProgressArray);
+    this.done = this.sortItems(doneArray);
   }
 
-  generateProjects(projects: any, filter: string): any {
-    switch (filter) {
-      case "date":
-        return projects;
-    }
+  sortItems(arr: any[]): any[] {
+    return arr.sort((a: any, b: any): number => {
+      if (a.position < b.position) return -1;
+      else if (a.position > b.position) return 1;
+      else return 0;
+    });
   }
 
   getLanguageFilterData() {
-    const projects: any[] = this.generateProjects(
-      this.projects.projectList,
-      this.filterType
-    );
+    const projects: any[] = this.projectsArray;
     const languageData: any[] = [];
     const languages: any[] = [];
 
@@ -141,50 +138,43 @@ export class ProjectsComponent implements OnInit, OnDestroy {
 
   createProject(item: any) {
     if (item.data) {
+      const newItem = { ...item.data };
+      newItem.pinned = false;
+
+      if (!newItem.startDate && !newItem.endDate) {
+        newItem.status = STATUS.TODO;
+        newItem.position = this.todo.length;
+      } else if (newItem.startDate && !newItem.endDate) {
+        newItem.status = STATUS.IN_PROGRESS;
+        newItem.position = this.inProgress.length;
+      } else {
+        newItem.status = STATUS.DONE;
+        newItem.position = this.done.length;
+      }
+
       this.projectsStoreService.createProject(item.id, item.data);
     }
   }
 
-  transferProject(item: any) {
-    this.projectService
-      .updateProject(this.projects._id, item)
-      .subscribe((res: any) => {
-        console.log(res);
-      });
-  }
-
-  transferItem(event: CdkDragDrop<any[]>) {
-    transferArrayItem(
-      event.previousContainer.data,
-      event.container.data,
-      event.previousIndex,
-      event.currentIndex
-    );
-  }
-
   drop(event: CdkDragDrop<any[]>) {
-    if (event.previousContainer === event.container) {
-      moveItemInArray(
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
+    const updatedItems = this.dropListService.drop(event);
+
+    if (updatedItems.length) {
+      this.projectsStoreService.bulkUpdateProjectItems(
+        this.projects._id,
+        updatedItems
       );
-    } else {
-      const item = { ...event.previousContainer.data[event.previousIndex] };
-      if (event.container.id === "cdk-drop-list-0") {
-        if (item.startDate) item.startDate = null;
-        if (item.endDate) item.endDate = null;
-      }
-      if (event.container.id === "cdk-drop-list-1") {
-        if (item.endDate) item.endDate = null;
-        if (!item.startDate) item.startDate = new Date();
-      }
-      if (event.container.id === "cdk-drop-list-2") {
-        if (!item.startDate) item.startDate = new Date();
-        item.endDate = new Date();
-      }
-      this.transferProject(item);
-      this.transferItem(event);
+    }
+  }
+
+  onPinToggle(data: any, itemList: any[]) {
+    const updatedItems = this.dropListService.onPinToggle(itemList, data);
+
+    if (updatedItems) {
+      this.projectsStoreService.bulkUpdateProjectItems(
+        this.projects._id,
+        updatedItems
+      );
     }
   }
 }

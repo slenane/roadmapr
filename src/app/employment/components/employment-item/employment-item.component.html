@@ -1,4 +1,8 @@
-<mat-card (click)="openItemDetails()">
+<mat-card
+  (click)="openItemDetails()"
+  (mouseenter)="showPin()"
+  (mouseleave)="hidePin()"
+>
   <mat-card-header>
     <mat-card-title>
       <img
@@ -10,7 +14,10 @@
     </mat-card-title>
     <mat-card-subtitle> {{ data.company }}</mat-card-subtitle>
 
-    <div class="tech-stack">
+    <div
+      class="tech-stack"
+      [ngClass]="{ 'pin-displayed': pinDisplayed || isPinned }"
+    >
       <img
         *ngFor="let tech of sortedStack"
         class="app-stack-icon"
@@ -18,6 +25,22 @@
         src="/assets/images/stack/{{ tech.name }}-original.svg"
       />
     </div>
+    <div
+      class="pin-item"
+      *ngIf="!isPinned && pinDisplayed"
+      (click)="togglePin($event)"
+      ><span class="material-symbols-outlined pin pin-angle">
+        push_pin
+      </span></div
+    >
+
+    <div class="pin-item" *ngIf="isPinned" (click)="togglePin($event)"
+      ><span
+        class="material-symbols-outlined material-symbols-outlined__filled pin"
+      >
+        push_pin
+      </span></div
+    >
   </mat-card-header>
   <mat-card-content>
     <div class="content" *ngIf="selectedView === 'expanded'">

@@ -4,6 +4,8 @@ import { Employment } from "./employment.models";
 export const GET_EMPLOYMENT = "[Employment] Get Employment";
 export const CREATE_EMPLOYMENT_ITEM = "[Employment] Create Employment";
 export const UPDATE_EMPLOYMENT_ITEM = "[Employment] Update Employment";
+export const BULK_UPDATE_EMPLOYMENT_ITEMS =
+  "[Employment] Bulk Update Employment Items";
 export const REMOVE_EMPLOYMENT_ITEM = "[Employment] Remove Employment";
 
 const GET_EMPLOYMENT_SUCCESS = "[Employment] Employment Loaded Successfully",
@@ -13,6 +15,10 @@ const GET_EMPLOYMENT_SUCCESS = "[Employment] Employment Loaded Successfully",
   CREATE_EMPLOYMENT_ITEM_ERROR = "[Employment] Employment Creation Error",
   UPDATE_EMPLOYMENT_ITEM_SUCCESS = "[Employment] Employment Updated Error",
   UPDATE_EMPLOYMENT_ITEM_ERROR = "[Employment] Employment Update Error",
+  BULK_UPDATE_EMPLOYMENT_ITEMS_SUCCESS =
+    "[Employment] Employment Items Updated Error",
+  BULK_UPDATE_EMPLOYMENT_ITEMS_ERROR =
+    "[Employment] Employment Items Update Error",
   REMOVE_EMPLOYMENT_ITEM_SUCCESS = "[Employment] Employment Removed Error",
   REMOVE_EMPLOYMENT_ITEM_ERROR = "[Employment] Employment Removal Error";
 
@@ -58,6 +64,21 @@ export const UpdateEmploymentItemSuccess = createAction(
 
 export const UpdateEmploymentItemError = createAction(
   UPDATE_EMPLOYMENT_ITEM_ERROR,
+  props<{ payload: string }>()
+);
+
+export const BulkUpdateEmploymentItems = createAction(
+  BULK_UPDATE_EMPLOYMENT_ITEMS,
+  props<{ id: string; data: any[] }>()
+);
+
+export const BulkUpdateEmploymentItemsSuccess = createAction(
+  BULK_UPDATE_EMPLOYMENT_ITEMS_SUCCESS,
+  props<{ payload: { data: any } }>()
+);
+
+export const BulkUpdateEmploymentItemsError = createAction(
+  BULK_UPDATE_EMPLOYMENT_ITEMS_ERROR,
   props<{ payload: string }>()
 );
 

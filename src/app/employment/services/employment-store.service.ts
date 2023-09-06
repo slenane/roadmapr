@@ -38,6 +38,14 @@ export class EmploymentStoreService {
     });
   }
 
+  bulkUpdateEmploymentItems(employmentId: string, data: any[]) {
+    this.store.dispatch({
+      type: employmentActions.BULK_UPDATE_EMPLOYMENT_ITEMS,
+      employmentId,
+      data,
+    });
+  }
+
   removeEmploymentItem(data: any) {
     this.store.dispatch({
       type: employmentActions.REMOVE_EMPLOYMENT_ITEM,

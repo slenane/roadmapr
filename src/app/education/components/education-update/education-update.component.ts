@@ -1,14 +1,17 @@
-import { Component, Inject, OnInit, ViewChild } from "@angular/core";
+import {
+  Component,
+  Inject,
+  OnInit,
+  ViewChild,
+  ElementRef,
+} from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { EDUCATION_TYPES } from "../../constants/education.constants";
-import { EducationUpdateBookComponent } from "./education-update-book/education-update-book.component";
-import { EducationUpdateCourseComponent } from "./education-update-course/education-update-course.component";
-import { EducationUpdateDegreeComponent } from "./education-update-degree/education-update-degree.component";
-import { EducationUpdateTutorialComponent } from "./education-update-tutorial/education-update-tutorial.component";
 // import { EducationService } from "../../services/education.service";
 // import { takeUntil } from "rxjs/operators";
 import { Subject } from "rxjs";
+import { StackSelectorComponent } from "src/app/shared/components/stack-selector/stack-selector.component";
 
 @Component({
   selector: "app-education-update",
@@ -20,17 +23,25 @@ export class EducationUpdateComponent implements OnInit {
   public educationTypes = EDUCATION_TYPES;
   public selectedType: string = "";
   public educationForm = new FormGroup({
-    type: new FormControl(),
-    link: new FormControl(),
+    type: new FormControl("", Validators.required),
+    title: new FormControl("", Validators.required),
+    author: new FormControl("", Validators.required),
+    startDate: new FormControl<Date | null>(new Date()),
+    endDate: new FormControl<Date | null>(null),
+    description: new FormControl(),
+    link: new FormControl("", Validators.required),
+    github: new FormControl(),
   });
 
-  @ViewChild("book") book: EducationUpdateBookComponent;
-  @ViewChild("course") course: EducationUpdateCourseComponent;
-  @ViewChild("degree") degree: EducationUpdateDegreeComponent;
-  @ViewChild("tutorial") tutorial: EducationUpdateTutorialComponent;
+  @ViewChild("stack") stack: StackSelectorComponent;
+  @ViewChild("type") type: ElementRef;
+  @ViewChild("title") title: ElementRef;
+  @ViewChild("author") author: ElementRef;
+  @ViewChild("link") link: ElementRef;
 
   constructor(
     // private educationService: EducationService,
+    private el: ElementRef,
     public dialogRef: MatDialogRef<EducationUpdateComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
@@ -38,7 +49,16 @@ export class EducationUpdateComponent implements OnInit {
   ngOnInit(): void {
     if (this.data?.type) {
       this.selectedType = this.data.type;
-      this.educationForm.patchValue({ type: this.data.type });
+      this.educationForm.patchValue({
+        title: this.data.title,
+        author: this.data.author,
+        link: this.data.link,
+        description: this.data.description,
+        github: this.data.github,
+        endDate: this.data.endDate,
+        startDate: this.data.startDate,
+        type: this.data.type,
+      });
     }
     this.educationForm.controls.type.valueChanges.subscribe(
       (type: any) => (this.selectedType = type)
@@ -68,16 +88,15 @@ export class EducationUpdateComponent implements OnInit {
   //     });
   // }
 
-  getFormData(): any {
-    switch (this.selectedType) {
-      case "book":
-        return this.book.getData();
-      case "course":
-        return this.course.getData();
-      case "degree":
-        return this.degree.getData();
-      case "tutorial":
-        return this.tutorial.getData();
+  focusError() {
+    for (const key of Object.keys(this.educationForm.controls)) {
+      if (this.educationForm.get(key) && this.educationForm.get(key)?.invalid) {
+        const invalidField = this.el.nativeElement.querySelector(
+          `[formControlName=${key}]`
+        );
+        invalidField.focus();
+        return;
+      }
     }
   }
 
@@ -86,13 +105,12 @@ export class EducationUpdateComponent implements OnInit {
   }
 
   onSaveClick(): void {
-    const formData = this.getFormData();
-    if (formData) {
-      this.dialogRef.close({
-        ...this.data,
-        ...formData,
-        type: this.selectedType,
-      });
+    const stack = this.stack.getData() || [];
+
+    if (this.educationForm.valid && stack.length) {
+      return this.dialogRef.close({ ...this.educationForm.value, stack });
+    } else {
+      this.focusError();
     }
   }
 }

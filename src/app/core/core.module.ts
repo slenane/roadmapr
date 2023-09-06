@@ -15,6 +15,7 @@ import * as fromAuth from "./store/auth.reducer";
 import { EffectsModule } from "@ngrx/effects";
 import { AuthEffects } from "./store/auth.effects";
 import { HttpInterceptProviders } from "./services/http-interceptors";
+import { DropListService } from "./services/drop-list.service";
 
 @NgModule({
   declarations: [LandingComponent, LogInComponent, RegisterComponent],
@@ -33,6 +34,7 @@ import { HttpInterceptProviders } from "./services/http-interceptors";
     AuthStoreService,
     UrlService,
     ApiService,
+    DropListService,
     HttpInterceptProviders,
   ],
 })

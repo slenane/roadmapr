@@ -75,6 +75,31 @@ export class EducationEffects {
     )
   );
 
+  bulkUpdateEducationItems$ = createEffect((): any =>
+    this.actions$.pipe(
+      ofType(educationActions.BULK_UPDATE_EDUCATION_ITEMS),
+      switchMap(({ educationId, data }) => {
+        return this.educationService.bulkUpdateEducationItems(
+          educationId,
+          data
+        );
+      }),
+      map((payload) => {
+        this.snackBar.open("Education Items Updated", "Dismiss", {
+          duration: 5000,
+        });
+        return educationActions.BulkUpdateEducationItemsSuccess({ payload });
+      }),
+      catchError((error) => {
+        this.snackBar.open("Education Update Error", "Dismiss", {
+          duration: 10000,
+          panelClass: ["snackbar-error"],
+        });
+        return of(educationActions.BulkUpdateEducationItemsError(error));
+      })
+    )
+  );
+
   removeEducationItem$ = createEffect((): any =>
     this.actions$.pipe(
       ofType(educationActions.REMOVE_EDUCATION_ITEM),

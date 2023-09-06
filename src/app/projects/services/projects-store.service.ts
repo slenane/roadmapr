@@ -38,6 +38,14 @@ export class ProjectsStoreService {
     });
   }
 
+  bulkUpdateProjectItems(projectsId: string, data: any[]) {
+    this.store.dispatch({
+      type: projectActions.BULK_UPDATE_PROJECT_ITEMS,
+      projectsId,
+      data,
+    });
+  }
+
   removeProject(data: any) {
     this.store.dispatch({
       type: projectActions.REMOVE_PROJECT,

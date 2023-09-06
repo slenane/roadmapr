@@ -25,22 +25,24 @@
       <div
         cdkDropList
         #todoList="cdkDropList"
-        [cdkDropListData]="todoArray"
+        [cdkDropListData]="todo"
         class="drag-group-items"
+        id="todo"
         (cdkDropListDropped)="drop($event)"
       >
-        <div class="no-item-message" *ngIf="todoArray?.length === 0">
+        <div class="no-item-message" *ngIf="projects && !todo?.length">
           <span class="material-symbols-outlined"> add </span>
           <p class="message-primary">No Future Project Plans</p>
           <p class="message-secondary"
             >Adding project ideas will help keep you focused on your goals</p
           >
         </div>
-        <div *ngFor="let data of todoArray" class="drag-group-item" cdkDrag>
+        <div *ngFor="let data of todo" class="drag-group-item" cdkDrag>
           <app-project
             *ngIf="matchesFilters(data)"
             [data]="data"
             [selectedView]="selectedView"
+            (pinItem)="onPinToggle($event, todo)"
           >
           </app-project>
         </div>
@@ -49,26 +51,24 @@
       <div
         cdkDropList
         #inProgressList="cdkDropList"
-        [cdkDropListData]="inProgressArray"
+        [cdkDropListData]="inProgress"
         class="drag-group-items"
+        id="inProgress"
         (cdkDropListDropped)="drop($event)"
       >
-        <div class="no-item-message" *ngIf="inProgressArray?.length === 0">
+        <div class="no-item-message" *ngIf="projects && !inProgress?.length">
           <span class="material-symbols-outlined"> add </span>
           <p class="message-primary">No Projects In Progress</p>
           <p class="message-secondary"
             >Working on projects is the best way to improve your skills</p
           >
         </div>
-        <div
-          *ngFor="let data of inProgressArray"
-          class="drag-group-item"
-          cdkDrag
-        >
+        <div *ngFor="let data of inProgress" class="drag-group-item" cdkDrag>
           <app-project
             *ngIf="matchesFilters(data)"
             [data]="data"
             [selectedView]="selectedView"
+            (pinItem)="onPinToggle($event, inProgress)"
           >
           </app-project>
         </div>
@@ -77,22 +77,24 @@
       <div
         cdkDropList
         #doneList="cdkDropList"
-        [cdkDropListData]="doneArray"
+        [cdkDropListData]="done"
         class="drag-group-items"
+        id="done"
         (cdkDropListDropped)="drop($event)"
       >
-        <div class="no-item-message" *ngIf="doneArray?.length === 0">
+        <div class="no-item-message" *ngIf="projects && !done?.length">
           <span class="material-symbols-outlined"> add </span>
           <p class="message-primary">No Completed Projects</p>
           <p class="message-secondary"
             >Working on projects is the best way to improve your skills</p
           >
         </div>
-        <div *ngFor="let data of doneArray" class="drag-group-item" cdkDrag>
+        <div *ngFor="let data of done" class="drag-group-item" cdkDrag>
           <app-project
             *ngIf="matchesFilters(data)"
             [data]="data"
             [selectedView]="selectedView"
+            (pinItem)="onPinToggle($event, inProgress)"
           >
           </app-project>
         </div>

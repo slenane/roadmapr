@@ -215,10 +215,7 @@ export class DashboardComponent implements OnInit {
 
   filterAndExtractData(dashboard: Dashboard) {
     const education = [
-      ...dashboard.education.books.filter((item) => !!item.startDate),
-      ...dashboard.education.courses.filter((item) => !!item.startDate),
-      ...dashboard.education.degrees.filter((item) => !!item.startDate),
-      ...dashboard.education.tutorials.filter((item) => !!item.startDate),
+      ...dashboard.education?.items.filter((item) => !!item.startDate),
     ];
     const projects = dashboard.projects.filter((item) => !!item.startDate);
     const employment = dashboard.employment.filter((item) => !!item.startDate);

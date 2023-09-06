@@ -34,6 +34,18 @@ export class EducationService {
     );
   }
 
+  public bulkUpdateEducationItems(
+    educationId: string,
+    data: any
+  ): Observable<any> {
+    return this.apiService.patch(
+      this.urlService.generate("EDUCATION_BULK_UPDATE", educationId),
+      {
+        data,
+      }
+    );
+  }
+
   public removeEducationItem(educationId: string, data: any): Observable<any> {
     return this.apiService.post(
       this.urlService.generate("EDUCATION_REMOVE", educationId),

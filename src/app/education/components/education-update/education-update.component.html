@@ -24,44 +24,116 @@
 
     <div class="input-divider">OR</div> -->
 
-    <div>
-      <!-- <p>Enter details manually</p> -->
-      <mat-form-field appearance="outline" class="full-width">
-        <mat-label>Select Type</mat-label>
-        <mat-select formControlName="type">
-          <mat-option *ngFor="let type of educationTypes" [value]="type">
-            <div class="type-option">
-              <img
-                src="/assets/images/icons/{{ type }}.png"
-                class="app-education-type-icon"
-              />
-              {{ type | titlecase }}
-            </div>
-          </mat-option>
-        </mat-select>
+    <!-- <p>Enter details manually</p> -->
+    <mat-form-field appearance="outline" class="full-width-grid-item">
+      <mat-label>Select Type</mat-label>
+      <mat-select #type formControlName="type">
+        <mat-option *ngFor="let type of educationTypes" [value]="type">
+          <div class="type-option">
+            <img
+              src="/assets/images/icons/{{ type }}.png"
+              class="app-education-type-icon"
+            />
+            {{ type | titlecase }}
+          </div>
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <ng-container *ngIf="selectedType">
+      <mat-form-field appearance="outline">
+        <mat-label>Title</mat-label>
+        <input #title matInput formControlName="title" />
+        <mat-error *ngIf="educationForm.controls.title.invalid"
+          >Title required</mat-error
+        >
       </mat-form-field>
 
-      <app-education-update-book
-        #book
-        [data]="data"
-        *ngIf="selectedType === 'book'"
-      ></app-education-update-book>
-      <app-education-update-course
-        #course
-        [data]="data"
-        *ngIf="selectedType === 'course'"
-      ></app-education-update-course>
-      <app-education-update-degree
-        #degree
-        [data]="data"
-        *ngIf="selectedType === 'degree'"
-      ></app-education-update-degree>
-      <app-education-update-tutorial
-        #tutorial
-        [data]="data"
-        *ngIf="selectedType === 'tutorial'"
-      ></app-education-update-tutorial>
-    </div>
+      <mat-form-field appearance="outline">
+        <mat-label>
+          {{ selectedType === "book" ? "Author" : "" }}
+          {{
+            selectedType === "course" || selectedType === "tutorial"
+              ? "Instructor"
+              : ""
+          }}
+          {{ selectedType === "degree" ? "Institution" : "" }}
+        </mat-label>
+        <input #author matInput formControlName="author" />
+        <mat-error *ngIf="educationForm.controls.author.invalid">
+          {{ selectedType === "book" ? "Author" : "" }}
+          {{
+            selectedType === "course" || selectedType === "tutorial"
+              ? "Instructor"
+              : ""
+          }}
+          {{ selectedType === "degree" ? "Institution" : "" }}
+          required</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Start date</mat-label>
+        <input
+          matInput
+          [matDatepicker]="startDate"
+          formControlName="startDate"
+        />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="startDate"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #startDate></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>End date</mat-label>
+        <input matInput [matDatepicker]="endDate" formControlName="endDate" />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="endDate"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #endDate></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width-grid-item">
+        <mat-label>Description</mat-label>
+        <textarea
+          #description
+          matInput
+          formControlName="description"
+          rows="5"
+        ></textarea>
+      </mat-form-field>
+
+      <app-stack-selector
+        #stack
+        [data]="data && data.stack"
+        class="full-width-grid-item"
+      >
+      </app-stack-selector>
+
+      <mat-form-field appearance="outline" *ngIf="selectedType === 'tutorial'">
+        <mat-label>Github</mat-label>
+        <input #github matInput formControlName="github" />
+      </mat-form-field>
+
+      <mat-form-field
+        appearance="outline"
+        [ngClass]="{ 'full-width-grid-item': selectedType !== 'tutorial' }"
+      >
+        <mat-label>Link</mat-label>
+        <input #link matInput formControlName="link" />
+        <mat-hint
+          >Link is required for us to make better recommendations</mat-hint
+        >
+        <mat-error *ngIf="educationForm.controls.link.invalid"
+          >Please add link to tutorial</mat-error
+        >
+      </mat-form-field>
+    </ng-container>
   </form>
 </div>
 <div mat-dialog-actions class="actions">
