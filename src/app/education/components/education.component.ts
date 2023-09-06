@@ -48,7 +48,6 @@ export class EducationComponent implements OnInit, OnDestroy {
         takeUntil(this.ngUnsubscribe)
       )
       .subscribe((education: Education) => {
-        console.log(education);
         this.education = education;
         this.educationArray = this.education.items;
 
@@ -176,9 +175,8 @@ export class EducationComponent implements OnInit, OnDestroy {
     }
   }
 
-  onPinToggle(data: any) {
-    const itemList = this.dropListService.getItemList(data.status);
-    const updatedItems = this.dropListService.onPinToggle(this[itemList], data);
+  onPinToggle(data: any, itemList: any[]) {
+    const updatedItems = this.dropListService.onPinToggle(itemList, data);
 
     if (updatedItems) {
       this.educationStoreService.bulkUpdateEducationItems(

@@ -117,8 +117,7 @@ export class DropListService {
         permittedPosition = 0;
       } else if (
         previousContainer === currentContainer &&
-        item.position === lastPinnedIndex &&
-        currentIndex > item.position
+        currentIndex > lastPinnedIndex
       ) {
         permittedPosition = lastPinnedIndex;
       } else if (currentIndex > lastPinnedIndex) {
@@ -163,12 +162,6 @@ export class DropListService {
     });
 
     return updatedItems;
-  }
-
-  getItemList(list: string): "todo" | "inProgress" | "done" {
-    if (list === STATUS.TODO) return "todo";
-    else if (list === STATUS.IN_PROGRESS) return "inProgress";
-    else return "done";
   }
 
   getLastPinnedIndex(itemList: any[]) {

@@ -40,6 +40,18 @@ export class EmploymentService {
     );
   }
 
+  public bulkUpdateEmploymentItems(
+    employmentId: string,
+    data: any
+  ): Observable<any> {
+    return this.apiService.patch(
+      this.urlService.generate("EMPLOYMENT_BULK_UPDATE", employmentId),
+      {
+        data,
+      }
+    );
+  }
+
   public removeEmploymentItem(
     employmentId: string,
     data: any

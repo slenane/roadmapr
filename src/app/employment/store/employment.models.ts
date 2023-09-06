@@ -14,6 +14,9 @@ export interface EmploymentItem {
   stack: StackItem[];
   startDate: Date;
   employment: String;
+  pinned: boolean;
+  status: "todo" | "inProgress" | "done";
+  position: Number;
   type: "employment" | "freelance";
   _id: string;
 }

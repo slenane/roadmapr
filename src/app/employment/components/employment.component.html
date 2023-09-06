@@ -26,22 +26,24 @@
       <div
         cdkDropList
         #todoList="cdkDropList"
-        [cdkDropListData]="todoArray"
+        [cdkDropListData]="todo"
         class="drag-group-items"
+        id="todo"
         (cdkDropListDropped)="drop($event)"
       >
-        <div class="no-item-message" *ngIf="todoArray?.length === 0">
+        <div class="no-item-message" *ngIf="employment && !todo?.length">
           <span class="material-symbols-outlined"> add </span>
           <p class="message-primary">No Future Employment Plans</p>
           <p class="message-secondary"
             >Securing work ahead of time will help keep you motivated</p
           >
         </div>
-        <div *ngFor="let data of todoArray" class="drag-group-item" cdkDrag>
+        <div *ngFor="let data of todo" class="drag-group-item" cdkDrag>
           <app-employment-item
             *ngIf="matchesFilters(data)"
             [data]="data"
             [selectedView]="selectedView"
+            (pinItem)="onPinToggle($event, todo)"
           >
           </app-employment-item>
         </div>
@@ -50,26 +52,24 @@
       <div
         cdkDropList
         #inProgressList="cdkDropList"
-        [cdkDropListData]="inProgressArray"
+        [cdkDropListData]="inProgress"
         class="drag-group-items"
+        id="inProgress"
         (cdkDropListDropped)="drop($event)"
       >
-        <div class="no-item-message" *ngIf="inProgressArray?.length === 0">
+        <div class="no-item-message" *ngIf="employment && !inProgress?.length">
           <span class="material-symbols-outlined"> add </span>
           <p class="message-primary">No Employment In Progress</p>
           <p class="message-secondary"
             >Keep your CV up to date and keep learning!</p
           >
         </div>
-        <div
-          *ngFor="let data of inProgressArray"
-          class="drag-group-item"
-          cdkDrag
-        >
+        <div *ngFor="let data of inProgress" class="drag-group-item" cdkDrag>
           <app-employment-item
             *ngIf="matchesFilters(data)"
             [data]="data"
             [selectedView]="selectedView"
+            (pinItem)="onPinToggle($event, inProgress)"
           >
           </app-employment-item>
         </div>
@@ -78,11 +78,12 @@
       <div
         cdkDropList
         #doneList="cdkDropList"
-        [cdkDropListData]="doneArray"
+        [cdkDropListData]="done"
         class="drag-group-items"
+        id="done"
         (cdkDropListDropped)="drop($event)"
       >
-        <div class="no-item-message" *ngIf="doneArray?.length === 0">
+        <div class="no-item-message" *ngIf="employment && !done?.length">
           <span class="material-symbols-outlined"> add </span>
           <p class="message-primary">No Completed Employment</p>
           <p class="message-secondary"
@@ -90,11 +91,12 @@
             skills</p
           >
         </div>
-        <div *ngFor="let data of doneArray" class="drag-group-item" cdkDrag>
+        <div *ngFor="let data of done" class="drag-group-item" cdkDrag>
           <app-employment-item
             *ngIf="matchesFilters(data)"
             [data]="data"
             [selectedView]="selectedView"
+            (pinItem)="onPinToggle($event, done)"
           >
           </app-employment-item>
         </div>

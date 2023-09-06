@@ -4,12 +4,13 @@ import { filter, takeUntil } from "rxjs/operators";
 import { Employment } from "../store/employment.models";
 import { EmploymentStoreService } from "../services/employment-store.service";
 import { MatDialog } from "@angular/material/dialog";
-import { EmploymentService } from "../services/employment.service";
+// import { EmploymentService } from "../services/employment.service";
+import { CdkDragDrop } from "@angular/cdk/drag-drop";
+import { DropListService } from "src/app/core/services/drop-list.service";
 import {
-  CdkDragDrop,
-  moveItemInArray,
-  transferArrayItem,
-} from "@angular/cdk/drag-drop";
+  EMPLOYMENT_TYPE_CONFIG,
+  STATUS,
+} from "src/app/employment/constants/employment.constants";
 
 @Component({
   selector: "app-employment",
@@ -21,24 +22,21 @@ export class EmploymentComponent implements OnInit {
   public selectedFilterType: null | string = null;
   public selectedFilterLanguage: null | string = null;
   public selectedView: "compact" | "expanded" = "compact";
-  public typeConfig = [
-    { title: "Employment", name: "employment" },
-    { title: "Freelance", name: "freelance" },
-  ];
-  public filterType = "date";
+  public typeConfig = EMPLOYMENT_TYPE_CONFIG;
   public languageFilterData: any = [];
   public employment: Employment;
   public employmentId: string;
   public employmentList: any[];
 
-  public todoArray: any[];
-  public inProgressArray: any[];
-  public doneArray: any[];
+  public todo: any[];
+  public inProgress: any[];
+  public done: any[];
 
   constructor(
-    private employmentService: EmploymentService,
+    // private employmentService: EmploymentService,
     private employmentStoreService: EmploymentStoreService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private dropListService: DropListService
   ) {}
 
   ngOnInit(): void {
@@ -50,9 +48,10 @@ export class EmploymentComponent implements OnInit {
       )
       .subscribe((employment: Employment) => {
         this.employment = employment;
-        if (this.employment.employmentList.length) {
-          this.sortEmploymentList([...employment.employmentList]);
-          this.getEmploymentConfig();
+        this.employmentList = this.employment.employmentList;
+
+        if (this.employmentList.length) {
+          this.getEmploymentConfig(this.employment.employmentList);
           this.getLanguageFilterData();
         }
       });
@@ -63,32 +62,33 @@ export class EmploymentComponent implements OnInit {
     this.ngUnsubscribe.complete();
   }
 
-  getEmploymentConfig(): void {
-    const employment = this.generateEmployment(
-      this.employmentList,
-      this.filterType
-    );
-    this.todoArray = employment.filter(
-      (item: any) => !item.startDate && !item.endDate
-    );
-    this.inProgressArray = employment.filter(
-      (item: any) => item.startDate && !item.endDate
-    );
-    this.doneArray = employment.filter((item: any) => item.endDate);
+  getEmploymentConfig(employment: any[]): void {
+    const todoArray: any[] = [],
+      inProgressArray: any[] = [],
+      doneArray: any[] = [];
+
+    employment.forEach((item) => {
+      if (item.status === STATUS.TODO) todoArray.push(item);
+      else if (item.status === STATUS.IN_PROGRESS) inProgressArray.push(item);
+      else if (item.status === STATUS.DONE) doneArray.push(item);
+      else todoArray.push(item);
+    });
+
+    this.todo = this.sortItems(todoArray);
+    this.inProgress = this.sortItems(inProgressArray);
+    this.done = this.sortItems(doneArray);
   }
 
-  generateEmployment(employment: any, filter: string): any {
-    switch (filter) {
-      case "date":
-        return employment;
-    }
+  sortItems(arr: any[]): any[] {
+    return arr.sort((a: any, b: any): number => {
+      if (a.position < b.position) return -1;
+      else if (a.position > b.position) return 1;
+      else return 0;
+    });
   }
 
   getLanguageFilterData() {
-    const employment: any[] = this.generateEmployment(
-      this.employmentList,
-      this.filterType
-    );
+    const employment: any[] = this.employmentList;
     const languageData: any[] = [];
     const languages: any[] = [];
 
@@ -140,67 +140,61 @@ export class EmploymentComponent implements OnInit {
     );
   }
 
-  sortEmploymentList(list: any[]) {
-    const previousEmployment = list.filter((item) => item.endDate);
-    const currentEmployment = list.filter((item) => !item.endDate);
+  // sortEmploymentList(list: any[]) {
+  //   const previousEmployment = list.filter((item) => item.endDate);
+  //   const currentEmployment = list.filter((item) => !item.endDate);
 
-    this.employmentList = [
-      ...currentEmployment.sort(
-        (a, b) =>
-          new Date(b.startDate).getTime() - new Date(a.startDate).getTime()
-      ),
-      ...previousEmployment.sort(
-        (a, b) => new Date(b.endDate).getTime() - new Date(a.endDate).getTime()
-      ),
-    ];
-  }
+  //   this.employmentList = [
+  //     ...currentEmployment.sort(
+  //       (a, b) =>
+  //         new Date(b.startDate).getTime() - new Date(a.startDate).getTime()
+  //     ),
+  //     ...previousEmployment.sort(
+  //       (a, b) => new Date(b.endDate).getTime() - new Date(a.endDate).getTime()
+  //     ),
+  //   ];
+  // }
 
   createEmploymentItem(item: any) {
     if (item.data) {
+      const newItem = { ...item.data };
+      newItem.pinned = false;
+
+      if (!newItem.startDate && !newItem.endDate) {
+        newItem.status = STATUS.TODO;
+        newItem.position = this.todo.length;
+      } else if (newItem.startDate && !newItem.endDate) {
+        newItem.status = STATUS.IN_PROGRESS;
+        newItem.position = this.inProgress.length;
+      } else {
+        newItem.status = STATUS.DONE;
+        newItem.position = this.done.length;
+      }
+
       this.employmentStoreService.createEmploymentItem(item.id, item.data);
     }
   }
 
-  transferEmployment(item: any) {
-    this.employmentService
-      .updateEmploymentItem(this.employment._id, item)
-      .subscribe((res: any) => {
-        console.log(res);
-      });
-  }
-
-  transferItem(event: CdkDragDrop<any[]>) {
-    transferArrayItem(
-      event.previousContainer.data,
-      event.container.data,
-      event.previousIndex,
-      event.currentIndex
-    );
-  }
-
   drop(event: CdkDragDrop<any[]>) {
-    if (event.previousContainer === event.container) {
-      moveItemInArray(
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
+    const updatedItems = this.dropListService.drop(event);
+
+    console.log(updatedItems);
+    if (updatedItems.length) {
+      this.employmentStoreService.bulkUpdateEmploymentItems(
+        this.employment._id,
+        updatedItems
       );
-    } else {
-      const item = { ...event.previousContainer.data[event.previousIndex] };
-      if (event.container.id === "cdk-drop-list-0") {
-        if (item.startDate) item.startDate = null;
-        if (item.endDate) item.endDate = null;
-      }
-      if (event.container.id === "cdk-drop-list-1") {
-        if (item.endDate) item.endDate = null;
-        if (!item.startDate) item.startDate = new Date();
-      }
-      if (event.container.id === "cdk-drop-list-2") {
-        if (!item.startDate) item.startDate = new Date();
-        item.endDate = new Date();
-      }
-      this.transferEmployment(item);
-      this.transferItem(event);
+    }
+  }
+
+  onPinToggle(data: any, itemList: any[]) {
+    const updatedItems = this.dropListService.onPinToggle(itemList, data);
+
+    if (updatedItems) {
+      this.employmentStoreService.bulkUpdateEmploymentItems(
+        this.employment._id,
+        updatedItems
+      );
     }
   }
 }

@@ -43,7 +43,7 @@
             *ngIf="matchesFilters(data)"
             [data]="data"
             [selectedView]="selectedView"
-            (pinItem)="onPinToggle($event)"
+            (pinItem)="onPinToggle($event, todo)"
           >
           </app-education-item>
         </div>
@@ -76,7 +76,7 @@
             *ngIf="matchesFilters(data)"
             [data]="data"
             [selectedView]="selectedView"
-            (pinItem)="onPinToggle($event)"
+            (pinItem)="onPinToggle($event, inProgress)"
           >
           </app-education-item>
         </div>
@@ -100,7 +100,7 @@
             *ngIf="matchesFilters(data)"
             [data]="data"
             [selectedView]="selectedView"
-            (pinItem)="onPinToggle($event)"
+            (pinItem)="onPinToggle($event, done)"
           >
           </app-education-item>
         </div>
