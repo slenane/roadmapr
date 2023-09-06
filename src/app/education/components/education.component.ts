@@ -69,9 +69,9 @@ export class EducationComponent implements OnInit, OnDestroy {
       doneArray: any[] = [];
 
     education.forEach((item) => {
-      if (item.status === STATUS.TODO) todoArray.push(item);
-      else if (item.status === STATUS.IN_PROGRESS) inProgressArray.push(item);
+      if (item.status === STATUS.IN_PROGRESS) inProgressArray.push(item);
       else if (item.status === STATUS.DONE) doneArray.push(item);
+      else todoArray.push(item);
     });
 
     this.todo = this.sortItems(todoArray);

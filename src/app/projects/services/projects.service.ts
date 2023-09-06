@@ -34,6 +34,18 @@ export class ProjectsService {
     );
   }
 
+  public bulkUpdateProjectItems(
+    projectsId: string,
+    data: any
+  ): Observable<any> {
+    return this.apiService.patch(
+      this.urlService.generate("PROJECTS_BULK_UPDATE", projectsId),
+      {
+        data,
+      }
+    );
+  }
+
   public removeProject(projectsId: string, data: any): Observable<any> {
     return this.apiService.post(
       this.urlService.generate("PROJECTS_REMOVE", projectsId),

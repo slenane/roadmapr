@@ -3,7 +3,6 @@ import { Subject } from "rxjs";
 import { filter, takeUntil } from "rxjs/operators";
 import { Employment } from "../store/employment.models";
 import { EmploymentStoreService } from "../services/employment-store.service";
-import { MatDialog } from "@angular/material/dialog";
 // import { EmploymentService } from "../services/employment.service";
 import { CdkDragDrop } from "@angular/cdk/drag-drop";
 import { DropListService } from "src/app/core/services/drop-list.service";
@@ -35,7 +34,6 @@ export class EmploymentComponent implements OnInit {
   constructor(
     // private employmentService: EmploymentService,
     private employmentStoreService: EmploymentStoreService,
-    public dialog: MatDialog,
     private dropListService: DropListService
   ) {}
 
@@ -68,8 +66,7 @@ export class EmploymentComponent implements OnInit {
       doneArray: any[] = [];
 
     employment.forEach((item) => {
-      if (item.status === STATUS.TODO) todoArray.push(item);
-      else if (item.status === STATUS.IN_PROGRESS) inProgressArray.push(item);
+      if (item.status === STATUS.IN_PROGRESS) inProgressArray.push(item);
       else if (item.status === STATUS.DONE) doneArray.push(item);
       else todoArray.push(item);
     });
