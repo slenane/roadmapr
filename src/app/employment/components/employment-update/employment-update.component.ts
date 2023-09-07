@@ -66,6 +66,7 @@ export class EmploymentUpdateComponent implements OnInit {
         this.employmentForm.get(key) &&
         this.employmentForm.get(key)?.invalid
       ) {
+        this.employmentForm.markAllAsTouched();
         const invalidField = this.el.nativeElement.querySelector(
           `[formControlName=${key}]`
         );

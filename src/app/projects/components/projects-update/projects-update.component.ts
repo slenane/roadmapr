@@ -63,6 +63,7 @@ export class ProjectsUpdateComponent implements OnInit {
   focusError() {
     for (const key of Object.keys(this.projectForm.controls)) {
       if (this.projectForm.get(key) && this.projectForm.get(key)?.invalid) {
+        this.projectForm.markAllAsTouched();
         const invalidField = this.el.nativeElement.querySelector(
           `[formControlName=${key}]`
         );

@@ -6,7 +6,7 @@ import {
 } from "@angular/material/autocomplete";
 import { map, Observable, startWith } from "rxjs";
 import { FormControl, Validators } from "@angular/forms";
-import { MatChipInputEvent } from "@angular/material/chips";
+import { MatChipInputEvent, MatChipList } from "@angular/material/chips";
 
 @Component({
   selector: "app-stack-selector",
@@ -27,6 +27,7 @@ export class StackSelectorComponent implements OnInit {
 
   @ViewChild("stackInput") stackInput: ElementRef<HTMLInputElement>;
   @ViewChild("auto") matAutocomplete: MatAutocomplete;
+  @ViewChild("chipList") chipList: MatChipList;
 
   constructor() {
     this.filteredStackItems = this.stackCtrl.valueChanges.pipe(
@@ -49,6 +50,7 @@ export class StackSelectorComponent implements OnInit {
     if (value) this.matAutocomplete.options.some((option) => option.selected);
     if (input) input.value = "";
     this.stackCtrl.setValue("");
+    this.chipList.errorState = false;
   }
 
   removeStackItem(stack: any): void {
@@ -59,6 +61,7 @@ export class StackSelectorComponent implements OnInit {
       const index = this.selectedStack.indexOf(item);
       if (index >= 0) this.selectedStack.splice(index, 1);
       this.updateStackList();
+      if (!this.selectedStack.length) this.chipList.errorState = true;
     }
   }
 
@@ -70,6 +73,7 @@ export class StackSelectorComponent implements OnInit {
     if (!this.selectedStack.includes(current)) {
       this.selectedStack.push(current);
       this.updateStackList();
+      this.chipList.errorState = false;
     }
     this.stackInput.nativeElement.value = "";
     this.stackCtrl.setValue("");
@@ -93,6 +97,11 @@ export class StackSelectorComponent implements OnInit {
   }
 
   getData(): any {
+    if (!this.selectedStack.length) {
+      this.chipList.errorState = true;
+      this.stackInput.nativeElement.focus();
+    }
+
     return this.selectedStack;
   }
 }
