@@ -1,6 +1,6 @@
 <mat-form-field appearance="outline" class="full-width">
   <mat-label>Stack</mat-label>
-  <mat-chip-list #chipList aria-label="Stack selection">
+  <mat-chip-list #chipList aria-label="Stack selection" required>
     <mat-chip
       *ngFor="let item of selectedStack"
       [selectable]="selectable"
@@ -28,6 +28,7 @@
       required
     />
   </mat-chip-list>
+  <mat-error>Stack required</mat-error>
   <mat-autocomplete
     #auto="matAutocomplete"
     (optionSelected)="selectedStackItem($event)"

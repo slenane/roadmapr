@@ -91,6 +91,7 @@ export class EducationUpdateComponent implements OnInit {
   focusError() {
     for (const key of Object.keys(this.educationForm.controls)) {
       if (this.educationForm.get(key) && this.educationForm.get(key)?.invalid) {
+        this.educationForm.markAllAsTouched();
         const invalidField = this.el.nativeElement.querySelector(
           `[formControlName=${key}]`
         );
