@@ -19,9 +19,9 @@ export const SIDEBAR_OPTIONS = [
     icon: "work",
     link: "/employment",
   },
-  // {
-  //   title: "Profile",
-  //   icon: "person_outline",
-  //   link: "/profile",
-  // },
+  {
+    title: "Profile",
+    icon: "person_outline",
+    link: "/profile",
+  },
 ];

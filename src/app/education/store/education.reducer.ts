@@ -7,7 +7,7 @@ interface Action {
 }
 
 const initialState: Education = {
-  items: [],
+  educationList: [],
   user: "",
   _id: "",
 };

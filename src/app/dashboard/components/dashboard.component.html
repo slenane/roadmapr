@@ -1,10 +1,7 @@
 <div class="dashboard">
-  <div class="user-section">
-    <app-dashboard-user
-      [user]="user"
-      [data]="overviewData"
-    ></app-dashboard-user>
+  <app-dashboard-filters [languageConfig]="stackList"></app-dashboard-filters>
 
+  <div class="scroll" cdkScrollable>
     <div class="user-overview-container">
       <app-icon-card
         [icon]="'school'"
@@ -32,10 +29,6 @@
         [value]="'1 years, 249 days'"
       ></app-icon-card>
     </div>
-  </div>
-
-  <div class="scroll" cdkScrollable>
-    <app-dashboard-filters [languageConfig]="stackList"></app-dashboard-filters>
 
     <div class="grid-1fr-1fr">
       <app-dashboard-stack-radar

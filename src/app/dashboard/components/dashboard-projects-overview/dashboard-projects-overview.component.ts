@@ -5,7 +5,7 @@ import {
   SimpleChanges,
   OnChanges,
 } from "@angular/core";
-import { Chart } from "chart.js";
+import Chart from "chart.js/auto";
 
 @Component({
   selector: "app-dashboard-projects-overview",
@@ -35,7 +35,9 @@ export class DashboardProjectsOverviewComponent implements OnInit, OnChanges {
     const values = [...data.sort((a: any, b: any) => b.count - a.count)];
 
     if (values.length) {
-      new Chart("projectOverviewChart", {
+      if (this.chart) this.chart.destroy();
+
+      const config: any = {
         type: "doughnut",
         options: {
           plugins: {
@@ -53,7 +55,9 @@ export class DashboardProjectsOverviewComponent implements OnInit, OnChanges {
             },
           ],
         },
-      });
+      };
+
+      this.chart = new Chart("projectOverviewChart", config);
     }
   }
 }

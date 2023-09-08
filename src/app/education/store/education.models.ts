@@ -1,5 +1,5 @@
 export interface Education {
-  items: EducationItem[];
+  educationList: EducationItem[];
   user: string;
   _id: string;
 }

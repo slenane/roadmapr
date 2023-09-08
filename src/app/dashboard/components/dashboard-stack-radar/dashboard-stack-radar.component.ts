@@ -63,7 +63,9 @@ export class DashboardStackRadarComponent implements OnInit, OnChanges {
       }
 
       if (personal.length || professional.length) {
-        new Chart("stackRadar", {
+        if (this.chart) this.chart.destroy();
+
+        this.chart = new Chart("stackRadar", {
           type: "radar",
           options: {
             plugins: {
