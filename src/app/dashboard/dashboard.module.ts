@@ -16,7 +16,6 @@ import { DashboardSkillDistributionComponent } from "./components/dashboard-skil
 import { DashboardGithubComponent } from "./components/dashboard-github/dashboard-github.component";
 import { DashboardFiltersComponent } from "./components/dashboard-filters/dashboard-filters.component";
 import { DashboardStackRadarComponent } from "./components/dashboard-stack-radar/dashboard-stack-radar.component";
-import { DashboardUserComponent } from "./components/dashboard-user/dashboard-user.component";
 import { DashboardEducationOverviewComponent } from "./components/dashboard-education-overview/dashboard-education-overview.component";
 import { DashboardProjectsOverviewComponent } from "./components/dashboard-projects-overview/dashboard-projects-overview.component";
 
@@ -28,7 +27,6 @@ import { DashboardProjectsOverviewComponent } from "./components/dashboard-proje
     DashboardGithubComponent,
     DashboardFiltersComponent,
     DashboardStackRadarComponent,
-    DashboardUserComponent,
     DashboardEducationOverviewComponent,
     DashboardProjectsOverviewComponent,
   ],

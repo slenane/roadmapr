@@ -25,7 +25,7 @@ export class ProfileEditComponent implements OnInit {
     coverImage: new FormControl(""),
     cv: new FormControl(""),
     github: new FormControl(""),
-    linkedIn: new FormControl(""),
+    linkedin: new FormControl(""),
     location: new FormControl("", Validators.required),
     name: new FormControl("", Validators.required),
     nationality: new FormControl("", Validators.required),
@@ -55,15 +55,15 @@ export class ProfileEditComponent implements OnInit {
     this.profileForm.patchValue({
       bio: user.bio,
       coverImage: user.coverImage,
-      cv: user.cv,
-      github: user.github,
-      linkedIn: user.linkedIn,
+      cv: user.links.cv,
+      github: user.links.github,
+      linkedin: user.links.linkedin,
       location: user.location,
       name: user.name,
       nationality: user.nationality,
       profileImage: user.profileImage,
       role: user.role,
-      twitter: user.twitter,
+      twitter: user.links.twitter,
       username: user.username,
     });
   }
