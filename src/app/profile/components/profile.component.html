@@ -1,4 +1,4 @@
-<div class="profile">
+<div class="user-profile">
   <div class="edit-profile-button">
     <button mat-raised-button color="primary" (click)="editProfile(true)"
       >Edit Profile</button
@@ -6,15 +6,122 @@
   </div>
 
   <div *ngIf="user">
-    <section class="profile-info" *ngIf="!isEditing">
-      <app-profile-info class="user-container" [user]="user"></app-profile-info>
+    <section class="profile" *ngIf="!isEditing">
+      <app-profile-card class="profile__card" [user]="user"></app-profile-card>
 
-      <div class="overview-div">
-        <app-profile-skills
-          class="skills-container"
-          [skills]="user.skills"
-          [languagesSpoken]="user.languagesSpoken"
-        ></app-profile-skills>
+      <div class="profile__overview">
+        <div class="profile-header">
+          <h1>{{ user.name }}</h1>
+          <p
+            >{{ user.role }}
+            <img
+              *ngFor="let item of user.stack"
+              class="app-stack-icon profile-stack-icon"
+              src="/assets/images/stack/{{ item.name }}-original.svg"
+              alt="Stack Icon"
+            />
+          </p>
+        </div>
+
+        <div class="profile-body">
+          <div class="profile-section bio">
+            <div class="bio">{{ user.bio }}</div>
+          </div>
+
+          <div class="profile-section personal">
+            <h3 class="section-header">PERSONAL</h3>
+            <div class="profile-grid profile-grid-three">
+              <div class="grid-section">
+                <div class="label">Location</div>
+                <div class="value">{{ user.location }}</div>
+              </div>
+
+              <div class="grid-section">
+                <div class="label">Nationality</div>
+                <div class="value">{{ user.nationality }}</div>
+              </div>
+
+              <div class="grid-section">
+                <div class="label">Languages Spoken</div>
+                <div class="value">
+                  <span
+                    class="language-item"
+                    *ngFor="let item of user.languagesSpoken; let last = last"
+                    >{{ item.language }} ({{ item.level }}){{
+                      !last ? ", " : ""
+                    }}
+                  </span>
+                </div>
+              </div>
+              <div class="grid-section education">
+                <div class="label">Previous Education</div>
+                <div
+                  class="value education-items"
+                  *ngFor="let item of user.previousEducation"
+                >
+                  <div class="education-item">
+                    <span class="subject"
+                      >{{ item.level }} {{ item.subject }}</span
+                    >
+                    <span class="school">{{ item.school }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="profile-section interests">
+            <h3 class="section-header">INTERESTS</h3>
+            <div class="profile-grid profile-grid-two">
+              <div class="grid-section">
+                <div class="label">Professional</div>
+                <div class="value">
+                  {{ user.interests.professional_interests.join(", ") }}
+                </div>
+              </div>
+
+              <div class="grid-section">
+                <div class="label">Personal</div>
+                <div class="value">
+                  {{ user.interests.personal_interests.join(", ") }}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="profile-section social">
+            <h3 class="section-header">SOCIAL</h3>
+            <div class="profile-flex">
+              <div class="social-link cv-link" *ngIf="user.links.cv">
+                <a href="{{ user.links.cv }}" target="_blank"> CV </a>
+              </div>
+
+              <div
+                class="social-link portfolio-link"
+                *ngIf="user.links.portfolio"
+              >
+                <a href="{{ user.links.portfolio }}" target="_blank">
+                  Portfolio
+                </a>
+              </div>
+
+              <div class="social-link github-link" *ngIf="user.links.github">
+                <a href="{{ user.links.github }}" target="_blank"> Github </a>
+              </div>
+              <div class="social-link twitter-link" *ngIf="user.links.twitter">
+                <a href="{{ user.links.twitter }}" target="_blank"> Twitter </a>
+              </div>
+              <div
+                class="social-link linkedin-link"
+                *ngIf="user.links.linkedin"
+              >
+                <a href="{{ user.links.linkedin }}" target="_blank">
+                  LinkedIn
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="advertising-div"></div>

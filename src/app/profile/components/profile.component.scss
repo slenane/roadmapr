@@ -1,24 +1,113 @@
-.profile {
+.user-profile {
   margin: 1rem;
 
   .edit-profile-button {
     text-align: end;
   }
 
-  .profile-info {
+  .profile {
     display: grid;
     grid-template-columns: repeat(9, 1fr);
-    gap: 1rem;
+    gap: 2rem;
     margin-bottom: 1rem;
 
-    .user-container {
+    &__card {
       grid-column: 1 / 3;
     }
 
-    .overview-div {
-      grid-column: 3 / 7;
+    &__overview {
+      grid-column: 3 / 8;
       display: grid;
       gap: 1rem;
+
+      .profile-header {
+        border-bottom: 1px solid #ece9e7;
+
+        h1 {
+          font-size: 2rem;
+          font-weight: 500;
+          color: #38352f;
+        }
+        .profile-stack-icon {
+          margin: 0 0.5rem;
+        }
+      }
+
+      .profile-body {
+        font-size: 0.9rem;
+
+        .section-header {
+          font-size: 0.9rem;
+          font-weight: 500;
+          letter-spacing: 0.05rem;
+          margin-bottom: 0.5rem;
+          color: #999895;
+        }
+
+        .label {
+          font-size: 0.8rem;
+          font-weight: 400;
+          color: #61666d;
+        }
+
+        .value {
+          font-weight: 500;
+          color: #38352f;
+        }
+
+        .profile-section {
+          margin-bottom: 0.5rem;
+
+          .profile-grid {
+            display: grid;
+            justify-content: space-between;
+
+            &-three {
+              grid-template-columns: repeat(3, 1fr);
+            }
+
+            &-two {
+              grid-template-columns: repeat(2, 1fr);
+            }
+
+            .education {
+              grid-column: 1 / -1;
+            }
+          }
+
+          .profile-flex {
+            display: flex;
+            justify-content: space-between;
+          }
+        }
+
+        .bio {
+          font-size: 1rem;
+          color: #61666d;
+        }
+
+        .education-items {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          justify-content: space-between;
+
+          .school {
+            display: block;
+            font-weight: 300;
+          }
+        }
+
+        .social-link {
+          a {
+            text-decoration: none;
+            color: #0d0c22;
+
+            &:hover {
+              color: #3d3d4e;
+            }
+          }
+        }
+      }
     }
   }
 

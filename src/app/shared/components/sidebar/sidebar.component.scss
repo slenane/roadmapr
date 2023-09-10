@@ -1,5 +1,5 @@
 .sidebar {
-  background-color: white;
+  background-color: #f7f6f3;
   position: fixed;
   top: 0;
   left: 0;
@@ -20,7 +20,7 @@
     position: absolute;
     top: 6rem;
     right: -1rem;
-    background-color: white;
+    background-color: #f7f6f3;
     border-radius: 50%;
     height: 2rem;
     width: 2rem;
@@ -59,8 +59,8 @@
     }
 
     .sidebar-option {
-      font-size: 1rem;
-      color: #5f6368;
+      font-size: 0.9rem;
+      color: #61666d;
 
       &.is-active {
         color: black;

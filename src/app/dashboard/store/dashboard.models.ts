@@ -13,9 +13,7 @@ interface Github {
 }
 
 export interface Dashboard {
-  education: {
-    items: EducationItem[];
-  };
+  education: EducationItem[];
   employment: EmploymentItem[];
   projects: ProjectItem[];
   github: Github[];

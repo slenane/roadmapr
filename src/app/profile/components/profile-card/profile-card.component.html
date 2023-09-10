@@ -22,8 +22,8 @@
   </div>
 
   <div class="bio-grid bio-grid__social">
-    <div class="social-link github-link" *ngIf="user.github">
-      <a href="{{ user.github }}" target="_blank">
+    <div class="social-link github-link" *ngIf="user.links.github">
+      <a href="{{ user.links.github }}" target="_blank">
         <img
           class="social-image"
           src="/assets/images/stack/github-original.svg"
@@ -31,8 +31,8 @@
         />
       </a>
     </div>
-    <div class="social-link twitter-link" *ngIf="user.twitter">
-      <a href="{{ user.twitter }}" target="_blank">
+    <div class="social-link twitter-link" *ngIf="user.links.twitter">
+      <a href="{{ user.links.twitter }}" target="_blank">
         <img
           class="social-image"
           src="/assets/images/icons/twitter.png"
@@ -40,8 +40,8 @@
         />
       </a>
     </div>
-    <div class="social-link linkedIn-link" *ngIf="user.linkedIn">
-      <a href="{{ user.linkedIn }}" target="_blank">
+    <div class="social-link linkedIn-link" *ngIf="user.links.linkedin">
+      <a href="{{ user.links.linkedin }}" target="_blank">
         <img
           class="social-image"
           src="/assets/images/icons/linkedin.png"
@@ -50,26 +50,4 @@
       </a>
     </div>
   </div>
-
-  <!-- <div class="user-overview-container">
-    <app-icon-card
-      [icon]="'school'"
-      [title]="'Education'"
-      [value]="12"
-      [trend]="1"
-    ></app-icon-card>
-
-    <app-icon-card
-      [icon]="'code'"
-      [title]="'Projects'"
-      [value]="6"
-      [trend]="2"
-    ></app-icon-card>
-
-    <app-icon-card
-      [icon]="'timer'"
-      [title]="'Experience'"
-      [value]="'3 years, 19 days'"
-    ></app-icon-card>
-  </div> -->
 </mat-card>

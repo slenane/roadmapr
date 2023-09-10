@@ -48,7 +48,7 @@ export class SettingsComponent implements OnInit {
         const settings = {
           username: user.username,
           email: user.email,
-          theme: user.theme,
+          theme: user.darkMode,
           notifications: user.notifications,
         };
 
