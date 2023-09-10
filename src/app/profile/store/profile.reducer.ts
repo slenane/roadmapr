@@ -29,6 +29,7 @@ const initialState: Profile = {
     professional_interests: [],
     personal_interests: [],
   },
+  stack: [],
   education: "",
   projects: "",
   employment: "",

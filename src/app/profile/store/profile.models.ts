@@ -1,3 +1,5 @@
+import { StackItem } from "src/app/shared/store/stack.models";
+
 export interface Profile {
   _id: string;
   username: string;
@@ -15,7 +17,7 @@ export interface Profile {
     professional_interests: any[];
     personal_interests: any[];
   };
-  previousEducation: previousEducationItem[];
+  previousEducation: PreviousEducationItem[];
   links: {
     cv: string;
     portfolio: string;
@@ -23,6 +25,7 @@ export interface Profile {
     linkedin: string;
     twitter: string;
   };
+  stack: StackItem[];
   notifications: boolean;
   darkMode: boolean;
   education: string;
@@ -30,7 +33,7 @@ export interface Profile {
   employment: string;
 }
 
-interface previousEducationItem {
+interface PreviousEducationItem {
   school: string;
   subject: string;
   level: string;

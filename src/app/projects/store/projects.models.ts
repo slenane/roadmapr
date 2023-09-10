@@ -1,3 +1,5 @@
+import { StackItem } from "src/app/shared/store/stack.models";
+
 export interface Projects {
   projectList: ProjectItem[];
   user: string;
@@ -10,7 +12,7 @@ export interface ProjectItem {
   github: String;
   link?: String;
   notes: String;
-  stack: any[];
+  stack: StackItem[];
   startDate?: Date;
   title: String;
   tagLine: String;

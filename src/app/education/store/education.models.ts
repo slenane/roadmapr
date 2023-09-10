@@ -1,3 +1,5 @@
+import { StackItem } from "src/app/shared/store/stack.models";
+
 export interface Education {
   educationList: EducationItem[];
   user: string;
@@ -11,7 +13,7 @@ export interface EducationItem {
   github?: String;
   link: String;
   pinned: boolean;
-  stack: any[];
+  stack: StackItem[];
   startDate: Date;
   title: String;
   type: String;
