@@ -31,7 +31,7 @@
         id="todo"
         (cdkDropListDropped)="drop($event)"
       >
-        <div class="no-item-message" *ngIf="employment && !todo?.length">
+        <div class="no-item-message" *ngIf="employment && todo && !todo.length">
           <span class="material-symbols-outlined"> add </span>
           <p class="message-primary">No Future Employment Plans</p>
           <p class="message-secondary"
@@ -57,7 +57,10 @@
         id="inProgress"
         (cdkDropListDropped)="drop($event)"
       >
-        <div class="no-item-message" *ngIf="employment && !inProgress?.length">
+        <div
+          class="no-item-message"
+          *ngIf="employment && inProgress && !inProgress.length"
+        >
           <span class="material-symbols-outlined"> add </span>
           <p class="message-primary">No Employment In Progress</p>
           <p class="message-secondary"
@@ -83,7 +86,7 @@
         id="done"
         (cdkDropListDropped)="drop($event)"
       >
-        <div class="no-item-message" *ngIf="employment && !done?.length">
+        <div class="no-item-message" *ngIf="employment && done && !done.length">
           <span class="material-symbols-outlined"> add </span>
           <p class="message-primary">No Completed Employment</p>
           <p class="message-secondary"
