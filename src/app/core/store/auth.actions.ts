@@ -27,7 +27,7 @@ export const Login = createAction(LOGIN, props<{ userDetails: User }>());
 
 export const LoginSuccess = createAction(
   LOGIN_SUCCESS,
-  props<{ payload: { token: string } }>()
+  props<{ payload: { token: string; user: User } }>()
 );
 
 export const LoginError = createAction(

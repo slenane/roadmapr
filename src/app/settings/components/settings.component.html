@@ -9,17 +9,17 @@
             cdkFocusInitial
             #username
             matInput
-            formControlName="username"
+            formControlName="usernameCtrl"
           />
-          <mat-error *ngIf="settingsForm.controls.username.invalid"
+          <mat-error *ngIf="settingsForm.controls.usernameCtrl.invalid"
             >Username required</mat-error
           >
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>Email</mat-label>
-          <input #email matInput formControlName="email" />
-          <mat-error *ngIf="settingsForm.controls.email.invalid"
+          <input #email matInput formControlName="emailCtrl" />
+          <mat-error *ngIf="settingsForm.controls.emailCtrl.invalid"
             >Email required</mat-error
           >
         </mat-form-field>
@@ -36,14 +36,17 @@
 
         <mat-form-field appearance="outline">
           <mat-label>Theme</mat-label>
-          <mat-select formControlName="theme">
-            <mat-option value="light">Light</mat-option>
-            <mat-option value="dark">Dark</mat-option>
+          <mat-select
+            formControlName="themeCtrl"
+            (selectionChange)="updateTheme($event.value)"
+          >
+            <mat-option value="{{ LIGHT_THEME }}">Light</mat-option>
+            <mat-option value="{{ DARK_THEME }}">Dark</mat-option>
           </mat-select>
         </mat-form-field>
 
         <h4>Notifications</h4>
-        <mat-checkbox formControlName="notifications" color="primary"
+        <mat-checkbox formControlName="notificationsCtrl" color="primary"
           >Receive notifications by email</mat-checkbox
         >
       </form>

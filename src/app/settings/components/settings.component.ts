@@ -7,6 +7,11 @@ import { Profile } from "src/app/profile/store/profile.models";
 import * as profileSelectors from "src/app/profile/store/profile.selectors";
 import { filter, takeUntil } from "rxjs/operators";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { ThemeService } from "src/app/core/services/theme.service";
+import {
+  DARK_THEME,
+  LIGHT_THEME,
+} from "src/app/core/constants/theme.constants";
 
 @Component({
   selector: "app-settings",
@@ -18,13 +23,16 @@ export class SettingsComponent implements OnInit {
   public filterType = "date";
   public userId: string;
   public settings: Settings;
+  public theme: string;
+  public LIGHT_THEME = LIGHT_THEME;
+  public DARK_THEME = DARK_THEME;
 
   public settingsForm = new FormGroup({
-    username: new FormControl("", Validators.required),
-    email: new FormControl("", Validators.required),
+    usernameCtrl: new FormControl("", Validators.required),
+    emailCtrl: new FormControl("", Validators.required),
     // password: new FormControl("", Validators.required),
-    theme: new FormControl("light"),
-    notifications: new FormControl(true),
+    themeCtrl: new FormControl(""),
+    notificationsCtrl: new FormControl(true),
   });
 
   @ViewChild("username") username: ElementRef;
@@ -33,7 +41,8 @@ export class SettingsComponent implements OnInit {
   constructor(
     private el: ElementRef,
     private settingsStoreService: SettingsStoreService,
-    private store: Store<Profile>
+    private store: Store<Profile>,
+    private themeService: ThemeService
   ) {}
 
   ngOnInit(): void {
@@ -48,7 +57,7 @@ export class SettingsComponent implements OnInit {
         const settings = {
           username: user.username,
           email: user.email,
-          theme: user.darkMode,
+          theme: user.theme,
           notifications: user.notifications,
         };
 
@@ -64,13 +73,17 @@ export class SettingsComponent implements OnInit {
   updateSettingsForm(settings: any) {
     if (settings) {
       this.settingsForm.patchValue({
-        username: settings.username,
-        email: settings.email,
+        usernameCtrl: settings.username,
+        emailCtrl: settings.email,
         // password: settings.password,
-        theme: settings.theme,
-        notifications: settings.notifications,
+        themeCtrl: settings.theme,
+        notificationsCtrl: settings.notifications,
       });
     }
+  }
+
+  updateTheme(value: any) {
+    this.themeService.updateTheme(value);
   }
 
   focusError() {
@@ -87,10 +100,13 @@ export class SettingsComponent implements OnInit {
 
   onSaveClick(): void {
     if (this.settingsForm.status === "VALID") {
-      this.settingsStoreService.updateSettings(
-        this.userId,
-        this.settingsForm.value
-      );
+      this.settingsStoreService.updateSettings(this.userId, {
+        username: this.settingsForm.value.usernameCtrl,
+        email: this.settingsForm.value.emailCtrl,
+        // password: this.settingsForm.value.password,
+        theme: this.settingsForm.value.themeCtrl,
+        notifications: this.settingsForm.value.notificationsCtrl,
+      });
     } else {
       this.focusError();
     }
