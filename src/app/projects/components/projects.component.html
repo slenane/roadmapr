@@ -30,7 +30,7 @@
         id="todo"
         (cdkDropListDropped)="drop($event)"
       >
-        <div class="no-item-message" *ngIf="projects && !todo?.length">
+        <div class="no-item-message" *ngIf="projects && todo && !todo.length">
           <span class="material-symbols-outlined"> add </span>
           <p class="message-primary">No Future Project Plans</p>
           <p class="message-secondary"
@@ -56,7 +56,10 @@
         id="inProgress"
         (cdkDropListDropped)="drop($event)"
       >
-        <div class="no-item-message" *ngIf="projects && !inProgress?.length">
+        <div
+          class="no-item-message"
+          *ngIf="projects && inProgress && !inProgress.length"
+        >
           <span class="material-symbols-outlined"> add </span>
           <p class="message-primary">No Projects In Progress</p>
           <p class="message-secondary"
@@ -82,7 +85,7 @@
         id="done"
         (cdkDropListDropped)="drop($event)"
       >
-        <div class="no-item-message" *ngIf="projects && !done?.length">
+        <div class="no-item-message" *ngIf="projects && done && !done.length">
           <span class="material-symbols-outlined"> add </span>
           <p class="message-primary">No Completed Projects</p>
           <p class="message-secondary"
