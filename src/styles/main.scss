@@ -9,9 +9,7 @@ body {
 }
 
 body {
-  background: #fdfcfc;
   font-family: Mona Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
-  color: #61666d;
   margin: 0;
 }
 
@@ -58,21 +56,9 @@ app-root {
 
 .material-symbols-outlined {
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 20;
-  color: #00000087;
 
   &__filled {
     font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 20;
-  }
-}
-
-.mat-snack-bar-container {
-  &.snackbar-error {
-    background-color: red;
-    color: white;
-  }
-
-  .mat-simple-snackbar-action button {
-    color: white;
   }
 }
 
@@ -88,10 +74,6 @@ mat-button-toggle-group {
     .app-stack-icon {
       border-radius: 0%;
       margin: 0;
-    }
-
-    .toggle-view {
-      color: #5f6368;
     }
   }
 }
