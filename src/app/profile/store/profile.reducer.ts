@@ -33,7 +33,7 @@ const initialState: Profile = {
   education: "",
   projects: "",
   employment: "",
-  darkMode: false,
+  theme: "light",
   notifications: false,
   email: "",
 };

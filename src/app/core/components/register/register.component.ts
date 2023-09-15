@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { AuthStoreService } from "src/app/core/services/auth-store.service";
 import { TokenPayload } from "src/app/core/store/auth.models";
 
@@ -14,6 +14,8 @@ export class RegisterComponent implements OnInit {
     password: "",
     username: "",
   };
+
+  @Input() theme: string;
 
   constructor(private authStoreService: AuthStoreService) {}
 

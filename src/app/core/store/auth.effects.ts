@@ -5,13 +5,15 @@ import { of } from "rxjs";
 import { map, switchMap, catchError } from "rxjs/operators";
 import { AuthService } from "../services/auth.service";
 import * as authActions from "./auth.actions";
+import { ThemeService } from "../services/theme.service";
 
 @Injectable()
 export class AuthEffects {
   constructor(
     private actions$: Actions,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private themeService: ThemeService
   ) {}
 
   register$ = createEffect((): any =>
@@ -31,6 +33,7 @@ export class AuthEffects {
       ofType(authActions.LOGIN),
       switchMap(({ userDetails }) => this.authService.login(userDetails)),
       map((payload) => {
+        this.themeService.updateTheme(payload.user.theme);
         this.router.navigateByUrl("/dashboard");
         return authActions.LoginSuccess(payload);
       }),

@@ -29,6 +29,7 @@ export interface User {
 
 export interface TokenResponse {
   token: string;
+  user: User;
 }
 
 export interface TokenPayload {

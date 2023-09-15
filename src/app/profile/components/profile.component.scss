@@ -26,7 +26,6 @@
         h1 {
           font-size: 2rem;
           font-weight: 500;
-          color: #38352f;
         }
         .profile-stack-icon {
           margin: 0 0.5rem;
@@ -41,18 +40,15 @@
           font-weight: 500;
           letter-spacing: 0.05rem;
           margin-bottom: 0.5rem;
-          color: #999895;
         }
 
         .label {
           font-size: 0.8rem;
           font-weight: 400;
-          color: #61666d;
         }
 
         .value {
           font-weight: 500;
-          color: #38352f;
         }
 
         .profile-section {
@@ -83,7 +79,6 @@
 
         .bio {
           font-size: 1rem;
-          color: #61666d;
         }
 
         .education-items {
@@ -100,11 +95,6 @@
         .social-link {
           a {
             text-decoration: none;
-            color: #0d0c22;
-
-            &:hover {
-              color: #3d3d4e;
-            }
           }
         }
       }

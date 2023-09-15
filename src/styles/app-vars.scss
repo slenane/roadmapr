@@ -1,0 +1,37 @@
+// LIGHT THEME
+//
+// BACKGROUND COLORS
+$light-theme--body--background: #fdfcfc;
+$light-theme--sidebar--background: #f7f6f3;
+$light-theme--sidebar--background--active: rgba(0, 0, 0, 0.08);
+// FONT COLORS
+$light-theme--font--header: #38352f;
+$light-theme--font--sub-header: #999895;
+$light-theme--font--primary: #61666d;
+$light-theme--font--secondary: #38352f;
+$light-theme--font--tertiary: black;
+$light-theme--font--link: #0d0c22;
+$light-theme--font--link--hover: #3d3d4e;
+$light-theme--font--material-symbols: #00000087;
+// ERROR COLORS
+$light-theme--error--background: red;
+$light-theme--error--font: white;
+
+// DARK THEME
+//
+// BACKGROUND COLORS
+$dark-theme--body--background: #303030;
+$dark-theme--sidebar--background: #424242;
+$dark-theme--sidebar--background--active: rgba(0, 0, 0, 0.08);
+// FONT COLORS
+$dark-theme--font--header: white;
+$dark-theme--font--sub-header: #999895;
+$dark-theme--font--primary: white;
+$dark-theme--font--secondary: white;
+$dark-theme--font--tertiary: white;
+$dark-theme--font--link: #999895;
+$dark-theme--font--link--hover: white;
+$dark-theme--font--material-symbols: white;
+// ERROR COLORS
+$dark-theme--error--background: red;
+$dark-theme--error--font: white;
