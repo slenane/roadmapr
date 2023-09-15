@@ -16,6 +16,10 @@
     background-color: $light-theme--sidebar--background;
   }
 
+  .nav-collapse {
+    background-color: $light-theme--sidebar--background;
+  }
+
   .sidebar-option {
     color: $light-theme--font--primary;
 
@@ -77,6 +81,10 @@
 
 @mixin dark-theme--mixin--sidebar() {
   .sidebar {
+    background-color: $dark-theme--sidebar--background;
+  }
+
+  .nav-collapse {
     background-color: $dark-theme--sidebar--background;
   }
 
