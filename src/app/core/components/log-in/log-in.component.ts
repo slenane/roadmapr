@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { TokenPayload } from "src/app/core/store/auth.models";
 import { AuthStoreService } from "../../services/auth-store.service";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
@@ -18,6 +18,8 @@ export class LogInComponent implements OnInit {
     email: "",
     password: "",
   };
+
+  @Input() theme: string;
 
   constructor(private authStoreService: AuthStoreService) {}
 

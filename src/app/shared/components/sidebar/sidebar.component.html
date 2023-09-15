@@ -12,14 +12,22 @@
       <img
         *ngIf="displayLargeLogo"
         class="menu-brand"
-        src="/assets/images/logo/logo.png"
+        [src]="
+          currentTheme === 'dark'
+            ? '/assets/images/logo/logo-dark.png'
+            : '/assets/images/logo/logo.png'
+        "
         routerLink="/dashboard"
         alt="roadmapr Logo"
       />
       <img
         *ngIf="!displayLargeLogo"
         class="menu-brand"
-        src="/assets/images/logo/logo-icon.png"
+        [src]="
+          currentTheme === 'dark'
+            ? '/assets/images/logo/logo-icon-dark.png'
+            : '/assets/images/logo/logo-icon.png'
+        "
         routerLink="/dashboard"
         alt="roadmapr Logo Icon"
       />

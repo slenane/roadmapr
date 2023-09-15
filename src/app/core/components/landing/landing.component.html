@@ -3,7 +3,7 @@
     <!-- <img src="/assets/images/roadmapr-logo.png" alt="roadmapr Logo" /> -->
   </div>
   <div class="landing-grid__2">
-    <app-register *ngIf="isRegistering"></app-register>
-    <app-log-in *ngIf="!isRegistering"></app-log-in>
+    <app-register *ngIf="isRegistering" [theme]="currentTheme"></app-register>
+    <app-log-in *ngIf="!isRegistering" [theme]="currentTheme"></app-log-in>
   </div>
 </div>

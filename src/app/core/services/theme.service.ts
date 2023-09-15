@@ -5,28 +5,31 @@ import {
   DARK_THEME_CLASS,
   LIGHT_THEME,
 } from "../constants/theme.constants";
+import { BehaviorSubject } from "rxjs";
 
 @Injectable({
   providedIn: "root",
 })
 export class ThemeService {
-  public theme: string;
+  public theme = new BehaviorSubject<string>("light");
 
   constructor(@Inject(DOCUMENT) private document: Document) {
-    this.theme = this.document.documentElement.classList.contains(
-      DARK_THEME_CLASS
-    )
-      ? DARK_THEME
-      : LIGHT_THEME;
+    this.document.documentElement.classList.contains(DARK_THEME_CLASS)
+      ? this.theme.next(DARK_THEME)
+      : this.theme.next(LIGHT_THEME);
+  }
+
+  get selectedTheme() {
+    return this.theme.asObservable();
   }
 
   public updateTheme(theme: string): void {
     if (theme === DARK_THEME) {
       this.document.documentElement.classList.add(DARK_THEME_CLASS);
-      this.theme = DARK_THEME;
+      this.theme.next(DARK_THEME);
     } else if (theme === LIGHT_THEME) {
       this.document.documentElement.classList.remove(DARK_THEME_CLASS);
-      this.theme = LIGHT_THEME;
+      this.theme.next(LIGHT_THEME);
     }
   }
 }

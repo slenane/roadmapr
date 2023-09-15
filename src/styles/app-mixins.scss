@@ -5,6 +5,11 @@
     background: $light-theme--body--background;
     color: $light-theme--font--primary;
 
+    .auth-container {
+      background: $light-theme--body--background;
+      color: $light-theme--font--primary;
+    }
+
     .material-symbols-outlined {
       color: $light-theme--font--material-symbols;
     }
@@ -72,6 +77,11 @@
   body {
     background: $dark-theme--body--background;
     color: $dark-theme--font--primary;
+
+    .auth-container {
+      background: $dark-theme--body--background;
+      color: $dark-theme--font--primary;
+    }
 
     .material-symbols-outlined {
       color: $dark-theme--font--material-symbols;
