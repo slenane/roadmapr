@@ -4,7 +4,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { MaterialModule } from "./material/material.module";
 import { SharedModule } from "./shared/shared.module";
 import { AuthGuardService } from "./auth-guard.service";
@@ -19,6 +19,9 @@ import { EmploymentModule } from "./employment/employment.module";
 import { SettingsModule } from "./settings/settings.module";
 import { DashboardModule } from "./dashboard/dashboard.module";
 import { NgChartsModule } from "ng2-charts";
+import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
+import { TranslateHttpLoader } from "@ngx-translate/http-loader";
+import { TranslateService } from "@ngx-translate/core";
 
 @NgModule({
   declarations: [AppComponent],
@@ -36,6 +39,13 @@ import { NgChartsModule } from "ng2-charts";
     ),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({}),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      },
+    }),
     CoreModule,
     EmploymentModule,
     DashboardModule,
@@ -56,4 +66,14 @@ import { NgChartsModule } from "ng2-charts";
   providers: [AuthGuardService],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(private translate: TranslateService) {
+    translate.setDefaultLang("en");
+    translate.use("en");
+  }
+}
+
+// Translation service
+export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
+  return new TranslateHttpLoader(http);
+}

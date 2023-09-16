@@ -18,6 +18,7 @@ import { DashboardFiltersComponent } from "./components/dashboard-filters/dashbo
 import { DashboardStackRadarComponent } from "./components/dashboard-stack-radar/dashboard-stack-radar.component";
 import { DashboardEducationOverviewComponent } from "./components/dashboard-education-overview/dashboard-education-overview.component";
 import { DashboardProjectsOverviewComponent } from "./components/dashboard-projects-overview/dashboard-projects-overview.component";
+import { TranslateModule } from "@ngx-translate/core";
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { DashboardProjectsOverviewComponent } from "./components/dashboard-proje
     CoreModule,
     StoreModule.forFeature("dashboard", fromDashboard.reducer),
     EffectsModule.forFeature([DashboardEffects]),
+    TranslateModule.forChild(),
   ],
   providers: [DashboardStoreService, DashboardService],
 })

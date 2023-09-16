@@ -11,15 +11,15 @@
       alt="roadmapr Logo"
     />
   </div>
-  <h1>Register</h1>
+  <h1>{{ "AUTH.REGISTER.T" | translate }}</h1>
   <form (submit)="register()">
     <div class="form-group">
       <mat-form-field appearance="outline">
-        <mat-label for="name">Name</mat-label>
+        <mat-label for="name">{{ "FORMS.FULL_NAME" | translate }}</mat-label>
         <input
           matInput
           type="text"
-          placeholder="Enter your name"
+          [placeholder]="'FORMS.PLACEHOLDER.FULL_NAME' | translate"
           name="name"
           [(ngModel)]="userDetails.name"
           required
@@ -28,11 +28,11 @@
     </div>
     <div class="form-group">
       <mat-form-field appearance="outline">
-        <mat-label for="username">Username</mat-label>
+        <mat-label for="username">{{ "FORMS.USERNAME" | translate }}</mat-label>
         <input
           matInput
           type="text"
-          placeholder="Enter your username"
+          [placeholder]="'FORMS.PLACEHOLDER.USERNAME' | translate"
           name="username"
           [(ngModel)]="userDetails.username"
           required
@@ -41,10 +41,10 @@
     </div>
     <div class="form-group">
       <mat-form-field appearance="outline">
-        <mat-label for="email">Email</mat-label>
+        <mat-label for="email">{{ "FORMS.EMAIL" | translate }}</mat-label>
         <input
           matInput
-          placeholder="Enter your email"
+          [placeholder]="'FORMS.PLACEHOLDER.EMAIL' | translate"
           name="email"
           [(ngModel)]="userDetails.email"
           required
@@ -53,11 +53,11 @@
     </div>
     <div class="form-group">
       <mat-form-field appearance="outline">
-        <mat-label for="password">Password</mat-label>
+        <mat-label for="password">{{ "FORMS.PASSWORD" | translate }}</mat-label>
         <input
           matInput
           type="password"
-          placeholder="Password"
+          [placeholder]="'FORMS.PLACEHOLDER.PASSWORD' | translate"
           name="password"
           [(ngModel)]="userDetails.password"
           required
@@ -65,10 +65,12 @@
       </mat-form-field>
     </div>
 
-    <a href="/login">Already registered?</a>
+    <a href="/login">{{ "AUTH.REGISTER.ALREADY_REGISTERED" | translate }}</a>
 
     <div class="form-action">
-      <button type="submit" mat-raised-button color="primary">Register</button>
+      <button type="submit" mat-raised-button color="primary">{{
+        "AUTH.REGISTER.T" | translate
+      }}</button>
     </div>
   </form>
 </div>

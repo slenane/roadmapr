@@ -1,54 +1,60 @@
 <div class="settings">
   <mat-card>
-    <mat-card-header><h1>Update Settings</h1></mat-card-header>
+    <h1>{{ "SETTINGS.T" | translate }}</h1>
     <mat-card-content>
       <form class="form-grid" [formGroup]="settingsForm">
         <mat-form-field appearance="outline">
-          <mat-label>Username</mat-label>
+          <mat-label>{{ "FORMS.USERNAME" | translate }}</mat-label>
           <input
             cdkFocusInitial
             #username
             matInput
             formControlName="usernameCtrl"
           />
-          <mat-error *ngIf="settingsForm.controls.usernameCtrl.invalid"
-            >Username required</mat-error
-          >
+          <mat-error *ngIf="settingsForm.controls.usernameCtrl.invalid">{{
+            "FORMS.REQUIRED.USERNAME" | translate
+          }}</mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
-          <mat-label>Email</mat-label>
+          <mat-label>{{ "FORMS.EMAIL" | translate }}</mat-label>
           <input #email matInput formControlName="emailCtrl" />
-          <mat-error *ngIf="settingsForm.controls.emailCtrl.invalid"
-            >Email required</mat-error
-          >
+          <mat-error *ngIf="settingsForm.controls.emailCtrl.invalid">{{
+            "FORMS.REQUIRED.EMAIL" | translate
+          }}</mat-error>
         </mat-form-field>
 
         <div class="update-password-container">
-          <span class="update-password-text">Update Password</span>
+          <span class="update-password-text">{{
+            "FORMS.UPDATE.PASSWORD" | translate
+          }}</span>
           <button
             mat-raised-button
             color="primary"
             class="update-password-button"
-            >Update Password</button
+            >{{ "FORMS.UPDATE.PASSWORD" | translate }}</button
           >
         </div>
 
         <mat-form-field appearance="outline">
-          <mat-label>Theme</mat-label>
+          <mat-label>{{ "FORMS.THEME.T" | translate }}</mat-label>
           <mat-select
             formControlName="themeCtrl"
             (selectionChange)="updateTheme($event.value)"
           >
-            <mat-option value="{{ LIGHT_THEME }}">Light</mat-option>
-            <mat-option value="{{ DARK_THEME }}">Dark</mat-option>
+            <mat-option value="{{ LIGHT_THEME }}">{{
+              "FORMS.THEME.LIGHT" | translate
+            }}</mat-option>
+            <mat-option value="{{ DARK_THEME }}">{{
+              "FORMS.THEME.DARK" | translate
+            }}</mat-option>
           </mat-select>
         </mat-form-field>
 
-        <h4>Notifications</h4>
-        <mat-checkbox formControlName="notificationsCtrl" color="primary"
-          >Receive notifications by email</mat-checkbox
-        >
+        <h4>{{ "FORMS.NOTIFICATIONS.T" | translate }}</h4>
+        <mat-checkbox formControlName="notificationsCtrl" color="primary">{{
+          "FORMS.NOTIFICATIONS.EMAIL" | translate
+        }}</mat-checkbox>
       </form>
       <div mat-dialog-actions class="actions">
         <button
@@ -56,7 +62,7 @@
           color="primary"
           (click)="onSaveClick()"
           cdkFocusInitial
-          >Save</button
+          >{{ "ACTIONS.SAVE" | translate }}</button
         >
       </div>
     </mat-card-content>

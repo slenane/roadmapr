@@ -1,0 +1,230 @@
+{
+  "GENERAL": {
+    "STATUS": {
+      "TO_DO": "To Do",
+      "IN_PROGRESS": "In Progress",
+      "DONE": "Done"
+    }
+  },
+  "ACTIONS": {
+    "ADD": "Add",
+    "CANCEL": "Cancel",
+    "CLOSE": "Close",
+    "DELETE": "Delete",
+    "EDIT": "Edit",
+    "NO": "No",
+    "SAVE": "Save",
+    "SAVE_TYPE": "Save {{type}}",
+    "YES": "Yes"
+  },
+  "AUTH": {
+    "LOG_IN": {
+      "T": "Log In",
+      "NOT_REGISTERED": "Not Registered?"
+    },
+    "LOG_OUT": {
+      "T": "Logout",
+      "ARE_YOU_SURE": "Are you sure you want to log out?"
+    },
+    "REGISTER": {
+      "T": "Register",
+      "ALREADY_REGISTERED": "Already Registered?"
+    }
+  },
+  "EDUCATION": {
+    "T": "Education",
+    "EMPTY_LIST": {
+      "TO_DO_HEADER": "No Future Education Plans",
+      "TO_DO_MESSAGE": "Making plans for future learning wil help keep you on track",
+      "IN_PROGRESS_HEADER": "No Education In Progress",
+      "IN_PROGRESS_MESSAGE": "Taking a course is the best way to get started in software development",
+      "DONE_HEADER": "No Completed Education",
+      "DONE_MESSAGE": "Keep working towards your goals!"
+    },
+    "TYPES": {
+      "BOOKS": "Books",
+      "COURSES": "Courses",
+      "DEGREES": "Degrees",
+      "TUTORIALS": "Tutorials",
+      "BOOKS_SINGULAR": "Book",
+      "COURSES_SINGULAR": "Course",
+      "DEGREES_SINGULAR": "Degree",
+      "TUTORIALS_SINGULAR": "Tutorial"
+    },
+    "UPDATE": {
+      "T": "Update Education",
+      "MESSAGE": "Share what you've been learning"
+    }
+  },
+  "EMPLOYMENT": {
+    "T": "Employment",
+    "T_SINGLE": "Experience",
+    "EMPTY_LIST": {
+      "TO_DO_HEADER": "No Future Employment Plans",
+      "TO_DO_MESSAGE": "Securing work ahead of time will help keep you motivated",
+      "IN_PROGRESS_HEADER": "No Employment In Progress",
+      "IN_PROGRESS_MESSAGE": "Keep your CV up to date and keep learning!",
+      "DONE_HEADER": "No Completed Employment",
+      "DONE_MESSAGE": "Freelance work is a great way to earn money while developing your skills"
+    },
+    "TYPES": {
+      "EMPLOYMENT": "Employment",
+      "FREELANCE": "Freelance"
+    },
+    "UPDATE": {
+      "T": "Update Work Experience",
+      "MESSAGE": "Share where you have worked"
+    }
+  },
+  "FILTERS": {
+    "CLEAR": "Clear",
+    "COMPACT": "Compact",
+    "EXPANDED": "Expanded",
+    "LANGUAGE": "Language",
+    "TYPE": "Type",
+    "VIEW": "View"
+  },
+  "FORMS": {
+    "AUTHOR": "Author",
+    "BIO": "Bio",
+    "COMPANY": "Company",
+    "COMPANY_LINK": "Company Link",
+    "COVER_IMAGE": "Cover Image",
+    "CV": "CV",
+    "DATES": {
+      "END": "End date",
+      "HINT": "MM/DD/YYYY",
+      "PRESENT": "Present",
+      "START": "Start date",
+      "TIMELINE": "Timeline"
+    },
+    "DESCRIPTION": "Description",
+    "EMAIL": "Email",
+    "FULL_NAME": "Full Name",
+    "GITHUB": "GitHub",
+    "GITHUB_LINK": "GitHub Link",
+    "GITHUB_USER": "GitHub Username",
+    "LINKEDIN_USER": "LinkedIn Username",
+    "LINK": "Link",
+    "LINK_HINT": "Link is required for us to make better recommendations",
+    "LOCATION": "Location",
+    "INSTITUTION": "Institution",
+    "INSTRUCTOR": "Instructor",
+    "NATIONALITY": "Nationality",
+    "NOTES": "Private notes",
+    "NOTIFICATIONS": {
+      "T": "Notifications",
+      "EMAIL": "Receive notifications by email"
+    },
+    "PASSWORD": "Password",
+    "PORTFOLIO": "Portfolio",
+    "PROFILE_IMAGE": "Profile Image",
+    "PROJECT_LINK": "Project Link",
+    "ROLE": "Role",
+    "STACK": "Stack",
+    "THEME": {
+      "T": "Theme",
+      "LIGHT": "Light",
+      "DARK": "Dark"
+    },
+    "TAG_LINE": "Tagline",
+    "TITLE": "Title",
+    "TYPE": "Type",
+    "USERNAME": "Username",
+    "X_USER": "X Username",
+    "PLACEHOLDER": {
+      "EMAIL": "Enter your email",
+      "FULL_NAME": "Enter your full name",
+      "PASSWORD": "Enter your password",
+      "STACK": "Start typing to find stack...",
+      "TYPE": "Select Type",
+      "USERNAME": "Enter your username"
+    },
+    "REQUIRED": {
+      "AUTHOR": "Author Required",
+      "EMAIL": "Email Required",
+      "FULL_NAME": "Full Name Required",
+      "INSTITUTION": "Institution Required",
+      "INSTRUCTOR": "Instructor Required",
+      "LINK": "Link Required",
+      "LOCATION": "Location Required",
+      "NATIONALITY": "Nationality Required",
+      "PASSWORD": "Password Required",
+      "ROLE": "Role Required",
+      "STACK": "Stack Required",
+      "TITLE": "Title Required",
+      "TYPE": "Type Required",
+      "USERNAME": "Username Required"
+    },
+    "UPDATE": {
+      "EMAIL": "Update Email",
+      "FULL_NAME": "Update Full Name",
+      "PASSWORD": "Update Password",
+      "STACK": "Update Stack",
+      "USERNAME": "Update Username"
+    }
+  },
+  "LANDING": {},
+  "PROFILE": {
+    "T": "Profile",
+    "HEADERS": {
+      "PERSONAL": "Personal",
+      "INTERESTS": "Interests",
+      "SOCIAL": "Social"
+    },
+    "SUB_HEADERS": {
+      "LOCATION": "Location",
+      "NATIONALITY": "Nationality",
+      "LANGUAGES": "Languages Spoken",
+      "PREVIOUS_EDUCATION": "Previous Education",
+      "PROFESSIONAL": "Professional",
+      "PERSONAL": "Personal"
+    },
+    "LINKS": {
+      "CV": "CV",
+      "PORTFOLIO": "Portfolio",
+      "GITHUB": "CV",
+      "LINKEDIN": "LinkedIn",
+      "X": "X"
+    },
+    "UPDATE": {
+      "T": "Update Profile"
+    },
+    "ROLES": {
+      "FRONTEND": "Frontend Developer",
+      "BACKEND": "Backend Developer",
+      "FULL_STACK": "Full-Stack Developer",
+      "DEV_OPS": "DevOps Developer",
+      "BLOCKCHAIN": "Blockchain Developer",
+      "GAME": "Game Developer",
+      "APP": "App Developer",
+      "SECURITY": "Security Developer"
+    }
+  },
+  "PROJECTS": {
+    "T": "Projects",
+    "T_SINGLE": "Project",
+    "EMPTY_LIST": {
+      "TO_DO_HEADER": "No Future Project Plans",
+      "TO_DO_MESSAGE": "Adding project ideas will help keep you focused on your goals",
+      "IN_PROGRESS_HEADER": "No Projects In Progress",
+      "IN_PROGRESS_MESSAGE": "Working on projects is the best way to improve your skills",
+      "DONE_HEADER": "No Completed Projects",
+      "DONE_MESSAGE": "Working on projects is the best way to improve your skills"
+    },
+    "TYPES": {
+      "EDUCATIONAL": "Educational",
+      "PERSONAL": "Personal"
+    },
+    "UPDATE": {
+      "T": "Update Projects",
+      "MESSAGE": "Share what you've been working on"
+    }
+  },
+  "ROADMAP": {
+    "T": "Roadmap"
+  },
+  "SETTINGS": {
+    "T": "Settings"
+  }
+}

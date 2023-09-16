@@ -1,10 +1,10 @@
 export const DEV_ROLES = [
-  "Frontend Developer",
-  "Backend Developer",
-  "Full Stack Developer",
-  "DevOps Developer",
-  "Blockchain Developer",
-  "Mobile Developer",
-  "Game Developer",
-  "Security Developer",
+  "PROFILE.ROLES.FRONTEND",
+  "PROFILE.ROLES.BACKEND",
+  "PROFILE.ROLES.FULL_STACK",
+  "PROFILE.ROLES.DEV_OPS",
+  "PROFILE.ROLES.BLOCKCHAIN",
+  "PROFILE.ROLES.GAME",
+  "PROFILE.ROLES.APP",
+  "PROFILE.ROLES.SECURITY",
 ];

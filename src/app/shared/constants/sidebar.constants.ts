@@ -1,26 +1,26 @@
 export const SIDEBAR_OPTIONS = [
   {
-    title: "Roadmap",
+    title: "ROADMAP.T",
     icon: "timeline",
     link: "/dashboard",
   },
   {
-    title: "Education",
+    title: "EDUCATION.T",
     icon: "school",
     link: "/education",
   },
   {
-    title: "Projects",
+    title: "PROJECTS.T",
     icon: "code",
     link: "/projects",
   },
   {
-    title: "Employment",
+    title: "EMPLOYMENT.T",
     icon: "work",
     link: "/employment",
   },
   {
-    title: "Profile",
+    title: "PROFILE.T",
     icon: "person_outline",
     link: "/profile",
   },

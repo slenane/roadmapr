@@ -11,6 +11,7 @@ import { StoreModule } from "@ngrx/store";
 import { EffectsModule } from "@ngrx/effects";
 import * as fromSettings from "./store/settings.reducer";
 import { SettingsEffects } from "./store/settings.effects";
+import { TranslateModule } from "@ngx-translate/core";
 
 @NgModule({
   declarations: [SettingsComponent],
@@ -24,6 +25,7 @@ import { SettingsEffects } from "./store/settings.effects";
     CoreModule,
     StoreModule.forFeature("settings", fromSettings.reducer),
     EffectsModule.forFeature([SettingsEffects]),
+    TranslateModule.forChild(),
   ],
   providers: [SettingsStoreService, SettingsService],
 })

@@ -48,27 +48,33 @@
 
     <div class="content" *ngIf="selectedView === 'expanded'">
       <div class="timeline" *ngIf="data.startDate">
-        <div class="timeline_title">Timeline</div>
+        <div class="timeline_title">{{
+          "FORMS.DATES.TIMELINE" | translate
+        }}</div>
         <p class="timeline_text"
           >{{ data.startDate | date }} -
-          {{ (data.endDate | date) || "Present" }}</p
+          {{ (data.endDate | date) || ("FORMS.DATES.PRESENT" | translate) }}</p
         >
       </div>
 
       <div class="description" *ngIf="data.description">
-        <div class="description_title">Description</div>
+        <div class="description_title">{{
+          "FORMS.DESCRIPTION" | translate
+        }}</div>
         <p class="description_text">{{ data.description }}</p>
       </div>
 
       <p class="actions">
         <a href="data.link" *ngIf="data.link">
-          <button mat-raised-button color="primary" type="button">Link</button>
+          <button mat-raised-button color="primary" type="button">{{
+            "FORMS.PROJECT_LINK" | translate
+          }}</button>
         </a>
 
         <a href="data.github" *ngIf="data.github">
-          <button mat-raised-button color="default" type="button"
-            >GitHub</button
-          >
+          <button mat-raised-button color="default" type="button">{{
+            "FORMS.GITHUB" | translate
+          }}</button>
         </a>
       </p>
     </div>

@@ -9,6 +9,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { BrowserModule } from "@angular/platform-browser";
 import { DropListFiltersComponent } from "./components/drop-list-filters/drop-list-filters.component";
 import { IconCardComponent } from "./components/icon-card/icon-card.component";
+import { TranslateModule } from "@ngx-translate/core";
 // import { NgChartsModule } from "ng2-charts";
 // import { FileUploadComponent } from "./components/file-upload/file-upload.component";
 
@@ -36,6 +37,7 @@ import { IconCardComponent } from "./components/icon-card/icon-card.component";
     AppRoutingModule,
     HttpClientModule,
     BrowserModule,
+    TranslateModule.forChild(),
     // NgChartsModule,
   ],
 })

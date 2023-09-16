@@ -1,10 +1,10 @@
 <div class="education-header">
   <div class="icon">
-    <span class="material-symbols-outlined"> school </span>
+    <span class="material-symbols-outlined emphasis"> school </span>
   </div>
   <div class="text">
-    <h1>Update Education</h1>
-    <p>Share what you've been learning</p>
+    <h1>{{ "EDUCATION.UPDATE.T" | translate }}</h1>
+    <p>{{ "EDUCATION.UPDATE.MESSAGE" | translate }}</p>
   </div>
 </div>
 <div mat-dialog-content>
@@ -26,60 +26,93 @@
 
     <!-- <p>Enter details manually</p> -->
     <mat-form-field appearance="outline" class="full-width-grid-item">
-      <mat-label>Select Type</mat-label>
-      <mat-select #type formControlName="type">
-        <mat-option *ngFor="let type of educationTypes" [value]="type">
-          <div class="type-option">
-            <img
-              src="/assets/images/icons/{{ type }}.png"
-              class="app-education-type-icon"
-            />
-            {{ type | titlecase }}
-          </div>
+      <mat-label>{{ "FORMS.TYPE" | translate }}</mat-label>
+      <mat-select
+        #type
+        formControlName="type"
+        [placeholder]="'FORMS.PLACEHOLDER.TYPE' | translate"
+      >
+        <mat-option value="book">
+          <img
+            src="/assets/images/icons/book.png"
+            class="app-education-type-icon"
+          />
+          {{ "EDUCATION.TYPES.BOOKS_SINGULAR" | translate }}
+        </mat-option>
+        <mat-option value="course">
+          <img
+            src="/assets/images/icons/course.png"
+            class="app-education-type-icon"
+          />
+          {{ "EDUCATION.TYPES.COURSES_SINGULAR" | translate }}
+        </mat-option>
+        <mat-option value="degree">
+          <img
+            src="/assets/images/icons/degree.png"
+            class="app-education-type-icon"
+          />
+          {{ "EDUCATION.TYPES.DEGREES_SINGULAR" | translate }}
+        </mat-option>
+        <mat-option value="tutorial">
+          <img
+            src="/assets/images/icons/tutorial.png"
+            class="app-education-type-icon"
+          />
+          {{ "EDUCATION.TYPES.TUTORIALS_SINGULAR" | translate }}
         </mat-option>
       </mat-select>
+      <mat-error *ngIf="educationForm.controls.type.invalid">{{
+        "FORMS.REQUIRED.TYPE" | translate
+      }}</mat-error>
     </mat-form-field>
 
     <ng-container *ngIf="selectedType">
       <mat-form-field appearance="outline">
-        <mat-label>Title</mat-label>
+        <mat-label>{{ "FORMS.TITLE" | translate }}</mat-label>
         <input #title matInput formControlName="title" />
-        <mat-error *ngIf="educationForm.controls.title.invalid"
-          >Title required</mat-error
-        >
+        <mat-error *ngIf="educationForm.controls.title.invalid">{{
+          "FORMS.REQUIRED.TITLE" | translate
+        }}</mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>
-          {{ selectedType === "book" ? "Author" : "" }}
+          {{ selectedType === "book" ? ("FORMS.AUTHOR" | translate) : "" }}
           {{
             selectedType === "course" || selectedType === "tutorial"
-              ? "Instructor"
+              ? ("FORMS.INSTRUCTOR" | translate)
               : ""
           }}
-          {{ selectedType === "degree" ? "Institution" : "" }}
+          {{
+            selectedType === "degree" ? ("FORMS.INSTITUTION" | translate) : ""
+          }}
         </mat-label>
         <input #author matInput formControlName="author" />
         <mat-error *ngIf="educationForm.controls.author.invalid">
-          {{ selectedType === "book" ? "Author" : "" }}
+          {{
+            selectedType === "book" ? ("FORMS.REQUIRED.AUTHOR" | translate) : ""
+          }}
           {{
             selectedType === "course" || selectedType === "tutorial"
-              ? "Instructor"
+              ? ("FORMS.REQUIRED.INSTRUCTOR" | translate)
               : ""
           }}
-          {{ selectedType === "degree" ? "Institution" : "" }}
-          required</mat-error
-        >
+          {{
+            selectedType === "degree"
+              ? ("FORMS.REQUIRED.INSTITUTION" | translate)
+              : ""
+          }}
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>Start date</mat-label>
+        <mat-label>{{ "FORMS.DATES.START" | translate }}</mat-label>
         <input
           matInput
           [matDatepicker]="startDate"
           formControlName="startDate"
         />
-        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-hint>{{ "FORMS.DATES.HINT" | translate }}</mat-hint>
         <mat-datepicker-toggle
           matSuffix
           [for]="startDate"
@@ -88,9 +121,9 @@
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>End date</mat-label>
+        <mat-label>{{ "FORMS.DATES.END" | translate }}</mat-label>
         <input matInput [matDatepicker]="endDate" formControlName="endDate" />
-        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-hint>{{ "FORMS.DATES.HINT" | translate }}</mat-hint>
         <mat-datepicker-toggle
           matSuffix
           [for]="endDate"
@@ -99,7 +132,7 @@
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="full-width-grid-item">
-        <mat-label>Description</mat-label>
+        <mat-label>{{ "FORMS.DESCRIPTION" | translate }}</mat-label>
         <textarea
           #description
           matInput
@@ -116,7 +149,7 @@
       </app-stack-selector>
 
       <mat-form-field appearance="outline" *ngIf="selectedType === 'tutorial'">
-        <mat-label>Github</mat-label>
+        <mat-label>{{ "FORMS.GITHUB" | translate }}</mat-label>
         <input #github matInput formControlName="github" />
       </mat-form-field>
 
@@ -124,26 +157,28 @@
         appearance="outline"
         [ngClass]="{ 'full-width-grid-item': selectedType !== 'tutorial' }"
       >
-        <mat-label>Link</mat-label>
+        <mat-label>{{ "FORMS.LINK" | translate }}</mat-label>
         <input #link matInput formControlName="link" />
-        <mat-hint
-          >Link is required for us to make better recommendations</mat-hint
-        >
-        <mat-error *ngIf="educationForm.controls.link.invalid"
-          >Please add link to tutorial</mat-error
-        >
+        <mat-hint>{{ "FORMS.LINK_HINT" | translate }}</mat-hint>
+        <mat-error *ngIf="educationForm.controls.link.invalid">{{
+          "FORMS.REQUIRED.LINK" | translate
+        }}</mat-error>
       </mat-form-field>
     </ng-container>
   </form>
 </div>
 <div mat-dialog-actions class="actions">
-  <button mat-raised-button (click)="onNoClick()">Cancel</button>
+  <button mat-raised-button (click)="onNoClick()">{{
+    "ACTIONS.CANCEL" | translate
+  }}</button>
   <button
     mat-raised-button
     *ngIf="educationForm.controls.type.value"
     color="primary"
     (click)="onSaveClick()"
     cdkFocusInitial
-    >Save {{ selectedType | titlecase }}</button
+    >{{
+      "ACTIONS.SAVE_TYPE" | translate : { type: (selectedType | titlecase) }
+    }}</button
   >
 </div>

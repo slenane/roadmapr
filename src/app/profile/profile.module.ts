@@ -13,6 +13,7 @@ import { EffectsModule } from "@ngrx/effects";
 import * as fromProfile from "./store/profile.reducer";
 import { ProfileEffects } from "./store/profile.effects";
 import { ProfileEditComponent } from "./components/profile-edit/profile-edit.component";
+import { TranslateModule } from "@ngx-translate/core";
 
 @NgModule({
   declarations: [ProfileComponent, ProfileCardComponent, ProfileEditComponent],
@@ -26,6 +27,7 @@ import { ProfileEditComponent } from "./components/profile-edit/profile-edit.com
     CoreModule,
     StoreModule.forFeature("profile", fromProfile.reducer),
     EffectsModule.forFeature([ProfileEffects]),
+    TranslateModule.forChild(),
   ],
   providers: [ProfileStoreService, ProfileService],
 })

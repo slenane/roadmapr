@@ -1,7 +1,7 @@
 <div class="filter-container">
   <div class="filters">
     <div *ngIf="typeConfig">
-      <span class="filter-type">Type</span>
+      <span class="filter-type">{{ "FILTERS.TYPE" | translate }}</span>
       <mat-button-toggle-group
         name="type"
         aria-label="Type"
@@ -16,13 +16,13 @@
             src="/assets/images/icons/{{ type.name }}.png"
             class="app-education-type-icon"
           />
-          {{ type.title }}
+          {{ type.title | translate }}
         </mat-button-toggle>
       </mat-button-toggle-group>
     </div>
 
     <div *ngIf="languageConfig">
-      <span class="filter-type">Language</span>
+      <span class="filter-type">{{ "FILTERS.LANGUAGE" | translate }}</span>
       <mat-button-toggle-group
         name="language"
         aria-label="Language"
@@ -47,7 +47,7 @@
     </div>
 
     <div>
-      <span class="filter-type">View</span>
+      <span class="filter-type">{{ "FILTERS.VIEW" | translate }}</span>
       <mat-button-toggle-group
         name="view"
         aria-label="View"
@@ -63,7 +63,7 @@
         >
           <span class="material-symbols-outlined view compact">
             table_rows_narrow </span
-          >Compact</mat-button-toggle
+          >{{ "FILTERS.COMPACT" | translate }}</mat-button-toggle
         >
         <mat-button-toggle
           *ngIf="selectedView === 'expanded'"
@@ -74,14 +74,14 @@
           (click)="onUpdateView.emit('compact')"
         >
           <span class="material-symbols-outlined view"> table_rows </span>
-          Expanded
+          {{ "FILTERS.EXPANDED" | translate }}
         </mat-button-toggle>
       </mat-button-toggle-group>
     </div>
 
     <mat-chip-list *ngIf="selectedLanguage || selectedType">
       <mat-chip (click)="clearFilters()">
-        Clear
+        {{ "FILTERS.CLEAR" | translate }}
         <button
           matChipRemove
           [attr.aria-label]="'Clear Filters'"
@@ -93,5 +93,7 @@
     </mat-chip-list>
   </div>
 
-  <button mat-raised-button color="primary" (click)="addItem()">Add</button>
+  <button mat-raised-button color="primary" (click)="addItem()">{{
+    "ACTIONS.ADD" | translate
+  }}</button>
 </div>

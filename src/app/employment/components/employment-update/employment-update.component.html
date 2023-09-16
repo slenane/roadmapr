@@ -1,62 +1,66 @@
 <div class="employment-header">
   <div class="icon">
-    <span class="material-symbols-outlined"> work </span>
+    <span class="material-symbols-outlined emphasis"> work </span>
   </div>
   <div class="text">
-    <h1>Update Work Experience</h1>
-    <p>Share where you have worked</p>
+    <h1>{{ "EMPLOYMENT.UPDATE.T" | translate }}</h1>
+    <p>{{ "EMPLOYMENT.UPDATE.MESSAGE" | translate }}</p>
   </div>
 </div>
 <div mat-dialog-content>
   <form [formGroup]="employmentForm">
     <mat-form-field appearance="outline" class="full-width-grid-item">
-      <mat-label>Select Type</mat-label>
-      <mat-select #type formControlName="type">
+      <mat-label>{{ "FORMS.TYPE" | translate }}</mat-label>
+      <mat-select
+        #type
+        formControlName="type"
+        [placeholder]="'FORMS.PLACEHOLDER.TYPE' | translate"
+      >
         <mat-option value="employment">
           <img
             src="/assets/images/icons/employment.png"
             class="app-education-type-icon"
           />
-          Employment
+          {{ "EMPLOYMENT.TYPES.EMPLOYMENT" | translate }}
         </mat-option>
         <mat-option value="freelance">
           <img
             src="/assets/images/icons/freelance.png"
             class="app-education-type-icon"
           />
-          Freelance
+          {{ "EMPLOYMENT.TYPES.FREELANCE" | translate }}
         </mat-option>
       </mat-select>
-      <mat-error *ngIf="employmentForm.controls.type.invalid"
-        >Type required</mat-error
-      >
+      <mat-error *ngIf="employmentForm.controls.type.invalid">{{
+        "FORMS.REQUIRED.TYPE" | translate
+      }}</mat-error>
     </mat-form-field>
 
     <ng-container *ngIf="employmentForm.controls.type.value">
       <mat-form-field appearance="outline">
-        <mat-label>Role</mat-label>
+        <mat-label>{{ "FORMS.ROLE" | translate }}</mat-label>
         <input cdkFocusInitial #role matInput formControlName="role" />
-        <mat-error *ngIf="employmentForm.controls.role.invalid"
-          >Role required</mat-error
-        >
+        <mat-error *ngIf="employmentForm.controls.role.invalid">{{
+          "FORMS.REQUIRED.ROLE" | translate
+        }}</mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>Company</mat-label>
+        <mat-label>{{ "FORMS.COMPANY" | translate }}</mat-label>
         <input #company matInput formControlName="company" />
-        <mat-error *ngIf="employmentForm.controls.company.invalid"
-          >Company required</mat-error
-        >
+        <mat-error *ngIf="employmentForm.controls.company.invalid">{{
+          "FORMS.REQUIRED.COMPANY" | translate
+        }}</mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>Start date</mat-label>
+        <mat-label>{{ "FORMS.DATES.START" | translate }}</mat-label>
         <input
           matInput
           [matDatepicker]="startDate"
           formControlName="startDate"
         />
-        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-hint>{{ "FORMS.DATES.HINT" | translate }}</mat-hint>
         <mat-datepicker-toggle
           matSuffix
           [for]="startDate"
@@ -65,9 +69,9 @@
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>End date</mat-label>
+        <mat-label>{{ "FORMS.DATES.END" | translate }}</mat-label>
         <input matInput [matDatepicker]="endDate" formControlName="endDate" />
-        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-hint>{{ "FORMS.DATES.HINT" | translate }}</mat-hint>
         <mat-datepicker-toggle
           matSuffix
           [for]="endDate"
@@ -76,7 +80,7 @@
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="full-width-grid-item">
-        <mat-label>Description</mat-label>
+        <mat-label>{{ "FORMS.DESCRIPTION" | translate }}</mat-label>
         <textarea matInput formControlName="description"></textarea>
       </mat-form-field>
 
@@ -91,7 +95,7 @@
         appearance="outline"
         *ngIf="employmentForm.controls.type.value === 'freelance'"
       >
-        <mat-label>Github Link</mat-label>
+        <mat-label>{{ "FORMS.GITHUB_LINK" | translate }}</mat-label>
         <input matInput formControlName="github" />
       </mat-form-field>
 
@@ -99,7 +103,7 @@
         appearance="outline"
         *ngIf="employmentForm.controls.type.value === 'freelance'"
       >
-        <mat-label>Project Link</mat-label>
+        <mat-label>{{ "FORMS.PROJECT_LINK" | translate }}</mat-label>
         <input matInput formControlName="project" />
       </mat-form-field>
 
@@ -108,20 +112,25 @@
         *ngIf="employmentForm.controls.type.value === 'employment'"
         class="full-width-grid-item"
       >
-        <mat-label>Link to Company</mat-label>
+        <mat-label>{{ "FORMS.COMPANY_LINK" | translate }}</mat-label>
         <input matInput formControlName="companyLink" />
       </mat-form-field>
     </ng-container>
   </form>
 </div>
 <div mat-dialog-actions class="actions">
-  <button mat-raised-button (click)="onNoClick()">Cancel</button>
+  <button mat-raised-button (click)="onNoClick()">{{
+    "ACTIONS.CANCEL" | translate
+  }}</button>
   <button
     *ngIf="employmentForm.controls.type.value"
     mat-raised-button
     color="primary"
     (click)="onSaveClick()"
     cdkFocusInitial
-    >Save Experience</button
+    >{{
+      "ACTIONS.SAVE_TYPE"
+        | translate : { type: ("EMPLOYMENT.T_SINGLE" | translate) }
+    }}</button
   >
 </div>

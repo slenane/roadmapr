@@ -1,5 +1,5 @@
 <mat-form-field appearance="outline" class="full-width">
-  <mat-label>Stack</mat-label>
+  <mat-label>{{ "FORMS.STACK" | translate }}</mat-label>
   <mat-chip-list #chipList aria-label="Stack selection" required>
     <mat-chip
       *ngFor="let item of selectedStack"
@@ -14,10 +14,12 @@
         />
         <span>{{ item.title }}</span>
       </div>
-      <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+      <mat-icon matChipRemove *ngIf="removable">{{
+        "ACTIONS.CANCEL" | translate
+      }}</mat-icon>
     </mat-chip>
     <input
-      placeholder="Start typing to find stack..."
+      [placeholder]="'FORMS.PLACEHOLDER.STACK' | translate"
       #stackInput
       [formControl]="stackCtrl"
       [matAutocomplete]="auto"
@@ -28,7 +30,7 @@
       required
     />
   </mat-chip-list>
-  <mat-error>Stack required</mat-error>
+  <mat-error>{{ "FORMS.REQUIRED.STACK" | translate }}</mat-error>
   <mat-autocomplete
     #auto="matAutocomplete"
     (optionSelected)="selectedStackItem($event)"
