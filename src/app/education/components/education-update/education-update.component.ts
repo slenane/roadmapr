@@ -7,7 +7,6 @@ import {
 } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
-import { EDUCATION_TYPES } from "../../constants/education.constants";
 // import { EducationService } from "../../services/education.service";
 // import { takeUntil } from "rxjs/operators";
 import { Subject } from "rxjs";
@@ -20,7 +19,6 @@ import { StackSelectorComponent } from "src/app/shared/components/stack-selector
 })
 export class EducationUpdateComponent implements OnInit {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
-  public educationTypes = EDUCATION_TYPES;
   public selectedType: string = "";
   public educationForm = new FormGroup({
     type: new FormControl("", Validators.required),

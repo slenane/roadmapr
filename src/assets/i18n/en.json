@@ -34,23 +34,46 @@
   "EDUCATION": {
     "T": "Education",
     "EMPTY_LIST": {
-      "TO_DO_HEADER": "",
-      "TO_DO_MESSAGE": "",
-      "IN_PROGRESS_HEADER": "",
-      "IN_PROGRESS_MESSAGE": "",
-      "DONE_HEADER": "",
-      "DONE_MESSAGE": ""
+      "TO_DO_HEADER": "No Future Education Plans",
+      "TO_DO_MESSAGE": "Making plans for future learning wil help keep you on track",
+      "IN_PROGRESS_HEADER": "No Education In Progress",
+      "IN_PROGRESS_MESSAGE": "Taking a course is the best way to get started in software development",
+      "DONE_HEADER": "No Completed Education",
+      "DONE_MESSAGE": "Keep working towards your goals!"
+    },
+    "TYPES": {
+      "BOOKS": "Books",
+      "COURSES": "Courses",
+      "DEGREES": "Degrees",
+      "TUTORIALS": "Tutorials",
+      "BOOKS_SINGULAR": "Book",
+      "COURSES_SINGULAR": "Course",
+      "DEGREES_SINGULAR": "Degree",
+      "TUTORIALS_SINGULAR": "Tutorial"
+    },
+    "UPDATE": {
+      "T": "Update Education",
+      "MESSAGE": "Share what you've been learning"
     }
   },
   "EMPLOYMENT": {
     "T": "Employment",
+    "T_SINGLE": "Experience",
     "EMPTY_LIST": {
-      "TO_DO_HEADER": "",
-      "TO_DO_MESSAGE": "",
-      "IN_PROGRESS_HEADER": "",
-      "IN_PROGRESS_MESSAGE": "",
-      "DONE_HEADER": "",
-      "DONE_MESSAGE": ""
+      "TO_DO_HEADER": "No Future Employment Plans",
+      "TO_DO_MESSAGE": "Securing work ahead of time will help keep you motivated",
+      "IN_PROGRESS_HEADER": "No Employment In Progress",
+      "IN_PROGRESS_MESSAGE": "Keep your CV up to date and keep learning!",
+      "DONE_HEADER": "No Completed Employment",
+      "DONE_MESSAGE": "Freelance work is a great way to earn money while developing your skills"
+    },
+    "TYPES": {
+      "EMPLOYMENT": "Employment",
+      "FREELANCE": "Freelance"
+    },
+    "UPDATE": {
+      "T": "Update Work Experience",
+      "MESSAGE": "Share where you have worked"
     }
   },
   "FILTERS": {
@@ -62,7 +85,10 @@
     "VIEW": "View"
   },
   "FORMS": {
+    "AUTHOR": "Author",
     "BIO": "Bio",
+    "COMPANY": "Company",
+    "COMPANY_LINK": "Company Link",
     "COVER_IMAGE": "Cover Image",
     "CV": "CV",
     "DATES": {
@@ -79,7 +105,11 @@
     "GITHUB_LINK": "GitHub Link",
     "GITHUB_USER": "GitHub Username",
     "LINKEDIN_USER": "LinkedIn Username",
+    "LINK": "Link",
+    "LINK_HINT": "Link is required for us to make better recommendations",
     "LOCATION": "Location",
+    "INSTITUTION": "Institution",
+    "INSTRUCTOR": "Instructor",
     "NATIONALITY": "Nationality",
     "NOTES": "Private notes",
     "NOTIFICATIONS": {
@@ -111,8 +141,12 @@
       "USERNAME": "Enter your username"
     },
     "REQUIRED": {
+      "AUTHOR": "Author Required",
       "EMAIL": "Email Required",
       "FULL_NAME": "Full Name Required",
+      "INSTITUTION": "Institution Required",
+      "INSTRUCTOR": "Instructor Required",
+      "LINK": "Link Required",
       "LOCATION": "Location Required",
       "NATIONALITY": "Nationality Required",
       "PASSWORD": "Password Required",

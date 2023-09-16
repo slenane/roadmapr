@@ -7,8 +7,8 @@ export const PERSONAL = "personal",
 export const PROJECT_TYPES = [PERSONAL, EDUCATIONAL];
 
 export const PROJECT_TYPE_CONFIG = [
-  { title: "Personal", name: PERSONAL },
-  { title: "Educational", name: EDUCATIONAL },
+  { title: "PROJECTS.TYPES.PERSONAL", name: PERSONAL },
+  { title: "PROJECTS.TYPES.EDUCATIONAL", name: EDUCATIONAL },
 ];
 
 export const STATUS = { TODO, IN_PROGRESS, DONE };

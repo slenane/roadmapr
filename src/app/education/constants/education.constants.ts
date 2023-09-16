@@ -9,10 +9,10 @@ export const BOOK = "book",
 export const EDUCATION_TYPES = [BOOK, COURSE, DEGREE, TUTORIAL];
 
 export const EDUCATION_TYPE_CONFIG = [
-  { title: "Books", name: BOOK },
-  { title: "Courses", name: COURSE },
-  { title: "Degrees", name: DEGREE },
-  { title: "Tutorials", name: TUTORIAL },
+  { title: "EDUCATION.TYPES.BOOKS", name: BOOK },
+  { title: "EDUCATION.TYPES.COURSES", name: COURSE },
+  { title: "EDUCATION.TYPES.DEGREES", name: DEGREE },
+  { title: "EDUCATION.TYPES.TUTORIALS", name: TUTORIAL },
 ];
 
 export const STATUS = { TODO, IN_PROGRESS, DONE };

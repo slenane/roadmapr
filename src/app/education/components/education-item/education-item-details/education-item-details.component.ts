@@ -13,8 +13,6 @@ import { EducationStoreService } from "src/app/education/services/education-stor
   styleUrls: ["./education-item-details.component.scss"],
 })
 export class EducationItemDetailsComponent implements OnInit {
-  public authorType: string = "Author";
-
   constructor(
     private educationStoreService: EducationStoreService,
     public dialogRef: MatDialogRef<EducationItemDetailsComponent>,
@@ -22,12 +20,7 @@ export class EducationItemDetailsComponent implements OnInit {
     public dialog: MatDialog
   ) {}
 
-  ngOnInit(): void {
-    if (this.data) {
-      if (this.data.institution) this.authorType = "Institution";
-      else if (this.data.instructor) this.authorType = "Instructor";
-    }
-  }
+  ngOnInit(): void {}
 
   onCancel(): void {
     this.dialogRef.close(false);

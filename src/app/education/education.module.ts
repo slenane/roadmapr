@@ -14,6 +14,7 @@ import * as fromEducation from "./store/education.reducer";
 import { EducationEffects } from "./store/education.effects";
 import { EducationStoreService } from "./services/education-store.service";
 import { EducationItemDetailsComponent } from "./components/education-item/education-item-details/education-item-details.component";
+import { TranslateModule } from "@ngx-translate/core";
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { EducationItemDetailsComponent } from "./components/education-item/educa
     CoreModule,
     StoreModule.forFeature("education", fromEducation.reducer),
     EffectsModule.forFeature([EducationEffects]),
+    TranslateModule.forChild(),
   ],
   providers: [EducationService, EducationStoreService],
 })

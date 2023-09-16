@@ -12,6 +12,16 @@
 
     .material-symbols-outlined {
       color: $light-theme--font--material-symbols;
+
+      &.emphasis {
+        color: $light-theme--font--tertiary !important;
+      }
+    }
+
+    .drag-group {
+      .no-item-message {
+        background: $light-theme--drag-group--background;
+      }
     }
   }
 }
@@ -85,6 +95,16 @@
 
     .material-symbols-outlined {
       color: $dark-theme--font--material-symbols;
+
+      &.emphasis {
+        color: $dark-theme--font--tertiary !important;
+      }
+    }
+
+    .drag-group {
+      .no-item-message {
+        background: $dark-theme--drag-group--background;
+      }
     }
   }
 }

@@ -15,9 +15,9 @@
     </app-drop-list-filters>
 
     <div class="drag-group-titles">
-      <h2>To Do</h2>
-      <h2>In Progress</h2>
-      <h2>Done</h2>
+      <h2>{{ "GENERAL.STATUS.TO_DO" | translate }}</h2>
+      <h2>{{ "GENERAL.STATUS.IN_PROGRESS" | translate }}</h2>
+      <h2>{{ "GENERAL.STATUS.DONE" | translate }}</h2>
     </div>
   </div>
 
@@ -33,10 +33,12 @@
       >
         <div class="no-item-message" *ngIf="education && todo && !todo.length">
           <span class="material-symbols-outlined"> add </span>
-          <p class="message-primary">No Future Education Plans</p>
-          <p class="message-secondary"
-            >Making plans for future learning wil help keep you on track</p
-          >
+          <p class="message-primary">{{
+            "EMPLOYMENT.EMPTY_LIST.TO_DO_HEADER" | translate
+          }}</p>
+          <p class="message-secondary">{{
+            "EMPLOYMENT.EMPTY_LIST.TO_DO_MESSAGE" | translate
+          }}</p>
         </div>
         <div *ngFor="let data of todo" class="drag-group-item" cdkDrag>
           <app-education-item
@@ -68,11 +70,12 @@
           *ngIf="education && inProgress && !inProgress.length"
         >
           <span class="material-symbols-outlined"> add </span>
-          <p class="message-primary">No Education In Progress</p>
-          <p class="message-secondary"
-            >Taking a course is the best way to get started in software
-            development</p
-          >
+          <p class="message-primary">{{
+            "EMPLOYMENT.EMPTY_LIST.IN_PROGRESS_HEADER" | translate
+          }}</p>
+          <p class="message-secondary">{{
+            "EMPLOYMENT.EMPTY_LIST.IN_PROGRESS_MESSAGE" | translate
+          }}</p>
         </div>
         <div *ngFor="let data of inProgress" class="drag-group-item" cdkDrag>
           <app-education-item
@@ -95,8 +98,12 @@
       >
         <div class="no-item-message" *ngIf="education && done && !done.length">
           <span class="material-symbols-outlined"> add </span>
-          <p class="message-primary">No Completed Education</p>
-          <p class="message-secondary">Keep working towards your goals</p>
+          <p class="message-primary">{{
+            "EMPLOYMENT.EMPTY_LIST.DONE_HEADER" | translate
+          }}</p>
+          <p class="message-secondary">{{
+            "EMPLOYMENT.EMPTY_LIST.DONE_MESSAGE" | translate
+          }}</p>
         </div>
         <div *ngFor="let data of done" class="drag-group-item" cdkDrag>
           <app-education-item
