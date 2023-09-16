@@ -14,9 +14,9 @@
     </app-drop-list-filters>
 
     <div class="drag-group-titles">
-      <h2>To Do</h2>
-      <h2>In Progress</h2>
-      <h2>Done</h2>
+      <h2>{{ "GENERAL.STATUS.TO_DO" | translate }}</h2>
+      <h2>{{ "GENERAL.STATUS.IN_PROGRESS" | translate }}</h2>
+      <h2>{{ "GENERAL.STATUS.DONE" | translate }}</h2>
     </div>
   </div>
 
@@ -32,10 +32,12 @@
       >
         <div class="no-item-message" *ngIf="projects && todo && !todo.length">
           <span class="material-symbols-outlined"> add </span>
-          <p class="message-primary">No Future Project Plans</p>
-          <p class="message-secondary"
-            >Adding project ideas will help keep you focused on your goals</p
-          >
+          <p class="message-primary">{{
+            "PROJECTS.EMPTY_LIST.TO_DO_HEADER" | translate
+          }}</p>
+          <p class="message-secondary">{{
+            "PROJECTS.EMPTY_LIST.TO_DO_MESSAGE" | translate
+          }}</p>
         </div>
         <div *ngFor="let data of todo" class="drag-group-item" cdkDrag>
           <app-project
@@ -61,10 +63,12 @@
           *ngIf="projects && inProgress && !inProgress.length"
         >
           <span class="material-symbols-outlined"> add </span>
-          <p class="message-primary">No Projects In Progress</p>
-          <p class="message-secondary"
-            >Working on projects is the best way to improve your skills</p
-          >
+          <p class="message-primary">{{
+            "PROJECTS.EMPTY_LIST.IN_PROGRESS_HEADER" | translate
+          }}</p>
+          <p class="message-secondary">{{
+            "PROJECTS.EMPTY_LIST.IN_PROGRESS_MESSAGE" | translate
+          }}</p>
         </div>
         <div *ngFor="let data of inProgress" class="drag-group-item" cdkDrag>
           <app-project
@@ -87,10 +91,12 @@
       >
         <div class="no-item-message" *ngIf="projects && done && !done.length">
           <span class="material-symbols-outlined"> add </span>
-          <p class="message-primary">No Completed Projects</p>
-          <p class="message-secondary"
-            >Working on projects is the best way to improve your skills</p
-          >
+          <p class="message-primary">{{
+            "PROJECTS.EMPTY_LIST.DONE_HEADER" | translate
+          }}</p>
+          <p class="message-secondary">{{
+            "PROJECTS.EMPTY_LIST.DONE_MESSAGE" | translate
+          }}</p>
         </div>
         <div *ngFor="let data of done" class="drag-group-item" cdkDrag>
           <app-project

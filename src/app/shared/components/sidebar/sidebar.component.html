@@ -46,11 +46,13 @@
             class="material-symbols-outlined"
             #tooltip="matTooltip"
             matTooltipShowDelay="500"
-            matTooltip="{{ navbarCollapsed ? option.title : null }}"
+            matTooltip="{{
+              navbarCollapsed ? (option.title | translate) : null
+            }}"
             matTooltipPosition="right"
             >{{ option.icon }}</span
           >
-          <span *ngIf="!navbarCollapsed">{{ option.title }}</span>
+          <span *ngIf="!navbarCollapsed">{{ option.title | translate }}</span>
         </a>
       </mat-nav-list>
     </div>
@@ -70,7 +72,7 @@
             matTooltipPosition="right"
             >settings</span
           >
-          <span *ngIf="!navbarCollapsed">Settings</span>
+          <span *ngIf="!navbarCollapsed">{{ "SETTINGS.T" | translate }}</span>
         </a>
         <a mat-list-item class="sidebar-option">
           <span
@@ -82,15 +84,17 @@
             [matMenuTriggerFor]="logoutMenu"
             >logout</span
           >
-          <span *ngIf="!navbarCollapsed" [matMenuTriggerFor]="logoutMenu"
-            >Logout</span
-          >
+          <span *ngIf="!navbarCollapsed" [matMenuTriggerFor]="logoutMenu">{{
+            "AUTH.LOG_OUT.T" | translate
+          }}</span>
           <mat-menu #logoutMenu="matMenu">
-            <span class="confirmation-message"
-              >Are you sure you want to logout?</span
-            >
-            <button mat-menu-item (click)="logout()">Yes</button>
-            <button mat-menu-item>No</button>
+            <span class="confirmation-message">{{
+              "AUTH.LOG_OUT.ARE_YOU_SURE" | translate
+            }}</span>
+            <button mat-menu-item (click)="logout()">{{
+              "ACTIONS.YES" | translate
+            }}</button>
+            <button mat-menu-item>{{ "ACTIONS.NO" | translate }}</button>
           </mat-menu>
         </a>
       </mat-nav-list>

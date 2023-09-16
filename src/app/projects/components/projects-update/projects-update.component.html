@@ -3,57 +3,61 @@
     <span class="material-symbols-outlined"> code </span>
   </div>
   <div class="text">
-    <h1>Update Projects</h1>
-    <p>Share what you've been working on</p>
+    <h1>{{ "PROJECTS.UPDATE.T" | translate }}</h1>
+    <p>{{ "PROJECTS.UPDATE.MESSAGE" | translate }}</p>
   </div>
 </div>
 <div mat-dialog-content>
   <form [formGroup]="projectForm">
     <mat-form-field appearance="outline" class="full-width-grid-item">
-      <mat-label>Select Type</mat-label>
-      <mat-select #type formControlName="type">
+      <mat-label>{{ "FORMS.TYPE" | translate }}</mat-label>
+      <mat-select
+        #type
+        formControlName="type"
+        [placeholder]="'FORMS.PLACEHOLDER.TYPE' | translate"
+      >
         <mat-option value="personal">
           <img
             src="/assets/images/icons/personal.png"
             class="app-education-type-icon"
           />
-          Personal
+          {{ "PROJECTS.TYPES.PERSONAL" | translate }}
         </mat-option>
         <mat-option value="educational">
           <img
             src="/assets/images/icons/educational.png"
             class="app-education-type-icon"
           />
-          Educational
+          {{ "PROJECTS.TYPES.EDUCATIONAL" | translate }}
         </mat-option>
       </mat-select>
-      <mat-error *ngIf="projectForm.controls.type.invalid"
-        >Type required</mat-error
-      >
+      <mat-error *ngIf="projectForm.controls.type.invalid">{{
+        "FORMS.REQUIRED.TYPE" | translate
+      }}</mat-error>
     </mat-form-field>
 
     <ng-container *ngIf="projectForm.controls.type.value">
       <mat-form-field appearance="outline">
-        <mat-label>Title</mat-label>
+        <mat-label>{{ "FORMS.TITLE" | translate }}</mat-label>
         <input cdkFocusInitial #title matInput formControlName="title" />
-        <mat-error *ngIf="projectForm.controls.title.invalid"
-          >Title required</mat-error
-        >
+        <mat-error *ngIf="projectForm.controls.title.invalid">{{
+          "FORMS.REQUIRED.TITLE" | translate
+        }}</mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>Tagline</mat-label>
+        <mat-label>{{ "FORMS.TAG_LINE" | translate }}</mat-label>
         <input matInput formControlName="tagLine" />
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>Start date</mat-label>
+        <mat-label>{{ "FORMS.DATES.START" | translate }}</mat-label>
         <input
           matInput
           [matDatepicker]="startDate"
           formControlName="startDate"
         />
-        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-hint>{{ "FORMS.DATES.HINT" | translate }}</mat-hint>
         <mat-datepicker-toggle
           matSuffix
           [for]="startDate"
@@ -62,9 +66,9 @@
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>End date</mat-label>
+        <mat-label>{{ "FORMS.DATES.END" | translate }}</mat-label>
         <input matInput [matDatepicker]="endDate" formControlName="endDate" />
-        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-hint>{{ "FORMS.DATES.HINT" | translate }}</mat-hint>
         <mat-datepicker-toggle
           matSuffix
           [for]="endDate"
@@ -73,7 +77,7 @@
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="full-width-grid-item">
-        <mat-label>Description</mat-label>
+        <mat-label>{{ "FORMS.DESCRIPTION" | translate }}</mat-label>
         <textarea matInput formControlName="description"></textarea>
       </mat-form-field>
 
@@ -85,30 +89,35 @@
       </app-stack-selector>
 
       <mat-form-field appearance="outline">
-        <mat-label>GitHub Link</mat-label>
+        <mat-label>{{ "FORMS.GITHUB_LINK" | translate }}</mat-label>
         <input matInput formControlName="github" />
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>Link to Project</mat-label>
+        <mat-label>{{ "FORMS.PROJECT_LINK" | translate }}</mat-label>
         <input matInput formControlName="link" />
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="full-width-grid-item">
-        <mat-label>Private Notes</mat-label>
+        <mat-label>{{ "FORMS.NOTES" | translate }}</mat-label>
         <textarea matInput formControlName="notes"></textarea>
       </mat-form-field>
     </ng-container>
   </form>
 </div>
 <div mat-dialog-actions class="actions">
-  <button mat-raised-button (click)="onNoClick()">Cancel</button>
+  <button mat-raised-button (click)="onNoClick()">{{
+    "ACTIONS.CANCEL" | translate
+  }}</button>
   <button
     mat-raised-button
     *ngIf="projectForm.controls.type.value"
     color="primary"
     (click)="onSaveClick()"
     cdkFocusInitial
-    >Save Project</button
+    >{{
+      "ACTIONS.SAVE_TYPE"
+        | translate : { type: ("PROJECTS.T_SINGLE" | translate) }
+    }}</button
   >
 </div>

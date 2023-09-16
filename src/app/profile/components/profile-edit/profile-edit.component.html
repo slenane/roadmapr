@@ -5,94 +5,96 @@
   <mat-card-content>
     <form [formGroup]="profileForm" class="profile-edit">
       <mat-form-field appearance="outline">
-        <mat-label>Name</mat-label>
+        <mat-label>{{ "FORMS.FULL_NAME" | translate }}</mat-label>
         <input #name matInput formControlName="name" />
-        <mat-error *ngIf="profileForm.controls.name.invalid"
-          >Name required</mat-error
-        >
+        <mat-error *ngIf="profileForm.controls.name.invalid">{{
+          "FORMS.REQUIRED.FULL_NAME" | translate
+        }}</mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>Profile Image</mat-label>
+        <mat-label>{{ "FORMS.PROFILE_IMAGE" | translate }}</mat-label>
         <input matInput formControlName="profileImage" />
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>Username</mat-label>
+        <mat-label>{{ "FORMS.USERNAME" | translate }}</mat-label>
         <input #username matInput formControlName="username" />
-        <mat-error *ngIf="profileForm.controls.username.invalid"
-          >Username required</mat-error
-        >
+        <mat-error *ngIf="profileForm.controls.username.invalid">{{
+          "FORMS.REQUIRED.USERNAME" | translate
+        }}</mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>Cover Image</mat-label>
+        <mat-label>{{ "FORMS.COVER_IMAGE" | translate }}</mat-label>
         <input matInput formControlName="coverImage" />
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>Location</mat-label>
+        <mat-label>{{ "FORMS.LOCATION" | translate }}</mat-label>
         <input #location matInput formControlName="location" />
-        <mat-error *ngIf="profileForm.controls.location.invalid"
-          >Location required</mat-error
-        >
+        <mat-error *ngIf="profileForm.controls.location.invalid">{{
+          "FORMS.REQUIRED.LOCATION" | translate
+        }}</mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>Nationality</mat-label>
+        <mat-label>{{ "FORMS.NATIONALITY" | translate }}</mat-label>
         <input #nationality matInput formControlName="nationality" />
-        <mat-error *ngIf="profileForm.controls.nationality.invalid"
-          >Nationality required</mat-error
-        >
+        <mat-error *ngIf="profileForm.controls.nationality.invalid">{{
+          "FORMS.REQUIRED.NATIONALITY" | translate
+        }}</mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>Role</mat-label>
+        <mat-label>{{ "FORMS.ROLE" | translate }}</mat-label>
 
         <mat-select #role formControlName="role">
           <mat-option *ngFor="let role of roles" [value]="role">
-            <div class="type-option"> {{ role }} </div>
+            <div class="type-option"> {{ role | translate }} </div>
           </mat-option>
         </mat-select>
-        <mat-error *ngIf="profileForm.controls.role.invalid"
-          >Role required</mat-error
-        >
+        <mat-error *ngIf="profileForm.controls.role.invalid">{{
+          "FORMS.REQUIRED.ROLE" | translate
+        }}</mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>Bio</mat-label>
+        <mat-label>{{ "FORMS.BIO" | translate }}</mat-label>
         <input matInput formControlName="bio" />
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>CV</mat-label>
+        <mat-label>{{ "FORMS.CV" | translate }}</mat-label>
         <input matInput formControlName="cv" />
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>GitHub Username</mat-label>
+        <mat-label>{{ "FORMS.GITHUB_USER" | translate }}</mat-label>
         <input matInput formControlName="github" />
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>LinkedIn Username</mat-label>
+        <mat-label>{{ "FORMS.LINKEDIN_USER" | translate }}</mat-label>
         <input matInput formControlName="linkedin" />
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>Twitter Username</mat-label>
+        <mat-label>{{ "FORMS.X_USER" | translate }}</mat-label>
         <input matInput formControlName="twitter" />
       </mat-form-field>
     </form>
     <div class="actions">
-      <button mat-button (click)="onCancel()">Cancel</button>
+      <button mat-button (click)="onCancel()">{{
+        "ACTIONS.CANCEL" | translate
+      }}</button>
       <button
         type="button"
         mat-raised-button
         color="primary"
         (click)="onSave()"
         cdkFocusInitial
-        >Save</button
+        >{{ "ACTIONS.SAVE" | translate }}</button
       >
     </div>
   </mat-card-content>

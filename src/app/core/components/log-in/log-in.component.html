@@ -11,15 +11,15 @@
       alt="roadmapr Logo"
     />
   </div>
-  <h1>Log In</h1>
+  <h1>{{ "AUTH.LOG_IN.T" | translate }}</h1>
   <form [formGroup]="form" (submit)="login()">
     <div class="form-group">
       <mat-form-field appearance="outline">
-        <mat-label for="email">Email</mat-label>
+        <mat-label for="email">{{ "FORMS.EMAIL" | translate }}</mat-label>
         <input
           matInput
           type="email"
-          placeholder="Enter your email"
+          [placeholder]="'FORMS.PLACEHOLDER.EMAIL' | translate"
           name="email"
           formControlName="email"
           required
@@ -28,11 +28,11 @@
     </div>
     <div class="form-group">
       <mat-form-field appearance="outline">
-        <mat-label for="password">Password</mat-label>
+        <mat-label for="password">{{ "FORMS.PASSWORD" | translate }}</mat-label>
         <input
           matInput
           type="password"
-          placeholder="Password"
+          [placeholder]="'FORMS.PLACEHOLDER.PASSWORD' | translate"
           name="password"
           formControlName="password"
           required
@@ -40,10 +40,12 @@
       </mat-form-field>
     </div>
 
-    <a href="/register">Not Registered?</a>
+    <a href="/register">{{ "AUTH.LOG_IN.NOT_REGISTERED" | translate }}</a>
 
     <div class="form-action">
-      <button type="submit" mat-raised-button color="primary">Log In</button>
+      <button type="submit" mat-raised-button color="primary">{{
+        "AUTH.LOG_IN.T" | translate
+      }}</button>
     </div>
   </form>
 </div>

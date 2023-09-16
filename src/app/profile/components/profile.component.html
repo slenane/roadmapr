@@ -1,8 +1,8 @@
 <div class="user-profile">
   <div class="edit-profile-button">
-    <button mat-raised-button color="primary" (click)="editProfile(true)"
-      >Edit Profile</button
-    >
+    <button mat-raised-button color="primary" (click)="editProfile(true)">{{
+      "ACTIONS.EDIT" | translate
+    }}</button>
   </div>
 
   <div *ngIf="user">
@@ -13,7 +13,7 @@
         <div class="profile-header">
           <h1>{{ user.name }}</h1>
           <p
-            >{{ user.role }}
+            >{{ user.role | translate }}
             <img
               *ngFor="let item of user.stack"
               class="app-stack-icon profile-stack-icon"
@@ -29,20 +29,28 @@
           </div>
 
           <div class="profile-section personal">
-            <h3 class="section-header">PERSONAL</h3>
+            <h3 class="section-header">{{
+              "PROFILE.HEADERS.PERSONAL" | translate
+            }}</h3>
             <div class="profile-grid profile-grid-three">
               <div class="grid-section">
-                <div class="label">Location</div>
+                <div class="label">{{
+                  "PROFILE.SUB_HEADERS.LOCATION" | translate
+                }}</div>
                 <div class="value">{{ user.location }}</div>
               </div>
 
               <div class="grid-section">
-                <div class="label">Nationality</div>
+                <div class="label">{{
+                  "PROFILE.SUB_HEADERS.NATIONALITY" | translate
+                }}</div>
                 <div class="value">{{ user.nationality }}</div>
               </div>
 
               <div class="grid-section">
-                <div class="label">Languages Spoken</div>
+                <div class="label">{{
+                  "PROFILE.SUB_HEADERS.LANGUAGES" | translate
+                }}</div>
                 <div class="value">
                   <span
                     class="language-item"
@@ -54,7 +62,9 @@
                 </div>
               </div>
               <div class="grid-section education">
-                <div class="label">Previous Education</div>
+                <div class="label">{{
+                  "PROFILE.SUB_HEADERS.PREVIOUS_EDUCATION" | translate
+                }}</div>
                 <div
                   class="value education-items"
                   *ngFor="let item of user.previousEducation"
@@ -71,17 +81,23 @@
           </div>
 
           <div class="profile-section interests">
-            <h3 class="section-header">INTERESTS</h3>
+            <h3 class="section-header">{{
+              "PROFILE.HEADERS.INTERESTS" | translate
+            }}</h3>
             <div class="profile-grid profile-grid-two">
               <div class="grid-section">
-                <div class="label">Professional</div>
+                <div class="label">{{
+                  "PROFILE.SUB_HEADERS.PROFESSIONAL" | translate
+                }}</div>
                 <div class="value">
                   {{ user.interests.professional_interests.join(", ") }}
                 </div>
               </div>
 
               <div class="grid-section">
-                <div class="label">Personal</div>
+                <div class="label">{{
+                  "PROFILE.SUB_HEADERS.PERSONAL" | translate
+                }}</div>
                 <div class="value">
                   {{ user.interests.personal_interests.join(", ") }}
                 </div>
@@ -90,10 +106,14 @@
           </div>
 
           <div class="profile-section social">
-            <h3 class="section-header">SOCIAL</h3>
+            <h3 class="section-header">{{
+              "PROFILE.HEADERS.SOCIAL" | translate
+            }}</h3>
             <div class="profile-flex">
               <div class="social-link cv-link" *ngIf="user.links.cv">
-                <a href="{{ user.links.cv }}" target="_blank"> CV </a>
+                <a href="{{ user.links.cv }}" target="_blank">
+                  {{ "PROFILE.LINKS.CV" | translate }}
+                </a>
               </div>
 
               <div
@@ -101,22 +121,26 @@
                 *ngIf="user.links.portfolio"
               >
                 <a href="{{ user.links.portfolio }}" target="_blank">
-                  Portfolio
+                  {{ "PROFILE.LINKS.PORTFOLIO" | translate }}
                 </a>
               </div>
 
               <div class="social-link github-link" *ngIf="user.links.github">
-                <a href="{{ user.links.github }}" target="_blank"> Github </a>
+                <a href="{{ user.links.github }}" target="_blank">
+                  {{ "PROFILE.LINKS.GITHUB" | translate }}
+                </a>
               </div>
               <div class="social-link twitter-link" *ngIf="user.links.twitter">
-                <a href="{{ user.links.twitter }}" target="_blank"> Twitter </a>
+                <a href="{{ user.links.twitter }}" target="_blank">
+                  {{ "PROFILE.LINKS.LINKEDIN" | translate }}
+                </a>
               </div>
               <div
                 class="social-link linkedin-link"
                 *ngIf="user.links.linkedin"
               >
                 <a href="{{ user.links.linkedin }}" target="_blank">
-                  LinkedIn
+                  {{ "PROFILE.LINKS.X" | translate }}
                 </a>
               </div>
             </div>

@@ -16,6 +16,7 @@ import { EffectsModule } from "@ngrx/effects";
 import { AuthEffects } from "./store/auth.effects";
 import { HttpInterceptProviders } from "./services/http-interceptors";
 import { DropListService } from "./services/drop-list.service";
+import { TranslateModule } from "@ngx-translate/core";
 
 @NgModule({
   declarations: [LandingComponent, LogInComponent, RegisterComponent],
@@ -28,6 +29,7 @@ import { DropListService } from "./services/drop-list.service";
     SharedModule,
     StoreModule.forFeature("auth", fromAuth.reducer),
     EffectsModule.forFeature([AuthEffects]),
+    TranslateModule.forChild(),
   ],
   providers: [
     AuthService,

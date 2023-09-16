@@ -14,8 +14,12 @@
       >
 
       <mat-menu #menu="matMenu">
-        <button mat-menu-item (click)="editItem()">Edit</button>
-        <button mat-menu-item (click)="deleteItem()">Delete</button>
+        <button mat-menu-item (click)="editItem()">{{
+          "ACTIONS.EDIT" | translate
+        }}</button>
+        <button mat-menu-item (click)="deleteItem()">{{
+          "ACTIONS.DELETE" | translate
+        }}</button>
       </mat-menu>
     </div>
   </div>
@@ -23,14 +27,17 @@
   <div class="body">
     <div class="column">
       <div class="row">
-        <div class="grid-item__title">Timeline</div>
+        <div class="grid-item__title">{{
+          "FORMS.DATES.TIMELINE" | translate
+        }}</div>
         <p>
-          {{ data.startDate | date }} - {{ (data.endDate | date) || "Present" }}
+          {{ data.startDate | date }} -
+          {{ (data.endDate | date) || ("FORMS.DATES.PRESENT" | translate) }}
         </p>
       </div>
 
       <div class="row">
-        <div class="grid-item__title">Stack</div>
+        <div class="grid-item__title">{{ "FORMS.STACK" | translate }}</div>
         <div class="education-stack">
           <img
             *ngFor="let tech of data.stack"
@@ -44,7 +51,9 @@
 
     <div class="column description-column">
       <div class="row">
-        <div class="grid-item__title">Description</div>
+        <div class="grid-item__title">{{
+          "FORMS.DESCRIPTION" | translate
+        }}</div>
         <p class="description-text">{{ data.description }}</p>
       </div>
 
@@ -55,18 +64,18 @@
               class="github-icon"
               src="/assets/images/stack/github-original.svg"
               alt="Github Icon"
-            />See Repo</button
+            />{{ "FORMS.GITHUB" | translate }}</button
           >
         </a>
         <a *ngIf="data.link" target="_blank" href="{{ data.link }}">
-          <button mat-raised-button cdkFocusInitial color="primary"
-            >See Live Project</button
-          >
+          <button mat-raised-button cdkFocusInitial color="primary">{{
+            "FORMS.PROJECT_LINK" | translate
+          }}</button>
         </a>
         <a>
-          <button mat-raised-button color="default" (click)="onCancel()"
-            >Close</button
-          >
+          <button mat-raised-button color="default" (click)="onCancel()">{{
+            "ACTIONS.CLOSE" | translate
+          }}</button>
         </a>
       </div>
     </div>
