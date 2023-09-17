@@ -105,6 +105,13 @@
     "GITHUB_LINK": "GitHub Link",
     "GITHUB_USER": "GitHub Username",
     "LINKEDIN_USER": "LinkedIn Username",
+    "LANGUAGE": {
+      "T": "Preferred Language",
+      "REQUIRED": "Preferred Language Required",
+      "ENGLISH": "English",
+      "SPANISH": "Spanish",
+      "PORTUGUESE": "Portuguese"
+    },
     "LINK": "Link",
     "LINK_HINT": "Link is required for us to make better recommendations",
     "LOCATION": "Location",
@@ -124,6 +131,7 @@
     "STACK": "Stack",
     "THEME": {
       "T": "Theme",
+      "REQUIRED": "Theme Required",
       "LIGHT": "Light",
       "DARK": "Dark"
     },
@@ -225,6 +233,13 @@
     "T": "Roadmap"
   },
   "SETTINGS": {
-    "T": "Settings"
+    "ACCOUNT": "Account Settings",
+    "APP": "App Settings",
+    "DELETE": {
+      "T": "Delete Account",
+      "MESSAGE": "Are you sure you want to delete your account? This action cannot be undone",
+      "INPUT": "Please type <b>confirm</b> to continue",
+      "ERROR": "Input does not match pattern, please type 'confirm' to delete account"
+    }
   }
 }

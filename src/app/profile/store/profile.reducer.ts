@@ -34,6 +34,7 @@ const initialState: Profile = {
   projects: "",
   employment: "",
   theme: "light",
+  preferredLanguage: "en",
   notifications: false,
   email: "",
 };

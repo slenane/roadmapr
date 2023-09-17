@@ -2,16 +2,16 @@ import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { Subject } from "rxjs";
 import { Settings } from "../store/settings.models";
 import { SettingsStoreService } from "../services/settings-store.service";
-import { Store } from "@ngrx/store";
 import { Profile } from "src/app/profile/store/profile.models";
-import * as profileSelectors from "src/app/profile/store/profile.selectors";
 import { filter, takeUntil } from "rxjs/operators";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { ThemeService } from "src/app/core/services/theme.service";
-import {
-  DARK_THEME,
-  LIGHT_THEME,
-} from "src/app/core/constants/theme.constants";
+import { THEME_OPTIONS } from "src/app/core/constants/theme.constants";
+import { LANGUAGE_OPTIONS } from "../constants/settings.constants";
+import { TranslateService } from "@ngx-translate/core";
+import { ProfileStoreService } from "src/app/profile/services/profile-store.service";
+import { SettingsDeleteAccountComponent } from "./settings-delete-account/settings-delete-account.component";
+import { MatDialog } from "@angular/material/dialog";
 
 @Component({
   selector: "app-settings",
@@ -23,45 +23,50 @@ export class SettingsComponent implements OnInit {
   public filterType = "date";
   public userId: string;
   public settings: Settings;
-  public theme: string;
-  public LIGHT_THEME = LIGHT_THEME;
-  public DARK_THEME = DARK_THEME;
+  public languageOptions = LANGUAGE_OPTIONS;
+  public themeOptions = THEME_OPTIONS;
 
   public settingsForm = new FormGroup({
     usernameCtrl: new FormControl("", Validators.required),
     emailCtrl: new FormControl("", Validators.required),
     // password: new FormControl("", Validators.required),
-    themeCtrl: new FormControl(""),
-    notificationsCtrl: new FormControl(true),
+  });
+
+  public appSettingsForm = new FormGroup({
+    themeCtrl: new FormControl("light", Validators.required),
+    languageCtrl: new FormControl("en", Validators.required),
+    notificationsCtrl: new FormControl(false),
   });
 
   @ViewChild("username") username: ElementRef;
   @ViewChild("email") email: ElementRef;
 
   constructor(
+    private profileStoreService: ProfileStoreService,
     private el: ElementRef,
     private settingsStoreService: SettingsStoreService,
-    private store: Store<Profile>,
-    private themeService: ThemeService
+    private themeService: ThemeService,
+    private translateService: TranslateService,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
-    this.store
-      .select(profileSelectors.getProfile)
+    this.profileStoreService
+      .getProfile()
       .pipe(
-        filter((data) => !!data),
+        filter((state) => state != null),
         takeUntil(this.ngUnsubscribe)
       )
-      .subscribe((user) => {
+      .subscribe((user: Profile) => {
         this.userId = user._id;
-        const settings = {
+
+        this.updateSettingsForm({
           username: user.username,
           email: user.email,
           theme: user.theme,
+          preferredLanguage: user.preferredLanguage,
           notifications: user.notifications,
-        };
-
-        this.updateSettingsForm(settings);
+        });
       });
   }
 
@@ -72,11 +77,16 @@ export class SettingsComponent implements OnInit {
 
   updateSettingsForm(settings: any) {
     if (settings) {
+      console.log(settings);
       this.settingsForm.patchValue({
         usernameCtrl: settings.username,
         emailCtrl: settings.email,
         // password: settings.password,
+      });
+
+      this.appSettingsForm.patchValue({
         themeCtrl: settings.theme,
+        languageCtrl: settings.preferredLanguage,
         notificationsCtrl: settings.notifications,
       });
     }
@@ -84,6 +94,33 @@ export class SettingsComponent implements OnInit {
 
   updateTheme(value: any) {
     this.themeService.updateTheme(value);
+    this.settingsStoreService.updateSettings(this.userId, {
+      theme: this.appSettingsForm.value.themeCtrl,
+    });
+  }
+
+  updateLanguage(value: any) {
+    this.translateService.use(value);
+    this.settingsStoreService.updateSettings(this.userId, {
+      preferredLanguage: this.appSettingsForm.value.languageCtrl,
+    });
+  }
+
+  updateNotifications(value: any) {
+    this.settingsStoreService.updateSettings(this.userId, {
+      notifications: this.appSettingsForm.value.notificationsCtrl,
+    });
+  }
+
+  deleteAccount(): void {
+    const dialogRef = this.dialog.open(SettingsDeleteAccountComponent, {
+      width: "50vw",
+    });
+
+    dialogRef.afterClosed().subscribe((confirmed: any) => {
+      if (confirmed) console.log("DELETE ACCOUNT");
+      else console.log("DON'T DELETE");
+    });
   }
 
   focusError() {
@@ -104,8 +141,6 @@ export class SettingsComponent implements OnInit {
         username: this.settingsForm.value.usernameCtrl,
         email: this.settingsForm.value.emailCtrl,
         // password: this.settingsForm.value.password,
-        theme: this.settingsForm.value.themeCtrl,
-        notifications: this.settingsForm.value.notificationsCtrl,
       });
     } else {
       this.focusError();

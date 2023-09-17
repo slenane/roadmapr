@@ -28,6 +28,7 @@ export interface Profile {
   stack: StackItem[];
   notifications: boolean;
   theme: "light" | "dark";
+  preferredLanguage: string;
   education: string;
   projects: string;
   employment: string;
