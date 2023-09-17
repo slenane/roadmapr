@@ -17,10 +17,26 @@ import { AuthEffects } from "./store/auth.effects";
 import { HttpInterceptProviders } from "./services/http-interceptors";
 import { DropListService } from "./services/drop-list.service";
 import { TranslateModule } from "@ngx-translate/core";
+import { GitAuthComponent } from "./components/git-auth/git-auth.component";
+import { RedirectComponent } from "./components/redirect/redirect.component";
+import { OAuthService } from "./services/o-auth.service";
+import { ExtUrlResolverService } from "./services/ext-url-resolver.service";
 
 @NgModule({
-  declarations: [LandingComponent, LogInComponent, RegisterComponent],
-  exports: [LandingComponent, LogInComponent, RegisterComponent],
+  declarations: [
+    LandingComponent,
+    LogInComponent,
+    RegisterComponent,
+    GitAuthComponent,
+    RedirectComponent,
+  ],
+  exports: [
+    LandingComponent,
+    LogInComponent,
+    RegisterComponent,
+    GitAuthComponent,
+    RedirectComponent,
+  ],
   imports: [
     CommonModule,
     FormsModule,
@@ -32,6 +48,8 @@ import { TranslateModule } from "@ngx-translate/core";
     TranslateModule.forChild(),
   ],
   providers: [
+    ExtUrlResolverService,
+    OAuthService,
     AuthService,
     AuthStoreService,
     UrlService,

@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from "@angular/core";
 import { TokenPayload } from "src/app/core/store/auth.models";
 import { AuthStoreService } from "../../services/auth-store.service";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
+import { OAuthService } from "../../services/o-auth.service";
 
 @Component({
   selector: "app-log-in",
@@ -9,6 +11,7 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
   styleUrls: ["./log-in.component.scss"],
 })
 export class LogInComponent implements OnInit {
+  public authUrl: string;
   public form = new FormGroup({
     email: new FormControl("", [Validators.required, Validators.email]),
     password: new FormControl("", Validators.required),
@@ -21,9 +24,18 @@ export class LogInComponent implements OnInit {
 
   @Input() theme: string;
 
-  constructor(private authStoreService: AuthStoreService) {}
+  constructor(
+    private authStoreService: AuthStoreService,
+    private oAuthService: OAuthService,
+    private router: Router
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.oAuthService.GetAuthPage().subscribe({
+      next: (data: any) => (this.authUrl = data["authUrl"]),
+      error: (err: any) => console.log(err),
+    });
+  }
 
   login() {
     this.credentials = {
@@ -31,5 +43,13 @@ export class LogInComponent implements OnInit {
       password: this.form.value.password || "",
     };
     this.authStoreService.login(this.credentials);
+  }
+
+  loginWithGithub() {
+    if (this.authUrl) {
+      this.router.navigate(["/github-auth"], {
+        queryParams: { url: this.authUrl },
+      });
+    }
   }
 }

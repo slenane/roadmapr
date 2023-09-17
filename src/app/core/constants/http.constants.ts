@@ -47,5 +47,3 @@ export const ENDPOINTS: any = {
   SETTINGS_GET,
   SETTINGS_UPDATE,
 };
-
-export const BASE_URL = "http://localhost:3000";
