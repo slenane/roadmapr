@@ -1,6 +1,7 @@
 export interface Settings {
   _id: string;
-  theme: string;
+  theme: "light" | "dark";
+  preferredLanguage: "en" | "es" | "pt";
   notifications: boolean;
   username: string;
   email: string;

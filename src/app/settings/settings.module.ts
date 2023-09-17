@@ -12,9 +12,10 @@ import { EffectsModule } from "@ngrx/effects";
 import * as fromSettings from "./store/settings.reducer";
 import { SettingsEffects } from "./store/settings.effects";
 import { TranslateModule } from "@ngx-translate/core";
+import { SettingsDeleteAccountComponent } from './components/settings-delete-account/settings-delete-account.component';
 
 @NgModule({
-  declarations: [SettingsComponent],
+  declarations: [SettingsComponent, SettingsDeleteAccountComponent],
   exports: [SettingsComponent],
   imports: [
     CommonModule,

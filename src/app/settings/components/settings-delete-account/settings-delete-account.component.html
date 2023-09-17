@@ -1,0 +1,25 @@
+<h1>{{ "SETTINGS.DELETE.T" | translate }}</h1>
+<p>{{ "SETTINGS.DELETE.MESSAGE" | translate }}</p>
+<p [innerHtml]="'SETTINGS.DELETE.INPUT' | translate"></p>
+<div mat-dialog-content>
+  <form [formGroup]="deleteAccountForm">
+    <mat-form-field appearance="outline">
+      <input matInput formControlName="deleteCtrl" />
+      <mat-error *ngIf="deleteAccountForm.controls.deleteCtrl.hasError">{{
+        "SETTINGS.DELETE.ERROR" | translate
+      }}</mat-error>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions class="actions">
+  <button mat-raised-button (click)="onCancel()">{{
+    "ACTIONS.CANCEL" | translate
+  }}</button>
+  <button
+    mat-raised-button
+    [disabled]="deleteAccountForm.value.deleteCtrl !== 'confirm'"
+    color="warn"
+    (click)="onDeleteClick()"
+    >{{ "SETTINGS.DELETE.T" | translate }}</button
+  >
+</div>

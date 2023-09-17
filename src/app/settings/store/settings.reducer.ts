@@ -9,6 +9,7 @@ interface Action {
 const initialState: Settings = {
   _id: "",
   theme: "light",
+  preferredLanguage: "en",
   notifications: false,
   email: "",
   username: "",

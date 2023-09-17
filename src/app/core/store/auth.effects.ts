@@ -6,6 +6,7 @@ import { map, switchMap, catchError } from "rxjs/operators";
 import { AuthService } from "../services/auth.service";
 import * as authActions from "./auth.actions";
 import { ThemeService } from "../services/theme.service";
+import { TranslateService } from "@ngx-translate/core";
 
 @Injectable()
 export class AuthEffects {
@@ -13,7 +14,8 @@ export class AuthEffects {
     private actions$: Actions,
     private authService: AuthService,
     private router: Router,
-    private themeService: ThemeService
+    private themeService: ThemeService,
+    private translateService: TranslateService
   ) {}
 
   register$ = createEffect((): any =>
@@ -34,6 +36,7 @@ export class AuthEffects {
       switchMap(({ userDetails }) => this.authService.login(userDetails)),
       map((payload) => {
         this.themeService.updateTheme(payload.user.theme);
+        this.translateService.use(payload.user.preferredLanguage);
         this.router.navigateByUrl("/dashboard");
         return authActions.LoginSuccess(payload);
       }),

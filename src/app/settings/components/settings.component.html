@@ -1,6 +1,6 @@
 <div class="settings">
   <mat-card>
-    <h1>{{ "SETTINGS.T" | translate }}</h1>
+    <h1>{{ "SETTINGS.ACCOUNT" | translate }}</h1>
     <mat-card-content>
       <form class="form-grid" [formGroup]="settingsForm">
         <mat-form-field appearance="outline">
@@ -35,26 +35,6 @@
             >{{ "FORMS.UPDATE.PASSWORD" | translate }}</button
           >
         </div>
-
-        <mat-form-field appearance="outline">
-          <mat-label>{{ "FORMS.THEME.T" | translate }}</mat-label>
-          <mat-select
-            formControlName="themeCtrl"
-            (selectionChange)="updateTheme($event.value)"
-          >
-            <mat-option value="{{ LIGHT_THEME }}">{{
-              "FORMS.THEME.LIGHT" | translate
-            }}</mat-option>
-            <mat-option value="{{ DARK_THEME }}">{{
-              "FORMS.THEME.DARK" | translate
-            }}</mat-option>
-          </mat-select>
-        </mat-form-field>
-
-        <h4>{{ "FORMS.NOTIFICATIONS.T" | translate }}</h4>
-        <mat-checkbox formControlName="notificationsCtrl" color="primary">{{
-          "FORMS.NOTIFICATIONS.EMAIL" | translate
-        }}</mat-checkbox>
       </form>
       <div mat-dialog-actions class="actions">
         <button
@@ -66,5 +46,68 @@
         >
       </div>
     </mat-card-content>
+  </mat-card>
+
+  <mat-card>
+    <h2>{{ "SETTINGS.APP" | translate }}</h2>
+    <mat-card-content>
+      <form class="form-grid" [formGroup]="appSettingsForm">
+        <mat-form-field appearance="outline">
+          <mat-label>{{ "FORMS.THEME.T" | translate }}</mat-label>
+          <mat-select
+            (selectionChange)="updateTheme($event.value)"
+            formControlName="themeCtrl"
+          >
+            <mat-option [value]="themeOptions.light">{{
+              "FORMS.THEME.LIGHT" | translate
+            }}</mat-option>
+            <mat-option [value]="themeOptions.dark">{{
+              "FORMS.THEME.DARK" | translate
+            }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="appSettingsForm.controls.themeCtrl.invalid">{{
+            "FORMS.THEME.REQUIRED" | translate
+          }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>{{ "FORMS.LANGUAGE.T" | translate }}</mat-label>
+          <mat-select
+            (selectionChange)="updateLanguage($event.value)"
+            formControlName="languageCtrl"
+          >
+            <mat-option [value]="languageOptions.en">{{
+              "FORMS.LANGUAGE.ENGLISH" | translate
+            }}</mat-option>
+            <mat-option [value]="languageOptions.es">{{
+              "FORMS.LANGUAGE.SPANISH" | translate
+            }}</mat-option>
+            <mat-option [value]="languageOptions.pt">{{
+              "FORMS.LANGUAGE.PORTUGUESE" | translate
+            }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="appSettingsForm.controls.languageCtrl.invalid">{{
+            "FORMS.LANGUAGE.REQUIRED" | translate
+          }}</mat-error>
+        </mat-form-field>
+
+        <h4>{{ "FORMS.NOTIFICATIONS.T" | translate }}</h4>
+        <mat-checkbox formControlName="notificationsCtrl" color="primary">{{
+          "FORMS.NOTIFICATIONS.EMAIL" | translate
+        }}</mat-checkbox>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card>
+    <h2>{{ "SETTINGS.DELETE.T" | translate }}</h2>
+
+    <button
+      mat-raised-button
+      color="warn"
+      class="delete-account-button"
+      (click)="deleteAccount()"
+      >{{ "SETTINGS.DELETE.T" | translate }}</button
+    >
   </mat-card>
 </div>

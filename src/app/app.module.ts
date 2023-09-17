@@ -40,6 +40,7 @@ import { TranslateService } from "@ngx-translate/core";
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({}),
     TranslateModule.forRoot({
+      defaultLanguage: "en",
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
@@ -66,12 +67,7 @@ import { TranslateService } from "@ngx-translate/core";
   providers: [AuthGuardService],
   bootstrap: [AppComponent],
 })
-export class AppModule {
-  constructor(private translate: TranslateService) {
-    translate.setDefaultLang("en");
-    translate.use("en");
-  }
-}
+export class AppModule {}
 
 // Translation service
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
