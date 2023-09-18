@@ -8,7 +8,7 @@ import { ProjectsComponent } from "./projects/components/projects.component";
 import { EducationComponent } from "./education/components/education.component";
 import { SettingsComponent } from "./settings/components/settings.component";
 import { AuthGuardService } from "./auth-guard.service";
-import { RedirectComponent } from "./core/components/redirect/redirect.component";
+// import { RedirectComponent } from "./core/components/redirect/redirect.component";
 import { GitAuthComponent } from "./core/components/git-auth/git-auth.component";
 import { ExtUrlResolverService } from "./core/services/ext-url-resolver.service";
 
@@ -18,12 +18,12 @@ const routes: Routes = [
     pathMatch: "full",
     redirectTo: "login",
   },
-  {
-    path: "redirect",
-    component: RedirectComponent,
-  },
   { path: "login", component: LandingComponent },
   { path: "register", component: LandingComponent },
+  {
+    path: "redirect",
+    component: LandingComponent,
+  },
   {
     path: "github-auth",
     component: GitAuthComponent,

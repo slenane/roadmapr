@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { OAuthService } from "../../services/o-auth.service";
-import { concatMap } from "rxjs";
 
 @Component({
   selector: "app-redirect",
@@ -16,20 +15,37 @@ export class RedirectComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    console.log("INIT");
-    this.activatedRoute.queryParamMap
-      .pipe(
-        concatMap((x: any) => {
-          return this.oAuthService.getAccessToken(x.get("code"));
-        })
-      )
-      .subscribe({
-        next: (data) => {
-          this.router.navigate(["/dashboard"]);
-        },
-        error: (err) => {
-          console.log(err);
-        },
-      });
+    this.activatedRoute.queryParamMap.subscribe({
+      next: (github: any) => {
+        console.log(github);
+        if (github.params?.code) {
+          this.oAuthService
+            .getAccessToken(github.params.code)
+            .pipe()
+            .subscribe({
+              next: (data: any) => {
+                console.log(data);
+                if (data) {
+                  this.oAuthService.getUserDetails().subscribe({
+                    next: (resp) => {
+                      console.log(resp);
+                      // this.router.navigate(["/dashboard"]);
+                    },
+                    error(err) {
+                      console.log(err);
+                    },
+                  });
+                }
+              },
+              error: (err: any) => {
+                console.log(err);
+              },
+            });
+        }
+      },
+      error: (err: any) => {
+        console.log(err);
+      },
+    });
   }
 }
