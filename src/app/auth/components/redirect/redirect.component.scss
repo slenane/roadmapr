@@ -14,12 +14,8 @@
     }
   }
 
-  .mat-form-field {
-    width: 100%;
-  }
-
-  .form-action {
-    margin-top: 1rem;
-    text-align: center;
+  .spinner {
+    display: grid;
+    justify-content: center;
   }
 }

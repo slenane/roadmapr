@@ -4,7 +4,11 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { HttpClient, HttpClientModule } from "@angular/common/http";
+import {
+  HttpClient,
+  HttpClientModule,
+  HttpClientXsrfModule,
+} from "@angular/common/http";
 import { MaterialModule } from "./material/material.module";
 import { SharedModule } from "./shared/shared.module";
 import { AuthGuardService } from "./auth-guard.service";
@@ -21,7 +25,7 @@ import { DashboardModule } from "./dashboard/dashboard.module";
 import { NgChartsModule } from "ng2-charts";
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
-import { TranslateService } from "@ngx-translate/core";
+import { AuthModule } from "./auth/auth.module";
 
 @NgModule({
   declarations: [AppComponent],
@@ -47,6 +51,7 @@ import { TranslateService } from "@ngx-translate/core";
         deps: [HttpClient],
       },
     }),
+    AuthModule,
     CoreModule,
     EmploymentModule,
     DashboardModule,
@@ -55,6 +60,7 @@ import { TranslateService } from "@ngx-translate/core";
     ProjectsModule,
     SettingsModule,
     HttpClientModule,
+    HttpClientXsrfModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

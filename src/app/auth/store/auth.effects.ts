@@ -5,8 +5,9 @@ import { of } from "rxjs";
 import { map, switchMap, catchError } from "rxjs/operators";
 import { AuthService } from "../services/auth.service";
 import * as authActions from "./auth.actions";
-import { ThemeService } from "../services/theme.service";
+import { ThemeService } from "src/app/core/services/theme.service";
 import { TranslateService } from "@ngx-translate/core";
+import { TokenResponse } from "./auth.models";
 
 @Injectable()
 export class AuthEffects {
@@ -39,6 +40,20 @@ export class AuthEffects {
         this.translateService.use(payload.user.preferredLanguage);
         this.router.navigateByUrl("/dashboard");
         return authActions.LoginSuccess(payload);
+      }),
+      catchError((error) => of(authActions.LoginError(error)))
+    )
+  );
+
+  githubLogin$ = createEffect((): any =>
+    this.actions$.pipe(
+      ofType(authActions.GITHUB_LOGIN),
+      switchMap(() => this.authService.githubLogin()),
+      map((payload: TokenResponse) => {
+        this.themeService.updateTheme(payload.user.theme);
+        this.translateService.use(payload.user.preferredLanguage);
+        this.router.navigateByUrl("/dashboard");
+        return authActions.LoginSuccess({ payload });
       }),
       catchError((error) => of(authActions.LoginError(error)))
     )

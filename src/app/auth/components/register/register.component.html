@@ -1,0 +1,92 @@
+<div class="auth-container">
+  <div class="auth-brand">
+    <img
+      class="menu-brand"
+      [src]="
+        theme === 'dark'
+          ? '/assets/images/logo/logo-dark.png'
+          : '/assets/images/logo/logo.png'
+      "
+      routerLink="/dashboard"
+      alt="roadmapr Logo"
+    />
+  </div>
+
+  <div class="registration-options">
+    <button
+      mat-raised-button
+      class="github-registration"
+      (click)="registerWithGithub()"
+    >
+      <img
+        class="github-icon"
+        src="/assets/images/stack/github-original.svg"
+        alt="Github Icon"
+      />
+      <span>{{ "AUTH.O_AUTH.GITHUB_REGISTRATION" | translate }}</span>
+    </button>
+  </div>
+
+  <h1>{{ "AUTH.REGISTER.T" | translate }}</h1>
+  <form (submit)="register()">
+    <div class="form-group">
+      <mat-form-field appearance="outline">
+        <mat-label for="name">{{ "FORMS.FULL_NAME" | translate }}</mat-label>
+        <input
+          matInput
+          type="text"
+          [placeholder]="'FORMS.PLACEHOLDER.FULL_NAME' | translate"
+          name="name"
+          [(ngModel)]="userDetails.name"
+          required
+        />
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <mat-form-field appearance="outline">
+        <mat-label for="username">{{ "FORMS.USERNAME" | translate }}</mat-label>
+        <input
+          matInput
+          type="text"
+          [placeholder]="'FORMS.PLACEHOLDER.USERNAME' | translate"
+          name="username"
+          [(ngModel)]="userDetails.username"
+          required
+        />
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <mat-form-field appearance="outline">
+        <mat-label for="email">{{ "FORMS.EMAIL" | translate }}</mat-label>
+        <input
+          matInput
+          [placeholder]="'FORMS.PLACEHOLDER.EMAIL' | translate"
+          name="email"
+          [(ngModel)]="userDetails.email"
+          required
+        />
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <mat-form-field appearance="outline">
+        <mat-label for="password">{{ "FORMS.PASSWORD" | translate }}</mat-label>
+        <input
+          matInput
+          type="password"
+          [placeholder]="'FORMS.PLACEHOLDER.PASSWORD' | translate"
+          name="password"
+          [(ngModel)]="userDetails.password"
+          required
+        />
+      </mat-form-field>
+    </div>
+
+    <a href="/login">{{ "AUTH.REGISTER.ALREADY_REGISTERED" | translate }}</a>
+
+    <div class="form-action">
+      <button type="submit" mat-raised-button color="primary">{{
+        "AUTH.REGISTER.T" | translate
+      }}</button>
+    </div>
+  </form>
+</div>

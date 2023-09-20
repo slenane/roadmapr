@@ -11,42 +11,29 @@
       alt="roadmapr Logo"
     />
   </div>
-  <h1>{{ "AUTH.REGISTER.T" | translate }}</h1>
-  <form (submit)="register()">
-    <div class="form-group">
-      <mat-form-field appearance="outline">
-        <mat-label for="name">{{ "FORMS.FULL_NAME" | translate }}</mat-label>
-        <input
-          matInput
-          type="text"
-          [placeholder]="'FORMS.PLACEHOLDER.FULL_NAME' | translate"
-          name="name"
-          [(ngModel)]="userDetails.name"
-          required
-        />
-      </mat-form-field>
-    </div>
-    <div class="form-group">
-      <mat-form-field appearance="outline">
-        <mat-label for="username">{{ "FORMS.USERNAME" | translate }}</mat-label>
-        <input
-          matInput
-          type="text"
-          [placeholder]="'FORMS.PLACEHOLDER.USERNAME' | translate"
-          name="username"
-          [(ngModel)]="userDetails.username"
-          required
-        />
-      </mat-form-field>
-    </div>
+
+  <div class="login-options">
+    <button mat-raised-button class="github-login" (click)="loginWithGithub()">
+      <img
+        class="github-icon"
+        src="/assets/images/stack/github-original.svg"
+        alt="Github Icon"
+      />
+      <span>{{ "AUTH.O_AUTH.GITHUB_LOGIN" | translate }}</span>
+    </button>
+  </div>
+
+  <h1>{{ "AUTH.LOG_IN.T" | translate }}</h1>
+  <form [formGroup]="form" (submit)="login()">
     <div class="form-group">
       <mat-form-field appearance="outline">
         <mat-label for="email">{{ "FORMS.EMAIL" | translate }}</mat-label>
         <input
           matInput
+          type="email"
           [placeholder]="'FORMS.PLACEHOLDER.EMAIL' | translate"
           name="email"
-          [(ngModel)]="userDetails.email"
+          formControlName="email"
           required
         />
       </mat-form-field>
@@ -59,17 +46,17 @@
           type="password"
           [placeholder]="'FORMS.PLACEHOLDER.PASSWORD' | translate"
           name="password"
-          [(ngModel)]="userDetails.password"
+          formControlName="password"
           required
         />
       </mat-form-field>
     </div>
 
-    <a href="/login">{{ "AUTH.REGISTER.ALREADY_REGISTERED" | translate }}</a>
+    <a href="/register">{{ "AUTH.LOG_IN.NOT_REGISTERED" | translate }}</a>
 
     <div class="form-action">
       <button type="submit" mat-raised-button color="primary">{{
-        "AUTH.REGISTER.T" | translate
+        "AUTH.LOG_IN.T" | translate
       }}</button>
     </div>
   </form>

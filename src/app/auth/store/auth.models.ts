@@ -8,6 +8,7 @@ export interface Action {
 
 export interface User {
   _id: string;
+  githubId?: string;
   email: string;
   name: string;
   exp: number;
@@ -25,6 +26,8 @@ export interface User {
   Projects: Projects;
   skills: object;
   languagesSpoken: object;
+  preferredLanguage: string;
+  theme: string;
 }
 
 export interface TokenResponse {

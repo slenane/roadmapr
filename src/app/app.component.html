@@ -2,6 +2,8 @@
   *ngIf="authenticated$ | async; then authenticated; else notAuthenticated"
 ></ng-container>
 
+<!-- <app-redirect *ngIf="isRedirecting"></app-redirect> -->
+
 <ng-template #notAuthenticated>
   <app-landing></app-landing>
 </ng-template>
