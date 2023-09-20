@@ -1,5 +1,5 @@
 import { Component, HostListener, OnInit } from "@angular/core";
-import { AuthService } from "./core/services//auth.service";
+import { AuthService } from "./auth/services/auth.service";
 import { Observable } from "rxjs";
 import { ThemeService } from "./core/services/theme.service";
 import { Location } from "@angular/common";

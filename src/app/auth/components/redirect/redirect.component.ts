@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { OAuthService } from "../../services/o-auth.service";
 import { AuthStoreService } from "../../services/auth-store.service";
+import { AuthService } from "../../services/auth.service";
 
 @Component({
   selector: "app-redirect",
@@ -11,7 +11,7 @@ import { AuthStoreService } from "../../services/auth-store.service";
 export class RedirectComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
-    private oAuthService: OAuthService,
+    private authService: AuthService,
     private authStoreService: AuthStoreService
   ) {}
 
@@ -19,8 +19,8 @@ export class RedirectComponent implements OnInit {
     this.activatedRoute.queryParamMap.subscribe({
       next: (github: any) => {
         if (github.params?.code) {
-          this.oAuthService
-            .getAccessToken(github.params.code)
+          this.authService
+            .getGithubAccessToken(github.params.code)
             .pipe()
             .subscribe({
               next: (data: any) => {

@@ -1,5 +1,5 @@
 import { props, createAction } from "@ngrx/store";
-import { User } from "./auth.models";
+import { TokenResponse, User } from "./auth.models";
 
 export const REGISTER = "[Auth] Register";
 export const LOGIN = "[Auth] Login";
@@ -28,7 +28,7 @@ export const Login = createAction(LOGIN, props<{ userDetails: User }>());
 
 export const LoginSuccess = createAction(
   LOGIN_SUCCESS,
-  props<{ payload: { token: string; user: User } }>()
+  props<{ payload: TokenResponse }>()
 );
 
 export const LoginError = createAction(

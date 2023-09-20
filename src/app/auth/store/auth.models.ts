@@ -26,6 +26,8 @@ export interface User {
   Projects: Projects;
   skills: object;
   languagesSpoken: object;
+  preferredLanguage: string;
+  theme: string;
 }
 
 export interface TokenResponse {

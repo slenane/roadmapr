@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { TokenPayload } from "src/app/core/store/auth.models";
+import { TokenPayload } from "src/app/auth/store/auth.models";
 import { AuthStoreService } from "../../services/auth-store.service";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
-import { OAuthService } from "../../services/o-auth.service";
+import { AuthService } from "../../services/auth.service";
 
 @Component({
   selector: "app-log-in",
@@ -26,12 +26,12 @@ export class LogInComponent implements OnInit {
 
   constructor(
     private authStoreService: AuthStoreService,
-    private oAuthService: OAuthService,
+    private authService: AuthService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
-    this.oAuthService.GetAuthPage().subscribe({
+    this.authService.getGithubAuthPage().subscribe({
       next: (data: any) => (this.authUrl = data["authUrl"]),
       error: (err: any) => console.log(err),
     });

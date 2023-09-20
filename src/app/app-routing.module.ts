@@ -2,15 +2,14 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { DashboardComponent } from "./dashboard/components/dashboard.component";
 import { EmploymentComponent } from "./employment/components/employment.component";
-import { LandingComponent } from "./core/components/landing/landing.component";
+import { LandingComponent } from "./auth/components/landing/landing.component";
 import { ProfileComponent } from "./profile/components/profile.component";
 import { ProjectsComponent } from "./projects/components/projects.component";
 import { EducationComponent } from "./education/components/education.component";
 import { SettingsComponent } from "./settings/components/settings.component";
 import { AuthGuardService } from "./auth-guard.service";
-// import { RedirectComponent } from "./core/components/redirect/redirect.component";
-import { GitAuthComponent } from "./core/components/git-auth/git-auth.component";
-import { ExtUrlResolverService } from "./core/services/ext-url-resolver.service";
+import { GitAuthComponent } from "./auth/components/git-auth/git-auth.component";
+import { ExtUrlResolverService } from "./auth/services/ext-url-resolver.service";
 
 const routes: Routes = [
   {

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { AuthStoreService } from "src/app/core/services/auth-store.service";
-import { TokenPayload } from "src/app/core/store/auth.models";
+import { AuthStoreService } from "src/app/auth/services/auth-store.service";
+import { TokenPayload } from "src/app/auth/store/auth.models";
 
 @Component({
   selector: "app-register",

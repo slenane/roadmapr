@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 import { Observable } from "rxjs";
-import { AuthService } from "src/app/core/services/auth.service";
+import { AuthService } from "src/app/auth/services/auth.service";
 import { ThemeService } from "src/app/core/services/theme.service";
 import { SIDEBAR_OPTIONS } from "src/app/shared/constants/sidebar.constants";
 

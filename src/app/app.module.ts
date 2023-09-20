@@ -25,6 +25,7 @@ import { DashboardModule } from "./dashboard/dashboard.module";
 import { NgChartsModule } from "ng2-charts";
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
+import { AuthModule } from "./auth/auth.module";
 
 @NgModule({
   declarations: [AppComponent],
@@ -50,6 +51,7 @@ import { TranslateHttpLoader } from "@ngx-translate/http-loader";
         deps: [HttpClient],
       },
     }),
+    AuthModule,
     CoreModule,
     EmploymentModule,
     DashboardModule,
