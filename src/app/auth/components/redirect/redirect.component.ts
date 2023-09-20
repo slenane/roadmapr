@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { AuthStoreService } from "../../services/auth-store.service";
 import { AuthService } from "../../services/auth.service";
@@ -9,6 +9,8 @@ import { AuthService } from "../../services/auth.service";
   styleUrls: ["./redirect.component.scss"],
 })
 export class RedirectComponent implements OnInit {
+  @Input() theme: string;
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private authService: AuthService,

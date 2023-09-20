@@ -29,6 +29,10 @@
     "REGISTER": {
       "T": "Register",
       "ALREADY_REGISTERED": "Already Registered?"
+    },
+    "O_AUTH": {
+      "GITHUB_LOGIN": "Log in with GitHub",
+      "GITHUB_REGISTRATION": "Register with GitHub"
     }
   },
   "EDUCATION": {

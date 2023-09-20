@@ -12,7 +12,16 @@
     />
   </div>
 
-  <button (click)="loginWithGithub()">Log in with GitHub</button>
+  <div class="login-options">
+    <button mat-raised-button class="github-login" (click)="loginWithGithub()">
+      <img
+        class="github-icon"
+        src="/assets/images/stack/github-original.svg"
+        alt="Github Icon"
+      />
+      <span>{{ "AUTH.O_AUTH.GITHUB_LOGIN" | translate }}</span>
+    </button>
+  </div>
 
   <h1>{{ "AUTH.LOG_IN.T" | translate }}</h1>
   <form [formGroup]="form" (submit)="login()">

@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { TokenPayload } from "src/app/auth/store/auth.models";
 import { AuthStoreService } from "../../services/auth-store.service";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
@@ -17,11 +16,6 @@ export class LogInComponent implements OnInit {
     password: new FormControl("", Validators.required),
   });
 
-  public credentials: TokenPayload = {
-    email: "",
-    password: "",
-  };
-
   @Input() theme: string;
 
   constructor(
@@ -38,11 +32,10 @@ export class LogInComponent implements OnInit {
   }
 
   login() {
-    this.credentials = {
+    this.authStoreService.login({
       email: this.form.value.email || "",
       password: this.form.value.password || "",
-    };
-    this.authStoreService.login(this.credentials);
+    });
   }
 
   loginWithGithub() {

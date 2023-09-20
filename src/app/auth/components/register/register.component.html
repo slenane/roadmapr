@@ -11,6 +11,22 @@
       alt="roadmapr Logo"
     />
   </div>
+
+  <div class="registration-options">
+    <button
+      mat-raised-button
+      class="github-registration"
+      (click)="registerWithGithub()"
+    >
+      <img
+        class="github-icon"
+        src="/assets/images/stack/github-original.svg"
+        alt="Github Icon"
+      />
+      <span>{{ "AUTH.O_AUTH.GITHUB_REGISTRATION" | translate }}</span>
+    </button>
+  </div>
+
   <h1>{{ "AUTH.REGISTER.T" | translate }}</h1>
   <form (submit)="register()">
     <div class="form-group">

@@ -7,10 +7,25 @@
 
   .auth-brand {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
 
     img {
       height: 3rem;
+    }
+  }
+
+  .registration-options {
+    margin-bottom: 2rem;
+
+    .github-registration {
+      background-color: white;
+      color: black;
+
+      img {
+        height: 1.75rem;
+        width: 1.75rem;
+        margin-right: 0.25rem;
+      }
     }
   }
 

@@ -1,1 +1,18 @@
-<p>redirect works!</p>
+<div class="auth-container">
+  <div class="auth-brand">
+    <img
+      class="menu-brand"
+      [src]="
+        theme === 'dark'
+          ? '/assets/images/logo/logo-dark.png'
+          : '/assets/images/logo/logo.png'
+      "
+      routerLink="/dashboard"
+      alt="roadmapr Logo"
+    />
+  </div>
+
+  <div class="spinner">
+    <mat-spinner></mat-spinner>
+  </div>
+</div>

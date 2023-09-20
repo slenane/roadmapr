@@ -30,6 +30,7 @@ import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatSortModule } from "@angular/material/sort";
 import { MatButtonToggleModule } from "@angular/material/button-toggle";
 import { ScrollingModule } from "@angular/cdk/scrolling";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 
 @NgModule({
   exports: [
@@ -60,6 +61,7 @@ import { ScrollingModule } from "@angular/cdk/scrolling";
     MatTreeModule,
     MatSliderModule,
     MatSnackBarModule,
+    MatProgressSpinnerModule,
     MatPaginatorModule,
     MatSortModule,
     MatButtonToggleModule,
