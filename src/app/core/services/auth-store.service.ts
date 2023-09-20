@@ -22,4 +22,10 @@ export class AuthStoreService {
       userDetails,
     });
   }
+
+  githubLogin() {
+    this.store.dispatch({
+      type: authActions.GITHUB_LOGIN,
+    });
+  }
 }

@@ -8,6 +8,7 @@ export interface Action {
 
 export interface User {
   _id: string;
+  githubId?: string;
   email: string;
   name: string;
   exp: number;

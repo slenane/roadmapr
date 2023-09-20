@@ -43,4 +43,18 @@ export class AuthEffects {
       catchError((error) => of(authActions.LoginError(error)))
     )
   );
+
+  githubLogin$ = createEffect((): any =>
+    this.actions$.pipe(
+      ofType(authActions.GITHUB_LOGIN),
+      switchMap(() => this.authService.githubLogin()),
+      map((payload) => {
+        this.themeService.updateTheme(payload.user.theme);
+        this.translateService.use(payload.user.preferredLanguage);
+        this.router.navigateByUrl("/dashboard");
+        return authActions.LoginSuccess(payload);
+      }),
+      catchError((error) => of(authActions.LoginError(error)))
+    )
+  );
 }

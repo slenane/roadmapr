@@ -13,17 +13,9 @@ export class OAuthService {
     return this.http.get<string>(environment.baseUrl + "/auth-page");
   }
 
-  getAccessToken(auth_code: string) {
+  getAccessToken(auth_code: string): Observable<any> {
     return this.http.post(environment.baseUrl + "/get-access-token", {
       code: auth_code,
     });
-  }
-
-  getUserDetails() {
-    return this.http.get(environment.baseUrl + "/get-user-details");
-  }
-
-  logout() {
-    return this.http.get(environment.baseUrl + "/logout");
   }
 }

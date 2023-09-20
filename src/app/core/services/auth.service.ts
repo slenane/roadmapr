@@ -5,6 +5,7 @@ import { Router } from "@angular/router";
 import { User, TokenPayload, TokenResponse } from "../store/auth.models";
 import { ApiService } from "./api.service";
 import { UrlService } from "./url.service";
+import { environment } from "src/environments/environment";
 
 @Injectable({
   providedIn: "root",
@@ -48,17 +49,11 @@ export class AuthService {
 
   public register(user: TokenPayload): Observable<any> {
     return this.request("post", "AUTH_REGISTER", user);
-    // return this.apiService.post(this.urlService.generate("REGISTER"), user);
   }
 
   public login(user: TokenPayload): Observable<any> {
     return this.request("post", "AUTH_LOGIN", user);
-    // return this.apiService.post(this.urlService.generate("LOGIN"), user);
   }
-
-  // public getProfile(): Observable<any> {
-  //   return this.request("get", "PROFILE");
-  // }
 
   private request(
     method: "post" | "get",
@@ -86,6 +81,18 @@ export class AuthService {
     );
 
     return request;
+  }
+
+  githubLogin(): Observable<any> {
+    return this.apiService.get(environment.baseUrl + "/get-user-details").pipe(
+      map((data: TokenResponse) => {
+        if (data.token) {
+          this.authenticated.next(true);
+          this.saveToken(data.token);
+        }
+        return data;
+      })
+    );
   }
 
   private saveToken(token: string): void {

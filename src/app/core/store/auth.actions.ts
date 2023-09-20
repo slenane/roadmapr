@@ -3,6 +3,7 @@ import { User } from "./auth.models";
 
 export const REGISTER = "[Auth] Register";
 export const LOGIN = "[Auth] Login";
+export const GITHUB_LOGIN = "[Auth] GitHub login";
 export const LOGOUT = "[Auth] Log out";
 const REGISTER_SUCCESS = "[Auth] Registered Successfully",
   REGISTER_ERROR = "[Auth] Registration Error",
@@ -34,6 +35,8 @@ export const LoginError = createAction(
   LOGIN_ERROR,
   props<{ payload: string }>()
 );
+
+export const GithubLogin = createAction(GITHUB_LOGIN);
 
 export const Logout = createAction(LOGOUT);
 
