@@ -12,6 +12,7 @@ import { TranslateService } from "@ngx-translate/core";
 import { ProfileStoreService } from "src/app/profile/services/profile-store.service";
 import { SettingsDeleteAccountComponent } from "./settings-delete-account/settings-delete-account.component";
 import { MatDialog } from "@angular/material/dialog";
+import { passwordMatchValidator } from "src/app/shared/constants/validators.constants";
 
 @Component({
   selector: "app-settings",
@@ -25,12 +26,31 @@ export class SettingsComponent implements OnInit {
   public settings: Settings;
   public languageOptions = LANGUAGE_OPTIONS;
   public themeOptions = THEME_OPTIONS;
+  public isEditingDetails: boolean = false;
+  public isEditingPassword: boolean = false;
 
   public settingsForm = new FormGroup({
-    usernameCtrl: new FormControl("", Validators.required),
-    emailCtrl: new FormControl("", Validators.required),
-    // password: new FormControl("", Validators.required),
+    nameCtrl: new FormControl(
+      { value: "", disabled: !this.isEditingDetails },
+      Validators.required
+    ),
+    usernameCtrl: new FormControl(
+      { value: "", disabled: !this.isEditingDetails },
+      Validators.required
+    ),
+    emailCtrl: new FormControl(
+      { value: "", disabled: !this.isEditingDetails },
+      Validators.required
+    ),
   });
+
+  public updatePasswordForm = new FormGroup(
+    {
+      newPasswordCtrl: new FormControl("", Validators.required),
+      newPasswordConfirmCtrl: new FormControl("", Validators.required),
+    },
+    { validators: passwordMatchValidator }
+  );
 
   public appSettingsForm = new FormGroup({
     themeCtrl: new FormControl("light", Validators.required),
@@ -38,8 +58,11 @@ export class SettingsComponent implements OnInit {
     notificationsCtrl: new FormControl(false),
   });
 
-  @ViewChild("username") username: ElementRef;
-  @ViewChild("email") email: ElementRef;
+  @ViewChild("name") nameCtrl: ElementRef;
+  @ViewChild("username") usernameCtrl: ElementRef;
+  @ViewChild("email") emailCtrl: ElementRef;
+  @ViewChild("newPassword") newPasswordCtrl: ElementRef;
+  @ViewChild("newPasswordConfirm") newPasswordConfirmCtrl: ElementRef;
 
   constructor(
     private profileStoreService: ProfileStoreService,
@@ -61,6 +84,7 @@ export class SettingsComponent implements OnInit {
         this.userId = user._id;
 
         this.updateSettingsForm({
+          name: user.name,
           username: user.username,
           email: user.email,
           theme: user.theme,
@@ -77,11 +101,10 @@ export class SettingsComponent implements OnInit {
 
   updateSettingsForm(settings: any) {
     if (settings) {
-      console.log(settings);
       this.settingsForm.patchValue({
+        nameCtrl: settings.name,
         usernameCtrl: settings.username,
         emailCtrl: settings.email,
-        // password: settings.password,
       });
 
       this.appSettingsForm.patchValue({
@@ -135,15 +158,34 @@ export class SettingsComponent implements OnInit {
     }
   }
 
+  onEditDetailsClick(): void {
+    this.isEditingDetails = !this.isEditingDetails;
+    if (this.isEditingDetails) {
+      this.settingsForm.controls.nameCtrl.enable();
+      this.settingsForm.controls.usernameCtrl.enable();
+      this.settingsForm.controls.emailCtrl.enable();
+    } else {
+      this.settingsForm.controls.nameCtrl.disable();
+      this.settingsForm.controls.usernameCtrl.disable();
+      this.settingsForm.controls.emailCtrl.disable();
+    }
+  }
+
   onSaveClick(): void {
     if (this.settingsForm.status === "VALID") {
       this.settingsStoreService.updateSettings(this.userId, {
+        name: this.settingsForm.value.nameCtrl,
         username: this.settingsForm.value.usernameCtrl,
         email: this.settingsForm.value.emailCtrl,
-        // password: this.settingsForm.value.password,
       });
     } else {
       this.focusError();
     }
   }
+
+  onEditPasswordClick() {
+    this.isEditingPassword = !this.isEditingPassword;
+  }
+
+  onSavePasswordClick(): void {}
 }
