@@ -29,4 +29,12 @@ export class SettingsStoreService {
       data,
     });
   }
+
+  updatePassword(id: string, password: any) {
+    this.store.dispatch({
+      type: settingsActions.UPDATE_PASSWORD,
+      id,
+      password,
+    });
+  }
 }

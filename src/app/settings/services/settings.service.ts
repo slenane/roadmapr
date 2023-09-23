@@ -22,4 +22,10 @@ export class SettingsService {
       }
     );
   }
+  public updatePassword(id: string, password: any): Observable<Settings> {
+    return this.apiService.patch(
+      this.urlService.generate("SETTINGS_UPDATE_PASSWORD", id),
+      { password }
+    );
+  }
 }

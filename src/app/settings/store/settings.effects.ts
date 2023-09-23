@@ -49,4 +49,29 @@ export class SettingsEffects {
       })
     )
   );
+
+  updatePassword$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(settingsActions.UPDATE_PASSWORD),
+      switchMap((payload: any) => {
+        return this.settingsService.updatePassword(
+          payload.id,
+          payload.password
+        );
+      }),
+      map((payload: Settings) => {
+        this.snackBar.open("Password Updated", "Dismiss", {
+          duration: 5000,
+        });
+        return settingsActions.UpdatePasswordSuccess({ payload });
+      }),
+      catchError((error) => {
+        this.snackBar.open("Password Update Error", "Dismiss", {
+          duration: 10000,
+          panelClass: ["snackbar-error"],
+        });
+        return of(settingsActions.UpdatePasswordError(error));
+      })
+    )
+  );
 }

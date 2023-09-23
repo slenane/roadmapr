@@ -137,9 +137,7 @@ export class SettingsComponent implements OnInit {
   }
 
   onSavePassword(password: string): void {
-    this.settingsStoreService.updateSettings(this.settings.userId, {
-      password,
-    });
+    this.settingsStoreService.updatePassword(this.settings.userId, password);
     this.togglePasswordUpdate();
   }
 
