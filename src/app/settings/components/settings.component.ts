@@ -41,7 +41,7 @@ export class SettingsComponent implements OnInit {
     ),
     emailCtrl: new FormControl(
       { value: "", disabled: !this.isEditingDetails },
-      Validators.required
+      [Validators.required, Validators.email]
     ),
   });
 
@@ -105,6 +105,10 @@ export class SettingsComponent implements OnInit {
 
       this.settingsForm.controls.usernameCtrl.addAsyncValidators([
         this.validatorsService.validateUsername(user.username),
+      ]);
+
+      this.settingsForm.controls.emailCtrl.addAsyncValidators([
+        this.validatorsService.validateEmail(user.email),
       ]);
 
       this.appSettingsForm.patchValue({

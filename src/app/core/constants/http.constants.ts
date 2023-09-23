@@ -1,7 +1,7 @@
 const AUTH_LOGIN = "/auth/login",
   AUTH_REGISTER = "/auth/register",
   CHECK_UNIQUE_USERNAME = "/auth/unique-username/",
-  CHECK_UNIQUE_EMAIL = "/auth/unique-email",
+  CHECK_UNIQUE_EMAIL = "/auth/unique-email/",
   GITHUB_AUTH_PAGE = "/auth/github/auth-page",
   GITHUB_AUTH_ACCESS_TOKEN = "/auth/github/get-access-token",
   GITHUB_AUTH_LOGIN = "/auth/github/get-user-details",

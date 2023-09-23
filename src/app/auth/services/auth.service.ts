@@ -126,10 +126,9 @@ export class AuthService {
     );
   }
 
-  // checkUniqueEmail(control: AbstractControl): Observable<any> {
-  //   return this.apiService.post(
-  //     this.urlService.generate("CHECK_UNIQUE_EMAIL"),
-  //     control
-  //   );
-  // }
+  checkUniqueEmail(email: string): Observable<any> {
+    return this.apiService.get(
+      this.urlService.generate("CHECK_UNIQUE_EMAIL", email)
+    );
+  }
 }

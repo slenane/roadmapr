@@ -67,9 +67,58 @@
           <mat-form-field appearance="outline">
             <mat-label>{{ "FORMS.EMAIL" | translate }}</mat-label>
             <input #email matInput formControlName="emailCtrl" />
-            <mat-error *ngIf="settingsForm.controls.emailCtrl.invalid">{{
-              "FORMS.REQUIRED.EMAIL" | translate
-            }}</mat-error>
+            <mat-spinner
+              matSuffix
+              class="validation-spinner"
+              [diameter]="20"
+              *ngIf="settingsForm.controls.emailCtrl?.pending"
+            ></mat-spinner>
+
+            <span
+              matSuffix
+              class="material-symbols-outlined error"
+              *ngIf="
+                isEditingDetails &&
+                !settingsForm.controls.emailCtrl?.pristine &&
+                !settingsForm.controls.emailCtrl?.pending &&
+                settingsForm.controls.emailCtrl?.hasError('notUnique')
+              "
+            >
+              cancel
+            </span>
+
+            <mat-error
+              *ngIf="
+                isEditingDetails &&
+                settingsForm.controls.emailCtrl?.touched &&
+                !settingsForm.controls.emailCtrl?.pending &&
+                settingsForm.controls.emailCtrl?.hasError('notUnique')
+              "
+              >{{ "FORMS.ERROR.UNIQUE_EMAIL" | translate }}</mat-error
+            >
+
+            <span
+              matSuffix
+              class="material-symbols-outlined success"
+              *ngIf="
+                isEditingDetails &&
+                !settingsForm.controls.emailCtrl?.pristine &&
+                !settingsForm.controls.emailCtrl?.pending &&
+                !settingsForm.controls.emailCtrl?.errors
+              "
+            >
+              check_circle
+            </span>
+
+            <mat-error
+              *ngIf="settingsForm.controls.emailCtrl?.hasError('email')"
+              >{{ "FORMS.ERROR.EMAIL_PATTERN" | translate }}</mat-error
+            >
+
+            <mat-error
+              *ngIf="settingsForm.controls.emailCtrl?.hasError('required')"
+              >{{ "FORMS.REQUIRED.EMAIL" | translate }}</mat-error
+            >
           </mat-form-field>
 
           <div mat-dialog-actions class="actions">

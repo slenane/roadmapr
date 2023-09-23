@@ -39,4 +39,27 @@ export class ValidatorsService {
       }
     };
   }
+
+  validateEmail(initial: string): AsyncValidatorFn {
+    return (control) => {
+      if (
+        !control.valueChanges ||
+        control.pristine ||
+        !initial ||
+        !control.value.length ||
+        control.value === initial
+      ) {
+        return of(null);
+      } else {
+        return control.valueChanges.pipe(
+          debounceTime(400),
+          distinctUntilChanged(),
+          switchMap(() => {
+            return this.authService.checkUniqueEmail(control.value);
+          }),
+          take(1)
+        );
+      }
+    };
+  }
 }
