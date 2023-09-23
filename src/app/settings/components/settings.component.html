@@ -27,32 +27,31 @@
               "FORMS.REQUIRED.EMAIL" | translate
             }}</mat-error>
           </mat-form-field>
-        </form>
-        <div mat-dialog-actions class="actions">
-          <button
-            mat-raised-button
-            color="primary"
-            *ngIf="!isEditingDetails"
-            (click)="onEditDetailsClick()"
-            >{{ "ACTIONS.EDIT" | translate }}</button
-          >
-          <button
-            mat-raised-button
-            color="primary"
-            *ngIf="isEditingDetails"
-            (click)="onSaveClick()"
-            >{{ "ACTIONS.SAVE" | translate }}</button
-          >
-          <button
-            mat-raised-button
-            color="default"
-            *ngIf="isEditingDetails"
-            (click)="onEditDetailsClick()"
-            >{{ "ACTIONS.CANCEL" | translate }}</button
-          >
-        </div>
 
-        <hr />
+          <div mat-dialog-actions class="actions">
+            <button
+              mat-raised-button
+              color="primary"
+              *ngIf="!isEditingDetails"
+              (click)="onEditDetailsClick()"
+              >{{ "ACTIONS.EDIT" | translate }}</button
+            >
+            <button
+              mat-raised-button
+              color="primary"
+              *ngIf="isEditingDetails"
+              (click)="onSaveClick()"
+              >{{ "ACTIONS.SAVE" | translate }}</button
+            >
+            <button
+              mat-raised-button
+              color="default"
+              *ngIf="isEditingDetails"
+              (click)="onEditDetailsClick()"
+              >{{ "ACTIONS.CANCEL" | translate }}</button
+            >
+          </div>
+        </form>
 
         <div class="update-password-container">
           <div class="update-password-header">
@@ -134,7 +133,6 @@
 
       <button
         mat-raised-button
-        color="warn"
         class="delete-account-button"
         (click)="deleteAccount()"
         >{{ "SETTINGS.DELETE.T" | translate }}</button

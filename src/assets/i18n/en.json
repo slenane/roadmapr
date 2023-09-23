@@ -254,7 +254,8 @@
       "T": "Delete Account",
       "MESSAGE": "Are you sure you want to delete your account? This action cannot be undone",
       "INPUT": "Please type <b>confirm</b> to continue",
-      "ERROR": "Input does not match pattern, please type 'confirm' to delete account"
+      "ERROR": "Input does not match pattern, please type 'confirm' to delete account",
+      "CONFIRM": "confirm"
     }
   }
 }

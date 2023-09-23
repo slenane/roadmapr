@@ -12,14 +12,14 @@
   </form>
 </div>
 <div mat-dialog-actions class="actions">
-  <button mat-raised-button (click)="onCancel()">{{
-    "ACTIONS.CANCEL" | translate
-  }}</button>
   <button
     mat-raised-button
     [disabled]="deleteAccountForm.value.deleteCtrl !== 'confirm'"
-    color="warn"
+    class="delete-button"
     (click)="onDeleteClick()"
     >{{ "SETTINGS.DELETE.T" | translate }}</button
   >
+  <button mat-raised-button (click)="onCancel()">{{
+    "ACTIONS.CANCEL" | translate
+  }}</button>
 </div>
