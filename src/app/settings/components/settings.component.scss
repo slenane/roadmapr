@@ -15,13 +15,13 @@
       grid-template-columns: 1fr;
     }
 
-    .update-username-container {
+    .update-details-container {
       display: grid;
       grid-template-columns: 1fr auto;
       gap: 1rem;
       align-items: center;
 
-      .update-username-button {
+      .update-details-button {
         margin-bottom: 1.34375em;
       }
     }

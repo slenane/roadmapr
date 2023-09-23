@@ -2,35 +2,21 @@ import {
   Component,
   OnInit,
   Input,
+  OnChanges,
   SimpleChanges,
   Output,
   EventEmitter,
 } from "@angular/core";
-import {
-  FormControl,
-  FormGroup,
-  FormGroupDirective,
-  NgForm,
-  Validators,
-} from "@angular/forms";
-import { ErrorStateMatcher } from "@angular/material/core";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { MyErrorStateMatcher } from "src/app/shared/services/error-state-matcher.service";
 import { ValidatorsService } from "src/app/shared/services/validators.service";
-
-export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(
-    control: FormControl | null,
-    form: FormGroupDirective | NgForm | null
-  ): boolean {
-    return !!(control && control.invalid && (control.dirty || control.touched));
-  }
-}
 
 @Component({
   selector: "app-update-username",
   templateUrl: "./update-username.component.html",
   styleUrls: ["./update-username.component.scss"],
 })
-export class UpdateUsernameComponent implements OnInit {
+export class UpdateUsernameComponent implements OnInit, OnChanges {
   public matcher = new MyErrorStateMatcher();
   public initialUsername: string;
   public usernameForm = new FormGroup({

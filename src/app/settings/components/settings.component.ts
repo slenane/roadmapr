@@ -25,20 +25,13 @@ export class SettingsComponent implements OnInit {
   public themeOptions = THEME_OPTIONS;
   public isEditingDetails: boolean = false;
   public isEditingUsername: boolean = false;
+  public isEditingEmail: boolean = false;
   public isEditingPassword: boolean = false;
 
   public settingsForm = new FormGroup({
     nameCtrl: new FormControl(
       { value: "", disabled: !this.isEditingDetails },
       Validators.required
-    ),
-    usernameCtrl: new FormControl(
-      { value: "", disabled: !this.isEditingDetails },
-      [Validators.required]
-    ),
-    emailCtrl: new FormControl(
-      { value: "", disabled: !this.isEditingDetails },
-      [Validators.required, Validators.email]
     ),
   });
 
@@ -84,12 +77,7 @@ export class SettingsComponent implements OnInit {
   updateSettingsForm() {
     this.settingsForm.patchValue({
       nameCtrl: this.settings.name,
-      emailCtrl: this.settings.email,
     });
-
-    this.settingsForm.controls.emailCtrl.addAsyncValidators([
-      this.validatorsService.validateEmail(this.settings.email),
-    ]);
 
     this.appSettingsForm.patchValue({
       themeCtrl: this.settings.theme,
@@ -145,14 +133,11 @@ export class SettingsComponent implements OnInit {
     this.isEditingDetails = !this.isEditingDetails;
     if (this.isEditingDetails) {
       this.settingsForm.controls.nameCtrl.enable();
-      this.settingsForm.controls.emailCtrl.enable();
     } else {
       this.settingsForm.patchValue({
         nameCtrl: this.settings.name,
-        emailCtrl: this.settings.email,
       });
       this.settingsForm.controls.nameCtrl.disable();
-      this.settingsForm.controls.emailCtrl.disable();
     }
   }
 
@@ -160,7 +145,6 @@ export class SettingsComponent implements OnInit {
     if (this.settingsForm.status === "VALID") {
       this.settingsStoreService.updateSettings(this.settings.userId, {
         name: this.settingsForm.value.nameCtrl,
-        email: this.settingsForm.value.emailCtrl,
       });
     } else {
       this.focusError();
@@ -176,10 +160,23 @@ export class SettingsComponent implements OnInit {
     }
   }
 
+  onSaveEmail(email: string): void {
+    if (email !== this.settings.email) {
+      this.settingsStoreService.updateSettings(this.settings.userId, {
+        email,
+      });
+      this.toggleEmailUpdate();
+    }
+  }
+
   onSavePassword(): void {}
 
   toggleUsernameUpdate() {
     this.isEditingUsername = !this.isEditingUsername;
+  }
+
+  toggleEmailUpdate() {
+    this.isEditingEmail = !this.isEditingEmail;
   }
 
   togglePasswordUpdate() {

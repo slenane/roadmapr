@@ -1,1 +1,73 @@
-<p>update-email works!</p>
+<form [formGroup]="emailForm">
+  <mat-form-field appearance="outline">
+    <mat-label>{{ "FORMS.EMAIL" | translate }}</mat-label>
+    <input matInput formControlName="emailCtrl" [errorStateMatcher]="matcher" />
+    <mat-spinner
+      matSuffix
+      class="validation-spinner"
+      [diameter]="20"
+      *ngIf="emailForm.controls.emailCtrl?.pending"
+    ></mat-spinner>
+
+    <span
+      matSuffix
+      class="material-symbols-outlined error"
+      *ngIf="
+        isEditing &&
+        !emailForm.controls.emailCtrl?.pristine &&
+        !emailForm.controls.emailCtrl?.pending &&
+        emailForm.controls.emailCtrl?.hasError('notUnique')
+      "
+    >
+      cancel
+    </span>
+
+    <mat-error
+      *ngIf="
+        isEditing &&
+        !emailForm.controls.emailCtrl?.pristine &&
+        !emailForm.controls.emailCtrl?.pending &&
+        emailForm.controls.emailCtrl?.hasError('notUnique')
+      "
+      >{{ "FORMS.ERROR.UNIQUE_EMAIL" | translate }}</mat-error
+    >
+
+    <span
+      matSuffix
+      class="material-symbols-outlined success"
+      *ngIf="
+        isEditing &&
+        !emailForm.controls.emailCtrl?.pristine &&
+        !emailForm.controls.emailCtrl?.pending &&
+        !emailForm.controls.emailCtrl?.errors
+      "
+    >
+      check_circle
+    </span>
+
+    <mat-error *ngIf="emailForm.controls.emailCtrl?.hasError('email')">{{
+      "FORMS.ERROR.EMAIL_PATTERN" | translate
+    }}</mat-error>
+
+    <mat-error *ngIf="emailForm.controls.emailCtrl?.hasError('required')">{{
+      "FORMS.REQUIRED.EMAIL" | translate
+    }}</mat-error>
+  </mat-form-field>
+
+  <div mat-dialog-actions class="actions" *ngIf="isEditing">
+    <button
+      mat-raised-button
+      color="primary"
+      [disabled]="
+        emailForm.controls.emailCtrl.pending ||
+        emailForm.controls.emailCtrl.errors ||
+        emailForm.controls.emailCtrl.value === initialEmail
+      "
+      (click)="onSave()"
+      >{{ "ACTIONS.SAVE" | translate }}</button
+    >
+    <button mat-raised-button color="default" (click)="onCancel()">{{
+      "ACTIONS.CANCEL" | translate
+    }}</button>
+  </div>
+</form>
