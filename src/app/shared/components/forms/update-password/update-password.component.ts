@@ -3,8 +3,7 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
 import {
   passwordMatchValidator,
   validPasswordPattern,
-} from "../../constants/validators.constants";
-import { SettingsStoreService } from "src/app/settings/services/settings-store.service";
+} from "../../../constants/validators.constants";
 
 @Component({
   selector: "app-update-password",
@@ -13,7 +12,6 @@ import { SettingsStoreService } from "src/app/settings/services/settings-store.s
 })
 export class UpdatePasswordComponent implements OnInit {
   public hidePasswords: boolean = true;
-
   public updatePasswordForm = new FormGroup(
     {
       newPasswordCtrl: new FormControl("", [
@@ -25,10 +23,10 @@ export class UpdatePasswordComponent implements OnInit {
     { validators: passwordMatchValidator }
   );
 
-  @Input() userId: string;
-  @Output() onHideEditor: EventEmitter<any> = new EventEmitter();
+  @Output() togglePasswordUpdate: EventEmitter<any> = new EventEmitter();
+  @Output() onSavePassword: EventEmitter<string> = new EventEmitter();
 
-  constructor(private settingsStoreService: SettingsStoreService) {}
+  constructor() {}
 
   ngOnInit(): void {}
 
@@ -49,11 +47,12 @@ export class UpdatePasswordComponent implements OnInit {
   }
 
   onSaveClick(): void {
-    if (this.isPasswordMatch()) {
-      return; // Check later
-      this.settingsStoreService.updateSettings(this.userId, {
-        password: this.updatePasswordForm.value.newPasswordCtrl,
-      });
+    if (
+      this.updatePasswordForm.value.newPasswordCtrl &&
+      this.updatePasswordForm.valid &&
+      this.isPasswordMatch()
+    ) {
+      this.onSavePassword.emit(this.updatePasswordForm.value.newPasswordCtrl);
     }
   }
 }

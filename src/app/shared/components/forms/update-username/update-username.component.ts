@@ -25,7 +25,7 @@ export class UpdateUsernameComponent implements OnInit, OnChanges {
 
   @Input() username: string | undefined;
   @Input() isEditing: boolean;
-  @Output() onHideEditor: EventEmitter<any> = new EventEmitter();
+  @Output() toggleUsernameUpdate: EventEmitter<any> = new EventEmitter();
   @Output() onSaveUsername: EventEmitter<string> = new EventEmitter();
 
   constructor(private validatorsService: ValidatorsService) {}
@@ -69,7 +69,7 @@ export class UpdateUsernameComponent implements OnInit, OnChanges {
   onCancel() {
     this.usernameForm.reset();
     this.usernameForm.patchValue({ usernameCtrl: this.username });
-    this.onHideEditor.emit();
+    this.toggleUsernameUpdate.emit();
   }
 
   onSave() {

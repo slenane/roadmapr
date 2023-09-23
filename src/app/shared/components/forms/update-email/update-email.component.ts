@@ -25,7 +25,7 @@ export class UpdateEmailComponent implements OnInit, OnChanges {
 
   @Input() email: string | undefined;
   @Input() isEditing: boolean;
-  @Output() onHideEditor: EventEmitter<any> = new EventEmitter();
+  @Output() toggleEmailUpdate: EventEmitter<any> = new EventEmitter();
   @Output() onSaveEmail: EventEmitter<string> = new EventEmitter();
 
   constructor(private validatorsService: ValidatorsService) {}
@@ -69,7 +69,7 @@ export class UpdateEmailComponent implements OnInit, OnChanges {
   onCancel() {
     this.emailForm.reset();
     this.emailForm.patchValue({ emailCtrl: this.email });
-    this.onHideEditor.emit();
+    this.toggleEmailUpdate.emit();
   }
 
   onSave() {

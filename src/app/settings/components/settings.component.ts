@@ -85,35 +85,25 @@ export class SettingsComponent implements OnInit {
     });
   }
 
-  updateTheme(value: any) {
-    this.themeService.updateTheme(value);
-    this.settingsStoreService.updateSettings(this.settings.userId, {
-      theme: this.appSettingsForm.value.themeCtrl,
-    });
+  toggleNameUpdate(): void {
+    this.isEditingName = !this.isEditingName;
+    if (this.isEditingName) {
+      this.nameForm.controls.nameCtrl.enable();
+    } else {
+      this.nameForm.controls.nameCtrl.disable();
+    }
   }
 
-  updateLanguage(value: any) {
-    this.translateService.use(value);
-    this.settingsStoreService.updateSettings(this.settings.userId, {
-      preferredLanguage: this.appSettingsForm.value.languageCtrl,
-    });
+  toggleUsernameUpdate() {
+    this.isEditingUsername = !this.isEditingUsername;
   }
 
-  updateNotifications(value: any) {
-    this.settingsStoreService.updateSettings(this.settings.userId, {
-      notifications: this.appSettingsForm.value.notificationsCtrl,
-    });
+  toggleEmailUpdate() {
+    this.isEditingEmail = !this.isEditingEmail;
   }
 
-  deleteAccount(): void {
-    const dialogRef = this.dialog.open(SettingsDeleteAccountComponent, {
-      width: "50vw",
-    });
-
-    dialogRef.afterClosed().subscribe((confirmed: any) => {
-      if (confirmed) console.log("DELETE ACCOUNT");
-      else console.log("DON'T DELETE");
-    });
+  togglePasswordUpdate() {
+    this.isEditingPassword = !this.isEditingPassword;
   }
 
   onSaveName(): void {
@@ -146,26 +136,41 @@ export class SettingsComponent implements OnInit {
     }
   }
 
-  onSavePassword(): void {}
-
-  toggleNameUpdate(): void {
-    this.isEditingName = !this.isEditingName;
-    if (this.isEditingName) {
-      this.nameForm.controls.nameCtrl.enable();
-    } else {
-      this.nameForm.controls.nameCtrl.disable();
-    }
+  onSavePassword(password: string): void {
+    this.settingsStoreService.updateSettings(this.settings.userId, {
+      password,
+    });
+    this.togglePasswordUpdate();
   }
 
-  toggleUsernameUpdate() {
-    this.isEditingUsername = !this.isEditingUsername;
+  deleteAccount(): void {
+    const dialogRef = this.dialog.open(SettingsDeleteAccountComponent, {
+      width: "50vw",
+    });
+
+    dialogRef.afterClosed().subscribe((confirmed: any) => {
+      if (confirmed) console.log("DELETE ACCOUNT");
+      else console.log("DON'T DELETE");
+    });
   }
 
-  toggleEmailUpdate() {
-    this.isEditingEmail = !this.isEditingEmail;
+  updateTheme(value: any) {
+    this.themeService.updateTheme(value);
+    this.settingsStoreService.updateSettings(this.settings.userId, {
+      theme: this.appSettingsForm.value.themeCtrl,
+    });
   }
 
-  togglePasswordUpdate() {
-    this.isEditingPassword = !this.isEditingPassword;
+  updateLanguage(value: any) {
+    this.translateService.use(value);
+    this.settingsStoreService.updateSettings(this.settings.userId, {
+      preferredLanguage: this.appSettingsForm.value.languageCtrl,
+    });
+  }
+
+  updateNotifications(value: any) {
+    this.settingsStoreService.updateSettings(this.settings.userId, {
+      notifications: this.appSettingsForm.value.notificationsCtrl,
+    });
   }
 }

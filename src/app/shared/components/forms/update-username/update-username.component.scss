@@ -1,7 +1,12 @@
-form {
+.username-update-container {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr 20%;
   gap: 1rem;
+  align-items: center;
+
+  .mat-form-field {
+    display: block;
+  }
 
   .actions {
     display: flex;
@@ -9,5 +14,11 @@ form {
     justify-content: end;
     align-items: center;
     margin-bottom: 1.34375em;
+  }
+
+  .update-details-button {
+    margin-bottom: 1.34375em;
+    padding: 0 3rem;
+    justify-self: center;
   }
 }

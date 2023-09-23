@@ -40,45 +40,23 @@
             class="update-details-button"
             *ngIf="!isEditingName"
             (click)="toggleNameUpdate()"
-            >{{ "FORMS.UPDATE.FULL_NAME" | translate }}</button
+            >{{ "ACTIONS.UPDATE" | translate }}</button
           >
         </div>
 
-        <div class="update-details-container">
-          <app-update-username
-            [username]="settings.username"
-            [isEditing]="isEditingUsername"
-            (onHideEditor)="toggleUsernameUpdate()"
-            (onSaveUsername)="onSaveUsername($event)"
-          ></app-update-username>
+        <app-update-username
+          [username]="settings.username"
+          [isEditing]="isEditingUsername"
+          (toggleUsernameUpdate)="toggleUsernameUpdate()"
+          (onSaveUsername)="onSaveUsername($event)"
+        ></app-update-username>
 
-          <button
-            mat-raised-button
-            color="primary"
-            class="update-details-button"
-            *ngIf="!isEditingUsername"
-            (click)="toggleUsernameUpdate()"
-            >{{ "FORMS.UPDATE.USERNAME" | translate }}</button
-          >
-        </div>
-
-        <div class="update-details-container">
-          <app-update-email
-            [email]="settings.email"
-            [isEditing]="isEditingEmail"
-            (onHideEditor)="toggleEmailUpdate()"
-            (onSaveEmail)="onSaveEmail($event)"
-          ></app-update-email>
-
-          <button
-            mat-raised-button
-            color="primary"
-            class="update-details-button"
-            *ngIf="!isEditingEmail"
-            (click)="toggleEmailUpdate()"
-            >{{ "FORMS.UPDATE.EMAIL" | translate }}</button
-          >
-        </div>
+        <app-update-email
+          [email]="settings.email"
+          [isEditing]="isEditingEmail"
+          (toggleEmailUpdate)="toggleEmailUpdate()"
+          (onSaveEmail)="onSaveEmail($event)"
+        ></app-update-email>
 
         <div class="update-password-container">
           <div class="update-password-header">
@@ -97,8 +75,8 @@
 
           <app-update-password
             *ngIf="isEditingPassword"
-            [userId]="settings.userId"
-            (onHideEditor)="togglePasswordUpdate()"
+            (togglePasswordUpdate)="togglePasswordUpdate()"
+            (onSavePassword)="onSavePassword($event)"
           ></app-update-password>
         </div>
       </mat-card-content>
