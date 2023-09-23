@@ -26,7 +26,5 @@ export class LandingComponent implements OnInit {
       ? true
       : false;
     this.isRegistering = this.location.path() === "/register" ? true : false;
-
-    console.log(this.location.path().includes("/redirect"));
   }
 }

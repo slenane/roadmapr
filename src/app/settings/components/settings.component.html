@@ -15,9 +15,53 @@
           <mat-form-field appearance="outline">
             <mat-label>{{ "FORMS.USERNAME" | translate }}</mat-label>
             <input #username matInput formControlName="usernameCtrl" />
-            <mat-error *ngIf="settingsForm.controls.usernameCtrl.invalid">{{
-              "FORMS.REQUIRED.USERNAME" | translate
-            }}</mat-error>
+            <mat-spinner
+              matSuffix
+              class="validation-spinner"
+              [diameter]="20"
+              *ngIf="settingsForm.controls.usernameCtrl?.pending"
+            ></mat-spinner>
+
+            <span
+              matSuffix
+              class="material-symbols-outlined error"
+              *ngIf="
+                isEditingDetails &&
+                !settingsForm.controls.usernameCtrl?.pristine &&
+                !settingsForm.controls.usernameCtrl?.pending &&
+                settingsForm.controls.usernameCtrl?.hasError('notUnique')
+              "
+            >
+              cancel
+            </span>
+
+            <mat-error
+              *ngIf="
+                isEditingDetails &&
+                settingsForm.controls.usernameCtrl?.touched &&
+                !settingsForm.controls.usernameCtrl?.pending &&
+                settingsForm.controls.usernameCtrl?.hasError('notUnique')
+              "
+              >{{ "FORMS.ERROR.UNIQUE_USERNAME" | translate }}</mat-error
+            >
+
+            <span
+              matSuffix
+              class="material-symbols-outlined success"
+              *ngIf="
+                isEditingDetails &&
+                !settingsForm.controls.usernameCtrl?.pristine &&
+                !settingsForm.controls.usernameCtrl?.pending &&
+                !settingsForm.controls.usernameCtrl?.errors
+              "
+            >
+              check_circle
+            </span>
+
+            <mat-error
+              *ngIf="settingsForm.controls.usernameCtrl?.hasError('required')"
+              >{{ "FORMS.REQUIRED.USERNAME" | translate }}</mat-error
+            >
           </mat-form-field>
 
           <mat-form-field appearance="outline">
@@ -134,6 +178,7 @@
       <button
         mat-raised-button
         class="delete-account-button"
+        color="warn"
         (click)="deleteAccount()"
         >{{ "SETTINGS.DELETE.T" | translate }}</button
       >

@@ -17,6 +17,9 @@ $light-theme--font--material-symbols: #00000087;
 // ERROR COLORS
 $light-theme--error--background: red;
 $light-theme--error--font: white;
+// MAT THEME
+$light-theme--primary--mat-primary-color: #3f51b5;
+$light-theme--error--mat-error-color: red;
 
 // DARK THEME
 //
@@ -37,3 +40,6 @@ $dark-theme--font--material-symbols: white;
 // ERROR COLORS
 $dark-theme--error--background: red;
 $dark-theme--error--font: white;
+// MAT THEME
+$dark-theme--primary--mat-primary-color: #00bcd4;
+$dark-theme--error--mat-error-color: #ffc107;

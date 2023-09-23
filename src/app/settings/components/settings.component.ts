@@ -12,6 +12,7 @@ import { TranslateService } from "@ngx-translate/core";
 import { ProfileStoreService } from "src/app/profile/services/profile-store.service";
 import { SettingsDeleteAccountComponent } from "./settings-delete-account/settings-delete-account.component";
 import { MatDialog } from "@angular/material/dialog";
+import { ValidatorsService } from "src/app/shared/services/validators.service";
 
 @Component({
   selector: "app-settings",
@@ -27,6 +28,7 @@ export class SettingsComponent implements OnInit {
   public themeOptions = THEME_OPTIONS;
   public isEditingDetails: boolean = false;
   public isEditingPassword: boolean = false;
+  public user: any;
 
   public settingsForm = new FormGroup({
     nameCtrl: new FormControl(
@@ -35,13 +37,14 @@ export class SettingsComponent implements OnInit {
     ),
     usernameCtrl: new FormControl(
       { value: "", disabled: !this.isEditingDetails },
-      Validators.required
+      [Validators.required]
     ),
     emailCtrl: new FormControl(
       { value: "", disabled: !this.isEditingDetails },
       Validators.required
     ),
   });
+
   public appSettingsForm = new FormGroup({
     themeCtrl: new FormControl("light", Validators.required),
     languageCtrl: new FormControl("en", Validators.required),
@@ -60,6 +63,7 @@ export class SettingsComponent implements OnInit {
     private settingsStoreService: SettingsStoreService,
     private themeService: ThemeService,
     private translateService: TranslateService,
+    private validatorsService: ValidatorsService,
     public dialog: MatDialog
   ) {}
 
@@ -73,14 +77,16 @@ export class SettingsComponent implements OnInit {
       .subscribe((user: Profile) => {
         this.userId = user._id;
 
-        this.updateSettingsForm({
+        this.user = {
           name: user.name,
           username: user.username,
           email: user.email,
           theme: user.theme,
           preferredLanguage: user.preferredLanguage,
           notifications: user.notifications,
-        });
+        };
+
+        this.updateSettingsForm(this.user);
       });
   }
 
@@ -89,18 +95,22 @@ export class SettingsComponent implements OnInit {
     this.ngUnsubscribe.complete();
   }
 
-  updateSettingsForm(settings: any) {
-    if (settings) {
+  updateSettingsForm(user: any) {
+    if (user) {
       this.settingsForm.patchValue({
-        nameCtrl: settings.name,
-        usernameCtrl: settings.username,
-        emailCtrl: settings.email,
+        nameCtrl: user.name,
+        usernameCtrl: user.username,
+        emailCtrl: user.email,
       });
 
+      this.settingsForm.controls.usernameCtrl.addAsyncValidators([
+        this.validatorsService.validateUsername(user.username),
+      ]);
+
       this.appSettingsForm.patchValue({
-        themeCtrl: settings.theme,
-        languageCtrl: settings.preferredLanguage,
-        notificationsCtrl: settings.notifications,
+        themeCtrl: user.theme,
+        languageCtrl: user.preferredLanguage,
+        notificationsCtrl: user.notifications,
       });
     }
   }
@@ -155,6 +165,11 @@ export class SettingsComponent implements OnInit {
       this.settingsForm.controls.usernameCtrl.enable();
       this.settingsForm.controls.emailCtrl.enable();
     } else {
+      this.settingsForm.patchValue({
+        nameCtrl: this.user.name,
+        usernameCtrl: this.user.username,
+        emailCtrl: this.user.email,
+      });
       this.settingsForm.controls.nameCtrl.disable();
       this.settingsForm.controls.usernameCtrl.disable();
       this.settingsForm.controls.emailCtrl.disable();

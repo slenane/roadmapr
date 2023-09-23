@@ -174,7 +174,8 @@
     },
     "ERROR": {
       "NEW_PASSWORD": "Passwords must be at least 6 characters long, contains at least 1 number and 1 special character",
-      "NEW_PASSWORD_CONFIRM": "Passwords must match"
+      "NEW_PASSWORD_CONFIRM": "Passwords must match",
+      "UNIQUE_USERNAME": "This username has been taken, please try something else"
     },
     "HINT": {
       "NEW_PASSWORD": "Passwords must be at least 6 characters long, contains at least 1 number and 1 special character"
