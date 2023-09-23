@@ -173,7 +173,11 @@
       "USERNAME": "Username Required"
     },
     "ERROR": {
+      "NEW_PASSWORD": "Passwords must be at least 6 characters long, contains at least 1 number and 1 special character",
       "NEW_PASSWORD_CONFIRM": "Passwords must match"
+    },
+    "HINT": {
+      "NEW_PASSWORD": "Passwords must be at least 6 characters long, contains at least 1 number and 1 special character"
     },
     "UPDATE": {
       "EMAIL": "Update Email",

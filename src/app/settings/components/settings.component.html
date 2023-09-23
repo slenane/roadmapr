@@ -55,85 +55,25 @@
         <hr />
 
         <div class="update-password-container">
-          <span class="update-password-text">{{
-            "FORMS.UPDATE.PASSWORD" | translate
-          }}</span>
-          <button
-            mat-raised-button
-            color="primary"
-            class="update-password-button"
-            *ngIf="!isEditingPassword"
-            (click)="onEditPasswordClick()"
-            >{{ "FORMS.UPDATE.PASSWORD" | translate }}</button
-          >
-
-          <form
-            class="form-grid"
-            [formGroup]="updatePasswordForm"
-            *ngIf="isEditingPassword"
-          >
-            <mat-form-field appearance="outline">
-              <mat-label>{{ "FORMS.NEW_PASSWORD" | translate }}</mat-label>
-              <input
-                #newPassword
-                matInput
-                type="password"
-                formControlName="newPasswordCtrl"
-              />
-              <mat-error
-                *ngIf="updatePasswordForm.controls.newPasswordCtrl.invalid"
-                >{{ "FORMS.REQUIRED.NEW_PASSWORD" | translate }}</mat-error
-              >
-            </mat-form-field>
-
-            <mat-form-field appearance="outline">
-              <mat-label>{{
-                "FORMS.NEW_PASSWORD_CONFIRM" | translate
-              }}</mat-label>
-              <input
-                #newPasswordConfirm
-                matInput
-                type="password"
-                formControlName="newPasswordConfirmCtrl"
-              />
-
-              <mat-error
-                *ngIf="
-                  updatePasswordForm.controls.newPasswordConfirmCtrl.hasError(
-                    'required'
-                  )
-                "
-                >{{
-                  "FORMS.REQUIRED.NEW_PASSWORD_CONFIRM" | translate
-                }}</mat-error
-              >
-            </mat-form-field>
-            <mat-error
-              *ngIf="
-                updatePasswordForm.hasError('mismatch') &&
-                !updatePasswordForm
-                  .get('newPasswordConfirmCtrl')
-                  ?.hasError('required')
-              "
-              >{{ "FORMS.ERROR.NEW_PASSWORD_CONFIRM" | translate }}</mat-error
+          <div class="update-password-header">
+            <span class="update-password-text">{{
+              "FORMS.UPDATE.PASSWORD" | translate
+            }}</span>
+            <button
+              mat-raised-button
+              color="primary"
+              class="update-password-button"
+              *ngIf="!isEditingPassword"
+              (click)="showPasswordUpdate()"
+              >{{ "FORMS.UPDATE.PASSWORD" | translate }}</button
             >
+          </div>
 
-            <div mat-dialog-actions class="actions">
-              <button
-                mat-raised-button
-                color="primary"
-                (click)="onSavePasswordClick()"
-                >{{ "ACTIONS.SAVE" | translate }}</button
-              >
-              <button
-                mat-raised-button
-                color="default"
-                *ngIf="isEditingPassword"
-                (click)="onEditPasswordClick()"
-                >{{ "ACTIONS.CANCEL" | translate }}</button
-              >
-            </div>
-          </form>
+          <app-update-password
+            *ngIf="isEditingPassword"
+            [userId]="userId"
+            (onHideEditor)="hidePasswordUpdate()"
+          ></app-update-password>
         </div>
       </mat-card-content>
     </mat-card>

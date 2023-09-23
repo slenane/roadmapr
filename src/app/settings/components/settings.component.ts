@@ -12,7 +12,6 @@ import { TranslateService } from "@ngx-translate/core";
 import { ProfileStoreService } from "src/app/profile/services/profile-store.service";
 import { SettingsDeleteAccountComponent } from "./settings-delete-account/settings-delete-account.component";
 import { MatDialog } from "@angular/material/dialog";
-import { passwordMatchValidator } from "src/app/shared/constants/validators.constants";
 
 @Component({
   selector: "app-settings",
@@ -43,15 +42,6 @@ export class SettingsComponent implements OnInit {
       Validators.required
     ),
   });
-
-  public updatePasswordForm = new FormGroup(
-    {
-      newPasswordCtrl: new FormControl("", Validators.required),
-      newPasswordConfirmCtrl: new FormControl("", Validators.required),
-    },
-    { validators: passwordMatchValidator }
-  );
-
   public appSettingsForm = new FormGroup({
     themeCtrl: new FormControl("light", Validators.required),
     languageCtrl: new FormControl("en", Validators.required),
@@ -183,9 +173,11 @@ export class SettingsComponent implements OnInit {
     }
   }
 
-  onEditPasswordClick() {
-    this.isEditingPassword = !this.isEditingPassword;
+  showPasswordUpdate() {
+    this.isEditingPassword = true;
   }
 
-  onSavePasswordClick(): void {}
+  hidePasswordUpdate() {
+    this.isEditingPassword = false;
+  }
 }
