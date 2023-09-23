@@ -19,22 +19,22 @@ import { ValidatorsService } from "src/app/shared/services/validators.service";
 })
 export class SettingsComponent implements OnInit {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
-  public filterType = "date";
   public settings: Settings;
+
   public languageOptions = LANGUAGE_OPTIONS;
   public themeOptions = THEME_OPTIONS;
-  public isEditingDetails: boolean = false;
+
+  public isEditingName: boolean = false;
   public isEditingUsername: boolean = false;
   public isEditingEmail: boolean = false;
   public isEditingPassword: boolean = false;
 
-  public settingsForm = new FormGroup({
+  public nameForm = new FormGroup({
     nameCtrl: new FormControl(
-      { value: "", disabled: !this.isEditingDetails },
+      { value: "", disabled: !this.isEditingName },
       Validators.required
     ),
   });
-
   public appSettingsForm = new FormGroup({
     themeCtrl: new FormControl("light", Validators.required),
     languageCtrl: new FormControl("en", Validators.required),
@@ -52,7 +52,6 @@ export class SettingsComponent implements OnInit {
     private settingsStoreService: SettingsStoreService,
     private themeService: ThemeService,
     private translateService: TranslateService,
-    private validatorsService: ValidatorsService,
     public dialog: MatDialog
   ) {}
 
@@ -65,7 +64,7 @@ export class SettingsComponent implements OnInit {
       )
       .subscribe((settings: Settings) => {
         this.settings = settings;
-        this.updateSettingsForm();
+        this.updateForms();
       });
   }
 
@@ -74,8 +73,8 @@ export class SettingsComponent implements OnInit {
     this.ngUnsubscribe.complete();
   }
 
-  updateSettingsForm() {
-    this.settingsForm.patchValue({
+  updateForms() {
+    this.nameForm.patchValue({
       nameCtrl: this.settings.name,
     });
 
@@ -117,37 +116,15 @@ export class SettingsComponent implements OnInit {
     });
   }
 
-  focusError() {
-    for (const key of Object.keys(this.settingsForm.controls)) {
-      if (this.settingsForm.get(key) && this.settingsForm.get(key)?.invalid) {
-        const invalidField = this.el.nativeElement.querySelector(
-          `[formControlName=${key}]`
-        );
-        invalidField.focus();
-        return;
-      }
-    }
-  }
-
-  onEditDetailsClick(): void {
-    this.isEditingDetails = !this.isEditingDetails;
-    if (this.isEditingDetails) {
-      this.settingsForm.controls.nameCtrl.enable();
-    } else {
-      this.settingsForm.patchValue({
-        nameCtrl: this.settings.name,
-      });
-      this.settingsForm.controls.nameCtrl.disable();
-    }
-  }
-
-  onSaveClick(): void {
-    if (this.settingsForm.status === "VALID") {
+  onSaveName(): void {
+    if (
+      this.nameForm.valid &&
+      this.nameForm.value.nameCtrl !== this.settings.name
+    ) {
       this.settingsStoreService.updateSettings(this.settings.userId, {
-        name: this.settingsForm.value.nameCtrl,
+        name: this.nameForm.value.nameCtrl,
       });
-    } else {
-      this.focusError();
+      this.toggleNameUpdate();
     }
   }
 
@@ -170,6 +147,15 @@ export class SettingsComponent implements OnInit {
   }
 
   onSavePassword(): void {}
+
+  toggleNameUpdate(): void {
+    this.isEditingName = !this.isEditingName;
+    if (this.isEditingName) {
+      this.nameForm.controls.nameCtrl.enable();
+    } else {
+      this.nameForm.controls.nameCtrl.disable();
+    }
+  }
 
   toggleUsernameUpdate() {
     this.isEditingUsername = !this.isEditingUsername;

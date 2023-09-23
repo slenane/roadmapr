@@ -3,51 +3,82 @@
     <mat-card>
       <h1>{{ "SETTINGS.ACCOUNT" | translate }}</h1>
       <mat-card-content>
-        <form class="form-grid" [formGroup]="settingsForm">
-          <mat-form-field appearance="outline">
-            <mat-label>{{ "FORMS.FULL_NAME" | translate }}</mat-label>
-            <input #name matInput formControlName="nameCtrl" />
-            <mat-error *ngIf="settingsForm.controls.nameCtrl.invalid">{{
-              "FORMS.REQUIRED.FULL_NAME" | translate
-            }}</mat-error>
-          </mat-form-field>
+        <div class="update-details-container">
+          <form class="form-grid" [formGroup]="nameForm">
+            <mat-form-field appearance="outline">
+              <mat-label>{{ "FORMS.FULL_NAME" | translate }}</mat-label>
+              <input matInput formControlName="nameCtrl" />
+              <mat-error *ngIf="nameForm.controls.nameCtrl.invalid">{{
+                "FORMS.REQUIRED.FULL_NAME" | translate
+              }}</mat-error>
+            </mat-form-field>
+          </form>
 
-          <div class="update-details-container">
-            <app-update-username
-              [username]="settings.username"
-              [isEditing]="isEditingUsername"
-              (onHideEditor)="toggleUsernameUpdate()"
-              (onSaveUsername)="onSaveUsername($event)"
-            ></app-update-username>
-
+          <div mat-dialog-actions class="actions" *ngIf="isEditingName">
             <button
               mat-raised-button
               color="primary"
-              class="update-details-button"
-              *ngIf="!isEditingUsername"
-              (click)="toggleUsernameUpdate()"
-              >{{ "FORMS.UPDATE.USERNAME" | translate }}</button
+              [disabled]="
+                nameForm.controls.nameCtrl.pending ||
+                nameForm.controls.nameCtrl.errors ||
+                nameForm.controls.nameCtrl.value === settings.name
+              "
+              (click)="onSaveName()"
+              >{{ "ACTIONS.SAVE" | translate }}</button
             >
-          </div>
-
-          <div class="update-details-container">
-            <app-update-email
-              [email]="settings.email"
-              [isEditing]="isEditingEmail"
-              (onHideEditor)="toggleEmailUpdate()"
-              (onSaveEmail)="onSaveEmail($event)"
-            ></app-update-email>
-
             <button
               mat-raised-button
-              color="primary"
-              class="update-details-button"
-              *ngIf="!isEditingEmail"
-              (click)="toggleEmailUpdate()"
-              >{{ "FORMS.UPDATE.EMAIL" | translate }}</button
+              color="default"
+              (click)="toggleNameUpdate()"
+              >{{ "ACTIONS.CANCEL" | translate }}</button
             >
           </div>
-        </form>
+
+          <button
+            mat-raised-button
+            color="primary"
+            class="update-details-button"
+            *ngIf="!isEditingName"
+            (click)="toggleNameUpdate()"
+            >{{ "FORMS.UPDATE.FULL_NAME" | translate }}</button
+          >
+        </div>
+
+        <div class="update-details-container">
+          <app-update-username
+            [username]="settings.username"
+            [isEditing]="isEditingUsername"
+            (onHideEditor)="toggleUsernameUpdate()"
+            (onSaveUsername)="onSaveUsername($event)"
+          ></app-update-username>
+
+          <button
+            mat-raised-button
+            color="primary"
+            class="update-details-button"
+            *ngIf="!isEditingUsername"
+            (click)="toggleUsernameUpdate()"
+            >{{ "FORMS.UPDATE.USERNAME" | translate }}</button
+          >
+        </div>
+
+        <div class="update-details-container">
+          <app-update-email
+            [email]="settings.email"
+            [isEditing]="isEditingEmail"
+            (onHideEditor)="toggleEmailUpdate()"
+            (onSaveEmail)="onSaveEmail($event)"
+          ></app-update-email>
+
+          <button
+            mat-raised-button
+            color="primary"
+            class="update-details-button"
+            *ngIf="!isEditingEmail"
+            (click)="toggleEmailUpdate()"
+            >{{ "FORMS.UPDATE.EMAIL" | translate }}</button
+          >
+        </div>
 
         <div class="update-password-container">
           <div class="update-password-header">
