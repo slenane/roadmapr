@@ -12,57 +12,23 @@
             }}</mat-error>
           </mat-form-field>
 
-          <mat-form-field appearance="outline">
-            <mat-label>{{ "FORMS.USERNAME" | translate }}</mat-label>
-            <input #username matInput formControlName="usernameCtrl" />
-            <mat-spinner
-              matSuffix
-              class="validation-spinner"
-              [diameter]="20"
-              *ngIf="settingsForm.controls.usernameCtrl?.pending"
-            ></mat-spinner>
+          <div class="update-username-container">
+            <app-update-username
+              [username]="settings.username"
+              [isEditing]="isEditingUsername"
+              (onHideEditor)="toggleUsernameUpdate()"
+              (onSaveUsername)="onSaveUsername($event)"
+            ></app-update-username>
 
-            <span
-              matSuffix
-              class="material-symbols-outlined error"
-              *ngIf="
-                isEditingDetails &&
-                !settingsForm.controls.usernameCtrl?.pristine &&
-                !settingsForm.controls.usernameCtrl?.pending &&
-                settingsForm.controls.usernameCtrl?.hasError('notUnique')
-              "
+            <button
+              mat-raised-button
+              color="primary"
+              class="update-username-button"
+              *ngIf="!isEditingUsername"
+              (click)="toggleUsernameUpdate()"
+              >{{ "FORMS.UPDATE.USERNAME" | translate }}</button
             >
-              cancel
-            </span>
-
-            <mat-error
-              *ngIf="
-                isEditingDetails &&
-                settingsForm.controls.usernameCtrl?.touched &&
-                !settingsForm.controls.usernameCtrl?.pending &&
-                settingsForm.controls.usernameCtrl?.hasError('notUnique')
-              "
-              >{{ "FORMS.ERROR.UNIQUE_USERNAME" | translate }}</mat-error
-            >
-
-            <span
-              matSuffix
-              class="material-symbols-outlined success"
-              *ngIf="
-                isEditingDetails &&
-                !settingsForm.controls.usernameCtrl?.pristine &&
-                !settingsForm.controls.usernameCtrl?.pending &&
-                !settingsForm.controls.usernameCtrl?.errors
-              "
-            >
-              check_circle
-            </span>
-
-            <mat-error
-              *ngIf="settingsForm.controls.usernameCtrl?.hasError('required')"
-              >{{ "FORMS.REQUIRED.USERNAME" | translate }}</mat-error
-            >
-          </mat-form-field>
+          </div>
 
           <mat-form-field appearance="outline">
             <mat-label>{{ "FORMS.EMAIL" | translate }}</mat-label>
@@ -156,15 +122,15 @@
               color="primary"
               class="update-password-button"
               *ngIf="!isEditingPassword"
-              (click)="showPasswordUpdate()"
+              (click)="togglePasswordUpdate()"
               >{{ "FORMS.UPDATE.PASSWORD" | translate }}</button
             >
           </div>
 
           <app-update-password
             *ngIf="isEditingPassword"
-            [userId]="userId"
-            (onHideEditor)="hidePasswordUpdate()"
+            [userId]="settings.userId"
+            (onHideEditor)="togglePasswordUpdate()"
           ></app-update-password>
         </div>
       </mat-card-content>

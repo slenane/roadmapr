@@ -1,0 +1,13 @@
+form {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+
+  .actions {
+    display: flex;
+    column-gap: 0.5rem;
+    justify-content: end;
+    align-items: center;
+    margin-bottom: 1.34375em;
+  }
+}

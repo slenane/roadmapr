@@ -15,9 +15,15 @@
       grid-template-columns: 1fr;
     }
 
-    .validation-spinner {
-      height: 1rem;
-      width: 1rem;
+    .update-username-container {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1rem;
+      align-items: center;
+
+      .update-username-button {
+        margin-bottom: 1.34375em;
+      }
     }
 
     .update-password-header {

@@ -7,17 +7,21 @@ interface Action {
 }
 
 const initialState: Settings = {
-  _id: "",
+  userId: "",
   theme: "light",
   preferredLanguage: "en",
   notifications: false,
   email: "",
   username: "",
+  name: "",
 };
 
 const SettingsReducer = createReducer(
   initialState,
   on(SettingsActions.GetSettingsSuccess, (state, { payload }) => {
+    return { ...state, ...payload };
+  }),
+  on(SettingsActions.UpdateSettingsSuccess, (state, { payload }) => {
     return { ...state, ...payload };
   })
 );

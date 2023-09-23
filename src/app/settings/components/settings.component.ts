@@ -2,14 +2,12 @@ import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { Subject } from "rxjs";
 import { Settings } from "../store/settings.models";
 import { SettingsStoreService } from "../services/settings-store.service";
-import { Profile } from "src/app/profile/store/profile.models";
 import { filter, takeUntil } from "rxjs/operators";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { ThemeService } from "src/app/core/services/theme.service";
 import { THEME_OPTIONS } from "src/app/core/constants/theme.constants";
 import { LANGUAGE_OPTIONS } from "../constants/settings.constants";
 import { TranslateService } from "@ngx-translate/core";
-import { ProfileStoreService } from "src/app/profile/services/profile-store.service";
 import { SettingsDeleteAccountComponent } from "./settings-delete-account/settings-delete-account.component";
 import { MatDialog } from "@angular/material/dialog";
 import { ValidatorsService } from "src/app/shared/services/validators.service";
@@ -22,13 +20,12 @@ import { ValidatorsService } from "src/app/shared/services/validators.service";
 export class SettingsComponent implements OnInit {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
   public filterType = "date";
-  public userId: string;
   public settings: Settings;
   public languageOptions = LANGUAGE_OPTIONS;
   public themeOptions = THEME_OPTIONS;
   public isEditingDetails: boolean = false;
+  public isEditingUsername: boolean = false;
   public isEditingPassword: boolean = false;
-  public user: any;
 
   public settingsForm = new FormGroup({
     nameCtrl: new FormControl(
@@ -58,7 +55,6 @@ export class SettingsComponent implements OnInit {
   @ViewChild("newPasswordConfirm") newPasswordConfirmCtrl: ElementRef;
 
   constructor(
-    private profileStoreService: ProfileStoreService,
     private el: ElementRef,
     private settingsStoreService: SettingsStoreService,
     private themeService: ThemeService,
@@ -68,25 +64,15 @@ export class SettingsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.profileStoreService
-      .getProfile()
+    this.settingsStoreService
+      .getSettings()
       .pipe(
         filter((state) => state != null),
         takeUntil(this.ngUnsubscribe)
       )
-      .subscribe((user: Profile) => {
-        this.userId = user._id;
-
-        this.user = {
-          name: user.name,
-          username: user.username,
-          email: user.email,
-          theme: user.theme,
-          preferredLanguage: user.preferredLanguage,
-          notifications: user.notifications,
-        };
-
-        this.updateSettingsForm(this.user);
+      .subscribe((settings: Settings) => {
+        this.settings = settings;
+        this.updateSettingsForm();
       });
   }
 
@@ -95,46 +81,39 @@ export class SettingsComponent implements OnInit {
     this.ngUnsubscribe.complete();
   }
 
-  updateSettingsForm(user: any) {
-    if (user) {
-      this.settingsForm.patchValue({
-        nameCtrl: user.name,
-        usernameCtrl: user.username,
-        emailCtrl: user.email,
-      });
+  updateSettingsForm() {
+    this.settingsForm.patchValue({
+      nameCtrl: this.settings.name,
+      emailCtrl: this.settings.email,
+    });
 
-      this.settingsForm.controls.usernameCtrl.addAsyncValidators([
-        this.validatorsService.validateUsername(user.username),
-      ]);
+    this.settingsForm.controls.emailCtrl.addAsyncValidators([
+      this.validatorsService.validateEmail(this.settings.email),
+    ]);
 
-      this.settingsForm.controls.emailCtrl.addAsyncValidators([
-        this.validatorsService.validateEmail(user.email),
-      ]);
-
-      this.appSettingsForm.patchValue({
-        themeCtrl: user.theme,
-        languageCtrl: user.preferredLanguage,
-        notificationsCtrl: user.notifications,
-      });
-    }
+    this.appSettingsForm.patchValue({
+      themeCtrl: this.settings.theme,
+      languageCtrl: this.settings.preferredLanguage,
+      notificationsCtrl: this.settings.notifications,
+    });
   }
 
   updateTheme(value: any) {
     this.themeService.updateTheme(value);
-    this.settingsStoreService.updateSettings(this.userId, {
+    this.settingsStoreService.updateSettings(this.settings.userId, {
       theme: this.appSettingsForm.value.themeCtrl,
     });
   }
 
   updateLanguage(value: any) {
     this.translateService.use(value);
-    this.settingsStoreService.updateSettings(this.userId, {
+    this.settingsStoreService.updateSettings(this.settings.userId, {
       preferredLanguage: this.appSettingsForm.value.languageCtrl,
     });
   }
 
   updateNotifications(value: any) {
-    this.settingsStoreService.updateSettings(this.userId, {
+    this.settingsStoreService.updateSettings(this.settings.userId, {
       notifications: this.appSettingsForm.value.notificationsCtrl,
     });
   }
@@ -166,25 +145,21 @@ export class SettingsComponent implements OnInit {
     this.isEditingDetails = !this.isEditingDetails;
     if (this.isEditingDetails) {
       this.settingsForm.controls.nameCtrl.enable();
-      this.settingsForm.controls.usernameCtrl.enable();
       this.settingsForm.controls.emailCtrl.enable();
     } else {
       this.settingsForm.patchValue({
-        nameCtrl: this.user.name,
-        usernameCtrl: this.user.username,
-        emailCtrl: this.user.email,
+        nameCtrl: this.settings.name,
+        emailCtrl: this.settings.email,
       });
       this.settingsForm.controls.nameCtrl.disable();
-      this.settingsForm.controls.usernameCtrl.disable();
       this.settingsForm.controls.emailCtrl.disable();
     }
   }
 
   onSaveClick(): void {
     if (this.settingsForm.status === "VALID") {
-      this.settingsStoreService.updateSettings(this.userId, {
+      this.settingsStoreService.updateSettings(this.settings.userId, {
         name: this.settingsForm.value.nameCtrl,
-        username: this.settingsForm.value.usernameCtrl,
         email: this.settingsForm.value.emailCtrl,
       });
     } else {
@@ -192,11 +167,22 @@ export class SettingsComponent implements OnInit {
     }
   }
 
-  showPasswordUpdate() {
-    this.isEditingPassword = true;
+  onSaveUsername(username: string): void {
+    if (username !== this.settings.username) {
+      this.settingsStoreService.updateSettings(this.settings.userId, {
+        username,
+      });
+      this.toggleUsernameUpdate();
+    }
   }
 
-  hidePasswordUpdate() {
-    this.isEditingPassword = false;
+  onSavePassword(): void {}
+
+  toggleUsernameUpdate() {
+    this.isEditingUsername = !this.isEditingUsername;
+  }
+
+  togglePasswordUpdate() {
+    this.isEditingPassword = !this.isEditingPassword;
   }
 }

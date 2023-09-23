@@ -1,9 +1,9 @@
 export interface Settings {
-  _id: string;
+  userId: string;
   theme: "light" | "dark";
   preferredLanguage: "en" | "es" | "pt";
   notifications: boolean;
   username: string;
   email: string;
-  // password: string;
+  name: string;
 }
