@@ -1,113 +1,142 @@
 <div class="settings">
-  <mat-card>
-    <h1>{{ "SETTINGS.ACCOUNT" | translate }}</h1>
-    <mat-card-content>
-      <form class="form-grid" [formGroup]="settingsForm">
-        <mat-form-field appearance="outline">
-          <mat-label>{{ "FORMS.USERNAME" | translate }}</mat-label>
-          <input
-            cdkFocusInitial
-            #username
-            matInput
-            formControlName="usernameCtrl"
-          />
-          <mat-error *ngIf="settingsForm.controls.usernameCtrl.invalid">{{
-            "FORMS.REQUIRED.USERNAME" | translate
-          }}</mat-error>
-        </mat-form-field>
+  <div class="scroll" cdkScrollable>
+    <mat-card>
+      <h1>{{ "SETTINGS.ACCOUNT" | translate }}</h1>
+      <mat-card-content>
+        <form class="form-grid" [formGroup]="settingsForm">
+          <mat-form-field appearance="outline">
+            <mat-label>{{ "FORMS.FULL_NAME" | translate }}</mat-label>
+            <input #name matInput formControlName="nameCtrl" />
+            <mat-error *ngIf="settingsForm.controls.nameCtrl.invalid">{{
+              "FORMS.REQUIRED.FULL_NAME" | translate
+            }}</mat-error>
+          </mat-form-field>
 
-        <mat-form-field appearance="outline">
-          <mat-label>{{ "FORMS.EMAIL" | translate }}</mat-label>
-          <input #email matInput formControlName="emailCtrl" />
-          <mat-error *ngIf="settingsForm.controls.emailCtrl.invalid">{{
-            "FORMS.REQUIRED.EMAIL" | translate
-          }}</mat-error>
-        </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>{{ "FORMS.USERNAME" | translate }}</mat-label>
+            <input #username matInput formControlName="usernameCtrl" />
+            <mat-error *ngIf="settingsForm.controls.usernameCtrl.invalid">{{
+              "FORMS.REQUIRED.USERNAME" | translate
+            }}</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>{{ "FORMS.EMAIL" | translate }}</mat-label>
+            <input #email matInput formControlName="emailCtrl" />
+            <mat-error *ngIf="settingsForm.controls.emailCtrl.invalid">{{
+              "FORMS.REQUIRED.EMAIL" | translate
+            }}</mat-error>
+          </mat-form-field>
+
+          <div mat-dialog-actions class="actions">
+            <button
+              mat-raised-button
+              color="primary"
+              *ngIf="!isEditingDetails"
+              (click)="onEditDetailsClick()"
+              >{{ "ACTIONS.EDIT" | translate }}</button
+            >
+            <button
+              mat-raised-button
+              color="primary"
+              *ngIf="isEditingDetails"
+              (click)="onSaveClick()"
+              >{{ "ACTIONS.SAVE" | translate }}</button
+            >
+            <button
+              mat-raised-button
+              color="default"
+              *ngIf="isEditingDetails"
+              (click)="onEditDetailsClick()"
+              >{{ "ACTIONS.CANCEL" | translate }}</button
+            >
+          </div>
+        </form>
 
         <div class="update-password-container">
-          <span class="update-password-text">{{
-            "FORMS.UPDATE.PASSWORD" | translate
-          }}</span>
-          <button
-            mat-raised-button
-            color="primary"
-            class="update-password-button"
-            >{{ "FORMS.UPDATE.PASSWORD" | translate }}</button
-          >
+          <div class="update-password-header">
+            <span class="update-password-text">{{
+              "FORMS.UPDATE.PASSWORD" | translate
+            }}</span>
+            <button
+              mat-raised-button
+              color="primary"
+              class="update-password-button"
+              *ngIf="!isEditingPassword"
+              (click)="showPasswordUpdate()"
+              >{{ "FORMS.UPDATE.PASSWORD" | translate }}</button
+            >
+          </div>
+
+          <app-update-password
+            *ngIf="isEditingPassword"
+            [userId]="userId"
+            (onHideEditor)="hidePasswordUpdate()"
+          ></app-update-password>
         </div>
-      </form>
-      <div mat-dialog-actions class="actions">
-        <button
-          mat-raised-button
-          color="primary"
-          (click)="onSaveClick()"
-          cdkFocusInitial
-          >{{ "ACTIONS.SAVE" | translate }}</button
-        >
-      </div>
-    </mat-card-content>
-  </mat-card>
+      </mat-card-content>
+    </mat-card>
 
-  <mat-card>
-    <h2>{{ "SETTINGS.APP" | translate }}</h2>
-    <mat-card-content>
-      <form class="form-grid" [formGroup]="appSettingsForm">
-        <mat-form-field appearance="outline">
-          <mat-label>{{ "FORMS.THEME.T" | translate }}</mat-label>
-          <mat-select
-            (selectionChange)="updateTheme($event.value)"
-            formControlName="themeCtrl"
-          >
-            <mat-option [value]="themeOptions.light">{{
-              "FORMS.THEME.LIGHT" | translate
-            }}</mat-option>
-            <mat-option [value]="themeOptions.dark">{{
-              "FORMS.THEME.DARK" | translate
-            }}</mat-option>
-          </mat-select>
-          <mat-error *ngIf="appSettingsForm.controls.themeCtrl.invalid">{{
-            "FORMS.THEME.REQUIRED" | translate
-          }}</mat-error>
-        </mat-form-field>
+    <mat-card>
+      <h2>{{ "SETTINGS.APP" | translate }}</h2>
+      <mat-card-content>
+        <form class="form-grid" [formGroup]="appSettingsForm">
+          <mat-form-field appearance="outline">
+            <mat-label>{{ "FORMS.THEME.T" | translate }}</mat-label>
+            <mat-select
+              (selectionChange)="updateTheme($event.value)"
+              formControlName="themeCtrl"
+            >
+              <mat-option [value]="themeOptions.light">{{
+                "FORMS.THEME.LIGHT" | translate
+              }}</mat-option>
+              <mat-option [value]="themeOptions.dark">{{
+                "FORMS.THEME.DARK" | translate
+              }}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="appSettingsForm.controls.themeCtrl.invalid">{{
+              "FORMS.THEME.REQUIRED" | translate
+            }}</mat-error>
+          </mat-form-field>
 
-        <mat-form-field appearance="outline">
-          <mat-label>{{ "FORMS.LANGUAGE.T" | translate }}</mat-label>
-          <mat-select
-            (selectionChange)="updateLanguage($event.value)"
-            formControlName="languageCtrl"
-          >
-            <mat-option [value]="languageOptions.en">{{
-              "FORMS.LANGUAGE.ENGLISH" | translate
-            }}</mat-option>
-            <mat-option [value]="languageOptions.es">{{
-              "FORMS.LANGUAGE.SPANISH" | translate
-            }}</mat-option>
-            <mat-option [value]="languageOptions.pt">{{
-              "FORMS.LANGUAGE.PORTUGUESE" | translate
-            }}</mat-option>
-          </mat-select>
-          <mat-error *ngIf="appSettingsForm.controls.languageCtrl.invalid">{{
-            "FORMS.LANGUAGE.REQUIRED" | translate
-          }}</mat-error>
-        </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>{{ "FORMS.LANGUAGE.T" | translate }}</mat-label>
+            <mat-select
+              (selectionChange)="updateLanguage($event.value)"
+              formControlName="languageCtrl"
+            >
+              <mat-option [value]="languageOptions.en">{{
+                "FORMS.LANGUAGE.ENGLISH" | translate
+              }}</mat-option>
+              <mat-option [value]="languageOptions.es">{{
+                "FORMS.LANGUAGE.SPANISH" | translate
+              }}</mat-option>
+              <mat-option [value]="languageOptions.pt">{{
+                "FORMS.LANGUAGE.PORTUGUESE" | translate
+              }}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="appSettingsForm.controls.languageCtrl.invalid">{{
+              "FORMS.LANGUAGE.REQUIRED" | translate
+            }}</mat-error>
+          </mat-form-field>
 
-        <h4>{{ "FORMS.NOTIFICATIONS.T" | translate }}</h4>
-        <mat-checkbox formControlName="notificationsCtrl" color="primary">{{
-          "FORMS.NOTIFICATIONS.EMAIL" | translate
-        }}</mat-checkbox>
-      </form>
-    </mat-card-content>
-  </mat-card>
+          <h4>{{ "FORMS.NOTIFICATIONS.T" | translate }}</h4>
+          <mat-checkbox formControlName="notificationsCtrl" color="primary">{{
+            "FORMS.NOTIFICATIONS.EMAIL" | translate
+          }}</mat-checkbox>
+        </form>
+      </mat-card-content>
+    </mat-card>
 
-  <mat-card>
-    <h2>{{ "SETTINGS.DELETE.T" | translate }}</h2>
+    <mat-card>
+      <h2>{{ "SETTINGS.DELETE.T" | translate }}</h2>
 
-    <button
-      mat-raised-button
-      color="warn"
-      class="delete-account-button"
-      (click)="deleteAccount()"
-      >{{ "SETTINGS.DELETE.T" | translate }}</button
-    >
-  </mat-card>
+      <button
+        mat-raised-button
+        class="delete-account-button"
+        (click)="deleteAccount()"
+        >{{ "SETTINGS.DELETE.T" | translate }}</button
+      >
+    </mat-card>
+  </div>
 </div>

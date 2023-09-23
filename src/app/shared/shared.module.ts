@@ -10,6 +10,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { DropListFiltersComponent } from "./components/drop-list-filters/drop-list-filters.component";
 import { IconCardComponent } from "./components/icon-card/icon-card.component";
 import { TranslateModule } from "@ngx-translate/core";
+import { UpdatePasswordComponent } from "./components/update-password/update-password.component";
 // import { NgChartsModule } from "ng2-charts";
 // import { FileUploadComponent } from "./components/file-upload/file-upload.component";
 
@@ -21,6 +22,7 @@ import { TranslateModule } from "@ngx-translate/core";
     StackSelectorComponent,
     DropListFiltersComponent,
     IconCardComponent,
+    UpdatePasswordComponent,
   ],
   exports: [
     // ChartComponent,
@@ -29,6 +31,7 @@ import { TranslateModule } from "@ngx-translate/core";
     StackSelectorComponent,
     DropListFiltersComponent,
     IconCardComponent,
+    UpdatePasswordComponent,
   ],
   imports: [
     MaterialModule,

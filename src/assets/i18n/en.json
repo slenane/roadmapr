@@ -128,6 +128,8 @@
       "EMAIL": "Receive notifications by email"
     },
     "PASSWORD": "Password",
+    "NEW_PASSWORD": "New Password",
+    "NEW_PASSWORD_CONFIRM": "Confirm New Password",
     "PORTFOLIO": "Portfolio",
     "PROFILE_IMAGE": "Profile Image",
     "PROJECT_LINK": "Project Link",
@@ -162,11 +164,20 @@
       "LOCATION": "Location Required",
       "NATIONALITY": "Nationality Required",
       "PASSWORD": "Password Required",
+      "NEW_PASSWORD": "New Password Required",
+      "NEW_PASSWORD_CONFIRM": "Password Confirmation Required",
       "ROLE": "Role Required",
       "STACK": "Stack Required",
       "TITLE": "Title Required",
       "TYPE": "Type Required",
       "USERNAME": "Username Required"
+    },
+    "ERROR": {
+      "NEW_PASSWORD": "Passwords must be at least 6 characters long, contains at least 1 number and 1 special character",
+      "NEW_PASSWORD_CONFIRM": "Passwords must match"
+    },
+    "HINT": {
+      "NEW_PASSWORD": "Passwords must be at least 6 characters long, contains at least 1 number and 1 special character"
     },
     "UPDATE": {
       "EMAIL": "Update Email",
@@ -243,7 +254,8 @@
       "T": "Delete Account",
       "MESSAGE": "Are you sure you want to delete your account? This action cannot be undone",
       "INPUT": "Please type <b>confirm</b> to continue",
-      "ERROR": "Input does not match pattern, please type 'confirm' to delete account"
+      "ERROR": "Input does not match pattern, please type 'confirm' to delete account",
+      "CONFIRM": "confirm"
     }
   }
 }
