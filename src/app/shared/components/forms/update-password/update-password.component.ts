@@ -12,6 +12,7 @@ import {
 })
 export class UpdatePasswordComponent implements OnInit {
   public hidePasswords: boolean = true;
+  public passwordMatch: boolean = false;
   public updatePasswordForm = new FormGroup(
     {
       newPasswordCtrl: new FormControl("", [
@@ -28,7 +29,29 @@ export class UpdatePasswordComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.updatePasswordForm.valueChanges.subscribe((form) => {
+      const newPassword = this.formControls.newPasswordCtrl;
+      const newPasswordConfirm = this.formControls.newPasswordConfirmCtrl;
+
+      if (
+        !newPassword.hasError("required") &&
+        !newPassword.hasError("pattern") &&
+        !newPasswordConfirm.hasError("required")
+      ) {
+        if (form.newPasswordCtrl !== form.newPasswordConfirmCtrl) {
+          newPasswordConfirm.setErrors({ mismatch: true });
+        } else {
+          if (newPassword.hasError("mismatch")) {
+            delete newPassword.errors?.mismatch;
+          }
+          if (newPasswordConfirm.hasError("mismatch")) {
+            delete newPasswordConfirm.errors?.mismatch;
+          }
+        }
+      }
+    });
+  }
 
   isPasswordMatch(): boolean {
     return (
@@ -37,22 +60,18 @@ export class UpdatePasswordComponent implements OnInit {
     );
   }
 
-  checkMatchOnBlur() {
-    if (!this.isPasswordMatch()) {
-      this.updatePasswordForm.controls.newPasswordConfirmCtrl.setErrors({
-        mismatch: true,
-      });
-      this.updatePasswordForm.markAllAsTouched();
-    }
-  }
-
   onSaveClick(): void {
     if (
-      this.updatePasswordForm.value.newPasswordCtrl &&
       this.updatePasswordForm.valid &&
+      this.updatePasswordForm.value.newPasswordCtrl &&
+      this.updatePasswordForm.value.newPasswordConfirmCtrl &&
       this.isPasswordMatch()
     ) {
       this.onSavePassword.emit(this.updatePasswordForm.value.newPasswordCtrl);
     }
+  }
+
+  get formControls() {
+    return this.updatePasswordForm.controls;
   }
 }
