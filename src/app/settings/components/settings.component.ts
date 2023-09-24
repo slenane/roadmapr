@@ -147,8 +147,9 @@ export class SettingsComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((confirmed: any) => {
-      if (confirmed) console.log("DELETE ACCOUNT");
-      else console.log("DON'T DELETE");
+      if (confirmed) {
+        this.settingsStoreService.deleteAccount();
+      }
     });
   }
 

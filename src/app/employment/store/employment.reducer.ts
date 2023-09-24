@@ -31,7 +31,8 @@ const employmentReducer = createReducer(
   ),
   on(employmentActions.RemoveEmploymentItemSuccess, (state: any, data: any) => {
     return { ...state, ...data.payload };
-  })
+  }),
+  on(employmentActions.ResetState, () => initialState)
 );
 
 export const reducer = (state: Employment | undefined, action: Action) => {

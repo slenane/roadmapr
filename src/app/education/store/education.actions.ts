@@ -96,3 +96,5 @@ export const RemoveEducationItemError = createAction(
   REMOVE_EDUCATION_ITEM_ERROR,
   props<{ payload: string }>()
 );
+
+export const ResetState = createAction("[Education] Reset State");

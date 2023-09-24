@@ -20,3 +20,5 @@ export const GetDashboardError = createAction(
   GET_DASHBOARD_ERROR,
   props<{ payload: string }>()
 );
+
+export const ResetState = createAction("[Dashboard] Reset State");

@@ -6,13 +6,15 @@ import { SettingsService } from "../services/settings.service";
 import * as settingsActions from "./settings.actions";
 import { Settings } from "./settings.models";
 import { MatSnackBar } from "@angular/material/snack-bar";
+import { AuthService } from "src/app/auth/services/auth.service";
 
 @Injectable()
 export class SettingsEffects {
   constructor(
     private actions$: Actions,
     private settingsService: SettingsService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private authService: AuthService
   ) {}
 
   getSettings$ = createEffect(() =>
@@ -71,6 +73,23 @@ export class SettingsEffects {
           panelClass: ["snackbar-error"],
         });
         return of(settingsActions.UpdatePasswordError(error));
+      })
+    )
+  );
+
+  DeleteAccount$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(settingsActions.DELETE_ACCOUNT),
+      switchMap(() => this.settingsService.deleteAccount()),
+      map(() => this.authService.logout()),
+      map(() => {
+        this.snackBar.open("Account Deleted Successfully", "Dismiss", {
+          duration: 5000,
+        });
+        return settingsActions.DeleteAccountSuccess();
+      }),
+      catchError((error) => {
+        return of(settingsActions.DeleteAccountError(error));
       })
     )
   );

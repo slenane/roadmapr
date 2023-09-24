@@ -31,7 +31,8 @@ const educationReducer = createReducer(
   ),
   on(educationActions.RemoveEducationItemSuccess, (state: any, data: any) => {
     return { ...state, ...data.payload };
-  })
+  }),
+  on(educationActions.ResetState, () => initialState)
 );
 
 export const reducer = (state: Education | undefined, action: Action) => {

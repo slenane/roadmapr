@@ -96,3 +96,5 @@ export const RemoveEmploymentItemError = createAction(
   REMOVE_EMPLOYMENT_ITEM_ERROR,
   props<{ payload: string }>()
 );
+
+export const ResetState = createAction("[Employment] Reset State");
