@@ -90,3 +90,5 @@ export const RemoveProjectError = createAction(
   REMOVE_PROJECT_ERROR,
   props<{ payload: string }>()
 );
+
+export const ResetState = createAction("[Projects] Reset State");

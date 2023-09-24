@@ -22,10 +22,17 @@ export class SettingsService {
       }
     );
   }
+
   public updatePassword(id: string, password: any): Observable<Settings> {
     return this.apiService.patch(
       this.urlService.generate("SETTINGS_UPDATE_PASSWORD", id),
       { password }
+    );
+  }
+
+  public deleteAccount(): Observable<Settings> {
+    return this.apiService.get(
+      this.urlService.generate("SETTINGS_DELETE_ACCOUNT")
     );
   }
 }

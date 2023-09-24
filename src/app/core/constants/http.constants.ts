@@ -26,7 +26,8 @@ const AUTH_LOGIN = "/auth/login",
   EDUCATION_GET_ITEM_DETAILS = "/education/get-details/",
   SETTINGS_GET = "/settings/",
   SETTINGS_UPDATE = "/settings/edit/",
-  SETTINGS_UPDATE_PASSWORD = "/settings/update-password/";
+  SETTINGS_UPDATE_PASSWORD = "/settings/update-password/",
+  SETTINGS_DELETE_ACCOUNT = "/settings/delete-account/";
 
 export const ENDPOINTS: any = {
   AUTH_LOGIN,
@@ -58,4 +59,5 @@ export const ENDPOINTS: any = {
   SETTINGS_GET,
   SETTINGS_UPDATE,
   SETTINGS_UPDATE_PASSWORD,
+  SETTINGS_DELETE_ACCOUNT,
 };

@@ -43,14 +43,10 @@ export class ProjectsComponent implements OnInit, OnDestroy {
         takeUntil(this.ngUnsubscribe)
       )
       .subscribe((projects: Projects) => {
-        console.log(projects);
         this.projects = projects;
         this.projectsArray = this.projects.projectList;
-
-        if (this.projectsArray.length) {
-          this.getProjectsConfig(this.projectsArray);
-          this.getLanguageFilterData();
-        }
+        this.getProjectsConfig(this.projectsArray);
+        this.getLanguageFilterData();
       });
   }
 

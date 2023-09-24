@@ -5,6 +5,14 @@ import { Router } from "@angular/router";
 import { User, TokenPayload, TokenResponse } from "../store/auth.models";
 import { ApiService } from "../../core/services/api.service";
 import { UrlService } from "../../core/services/url.service";
+import { Store } from "@ngrx/store";
+import * as AuthActions from "src/app/auth/store/auth.actions";
+import * as DashboardActions from "src/app/dashboard/store/dashboard.actions";
+import * as EducationActions from "src/app/education/store/education.actions";
+import * as EmploymentActions from "src/app/employment/store/employment.actions";
+import * as ProfileActions from "src/app/profile/store/profile.actions";
+import * as ProjectsActions from "src/app/projects/store/projects.actions";
+import * as SettingsActions from "src/app/settings/store/settings.actions";
 
 @Injectable({
   providedIn: "root",
@@ -20,7 +28,8 @@ export class AuthService {
   constructor(
     private apiService: ApiService,
     private urlService: UrlService,
-    private router: Router
+    private router: Router,
+    private store: Store
   ) {}
 
   public register(user: TokenPayload): Observable<any> {
@@ -81,8 +90,24 @@ export class AuthService {
   public logout(): void {
     this.token = "";
     this.authenticated.next(false);
-    window.localStorage.removeItem("user-token");
+    this.resetStoreStates();
+    this.clearLocalStorage();
     this.router.navigateByUrl("/login");
+  }
+
+  private resetStoreStates() {
+    this.store.dispatch(AuthActions.ResetState());
+    this.store.dispatch(DashboardActions.ResetState());
+    this.store.dispatch(EducationActions.ResetState());
+    this.store.dispatch(EmploymentActions.ResetState());
+    this.store.dispatch(ProfileActions.ResetState());
+    this.store.dispatch(ProjectsActions.ResetState());
+    this.store.dispatch(SettingsActions.ResetState());
+  }
+
+  private clearLocalStorage() {
+    window.localStorage.removeItem("user-token");
+    window.localStorage.removeItem("selected-theme");
   }
 
   public getUser(): User | null {

@@ -28,7 +28,8 @@ const projectReducer = createReducer(
   }),
   on(projectActions.RemoveProjectSuccess, (state: any, data: any) => {
     return { ...state, ...data.payload };
-  })
+  }),
+  on(projectActions.ResetState, () => initialState)
 );
 
 export const reducer = (state: Projects | undefined, action: Action) => {

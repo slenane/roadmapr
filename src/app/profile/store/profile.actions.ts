@@ -35,3 +35,5 @@ export const UpdateProfileError = createAction(
   UPDATE_PROFILE_ERROR,
   props<{ payload: string }>()
 );
+
+export const ResetState = createAction("[Profile] Reset State");

@@ -32,7 +32,7 @@ export class AppComponent implements OnInit {
       this.currentTheme = theme;
     });
 
-    const theme = window.localStorage.getItem("selectedTheme");
+    const theme = window.localStorage.getItem("selected-theme");
     if (theme) {
       this.themeService.updateTheme(theme);
     }
@@ -45,7 +45,7 @@ export class AppComponent implements OnInit {
   @HostListener("window:unload", ["$event"])
   unloadHandler(event: Event) {
     if (this.currentTheme) {
-      window.localStorage.setItem("selectedTheme", this.currentTheme);
+      window.localStorage.setItem("selected-theme", this.currentTheme);
     }
   }
 }

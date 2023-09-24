@@ -47,11 +47,8 @@ export class EmploymentComponent implements OnInit {
       .subscribe((employment: Employment) => {
         this.employment = employment;
         this.employmentList = this.employment.employmentList;
-
-        if (this.employmentList.length) {
-          this.getEmploymentConfig(this.employment.employmentList);
-          this.getLanguageFilterData();
-        }
+        this.getEmploymentConfig(this.employment.employmentList);
+        this.getLanguageFilterData();
       });
   }
 

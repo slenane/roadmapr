@@ -37,4 +37,10 @@ export class SettingsStoreService {
       password,
     });
   }
+
+  deleteAccount() {
+    this.store.dispatch({
+      type: settingsActions.DELETE_ACCOUNT,
+    });
+  }
 }

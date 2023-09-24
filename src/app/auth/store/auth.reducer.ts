@@ -29,7 +29,8 @@ const authReducer = createReducer(
       ...(payload.user ? { user: payload.user._id } : {}),
       ...(payload.token ? { token: payload.token } : {}),
     };
-  })
+  }),
+  on(authActions.ResetState, () => initialState)
 );
 
 export const reducer = (state: Auth | undefined, action: Action) => {

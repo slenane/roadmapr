@@ -50,11 +50,8 @@ export class EducationComponent implements OnInit, OnDestroy {
       .subscribe((education: Education) => {
         this.education = education;
         this.educationArray = this.education.educationList;
-
-        if (this.educationArray.length) {
-          this.getEducationConfig(this.educationArray);
-          this.getLanguageFilterData();
-        }
+        this.getEducationConfig(this.educationArray);
+        this.getLanguageFilterData();
       });
   }
 

@@ -17,7 +17,8 @@ const DashboardReducer = createReducer(
   initialState,
   on(DashboardActions.GetDashboardSuccess, (state, { payload }) => {
     return { ...state, ...payload };
-  })
+  }),
+  on(DashboardActions.ResetState, () => initialState)
 );
 
 export const reducer = (state: Dashboard | undefined, action: Action) => {

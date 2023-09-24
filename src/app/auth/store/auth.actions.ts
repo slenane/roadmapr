@@ -46,3 +46,5 @@ export const LogoutError = createAction(
   LOGOUT_ERROR,
   props<{ payload: string }>()
 );
+
+export const ResetState = createAction("[Auth] Reset State");
