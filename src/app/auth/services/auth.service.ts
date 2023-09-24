@@ -5,7 +5,6 @@ import { Router } from "@angular/router";
 import { User, TokenPayload, TokenResponse } from "../store/auth.models";
 import { ApiService } from "../../core/services/api.service";
 import { UrlService } from "../../core/services/url.service";
-import { environment } from "src/environments/environment";
 
 @Injectable({
   providedIn: "root",
@@ -119,5 +118,17 @@ export class AuthService {
       this.token = localStorage.getItem("user-token") || "";
     }
     return this.token;
+  }
+
+  checkUniqueUsername(username: string): Observable<any> {
+    return this.apiService.get(
+      this.urlService.generate("CHECK_UNIQUE_USERNAME", username)
+    );
+  }
+
+  checkUniqueEmail(email: string): Observable<any> {
+    return this.apiService.get(
+      this.urlService.generate("CHECK_UNIQUE_EMAIL", email)
+    );
   }
 }

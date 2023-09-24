@@ -1,8 +1,10 @@
-const AUTH_LOGIN = "/login",
-  AUTH_REGISTER = "/register",
-  GITHUB_AUTH_PAGE = "/auth-page",
-  GITHUB_AUTH_ACCESS_TOKEN = "/get-access-token",
-  GITHUB_AUTH_LOGIN = "/get-user-details",
+const AUTH_LOGIN = "/auth/login",
+  AUTH_REGISTER = "/auth/register",
+  CHECK_UNIQUE_USERNAME = "/auth/unique-username/",
+  CHECK_UNIQUE_EMAIL = "/auth/unique-email/",
+  GITHUB_AUTH_PAGE = "/auth/github/auth-page",
+  GITHUB_AUTH_ACCESS_TOKEN = "/auth/github/get-access-token",
+  GITHUB_AUTH_LOGIN = "/auth/github/get-user-details",
   DASHBOARD_GET = "/dashboard/",
   EMPLOYMENT_GET = "/employment/",
   EMPLOYMENT_CREATE = "/employment/",
@@ -23,7 +25,8 @@ const AUTH_LOGIN = "/login",
   EDUCATION_REMOVE = "/education/remove/",
   EDUCATION_GET_ITEM_DETAILS = "/education/get-details/",
   SETTINGS_GET = "/settings/",
-  SETTINGS_UPDATE = "/settings/edit/";
+  SETTINGS_UPDATE = "/settings/edit/",
+  SETTINGS_UPDATE_PASSWORD = "/settings/update-password/";
 
 export const ENDPOINTS: any = {
   AUTH_LOGIN,
@@ -31,6 +34,8 @@ export const ENDPOINTS: any = {
   GITHUB_AUTH_PAGE,
   GITHUB_AUTH_ACCESS_TOKEN,
   GITHUB_AUTH_LOGIN,
+  CHECK_UNIQUE_USERNAME,
+  CHECK_UNIQUE_EMAIL,
   DASHBOARD_GET,
   EMPLOYMENT_GET,
   EMPLOYMENT_CREATE,
@@ -52,4 +57,5 @@ export const ENDPOINTS: any = {
   EDUCATION_GET_ITEM_DETAILS,
   SETTINGS_GET,
   SETTINGS_UPDATE,
+  SETTINGS_UPDATE_PASSWORD,
 };

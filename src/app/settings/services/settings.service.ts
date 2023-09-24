@@ -10,8 +10,8 @@ import { Settings } from "../store/settings.models";
 export class SettingsService {
   constructor(private apiService: ApiService, private urlService: UrlService) {}
 
-  public getSettings(id: string): Observable<Settings> {
-    return this.apiService.get(this.urlService.generate("SETTINGS_GET", id));
+  public getSettings(): Observable<Settings> {
+    return this.apiService.get(this.urlService.generate("SETTINGS_GET"));
   }
 
   public updateSettings(id: string, data: any): Observable<Settings> {
@@ -20,6 +20,12 @@ export class SettingsService {
       {
         data,
       }
+    );
+  }
+  public updatePassword(id: string, password: any): Observable<Settings> {
+    return this.apiService.patch(
+      this.urlService.generate("SETTINGS_UPDATE_PASSWORD", id),
+      { password }
     );
   }
 }

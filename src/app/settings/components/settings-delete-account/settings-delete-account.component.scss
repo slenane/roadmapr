@@ -8,8 +8,4 @@ form {
   display: flex;
   gap: 0.5rem;
   justify-content: end;
-
-  .delete-button:not(.mat-button-disabled) {
-    background-color: red;
-  }
 }

@@ -18,8 +18,8 @@ export class SettingsEffects {
   getSettings$ = createEffect(() =>
     this.actions$.pipe(
       ofType(settingsActions.GET_SETTINGS),
-      switchMap((payload: any) => {
-        return this.settingsService.getSettings(payload.id);
+      switchMap(() => {
+        return this.settingsService.getSettings();
       }),
       map((payload: Settings) => {
         return settingsActions.GetSettingsSuccess({ payload });
@@ -38,14 +38,39 @@ export class SettingsEffects {
         this.snackBar.open("Settings Updated", "Dismiss", {
           duration: 5000,
         });
-        return settingsActions.GetSettingsSuccess({ payload });
+        return settingsActions.UpdateSettingsSuccess({ payload });
       }),
       catchError((error) => {
         this.snackBar.open("Settings Update Error", "Dismiss", {
           duration: 10000,
           panelClass: ["snackbar-error"],
         });
-        return of(settingsActions.GetSettingsError(error));
+        return of(settingsActions.UpdateSettingsError(error));
+      })
+    )
+  );
+
+  updatePassword$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(settingsActions.UPDATE_PASSWORD),
+      switchMap((payload: any) => {
+        return this.settingsService.updatePassword(
+          payload.id,
+          payload.password
+        );
+      }),
+      map((payload: Settings) => {
+        this.snackBar.open("Password Updated", "Dismiss", {
+          duration: 5000,
+        });
+        return settingsActions.UpdatePasswordSuccess({ payload });
+      }),
+      catchError((error) => {
+        this.snackBar.open("Password Update Error", "Dismiss", {
+          duration: 10000,
+          panelClass: ["snackbar-error"],
+        });
+        return of(settingsActions.UpdatePasswordError(error));
       })
     )
   );

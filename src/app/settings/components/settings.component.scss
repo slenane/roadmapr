@@ -15,6 +15,27 @@
       grid-template-columns: 1fr;
     }
 
+    .update-details-container {
+      display: grid;
+      grid-template-columns: 1fr 20%;
+      gap: 1rem;
+      align-items: center;
+
+      .actions {
+        display: flex;
+        column-gap: 0.5rem;
+        justify-content: flex-end;
+        align-items: center;
+        margin-bottom: 1.34375em;
+      }
+
+      .update-details-button {
+        margin-bottom: 1.34375em;
+        padding: 0 3rem;
+        justify-self: center;
+      }
+    }
+
     .update-password-header {
       margin: 1rem 0;
 
@@ -26,11 +47,7 @@
     .actions {
       display: flex;
       column-gap: 0.5rem;
-      justify-content: end;
-    }
-
-    .delete-account-button {
-      background-color: red;
+      justify-content: flex-end;
     }
   }
 }

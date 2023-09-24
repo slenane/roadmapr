@@ -1,0 +1,85 @@
+<div class="username-update-container">
+  <form [formGroup]="usernameForm">
+    <mat-form-field appearance="outline">
+      <mat-label>{{ "FORMS.USERNAME" | translate }}</mat-label>
+      <input
+        matInput
+        formControlName="usernameCtrl"
+        [errorStateMatcher]="matcher"
+      />
+      <mat-spinner
+        matSuffix
+        class="validation-spinner"
+        [diameter]="20"
+        *ngIf="usernameForm.controls.usernameCtrl?.pending"
+      ></mat-spinner>
+
+      <span
+        matSuffix
+        class="material-symbols-outlined error"
+        *ngIf="
+          isEditing &&
+          !usernameForm.controls.usernameCtrl?.pristine &&
+          !usernameForm.controls.usernameCtrl?.pending &&
+          usernameForm.controls.usernameCtrl?.hasError('notUnique')
+        "
+      >
+        cancel
+      </span>
+
+      <mat-error
+        *ngIf="
+          isEditing &&
+          !usernameForm.controls.usernameCtrl?.pristine &&
+          !usernameForm.controls.usernameCtrl?.pending &&
+          usernameForm.controls.usernameCtrl?.hasError('notUnique')
+        "
+        >{{ "FORMS.ERROR.UNIQUE_USERNAME" | translate }}</mat-error
+      >
+
+      <span
+        matSuffix
+        class="material-symbols-outlined success"
+        *ngIf="
+          isEditing &&
+          !usernameForm.controls.usernameCtrl?.pristine &&
+          !usernameForm.controls.usernameCtrl?.pending &&
+          !usernameForm.controls.usernameCtrl?.errors
+        "
+      >
+        check_circle
+      </span>
+
+      <mat-error
+        *ngIf="usernameForm.controls.usernameCtrl?.hasError('required')"
+        >{{ "FORMS.REQUIRED.USERNAME" | translate }}</mat-error
+      >
+    </mat-form-field>
+  </form>
+
+  <div mat-dialog-actions class="actions" *ngIf="isEditing">
+    <button
+      mat-raised-button
+      color="primary"
+      [disabled]="
+        usernameForm.controls.usernameCtrl.pending ||
+        usernameForm.controls.usernameCtrl.errors ||
+        usernameForm.controls.usernameCtrl.value === initialUsername
+      "
+      (click)="onSave()"
+      >{{ "ACTIONS.SAVE" | translate }}</button
+    >
+    <button mat-raised-button color="default" (click)="onCancel()">{{
+      "ACTIONS.CANCEL" | translate
+    }}</button>
+  </div>
+
+  <button
+    mat-raised-button
+    color="primary"
+    class="update-details-button"
+    *ngIf="!isEditing"
+    (click)="toggleUsernameUpdate.emit()"
+    >{{ "ACTIONS.UPDATE" | translate }}</button
+  >
+</div>

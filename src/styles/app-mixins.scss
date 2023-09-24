@@ -16,6 +16,14 @@
       &.emphasis {
         color: $light-theme--font--tertiary !important;
       }
+
+      &.error {
+        color: $light-theme--error--mat-error-color !important;
+      }
+
+      &.success {
+        color: $light-theme--primary--mat-primary-color !important;
+      }
     }
 
     .drag-group {
@@ -99,12 +107,25 @@
       &.emphasis {
         color: $dark-theme--font--tertiary !important;
       }
+
+      &.error {
+        color: $dark-theme--error--mat-error-color !important;
+      }
+
+      &.success {
+        color: $dark-theme--primary--mat-primary-color !important;
+      }
     }
 
     .drag-group {
       .no-item-message {
         background: $dark-theme--drag-group--background;
       }
+    }
+
+    .delete-account-button:not(.mat-button-disabled) {
+      background-color: $dark-theme--error--background;
+      color: $dark-theme--error--font;
     }
   }
 }

@@ -2,16 +2,15 @@ import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { Subject } from "rxjs";
 import { Settings } from "../store/settings.models";
 import { SettingsStoreService } from "../services/settings-store.service";
-import { Profile } from "src/app/profile/store/profile.models";
 import { filter, takeUntil } from "rxjs/operators";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { ThemeService } from "src/app/core/services/theme.service";
 import { THEME_OPTIONS } from "src/app/core/constants/theme.constants";
 import { LANGUAGE_OPTIONS } from "../constants/settings.constants";
 import { TranslateService } from "@ngx-translate/core";
-import { ProfileStoreService } from "src/app/profile/services/profile-store.service";
 import { SettingsDeleteAccountComponent } from "./settings-delete-account/settings-delete-account.component";
 import { MatDialog } from "@angular/material/dialog";
+import { ValidatorsService } from "src/app/shared/services/validators.service";
 
 @Component({
   selector: "app-settings",
@@ -20,25 +19,19 @@ import { MatDialog } from "@angular/material/dialog";
 })
 export class SettingsComponent implements OnInit {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
-  public filterType = "date";
-  public userId: string;
   public settings: Settings;
+
   public languageOptions = LANGUAGE_OPTIONS;
   public themeOptions = THEME_OPTIONS;
-  public isEditingDetails: boolean = false;
+
+  public isEditingName: boolean = false;
+  public isEditingUsername: boolean = false;
+  public isEditingEmail: boolean = false;
   public isEditingPassword: boolean = false;
 
-  public settingsForm = new FormGroup({
+  public nameForm = new FormGroup({
     nameCtrl: new FormControl(
-      { value: "", disabled: !this.isEditingDetails },
-      Validators.required
-    ),
-    usernameCtrl: new FormControl(
-      { value: "", disabled: !this.isEditingDetails },
-      Validators.required
-    ),
-    emailCtrl: new FormControl(
-      { value: "", disabled: !this.isEditingDetails },
+      { value: "", disabled: !this.isEditingName },
       Validators.required
     ),
   });
@@ -55,7 +48,6 @@ export class SettingsComponent implements OnInit {
   @ViewChild("newPasswordConfirm") newPasswordConfirmCtrl: ElementRef;
 
   constructor(
-    private profileStoreService: ProfileStoreService,
     private el: ElementRef,
     private settingsStoreService: SettingsStoreService,
     private themeService: ThemeService,
@@ -64,23 +56,15 @@ export class SettingsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.profileStoreService
-      .getProfile()
+    this.settingsStoreService
+      .getSettings()
       .pipe(
         filter((state) => state != null),
         takeUntil(this.ngUnsubscribe)
       )
-      .subscribe((user: Profile) => {
-        this.userId = user._id;
-
-        this.updateSettingsForm({
-          name: user.name,
-          username: user.username,
-          email: user.email,
-          theme: user.theme,
-          preferredLanguage: user.preferredLanguage,
-          notifications: user.notifications,
-        });
+      .subscribe((settings: Settings) => {
+        this.settings = settings;
+        this.updateForms();
       });
   }
 
@@ -89,40 +73,72 @@ export class SettingsComponent implements OnInit {
     this.ngUnsubscribe.complete();
   }
 
-  updateSettingsForm(settings: any) {
-    if (settings) {
-      this.settingsForm.patchValue({
-        nameCtrl: settings.name,
-        usernameCtrl: settings.username,
-        emailCtrl: settings.email,
-      });
+  updateForms() {
+    this.nameForm.patchValue({
+      nameCtrl: this.settings.name,
+    });
 
-      this.appSettingsForm.patchValue({
-        themeCtrl: settings.theme,
-        languageCtrl: settings.preferredLanguage,
-        notificationsCtrl: settings.notifications,
-      });
+    this.appSettingsForm.patchValue({
+      themeCtrl: this.settings.theme,
+      languageCtrl: this.settings.preferredLanguage,
+      notificationsCtrl: this.settings.notifications,
+    });
+  }
+
+  toggleNameUpdate(): void {
+    this.isEditingName = !this.isEditingName;
+    if (this.isEditingName) {
+      this.nameForm.controls.nameCtrl.enable();
+    } else {
+      this.nameForm.controls.nameCtrl.disable();
     }
   }
 
-  updateTheme(value: any) {
-    this.themeService.updateTheme(value);
-    this.settingsStoreService.updateSettings(this.userId, {
-      theme: this.appSettingsForm.value.themeCtrl,
-    });
+  toggleUsernameUpdate() {
+    this.isEditingUsername = !this.isEditingUsername;
   }
 
-  updateLanguage(value: any) {
-    this.translateService.use(value);
-    this.settingsStoreService.updateSettings(this.userId, {
-      preferredLanguage: this.appSettingsForm.value.languageCtrl,
-    });
+  toggleEmailUpdate() {
+    this.isEditingEmail = !this.isEditingEmail;
   }
 
-  updateNotifications(value: any) {
-    this.settingsStoreService.updateSettings(this.userId, {
-      notifications: this.appSettingsForm.value.notificationsCtrl,
-    });
+  togglePasswordUpdate() {
+    this.isEditingPassword = !this.isEditingPassword;
+  }
+
+  onSaveName(): void {
+    if (
+      this.nameForm.valid &&
+      this.nameForm.value.nameCtrl !== this.settings.name
+    ) {
+      this.settingsStoreService.updateSettings(this.settings.userId, {
+        name: this.nameForm.value.nameCtrl,
+      });
+      this.toggleNameUpdate();
+    }
+  }
+
+  onSaveUsername(username: string): void {
+    if (username !== this.settings.username) {
+      this.settingsStoreService.updateSettings(this.settings.userId, {
+        username,
+      });
+      this.toggleUsernameUpdate();
+    }
+  }
+
+  onSaveEmail(email: string): void {
+    if (email !== this.settings.email) {
+      this.settingsStoreService.updateSettings(this.settings.userId, {
+        email,
+      });
+      this.toggleEmailUpdate();
+    }
+  }
+
+  onSavePassword(password: string): void {
+    this.settingsStoreService.updatePassword(this.settings.userId, password);
+    this.togglePasswordUpdate();
   }
 
   deleteAccount(): void {
@@ -136,48 +152,23 @@ export class SettingsComponent implements OnInit {
     });
   }
 
-  focusError() {
-    for (const key of Object.keys(this.settingsForm.controls)) {
-      if (this.settingsForm.get(key) && this.settingsForm.get(key)?.invalid) {
-        const invalidField = this.el.nativeElement.querySelector(
-          `[formControlName=${key}]`
-        );
-        invalidField.focus();
-        return;
-      }
-    }
+  updateTheme(value: any) {
+    this.themeService.updateTheme(value);
+    this.settingsStoreService.updateSettings(this.settings.userId, {
+      theme: this.appSettingsForm.value.themeCtrl,
+    });
   }
 
-  onEditDetailsClick(): void {
-    this.isEditingDetails = !this.isEditingDetails;
-    if (this.isEditingDetails) {
-      this.settingsForm.controls.nameCtrl.enable();
-      this.settingsForm.controls.usernameCtrl.enable();
-      this.settingsForm.controls.emailCtrl.enable();
-    } else {
-      this.settingsForm.controls.nameCtrl.disable();
-      this.settingsForm.controls.usernameCtrl.disable();
-      this.settingsForm.controls.emailCtrl.disable();
-    }
+  updateLanguage(value: any) {
+    this.translateService.use(value);
+    this.settingsStoreService.updateSettings(this.settings.userId, {
+      preferredLanguage: this.appSettingsForm.value.languageCtrl,
+    });
   }
 
-  onSaveClick(): void {
-    if (this.settingsForm.status === "VALID") {
-      this.settingsStoreService.updateSettings(this.userId, {
-        name: this.settingsForm.value.nameCtrl,
-        username: this.settingsForm.value.usernameCtrl,
-        email: this.settingsForm.value.emailCtrl,
-      });
-    } else {
-      this.focusError();
-    }
-  }
-
-  showPasswordUpdate() {
-    this.isEditingPassword = true;
-  }
-
-  hidePasswordUpdate() {
-    this.isEditingPassword = false;
+  updateNotifications(value: any) {
+    this.settingsStoreService.updateSettings(this.settings.userId, {
+      notifications: this.appSettingsForm.value.notificationsCtrl,
+    });
   }
 }

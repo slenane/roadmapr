@@ -12,10 +12,9 @@ import { filter } from "rxjs/operators";
 export class SettingsStoreService {
   constructor(private store: Store<Settings>) {}
 
-  getSettings(id: string): Observable<any> {
+  getSettings(): Observable<any> {
     this.store.dispatch({
       type: settingsActions.GET_SETTINGS,
-      id,
     });
 
     return this.store
@@ -28,6 +27,14 @@ export class SettingsStoreService {
       type: settingsActions.UPDATE_SETTINGS,
       id,
       data,
+    });
+  }
+
+  updatePassword(id: string, password: any) {
+    this.store.dispatch({
+      type: settingsActions.UPDATE_PASSWORD,
+      id,
+      password,
     });
   }
 }
