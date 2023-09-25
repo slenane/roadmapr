@@ -6,4 +6,8 @@ export interface Settings {
   username: string;
   email: string;
   name: string;
+  github: {
+    id: string;
+    username: string;
+  };
 }

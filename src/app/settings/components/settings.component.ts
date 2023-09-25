@@ -172,4 +172,15 @@ export class SettingsComponent implements OnInit {
       notifications: this.appSettingsForm.value.notificationsCtrl,
     });
   }
+
+  linkGithubAccount(): void {}
+
+  removeGithubAccount(): void {
+    this.settingsStoreService.updateSettings(this.settings.userId, {
+      github: {
+        id: "",
+        username: "",
+      },
+    });
+  }
 }
