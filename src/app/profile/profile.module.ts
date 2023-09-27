@@ -14,6 +14,7 @@ import * as fromProfile from "./store/profile.reducer";
 import { ProfileEffects } from "./store/profile.effects";
 import { ProfileEditComponent } from "./components/profile-edit/profile-edit.component";
 import { TranslateModule } from "@ngx-translate/core";
+import { ProfileRoutingModule } from "./profile-routing.module";
 
 @NgModule({
   declarations: [ProfileComponent, ProfileCardComponent, ProfileEditComponent],
@@ -28,6 +29,7 @@ import { TranslateModule } from "@ngx-translate/core";
     StoreModule.forFeature("profile", fromProfile.reducer),
     EffectsModule.forFeature([ProfileEffects]),
     TranslateModule.forChild(),
+    ProfileRoutingModule,
   ],
   providers: [ProfileStoreService, ProfileService],
 })

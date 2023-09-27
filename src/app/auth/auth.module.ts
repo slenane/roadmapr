@@ -18,6 +18,7 @@ import { RedirectComponent } from "./components/redirect/redirect.component";
 // import { OAuthService } from "./services/o-auth.service";
 import { ExtUrlResolverService } from "./services/ext-url-resolver.service";
 import { CoreModule } from "../core/core.module";
+import { AuthRoutingModule } from "./auth-routing.module";
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { CoreModule } from "../core/core.module";
     StoreModule.forFeature("auth", fromAuth.reducer),
     EffectsModule.forFeature([AuthEffects]),
     TranslateModule.forChild(),
+    AuthRoutingModule,
   ],
   providers: [
     ExtUrlResolverService,

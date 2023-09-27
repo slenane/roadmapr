@@ -15,6 +15,7 @@ import { EmploymentItemComponent } from "./components/employment-item/employment
 import { EmploymentUpdateComponent } from "./components/employment-update/employment-update.component";
 import { EmploymentItemDetailsComponent } from "./components/employment-item/employment-item-details/employment-item-details.component";
 import { TranslateModule } from "@ngx-translate/core";
+import { EmploymentRoutingModule } from "./employment-routing.module";
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { TranslateModule } from "@ngx-translate/core";
     StoreModule.forFeature("employment", fromEmployment.reducer),
     EffectsModule.forFeature([EmploymentEffects]),
     TranslateModule.forChild(),
+    EmploymentRoutingModule,
   ],
   providers: [EmploymentService, EmploymentStoreService],
 })

@@ -15,6 +15,7 @@ import { ProjectComponent } from "./components/project/project.component";
 import { ProjectDetailsComponent } from "./components/project/project-details/project-details.component";
 import { ProjectsUpdateComponent } from "./components/projects-update/projects-update.component";
 import { TranslateModule } from "@ngx-translate/core";
+import { ProjectsRoutingModule } from "./projects-routing.module";
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { TranslateModule } from "@ngx-translate/core";
     StoreModule.forFeature("projects", fromProject.reducer),
     EffectsModule.forFeature([ProjectEffects]),
     TranslateModule.forChild(),
+    ProjectsRoutingModule,
   ],
   providers: [ProjectsService, ProjectsStoreService],
 })
