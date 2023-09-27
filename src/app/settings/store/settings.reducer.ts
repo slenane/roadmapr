@@ -14,6 +14,10 @@ const initialState: Settings = {
   email: "",
   username: "",
   name: "",
+  github: {
+    id: "",
+    username: "",
+  },
 };
 
 const SettingsReducer = createReducer(

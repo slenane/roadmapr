@@ -183,12 +183,16 @@
     "HINT": {
       "NEW_PASSWORD": "Passwords must be at least 6 characters long, contains at least 1 number and 1 special character (!@#$%^&*)"
     },
+    "REMOVE": {
+      "GITHUB": "Remove GitHub Account"
+    },
     "UPDATE": {
       "EMAIL": "Update Email",
       "FULL_NAME": "Update Full Name",
       "PASSWORD": "Update Password",
       "STACK": "Update Stack",
-      "USERNAME": "Update Username"
+      "USERNAME": "Update Username",
+      "GITHUB": "Link GitHub Account"
     }
   },
   "LANDING": {},
@@ -253,13 +257,19 @@
   },
   "SETTINGS": {
     "ACCOUNT": "Account Settings",
-    "APP": "App Settings",
     "DELETE": {
       "T": "Delete Account",
       "MESSAGE": "Are you sure you want to delete your account? This action cannot be undone",
       "INPUT": "Please type <b>confirm</b> to continue",
       "ERROR": "Input does not match pattern, please type 'confirm' to delete account",
       "CONFIRM": "confirm"
+    },
+    "APP": "App Settings",
+    "GITHUB": {
+      "T": "GitHub",
+      "ACCOUNT": "GitHub Account: ",
+      "MESSAGE": "View up to date information from GitHub on your roadmap",
+      "LINK_MESSAGE": "Link your GitHub account to display up to date information from GitHub on your roadmap"
     }
   }
 }

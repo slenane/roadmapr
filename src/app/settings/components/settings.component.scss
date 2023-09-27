@@ -9,6 +9,12 @@
     gap: 1rem;
     margin: 1rem;
 
+    .card-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
     .form-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -35,11 +41,22 @@
       }
     }
 
-    .update-password-header {
+    .update-details-header {
       margin: 1rem 0;
 
-      .update-password-text {
+      .update-details-text {
         margin-right: 1rem;
+      }
+    }
+
+    .github-header {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.5rem;
+      align-content: center;
+
+      .github-icon {
+        height: 2rem;
       }
     }
 

@@ -10,7 +10,8 @@ import { LANGUAGE_OPTIONS } from "../constants/settings.constants";
 import { TranslateService } from "@ngx-translate/core";
 import { SettingsDeleteAccountComponent } from "./settings-delete-account/settings-delete-account.component";
 import { MatDialog } from "@angular/material/dialog";
-import { ValidatorsService } from "src/app/shared/services/validators.service";
+import { AuthService } from "src/app/auth/services/auth.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-settings",
@@ -28,6 +29,8 @@ export class SettingsComponent implements OnInit {
   public isEditingUsername: boolean = false;
   public isEditingEmail: boolean = false;
   public isEditingPassword: boolean = false;
+
+  public githubAuthUrl: string;
 
   public nameForm = new FormGroup({
     nameCtrl: new FormControl(
@@ -52,7 +55,9 @@ export class SettingsComponent implements OnInit {
     private settingsStoreService: SettingsStoreService,
     private themeService: ThemeService,
     private translateService: TranslateService,
-    public dialog: MatDialog
+    private authService: AuthService,
+    public dialog: MatDialog,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -66,6 +71,11 @@ export class SettingsComponent implements OnInit {
         this.settings = settings;
         this.updateForms();
       });
+
+    this.authService.getGithubAuthPage().subscribe({
+      next: (data: any) => (this.githubAuthUrl = data["authUrl"]),
+      error: (err: any) => console.log(err),
+    });
   }
 
   ngOnDestroy() {
@@ -170,6 +180,23 @@ export class SettingsComponent implements OnInit {
   updateNotifications(value: any) {
     this.settingsStoreService.updateSettings(this.settings.userId, {
       notifications: this.appSettingsForm.value.notificationsCtrl,
+    });
+  }
+
+  // linkGithubAccount(): void {
+  //   if (this.githubAuthUrl) {
+  //     this.router.navigate(["/github-auth"], {
+  //       queryParams: { url: this.githubAuthUrl, userId: this.settings.userId },
+  //     });
+  //   }
+  // }
+
+  removeGithubAccount(): void {
+    this.settingsStoreService.updateSettings(this.settings.userId, {
+      github: {
+        id: "",
+        username: "",
+      },
     });
   }
 }
