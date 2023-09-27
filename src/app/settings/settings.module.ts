@@ -12,7 +12,8 @@ import { EffectsModule } from "@ngrx/effects";
 import * as fromSettings from "./store/settings.reducer";
 import { SettingsEffects } from "./store/settings.effects";
 import { TranslateModule } from "@ngx-translate/core";
-import { SettingsDeleteAccountComponent } from './components/settings-delete-account/settings-delete-account.component';
+import { SettingsDeleteAccountComponent } from "./components/settings-delete-account/settings-delete-account.component";
+import { SettingsRoutingModule } from "./settings-routing.module";
 
 @NgModule({
   declarations: [SettingsComponent, SettingsDeleteAccountComponent],
@@ -27,6 +28,7 @@ import { SettingsDeleteAccountComponent } from './components/settings-delete-acc
     StoreModule.forFeature("settings", fromSettings.reducer),
     EffectsModule.forFeature([SettingsEffects]),
     TranslateModule.forChild(),
+    SettingsRoutingModule,
   ],
   providers: [SettingsStoreService, SettingsService],
 })

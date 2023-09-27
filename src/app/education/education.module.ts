@@ -15,6 +15,7 @@ import { EducationEffects } from "./store/education.effects";
 import { EducationStoreService } from "./services/education-store.service";
 import { EducationItemDetailsComponent } from "./components/education-item/education-item-details/education-item-details.component";
 import { TranslateModule } from "@ngx-translate/core";
+import { EducationRoutingModule } from "./education-routing.module";
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { TranslateModule } from "@ngx-translate/core";
     StoreModule.forFeature("education", fromEducation.reducer),
     EffectsModule.forFeature([EducationEffects]),
     TranslateModule.forChild(),
+    EducationRoutingModule,
   ],
   providers: [EducationService, EducationStoreService],
 })

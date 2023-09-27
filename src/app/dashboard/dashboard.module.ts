@@ -19,6 +19,7 @@ import { DashboardStackRadarComponent } from "./components/dashboard-stack-radar
 import { DashboardEducationOverviewComponent } from "./components/dashboard-education-overview/dashboard-education-overview.component";
 import { DashboardProjectsOverviewComponent } from "./components/dashboard-projects-overview/dashboard-projects-overview.component";
 import { TranslateModule } from "@ngx-translate/core";
+import { DashboardRoutingModule } from "./dashboard-routing.module";
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { TranslateModule } from "@ngx-translate/core";
     StoreModule.forFeature("dashboard", fromDashboard.reducer),
     EffectsModule.forFeature([DashboardEffects]),
     TranslateModule.forChild(),
+    DashboardRoutingModule,
   ],
   providers: [DashboardStoreService, DashboardService],
 })
