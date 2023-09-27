@@ -184,6 +184,7 @@
             <button
               mat-raised-button
               color="primary"
+              [disabled]="!githubAuthUrl"
               (click)="linkGithubAccount()"
               >{{ "FORMS.UPDATE.GITHUB" | translate }}</button
             >

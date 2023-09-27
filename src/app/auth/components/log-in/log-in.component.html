@@ -13,7 +13,12 @@
   </div>
 
   <div class="login-options">
-    <button mat-raised-button class="github-login" (click)="loginWithGithub()">
+    <button
+      mat-raised-button
+      class="github-login"
+      [disabled]="!authUrl"
+      (click)="loginWithGithub()"
+    >
       <img
         class="github-icon"
         src="/assets/images/stack/github-original.svg"
