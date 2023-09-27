@@ -183,13 +183,13 @@ export class SettingsComponent implements OnInit {
     });
   }
 
-  // linkGithubAccount(): void {
-  //   if (this.githubAuthUrl) {
-  //     this.router.navigate(["/github-auth"], {
-  //       queryParams: { url: this.githubAuthUrl, userId: this.settings.userId },
-  //     });
-  //   }
-  // }
+  linkGithubAccount(): void {
+    //   if (this.githubAuthUrl) {
+    //     this.router.navigate(["/github-auth"], {
+    //       queryParams: { url: this.githubAuthUrl, userId: this.settings.userId },
+    //     });
+    //   }
+  }
 
   removeGithubAccount(): void {
     this.settingsStoreService.updateSettings(this.settings.userId, {

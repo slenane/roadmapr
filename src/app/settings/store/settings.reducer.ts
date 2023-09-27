@@ -30,9 +30,7 @@ const SettingsReducer = createReducer(
   }),
   on(SettingsActions.UpdatePasswordSuccess, (state, { payload }) => {
     return { ...state, ...payload };
-  }),
-  on(SettingsActions.DeleteAccountSuccess, () => initialState),
-  on(SettingsActions.ResetState, () => initialState)
+  })
 );
 
 export const reducer = (state: Settings | undefined, action: Action) => {

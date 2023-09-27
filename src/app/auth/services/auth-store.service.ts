@@ -28,4 +28,10 @@ export class AuthStoreService {
       type: authActions.GITHUB_LOGIN,
     });
   }
+
+  logout() {
+    this.store.dispatch({
+      type: authActions.LOGOUT,
+    });
+  }
 }

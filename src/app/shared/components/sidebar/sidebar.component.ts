@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 import { Observable } from "rxjs";
-import { AuthService } from "src/app/auth/services/auth.service";
+import { AuthStoreService } from "src/app/auth/services/auth-store.service";
 import { ThemeService } from "src/app/core/services/theme.service";
 import { SIDEBAR_OPTIONS } from "src/app/shared/constants/sidebar.constants";
 
@@ -19,7 +19,7 @@ export class SidebarComponent implements OnInit {
   @Output() onCollapseNavbar: EventEmitter<boolean> = new EventEmitter();
 
   constructor(
-    private authService: AuthService,
+    private authStoreService: AuthStoreService,
     private themeService: ThemeService
   ) {
     this.theme$ = this.themeService.selectedTheme;
@@ -39,6 +39,6 @@ export class SidebarComponent implements OnInit {
   }
 
   logout(): void {
-    this.authService.logout();
+    this.authStoreService.logout();
   }
 }
