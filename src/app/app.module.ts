@@ -13,7 +13,7 @@ import { MaterialModule } from "./material/material.module";
 import { SharedModule } from "./shared/shared.module";
 import { AuthGuardService } from "./auth-guard.service";
 import { EffectsModule } from "@ngrx/effects";
-import { StoreModule } from "@ngrx/store";
+import { ActionReducer, MetaReducer, StoreModule } from "@ngrx/store";
 import { CoreModule } from "./core/core.module";
 import { EducationModule } from "./education/education.module";
 import { ProfileModule } from "./profile/profile.module";
@@ -26,6 +26,19 @@ import { NgChartsModule } from "ng2-charts";
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import { AuthModule } from "./auth/auth.module";
+import { LOGOUT } from "./auth/store/auth.actions";
+import { DELETE_ACCOUNT } from "./settings/store/settings.actions";
+
+export function clearState(reducer: ActionReducer<any>): ActionReducer<any> {
+  return function (state, action) {
+    if (action.type === LOGOUT || action.type === DELETE_ACCOUNT) {
+      state = {};
+    }
+    return reducer(state, action);
+  };
+}
+
+export const metaReducers: MetaReducer<any>[] = [clearState];
 
 @NgModule({
   declarations: [AppComponent],
@@ -33,6 +46,7 @@ import { AuthModule } from "./auth/auth.module";
     StoreModule.forRoot(
       {},
       {
+        metaReducers,
         runtimeChecks: {
           strictStateImmutability: true,
           strictActionImmutability: true,

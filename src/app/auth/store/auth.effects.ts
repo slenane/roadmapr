@@ -40,8 +40,7 @@ export class AuthEffects {
         this.translateService.use(payload.user.preferredLanguage);
         this.router.navigateByUrl("/dashboard");
         return authActions.LoginSuccess(payload);
-      }),
-      catchError((error) => of(authActions.LoginError(error)))
+      })
     )
   );
 
@@ -56,6 +55,20 @@ export class AuthEffects {
         return authActions.LoginSuccess({ payload });
       }),
       catchError((error) => of(authActions.LoginError(error)))
+    )
+  );
+
+  logout$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(authActions.LOGOUT),
+      map(() => this.authService.logout()),
+      map(() => {
+        this.router.navigateByUrl("/login");
+        return authActions.LogoutSuccess();
+      }),
+      catchError((error) => {
+        return of(authActions.LogoutError(error));
+      })
     )
   );
 }

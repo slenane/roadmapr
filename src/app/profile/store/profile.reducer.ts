@@ -43,8 +43,7 @@ const profileReducer = createReducer(
   initialState,
   on(profileActions.GetProfileSuccess, (state, { payload }) => {
     return { ...state, ...payload };
-  }),
-  on(profileActions.ResetState, () => initialState)
+  })
 );
 
 export const reducer = (state: Profile | undefined, action: Action) => {

@@ -94,19 +94,7 @@ export class AuthService {
   public logout(): void {
     this.token = "";
     this.authenticated.next(false);
-    this.resetStoreStates();
     this.clearLocalStorage();
-    this.router.navigateByUrl("/login");
-  }
-
-  private resetStoreStates() {
-    this.store.dispatch(AuthActions.ResetState());
-    this.store.dispatch(DashboardActions.ResetState());
-    this.store.dispatch(EducationActions.ResetState());
-    this.store.dispatch(EmploymentActions.ResetState());
-    this.store.dispatch(ProfileActions.ResetState());
-    this.store.dispatch(ProjectsActions.ResetState());
-    this.store.dispatch(SettingsActions.ResetState());
   }
 
   private clearLocalStorage() {
