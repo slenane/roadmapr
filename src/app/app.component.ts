@@ -3,6 +3,7 @@ import { AuthService } from "./auth/services/auth.service";
 import { Observable } from "rxjs";
 import { ThemeService } from "./core/services/theme.service";
 import { Location } from "@angular/common";
+import { TranslateService } from "@ngx-translate/core";
 
 @Component({
   selector: "app-root",
@@ -19,7 +20,8 @@ export class AppComponent implements OnInit {
   constructor(
     public authService: AuthService,
     private themeService: ThemeService,
-    private location: Location
+    private location: Location,
+    private translateService: TranslateService
   ) {
     this.authenticated$ = this.authService.isAuthenticated;
     this.theme$ = this.themeService.selectedTheme;
@@ -27,15 +29,12 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.isRedirecting = this.location.path() === "/redirect" ? true : false;
-
-    this.theme$.subscribe((theme: string) => {
-      this.currentTheme = theme;
-    });
+    this.theme$.subscribe((theme: string) => (this.currentTheme = theme));
 
     const theme = window.localStorage.getItem("selected-theme");
-    if (theme) {
-      this.themeService.updateTheme(theme);
-    }
+    if (theme) this.themeService.updateTheme(theme);
+    const preferredLanguage = window.localStorage.getItem("preferred-language");
+    if (preferredLanguage) this.translateService.use(preferredLanguage);
   }
 
   collapseNavbar(value: any) {
@@ -46,6 +45,13 @@ export class AppComponent implements OnInit {
   unloadHandler(event: Event) {
     if (this.currentTheme) {
       window.localStorage.setItem("selected-theme", this.currentTheme);
+    }
+
+    if (this.translateService.currentLang) {
+      window.localStorage.setItem(
+        "preferred-language",
+        this.translateService.currentLang
+      );
     }
   }
 }
