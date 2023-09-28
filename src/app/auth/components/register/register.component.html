@@ -12,12 +12,8 @@
     />
   </div>
 
-  <div class="registration-options">
-    <button
-      mat-raised-button
-      class="github-registration"
-      (click)="registerWithGithub()"
-    >
+  <div class="oauth-options">
+    <button mat-raised-button class="github" (click)="registerWithGithub()">
       <img
         class="github-icon"
         src="/assets/images/stack/github-original.svg"
@@ -27,21 +23,13 @@
     </button>
   </div>
 
-  <h1>{{ "AUTH.REGISTER.T" | translate }}</h1>
+  <div class="divider">
+    <span class="line"></span>
+    <span>OR</span>
+    <span class="line"></span>
+  </div>
+
   <form (submit)="register()">
-    <div class="form-group">
-      <mat-form-field appearance="outline">
-        <mat-label for="name">{{ "FORMS.FULL_NAME" | translate }}</mat-label>
-        <input
-          matInput
-          type="text"
-          [placeholder]="'FORMS.PLACEHOLDER.FULL_NAME' | translate"
-          name="name"
-          [(ngModel)]="userDetails.name"
-          required
-        />
-      </mat-form-field>
-    </div>
     <div class="form-group">
       <mat-form-field appearance="outline">
         <mat-label for="username">{{ "FORMS.USERNAME" | translate }}</mat-label>
@@ -81,12 +69,12 @@
       </mat-form-field>
     </div>
 
-    <a href="/login">{{ "AUTH.REGISTER.ALREADY_REGISTERED" | translate }}</a>
-
     <div class="form-action">
       <button type="submit" mat-raised-button color="primary">{{
         "AUTH.REGISTER.T" | translate
       }}</button>
     </div>
+
+    <a href="/login">{{ "AUTH.REGISTER.ALREADY_REGISTERED" | translate }}</a>
   </form>
 </div>

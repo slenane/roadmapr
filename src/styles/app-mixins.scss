@@ -57,6 +57,25 @@
   }
 }
 
+@mixin light-theme--mixin--auth() {
+  .auth-container {
+    .oauth-options {
+      .github {
+        background-color: black;
+        color: white;
+      }
+    }
+
+    .divider {
+      color: $light-theme--font--sub-header;
+
+      .line {
+        border-bottom: 0.5px solid $light-theme--font--sub-header;
+      }
+    }
+  }
+}
+
 @mixin light-theme--mixin--user-profile() {
   .user-profile {
     .profile {
@@ -95,6 +114,10 @@
   body {
     background: $dark-theme--body--background;
     color: $dark-theme--font--primary;
+
+    a {
+      color: $dark-theme--font--primary;
+    }
 
     .auth-container {
       background: $dark-theme--body--background;
@@ -148,6 +171,25 @@
 
       .material-symbols-outlined {
         color: $dark-theme--font--tertiary !important;
+      }
+    }
+  }
+}
+
+@mixin dark-theme--mixin--auth() {
+  .auth-container {
+    .oauth-options {
+      .github {
+        background-color: white;
+        color: black;
+      }
+    }
+
+    .divider {
+      color: #c1c1c1;
+
+      .line {
+        border-bottom: 0.5px solid rgba(255, 255, 255, 0.3);
       }
     }
   }

@@ -5,13 +5,5 @@
   overflow: hidden;
   display: grid;
   grid-template-columns: 2fr 1fr;
-
-  &__1 {
-    text-align: center;
-  }
-
-  &__2 {
-    align-content: center;
-    height: 100%;
-  }
+  align-content: center;
 }
