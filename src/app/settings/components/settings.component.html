@@ -45,12 +45,12 @@
             >
           </div>
 
-          <app-update-username
+          <app-settings-update-username
             [username]="settings.username"
             [isEditing]="isEditingUsername"
             (toggleUsernameUpdate)="toggleUsernameUpdate()"
             (onSaveUsername)="onSaveUsername($event)"
-          ></app-update-username>
+          ></app-settings-update-username>
 
           <app-update-email
             [email]="settings.email"

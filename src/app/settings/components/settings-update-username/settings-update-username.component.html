@@ -1,0 +1,34 @@
+<div class="username-update-container">
+  <app-update-username
+    #usernameUpdate
+    [username]="username"
+    [isEditing]="isEditing"
+  ></app-update-username>
+
+  <div mat-dialog-actions class="actions" *ngIf="isEditing">
+    <button
+      mat-raised-button
+      color="primary"
+      [disabled]="
+        usernameUpdate.form.controls.usernameCtrl.pending ||
+        usernameUpdate.form.controls.usernameCtrl.errors ||
+        usernameUpdate.form.controls.usernameCtrl.value ===
+          usernameUpdate.initialUsername
+      "
+      (click)="onSave()"
+      >{{ "ACTIONS.SAVE" | translate }}</button
+    >
+    <button mat-raised-button color="default" (click)="onCancel()">{{
+      "ACTIONS.CANCEL" | translate
+    }}</button>
+  </div>
+
+  <button
+    mat-raised-button
+    color="primary"
+    class="update-details-button"
+    *ngIf="!isEditing"
+    (click)="toggleUsernameUpdate.emit()"
+    >{{ "ACTIONS.UPDATE" | translate }}</button
+  >
+</div>
