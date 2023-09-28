@@ -100,6 +100,7 @@ export class AuthService {
   private clearLocalStorage() {
     window.localStorage.removeItem("user-token");
     window.localStorage.removeItem("selected-theme");
+    window.localStorage.removeItem("preferred-language");
   }
 
   public getUser(): User | null {
