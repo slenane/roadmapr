@@ -13,17 +13,17 @@ const routes: Routes = [
   {
     path: "login",
     component: LandingComponent,
-    data: { title: "Login | roadmapr" },
+    title: "ROUTES.LOGIN",
   },
   {
     path: "register",
     component: LandingComponent,
-    data: { title: "Register | roadmapr" },
+    title: "ROUTES.REGISTER",
   },
   {
     path: "redirect",
     component: LandingComponent,
-    data: { title: "Redirecting... | roadmapr" },
+    title: "ROUTES.REDIRECT",
   },
   {
     path: "github-auth",

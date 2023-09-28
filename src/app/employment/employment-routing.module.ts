@@ -7,9 +7,7 @@ const routes: Routes = [
   {
     path: "",
     component: EmploymentComponent,
-    data: {
-      title: "Employment | roadmapr",
-    },
+    title: "ROUTES.EMPLOYMENT",
   },
 ];
 

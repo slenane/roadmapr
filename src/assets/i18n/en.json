@@ -6,6 +6,17 @@
       "DONE": "Done"
     }
   },
+  "ROUTES": {
+    "LOGIN": "roadmapr",
+    "REGISTER": "roadmapr",
+    "REDIRECT": "Redirecting... | roadmapr",
+    "ROADMAP": "Roadmap | roadmapr",
+    "EDUCATION": "Education | roadmapr",
+    "PROJECTS": "Projects | roadmapr",
+    "EMPLOYMENT": "Employment | roadmapr",
+    "PROFILE": "Profile | roadmapr",
+    "SETTINGS": "Settings | roadmapr"
+  },
   "ACTIONS": {
     "ADD": "Add",
     "CANCEL": "Cancel",

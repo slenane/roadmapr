@@ -7,9 +7,7 @@ const routes: Routes = [
   {
     path: "",
     component: SettingsComponent,
-    data: {
-      title: "Education | roadmapr",
-    },
+    title: "ROUTES.SETTINGS",
   },
 ];
 

@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
-import { AppRoutingModule } from "./app-routing.module";
+import { AppRoutingModule, CustomTitleStrategy } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -28,6 +28,7 @@ import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import { AuthModule } from "./auth/auth.module";
 import { LOGOUT } from "./auth/store/auth.actions";
 import { DELETE_ACCOUNT } from "./settings/store/settings.actions";
+import { TitleStrategy } from "@angular/router";
 
 export function clearState(reducer: ActionReducer<any>): ActionReducer<any> {
   return function (state, action) {
@@ -84,7 +85,10 @@ export const metaReducers: MetaReducer<any>[] = [clearState];
     SharedModule,
     NgChartsModule,
   ],
-  providers: [AuthGuardService],
+  providers: [
+    AuthGuardService,
+    { provide: TitleStrategy, useClass: CustomTitleStrategy },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

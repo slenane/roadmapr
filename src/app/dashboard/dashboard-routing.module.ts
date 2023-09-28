@@ -7,9 +7,7 @@ const routes: Routes = [
   {
     path: "",
     component: DashboardComponent,
-    data: {
-      title: "Roadmap | roadmapr",
-    },
+    title: "ROUTES.ROADMAP",
   },
 ];
 
