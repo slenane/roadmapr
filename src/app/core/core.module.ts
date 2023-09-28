@@ -7,7 +7,6 @@ import { SharedModule } from "../shared/shared.module";
 import { CommonModule } from "@angular/common";
 import { AuthStoreService } from "../auth/services/auth-store.service";
 import { HttpInterceptProviders } from "./services/http-interceptors";
-import { DropListService } from "./services/drop-list.service";
 
 @NgModule({
   declarations: [],
@@ -19,12 +18,6 @@ import { DropListService } from "./services/drop-list.service";
     MaterialModule,
     SharedModule,
   ],
-  providers: [
-    AuthStoreService,
-    UrlService,
-    ApiService,
-    DropListService,
-    HttpInterceptProviders,
-  ],
+  providers: [AuthStoreService, UrlService, ApiService, HttpInterceptProviders],
 })
 export class CoreModule {}

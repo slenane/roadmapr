@@ -1,7 +1,6 @@
 import { NgModule } from "@angular/core";
 import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { StackSelectorComponent } from "./components/stack-selector/stack-selector.component";
-// import { ChartComponent } from "./components/charts/chart.component";
 import { MaterialModule } from "../material/material.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
@@ -13,13 +12,12 @@ import { UpdateUsernameComponent } from "./components/forms/update-username/upda
 import { UpdateEmailComponent } from "./components/forms/update-email/update-email.component";
 import { RouterModule } from "@angular/router";
 import { CommonModule } from "@angular/common";
-// import { NgChartsModule } from "ng2-charts";
-// import { FileUploadComponent } from "./components/file-upload/file-upload.component";
+import { DropListService } from "./services/drop-list.service";
+import { ValidatorsService } from "./services/validators.service";
+import { MyErrorStateMatcher } from "./services/error-state-matcher.service";
 
 @NgModule({
   declarations: [
-    // ChartComponent,
-    // FileUploadComponent,
     SidebarComponent,
     StackSelectorComponent,
     DropListFiltersComponent,
@@ -29,8 +27,6 @@ import { CommonModule } from "@angular/common";
     UpdateEmailComponent,
   ],
   exports: [
-    // ChartComponent,
-    // FileUploadComponent,
     SidebarComponent,
     StackSelectorComponent,
     DropListFiltersComponent,
@@ -47,7 +43,7 @@ import { CommonModule } from "@angular/common";
     ReactiveFormsModule,
     HttpClientModule,
     TranslateModule.forChild(),
-    // NgChartsModule,
   ],
+  providers: [DropListService, ValidatorsService, MyErrorStateMatcher],
 })
 export class SharedModule {}

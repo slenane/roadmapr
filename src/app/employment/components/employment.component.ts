@@ -5,7 +5,7 @@ import { Employment } from "../store/employment.models";
 import { EmploymentStoreService } from "../services/employment-store.service";
 // import { EmploymentService } from "../services/employment.service";
 import { CdkDragDrop } from "@angular/cdk/drag-drop";
-import { DropListService } from "src/app/core/services/drop-list.service";
+import { DropListService } from "src/app/shared/services/drop-list.service";
 import {
   EMPLOYMENT_TYPE_CONFIG,
   STATUS,
