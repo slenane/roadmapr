@@ -10,7 +10,7 @@ import {
   EDUCATION_TYPE_CONFIG,
   STATUS,
 } from "../constants/education.constants";
-import { DropListService } from "src/app/core/services/drop-list.service";
+import { DropListService } from "src/app/shared/services/drop-list.service";
 
 @Component({
   selector: "app-education",

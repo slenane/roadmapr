@@ -6,7 +6,7 @@ import { Projects } from "../store/projects.models";
 import { ProjectsService } from "../services/projects.service";
 import { ProjectsStoreService } from "../services/projects-store.service";
 import { PROJECT_TYPE_CONFIG, STATUS } from "../constants/projects.constants";
-import { DropListService } from "src/app/core/services/drop-list.service";
+import { DropListService } from "src/app/shared/services/drop-list.service";
 
 @Component({
   selector: "app-projects",
