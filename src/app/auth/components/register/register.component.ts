@@ -3,6 +3,7 @@ import { AuthStoreService } from "src/app/auth/services/auth-store.service";
 import { AuthService } from "../../services/auth.service";
 import { Router } from "@angular/router";
 import { UpdateUsernameComponent } from "src/app/shared/components/forms/update-username/update-username.component";
+import { UpdateEmailComponent } from "src/app/shared/components/forms/update-email/update-email.component";
 
 @Component({
   selector: "app-register",
@@ -12,10 +13,12 @@ import { UpdateUsernameComponent } from "src/app/shared/components/forms/update-
 export class RegisterComponent implements OnInit {
   public authUrl: string;
   public username: string = "";
+  public email: string = "";
 
   @Input() theme: string;
 
   @ViewChild("usernameUpdate") usernameUpdate: UpdateUsernameComponent;
+  @ViewChild("emailUpdate") emailUpdate: UpdateEmailComponent;
 
   constructor(
     private authStoreService: AuthStoreService,
@@ -31,9 +34,10 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    if (this.usernameUpdate.form.valid) {
+    if (this.usernameUpdate.form.valid && this.emailUpdate.form.valid) {
       this.authStoreService.register({
         username: this.usernameUpdate.form.value.usernameCtrl,
+        email: this.emailUpdate.form.value.emailCtrl,
       });
     }
   }

@@ -35,17 +35,8 @@
       [username]="username"
     ></app-update-username>
 
-    <div class="form-group">
-      <mat-form-field appearance="outline">
-        <mat-label for="email">{{ "FORMS.EMAIL" | translate }}</mat-label>
-        <input
-          matInput
-          [placeholder]="'FORMS.PLACEHOLDER.EMAIL' | translate"
-          name="email"
-          required
-        />
-      </mat-form-field>
-    </div>
+    <app-update-email #emailUpdate [email]="email"></app-update-email>
+
     <div class="form-group">
       <mat-form-field appearance="outline">
         <mat-label for="password">{{ "FORMS.PASSWORD" | translate }}</mat-label>
@@ -64,7 +55,7 @@
         mat-raised-button
         color="primary"
         (click)="register()"
-        [disabled]="!usernameUpdate.form.valid"
+        [disabled]="!usernameUpdate.form.valid || !emailUpdate.form.valid"
         >{{ "AUTH.REGISTER.T" | translate }}</button
       >
     </div>
