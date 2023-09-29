@@ -1,0 +1,33 @@
+<div class="email-update-container">
+  <app-update-email
+    #emailUpdate
+    [email]="email"
+    [isEditing]="isEditing"
+  ></app-update-email>
+
+  <div mat-dialog-actions class="actions" *ngIf="isEditing">
+    <button
+      mat-raised-button
+      color="primary"
+      [disabled]="
+        emailUpdate.form.controls.emailCtrl.pending ||
+        emailUpdate.form.controls.emailCtrl.errors ||
+        emailUpdate.form.controls.emailCtrl.value === emailUpdate.initialEmail
+      "
+      (click)="onSave()"
+      >{{ "ACTIONS.SAVE" | translate }}</button
+    >
+    <button mat-raised-button color="default" (click)="onCancel()">{{
+      "ACTIONS.CANCEL" | translate
+    }}</button>
+  </div>
+
+  <button
+    mat-raised-button
+    color="primary"
+    class="update-details-button"
+    *ngIf="!isEditing"
+    (click)="toggleEmailUpdate.emit()"
+    >{{ "ACTIONS.UPDATE" | translate }}</button
+  >
+</div>

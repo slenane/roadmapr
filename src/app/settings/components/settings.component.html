@@ -52,12 +52,12 @@
             (onSaveUsername)="onSaveUsername($event)"
           ></app-settings-update-username>
 
-          <app-update-email
+          <app-settings-update-email
             [email]="settings.email"
             [isEditing]="isEditingEmail"
             (toggleEmailUpdate)="toggleEmailUpdate()"
             (onSaveEmail)="onSaveEmail($event)"
-          ></app-update-email>
+          ></app-settings-update-email>
 
           <div class="update-details-container">
             <div class="update-details-header">

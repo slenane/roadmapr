@@ -43,11 +43,6 @@ export class UpdateUsernameComponent implements OnInit, OnChanges {
     }
   }
 
-  toggleFormEnabled(enabled: boolean) {
-    if (enabled) this.form.controls.usernameCtrl.enable();
-    else this.form.controls.usernameCtrl.disable();
-  }
-
   updateForm(username: string) {
     if (!username) username = "";
 
@@ -60,5 +55,10 @@ export class UpdateUsernameComponent implements OnInit, OnChanges {
     ]);
 
     this.initialUsername = username;
+  }
+
+  toggleFormEnabled(enabled: boolean) {
+    if (enabled) this.form.controls.usernameCtrl.enable();
+    else this.form.controls.usernameCtrl.disable();
   }
 }
