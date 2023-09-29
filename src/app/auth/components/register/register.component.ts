@@ -4,6 +4,8 @@ import { AuthService } from "../../services/auth.service";
 import { Router } from "@angular/router";
 import { UpdateUsernameComponent } from "src/app/shared/components/forms/update-username/update-username.component";
 import { UpdateEmailComponent } from "src/app/shared/components/forms/update-email/update-email.component";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { validPasswordPattern } from "src/app/shared/constants/validators.constants";
 
 @Component({
   selector: "app-register",
@@ -11,9 +13,16 @@ import { UpdateEmailComponent } from "src/app/shared/components/forms/update-ema
   styleUrls: ["./register.component.scss"],
 })
 export class RegisterComponent implements OnInit {
+  public hidePassword: boolean = true;
   public authUrl: string;
   public username: string = "";
   public email: string = "";
+  public passwordForm = new FormGroup({
+    passwordCtrl: new FormControl("", [
+      Validators.required,
+      Validators.pattern(validPasswordPattern),
+    ]),
+  });
 
   @Input() theme: string;
 
@@ -34,10 +43,15 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    if (this.usernameUpdate.form.valid && this.emailUpdate.form.valid) {
+    if (
+      this.usernameUpdate.form.valid &&
+      this.emailUpdate.form.valid &&
+      this.passwordForm.valid
+    ) {
       this.authStoreService.register({
         username: this.usernameUpdate.form.value.usernameCtrl,
         email: this.emailUpdate.form.value.emailCtrl,
+        password: this.passwordForm.value.passwordCtrl,
       });
     }
   }

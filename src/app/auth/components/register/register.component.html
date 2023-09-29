@@ -37,25 +37,42 @@
 
     <app-update-email #emailUpdate [email]="email"></app-update-email>
 
-    <div class="form-group">
+    <form [formGroup]="passwordForm">
       <mat-form-field appearance="outline">
-        <mat-label for="password">{{ "FORMS.PASSWORD" | translate }}</mat-label>
+        <mat-label>{{ "FORMS.PASSWORD" | translate }}</mat-label>
         <input
+          #newPassword
           matInput
-          type="password"
-          [placeholder]="'FORMS.PLACEHOLDER.PASSWORD' | translate"
-          name="password"
-          required
+          [type]="hidePassword ? 'password' : 'text'"
+          formControlName="passwordCtrl"
         />
+        <mat-icon
+          matSuffix
+          class="hide-icon"
+          (click)="hidePassword = !hidePassword"
+          >{{ hidePassword ? "visibility_off" : "visibility" }}</mat-icon
+        >
+        <mat-error
+          *ngIf="passwordForm.controls.passwordCtrl.hasError('required')"
+          >{{ "FORMS.REQUIRED.NEW_PASSWORD" | translate }}</mat-error
+        >
+        <mat-error
+          *ngIf="passwordForm.controls.passwordCtrl.hasError('pattern')"
+          >{{ "FORMS.ERROR.NEW_PASSWORD" | translate }}</mat-error
+        >
       </mat-form-field>
-    </div>
+    </form>
 
     <div class="form-action">
       <button
         mat-raised-button
         color="primary"
         (click)="register()"
-        [disabled]="!usernameUpdate.form.valid || !emailUpdate.form.valid"
+        [disabled]="
+          !usernameUpdate.form.valid ||
+          !emailUpdate.form.valid ||
+          !passwordForm.valid
+        "
         >{{ "AUTH.REGISTER.T" | translate }}</button
       >
     </div>

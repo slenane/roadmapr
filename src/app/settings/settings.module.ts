@@ -14,12 +14,16 @@ import { SettingsEffects } from "./store/settings.effects";
 import { TranslateModule } from "@ngx-translate/core";
 import { SettingsDeleteAccountComponent } from "./components/settings-delete-account/settings-delete-account.component";
 import { SettingsRoutingModule } from "./settings-routing.module";
-import { SettingsUpdateUsernameComponent } from './components/settings-update-username/settings-update-username.component';
-import { SettingsUpdateEmailComponent } from './components/settings-update-email/settings-update-email.component';
-import { SettingsUpdatePasswordComponent } from './components/settings-update-password/settings-update-password.component';
+import { SettingsUpdateUsernameComponent } from "./components/settings-update-username/settings-update-username.component";
+import { SettingsUpdateEmailComponent } from "./components/settings-update-email/settings-update-email.component";
 
 @NgModule({
-  declarations: [SettingsComponent, SettingsDeleteAccountComponent, SettingsUpdateUsernameComponent, SettingsUpdateEmailComponent, SettingsUpdatePasswordComponent],
+  declarations: [
+    SettingsComponent,
+    SettingsDeleteAccountComponent,
+    SettingsUpdateUsernameComponent,
+    SettingsUpdateEmailComponent,
+  ],
   exports: [SettingsComponent],
   imports: [
     CommonModule,
