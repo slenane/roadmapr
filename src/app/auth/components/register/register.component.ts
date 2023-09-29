@@ -1,8 +1,8 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, ViewChild } from "@angular/core";
 import { AuthStoreService } from "src/app/auth/services/auth-store.service";
-import { TokenPayload } from "src/app/auth/store/auth.models";
 import { AuthService } from "../../services/auth.service";
 import { Router } from "@angular/router";
+import { UpdateUsernameComponent } from "src/app/shared/components/forms/update-username/update-username.component";
 
 @Component({
   selector: "app-register",
@@ -11,14 +11,11 @@ import { Router } from "@angular/router";
 })
 export class RegisterComponent implements OnInit {
   public authUrl: string;
-  userDetails: TokenPayload = {
-    email: "",
-    name: "",
-    password: "",
-    username: "",
-  };
+  public username: string = "";
 
   @Input() theme: string;
+
+  @ViewChild("usernameUpdate") usernameUpdate: UpdateUsernameComponent;
 
   constructor(
     private authStoreService: AuthStoreService,
@@ -34,7 +31,11 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    this.authStoreService.register(this.userDetails);
+    if (this.usernameUpdate.form.valid) {
+      this.authStoreService.register({
+        username: this.usernameUpdate.form.value.usernameCtrl,
+      });
+    }
   }
 
   registerWithGithub() {

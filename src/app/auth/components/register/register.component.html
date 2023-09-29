@@ -29,20 +29,12 @@
     <span class="line"></span>
   </div>
 
-  <form (submit)="register()">
-    <div class="form-group">
-      <mat-form-field appearance="outline">
-        <mat-label for="username">{{ "FORMS.USERNAME" | translate }}</mat-label>
-        <input
-          matInput
-          type="text"
-          [placeholder]="'FORMS.PLACEHOLDER.USERNAME' | translate"
-          name="username"
-          [(ngModel)]="userDetails.username"
-          required
-        />
-      </mat-form-field>
-    </div>
+  <div class="form-group">
+    <app-update-username
+      #usernameUpdate
+      [username]="username"
+    ></app-update-username>
+
     <div class="form-group">
       <mat-form-field appearance="outline">
         <mat-label for="email">{{ "FORMS.EMAIL" | translate }}</mat-label>
@@ -50,7 +42,6 @@
           matInput
           [placeholder]="'FORMS.PLACEHOLDER.EMAIL' | translate"
           name="email"
-          [(ngModel)]="userDetails.email"
           required
         />
       </mat-form-field>
@@ -63,18 +54,21 @@
           type="password"
           [placeholder]="'FORMS.PLACEHOLDER.PASSWORD' | translate"
           name="password"
-          [(ngModel)]="userDetails.password"
           required
         />
       </mat-form-field>
     </div>
 
     <div class="form-action">
-      <button type="submit" mat-raised-button color="primary">{{
-        "AUTH.REGISTER.T" | translate
-      }}</button>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="register()"
+        [disabled]="!usernameUpdate.form.valid"
+        >{{ "AUTH.REGISTER.T" | translate }}</button
+      >
     </div>
 
     <a href="/login">{{ "AUTH.REGISTER.ALREADY_REGISTERED" | translate }}</a>
-  </form>
+  </div>
 </div>
