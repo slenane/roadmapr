@@ -13,10 +13,20 @@
   </div>
 
   <div class="oauth-options">
-    <button mat-raised-button class="github" (click)="registerWithGithub()">
+    <button
+      mat-raised-button
+      class="github"
+      color="github"
+      [disabled]="!authUrl"
+      (click)="registerWithGithub()"
+    >
       <img
         class="github-icon"
-        src="/assets/images/stack/github-original.svg"
+        [src]="
+          theme === 'dark'
+            ? '/assets/images/stack/github-original.svg'
+            : '/assets/images/stack/github-alternate.svg'
+        "
         alt="Github Icon"
       />
       <span>{{ "AUTH.O_AUTH.GITHUB_REGISTRATION" | translate }}</span>

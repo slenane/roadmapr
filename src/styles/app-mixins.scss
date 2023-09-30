@@ -60,9 +60,14 @@
 @mixin light-theme--mixin--auth() {
   .auth-container {
     .oauth-options {
-      .github {
-        background-color: black;
+      .mat-github {
+        background-color: #171515;
         color: white;
+
+        &.mat-button-disabled {
+          background-color: rgba(0, 0, 0, 0.12);
+          color: rgba(0, 0, 0, 0.26);
+        }
       }
     }
 
@@ -179,9 +184,14 @@
 @mixin dark-theme--mixin--auth() {
   .auth-container {
     .oauth-options {
-      .github {
+      .mat-github {
         background-color: white;
-        color: black;
+        color: #171515;
+
+        &.mat-button-disabled {
+          background-color: #595959;
+          color: #ffffff4d;
+        }
       }
     }
 

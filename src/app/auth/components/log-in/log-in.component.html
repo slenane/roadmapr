@@ -16,12 +16,17 @@
     <button
       mat-raised-button
       class="github"
+      color="github"
       [disabled]="!authUrl"
       (click)="loginWithGithub()"
     >
       <img
         class="github-icon"
-        src="/assets/images/stack/github-original.svg"
+        [src]="
+          theme === 'dark'
+            ? '/assets/images/stack/github-original.svg'
+            : '/assets/images/stack/github-alternate.svg'
+        "
         alt="Github Icon"
       />
       <span>{{ "AUTH.O_AUTH.GITHUB_LOGIN" | translate }}</span>
