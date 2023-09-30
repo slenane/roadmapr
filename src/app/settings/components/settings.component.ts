@@ -69,10 +69,10 @@ export class SettingsComponent implements OnInit {
         this.updateForms();
       });
 
-    this.authService.getGithubAuthPage().subscribe({
-      next: (data: any) => (this.githubAuthUrl = data["authUrl"]),
-      error: (err: any) => console.log(err),
-    });
+    // this.authService.getGithubAuthPage().subscribe({
+    //   next: (data: any) => (this.githubAuthUrl = data["authUrl"]),
+    //   error: (err: any) => console.log(err),
+    // });
   }
 
   ngOnDestroy() {

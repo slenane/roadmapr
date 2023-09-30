@@ -1,7 +1,10 @@
 <div class="dashboard">
-  <app-dashboard-filters [languageConfig]="stackList"></app-dashboard-filters>
+  <app-dashboard-filters
+    *ngIf="stackList?.length"
+    [languageConfig]="stackList"
+  ></app-dashboard-filters>
 
-  <div class="scroll" cdkScrollable>
+  <div class="scroll" cdkScrollable *ngIf="stackList?.length">
     <div class="user-overview-container">
       <app-icon-card
         [icon]="'school'"
