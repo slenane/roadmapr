@@ -29,6 +29,7 @@ import { AuthModule } from "./auth/auth.module";
 import { LOGOUT } from "./auth/store/auth.actions";
 import { DELETE_ACCOUNT } from "./settings/store/settings.actions";
 import { TitleStrategy } from "@angular/router";
+import { UserSetupModule } from "./user-setup/user-setup.module";
 
 export function clearState(reducer: ActionReducer<any>): ActionReducer<any> {
   return function (state, action) {
@@ -74,6 +75,7 @@ export const metaReducers: MetaReducer<any>[] = [clearState];
     ProfileModule,
     ProjectsModule,
     SettingsModule,
+    UserSetupModule,
     HttpClientModule,
     HttpClientXsrfModule,
     BrowserModule,

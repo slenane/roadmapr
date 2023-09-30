@@ -15,7 +15,9 @@
     "PROJECTS": "Projects | roadmapr",
     "EMPLOYMENT": "Employment | roadmapr",
     "PROFILE": "Profile | roadmapr",
-    "SETTINGS": "Settings | roadmapr"
+    "SETTINGS": "Settings | roadmapr",
+    "USER_SETUP": "User Setup | roadmapr",
+    "TOUR": "Tour | roadmapr"
   },
   "ACTIONS": {
     "ADD": "Add",
@@ -268,6 +270,7 @@
     "T": "Roadmap"
   },
   "SETTINGS": {
+    "T": "Settings",
     "ACCOUNT": "Account Settings",
     "DELETE": {
       "T": "Delete Account",

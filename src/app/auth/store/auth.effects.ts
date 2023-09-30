@@ -24,7 +24,7 @@ export class AuthEffects {
       ofType(authActions.REGISTER),
       switchMap(({ userDetails }) => this.authService.register(userDetails)),
       map((payload) => {
-        this.router.navigateByUrl("/profile");
+        this.router.navigateByUrl("/user-setup");
         return authActions.RegisterSuccess(payload);
       }),
       catchError((error) => of(authActions.RegisterError(error)))

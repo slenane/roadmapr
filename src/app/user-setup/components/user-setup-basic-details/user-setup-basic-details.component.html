@@ -1,0 +1,93 @@
+<mat-stepper [linear]="true" #stepper>
+  <mat-step [stepControl]="basicDetailsForm">
+    <form [formGroup]="basicDetailsForm" class="basic-details">
+      <ng-template matStepLabel>Basic Details</ng-template>
+      <mat-form-field appearance="outline">
+        <mat-label>{{ "FORMS.FULL_NAME" | translate }}</mat-label>
+        <input matInput formControlName="nameCtrl" />
+        <mat-error *ngIf="basicDetailsForm.controls.nameCtrl.invalid">{{
+          "FORMS.REQUIRED.FULL_NAME" | translate
+        }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{ "FORMS.PROFILE_IMAGE" | translate }}</mat-label>
+        <input matInput formControlName="profileImageCtrl" />
+        <mat-error *ngIf="basicDetailsForm.controls.profileImageCtrl.invalid">{{
+          "FORMS.REQUIRED.PROFILE_IMAGE" | translate
+        }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{ "FORMS.LOCATION" | translate }}</mat-label>
+
+        <mat-select #location formControlName="locationCtrl">
+          <mat-option
+            *ngFor="let country of countryList"
+            [value]="country.en_short_name"
+          >
+            <div class="type-option"> {{ country.en_short_name }} </div>
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="basicDetailsForm.controls.locationCtrl.invalid">{{
+          "FORMS.REQUIRED.LOCATION" | translate
+        }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{ "FORMS.NATIONALITY" | translate }}</mat-label>
+        <mat-select #nationality formControlName="nationalityCtrl">
+          <mat-option
+            *ngFor="let country of countryList"
+            [value]="country.en_short_name"
+          >
+            <div class="type-option"> {{ country.en_short_name }} </div>
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="basicDetailsForm.controls.nationalityCtrl.invalid">{{
+          "FORMS.REQUIRED.NATIONALITY" | translate
+        }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width-grid-item">
+        <mat-label>{{ "FORMS.LANGUAGE.T" | translate }}</mat-label>
+        <input matInput formControlName="preferredLanguageCtrl" />
+        <mat-error
+          *ngIf="basicDetailsForm.controls.preferredLanguageCtrl.invalid"
+          >{{ "FORMS.REQUIRED.LANGUAGE.T" | translate }}</mat-error
+        >
+      </mat-form-field>
+    </form>
+    <div class="actions">
+      <button mat-button matStepperNext>Next</button>
+    </div>
+  </mat-step>
+  <mat-step [stepControl]="pathForm" label="Choose your path">
+    <form [formGroup]="pathForm">
+      <mat-form-field appearance="outline">
+        <mat-label>{{ "FORMS.ROLE" | translate }}</mat-label>
+
+        <mat-select #path formControlName="pathCtrl">
+          <mat-option *ngFor="let role of roles" [value]="role">
+            <div class="type-option"> {{ role | translate }} </div>
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="pathForm.controls.pathCtrl.invalid">{{
+          "FORMS.REQUIRED.ROLE" | translate
+        }}</mat-error>
+      </mat-form-field>
+    </form>
+    <div class="actions">
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button matStepperNext>Next</button>
+    </div>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    <p>You are now done.</p>
+    <div class="actions">
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-stepper>

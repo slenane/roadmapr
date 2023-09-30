@@ -31,6 +31,7 @@ import { MatSortModule } from "@angular/material/sort";
 import { MatButtonToggleModule } from "@angular/material/button-toggle";
 import { ScrollingModule } from "@angular/cdk/scrolling";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { MatStepperModule } from "@angular/material/stepper";
 
 @NgModule({
   exports: [
@@ -66,6 +67,7 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
     MatSortModule,
     MatButtonToggleModule,
     ScrollingModule,
+    MatStepperModule,
   ],
   providers: [],
   bootstrap: [],
