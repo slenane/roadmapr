@@ -14,9 +14,12 @@
         />
         <span>{{ item.title }}</span>
       </div>
-      <mat-icon matChipRemove *ngIf="removable">{{
-        "ACTIONS.CANCEL" | translate
-      }}</mat-icon>
+      <span
+        class="material-symbols-outlined chip-remove"
+        matChipRemove
+        *ngIf="removable"
+        >{{ "ACTIONS.CANCEL" | translate }}</span
+      >
     </mat-chip>
     <input
       [placeholder]="'FORMS.PLACEHOLDER.STACK' | translate"

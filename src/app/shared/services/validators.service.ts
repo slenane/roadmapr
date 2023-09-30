@@ -1,14 +1,6 @@
 import { Injectable } from "@angular/core";
 import { AsyncValidatorFn } from "@angular/forms";
-import {
-  debounceTime,
-  distinctUntilChanged,
-  filter,
-  switchMap,
-  map,
-  take,
-  of,
-} from "rxjs";
+import { debounceTime, distinctUntilChanged, switchMap, take, of } from "rxjs";
 import { AuthService } from "src/app/auth/services/auth.service";
 
 @Injectable({
@@ -22,7 +14,6 @@ export class ValidatorsService {
       if (
         !control.valueChanges ||
         control.pristine ||
-        !initial ||
         !control.value.length ||
         control.value === initial
       ) {
@@ -45,7 +36,6 @@ export class ValidatorsService {
       if (
         !control.valueChanges ||
         control.pristine ||
-        !initial ||
         !control.value.length ||
         control.value === initial
       ) {

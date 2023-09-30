@@ -1,8 +1,10 @@
+@import "./styles/app-auth.scss";
 @import "./styles/app-drop-list.scss";
 @import "./styles/app-mixins.scss";
 @import "./styles/app-vars.scss";
 @import "./styles/main.scss";
 @import "@angular/material/theming";
+@import "material-symbols/outlined.css";
 @include mat-core();
 
 $light-app-theme: mat-light-theme(
@@ -28,12 +30,14 @@ $dark-app-theme: mat-dark-theme(
 @mixin custom-light-theme() {
   @include light-theme--mixin--main;
   @include light-theme--mixin--sidebar;
+  @include light-theme--mixin--auth;
   @include light-theme--mixin--user-profile;
 }
 
 @mixin custom-dark-theme() {
   @include dark-theme--mixin--main;
   @include dark-theme--mixin--sidebar;
+  @include dark-theme--mixin--auth;
   @include dark-theme--mixin--user-profile;
 }
 

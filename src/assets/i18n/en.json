@@ -177,7 +177,7 @@
       "NATIONALITY": "Nationality Required",
       "PASSWORD": "Password Required",
       "NEW_PASSWORD": "New Password Required",
-      "NEW_PASSWORD_CONFIRM": "Password Confirmation Required",
+      "PASSWORD_CONFIRM": "Password Confirmation Required",
       "ROLE": "Role Required",
       "STACK": "Stack Required",
       "TITLE": "Title Required",
@@ -185,14 +185,15 @@
       "USERNAME": "Username Required"
     },
     "ERROR": {
-      "NEW_PASSWORD": "Passwords must be at least 6 characters long, contains at least 1 number and 1 special character (!@#$%^&*)",
-      "NEW_PASSWORD_CONFIRM": "Passwords must match",
+      "PASSWORD_PATTERN": "Passwords must be at least 6 characters long, contains at least 1 number and 1 special character (!@#$%^&*)",
+      "PASSWORD_PATTERN_SHORT": "Password does not match pattern",
+      "PASSWORD_CONFIRM": "Passwords must match",
       "EMAIL_PATTERN": "Input must be an email",
       "UNIQUE_USERNAME": "This username is already in use",
       "UNIQUE_EMAIL": "This email address is already in use"
     },
     "HINT": {
-      "NEW_PASSWORD": "Passwords must be at least 6 characters long, contains at least 1 number and 1 special character (!@#$%^&*)"
+      "PASSWORD": "Passwords must be at least 6 characters long, contains at least 1 number and 1 special character (!@#$%^&*)"
     },
     "REMOVE": {
       "GITHUB": "Remove GitHub Account"

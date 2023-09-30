@@ -19,14 +19,12 @@ import { ValidatorsService } from "src/app/shared/services/validators.service";
 export class UpdateEmailComponent implements OnInit, OnChanges {
   public matcher = new MyErrorStateMatcher();
   public initialEmail: string;
-  public emailForm = new FormGroup({
+  public form = new FormGroup({
     emailCtrl: new FormControl("", [Validators.required, Validators.email]),
   });
 
   @Input() email: string | undefined;
   @Input() isEditing: boolean;
-  @Output() toggleEmailUpdate: EventEmitter<any> = new EventEmitter();
-  @Output() onSaveEmail: EventEmitter<string> = new EventEmitter();
 
   constructor(private validatorsService: ValidatorsService) {}
 
@@ -50,11 +48,11 @@ export class UpdateEmailComponent implements OnInit, OnChanges {
   updateForm(email: string) {
     if (!email) email = "";
 
-    this.emailForm.patchValue({
+    this.form.patchValue({
       emailCtrl: email,
     });
 
-    this.emailForm.controls.emailCtrl.addAsyncValidators([
+    this.form.controls.emailCtrl.addAsyncValidators([
       this.validatorsService.validateEmail(email),
     ]);
 
@@ -62,22 +60,7 @@ export class UpdateEmailComponent implements OnInit, OnChanges {
   }
 
   toggleFormEnabled(enabled: boolean) {
-    if (enabled) this.emailForm.controls.emailCtrl.enable();
-    else this.emailForm.controls.emailCtrl.disable();
-  }
-
-  onCancel() {
-    this.emailForm.reset();
-    this.emailForm.patchValue({ emailCtrl: this.email });
-    this.toggleEmailUpdate.emit();
-  }
-
-  onSave() {
-    if (this.emailForm.valid && this.emailForm.value.emailCtrl) {
-      const email = this.emailForm.value.emailCtrl;
-      this.onSaveEmail.emit(email);
-      this.emailForm.reset();
-      this.emailForm.patchValue({ emailCtrl: email });
-    }
+    if (enabled) this.form.controls.emailCtrl.enable();
+    else this.form.controls.emailCtrl.disable();
   }
 }

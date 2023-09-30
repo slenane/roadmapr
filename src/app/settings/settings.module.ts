@@ -14,9 +14,16 @@ import { SettingsEffects } from "./store/settings.effects";
 import { TranslateModule } from "@ngx-translate/core";
 import { SettingsDeleteAccountComponent } from "./components/settings-delete-account/settings-delete-account.component";
 import { SettingsRoutingModule } from "./settings-routing.module";
+import { SettingsUpdateUsernameComponent } from "./components/settings-update-username/settings-update-username.component";
+import { SettingsUpdateEmailComponent } from "./components/settings-update-email/settings-update-email.component";
 
 @NgModule({
-  declarations: [SettingsComponent, SettingsDeleteAccountComponent],
+  declarations: [
+    SettingsComponent,
+    SettingsDeleteAccountComponent,
+    SettingsUpdateUsernameComponent,
+    SettingsUpdateEmailComponent,
+  ],
   exports: [SettingsComponent],
   imports: [
     CommonModule,

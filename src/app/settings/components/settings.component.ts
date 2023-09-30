@@ -11,7 +11,6 @@ import { TranslateService } from "@ngx-translate/core";
 import { SettingsDeleteAccountComponent } from "./settings-delete-account/settings-delete-account.component";
 import { MatDialog } from "@angular/material/dialog";
 import { AuthService } from "src/app/auth/services/auth.service";
-import { Router } from "@angular/router";
 
 @Component({
   selector: "app-settings",
@@ -51,13 +50,11 @@ export class SettingsComponent implements OnInit {
   @ViewChild("newPasswordConfirm") newPasswordConfirmCtrl: ElementRef;
 
   constructor(
-    private el: ElementRef,
     private settingsStoreService: SettingsStoreService,
     private themeService: ThemeService,
     private translateService: TranslateService,
     private authService: AuthService,
-    public dialog: MatDialog,
-    private router: Router
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {

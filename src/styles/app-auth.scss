@@ -1,0 +1,56 @@
+.auth-container {
+  margin: 1rem;
+  border-radius: 4px;
+  padding: 10%;
+  display: grid;
+  text-align: center;
+  align-content: center;
+
+  .auth-brand {
+    text-align: center;
+    margin-bottom: 2rem;
+
+    img {
+      height: 3rem;
+    }
+  }
+
+  .oauth-options {
+    .github {
+      img {
+        height: 1.75rem;
+        width: 1.75rem;
+        margin-right: 0.25rem;
+      }
+    }
+  }
+
+  .divider {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 0.5rem;
+    font-size: 10px;
+    padding: 0 10%;
+    margin: 1rem 0;
+
+    .line {
+      margin-bottom: 10px;
+    }
+  }
+
+  .mat-form-field {
+    width: 100%;
+  }
+
+  .form-action {
+    margin-bottom: 1rem;
+    button {
+      width: 100%;
+      font-size: 16px;
+    }
+  }
+
+  .auth-type-switch {
+    cursor: pointer;
+  }
+}

@@ -4,8 +4,6 @@ import {
   Input,
   OnChanges,
   SimpleChanges,
-  Output,
-  EventEmitter,
 } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { MyErrorStateMatcher } from "src/app/shared/services/error-state-matcher.service";
@@ -19,14 +17,12 @@ import { ValidatorsService } from "src/app/shared/services/validators.service";
 export class UpdateUsernameComponent implements OnInit, OnChanges {
   public matcher = new MyErrorStateMatcher();
   public initialUsername: string;
-  public usernameForm = new FormGroup({
+  public form = new FormGroup({
     usernameCtrl: new FormControl("", [Validators.required]),
   });
 
   @Input() username: string | undefined;
   @Input() isEditing: boolean;
-  @Output() toggleUsernameUpdate: EventEmitter<any> = new EventEmitter();
-  @Output() onSaveUsername: EventEmitter<string> = new EventEmitter();
 
   constructor(private validatorsService: ValidatorsService) {}
 
@@ -50,11 +46,11 @@ export class UpdateUsernameComponent implements OnInit, OnChanges {
   updateForm(username: string) {
     if (!username) username = "";
 
-    this.usernameForm.patchValue({
+    this.form.patchValue({
       usernameCtrl: username,
     });
 
-    this.usernameForm.controls.usernameCtrl.addAsyncValidators([
+    this.form.controls.usernameCtrl.addAsyncValidators([
       this.validatorsService.validateUsername(username),
     ]);
 
@@ -62,22 +58,7 @@ export class UpdateUsernameComponent implements OnInit, OnChanges {
   }
 
   toggleFormEnabled(enabled: boolean) {
-    if (enabled) this.usernameForm.controls.usernameCtrl.enable();
-    else this.usernameForm.controls.usernameCtrl.disable();
-  }
-
-  onCancel() {
-    this.usernameForm.reset();
-    this.usernameForm.patchValue({ usernameCtrl: this.username });
-    this.toggleUsernameUpdate.emit();
-  }
-
-  onSave() {
-    if (this.usernameForm.valid && this.usernameForm.value.usernameCtrl) {
-      const username = this.usernameForm.value.usernameCtrl;
-      this.onSaveUsername.emit(username);
-      this.usernameForm.reset();
-      this.usernameForm.patchValue({ usernameCtrl: username });
-    }
+    if (enabled) this.form.controls.usernameCtrl.enable();
+    else this.form.controls.usernameCtrl.disable();
   }
 }

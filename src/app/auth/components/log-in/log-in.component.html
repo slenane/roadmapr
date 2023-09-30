@@ -12,24 +12,34 @@
     />
   </div>
 
-  <div class="login-options">
+  <div class="oauth-options">
     <button
       mat-raised-button
-      class="github-login"
+      class="github"
+      color="github"
       [disabled]="!authUrl"
       (click)="loginWithGithub()"
     >
       <img
         class="github-icon"
-        src="/assets/images/stack/github-original.svg"
+        [src]="
+          theme === 'dark'
+            ? '/assets/images/stack/github-original.svg'
+            : '/assets/images/stack/github-alternate.svg'
+        "
         alt="Github Icon"
       />
       <span>{{ "AUTH.O_AUTH.GITHUB_LOGIN" | translate }}</span>
     </button>
   </div>
 
-  <h1>{{ "AUTH.LOG_IN.T" | translate }}</h1>
-  <form [formGroup]="form" (submit)="login()">
+  <div class="divider">
+    <span class="line"></span>
+    <span>OR</span>
+    <span class="line"></span>
+  </div>
+
+  <form [formGroup]="form">
     <div class="form-group">
       <mat-form-field appearance="outline">
         <mat-label for="email">{{ "FORMS.EMAIL" | translate }}</mat-label>
@@ -38,7 +48,7 @@
           type="email"
           [placeholder]="'FORMS.PLACEHOLDER.EMAIL' | translate"
           name="email"
-          formControlName="email"
+          formControlName="emailCtrl"
           required
         />
       </mat-form-field>
@@ -51,18 +61,30 @@
           type="password"
           [placeholder]="'FORMS.PLACEHOLDER.PASSWORD' | translate"
           name="password"
-          formControlName="password"
+          formControlName="passwordCtrl"
           required
         />
+        <span
+          matSuffix
+          class="material-symbols-outlined hide-icon"
+          (click)="hidePassword = !hidePassword"
+          >{{ hidePassword ? "visibility_off" : "visibility" }}</span
+        >
       </mat-form-field>
     </div>
 
-    <a href="/register">{{ "AUTH.LOG_IN.NOT_REGISTERED" | translate }}</a>
-
     <div class="form-action">
-      <button type="submit" mat-raised-button color="primary">{{
-        "AUTH.LOG_IN.T" | translate
-      }}</button>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="login()"
+        [disabled]="!form.valid"
+        >{{ "AUTH.LOG_IN.T" | translate }}</button
+      >
     </div>
+
+    <a class="auth-type-switch" (click)="showRegister()">{{
+      "AUTH.LOG_IN.NOT_REGISTERED" | translate
+    }}</a>
   </form>
 </div>

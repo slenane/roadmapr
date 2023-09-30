@@ -45,23 +45,23 @@
             >
           </div>
 
-          <app-update-username
+          <app-settings-update-username
             [username]="settings.username"
             [isEditing]="isEditingUsername"
             (toggleUsernameUpdate)="toggleUsernameUpdate()"
             (onSaveUsername)="onSaveUsername($event)"
-          ></app-update-username>
+          ></app-settings-update-username>
 
-          <app-update-email
+          <app-settings-update-email
             [email]="settings.email"
             [isEditing]="isEditingEmail"
             (toggleEmailUpdate)="toggleEmailUpdate()"
             (onSaveEmail)="onSaveEmail($event)"
-          ></app-update-email>
+          ></app-settings-update-email>
 
-          <div class="update-details-container">
-            <div class="update-details-header">
-              <span class="update-details-text">{{
+          <div class="update-password-container">
+            <div class="update-password-header">
+              <span class="update-password-text">{{
                 "FORMS.UPDATE.PASSWORD" | translate
               }}</span>
               <button
