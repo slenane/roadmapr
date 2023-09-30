@@ -29,6 +29,7 @@
     "chart.js": "^4.2.1",
     "flag-icons": "^6.6.6",
     "install": "^0.13.0",
+    "material-symbols": "^0.13.0",
     "moment": "^2.29.4",
     "ng2-charts": "^4.1.1",
     "npm": "^9.6.4",

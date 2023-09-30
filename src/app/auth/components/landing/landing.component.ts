@@ -22,9 +22,10 @@ export class LandingComponent implements OnInit {
     this.theme$.subscribe((theme: string) => {
       this.currentTheme = theme;
     });
-    this.isRedirecting = this.location.path().includes("/redirect")
-      ? true
-      : false;
-    this.isRegistering = this.location.path() === "/register" ? true : false;
+
+    this.location.onUrlChange((url, state) => {
+      this.isRedirecting = url.includes("/redirect") ? true : false;
+      this.isRegistering = url === "/register" ? true : false;
+    });
   }
 }

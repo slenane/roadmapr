@@ -43,22 +43,29 @@
         <input
           #newPassword
           matInput
+          #tooltip="matTooltip"
+          matTooltip="{{ 'FORMS.ERROR.PASSWORD_PATTERN' | translate }}"
+          matTooltipPosition="below"
+          [matTooltipDisabled]="!passwordTooltipDisplay"
           [type]="hidePassword ? 'password' : 'text'"
           formControlName="passwordCtrl"
         />
-        <mat-icon
+        <span
           matSuffix
-          class="hide-icon"
+          class="material-symbols-outlined hide-icon"
           (click)="hidePassword = !hidePassword"
-          >{{ hidePassword ? "visibility_off" : "visibility" }}</mat-icon
+          >{{ hidePassword ? "visibility_off" : "visibility" }}</span
         >
         <mat-error
           *ngIf="passwordForm.controls.passwordCtrl.hasError('required')"
-          >{{ "FORMS.REQUIRED.NEW_PASSWORD" | translate }}</mat-error
+          >{{ "FORMS.REQUIRED.PASSWORD" | translate }}</mat-error
         >
         <mat-error
-          *ngIf="passwordForm.controls.passwordCtrl.hasError('pattern')"
-          >{{ "FORMS.ERROR.NEW_PASSWORD" | translate }}</mat-error
+          *ngIf="
+            !passwordForm.controls.passwordCtrl.hasError('required') &&
+            passwordForm.controls.passwordCtrl.hasError('pattern')
+          "
+          >{{ "FORMS.ERROR.PASSWORD_PATTERN_SHORT" | translate }}</mat-error
         >
       </mat-form-field>
     </form>
@@ -77,6 +84,8 @@
       >
     </div>
 
-    <a href="/login">{{ "AUTH.REGISTER.ALREADY_REGISTERED" | translate }}</a>
+    <a class="auth-type-switch" (click)="showLogin()">{{
+      "AUTH.REGISTER.ALREADY_REGISTERED" | translate
+    }}</a>
   </div>
 </div>

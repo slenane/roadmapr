@@ -18,10 +18,6 @@ app-root {
   position: absolute;
 }
 
-.mat-option {
-  font-size: 14px;
-}
-
 .full-width {
   width: 100%;
 }
@@ -55,10 +51,21 @@ app-root {
 }
 
 .material-symbols-outlined {
+  font-display: block;
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 20;
 
   &__filled {
     font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 20;
+  }
+
+  &.hide-icon {
+    cursor: pointer;
+  }
+
+  &.chip-remove {
+    height: 18px !important;
+    width: 18px !important;
+    font-size: 18px !important;
   }
 }
 
@@ -101,6 +108,11 @@ mat-button-toggle-group {
   }
 }
 
+.mat-option,
 mat-form-field {
   font-size: 14px !important;
+}
+
+.mat-tooltip {
+  font-size: 12px !important;
 }

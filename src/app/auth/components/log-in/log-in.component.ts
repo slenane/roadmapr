@@ -3,6 +3,7 @@ import { AuthStoreService } from "../../services/auth-store.service";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { AuthService } from "../../services/auth.service";
+import { Location } from "@angular/common";
 
 @Component({
   selector: "app-log-in",
@@ -10,10 +11,14 @@ import { AuthService } from "../../services/auth.service";
   styleUrls: ["./log-in.component.scss"],
 })
 export class LogInComponent implements OnInit {
+  public hidePassword: boolean = true;
   public authUrl: string;
   public form = new FormGroup({
-    email: new FormControl("", [Validators.required, Validators.email]),
-    password: new FormControl("", Validators.required),
+    emailCtrl: new FormControl("", [Validators.required, Validators.email]),
+    passwordCtrl: new FormControl("", [
+      Validators.required,
+      Validators.minLength(6),
+    ]),
   });
 
   @Input() theme: string;
@@ -21,7 +26,8 @@ export class LogInComponent implements OnInit {
   constructor(
     private authStoreService: AuthStoreService,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private location: Location
   ) {}
 
   ngOnInit(): void {
@@ -32,10 +38,12 @@ export class LogInComponent implements OnInit {
   }
 
   login() {
-    this.authStoreService.login({
-      email: this.form.value.email || "",
-      password: this.form.value.password || "",
-    });
+    if (this.form.valid) {
+      this.authStoreService.login({
+        email: this.form.value.emailCtrl,
+        password: this.form.value.passwordCtrl,
+      });
+    }
   }
 
   loginWithGithub() {
@@ -44,5 +52,9 @@ export class LogInComponent implements OnInit {
         queryParams: { url: this.authUrl },
       });
     }
+  }
+
+  showRegister() {
+    this.location.replaceState("/register");
   }
 }

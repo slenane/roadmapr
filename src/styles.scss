@@ -4,6 +4,7 @@
 @import "./styles/app-vars.scss";
 @import "./styles/main.scss";
 @import "@angular/material/theming";
+@import "material-symbols/outlined.css";
 @include mat-core();
 
 $light-app-theme: mat-light-theme(
