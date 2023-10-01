@@ -5,7 +5,8 @@ export interface Settings {
   notifications: boolean;
   username: string;
   email: string;
-  name: string;
+  firstName: string;
+  lastName: string;
   github: {
     id: string;
     username: string;

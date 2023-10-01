@@ -118,7 +118,8 @@
     },
     "DESCRIPTION": "Description",
     "EMAIL": "Email",
-    "FULL_NAME": "Full Name",
+    "FIRST_NAME": "First Name",
+    "LAST_NAME": "Last Name",
     "GITHUB": "GitHub",
     "GITHUB_LINK": "GitHub Link",
     "GITHUB_USER": "GitHub Username",
@@ -148,6 +149,7 @@
     "PROFILE_IMAGE": "Profile Image",
     "PROJECT_LINK": "Project Link",
     "ROLE": "Role",
+    "PATH": "Path",
     "STACK": "Stack",
     "THEME": {
       "T": "Theme",
@@ -162,7 +164,6 @@
     "X_USER": "X Username",
     "PLACEHOLDER": {
       "EMAIL": "Enter your email",
-      "FULL_NAME": "Enter your full name",
       "PASSWORD": "Enter your password",
       "STACK": "Start typing to find stack...",
       "TYPE": "Select Type",
@@ -171,7 +172,8 @@
     "REQUIRED": {
       "AUTHOR": "Author Required",
       "EMAIL": "Email Required",
-      "FULL_NAME": "Full Name Required",
+      "FIRST_NAME": "First Name Required",
+      "LAST_NAME": "Last Name Required",
       "INSTITUTION": "Institution Required",
       "INSTRUCTOR": "Instructor Required",
       "LINK": "Link Required",
@@ -181,6 +183,8 @@
       "NEW_PASSWORD": "New Password Required",
       "PASSWORD_CONFIRM": "Password Confirmation Required",
       "ROLE": "Role Required",
+      "PATH": "Path Required",
+      "PROFILE_IMAGE": "Profile Image Required",
       "STACK": "Stack Required",
       "TITLE": "Title Required",
       "TYPE": "Type Required",
@@ -202,7 +206,7 @@
     },
     "UPDATE": {
       "EMAIL": "Update Email",
-      "FULL_NAME": "Update Full Name",
+      "NAME": "Update Name",
       "PASSWORD": "Update Password",
       "STACK": "Update Stack",
       "USERNAME": "Update Username",
@@ -235,7 +239,7 @@
     "UPDATE": {
       "T": "Update Profile"
     },
-    "ROLES": {
+    "PATHS": {
       "FRONTEND": "Frontend Developer",
       "BACKEND": "Backend Developer",
       "FULL_STACK": "Full-Stack Developer",

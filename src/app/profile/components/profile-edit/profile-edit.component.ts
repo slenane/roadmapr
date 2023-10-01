@@ -10,7 +10,7 @@ import {
 import { Profile } from "../../store/profile.models";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { ProfileStoreService } from "../../services/profile-store.service";
-import { DEV_ROLES } from "../../constants/profile.constants";
+import { DEV_PATHS } from "../../constants/profile.constants";
 
 @Component({
   selector: "app-profile-edit",
@@ -18,7 +18,7 @@ import { DEV_ROLES } from "../../constants/profile.constants";
   styleUrls: ["./profile-edit.component.scss"],
 })
 export class ProfileEditComponent implements OnInit {
-  public roles = DEV_ROLES;
+  public paths = DEV_PATHS;
 
   public profileForm = new FormGroup({
     bio: new FormControl(""),
@@ -27,10 +27,11 @@ export class ProfileEditComponent implements OnInit {
     github: new FormControl(""),
     linkedin: new FormControl(""),
     location: new FormControl("", Validators.required),
-    name: new FormControl("", Validators.required),
+    firstName: new FormControl("", Validators.required),
+    lastName: new FormControl("", Validators.required),
     nationality: new FormControl("", Validators.required),
     profileImage: new FormControl(""),
-    role: new FormControl("", Validators.required),
+    path: new FormControl("", Validators.required),
     twitter: new FormControl(""),
     username: new FormControl("", Validators.required),
   });
@@ -40,9 +41,10 @@ export class ProfileEditComponent implements OnInit {
   @Output() editProfile: EventEmitter<any> = new EventEmitter();
 
   @ViewChild("location") location: ElementRef;
-  @ViewChild("name") name: ElementRef;
+  @ViewChild("firstName") firstName: ElementRef;
+  @ViewChild("lastName") lastName: ElementRef;
   @ViewChild("nationality") nationality: ElementRef;
-  @ViewChild("role") role: ElementRef;
+  @ViewChild("path") path: ElementRef;
   @ViewChild("username") username: ElementRef;
 
   constructor(private profileStoreService: ProfileStoreService) {}
@@ -59,10 +61,11 @@ export class ProfileEditComponent implements OnInit {
       github: user.links.github,
       linkedin: user.links.linkedin,
       location: user.location,
-      name: user.name,
+      firstName: user.firstName,
+      lastName: user.lastName,
       nationality: user.nationality,
       profileImage: user.profileImage,
-      role: user.role,
+      path: user.path,
       twitter: user.links.twitter,
       username: user.username,
     });

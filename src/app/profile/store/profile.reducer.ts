@@ -8,13 +8,14 @@ interface Action {
 
 const initialState: Profile = {
   _id: "",
-  name: "",
+  firstName: "",
+  lastName: "",
   username: "",
   location: "",
   nationality: "",
   profileImage: "",
   coverImage: "",
-  role: "",
+  path: "",
   bio: "",
   links: {
     github: "",

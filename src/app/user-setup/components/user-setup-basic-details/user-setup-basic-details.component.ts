@@ -2,7 +2,7 @@ import { Component, OnInit, ElementRef, ViewChild } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { MatDialogRef } from "@angular/material/dialog";
 import { Subject } from "rxjs";
-import { DEV_ROLES } from "src/app/profile/constants/profile.constants";
+import { DEV_PATHS } from "src/app/profile/constants/profile.constants";
 import { COUNTRY_LIST } from "src/app/shared/constants/country-list";
 
 @Component({
@@ -13,25 +13,27 @@ import { COUNTRY_LIST } from "src/app/shared/constants/country-list";
 export class UserSetupBasicDetailsComponent implements OnInit {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
   public countryList = COUNTRY_LIST;
-  public roles = DEV_ROLES;
+  public paths = DEV_PATHS;
 
   public basicDetailsForm = new FormGroup({
-    nameCtrl: new FormControl("", Validators.required),
+    firstNameCtrl: new FormControl("", Validators.required),
+    lastNameCtrl: new FormControl("", Validators.required),
     profileImageCtrl: new FormControl("", Validators.required),
     locationCtrl: new FormControl("", Validators.required), // Add validator for country
     nationalityCtrl: new FormControl("", Validators.required), // Add validator for country
-    preferredLanguageCtrl: new FormControl("", Validators.required),
+    // preferredLanguageCtrl: new FormControl("", Validators.required),
   });
 
   public pathForm = new FormGroup({
     pathCtrl: new FormControl("", Validators.required),
   });
 
-  @ViewChild("name") nameCtrl: ElementRef;
+  @ViewChild("firstName") firstNameCtrl: ElementRef;
+  @ViewChild("lastName") lastNameCtrl: ElementRef;
   @ViewChild("profileImage") profileImageCtrl: ElementRef;
   @ViewChild("location") locationCtrl: ElementRef;
   @ViewChild("nationality") nationalityCtrl: ElementRef;
-  @ViewChild("preferredLanguage") preferredLanguageCtrl: ElementRef;
+  // @ViewChild("preferredLanguage") preferredLanguageCtrl: ElementRef;
 
   @ViewChild("path") pathCtrl: ElementRef;
 
@@ -40,9 +42,7 @@ export class UserSetupBasicDetailsComponent implements OnInit {
     public dialogRef: MatDialogRef<UserSetupBasicDetailsComponent>
   ) {}
 
-  ngOnInit(): void {
-    this.countryList.forEach((country) => console.log(country.en_short_name));
-  }
+  ngOnInit(): void {}
 
   ngOnDestroy() {
     this.ngUnsubscribe.next();

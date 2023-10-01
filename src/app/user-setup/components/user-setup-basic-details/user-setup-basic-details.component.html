@@ -2,19 +2,27 @@
   <mat-step [stepControl]="basicDetailsForm">
     <form [formGroup]="basicDetailsForm" class="basic-details">
       <ng-template matStepLabel>Basic Details</ng-template>
-      <mat-form-field appearance="outline">
-        <mat-label>{{ "FORMS.FULL_NAME" | translate }}</mat-label>
-        <input matInput formControlName="nameCtrl" />
-        <mat-error *ngIf="basicDetailsForm.controls.nameCtrl.invalid">{{
-          "FORMS.REQUIRED.FULL_NAME" | translate
-        }}</mat-error>
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="outline" class="full-width-grid-item">
         <mat-label>{{ "FORMS.PROFILE_IMAGE" | translate }}</mat-label>
         <input matInput formControlName="profileImageCtrl" />
         <mat-error *ngIf="basicDetailsForm.controls.profileImageCtrl.invalid">{{
           "FORMS.REQUIRED.PROFILE_IMAGE" | translate
+        }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{ "FORMS.FIRST_NAME" | translate }}</mat-label>
+        <input matInput formControlName="firstNameCtrl" />
+        <mat-error *ngIf="basicDetailsForm.controls.firstNameCtrl.invalid">{{
+          "FORMS.REQUIRED.FIRST_NAME" | translate
+        }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{ "FORMS.LAST_NAME" | translate }}</mat-label>
+        <input matInput formControlName="lastNameCtrl" />
+        <mat-error *ngIf="basicDetailsForm.controls.lastNameCtrl.invalid">{{
+          "FORMS.REQUIRED.LAST_NAME" | translate
         }}</mat-error>
       </mat-form-field>
 
@@ -49,14 +57,14 @@
         }}</mat-error>
       </mat-form-field>
 
-      <mat-form-field appearance="outline" class="full-width-grid-item">
+      <!-- <mat-form-field appearance="outline">
         <mat-label>{{ "FORMS.LANGUAGE.T" | translate }}</mat-label>
         <input matInput formControlName="preferredLanguageCtrl" />
         <mat-error
           *ngIf="basicDetailsForm.controls.preferredLanguageCtrl.invalid"
-          >{{ "FORMS.REQUIRED.LANGUAGE.T" | translate }}</mat-error
+          >{{ "FORMS.LANGUAGE.REQUIRED" | translate }}</mat-error
         >
-      </mat-form-field>
+      </mat-form-field> -->
     </form>
     <div class="actions">
       <button mat-button matStepperNext>Next</button>
@@ -65,15 +73,15 @@
   <mat-step [stepControl]="pathForm" label="Choose your path">
     <form [formGroup]="pathForm">
       <mat-form-field appearance="outline">
-        <mat-label>{{ "FORMS.ROLE" | translate }}</mat-label>
+        <mat-label>{{ "FORMS.PATH" | translate }}</mat-label>
 
         <mat-select #path formControlName="pathCtrl">
-          <mat-option *ngFor="let role of roles" [value]="role">
-            <div class="type-option"> {{ role | translate }} </div>
+          <mat-option *ngFor="let path of paths" [value]="path">
+            <div class="type-option"> {{ path | translate }} </div>
           </mat-option>
         </mat-select>
         <mat-error *ngIf="pathForm.controls.pathCtrl.invalid">{{
-          "FORMS.REQUIRED.ROLE" | translate
+          "FORMS.REQUIRED.PATH" | translate
         }}</mat-error>
       </mat-form-field>
     </form>

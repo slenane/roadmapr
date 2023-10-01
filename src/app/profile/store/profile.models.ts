@@ -3,14 +3,14 @@ import { StackItem } from "src/app/shared/store/stack.models";
 export interface Profile {
   _id: string;
   username: string;
-  name: string;
+  firstName: string;
+  lastName: string;
   email: string;
-
   location: string;
   nationality: string;
   profileImage: string;
   coverImage: string;
-  role: string;
+  path: string;
   bio: string;
   languagesSpoken: any[];
   interests: {

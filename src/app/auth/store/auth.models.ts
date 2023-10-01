@@ -10,12 +10,13 @@ export interface User {
   _id: string;
   githubId?: string;
   email: string;
-  name: string;
+  firstName: string;
+  lastName: string;
   exp: number;
   iat: number;
   profileImage: string;
   coverImage: string;
-  role: string;
+  path: string;
   bio: string;
   github: string;
   linkedIn: string;
