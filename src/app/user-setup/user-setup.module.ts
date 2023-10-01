@@ -7,12 +7,18 @@ import { RouterModule } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { UserSetupComponent } from "./components//user-setup.component";
 import { UserSSetupRoutingModule } from "./user-setup-routing.module";
-import { UserSetupBasicDetailsComponent } from './components/user-setup-basic-details/user-setup-basic-details.component';
-import { UserSetupPathComponent } from './components/user-setup-path/user-setup-path.component';
-import { UserSetupTourComponent } from './components/user-setup-tour/user-setup-tour.component';
+import { UserSetupBasicDetailsComponent } from "./components/user-setup-basic-details/user-setup-basic-details.component";
+import { UserSetupPathQuizComponent } from "./components/user-setup-path-quiz/user-setup-path-quiz.component";
+import { UserSetupTourComponent } from "./components/user-setup-tour/user-setup-tour.component";
+import { UserSetupService } from "./services/user-setup.service";
 
 @NgModule({
-  declarations: [UserSetupComponent, UserSetupBasicDetailsComponent, UserSetupPathComponent, UserSetupTourComponent],
+  declarations: [
+    UserSetupComponent,
+    UserSetupBasicDetailsComponent,
+    UserSetupPathQuizComponent,
+    UserSetupTourComponent,
+  ],
   exports: [],
   imports: [
     CommonModule,
@@ -24,6 +30,6 @@ import { UserSetupTourComponent } from './components/user-setup-tour/user-setup-
     TranslateModule.forChild(),
     UserSSetupRoutingModule,
   ],
-  providers: [],
+  providers: [UserSetupService],
 })
 export class UserSetupModule {}

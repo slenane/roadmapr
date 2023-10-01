@@ -10,7 +10,7 @@ import {
 import { Profile } from "../../store/profile.models";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { ProfileStoreService } from "../../services/profile-store.service";
-import { DEV_PATHS } from "../../constants/profile.constants";
+import { DEV_PATHS } from "src/app/shared/constants/dev-paths.constants";
 
 @Component({
   selector: "app-profile-edit",

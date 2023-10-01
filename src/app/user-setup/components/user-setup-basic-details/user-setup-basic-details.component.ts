@@ -1,9 +1,10 @@
 import { Component, OnInit, ElementRef, ViewChild } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { MatDialogRef } from "@angular/material/dialog";
+import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { Subject } from "rxjs";
-import { DEV_PATHS } from "src/app/profile/constants/profile.constants";
+import { DEV_PATHS } from "src/app/shared/constants/dev-paths.constants";
 import { COUNTRY_LIST } from "src/app/shared/constants/country-list";
+import { UserSetupPathQuizComponent } from "../user-setup-path-quiz/user-setup-path-quiz.component";
 
 @Component({
   selector: "app-user-setup-basic-details",
@@ -39,7 +40,8 @@ export class UserSetupBasicDetailsComponent implements OnInit {
 
   constructor(
     private el: ElementRef,
-    public dialogRef: MatDialogRef<UserSetupBasicDetailsComponent>
+    public dialogRef: MatDialogRef<UserSetupBasicDetailsComponent>,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {}
@@ -75,5 +77,20 @@ export class UserSetupBasicDetailsComponent implements OnInit {
     } else {
       this.focusError();
     }
+  }
+
+  openPathQuiz() {
+    const dialogRef = this.dialog.open(UserSetupPathQuizComponent, {
+      width: "50vw",
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        console.log(result);
+        this.pathForm.patchValue({
+          pathCtrl: result,
+        });
+      }
+    });
   }
 }

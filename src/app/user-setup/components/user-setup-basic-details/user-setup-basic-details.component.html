@@ -58,21 +58,33 @@
       </mat-form-field>
 
       <!-- <mat-form-field appearance="outline">
-        <mat-label>{{ "FORMS.LANGUAGE.T" | translate }}</mat-label>
-        <input matInput formControlName="preferredLanguageCtrl" />
-        <mat-error
-          *ngIf="basicDetailsForm.controls.preferredLanguageCtrl.invalid"
-          >{{ "FORMS.LANGUAGE.REQUIRED" | translate }}</mat-error
-        >
-      </mat-form-field> -->
+      <mat-label>{{ "FORMS.LANGUAGE.T" | translate }}</mat-label>
+      <input matInput formControlName="preferredLanguageCtrl" />
+      <mat-error
+        *ngIf="basicDetailsForm.controls.preferredLanguageCtrl.invalid"
+        >{{ "FORMS.LANGUAGE.REQUIRED" | translate }}</mat-error
+      >
+    </mat-form-field> -->
     </form>
     <div class="actions">
       <button mat-button matStepperNext>Next</button>
     </div>
   </mat-step>
   <mat-step [stepControl]="pathForm" label="Choose your path">
-    <form [formGroup]="pathForm">
-      <mat-form-field appearance="outline">
+    <form [formGroup]="pathForm" class="path">
+      <h2>Choose your path in software development</h2>
+      <p
+        >If you have already begun your journey and know which path you are on,
+        you may select from the list below. Otherwise you can
+        <a (click)="openPathQuiz()" class="quiz-link">take a quiz</a> to find
+        the right path for you.</p
+      >
+      <p
+        >Selecting a path with help us make better recommendations for you and
+        other users. This can be changed at any time.</p
+      >
+
+      <mat-form-field appearance="outline" class="full-width-grid-item">
         <mat-label>{{ "FORMS.PATH" | translate }}</mat-label>
 
         <mat-select #path formControlName="pathCtrl">
@@ -87,15 +99,25 @@
     </form>
     <div class="actions">
       <button mat-button matStepperPrevious>Back</button>
-      <button mat-button matStepperNext>Next</button>
+      <button
+        mat-raised-button
+        color="primary"
+        [disabled]="!pathForm.value.pathCtrl"
+        matStepperNext
+        >Next</button
+      >
     </div>
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>Done</ng-template>
-    <p>You are now done.</p>
+    <h3>You're all set!</h3>
+    <p
+      >Click below to take a tour of roadmapr or skip to figure things out for
+      yourself</p
+    >
     <div class="actions">
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="stepper.reset()">Reset</button>
+      <button mat-raised-button>Skip</button>
+      <button mat-raised-button color="primary">Take Tour</button>
     </div>
   </mat-step>
 </mat-stepper>
