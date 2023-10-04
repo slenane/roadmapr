@@ -76,22 +76,6 @@ export class UserSetupBasicDetailsComponent implements OnInit {
     }
   }
 
-  focusError() {
-    for (const key of Object.keys(this.basicDetailsForm.controls)) {
-      if (
-        this.basicDetailsForm.get(key) &&
-        this.basicDetailsForm.get(key)?.invalid
-      ) {
-        this.basicDetailsForm.markAllAsTouched();
-        const invalidField = this.el.nativeElement.querySelector(
-          `[formControlName=${key}]`
-        );
-        invalidField.focus();
-        return;
-      }
-    }
-  }
-
   onNoClick(): void {
     this.dialogRef.close(false);
   }
@@ -99,8 +83,22 @@ export class UserSetupBasicDetailsComponent implements OnInit {
   onSaveClick(): void {
     if (this.basicDetailsForm.valid) {
       return this.dialogRef.close({ ...this.basicDetailsForm.value });
-    } else {
-      this.focusError();
+    }
+  }
+
+  onFormCompletion(actionType: "skip" | "tour") {
+    if (this.basicDetailsForm.valid && this.pathForm.valid) {
+      return this.dialogRef.close({
+        action: actionType,
+        data: {
+          profileImage: this.basicDetailsForm.value.profileImageCtrl,
+          firstName: this.basicDetailsForm.value.firstNameCtrl,
+          lastName: this.basicDetailsForm.value.lastNameCtrl,
+          location: this.basicDetailsForm.value.locationCtrl,
+          nationality: this.basicDetailsForm.value.nationalityCtrl,
+          path: this.pathForm.value.pathCtrl,
+        },
+      });
     }
   }
 

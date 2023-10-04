@@ -70,8 +70,10 @@
       "MOBILE": "A mobile developer is a professional who specializes in creating applications for mobile devices, such as smartphones and tablets. They work on both the frontend (user interface) and backend (logic and data management) of mobile applications."
     }
   },
-
   "ACTIONS": {
+    "NEXT": "Next",
+    "BACK": "Back",
+    "SKIP": "Skip",
     "ADD": "Add",
     "CANCEL": "Cancel",
     "CLOSE": "Close",
@@ -100,6 +102,19 @@
       "GITHUB_LOGIN": "Log in with GitHub",
       "GITHUB_REGISTRATION": "Register with GitHub"
     }
+  },
+  "USER_SETUP": {
+    "BASIC_DETAILS": "Basic Details",
+    "DEVELOPMENT_PATH": "Development Path",
+    "DEVELOPMENT_PATH_SUB": "Choose your path in software development",
+    "DEVELOPMENT_PATH_MESSAGE_1": "If you have already begun your journey and know which path you are on, you may select from the list below. Otherwise you can",
+    "DEVELOPMENT_PATH_MESSAGE_LINK": "take a quiz",
+    "DEVELOPMENT_PATH_MESSAGE_3": "to find the right path for you.",
+    "DEVELOPMENT_PATH_MESSAGE_4": "Selecting a path with help us make better recommendations for you and other users. This can be changed at any time.",
+    "DONE": "Done",
+    "DONE_SUB": "You're all set!",
+    "DONE_MESSAGE": "Click below to take a tour of roadmapr or skip to figure things out for yourself",
+    "TOUR": "Take Tour"
   },
   "EDUCATION": {
     "T": "Education",

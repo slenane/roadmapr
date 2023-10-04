@@ -17,6 +17,8 @@ import { ROUTES } from "src/app/core/constants/routes.constants";
 export class UserSetupComponent implements OnInit {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
   public user: any;
+  public userSetupInitialised: boolean = false;
+
   constructor(
     public dialog: MatDialog,
     private profileStoreService: ProfileStoreService,
@@ -32,7 +34,8 @@ export class UserSetupComponent implements OnInit {
         takeUntil(this.ngUnsubscribe)
       )
       .subscribe((user: Profile) => {
-        if (user._id) {
+        if (!this.userSetupInitialised && user._id) {
+          this.user = user;
           if (!this.profileService.userBasicDetailsProvided(user)) {
             this.displayWelcomeSteps(user);
           } else {
@@ -57,9 +60,13 @@ export class UserSetupComponent implements OnInit {
       autoFocus: false,
     });
 
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result) {
-        // this.educationStoreService.updateEducationItem(this.data);
+    dialogRef.afterClosed().subscribe((user) => {
+      if (user) {
+        this.userSetupInitialised = true;
+        this.profileStoreService.updateProfile(this.user._id, user.data);
+
+        if (user.action === "skip") this.router.navigateByUrl(ROUTES.DASHBOARD);
+        else this.router.navigateByUrl(ROUTES.TOUR);
       }
     });
   }
