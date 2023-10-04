@@ -1,10 +1,21 @@
-import { Component, OnInit, ElementRef, ViewChild } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  ElementRef,
+  Inject,
+  ViewChild,
+  ChangeDetectorRef,
+} from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { MatDialog, MatDialogRef } from "@angular/material/dialog";
-import { Subject } from "rxjs";
+import {
+  MAT_DIALOG_DATA,
+  MatDialog,
+  MatDialogRef,
+} from "@angular/material/dialog";
 import { DEV_PATHS } from "src/app/shared/constants/dev-paths.constants";
 import { COUNTRY_LIST } from "src/app/shared/constants/country-list";
 import { UserSetupPathQuizComponent } from "../user-setup-path-quiz/user-setup-path-quiz.component";
+import { MatStepper } from "@angular/material/stepper";
 
 @Component({
   selector: "app-user-setup-basic-details",
@@ -12,17 +23,15 @@ import { UserSetupPathQuizComponent } from "../user-setup-path-quiz/user-setup-p
   styleUrls: ["./user-setup-basic-details.component.scss"],
 })
 export class UserSetupBasicDetailsComponent implements OnInit {
-  private ngUnsubscribe: Subject<void> = new Subject<void>();
   public countryList = COUNTRY_LIST;
   public paths = DEV_PATHS;
 
   public basicDetailsForm = new FormGroup({
     firstNameCtrl: new FormControl("", Validators.required),
     lastNameCtrl: new FormControl("", Validators.required),
-    profileImageCtrl: new FormControl("", Validators.required),
+    profileImageCtrl: new FormControl(""),
     locationCtrl: new FormControl("", Validators.required), // Add validator for country
     nationalityCtrl: new FormControl("", Validators.required), // Add validator for country
-    // preferredLanguageCtrl: new FormControl("", Validators.required),
   });
 
   public pathForm = new FormGroup({
@@ -34,21 +43,37 @@ export class UserSetupBasicDetailsComponent implements OnInit {
   @ViewChild("profileImage") profileImageCtrl: ElementRef;
   @ViewChild("location") locationCtrl: ElementRef;
   @ViewChild("nationality") nationalityCtrl: ElementRef;
-  // @ViewChild("preferredLanguage") preferredLanguageCtrl: ElementRef;
 
   @ViewChild("path") pathCtrl: ElementRef;
+  @ViewChild("stepper") stepper: MatStepper;
 
   constructor(
     private el: ElementRef,
+    private cdr: ChangeDetectorRef,
     public dialogRef: MatDialogRef<UserSetupBasicDetailsComponent>,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.basicDetailsForm.patchValue({
+      profileImageCtrl: this.data.profileImage,
+      firstNameCtrl: this.data.firstName,
+      lastNameCtrl: this.data.lastName,
+      locationCtrl: this.data.location,
+      nationalityCtrl: this.data.nationality,
+    });
 
-  ngOnDestroy() {
-    this.ngUnsubscribe.next();
-    this.ngUnsubscribe.complete();
+    this.pathForm.patchValue({
+      pathCtrl: this.data.path,
+    });
+  }
+
+  ngAfterViewInit() {
+    if (this.stepper.selectedIndex === 0 && this.basicDetailsForm.valid) {
+      this.stepper.next();
+      this.cdr.detectChanges();
+    }
   }
 
   focusError() {

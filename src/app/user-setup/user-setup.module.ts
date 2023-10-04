@@ -11,6 +11,7 @@ import { UserSetupBasicDetailsComponent } from "./components/user-setup-basic-de
 import { UserSetupPathQuizComponent } from "./components/user-setup-path-quiz/user-setup-path-quiz.component";
 import { UserSetupTourComponent } from "./components/user-setup-tour/user-setup-tour.component";
 import { UserSetupService } from "./services/user-setup.service";
+import { ProfileModule } from "../profile/profile.module";
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { UserSetupService } from "./services/user-setup.service";
     HttpClientModule,
     TranslateModule.forChild(),
     UserSSetupRoutingModule,
+    ProfileModule,
   ],
   providers: [UserSetupService],
 })

@@ -56,18 +56,15 @@
           "FORMS.REQUIRED.NATIONALITY" | translate
         }}</mat-error>
       </mat-form-field>
-
-      <!-- <mat-form-field appearance="outline">
-      <mat-label>{{ "FORMS.LANGUAGE.T" | translate }}</mat-label>
-      <input matInput formControlName="preferredLanguageCtrl" />
-      <mat-error
-        *ngIf="basicDetailsForm.controls.preferredLanguageCtrl.invalid"
-        >{{ "FORMS.LANGUAGE.REQUIRED" | translate }}</mat-error
-      >
-    </mat-form-field> -->
     </form>
     <div class="actions">
-      <button mat-button matStepperNext>Next</button>
+      <button
+        mat-raised-button
+        color="primary"
+        [disabled]="!basicDetailsForm.valid"
+        matStepperNext
+        >Next</button
+      >
     </div>
   </mat-step>
   <mat-step [stepControl]="pathForm" label="Choose your path">
