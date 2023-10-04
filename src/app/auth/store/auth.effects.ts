@@ -8,6 +8,8 @@ import * as authActions from "./auth.actions";
 import { ThemeService } from "src/app/core/services/theme.service";
 import { TranslateService } from "@ngx-translate/core";
 import { TokenResponse } from "./auth.models";
+import { ROUTES } from "src/app/core/constants/routes.constants";
+import { ProfileService } from "src/app/profile/services/profile.service";
 
 @Injectable()
 export class AuthEffects {
@@ -16,7 +18,8 @@ export class AuthEffects {
     private authService: AuthService,
     private router: Router,
     private themeService: ThemeService,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    private profileService: ProfileService
   ) {}
 
   register$ = createEffect((): any =>
@@ -24,7 +27,7 @@ export class AuthEffects {
       ofType(authActions.REGISTER),
       switchMap(({ userDetails }) => this.authService.register(userDetails)),
       map((payload) => {
-        this.router.navigateByUrl("/profile");
+        this.router.navigateByUrl(ROUTES.WELCOME);
         return authActions.RegisterSuccess(payload);
       }),
       catchError((error) => of(authActions.RegisterError(error)))
@@ -36,9 +39,8 @@ export class AuthEffects {
       ofType(authActions.LOGIN),
       switchMap(({ userDetails }) => this.authService.login(userDetails)),
       map((payload) => {
-        this.themeService.updateTheme(payload.user.theme);
-        this.translateService.use(payload.user.preferredLanguage);
-        this.router.navigateByUrl("/dashboard");
+        this.setUserPreferences(payload.user);
+        this.redirectUser(payload.user);
         return authActions.LoginSuccess(payload);
       })
     )
@@ -49,9 +51,8 @@ export class AuthEffects {
       ofType(authActions.GITHUB_LOGIN),
       switchMap(() => this.authService.githubLogin()),
       map((payload: TokenResponse) => {
-        this.themeService.updateTheme(payload.user.theme);
-        this.translateService.use(payload.user.preferredLanguage);
-        this.router.navigateByUrl("/dashboard");
+        this.setUserPreferences(payload.user);
+        this.redirectUser(payload.user);
         return authActions.LoginSuccess({ payload });
       }),
       catchError((error) => of(authActions.LoginError(error)))
@@ -63,7 +64,7 @@ export class AuthEffects {
       ofType(authActions.LOGOUT),
       map(() => this.authService.logout()),
       map(() => {
-        this.router.navigateByUrl("/login");
+        this.router.navigateByUrl(ROUTES.LOGIN);
         return authActions.LogoutSuccess();
       }),
       catchError((error) => {
@@ -71,4 +72,21 @@ export class AuthEffects {
       })
     )
   );
+
+  setUserPreferences(user: any) {
+    if (user.theme) {
+      this.themeService.updateTheme(user.theme);
+    }
+    if (user.preferredLanguage) {
+      this.translateService.use(user.preferredLanguage);
+    }
+  }
+
+  redirectUser(user: any) {
+    if (this.profileService.userBasicDetailsProvided(user)) {
+      this.router.navigateByUrl(ROUTES.DASHBOARD);
+    } else {
+      this.router.navigateByUrl(ROUTES.WELCOME);
+    }
+  }
 }

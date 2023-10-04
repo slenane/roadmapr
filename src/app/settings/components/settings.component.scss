@@ -18,6 +18,11 @@
     .form-grid {
       display: grid;
       grid-template-columns: 1fr;
+
+      &.name-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
     }
 
     .update-details-container {

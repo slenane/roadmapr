@@ -5,12 +5,20 @@
         <h1>{{ "SETTINGS.ACCOUNT" | translate }}</h1>
         <mat-card-content>
           <div class="update-details-container">
-            <form class="form-grid" [formGroup]="nameForm">
+            <form class="form-grid name-grid" [formGroup]="nameForm">
               <mat-form-field appearance="outline">
-                <mat-label>{{ "FORMS.FULL_NAME" | translate }}</mat-label>
-                <input matInput formControlName="nameCtrl" />
-                <mat-error *ngIf="nameForm.controls.nameCtrl.invalid">{{
-                  "FORMS.REQUIRED.FULL_NAME" | translate
+                <mat-label>{{ "FORMS.FIRST_NAME" | translate }}</mat-label>
+                <input matInput formControlName="firstNameCtrl" />
+                <mat-error *ngIf="nameForm.controls.firstNameCtrl.invalid">{{
+                  "FORMS.REQUIRED.FIRST_NAME" | translate
+                }}</mat-error>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>{{ "FORMS.LAST_NAME" | translate }}</mat-label>
+                <input matInput formControlName="lastNameCtrl" />
+                <mat-error *ngIf="nameForm.controls.lastNameCtrl.invalid">{{
+                  "FORMS.REQUIRED.LAST_NAME" | translate
                 }}</mat-error>
               </mat-form-field>
             </form>
@@ -20,9 +28,13 @@
                 mat-raised-button
                 color="primary"
                 [disabled]="
-                  nameForm.controls.nameCtrl.pending ||
-                  nameForm.controls.nameCtrl.errors ||
-                  nameForm.controls.nameCtrl.value === settings.name
+                  nameForm.controls.firstNameCtrl.pending ||
+                  nameForm.controls.firstNameCtrl.errors ||
+                  nameForm.controls.lastNameCtrl.pending ||
+                  nameForm.controls.lastNameCtrl.errors ||
+                  (nameForm.controls.firstNameCtrl.value ===
+                    settings.firstName &&
+                    nameForm.controls.lastNameCtrl.value === settings.lastName)
                 "
                 (click)="onSaveName()"
                 >{{ "ACTIONS.SAVE" | translate }}</button

@@ -15,9 +15,65 @@
     "PROJECTS": "Projects | roadmapr",
     "EMPLOYMENT": "Employment | roadmapr",
     "PROFILE": "Profile | roadmapr",
-    "SETTINGS": "Settings | roadmapr"
+    "SETTINGS": "Settings | roadmapr",
+    "USER_SETUP": "Welcome to roadmapr",
+    "TOUR": "Tour | roadmapr"
+  },
+  "PATHS": {
+    "TITLES": {
+      "FRONTEND": "Frontend Developer",
+      "BACKEND": "Backend Developer",
+      "FULL_STACK": "Full-Stack Developer",
+      "DEV_OPS": "DevOps Developer",
+      "BLOCKCHAIN": "Blockchain Developer",
+      "GAME": "Game Developer",
+      "MOBILE": "Mobile Developer",
+      "SECURITY": "Ethical Hacker / Security Analyst",
+      "DATA": "Data Scientist / Data Engineer",
+      "MACHINE_LEARNING": "Machine Learning Engineer",
+      "AI": "AI (Artificial Intelligence) Developer",
+      "CLOUD": "Cloud Engineer / Cloud Developer",
+      "QA": "QA (Quality Assurance) Engineer",
+      "UI_UX": "UX/UI Designer",
+      "GIS": "GIS (Geographic Information Systems) Developer",
+      "CRM": "CRM (Customer Relationship Management) Developer",
+      "E_COMMERCE": "E-commerce Developer",
+      "ERP": "ERP (Enterprise Resource Planning) Developer",
+      "CMS": "Content Management System (CMS) Developer"
+    },
+    "DESCRIPTIONS": {
+      "FRONTEND": "Designs and implements user interfaces for websites and web applications using HTML, CSS, and JavaScript.",
+      "BACKEND": "Manages server-side logic and databases, ensuring the functionality of web applications.",
+      "FULL_STACK": "Proficient in both frontend and backend development, handling client-side and server-side tasks.",
+      "DEV_OPS": "Automates and streamlines software development, integrating operations for efficient deployment.",
+      "BLOCKCHAIN": "Specializes in creating applications using blockchain technology, such as decentralized apps and smart contracts.",
+      "GAME": "Designs, develops, and tests video games, involving programming, design, and animation.",
+      "MOBILE": "Specializes in creating applications for mobile platforms like iOS and Android.",
+      "SECURITY": "Ethical Hacker / Security Analyst",
+      "DATA": "Focuses on working with data, including data analysis, data engineering, and machine learning.",
+      "MACHINE_LEARNING": "Designs, implements, and deploys machine learning models and algorithms.",
+      "AI": "Develops applications that can perform tasks that normally require human intelligence.",
+      "CLOUD": "Manages and develops applications for cloud computing platforms like AWS, Google Cloud, or Azure.",
+      "QA": "Focuses on testing software to ensure it meets quality and performance standards.",
+      "UI_UX": "Designs user interfaces and experiences to create intuitive and user-friendly software.",
+      "GIS": "Specializes in creating applications for mapping and geospatial analysis.",
+      "CRM": "Designs and develops software for managing customer interactions and relationships.",
+      "E_COMMERCE": "Works on developing and maintaining online shopping platforms.",
+      "ERP": "Specializes in creating software for managing business processes and operations.",
+      "CMS": "Develops and customizes content management platforms for websites and applications."
+    },
+    "DETAILED_DESCRIPTIONS": {
+      "FRONTEND": "A frontend developer is a professional responsible for designing and implementing the user interface and user experience of a website or web application. They work on the client side of web development, focusing on how the website looks, feels, and interacts with users.",
+      "BACKEND": "A backend developer is a professional responsible for building and maintaining the server-side of web applications. They work on the logic, databases, and server operations that support the frontend of a website or application.",
+      "FULL_STACK": "A full-stack developer is a professional who is proficient in both frontend and backend development. They have the skills and knowledge to work on all aspects of a web application, from designing the user interface to implementing the server-side logic and database management.",
+      "GAME": "A game developer is a professional who designs, develops, and creates video games. They work on various aspects of game production, including game design, programming, graphics, audio, and testing.",
+      "MOBILE": "A mobile developer is a professional who specializes in creating applications for mobile devices, such as smartphones and tablets. They work on both the frontend (user interface) and backend (logic and data management) of mobile applications."
+    }
   },
   "ACTIONS": {
+    "NEXT": "Next",
+    "BACK": "Back",
+    "SKIP": "Skip",
     "ADD": "Add",
     "CANCEL": "Cancel",
     "CLOSE": "Close",
@@ -46,6 +102,19 @@
       "GITHUB_LOGIN": "Log in with GitHub",
       "GITHUB_REGISTRATION": "Register with GitHub"
     }
+  },
+  "USER_SETUP": {
+    "BASIC_DETAILS": "Basic Details",
+    "DEVELOPMENT_PATH": "Development Path",
+    "DEVELOPMENT_PATH_SUB": "Choose your path in software development",
+    "DEVELOPMENT_PATH_MESSAGE_1": "If you have already begun your journey and know which path you are on, you may select from the list below. Otherwise you can",
+    "DEVELOPMENT_PATH_MESSAGE_LINK": "take a quiz",
+    "DEVELOPMENT_PATH_MESSAGE_3": "to find the right path for you.",
+    "DEVELOPMENT_PATH_MESSAGE_4": "Selecting a path with help us make better recommendations for you and other users. This can be changed at any time.",
+    "DONE": "Done",
+    "DONE_SUB": "You're all set!",
+    "DONE_MESSAGE": "Click below to take a tour of roadmapr or skip to figure things out for yourself",
+    "TOUR": "Take Tour"
   },
   "EDUCATION": {
     "T": "Education",
@@ -116,7 +185,8 @@
     },
     "DESCRIPTION": "Description",
     "EMAIL": "Email",
-    "FULL_NAME": "Full Name",
+    "FIRST_NAME": "First Name",
+    "LAST_NAME": "Last Name",
     "GITHUB": "GitHub",
     "GITHUB_LINK": "GitHub Link",
     "GITHUB_USER": "GitHub Username",
@@ -146,6 +216,7 @@
     "PROFILE_IMAGE": "Profile Image",
     "PROJECT_LINK": "Project Link",
     "ROLE": "Role",
+    "PATH": "Path",
     "STACK": "Stack",
     "THEME": {
       "T": "Theme",
@@ -160,7 +231,6 @@
     "X_USER": "X Username",
     "PLACEHOLDER": {
       "EMAIL": "Enter your email",
-      "FULL_NAME": "Enter your full name",
       "PASSWORD": "Enter your password",
       "STACK": "Start typing to find stack...",
       "TYPE": "Select Type",
@@ -169,7 +239,8 @@
     "REQUIRED": {
       "AUTHOR": "Author Required",
       "EMAIL": "Email Required",
-      "FULL_NAME": "Full Name Required",
+      "FIRST_NAME": "First Name Required",
+      "LAST_NAME": "Last Name Required",
       "INSTITUTION": "Institution Required",
       "INSTRUCTOR": "Instructor Required",
       "LINK": "Link Required",
@@ -179,6 +250,8 @@
       "NEW_PASSWORD": "New Password Required",
       "PASSWORD_CONFIRM": "Password Confirmation Required",
       "ROLE": "Role Required",
+      "PATH": "Path Required",
+      "PROFILE_IMAGE": "Profile Image Required",
       "STACK": "Stack Required",
       "TITLE": "Title Required",
       "TYPE": "Type Required",
@@ -200,7 +273,7 @@
     },
     "UPDATE": {
       "EMAIL": "Update Email",
-      "FULL_NAME": "Update Full Name",
+      "NAME": "Update Name",
       "PASSWORD": "Update Password",
       "STACK": "Update Stack",
       "USERNAME": "Update Username",
@@ -232,16 +305,6 @@
     },
     "UPDATE": {
       "T": "Update Profile"
-    },
-    "ROLES": {
-      "FRONTEND": "Frontend Developer",
-      "BACKEND": "Backend Developer",
-      "FULL_STACK": "Full-Stack Developer",
-      "DEV_OPS": "DevOps Developer",
-      "BLOCKCHAIN": "Blockchain Developer",
-      "GAME": "Game Developer",
-      "APP": "App Developer",
-      "SECURITY": "Security Developer"
     }
   },
   "PROJECTS": {
@@ -268,6 +331,7 @@
     "T": "Roadmap"
   },
   "SETTINGS": {
+    "T": "Settings",
     "ACCOUNT": "Account Settings",
     "DELETE": {
       "T": "Delete Account",

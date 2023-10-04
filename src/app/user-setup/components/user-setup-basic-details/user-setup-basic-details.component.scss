@@ -1,0 +1,24 @@
+.basic-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 1rem;
+}
+
+.path {
+  display: grid;
+  grid-template-columns: 1fr;
+
+  .quiz-link {
+    color: #00bfd6;
+    cursor: pointer;
+  }
+}
+
+.actions {
+  display: grid;
+  justify-content: end;
+  grid-template-columns: auto auto;
+  gap: 1rem;
+}
+
+// Frontend Developer, Backend Developer, Full-Stack Developer, DevOps Developer, Blockchain Developer, Game Developer, App Developer, Security Developer

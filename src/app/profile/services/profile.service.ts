@@ -22,4 +22,14 @@ export class ProfileService {
       }
     );
   }
+
+  public userBasicDetailsProvided(user: any) {
+    return (
+      user.firstName?.length &&
+      user.lastName?.length &&
+      user.location?.length &&
+      user.nationality?.length &&
+      user.path?.length
+    );
+  }
 }

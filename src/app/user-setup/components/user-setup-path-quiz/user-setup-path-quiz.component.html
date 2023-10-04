@@ -1,0 +1,169 @@
+<div class="header">Software Development Path Quiz</div>
+
+<mat-stepper [linear]="true" #stepper (selectionChange)="onStepChange($event)">
+  <mat-step [stepControl]="questionZeroForm">
+    <form [formGroup]="questionZeroForm">
+      <label id="questionZeroForm">{{ questions[0].question }}</label>
+      <mat-radio-group
+        aria-labelledby="questionZeroForm"
+        class="radio-group"
+        formControlName="questionCtrl"
+        [(ngModel)]="questionZeroForm.value.questionCtrl"
+      >
+        <mat-radio-button
+          class="radio-button"
+          *ngFor="let answer of questions[0].answers | keyvalue"
+          [value]="answer.key"
+        >
+          {{ answer.value }}
+        </mat-radio-button>
+      </mat-radio-group>
+      <div class="actions">
+        <button
+          mat-raised-button
+          matStepperNext
+          color="primary"
+          [disabled]="!questionZeroForm.value.questionCtrl"
+          >Next</button
+        >
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="questionOneForm">
+    <form [formGroup]="questionOneForm">
+      <label id="questionOneForm">{{ questions[1].question }}</label>
+      <mat-radio-group
+        aria-labelledby="questionOneForm"
+        class="radio-group"
+        formControlName="questionCtrl"
+        [(ngModel)]="questionOneForm.value.questionCtrl"
+      >
+        <mat-radio-button
+          class="radio-button"
+          *ngFor="let answer of questions[1].answers | keyvalue"
+          [value]="answer.key"
+        >
+          {{ answer.value }}
+        </mat-radio-button>
+      </mat-radio-group>
+      <div class="actions">
+        <button mat-button matStepperPrevious>Back</button>
+        <button
+          mat-raised-button
+          matStepperNext
+          color="primary"
+          [disabled]="!questionOneForm.value.questionCtrl"
+          matStepperNext
+          >Next</button
+        >
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="questionTwoForm">
+    <form [formGroup]="questionTwoForm">
+      <label id="questionTwoForm">{{ questions[2].question }}</label>
+      <mat-radio-group
+        aria-labelledby="questionTwoForm"
+        class="radio-group"
+        formControlName="questionCtrl"
+        [(ngModel)]="questionTwoForm.value.questionCtrl"
+      >
+        <mat-radio-button
+          class="radio-button"
+          *ngFor="let answer of questions[2].answers | keyvalue"
+          [value]="answer.key"
+        >
+          {{ answer.value }}
+        </mat-radio-button>
+      </mat-radio-group>
+      <div class="actions">
+        <button mat-button matStepperPrevious>Back</button>
+        <button
+          mat-raised-button
+          matStepperNext
+          color="primary"
+          [disabled]="!questionTwoForm.value.questionCtrl"
+          matStepperNext
+          >Next</button
+        >
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="questionThreeForm">
+    <form [formGroup]="questionThreeForm">
+      <label id="questionThreeForm">{{ questions[3].question }}</label>
+      <mat-radio-group
+        aria-labelledby="questionThreeForm"
+        class="radio-group"
+        formControlName="questionCtrl"
+        [(ngModel)]="questionThreeForm.value.questionCtrl"
+      >
+        <mat-radio-button
+          class="radio-button"
+          *ngFor="let answer of questions[3].answers | keyvalue"
+          [value]="answer.key"
+        >
+          {{ answer.value }}
+        </mat-radio-button>
+      </mat-radio-group>
+      <div class="actions">
+        <button mat-button matStepperPrevious>Back</button>
+        <button
+          mat-raised-button
+          matStepperNext
+          color="primary"
+          [disabled]="!questionThreeForm.value.questionCtrl"
+          matStepperNext
+          >Next</button
+        >
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="questionFourForm">
+    <form [formGroup]="questionFourForm">
+      <label id="questionFourForm">{{ questions[4].question }}</label>
+      <mat-radio-group
+        aria-labelledby="questionFourForm"
+        class="radio-group"
+        formControlName="questionCtrl"
+        [(ngModel)]="questionFourForm.value.questionCtrl"
+      >
+        <mat-radio-button
+          class="radio-button"
+          *ngFor="let answer of questions[4].answers | keyvalue"
+          [value]="answer.key"
+        >
+          {{ answer.value }}
+        </mat-radio-button>
+      </mat-radio-group>
+      <div class="actions">
+        <button mat-button matStepperPrevious>Back</button>
+        <button
+          mat-raised-button
+          matStepperNext
+          color="primary"
+          [disabled]="!questionFourForm.value.questionCtrl"
+          matStepperNext
+          >Next</button
+        >
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step>
+    <ng-template matStepLabel>Result</ng-template>
+    <p>Based on your answers, we recommend:</p>
+    <h3 class="recommended-title">{{ recommendation.title | translate }}</h3>
+    <p>{{ recommendation.description | translate }}</p>
+    <div class="actions">
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-raised-button color="primary" (click)="acceptPath()"
+        >Continue</button
+      >
+    </div>
+  </mat-step>
+</mat-stepper>

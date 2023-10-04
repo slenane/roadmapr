@@ -32,7 +32,11 @@ export class SettingsComponent implements OnInit {
   public githubAuthUrl: string;
 
   public nameForm = new FormGroup({
-    nameCtrl: new FormControl(
+    firstNameCtrl: new FormControl(
+      { value: "", disabled: !this.isEditingName },
+      Validators.required
+    ),
+    lastNameCtrl: new FormControl(
       { value: "", disabled: !this.isEditingName },
       Validators.required
     ),
@@ -43,7 +47,8 @@ export class SettingsComponent implements OnInit {
     notificationsCtrl: new FormControl(false),
   });
 
-  @ViewChild("name") nameCtrl: ElementRef;
+  @ViewChild("firstName") firstNameCtrl: ElementRef;
+  @ViewChild("lastName") lastNameCtrl: ElementRef;
   @ViewChild("username") usernameCtrl: ElementRef;
   @ViewChild("email") emailCtrl: ElementRef;
   @ViewChild("newPassword") newPasswordCtrl: ElementRef;
@@ -82,7 +87,8 @@ export class SettingsComponent implements OnInit {
 
   updateForms() {
     this.nameForm.patchValue({
-      nameCtrl: this.settings.name,
+      firstNameCtrl: this.settings.firstName,
+      lastNameCtrl: this.settings.lastName,
     });
 
     this.appSettingsForm.patchValue({
@@ -95,9 +101,16 @@ export class SettingsComponent implements OnInit {
   toggleNameUpdate(): void {
     this.isEditingName = !this.isEditingName;
     if (this.isEditingName) {
-      this.nameForm.controls.nameCtrl.enable();
+      this.nameForm.controls.firstNameCtrl.enable();
+      this.nameForm.controls.lastNameCtrl.enable();
     } else {
-      this.nameForm.controls.nameCtrl.disable();
+      this.nameForm.reset();
+      this.nameForm.patchValue({
+        firstNameCtrl: this.settings.firstName,
+        lastNameCtrl: this.settings.lastName,
+      });
+      this.nameForm.controls.firstNameCtrl.disable();
+      this.nameForm.controls.lastNameCtrl.disable();
     }
   }
 
@@ -116,10 +129,12 @@ export class SettingsComponent implements OnInit {
   onSaveName(): void {
     if (
       this.nameForm.valid &&
-      this.nameForm.value.nameCtrl !== this.settings.name
+      (this.nameForm.value.firstNameCtrl !== this.settings.firstName ||
+        this.nameForm.value.lastNameCtrl !== this.settings.lastName)
     ) {
       this.settingsStoreService.updateSettings(this.settings.userId, {
-        name: this.nameForm.value.nameCtrl,
+        firstName: this.nameForm.value.firstNameCtrl,
+        lastName: this.nameForm.value.lastNameCtrl,
       });
       this.toggleNameUpdate();
     }

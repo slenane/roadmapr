@@ -13,7 +13,8 @@ const initialState: Settings = {
   notifications: false,
   email: "",
   username: "",
-  name: "",
+  firstName: "",
+  lastName: "",
   github: {
     id: "",
     username: "",
