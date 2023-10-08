@@ -1,4 +1,5 @@
-<!-- <mat-label>Profile Image</mat-label>
+<p>{{ "FORMS.PROFILE_IMAGE" | translate }}</p>
+
 <input
   type="file"
   class="file-input"
@@ -6,32 +7,16 @@
   #fileUpload
 />
 
-<div class="file-upload">
-  {{ fileName || "No file uploaded yet." }}
+<div class="center">
+  <img
+    class="user-image"
+    [src]="image ? image : '/assets/images/user-fallback.png'"
+    alt="User Image"
+  />
 
-  <button
-    mat-mini-fab
-    color="primary"
-    class="upload-btn"
-    (click)="fileUpload.click()"
-  >
-    <span class="material-symbols-outlined">attach_file</span>
-  </button>
+  <div class="file-upload">
+    <button mat-mini-fab color="primary" (click)="fileUpload.click()">
+      <span class="material-symbols-outlined">edit</span>
+    </button>
+  </div>
 </div>
-
-<div class="progress">
-  <mat-progress-bar
-    class="progress-bar"
-    mode="determinate"
-    [value]="uploadProgress"
-    *ngIf="uploadProgress"
-  >
-  </mat-progress-bar>
-
-  <span class="material-symbols-outlined"
-    class="cancel-upload"
-    (click)="cancelUpload()"
-    *ngIf="uploadProgress"
-    >delete_forever</span
-  >
-</div> -->

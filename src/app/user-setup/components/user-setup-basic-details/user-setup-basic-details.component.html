@@ -4,13 +4,10 @@
       <ng-template matStepLabel>{{
         "USER_SETUP.BASIC_DETAILS" | translate
       }}</ng-template>
-      <mat-form-field appearance="outline" class="full-width-grid-item">
-        <mat-label>{{ "FORMS.PROFILE_IMAGE" | translate }}</mat-label>
-        <input matInput formControlName="profileImageCtrl" />
-        <mat-error *ngIf="basicDetailsForm.controls.profileImageCtrl.invalid">{{
-          "FORMS.REQUIRED.PROFILE_IMAGE" | translate
-        }}</mat-error>
-      </mat-form-field>
+      <app-file-upload
+        class="full-width-grid-item"
+        [data]="data.profileImage"
+      ></app-file-upload>
 
       <mat-form-field appearance="outline">
         <mat-label>{{ "FORMS.FIRST_NAME" | translate }}</mat-label>

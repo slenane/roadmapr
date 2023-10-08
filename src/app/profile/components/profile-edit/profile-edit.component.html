@@ -4,6 +4,11 @@
   </mat-card-header>
   <mat-card-content>
     <form [formGroup]="profileForm" class="profile-edit">
+      <app-file-upload
+        class="profile-image-grid-item"
+        [data]="user.profileImage"
+      ></app-file-upload>
+
       <mat-form-field appearance="outline">
         <mat-label>{{ "FORMS.FIRST_NAME" | translate }}</mat-label>
         <input #name matInput formControlName="firstName" />
@@ -18,11 +23,6 @@
         <mat-error *ngIf="profileForm.controls.lastName.invalid">{{
           "FORMS.REQUIRED.LAST_NAME" | translate
         }}</mat-error>
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label>{{ "FORMS.PROFILE_IMAGE" | translate }}</mat-label>
-        <input matInput formControlName="profileImage" />
       </mat-form-field>
 
       <mat-form-field appearance="outline">

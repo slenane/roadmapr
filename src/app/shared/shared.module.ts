@@ -15,6 +15,7 @@ import { CommonModule } from "@angular/common";
 import { DropListService } from "./services/drop-list.service";
 import { ValidatorsService } from "./services/validators.service";
 import { MyErrorStateMatcher } from "./services/error-state-matcher.service";
+import { FileUploadComponent } from "./components/file-upload/file-upload.component";
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { MyErrorStateMatcher } from "./services/error-state-matcher.service";
     UpdatePasswordComponent,
     UpdateUsernameComponent,
     UpdateEmailComponent,
+    FileUploadComponent,
   ],
   exports: [
     SidebarComponent,
@@ -34,6 +36,7 @@ import { MyErrorStateMatcher } from "./services/error-state-matcher.service";
     UpdatePasswordComponent,
     UpdateUsernameComponent,
     UpdateEmailComponent,
+    FileUploadComponent,
   ],
   imports: [
     CommonModule,

@@ -13,12 +13,12 @@ export class ApiService {
     return this.http.get(url, queryParams);
   }
 
-  public post(url: string, queryParams: any): Observable<any> {
-    return this.http.post(url, queryParams);
+  public post(url: string, body: any): Observable<any> {
+    return this.http.post(url, body);
   }
 
-  public patch(url: string, queryParams: any): Observable<any> {
-    return this.http.patch(url, queryParams);
+  public patch(url: string, body: any): Observable<any> {
+    return this.http.patch(url, body);
   }
 
   // private request(
