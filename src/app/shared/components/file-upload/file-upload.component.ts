@@ -5,7 +5,9 @@ import {
   SimpleChanges,
   OnChanges,
 } from "@angular/core";
+import { MatDialog } from "@angular/material/dialog";
 import { ProfileService } from "src/app/profile/services/profile.service";
+import { ImageCropperModalComponent } from "../image-cropper-modal/image-cropper-modal.component";
 
 @Component({
   selector: "app-file-upload",
@@ -18,27 +20,36 @@ export class FileUploadComponent implements OnInit, OnChanges {
 
   @Input() data: any;
 
-  constructor(private profileService: ProfileService) {}
+  constructor(
+    private profileService: ProfileService,
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {}
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log(this.data);
     if (changes.data.currentValue) this.image = changes.data.currentValue;
   }
 
   onFileSelected(event: any) {
-    const file: File = event.target.files[0];
-    if (file) {
-      const formData = new FormData();
-      formData.append("profileImage", file);
+    const dialogRef = this.dialog.open(ImageCropperModalComponent, {
+      maxHeight: "80vh",
+      maxWidth: "80vw",
+      data: event,
+    });
 
-      this.profileService
-        .updateProfileImage(formData)
-        .pipe()
-        .subscribe((res) => {
-          if (res.profileImage) this.image = res.profileImage;
-        });
-    }
+    dialogRef.afterClosed().subscribe((image) => {
+      if (image) {
+        const formData = new FormData();
+        formData.append("profileImage", image);
+
+        this.profileService
+          .updateProfileImage(formData)
+          .pipe()
+          .subscribe((res) => {
+            if (res.profileImage) this.image = res.profileImage;
+          });
+      }
+    });
   }
 }

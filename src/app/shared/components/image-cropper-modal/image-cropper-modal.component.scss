@@ -1,0 +1,11 @@
+image-cropper {
+  height: 50vh;
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: flex-end;
+  gap: 1;
+  margin-top: 1rem;
+}

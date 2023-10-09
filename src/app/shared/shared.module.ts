@@ -16,6 +16,8 @@ import { DropListService } from "./services/drop-list.service";
 import { ValidatorsService } from "./services/validators.service";
 import { MyErrorStateMatcher } from "./services/error-state-matcher.service";
 import { FileUploadComponent } from "./components/file-upload/file-upload.component";
+import { ImageCropperModalComponent } from "./components/image-cropper-modal/image-cropper-modal.component";
+import { ImageCropperModule } from "ngx-image-cropper";
 
 @NgModule({
   declarations: [
@@ -27,6 +29,7 @@ import { FileUploadComponent } from "./components/file-upload/file-upload.compon
     UpdateUsernameComponent,
     UpdateEmailComponent,
     FileUploadComponent,
+    ImageCropperModalComponent,
   ],
   exports: [
     SidebarComponent,
@@ -46,6 +49,7 @@ import { FileUploadComponent } from "./components/file-upload/file-upload.compon
     ReactiveFormsModule,
     HttpClientModule,
     TranslateModule.forChild(),
+    ImageCropperModule,
   ],
   providers: [DropListService, ValidatorsService, MyErrorStateMatcher],
 })
