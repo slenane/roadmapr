@@ -23,6 +23,13 @@ export class ProfileService {
     );
   }
 
+  public updateProfileImage(formData: FormData): Observable<Profile> {
+    return this.apiService.post(
+      this.urlService.generate("PROFILE_IMAGE_UPDATE"),
+      formData
+    );
+  }
+
   public userBasicDetailsProvided(user: any) {
     return (
       user.firstName?.length &&

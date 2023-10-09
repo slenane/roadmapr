@@ -1,3 +1,28 @@
-// .file-input {
-//   display: none;
-// }
+.file-label {
+  text-align: center;
+}
+
+.file-input {
+  display: none;
+}
+
+.center {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+
+  .user-image {
+    height: 7rem;
+    width: 7rem;
+    border: 3px solid white;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .file-upload {
+    position: relative;
+    top: -2.5rem;
+    right: -2.5rem;
+  }
+}

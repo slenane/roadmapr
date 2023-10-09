@@ -1,0 +1,23 @@
+<div class="image-cropper-modal">
+  <image-cropper
+    [imageChangedEvent]="imageChangedEvent"
+    [maintainAspectRatio]="true"
+    [aspectRatio]="1 / 1"
+    [resizeToWidth]="256"
+    [cropperMinWidth]="128"
+    [roundCropper]="true"
+    (imageCropped)="imageCropped($event)"
+  ></image-cropper>
+
+  <div class="actions">
+    <button mat-button color="default" (click)="dialogRef.close(false)"
+      >Cancel</button
+    >
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="dialogRef.close(croppedImage)"
+      >Save</button
+    >
+  </div>
+</div>

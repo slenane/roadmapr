@@ -29,7 +29,6 @@ export class UserSetupBasicDetailsComponent implements OnInit {
   public basicDetailsForm = new FormGroup({
     firstNameCtrl: new FormControl("", Validators.required),
     lastNameCtrl: new FormControl("", Validators.required),
-    profileImageCtrl: new FormControl(""),
     locationCtrl: new FormControl("", Validators.required), // Add validator for country
     nationalityCtrl: new FormControl("", Validators.required), // Add validator for country
   });
@@ -40,7 +39,6 @@ export class UserSetupBasicDetailsComponent implements OnInit {
 
   @ViewChild("firstName") firstNameCtrl: ElementRef;
   @ViewChild("lastName") lastNameCtrl: ElementRef;
-  @ViewChild("profileImage") profileImageCtrl: ElementRef;
   @ViewChild("location") locationCtrl: ElementRef;
   @ViewChild("nationality") nationalityCtrl: ElementRef;
 
@@ -57,7 +55,6 @@ export class UserSetupBasicDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.basicDetailsForm.patchValue({
-      profileImageCtrl: this.data.profileImage,
       firstNameCtrl: this.data.firstName,
       lastNameCtrl: this.data.lastName,
       locationCtrl: this.data.location,
@@ -91,7 +88,6 @@ export class UserSetupBasicDetailsComponent implements OnInit {
       return this.dialogRef.close({
         action: actionType,
         data: {
-          profileImage: this.basicDetailsForm.value.profileImageCtrl,
           firstName: this.basicDetailsForm.value.firstNameCtrl,
           lastName: this.basicDetailsForm.value.lastNameCtrl,
           location: this.basicDetailsForm.value.locationCtrl,

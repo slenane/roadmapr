@@ -15,6 +15,9 @@ import { CommonModule } from "@angular/common";
 import { DropListService } from "./services/drop-list.service";
 import { ValidatorsService } from "./services/validators.service";
 import { MyErrorStateMatcher } from "./services/error-state-matcher.service";
+import { FileUploadComponent } from "./components/file-upload/file-upload.component";
+import { ImageCropperModalComponent } from "./components/image-cropper-modal/image-cropper-modal.component";
+import { ImageCropperModule } from "ngx-image-cropper";
 
 @NgModule({
   declarations: [
@@ -25,6 +28,8 @@ import { MyErrorStateMatcher } from "./services/error-state-matcher.service";
     UpdatePasswordComponent,
     UpdateUsernameComponent,
     UpdateEmailComponent,
+    FileUploadComponent,
+    ImageCropperModalComponent,
   ],
   exports: [
     SidebarComponent,
@@ -34,6 +39,7 @@ import { MyErrorStateMatcher } from "./services/error-state-matcher.service";
     UpdatePasswordComponent,
     UpdateUsernameComponent,
     UpdateEmailComponent,
+    FileUploadComponent,
   ],
   imports: [
     CommonModule,
@@ -43,6 +49,7 @@ import { MyErrorStateMatcher } from "./services/error-state-matcher.service";
     ReactiveFormsModule,
     HttpClientModule,
     TranslateModule.forChild(),
+    ImageCropperModule,
   ],
   providers: [DropListService, ValidatorsService, MyErrorStateMatcher],
 })

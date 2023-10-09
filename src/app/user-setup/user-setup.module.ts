@@ -12,6 +12,7 @@ import { UserSetupPathQuizComponent } from "./components/user-setup-path-quiz/us
 import { UserSetupTourComponent } from "./components/user-setup-tour/user-setup-tour.component";
 import { UserSetupService } from "./services/user-setup.service";
 import { ProfileModule } from "../profile/profile.module";
+import { SharedModule } from "../shared/shared.module";
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { ProfileModule } from "../profile/profile.module";
     TranslateModule.forChild(),
     UserSSetupRoutingModule,
     ProfileModule,
+    SharedModule,
   ],
   providers: [UserSetupService],
 })

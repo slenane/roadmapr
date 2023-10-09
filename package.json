@@ -32,6 +32,7 @@
     "material-symbols": "^0.13.0",
     "moment": "^2.29.4",
     "ng2-charts": "^4.1.1",
+    "ngx-image-cropper": "^7.0.3",
     "npm": "^9.6.4",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
