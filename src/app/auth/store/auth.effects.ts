@@ -26,11 +26,11 @@ export class AuthEffects {
     this.actions$.pipe(
       ofType(authActions.REGISTER),
       switchMap(({ userDetails }) => this.authService.register(userDetails)),
-      map((payload) => {
-        this.router.navigateByUrl(ROUTES.WELCOME);
-        return authActions.RegisterSuccess(payload);
+      map(() => {
+        this.router.navigateByUrl(ROUTES.VERIFY_EMAIL);
+        return authActions.RegisterSuccess();
       }),
-      catchError((error) => of(authActions.RegisterError(error)))
+      catchError(() => of(authActions.RegisterError()))
     )
   );
 

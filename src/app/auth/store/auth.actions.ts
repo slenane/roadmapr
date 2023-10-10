@@ -14,15 +14,9 @@ const REGISTER_SUCCESS = "[Auth] Registered Successfully",
 
 export const Register = createAction(REGISTER, props<{ userDetails: User }>());
 
-export const RegisterSuccess = createAction(
-  REGISTER_SUCCESS,
-  props<{ payload: any }>()
-);
+export const RegisterSuccess = createAction(REGISTER_SUCCESS);
 
-export const RegisterError = createAction(
-  REGISTER_ERROR,
-  props<{ payload: string }>()
-);
+export const RegisterError = createAction(REGISTER_ERROR);
 
 export const Login = createAction(LOGIN, props<{ userDetails: User }>());
 

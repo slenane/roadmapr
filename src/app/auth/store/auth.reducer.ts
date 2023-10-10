@@ -14,14 +14,6 @@ const initialState: Auth = {
 
 const authReducer = createReducer(
   initialState,
-  on(authActions.RegisterSuccess, (state, payload: any) => {
-    return {
-      ...state,
-      isLoggedIn: true,
-      ...(payload.user ? { user: payload.user._id } : {}),
-      ...(payload.token ? { token: payload.token } : {}),
-    };
-  }),
   on(authActions.LoginSuccess, (state, payload: any) => {
     return {
       ...state,
