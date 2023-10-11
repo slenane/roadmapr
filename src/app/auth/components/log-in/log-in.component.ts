@@ -1,9 +1,10 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { AuthStoreService } from "../../services/auth-store.service";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 import { AuthService } from "../../services/auth.service";
 import { Location } from "@angular/common";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({
   selector: "app-log-in",
@@ -12,6 +13,7 @@ import { Location } from "@angular/common";
 })
 export class LogInComponent implements OnInit {
   public hidePassword: boolean = true;
+  public loginPending: boolean = false;
   public authUrl: string;
   public form = new FormGroup({
     emailCtrl: new FormControl("", [Validators.required, Validators.email]),
@@ -27,10 +29,22 @@ export class LogInComponent implements OnInit {
     private authStoreService: AuthStoreService,
     private authService: AuthService,
     private router: Router,
-    private location: Location
+    private activatedRoute: ActivatedRoute,
+    private location: Location,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
+    this.activatedRoute.queryParams.subscribe((params: any) => {
+      if (params["verified"]) {
+        this.snackBar.open(
+          "Email verified successfully! Please login to continue",
+          "Dismiss",
+          { duration: 5000 }
+        );
+      }
+    });
+
     this.authService.getGithubAuthPage().subscribe({
       next: (data: any) => (this.authUrl = data["authUrl"]),
       error: (err: any) => console.log(err),
@@ -43,6 +57,9 @@ export class LogInComponent implements OnInit {
         email: this.form.value.emailCtrl,
         password: this.form.value.passwordCtrl,
       });
+
+      this.form.disable();
+      this.loginPending = true;
     }
   }
 

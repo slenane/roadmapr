@@ -1,21 +1,4 @@
-.auth-container {
-  height: 100vh;
-  padding: 0 10%;
+.spinner {
   display: grid;
-  text-align: center;
-  align-content: center;
-
-  .auth-brand {
-    text-align: center;
-    margin-bottom: 3rem;
-
-    img {
-      height: 3rem;
-    }
-  }
-
-  .spinner {
-    display: grid;
-    justify-content: center;
-  }
+  justify-content: center;
 }

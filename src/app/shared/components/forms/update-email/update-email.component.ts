@@ -24,7 +24,7 @@ export class UpdateEmailComponent implements OnInit, OnChanges {
   });
 
   @Input() email: string | undefined;
-  @Input() isEditing: boolean;
+  @Input() disabled: boolean;
 
   constructor(private validatorsService: ValidatorsService) {}
 
@@ -38,10 +38,10 @@ export class UpdateEmailComponent implements OnInit, OnChanges {
       this.updateForm(changes.email.currentValue);
     }
     if (
-      changes.isEditing &&
-      changes.isEditing.currentValue !== changes.isEditing.previousValue
+      changes.disabled &&
+      changes.disabled.currentValue !== changes.disabled.previousValue
     ) {
-      this.toggleFormEnabled(changes.isEditing.currentValue);
+      this.toggleFormEnabled(changes.disabled.currentValue);
     }
   }
 
@@ -59,8 +59,8 @@ export class UpdateEmailComponent implements OnInit, OnChanges {
     this.initialEmail = email;
   }
 
-  toggleFormEnabled(enabled: boolean) {
-    if (enabled) this.form.controls.emailCtrl.enable();
-    else this.form.controls.emailCtrl.disable();
+  toggleFormEnabled(disabled: boolean) {
+    if (disabled) this.form.controls.emailCtrl.disable();
+    else this.form.controls.emailCtrl.enable();
   }
 }

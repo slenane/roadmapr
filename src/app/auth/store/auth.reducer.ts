@@ -6,15 +6,17 @@ export interface Auth {
   user?: String | null;
   token?: string | null;
   isLoggedIn: boolean;
+  registrationSuccessful: boolean;
 }
 
 const initialState: Auth = {
   isLoggedIn: false,
+  registrationSuccessful: false,
 };
 
 const authReducer = createReducer(
   initialState,
-  on(authActions.RegisterSuccess, (state, payload: any) => {
+  on(authActions.LoginSuccess, (state, payload: any) => {
     return {
       ...state,
       isLoggedIn: true,
@@ -22,12 +24,10 @@ const authReducer = createReducer(
       ...(payload.token ? { token: payload.token } : {}),
     };
   }),
-  on(authActions.LoginSuccess, (state, payload: any) => {
+  on(authActions.RegisterSuccess, (state) => {
     return {
       ...state,
-      isLoggedIn: true,
-      ...(payload.user ? { user: payload.user._id } : {}),
-      ...(payload.token ? { token: payload.token } : {}),
+      registrationSuccessful: true,
     };
   })
 );
@@ -37,3 +37,5 @@ export const reducer = (state: Auth | undefined, action: Action) => {
 };
 
 export const getUserId = (state: Auth) => state.user;
+export const registrationSuccessful = (state: Auth) =>
+  state.registrationSuccessful;

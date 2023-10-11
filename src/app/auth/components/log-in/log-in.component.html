@@ -35,7 +35,7 @@
 
   <div class="divider">
     <span class="line"></span>
-    <span>OR</span>
+    <span>{{ "GENERAL.OR" | translate }}</span>
     <span class="line"></span>
   </div>
 
@@ -51,6 +51,9 @@
           formControlName="emailCtrl"
           required
         />
+        <mat-error *ngIf="form.controls.emailCtrl?.hasError('required')">{{
+          "FORMS.REQUIRED.EMAIL" | translate
+        }}</mat-error>
       </mat-form-field>
     </div>
     <div class="form-group">
@@ -70,6 +73,9 @@
           (click)="hidePassword = !hidePassword"
           >{{ hidePassword ? "visibility_off" : "visibility" }}</span
         >
+        <mat-error *ngIf="form.controls.passwordCtrl?.hasError('required')">{{
+          "FORMS.REQUIRED.PASSWORD" | translate
+        }}</mat-error>
       </mat-form-field>
     </div>
 
@@ -79,8 +85,13 @@
         color="primary"
         (click)="login()"
         [disabled]="!form.valid"
-        >{{ "AUTH.LOG_IN.T" | translate }}</button
       >
+        <span *ngIf="!loginPending">{{ "AUTH.LOG_IN.T" | translate }}</span>
+
+        <span class="auth-spinner" *ngIf="loginPending">
+          <mat-spinner matSuffix [diameter]="27"></mat-spinner>
+        </span>
+      </button>
     </div>
 
     <a class="auth-type-switch" (click)="showRegister()">{{

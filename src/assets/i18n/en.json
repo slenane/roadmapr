@@ -4,7 +4,8 @@
       "TO_DO": "To Do",
       "IN_PROGRESS": "In Progress",
       "DONE": "Done"
-    }
+    },
+    "OR": "OR"
   },
   "ROUTES": {
     "LOGIN": "roadmapr",
@@ -83,12 +84,14 @@
     "SAVE": "Save",
     "UPDATE": "Update",
     "SAVE_TYPE": "Save {{type}}",
-    "YES": "Yes"
+    "YES": "Yes",
+    "DISMISS": "Dismiss"
   },
   "AUTH": {
     "LOG_IN": {
       "T": "Log In",
-      "NOT_REGISTERED": "Not Registered?"
+      "NOT_REGISTERED": "Not Registered?",
+      "EMAIL_VERIFIED": "Email verified successfully! Please login to continue"
     },
     "LOG_OUT": {
       "T": "Logout",
@@ -96,7 +99,11 @@
     },
     "REGISTER": {
       "T": "Register",
-      "ALREADY_REGISTERED": "Already Registered?"
+      "ALREADY_REGISTERED": "Already Registered?",
+      "VERIFY_EMAIL_HEADER": "Please verify your email address",
+      "VERIFY_EMAIL_MESSAGE_1": "A verification email has been sent to ",
+      "VERIFY_EMAIL_MESSAGE_2": "If you have not received the verification email within 60 seconds you can resend it by clicking the button below",
+      "VERIFY_EMAIL_RESEND": "Resend Email"
     },
     "O_AUTH": {
       "GITHUB_LOGIN": "Log in with GitHub",

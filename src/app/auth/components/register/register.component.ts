@@ -8,6 +8,8 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { validPasswordPattern } from "src/app/shared/constants/validators.constants";
 import { MatTooltip } from "@angular/material/tooltip";
 import { Location } from "@angular/common";
+import { filter, takeUntil } from "rxjs/operators";
+import { Subject } from "rxjs";
 
 @Component({
   selector: "app-register",
@@ -15,8 +17,13 @@ import { Location } from "@angular/common";
   styleUrls: ["./register.component.scss"],
 })
 export class RegisterComponent implements OnInit {
-  public hidePassword: boolean = true;
+  private ngUnsubscribe: Subject<void> = new Subject<void>();
   public passwordTooltipDisplay: boolean = false;
+  public registrationPending: boolean = false;
+  public registrationSuccessful: boolean = false;
+  public resendEmailReady: boolean = false;
+  public resendEmailTimeout: number;
+  public hidePassword: boolean = true;
   public authUrl: string;
   public username: string = "";
   public email: string = "";
@@ -65,12 +72,37 @@ export class RegisterComponent implements OnInit {
       this.emailUpdate.form.valid &&
       this.passwordForm.valid
     ) {
-      this.authStoreService.register({
-        username: this.usernameUpdate.form.value.usernameCtrl,
-        email: this.emailUpdate.form.value.emailCtrl,
-        password: this.passwordForm.value.passwordCtrl,
-      });
+      this.registrationPending = true;
+      this.passwordForm.controls.passwordCtrl.disable();
+
+      this.authStoreService
+        .register({
+          username: this.usernameUpdate.form.value.usernameCtrl,
+          email: this.emailUpdate.form.value.emailCtrl,
+          password: this.passwordForm.value.passwordCtrl,
+        })
+        .pipe(
+          filter((state) => state != null),
+          takeUntil(this.ngUnsubscribe)
+        )
+        .subscribe((success) => {
+          if (success) this.onRegisterSuccess();
+        });
     }
+  }
+
+  onRegisterSuccess() {
+    this.registrationPending = false;
+    this.registrationSuccessful = true;
+    this.resendEmailTimeout = 60;
+
+    const resendInterval = setInterval(() => {
+      this.resendEmailTimeout--;
+      if (this.resendEmailTimeout === 0) {
+        this.resendEmailReady = true;
+        clearInterval(resendInterval);
+      }
+    }, 1000);
   }
 
   registerWithGithub() {

@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import * as authActions from "../../auth/store/auth.actions";
+import * as authSelectors from "../store/auth.selectors";
 import * as fromAuth from "../../auth/store/auth.reducer";
 import { Store } from "@ngrx/store";
 
@@ -14,6 +15,8 @@ export class AuthStoreService {
       type: authActions.REGISTER,
       userDetails,
     });
+
+    return this.store.select(authSelectors.registrationSuccessful);
   }
 
   login(userDetails: any) {
