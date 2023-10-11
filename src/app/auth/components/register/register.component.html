@@ -12,90 +12,123 @@
     />
   </div>
 
-  <div class="oauth-options">
-    <button
-      mat-raised-button
-      class="github"
-      color="github"
-      [disabled]="!authUrl"
-      (click)="registerWithGithub()"
-    >
-      <img
-        class="github-icon"
-        [src]="
-          theme === 'dark'
-            ? '/assets/images/stack/github-original.svg'
-            : '/assets/images/stack/github-alternate.svg'
-        "
-        alt="Github Icon"
-      />
-      <span>{{ "AUTH.O_AUTH.GITHUB_REGISTRATION" | translate }}</span>
-    </button>
-  </div>
-
-  <div class="divider">
-    <span class="line"></span>
-    <span>OR</span>
-    <span class="line"></span>
-  </div>
-
-  <div class="form-group">
-    <app-update-username
-      #usernameUpdate
-      [username]="username"
-    ></app-update-username>
-
-    <app-update-email #emailUpdate [email]="email"></app-update-email>
-
-    <form [formGroup]="passwordForm">
-      <mat-form-field appearance="outline">
-        <mat-label>{{ "FORMS.PASSWORD" | translate }}</mat-label>
-        <input
-          #newPassword
-          matInput
-          #tooltip="matTooltip"
-          matTooltip="{{ 'FORMS.ERROR.PASSWORD_PATTERN' | translate }}"
-          matTooltipPosition="below"
-          [matTooltipDisabled]="!passwordTooltipDisplay"
-          [type]="hidePassword ? 'password' : 'text'"
-          formControlName="passwordCtrl"
-        />
-        <span
-          matSuffix
-          class="material-symbols-outlined hide-icon"
-          (click)="hidePassword = !hidePassword"
-          >{{ hidePassword ? "visibility_off" : "visibility" }}</span
-        >
-        <mat-error
-          *ngIf="passwordForm.controls.passwordCtrl.hasError('required')"
-          >{{ "FORMS.REQUIRED.PASSWORD" | translate }}</mat-error
-        >
-        <mat-error
-          *ngIf="
-            !passwordForm.controls.passwordCtrl.hasError('required') &&
-            passwordForm.controls.passwordCtrl.hasError('pattern')
-          "
-          >{{ "FORMS.ERROR.PASSWORD_PATTERN_SHORT" | translate }}</mat-error
-        >
-      </mat-form-field>
-    </form>
-
-    <div class="form-action">
+  <div class="registration-form" [ngClass]="{ hide: registrationSuccessful }">
+    <div class="oauth-options">
       <button
         mat-raised-button
-        color="primary"
-        (click)="register()"
-        [disabled]="
-          !usernameUpdate.form.valid ||
-          !emailUpdate.form.valid ||
-          !passwordForm.valid
-        "
-        >{{ "AUTH.REGISTER.T" | translate }}</button
+        class="github"
+        color="github"
+        [disabled]="!authUrl"
+        (click)="registerWithGithub()"
       >
+        <img
+          class="github-icon"
+          [src]="
+            theme === 'dark'
+              ? '/assets/images/stack/github-original.svg'
+              : '/assets/images/stack/github-alternate.svg'
+          "
+          alt="Github Icon"
+        />
+        <span>{{ "AUTH.O_AUTH.GITHUB_REGISTRATION" | translate }}</span>
+      </button>
     </div>
 
-    <a class="auth-type-switch" (click)="showLogin()">{{
-      "AUTH.REGISTER.ALREADY_REGISTERED" | translate
-    }}</a>
+    <div class="divider">
+      <span class="line"></span>
+      <span>{{ "GENERAL.OR" | translate }}</span>
+      <span class="line"></span>
+    </div>
+
+    <div class="form-group">
+      <app-update-username
+        #usernameUpdate
+        [username]="username"
+        [disabled]="registrationPending"
+      ></app-update-username>
+
+      <app-update-email
+        #emailUpdate
+        [email]="email"
+        [disabled]="registrationPending"
+      ></app-update-email>
+
+      <form [formGroup]="passwordForm">
+        <mat-form-field appearance="outline">
+          <mat-label>{{ "FORMS.PASSWORD" | translate }}</mat-label>
+          <input
+            #newPassword
+            matInput
+            #tooltip="matTooltip"
+            matTooltip="{{ 'FORMS.ERROR.PASSWORD_PATTERN' | translate }}"
+            matTooltipPosition="before"
+            [matTooltipDisabled]="!passwordTooltipDisplay"
+            [type]="hidePassword ? 'password' : 'text'"
+            formControlName="passwordCtrl"
+          />
+          <span
+            matSuffix
+            class="material-symbols-outlined hide-icon"
+            (click)="hidePassword = !hidePassword"
+            >{{ hidePassword ? "visibility_off" : "visibility" }}</span
+          >
+          <mat-error
+            *ngIf="passwordForm.controls.passwordCtrl.hasError('required')"
+            >{{ "FORMS.REQUIRED.PASSWORD" | translate }}</mat-error
+          >
+          <mat-error
+            *ngIf="
+              !passwordForm.controls.passwordCtrl.hasError('required') &&
+              passwordForm.controls.passwordCtrl.hasError('pattern')
+            "
+            >{{ "FORMS.ERROR.PASSWORD_PATTERN_SHORT" | translate }}</mat-error
+          >
+        </mat-form-field>
+
+        <div class="form-action">
+          <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            (click)="register()"
+            [disabled]="
+              !usernameUpdate.form.valid ||
+              !emailUpdate.form.valid ||
+              !passwordForm.valid
+            "
+          >
+            <span *ngIf="!registrationPending">{{
+              "AUTH.REGISTER.T" | translate
+            }}</span>
+
+            <span class="auth-spinner" *ngIf="registrationPending">
+              <mat-spinner matSuffix [diameter]="27"></mat-spinner>
+            </span>
+          </button>
+        </div>
+
+        <a class="auth-type-switch" (click)="showLogin()">{{
+          "AUTH.REGISTER.ALREADY_REGISTERED" | translate
+        }}</a>
+      </form>
+    </div>
+  </div>
+
+  <div
+    class="email-verification-sent"
+    [ngClass]="{ hide: !registrationSuccessful }"
+  >
+    <h2>{{ "AUTH.REGISTER.VERIFY_EMAIL_HEADER" | translate }}</h2>
+    <p
+      >{{ "AUTH.REGISTER.VERIFY_EMAIL_MESSAGE_1" | translate }}
+      <strong>{{ emailUpdate.form.value.emailCtrl }}</strong>
+    </p>
+
+    <p>{{ "AUTH.REGISTER.VERIFY_EMAIL_MESSAGE_2" | translate }}</p>
+    <button mat-raised-button color="primary" [disabled]="!resendEmailReady">{{
+      resendEmailReady
+        ? ("AUTH.REGISTER.VERIFY_EMAIL_RESEND" | translate)
+        : resendEmailTimeout
+    }}</button>
   </div>
 </div>

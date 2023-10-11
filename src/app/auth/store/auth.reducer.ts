@@ -6,10 +6,12 @@ export interface Auth {
   user?: String | null;
   token?: string | null;
   isLoggedIn: boolean;
+  registrationSuccessful: boolean;
 }
 
 const initialState: Auth = {
   isLoggedIn: false,
+  registrationSuccessful: false,
 };
 
 const authReducer = createReducer(
@@ -21,6 +23,12 @@ const authReducer = createReducer(
       ...(payload.user ? { user: payload.user._id } : {}),
       ...(payload.token ? { token: payload.token } : {}),
     };
+  }),
+  on(authActions.RegisterSuccess, (state) => {
+    return {
+      ...state,
+      registrationSuccessful: true,
+    };
   })
 );
 
@@ -29,3 +37,5 @@ export const reducer = (state: Auth | undefined, action: Action) => {
 };
 
 export const getUserId = (state: Auth) => state.user;
+export const registrationSuccessful = (state: Auth) =>
+  state.registrationSuccessful;

@@ -27,7 +27,6 @@ export class AuthEffects {
       ofType(authActions.REGISTER),
       switchMap(({ userDetails }) => this.authService.register(userDetails)),
       map(() => {
-        this.router.navigateByUrl(ROUTES.VERIFY_EMAIL);
         return authActions.RegisterSuccess();
       }),
       catchError(() => of(authActions.RegisterError()))

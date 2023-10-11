@@ -1,18 +1,9 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable } from "rxjs";
 import { map } from "rxjs/operators";
-import { Router } from "@angular/router";
 import { User, TokenPayload, TokenResponse } from "../store/auth.models";
 import { ApiService } from "../../core/services/api.service";
 import { UrlService } from "../../core/services/url.service";
-import { Store } from "@ngrx/store";
-import * as AuthActions from "src/app/auth/store/auth.actions";
-import * as DashboardActions from "src/app/dashboard/store/dashboard.actions";
-import * as EducationActions from "src/app/education/store/education.actions";
-import * as EmploymentActions from "src/app/employment/store/employment.actions";
-import * as ProfileActions from "src/app/profile/store/profile.actions";
-import * as ProjectsActions from "src/app/projects/store/projects.actions";
-import * as SettingsActions from "src/app/settings/store/settings.actions";
 
 @Injectable({
   providedIn: "root",
@@ -25,25 +16,13 @@ export class AuthService {
     return this.authenticated.asObservable();
   }
 
-  constructor(
-    private apiService: ApiService,
-    private urlService: UrlService,
-    private router: Router,
-    private store: Store
-  ) {}
+  constructor(private apiService: ApiService, private urlService: UrlService) {}
 
   public register(user: TokenPayload): Observable<any> {
-    return this.apiService
-      .post(this.urlService.generate("AUTH_REGISTER"), user)
-      .pipe(
-        map((data: TokenResponse) => {
-          if (data.token) {
-            this.authenticated.next(true);
-            this.saveToken(data.token);
-          }
-          return data;
-        })
-      );
+    return this.apiService.post(
+      this.urlService.generate("AUTH_REGISTER"),
+      user
+    );
   }
 
   public login(user: TokenPayload): Observable<any> {

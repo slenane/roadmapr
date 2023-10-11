@@ -22,7 +22,7 @@ export class UpdateUsernameComponent implements OnInit, OnChanges {
   });
 
   @Input() username: string | undefined;
-  @Input() isEditing: boolean;
+  @Input() disabled: boolean;
 
   constructor(private validatorsService: ValidatorsService) {}
 
@@ -36,10 +36,10 @@ export class UpdateUsernameComponent implements OnInit, OnChanges {
       this.updateForm(changes.username.currentValue);
     }
     if (
-      changes.isEditing &&
-      changes.isEditing.currentValue !== changes.isEditing.previousValue
+      changes.disabled &&
+      changes.disabled.currentValue !== changes.disabled.previousValue
     ) {
-      this.toggleFormEnabled(changes.isEditing.currentValue);
+      this.toggleFormEnabled(changes.disabled.currentValue);
     }
   }
 
@@ -57,8 +57,8 @@ export class UpdateUsernameComponent implements OnInit, OnChanges {
     this.initialUsername = username;
   }
 
-  toggleFormEnabled(enabled: boolean) {
-    if (enabled) this.form.controls.usernameCtrl.enable();
-    else this.form.controls.usernameCtrl.disable();
+  toggleFormEnabled(disabled: boolean) {
+    if (disabled) this.form.controls.usernameCtrl.disable();
+    else this.form.controls.usernameCtrl.enable();
   }
 }
