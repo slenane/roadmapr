@@ -29,8 +29,6 @@ export class SettingsComponent implements OnInit {
   public isEditingEmail: boolean = false;
   public isEditingPassword: boolean = false;
 
-  public githubAuthUrl: string;
-
   public nameForm = new FormGroup({
     firstNameCtrl: new FormControl(
       { value: "", disabled: !this.isEditingName },
@@ -58,7 +56,6 @@ export class SettingsComponent implements OnInit {
     private settingsStoreService: SettingsStoreService,
     private themeService: ThemeService,
     private translateService: TranslateService,
-    private authService: AuthService,
     public dialog: MatDialog
   ) {}
 
@@ -73,11 +70,6 @@ export class SettingsComponent implements OnInit {
         this.settings = settings;
         this.updateForms();
       });
-
-    // this.authService.getGithubAuthPage().subscribe({
-    //   next: (data: any) => (this.githubAuthUrl = data["authUrl"]),
-    //   error: (err: any) => console.log(err),
-    // });
   }
 
   ngOnDestroy() {
@@ -192,23 +184,6 @@ export class SettingsComponent implements OnInit {
   updateNotifications(value: any) {
     this.settingsStoreService.updateSettings(this.settings.userId, {
       notifications: this.appSettingsForm.value.notificationsCtrl,
-    });
-  }
-
-  linkGithubAccount(): void {
-    //   if (this.githubAuthUrl) {
-    //     this.router.navigate(["/github-auth"], {
-    //       queryParams: { url: this.githubAuthUrl, userId: this.settings.userId },
-    //     });
-    //   }
-  }
-
-  removeGithubAccount(): void {
-    this.settingsStoreService.updateSettings(this.settings.userId, {
-      github: {
-        id: "",
-        username: "",
-      },
     });
   }
 }

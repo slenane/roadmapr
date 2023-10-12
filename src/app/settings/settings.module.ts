@@ -16,6 +16,7 @@ import { SettingsDeleteAccountComponent } from "./components/settings-delete-acc
 import { SettingsRoutingModule } from "./settings-routing.module";
 import { SettingsUpdateUsernameComponent } from "./components/settings-update-username/settings-update-username.component";
 import { SettingsUpdateEmailComponent } from "./components/settings-update-email/settings-update-email.component";
+import { SettingsGithubComponent } from './components/settings-github/settings-github.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { SettingsUpdateEmailComponent } from "./components/settings-update-email
     SettingsDeleteAccountComponent,
     SettingsUpdateUsernameComponent,
     SettingsUpdateEmailComponent,
+    SettingsGithubComponent,
   ],
   exports: [SettingsComponent],
   imports: [

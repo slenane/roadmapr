@@ -54,17 +54,6 @@
       }
     }
 
-    .github-header {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 0.5rem;
-      align-content: center;
-
-      .github-icon {
-        height: 2rem;
-      }
-    }
-
     .actions {
       display: flex;
       column-gap: 0.5rem;
