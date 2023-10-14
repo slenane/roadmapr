@@ -14,8 +14,6 @@ import { EffectsModule } from "@ngrx/effects";
 import { AuthEffects } from "./store/auth.effects";
 import { TranslateModule } from "@ngx-translate/core";
 import { GitAuthComponent } from "../auth/components/git-auth/git-auth.component";
-import { RedirectComponent } from "./components/redirect/redirect.component";
-// import { OAuthService } from "./services/o-auth.service";
 import { ExtUrlResolverService } from "./services/ext-url-resolver.service";
 import { CoreModule } from "../core/core.module";
 import { AuthRoutingModule } from "./auth-routing.module";
@@ -26,14 +24,12 @@ import { AuthRoutingModule } from "./auth-routing.module";
     LogInComponent,
     RegisterComponent,
     GitAuthComponent,
-    RedirectComponent,
   ],
   exports: [
     LandingComponent,
     LogInComponent,
     RegisterComponent,
     GitAuthComponent,
-    RedirectComponent,
   ],
   imports: [
     CommonModule,
@@ -47,11 +43,6 @@ import { AuthRoutingModule } from "./auth-routing.module";
     TranslateModule.forChild(),
     AuthRoutingModule,
   ],
-  providers: [
-    ExtUrlResolverService,
-    // OAuthService,
-    AuthService,
-    AuthStoreService,
-  ],
+  providers: [ExtUrlResolverService, AuthService, AuthStoreService],
 })
 export class AuthModule {}

@@ -53,21 +53,17 @@ export class AuthService {
   }
 
   public githubLogin(): Observable<any> {
-    const user = this.getUser();
-    const url =
-      user && user._id
-        ? this.urlService.generate("GITHUB_AUTH_LOGIN", user?._id)
-        : this.urlService.generate("GITHUB_AUTH_LOGIN");
-
-    return this.apiService.get(url).pipe(
-      map((data: TokenResponse) => {
-        if (data.token) {
-          this.authenticated.next(true);
-          this.saveToken(data.token);
-        }
-        return data;
-      })
-    );
+    return this.apiService
+      .get(this.urlService.generate("GITHUB_AUTH_LOGIN"))
+      .pipe(
+        map((data: TokenResponse) => {
+          if (data.token) {
+            this.authenticated.next(true);
+            this.saveToken(data.token);
+          }
+          return data;
+        })
+      );
   }
 
   public logout(): void {

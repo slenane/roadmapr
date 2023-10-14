@@ -8,21 +8,25 @@ app-menu {
 
 .app-content-main {
   display: grid;
-  grid-template-columns: 12% 88%;
+  grid-template-columns: 1fr;
   height: 100vh;
   width: 100wh;
   overflow: hidden;
-  transition: all 0.5s;
 
-  &.collapsed {
-    grid-template-columns: 4% 96%;
-  }
+  &.authenticated {
+    grid-template-columns: 12% 88%;
+    transition: all 0.5s;
 
-  .mat-drawer-side {
-    border: none;
-  }
+    &.collapsed {
+      grid-template-columns: 4% 96%;
+    }
 
-  .mat-drawer {
-    background-color: #fafafa;
+    .mat-drawer-side {
+      border: none;
+    }
+
+    .mat-drawer {
+      background-color: #fafafa;
+    }
   }
 }

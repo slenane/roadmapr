@@ -7,10 +7,11 @@ import { SharedModule } from "../shared/shared.module";
 import { CommonModule } from "@angular/common";
 import { AuthStoreService } from "../auth/services/auth-store.service";
 import { HttpInterceptProviders } from "./services/http-interceptors";
+import { RedirectComponent } from "./components/redirect/redirect.component";
 
 @NgModule({
-  declarations: [],
-  exports: [],
+  declarations: [RedirectComponent],
+  exports: [RedirectComponent],
   imports: [
     CommonModule,
     FormsModule,

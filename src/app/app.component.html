@@ -1,18 +1,15 @@
-<ng-container
-  *ngIf="authenticated$ | async; then authenticated; else notAuthenticated"
-></ng-container>
-
-<!-- <app-redirect *ngIf="isRedirecting"></app-redirect> -->
-
-<ng-template #notAuthenticated>
-  <app-landing></app-landing>
-</ng-template>
-
-<ng-template #authenticated>
-  <div class="app-content-main" [ngClass]="{ collapsed: navbarCollapsed }">
-    <app-sidebar (onCollapseNavbar)="collapseNavbar($event)"></app-sidebar>
-    <section class="main-content">
-      <router-outlet></router-outlet>
-    </section>
-  </div>
-</ng-template>
+<div
+  class="app-content-main"
+  [ngClass]="{
+    collapsed: navbarCollapsed,
+    authenticated: authenticated$ | async
+  }"
+>
+  <app-sidebar
+    *ngIf="authenticated$ | async"
+    (onCollapseNavbar)="collapseNavbar($event)"
+  ></app-sidebar>
+  <section class="main-content">
+    <router-outlet></router-outlet>
+  </section>
+</div>

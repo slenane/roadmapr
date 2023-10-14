@@ -1,7 +1,9 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { AuthStoreService } from "../../services/auth-store.service";
-import { AuthService } from "../../services/auth.service";
+import { AuthStoreService } from "../../../auth/services/auth-store.service";
+import { AuthService } from "../../../auth/services/auth.service";
+import { Observable } from "rxjs";
+import { ThemeService } from "src/app/core/services/theme.service";
 
 @Component({
   selector: "app-redirect",
@@ -9,15 +11,23 @@ import { AuthService } from "../../services/auth.service";
   styleUrls: ["./redirect.component.scss"],
 })
 export class RedirectComponent implements OnInit {
-  @Input() theme: string;
+  public theme$: Observable<string>;
+  public currentTheme: string;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private authService: AuthService,
-    private authStoreService: AuthStoreService
-  ) {}
+    private authStoreService: AuthStoreService,
+    private themeService: ThemeService
+  ) {
+    this.theme$ = this.themeService.selectedTheme;
+  }
 
   ngOnInit() {
+    this.theme$.subscribe((theme: string) => {
+      this.currentTheme = theme;
+    });
+
     this.activatedRoute.queryParamMap.subscribe({
       next: (github: any) => {
         if (github.params?.code) {

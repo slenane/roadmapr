@@ -12,7 +12,6 @@ export class LandingComponent implements OnInit {
   public theme$: Observable<string>;
   public currentTheme: string;
   public isRegistering: boolean;
-  public isRedirecting: boolean;
 
   constructor(private location: Location, private themeService: ThemeService) {
     this.theme$ = this.themeService.selectedTheme;
@@ -24,7 +23,6 @@ export class LandingComponent implements OnInit {
     });
 
     this.location.onUrlChange((url, state) => {
-      this.isRedirecting = url.includes("/redirect") ? true : false;
       this.isRegistering = url === "/register" ? true : false;
     });
   }
