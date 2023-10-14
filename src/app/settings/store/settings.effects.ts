@@ -7,6 +7,8 @@ import * as settingsActions from "./settings.actions";
 import { Settings } from "./settings.models";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { AuthService } from "src/app/auth/services/auth.service";
+import { Router } from "@angular/router";
+import { ROUTES } from "src/app/core/constants/routes.constants";
 
 @Injectable()
 export class SettingsEffects {
@@ -14,6 +16,7 @@ export class SettingsEffects {
     private actions$: Actions,
     private settingsService: SettingsService,
     private snackBar: MatSnackBar,
+    private router: Router,
     private authService: AuthService
   ) {}
 
@@ -86,6 +89,7 @@ export class SettingsEffects {
         this.snackBar.open("Account Deleted Successfully", "Dismiss", {
           duration: 5000,
         });
+        this.router.navigateByUrl(ROUTES.LOGIN);
         return settingsActions.DeleteAccountSuccess();
       }),
       catchError((error) => {

@@ -4,11 +4,16 @@ import { TokenResponse, User } from "./auth.models";
 export const REGISTER = "[Auth] Register";
 export const LOGIN = "[Auth] Login";
 export const GITHUB_LOGIN = "[Auth] GitHub login";
+export const GITHUB_UPDATE_EXISTING_USER = "[Auth] GitHub update existing user";
 export const LOGOUT = "[Auth] Log out";
 const REGISTER_SUCCESS = "[Auth] Registered Successfully",
   REGISTER_ERROR = "[Auth] Registration Error",
   LOGIN_SUCCESS = "[Auth] Logged In Successfully",
   LOGIN_ERROR = "[Auth] Log In Error",
+  GITHUB_UPDATE_EXISTING_USER_SUCCESS =
+    "[Auth] GitHub update existing user success",
+  GITHUB_UPDATE_EXISTING_USER_ERROR =
+    "[Auth] GitHub update existing user error",
   LOGOUT_SUCCESS = "[Auth] Logged Out Successfully",
   LOGOUT_ERROR = "[Auth] Log Out Error";
 
@@ -31,6 +36,18 @@ export const LoginError = createAction(
 );
 
 export const GithubLogin = createAction(GITHUB_LOGIN);
+
+export const GithubUpdateExistingUser = createAction(
+  GITHUB_UPDATE_EXISTING_USER
+);
+
+export const GithubUpdateExistingUserSuccess = createAction(
+  GITHUB_UPDATE_EXISTING_USER_SUCCESS
+);
+
+export const GithubUpdateExistingUserError = createAction(
+  GITHUB_UPDATE_EXISTING_USER_ERROR
+);
 
 export const Logout = createAction(LOGOUT);
 

@@ -21,11 +21,6 @@ const routes: Routes = [
     title: "ROUTES.REGISTER",
   },
   {
-    path: "redirect",
-    component: LandingComponent,
-    title: "ROUTES.REDIRECT",
-  },
-  {
     path: "github-auth",
     component: GitAuthComponent,
     resolve: {

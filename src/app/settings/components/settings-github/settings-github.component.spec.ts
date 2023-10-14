@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GitAuthComponent } from './git-auth.component';
+import { SettingsGithubComponent } from './settings-github.component';
 
-describe('GitAuthComponent', () => {
-  let component: GitAuthComponent;
-  let fixture: ComponentFixture<GitAuthComponent>;
+describe('SettingsGithubComponent', () => {
+  let component: SettingsGithubComponent;
+  let fixture: ComponentFixture<SettingsGithubComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GitAuthComponent ]
+      declarations: [ SettingsGithubComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(GitAuthComponent);
+    fixture = TestBed.createComponent(SettingsGithubComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

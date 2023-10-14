@@ -10,6 +10,7 @@ import { TranslateService } from "@ngx-translate/core";
 import { TokenResponse } from "./auth.models";
 import { ROUTES } from "src/app/core/constants/routes.constants";
 import { ProfileService } from "src/app/profile/services/profile.service";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Injectable()
 export class AuthEffects {
@@ -19,7 +20,8 @@ export class AuthEffects {
     private router: Router,
     private themeService: ThemeService,
     private translateService: TranslateService,
-    private profileService: ProfileService
+    private profileService: ProfileService,
+    private snackBar: MatSnackBar
   ) {}
 
   register$ = createEffect((): any =>
@@ -55,6 +57,30 @@ export class AuthEffects {
         return authActions.LoginSuccess({ payload });
       }),
       catchError((error) => of(authActions.LoginError(error)))
+    )
+  );
+
+  githubUpdateExistingUser$ = createEffect((): any =>
+    this.actions$.pipe(
+      ofType(authActions.GITHUB_UPDATE_EXISTING_USER),
+      switchMap(({ userId }) =>
+        this.authService.githubUpdateExistingUser(userId)
+      ),
+      map(() => {
+        this.snackBar.open("GitHub Linked Successfully", "Dismiss", {
+          duration: 5000,
+        });
+        this.router.navigateByUrl(ROUTES.SETTINGS);
+        return authActions.GithubUpdateExistingUserSuccess();
+      }),
+      catchError((err) => {
+        this.snackBar.open(err.error.message, "Dismiss", {
+          duration: 10000,
+          panelClass: ["snackbar-error"],
+        });
+        this.router.navigateByUrl(ROUTES.SETTINGS);
+        return of(authActions.GithubUpdateExistingUserError());
+      })
     )
   );
 

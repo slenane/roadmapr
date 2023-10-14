@@ -161,48 +161,10 @@
         </mat-card-content>
       </mat-card>
 
-      <mat-card>
-        <h2 class="github-header">
-          <img
-            class="github-icon"
-            src="/assets/images/stack/github-alternate.svg"
-            alt="Github Icon"
-          />
-          {{ "SETTINGS.GITHUB.T" | translate }}</h2
-        >
-        <mat-card-content>
-          <div class="github-user" *ngIf="settings.github?.id">
-            <div>
-              <h4
-                >{{ "SETTINGS.GITHUB.ACCOUNT" | translate
-                }}<b>{{ settings.github.username }}</b></h4
-              >
-              <p>{{ "SETTINGS.GITHUB.MESSAGE" | translate }}</p>
-            </div>
-
-            <div class="remove-github">
-              <button
-                mat-raised-button
-                color="warn"
-                (click)="removeGithubAccount()"
-                >{{ "FORMS.REMOVE.GITHUB" | translate }}</button
-              >
-            </div>
-          </div>
-
-          <div class="github-link" *ngIf="!settings.github?.id">
-            <p>{{ "SETTINGS.GITHUB.LINK_MESSAGE" | translate }}</p>
-
-            <button
-              mat-raised-button
-              color="primary"
-              [disabled]="!githubAuthUrl"
-              (click)="linkGithubAccount()"
-              >{{ "FORMS.UPDATE.GITHUB" | translate }}</button
-            >
-          </div>
-        </mat-card-content>
-      </mat-card>
+      <app-settings-github
+        [userId]="settings.userId"
+        [github]="settings.github"
+      ></app-settings-github>
     </div>
   </div>
 </div>
