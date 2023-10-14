@@ -10,7 +10,7 @@ import { TranslateService } from "@ngx-translate/core";
 import { TokenResponse } from "./auth.models";
 import { ROUTES } from "src/app/core/constants/routes.constants";
 import { ProfileService } from "src/app/profile/services/profile.service";
-import { SettingsStoreService } from "src/app/settings/services/settings-store.service";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Injectable()
 export class AuthEffects {
@@ -21,7 +21,7 @@ export class AuthEffects {
     private themeService: ThemeService,
     private translateService: TranslateService,
     private profileService: ProfileService,
-    private settingsStoreService: SettingsStoreService
+    private snackBar: MatSnackBar
   ) {}
 
   register$ = createEffect((): any =>
@@ -67,10 +67,20 @@ export class AuthEffects {
         this.authService.githubUpdateExistingUser(userId)
       ),
       map(() => {
+        this.snackBar.open("GitHub Linked Successfully", "Dismiss", {
+          duration: 5000,
+        });
         this.router.navigateByUrl(ROUTES.SETTINGS);
         return authActions.GithubUpdateExistingUserSuccess();
       }),
-      catchError((error) => of(authActions.LoginError(error)))
+      catchError((err) => {
+        this.snackBar.open(err.error.message, "Dismiss", {
+          duration: 10000,
+          panelClass: ["snackbar-error"],
+        });
+        this.router.navigateByUrl(ROUTES.SETTINGS);
+        return of(authActions.GithubUpdateExistingUserError());
+      })
     )
   );
 

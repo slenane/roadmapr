@@ -12,6 +12,8 @@ const REGISTER_SUCCESS = "[Auth] Registered Successfully",
   LOGIN_ERROR = "[Auth] Log In Error",
   GITHUB_UPDATE_EXISTING_USER_SUCCESS =
     "[Auth] GitHub update existing user success",
+  GITHUB_UPDATE_EXISTING_USER_ERROR =
+    "[Auth] GitHub update existing user error",
   LOGOUT_SUCCESS = "[Auth] Logged Out Successfully",
   LOGOUT_ERROR = "[Auth] Log Out Error";
 
@@ -41,6 +43,10 @@ export const GithubUpdateExistingUser = createAction(
 
 export const GithubUpdateExistingUserSuccess = createAction(
   GITHUB_UPDATE_EXISTING_USER_SUCCESS
+);
+
+export const GithubUpdateExistingUserError = createAction(
+  GITHUB_UPDATE_EXISTING_USER_ERROR
 );
 
 export const Logout = createAction(LOGOUT);
