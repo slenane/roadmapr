@@ -10,6 +10,7 @@ import { TranslateService } from "@ngx-translate/core";
 import { TokenResponse } from "./auth.models";
 import { ROUTES } from "src/app/core/constants/routes.constants";
 import { ProfileService } from "src/app/profile/services/profile.service";
+import { SettingsStoreService } from "src/app/settings/services/settings-store.service";
 
 @Injectable()
 export class AuthEffects {
@@ -19,7 +20,8 @@ export class AuthEffects {
     private router: Router,
     private themeService: ThemeService,
     private translateService: TranslateService,
-    private profileService: ProfileService
+    private profileService: ProfileService,
+    private settingsStoreService: SettingsStoreService
   ) {}
 
   register$ = createEffect((): any =>
@@ -53,6 +55,20 @@ export class AuthEffects {
         this.setUserPreferences(payload.user);
         this.redirectUser(payload.user);
         return authActions.LoginSuccess({ payload });
+      }),
+      catchError((error) => of(authActions.LoginError(error)))
+    )
+  );
+
+  githubUpdateExistingUser$ = createEffect((): any =>
+    this.actions$.pipe(
+      ofType(authActions.GITHUB_UPDATE_EXISTING_USER),
+      switchMap(({ userId }) =>
+        this.authService.githubUpdateExistingUser(userId)
+      ),
+      map(() => {
+        this.router.navigateByUrl(ROUTES.SETTINGS);
+        return authActions.GithubUpdateExistingUserSuccess();
       }),
       catchError((error) => of(authActions.LoginError(error)))
     )

@@ -66,6 +66,12 @@ export class AuthService {
       );
   }
 
+  public githubUpdateExistingUser(userId: string): Observable<any> {
+    return this.apiService.get(
+      this.urlService.generate("GITHUB_UPDATE_EXISTING_USER", userId)
+    );
+  }
+
   public logout(): void {
     this.token = "";
     this.authenticated.next(false);

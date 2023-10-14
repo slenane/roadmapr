@@ -32,6 +32,13 @@ export class AuthStoreService {
     });
   }
 
+  githubUpdateExistingUser(userId: string) {
+    this.store.dispatch({
+      type: authActions.GITHUB_UPDATE_EXISTING_USER,
+      userId,
+    });
+  }
+
   logout() {
     this.store.dispatch({
       type: authActions.LOGOUT,

@@ -30,7 +30,7 @@ export class SettingsGithubComponent implements OnInit {
   linkGithubAccount(): void {
     if (this.githubAuthUrl) {
       this.router.navigate(["/github-auth"], {
-        queryParams: { url: this.githubAuthUrl, userId: this.userId },
+        queryParams: { url: this.githubAuthUrl },
       });
     }
   }

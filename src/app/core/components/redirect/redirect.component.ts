@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { AuthStoreService } from "../../../auth/services/auth-store.service";
 import { AuthService } from "../../../auth/services/auth.service";
@@ -37,7 +37,10 @@ export class RedirectComponent implements OnInit {
             .subscribe({
               next: (data: any) => {
                 if (data) {
-                  this.authStoreService.githubLogin();
+                  const user = this.authService.getUser();
+
+                  if (!user) this.authStoreService.githubLogin();
+                  else this.authStoreService.githubUpdateExistingUser(user._id);
                 }
               },
               error: (err: any) => {
