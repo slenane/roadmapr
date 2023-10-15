@@ -5,12 +5,14 @@ import { map, switchMap, catchError } from "rxjs/operators";
 import { DashboardService } from "../services/dashboard.service";
 import * as dashboardActions from "./dashboard.actions";
 import { Dashboard } from "./dashboard.models";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Injectable()
 export class DashboardEffects {
   constructor(
     private actions$: Actions,
-    private dashboardService: DashboardService
+    private dashboardService: DashboardService,
+    private snackBar: MatSnackBar
   ) {}
 
   getDashboard$ = createEffect(() =>
@@ -22,7 +24,13 @@ export class DashboardEffects {
       map((payload: Dashboard) => {
         return dashboardActions.GetDashboardSuccess({ payload });
       }),
-      catchError((error) => of(dashboardActions.GetDashboardError(error)))
+      catchError((error) => {
+        this.snackBar.open(error.error, "Dismiss", {
+          duration: 10000,
+          panelClass: ["snackbar-error"],
+        });
+        return of(dashboardActions.GetDashboardError(error));
+      })
     )
   );
 }

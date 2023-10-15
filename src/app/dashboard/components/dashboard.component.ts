@@ -47,48 +47,53 @@ export class DashboardComponent implements OnInit {
         filter((state) => state != null),
         takeUntil(this.ngUnsubscribe)
       )
-      .subscribe((dashboard: Dashboard) => {
-        this.dashboard = dashboard;
-        const [education, employment, projects] =
-          this.filterAndExtractData(dashboard);
+      .subscribe({
+        next: (dashboard: Dashboard) => {
+          this.dashboard = dashboard;
+          const [education, employment, projects] =
+            this.filterAndExtractData(dashboard);
 
-        if (education.length || projects.length) {
-          this.stack = this.extractStackData({ education, projects });
-        }
-        if (education.length || projects.length || employment.length) {
-          this.distribution = this.extractStackData({
-            education,
-            projects,
-            employment,
-          });
+          if (education.length || projects.length) {
+            this.stack = this.extractStackData({ education, projects });
+          }
+          if (education.length || projects.length || employment.length) {
+            this.distribution = this.extractStackData({
+              education,
+              projects,
+              employment,
+            });
 
-          this.stackList = this.extractStackList({
-            education,
-            projects,
-            employment,
-          });
+            this.stackList = this.extractStackList({
+              education,
+              projects,
+              employment,
+            });
 
-          this.radar = this.extractStackRadarData({
-            personal: [...education, ...projects],
-            professional: employment,
-          });
+            this.radar = this.extractStackRadarData({
+              personal: [...education, ...projects],
+              professional: employment,
+            });
 
-          // this.timeline = this.extractTimelineData({
-          //   education,
-          //   projects,
-          //   employment,
-          // });
+            // this.timeline = this.extractTimelineData({
+            //   education,
+            //   projects,
+            //   employment,
+            // });
 
-          this.overviewData = this.extractOverviewData({
-            education,
-            projects,
-            employment,
-          });
-        }
+            this.overviewData = this.extractOverviewData({
+              education,
+              projects,
+              employment,
+            });
+          }
 
-        if (this.dashboard.projects.length) {
-          this.github = [...GITHUB_DATA];
-        }
+          if (this.dashboard.projects.length) {
+            this.github = [...GITHUB_DATA];
+          }
+        },
+        error: (error) => {
+          console.log(error);
+        },
       });
   }
 
