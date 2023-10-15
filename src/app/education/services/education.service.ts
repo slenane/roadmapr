@@ -3,6 +3,7 @@ import { Observable } from "rxjs";
 import { ApiService } from "src/app/core/services/api.service";
 import { UrlService } from "src/app/core/services/url.service";
 import { Education } from "../store/education.models";
+import { API } from "src/app/core/constants/http.constants";
 
 @Injectable({
   providedIn: "root",
@@ -12,13 +13,13 @@ export class EducationService {
 
   public getEducation(educationId: string): Observable<Education> {
     return this.apiService.get(
-      this.urlService.generate("EDUCATION_GET", educationId)
+      this.urlService.generate(API.EDUCATION_GET, educationId)
     );
   }
 
   public createEducationItem(educationId: string, data: any): Observable<any> {
     return this.apiService.post(
-      this.urlService.generate("EDUCATION_CREATE", educationId),
+      this.urlService.generate(API.EDUCATION_CREATE, educationId),
       {
         data,
       }
@@ -27,7 +28,7 @@ export class EducationService {
 
   public updateEducationItem(educationId: string, data: any): Observable<any> {
     return this.apiService.patch(
-      this.urlService.generate("EDUCATION_UPDATE", educationId),
+      this.urlService.generate(API.EDUCATION_UPDATE, educationId),
       {
         data,
       }
@@ -39,7 +40,7 @@ export class EducationService {
     data: any
   ): Observable<any> {
     return this.apiService.patch(
-      this.urlService.generate("EDUCATION_BULK_UPDATE", educationId),
+      this.urlService.generate(API.EDUCATION_BULK_UPDATE, educationId),
       {
         data,
       }
@@ -48,7 +49,7 @@ export class EducationService {
 
   public removeEducationItem(educationId: string, data: any): Observable<any> {
     return this.apiService.post(
-      this.urlService.generate("EDUCATION_REMOVE", educationId),
+      this.urlService.generate(API.EDUCATION_REMOVE, educationId),
       {
         data,
       }
@@ -56,8 +57,11 @@ export class EducationService {
   }
 
   public getItemDetailsFromLink(link: string): Observable<any> {
-    return this.apiService.post(this.urlService.generate("GET_ITEM_DETAILS"), {
-      link,
-    });
+    return this.apiService.post(
+      this.urlService.generate(API.GET_ITEM_DETAILS),
+      {
+        link,
+      }
+    );
   }
 }
