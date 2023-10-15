@@ -1,5 +1,4 @@
 import { Injectable } from "@angular/core";
-import { ENDPOINTS } from "../constants/http.constants";
 import { environment } from "src/environments/environment";
 
 @Injectable({
@@ -10,8 +9,7 @@ export class UrlService {
 
   public generate(endpoint: string, data?: any): string {
     const params = data ? data : "";
-    const url = environment.baseUrl + ENDPOINTS[endpoint] + params;
-
+    const url = environment.baseUrl + endpoint + params;
     return url;
   }
 }

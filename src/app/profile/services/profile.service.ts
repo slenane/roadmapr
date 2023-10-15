@@ -3,6 +3,7 @@ import { Observable } from "rxjs";
 import { ApiService } from "src/app/core/services/api.service";
 import { UrlService } from "src/app/core/services/url.service";
 import { Profile } from "../store/profile.models";
+import { API } from "src/app/core/constants/http.constants";
 
 @Injectable({
   providedIn: "root",
@@ -11,12 +12,12 @@ export class ProfileService {
   constructor(private apiService: ApiService, private urlService: UrlService) {}
 
   public getProfile(): Observable<Profile> {
-    return this.apiService.get(this.urlService.generate("PROFILE_GET"));
+    return this.apiService.get(this.urlService.generate(API.PROFILE_GET));
   }
 
   public updateProfile(id: string, data: any): Observable<Profile> {
     return this.apiService.patch(
-      this.urlService.generate("PROFILE_UPDATE", id),
+      this.urlService.generate(API.PROFILE_UPDATE, id),
       {
         data,
       }
@@ -25,7 +26,7 @@ export class ProfileService {
 
   public updateProfileImage(formData: FormData): Observable<Profile> {
     return this.apiService.post(
-      this.urlService.generate("PROFILE_IMAGE_UPDATE"),
+      this.urlService.generate(API.PROFILE_IMAGE_UPDATE),
       formData
     );
   }

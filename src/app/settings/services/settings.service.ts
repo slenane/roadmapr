@@ -3,6 +3,7 @@ import { Observable } from "rxjs";
 import { ApiService } from "src/app/core/services/api.service";
 import { UrlService } from "src/app/core/services/url.service";
 import { Settings } from "../store/settings.models";
+import { API } from "src/app/core/constants/http.constants";
 
 @Injectable({
   providedIn: "root",
@@ -11,12 +12,12 @@ export class SettingsService {
   constructor(private apiService: ApiService, private urlService: UrlService) {}
 
   public getSettings(): Observable<Settings> {
-    return this.apiService.get(this.urlService.generate("SETTINGS_GET"));
+    return this.apiService.get(this.urlService.generate(API.SETTINGS_GET));
   }
 
   public updateSettings(id: string, data: any): Observable<Settings> {
     return this.apiService.patch(
-      this.urlService.generate("SETTINGS_UPDATE", id),
+      this.urlService.generate(API.SETTINGS_UPDATE, id),
       {
         data,
       }
@@ -25,14 +26,14 @@ export class SettingsService {
 
   public updatePassword(id: string, password: any): Observable<Settings> {
     return this.apiService.patch(
-      this.urlService.generate("SETTINGS_UPDATE_PASSWORD", id),
+      this.urlService.generate(API.SETTINGS_UPDATE_PASSWORD, id),
       { password }
     );
   }
 
   public deleteAccount(): Observable<Settings> {
     return this.apiService.get(
-      this.urlService.generate("SETTINGS_DELETE_ACCOUNT")
+      this.urlService.generate(API.SETTINGS_DELETE_ACCOUNT)
     );
   }
 }

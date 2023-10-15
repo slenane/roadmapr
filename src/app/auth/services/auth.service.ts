@@ -4,6 +4,7 @@ import { map } from "rxjs/operators";
 import { User, TokenPayload, TokenResponse } from "../store/auth.models";
 import { ApiService } from "../../core/services/api.service";
 import { UrlService } from "../../core/services/url.service";
+import { API } from "src/app/core/constants/http.constants";
 
 @Injectable({
   providedIn: "root",
@@ -20,14 +21,14 @@ export class AuthService {
 
   public register(user: TokenPayload): Observable<any> {
     return this.apiService.post(
-      this.urlService.generate("AUTH_REGISTER"),
+      this.urlService.generate(API.AUTH_REGISTER),
       user
     );
   }
 
   public login(user: TokenPayload): Observable<any> {
     return this.apiService
-      .post(this.urlService.generate("AUTH_LOGIN"), user)
+      .post(this.urlService.generate(API.AUTH_LOGIN), user)
       .pipe(
         map((data: TokenResponse) => {
           if (data.token) {
@@ -40,12 +41,14 @@ export class AuthService {
   }
 
   public getGithubAuthPage(): Observable<string> {
-    return this.apiService.get(this.urlService.generate("GITHUB_AUTH_PAGE"));
+    return this.apiService.get(
+      this.urlService.generate(API.AUTH_GITHUB_AUTH_PAGE)
+    );
   }
 
   public getGithubAccessToken(auth_code: string): Observable<any> {
     return this.apiService.post(
-      this.urlService.generate("GITHUB_AUTH_ACCESS_TOKEN"),
+      this.urlService.generate(API.AUTH_GITHUB_ACCESS_TOKEN),
       {
         code: auth_code,
       }
@@ -54,7 +57,7 @@ export class AuthService {
 
   public githubLogin(): Observable<any> {
     return this.apiService
-      .get(this.urlService.generate("GITHUB_AUTH_LOGIN"))
+      .get(this.urlService.generate(API.AUTH_GITHUB_LOGIN))
       .pipe(
         map((data: TokenResponse) => {
           if (data.token) {
@@ -68,7 +71,19 @@ export class AuthService {
 
   public githubUpdateExistingUser(userId: string): Observable<any> {
     return this.apiService.get(
-      this.urlService.generate("GITHUB_UPDATE_EXISTING_USER", userId)
+      this.urlService.generate(API.AUTH_GITHUB_UPDATE_EXISTING_USER, userId)
+    );
+  }
+
+  checkUniqueUsername(username: string): Observable<any> {
+    return this.apiService.get(
+      this.urlService.generate(API.AUTH_CHECK_UNIQUE_USERNAME, username)
+    );
+  }
+
+  checkUniqueEmail(email: string): Observable<any> {
+    return this.apiService.get(
+      this.urlService.generate(API.AUTH_CHECK_UNIQUE_EMAIL, email)
     );
   }
 
@@ -117,17 +132,5 @@ export class AuthService {
       this.token = localStorage.getItem("user-token") || "";
     }
     return this.token;
-  }
-
-  checkUniqueUsername(username: string): Observable<any> {
-    return this.apiService.get(
-      this.urlService.generate("CHECK_UNIQUE_USERNAME", username)
-    );
-  }
-
-  checkUniqueEmail(email: string): Observable<any> {
-    return this.apiService.get(
-      this.urlService.generate("CHECK_UNIQUE_EMAIL", email)
-    );
   }
 }
