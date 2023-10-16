@@ -4,7 +4,13 @@ import * as fromAuth from "./auth.reducer";
 export const getAuthState = createFeatureSelector<fromAuth.Auth>("auth");
 
 export const getUserId = createSelector(getAuthState, fromAuth.getUserId);
-export const registrationSuccessful = createSelector(
+
+export const registrationSuccess = createSelector(
   getAuthState,
-  fromAuth.registrationSuccessful
+  fromAuth.registrationSuccess
+);
+
+export const registrationError = createSelector(
+  getAuthState,
+  fromAuth.registrationError
 );

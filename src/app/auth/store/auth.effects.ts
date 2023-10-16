@@ -7,7 +7,6 @@ import { AuthService } from "../services/auth.service";
 import * as authActions from "./auth.actions";
 import { ThemeService } from "src/app/core/services/theme.service";
 import { TranslateService } from "@ngx-translate/core";
-import { TokenResponse } from "./auth.models";
 import { ROUTES } from "src/app/core/constants/routes.constants";
 import { ProfileService } from "src/app/profile/services/profile.service";
 import { MatSnackBar } from "@angular/material/snack-bar";
@@ -27,36 +26,62 @@ export class AuthEffects {
   register$ = createEffect((): any =>
     this.actions$.pipe(
       ofType(authActions.REGISTER),
-      switchMap(({ userDetails }) => this.authService.register(userDetails)),
-      map(() => {
-        return authActions.RegisterSuccess();
-      }),
-      catchError(() => of(authActions.RegisterError()))
+      switchMap(({ userDetails }) =>
+        this.authService.register(userDetails).pipe(
+          map(() => authActions.RegisterSuccess()),
+          catchError((error) => {
+            this.snackBar.open(error.error, "Dismiss", {
+              duration: 10000,
+              panelClass: ["snackbar-error"],
+            });
+            return of(authActions.RegisterError());
+          })
+        )
+      )
     )
   );
 
   login$ = createEffect((): any =>
     this.actions$.pipe(
       ofType(authActions.LOGIN),
-      switchMap(({ userDetails }) => this.authService.login(userDetails)),
-      map((payload) => {
-        this.setUserPreferences(payload.user);
-        this.redirectUser(payload.user);
-        return authActions.LoginSuccess(payload);
-      })
+      switchMap(({ userDetails }) =>
+        this.authService.register(userDetails).pipe(
+          map((payload) => {
+            this.setUserPreferences(payload.user);
+            this.redirectUser(payload.user);
+            return authActions.LoginSuccess(payload);
+          }),
+          catchError((error) => {
+            this.snackBar.open(error.error, "Dismiss", {
+              duration: 10000,
+              panelClass: ["snackbar-error"],
+            });
+            return of(authActions.LoginError());
+          })
+        )
+      )
     )
   );
 
   githubLogin$ = createEffect((): any =>
     this.actions$.pipe(
       ofType(authActions.GITHUB_LOGIN),
-      switchMap(() => this.authService.githubLogin()),
-      map((payload: TokenResponse) => {
-        this.setUserPreferences(payload.user);
-        this.redirectUser(payload.user);
-        return authActions.LoginSuccess({ payload });
-      }),
-      catchError((error) => of(authActions.LoginError(error)))
+      switchMap(() =>
+        this.authService.githubLogin().pipe(
+          map((payload) => {
+            this.setUserPreferences(payload.user);
+            this.redirectUser(payload.user);
+            return authActions.GithubLoginSuccess({ payload });
+          }),
+          catchError((error) => {
+            this.snackBar.open(error.error, "Dismiss", {
+              duration: 10000,
+              panelClass: ["snackbar-error"],
+            });
+            return of(authActions.GithubLoginError());
+          })
+        )
+      )
     )
   );
 
