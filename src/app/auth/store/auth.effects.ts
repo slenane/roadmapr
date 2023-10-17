@@ -45,7 +45,7 @@ export class AuthEffects {
     this.actions$.pipe(
       ofType(authActions.LOGIN),
       switchMap(({ userDetails }) =>
-        this.authService.register(userDetails).pipe(
+        this.authService.login(userDetails).pipe(
           map((payload) => {
             this.setUserPreferences(payload.user);
             this.redirectUser(payload.user);
@@ -89,23 +89,24 @@ export class AuthEffects {
     this.actions$.pipe(
       ofType(authActions.GITHUB_UPDATE_EXISTING_USER),
       switchMap(({ userId }) =>
-        this.authService.githubUpdateExistingUser(userId)
-      ),
-      map(() => {
-        this.snackBar.open("GitHub Linked Successfully", "Dismiss", {
-          duration: 5000,
-        });
-        this.router.navigateByUrl(ROUTES.SETTINGS);
-        return authActions.GithubUpdateExistingUserSuccess();
-      }),
-      catchError((err) => {
-        this.snackBar.open(err.error.message, "Dismiss", {
-          duration: 10000,
-          panelClass: ["snackbar-error"],
-        });
-        this.router.navigateByUrl(ROUTES.SETTINGS);
-        return of(authActions.GithubUpdateExistingUserError());
-      })
+        this.authService.githubUpdateExistingUser(userId).pipe(
+          map(() => {
+            this.snackBar.open("GitHub Linked Successfully", "Dismiss", {
+              duration: 5000,
+            });
+            this.router.navigateByUrl(ROUTES.SETTINGS);
+            return authActions.GithubUpdateExistingUserSuccess();
+          }),
+          catchError((error) => {
+            this.snackBar.open(error.error, "Dismiss", {
+              duration: 10000,
+              panelClass: ["snackbar-error"],
+            });
+            this.router.navigateByUrl(ROUTES.SETTINGS);
+            return of(authActions.GithubUpdateExistingUserError());
+          })
+        )
+      )
     )
   );
 

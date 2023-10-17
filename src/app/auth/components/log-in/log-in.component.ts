@@ -5,6 +5,10 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { AuthService } from "../../services/auth.service";
 import { Location } from "@angular/common";
 import { MatSnackBar } from "@angular/material/snack-bar";
+import { Store } from "@ngrx/store";
+import { Observable } from "rxjs";
+import * as authSelectors from "../../store/auth.selectors";
+import * as authActions from "../../store/auth.actions";
 
 @Component({
   selector: "app-log-in",
@@ -12,6 +16,7 @@ import { MatSnackBar } from "@angular/material/snack-bar";
   styleUrls: ["./log-in.component.scss"],
 })
 export class LogInComponent implements OnInit {
+  private loginError$: Observable<boolean | null | undefined>;
   public hidePassword: boolean = true;
   public loginPending: boolean = false;
   public authUrl: string;
@@ -31,10 +36,20 @@ export class LogInComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private location: Location,
-    private snackBar: MatSnackBar
-  ) {}
+    private snackBar: MatSnackBar,
+    private store: Store
+  ) {
+    this.loginError$ = this.store.select(authSelectors.loginError);
+  }
 
   ngOnInit(): void {
+    this.loginError$.subscribe((error) => {
+      if (error) {
+        this.onLoginFailure();
+        this.store.dispatch(authActions.clearLoginError());
+      }
+    });
+
     this.activatedRoute.queryParams.subscribe((params: any) => {
       if (params["verified"]) {
         this.snackBar.open(
@@ -69,6 +84,11 @@ export class LogInComponent implements OnInit {
         queryParams: { url: this.authUrl },
       });
     }
+  }
+
+  onLoginFailure() {
+    this.form.enable();
+    this.loginPending = false;
   }
 
   showRegister() {

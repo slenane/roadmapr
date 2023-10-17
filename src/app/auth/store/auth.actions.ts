@@ -8,8 +8,10 @@ export const GITHUB_UPDATE_EXISTING_USER = "[Auth] GitHub update existing user";
 export const LOGOUT = "[Auth] Log out";
 const REGISTER_SUCCESS = "[Auth] Registered Successfully",
   REGISTER_ERROR = "[Auth] Registration Error",
+  REGISTER_CLEAR_ERROR = "[Auth] Clear Registration Error",
   LOGIN_SUCCESS = "[Auth] Logged In Successfully",
   LOGIN_ERROR = "[Auth] Log In Error",
+  LOGIN_CLEAR_ERROR = "[Auth] Clear Login Error",
   GITHUB_LOGIN_SUCCESS = "[Auth] GitHub Logged In Successfully",
   GITHUB_LOGIN_ERROR = "[Auth] GitHub Log In Error",
   GITHUB_UPDATE_EXISTING_USER_SUCCESS =
@@ -25,9 +27,7 @@ export const RegisterSuccess = createAction(REGISTER_SUCCESS);
 
 export const RegisterError = createAction(REGISTER_ERROR);
 
-export const clearRegistrationError = createAction(
-  "[auth] clear registration error"
-);
+export const clearRegistrationError = createAction(REGISTER_CLEAR_ERROR);
 
 export const Login = createAction(LOGIN, props<{ userDetails: User }>());
 
@@ -37,6 +37,8 @@ export const LoginSuccess = createAction(
 );
 
 export const LoginError = createAction(LOGIN_ERROR);
+
+export const clearLoginError = createAction(LOGIN_CLEAR_ERROR);
 
 export const GithubLogin = createAction(GITHUB_LOGIN);
 

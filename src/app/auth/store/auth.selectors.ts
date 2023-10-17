@@ -14,3 +14,5 @@ export const registrationError = createSelector(
   getAuthState,
   fromAuth.registrationError
 );
+
+export const loginError = createSelector(getAuthState, fromAuth.loginError);

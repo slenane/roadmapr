@@ -7,6 +7,7 @@ export interface Auth {
   token?: string | null;
   registrationSuccess?: boolean | null;
   registrationError?: boolean | null;
+  loginError?: boolean | null;
   isLoggedIn: boolean;
 }
 
@@ -22,6 +23,18 @@ const authReducer = createReducer(
       isLoggedIn: true,
       ...(payload.user ? { user: payload.user._id } : {}),
       ...(payload.token ? { token: payload.token } : {}),
+    };
+  }),
+  on(authActions.LoginError, (state) => {
+    return {
+      ...state,
+      loginError: true,
+    };
+  }),
+  on(authActions.clearLoginError, (state) => {
+    return {
+      ...state,
+      loginError: null,
     };
   }),
   on(authActions.GithubLoginSuccess, (state, payload: any) => {
@@ -62,3 +75,4 @@ export const reducer = (state: Auth | undefined, action: Action) => {
 export const getUserId = (state: Auth) => state.user;
 export const registrationSuccess = (state: Auth) => state.registrationSuccess;
 export const registrationError = (state: Auth) => state.registrationError;
+export const loginError = (state: Auth) => state.loginError;
