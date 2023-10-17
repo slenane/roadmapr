@@ -5,13 +5,14 @@ import { createReducer, on } from "@ngrx/store";
 export interface Auth {
   user?: String | null;
   token?: string | null;
+  registrationSuccess?: boolean | null;
+  registrationError?: boolean | null;
+  loginError?: boolean | null;
   isLoggedIn: boolean;
-  registrationSuccessful: boolean;
 }
 
 const initialState: Auth = {
   isLoggedIn: false,
-  registrationSuccessful: false,
 };
 
 const authReducer = createReducer(
@@ -24,10 +25,45 @@ const authReducer = createReducer(
       ...(payload.token ? { token: payload.token } : {}),
     };
   }),
+  on(authActions.LoginError, (state) => {
+    return {
+      ...state,
+      loginError: true,
+    };
+  }),
+  on(authActions.clearLoginError, (state) => {
+    return {
+      ...state,
+      loginError: null,
+    };
+  }),
+  on(authActions.GithubLoginSuccess, (state, payload: any) => {
+    return {
+      ...state,
+      isLoggedIn: true,
+      ...(payload.user ? { user: payload.user._id } : {}),
+      ...(payload.token ? { token: payload.token } : {}),
+    };
+  }),
   on(authActions.RegisterSuccess, (state) => {
     return {
       ...state,
-      registrationSuccessful: true,
+      registrationSuccess: true,
+      registrationError: null,
+    };
+  }),
+  on(authActions.RegisterError, (state) => {
+    return {
+      ...state,
+      registrationSuccess: null,
+      registrationError: true,
+    };
+  }),
+  on(authActions.clearRegistrationError, (state) => {
+    return {
+      ...state,
+      registrationSuccess: null,
+      registrationError: null,
     };
   })
 );
@@ -37,5 +73,6 @@ export const reducer = (state: Auth | undefined, action: Action) => {
 };
 
 export const getUserId = (state: Auth) => state.user;
-export const registrationSuccessful = (state: Auth) =>
-  state.registrationSuccessful;
+export const registrationSuccess = (state: Auth) => state.registrationSuccess;
+export const registrationError = (state: Auth) => state.registrationError;
+export const loginError = (state: Auth) => state.loginError;

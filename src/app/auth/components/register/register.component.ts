@@ -8,8 +8,10 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { validPasswordPattern } from "src/app/shared/constants/validators.constants";
 import { MatTooltip } from "@angular/material/tooltip";
 import { Location } from "@angular/common";
-import { filter, takeUntil } from "rxjs/operators";
-import { Subject } from "rxjs";
+import { Observable } from "rxjs";
+import { Store } from "@ngrx/store";
+import * as authSelectors from "../../store/auth.selectors";
+import * as authActions from "../../store/auth.actions";
 
 @Component({
   selector: "app-register",
@@ -17,7 +19,8 @@ import { Subject } from "rxjs";
   styleUrls: ["./register.component.scss"],
 })
 export class RegisterComponent implements OnInit {
-  private ngUnsubscribe: Subject<void> = new Subject<void>();
+  private registrationError$: Observable<boolean | null | undefined>;
+  private registrationSuccess$: Observable<boolean | null | undefined>;
   public passwordTooltipDisplay: boolean = false;
   public registrationPending: boolean = false;
   public registrationSuccessful: boolean = false;
@@ -44,10 +47,28 @@ export class RegisterComponent implements OnInit {
     private authStoreService: AuthStoreService,
     private authService: AuthService,
     private router: Router,
-    private location: Location
-  ) {}
+    private location: Location,
+    private store: Store
+  ) {
+    this.registrationError$ = this.store.select(
+      authSelectors.registrationError
+    );
+    this.registrationSuccess$ = this.store.select(
+      authSelectors.registrationSuccess
+    );
+  }
 
   ngOnInit(): void {
+    this.registrationError$.subscribe((error) => {
+      if (error) {
+        this.onRegisterFailure();
+        this.store.dispatch(authActions.clearRegistrationError());
+      }
+    });
+    this.registrationSuccess$.subscribe((success) => {
+      if (success) this.onRegisterSuccess();
+    });
+
     this.authService.getGithubAuthPage().subscribe({
       next: (data: any) => (this.authUrl = data["authUrl"]),
       error: (err: any) => console.log(err),
@@ -75,19 +96,11 @@ export class RegisterComponent implements OnInit {
       this.registrationPending = true;
       this.passwordForm.controls.passwordCtrl.disable();
 
-      this.authStoreService
-        .register({
-          username: this.usernameUpdate.form.value.usernameCtrl,
-          email: this.emailUpdate.form.value.emailCtrl,
-          password: this.passwordForm.value.passwordCtrl,
-        })
-        .pipe(
-          filter((state) => state != null),
-          takeUntil(this.ngUnsubscribe)
-        )
-        .subscribe((success) => {
-          if (success) this.onRegisterSuccess();
-        });
+      this.authStoreService.register({
+        username: this.usernameUpdate.form.value.usernameCtrl,
+        email: this.emailUpdate.form.value.emailCtrl,
+        password: this.passwordForm.value.passwordCtrl,
+      });
     }
   }
 
@@ -103,6 +116,12 @@ export class RegisterComponent implements OnInit {
         clearInterval(resendInterval);
       }
     }, 1000);
+  }
+
+  onRegisterFailure() {
+    this.registrationPending = false;
+    this.registrationSuccessful = false;
+    this.passwordForm.controls.passwordCtrl.enable();
   }
 
   registerWithGithub() {
