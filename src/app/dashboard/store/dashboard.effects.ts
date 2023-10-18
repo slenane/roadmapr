@@ -19,17 +19,18 @@ export class DashboardEffects {
     this.actions$.pipe(
       ofType(dashboardActions.GET_DASHBOARD),
       switchMap(() => {
-        return this.dashboardService.getDashboard();
-      }),
-      map((payload: Dashboard) => {
-        return dashboardActions.GetDashboardSuccess({ payload });
-      }),
-      catchError((error) => {
-        this.snackBar.open(error.error, "Dismiss", {
-          duration: 10000,
-          panelClass: ["snackbar-error"],
-        });
-        return of(dashboardActions.GetDashboardError(error));
+        return this.dashboardService.getDashboard().pipe(
+          map((payload: Dashboard) =>
+            dashboardActions.GetDashboardSuccess({ payload })
+          ),
+          catchError((error) => {
+            this.snackBar.open(error.error, "Dismiss", {
+              duration: 10000,
+              panelClass: ["snackbar-error"],
+            });
+            return of(dashboardActions.GetDashboardError(error));
+          })
+        );
       })
     )
   );

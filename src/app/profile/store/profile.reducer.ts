@@ -44,6 +44,12 @@ const profileReducer = createReducer(
   initialState,
   on(profileActions.GetProfileSuccess, (state, { payload }) => {
     return { ...state, ...payload };
+  }),
+  on(profileActions.UpdateProfileSuccess, (state, { payload }) => {
+    return { ...state, ...payload };
+  }),
+  on(profileActions.UpdateProfileImageSuccess, (state, { payload }) => {
+    return { ...state, ...payload };
   })
 );
 
