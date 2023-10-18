@@ -5,14 +5,14 @@ import { map, switchMap, catchError } from "rxjs/operators";
 import { ProjectsService } from "../services/projects.service";
 import * as projectActions from "./projects.actions";
 import { Projects } from "./projects.models";
-import { MatSnackBar } from "@angular/material/snack-bar";
+import { AlertsService } from "src/app/shared/services/alerts.service";
 
 @Injectable()
 export class ProjectEffects {
   constructor(
     private actions$: Actions,
     private projectsService: ProjectsService,
-    private snackBar: MatSnackBar
+    private alertsService: AlertsService
   ) {}
 
   getProjects$ = createEffect((): any =>
@@ -35,16 +35,11 @@ export class ProjectEffects {
       switchMap(({ projectsId, data }) =>
         this.projectsService.createProject(projectsId, data).pipe(
           map(({ projects, successMessage }) => {
-            this.snackBar.open(successMessage, "Dismiss", {
-              duration: 5000,
-            });
+            this.alertsService.successAlert(successMessage);
             return projectActions.CreateProjectSuccess({ payload: projects });
           }),
           catchError((error) => {
-            this.snackBar.open(error.error, "Dismiss", {
-              duration: 10000,
-              panelClass: ["snackbar-error"],
-            });
+            this.alertsService.errorAlert(error.error);
             return of(projectActions.CreateProjectError(error));
           })
         )
@@ -60,16 +55,11 @@ export class ProjectEffects {
           .updateProject(payload.data.projects, payload.data)
           .pipe(
             map(({ projects, successMessage }) => {
-              this.snackBar.open(successMessage, "Dismiss", {
-                duration: 5000,
-              });
+              this.alertsService.successAlert(successMessage);
               return projectActions.UpdateProjectSuccess({ payload: projects });
             }),
             catchError((error) => {
-              this.snackBar.open(error.error, "Dismiss", {
-                duration: 10000,
-                panelClass: ["snackbar-error"],
-              });
+              this.alertsService.errorAlert(error.error);
               return of(projectActions.UpdateProjectError(error));
             })
           )
@@ -83,18 +73,13 @@ export class ProjectEffects {
       switchMap(({ projectsId, data }) =>
         this.projectsService.bulkUpdateProjectItems(projectsId, data).pipe(
           map(({ projects, successMessage }) => {
-            this.snackBar.open(successMessage, "Dismiss", {
-              duration: 5000,
-            });
+            this.alertsService.errorAlert(successMessage);
             return projectActions.BulkUpdateProjectItemsSuccess({
               payload: projects,
             });
           }),
           catchError((error) => {
-            this.snackBar.open(error.error, "Dismiss", {
-              duration: 10000,
-              panelClass: ["snackbar-error"],
-            });
+            this.alertsService.errorAlert(error.error);
             return of(projectActions.BulkUpdateProjectItemsError(error));
           })
         )
@@ -112,16 +97,11 @@ export class ProjectEffects {
         );
       }),
       map(({ projects, successMessage }) => {
-        this.snackBar.open(successMessage, "Dismiss", {
-          duration: 5000,
-        });
+        this.alertsService.successAlert(successMessage);
         return projectActions.RemoveProjectSuccess({ payload: projects });
       }),
       catchError((error) => {
-        this.snackBar.open(error.error, "Dismiss", {
-          duration: 10000,
-          panelClass: ["snackbar-error"],
-        });
+        this.alertsService.errorAlert(error.error);
         return of(projectActions.RemoveProjectError(error));
       })
     )

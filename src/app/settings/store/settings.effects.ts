@@ -5,17 +5,17 @@ import { map, switchMap, catchError } from "rxjs/operators";
 import { SettingsService } from "../services/settings.service";
 import * as settingsActions from "./settings.actions";
 import { Settings } from "./settings.models";
-import { MatSnackBar } from "@angular/material/snack-bar";
 import { AuthService } from "src/app/auth/services/auth.service";
 import { Router } from "@angular/router";
 import { ROUTES } from "src/app/core/constants/routes.constants";
+import { AlertsService } from "src/app/shared/services/alerts.service";
 
 @Injectable()
 export class SettingsEffects {
   constructor(
     private actions$: Actions,
     private settingsService: SettingsService,
-    private snackBar: MatSnackBar,
+    private alertsService: AlertsService,
     private router: Router,
     private authService: AuthService
   ) {}
@@ -40,16 +40,11 @@ export class SettingsEffects {
       switchMap(({ id, data }) =>
         this.settingsService.updateSettings(id, data).pipe(
           map(({ settings, successMessage }) => {
-            this.snackBar.open(successMessage, "Dismiss", {
-              duration: 5000,
-            });
+            this.alertsService.successAlert(successMessage);
             return settingsActions.UpdateSettingsSuccess({ payload: settings });
           }),
           catchError((error) => {
-            this.snackBar.open(error.error, "Dismiss", {
-              duration: 10000,
-              panelClass: ["snackbar-error"],
-            });
+            this.alertsService.errorAlert(error.error);
             return of(settingsActions.UpdateSettingsError(error));
           })
         )
@@ -63,16 +58,11 @@ export class SettingsEffects {
       switchMap((payload: any) =>
         this.settingsService.updatePassword(payload.id, payload.password).pipe(
           map(({ settings, successMessage }) => {
-            this.snackBar.open(successMessage, "Dismiss", {
-              duration: 5000,
-            });
+            this.alertsService.successAlert(successMessage);
             return settingsActions.UpdatePasswordSuccess({ payload: settings });
           }),
           catchError((error) => {
-            this.snackBar.open(error.error, "Dismiss", {
-              duration: 10000,
-              panelClass: ["snackbar-error"],
-            });
+            this.alertsService.errorAlert(error.error);
             return of(settingsActions.UpdatePasswordError(error));
           })
         )
@@ -86,9 +76,7 @@ export class SettingsEffects {
       switchMap(() =>
         this.settingsService.deleteAccount().pipe(
           map(({ successMessage }) => {
-            this.snackBar.open(successMessage, "Dismiss", {
-              duration: 5000,
-            });
+            this.alertsService.successAlert(successMessage);
             return this.authService.logout();
           }),
           map(() => {
@@ -96,10 +84,7 @@ export class SettingsEffects {
             return settingsActions.DeleteAccountSuccess();
           }),
           catchError((error) => {
-            this.snackBar.open(error.error, "Dismiss", {
-              duration: 10000,
-              panelClass: ["snackbar-error"],
-            });
+            this.alertsService.errorAlert(error.error);
             return of(settingsActions.DeleteAccountError(error));
           })
         )

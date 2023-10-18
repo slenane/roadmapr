@@ -54,7 +54,8 @@ export const GithubUpdateExistingUser = createAction(
 );
 
 export const GithubUpdateExistingUserSuccess = createAction(
-  GITHUB_UPDATE_EXISTING_USER_SUCCESS
+  GITHUB_UPDATE_EXISTING_USER_SUCCESS,
+  props<{ payload: TokenResponse }>()
 );
 
 export const GithubUpdateExistingUserError = createAction(

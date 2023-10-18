@@ -5,14 +5,14 @@ import { map, switchMap, catchError } from "rxjs/operators";
 import { EmploymentService } from "../services/employment.service";
 import * as employmentActions from "./employment.actions";
 import { Employment } from "./employment.models";
-import { MatSnackBar } from "@angular/material/snack-bar";
+import { AlertsService } from "src/app/shared/services/alerts.service";
 
 @Injectable()
 export class EmploymentEffects {
   constructor(
     private actions$: Actions,
     private employmentService: EmploymentService,
-    private snackBar: MatSnackBar
+    private alertsService: AlertsService
   ) {}
 
   getEmployment$ = createEffect((): any =>
@@ -35,18 +35,13 @@ export class EmploymentEffects {
       switchMap(({ employmentId, data }) =>
         this.employmentService.createEmploymentItem(employmentId, data).pipe(
           map(({ employment, successMessage }) => {
-            this.snackBar.open(successMessage, "Dismiss", {
-              duration: 5000,
-            });
+            this.alertsService.successAlert(successMessage);
             return employmentActions.CreateEmploymentItemSuccess({
               payload: employment,
             });
           }),
           catchError((error) => {
-            this.snackBar.open(error.error, "Dismiss", {
-              duration: 10000,
-              panelClass: ["snackbar-error"],
-            });
+            this.alertsService.errorAlert(error.error);
             return of(employmentActions.CreateEmploymentItemError(error));
           })
         )
@@ -62,18 +57,13 @@ export class EmploymentEffects {
           .updateEmploymentItem(payload.data.employment, payload.data)
           .pipe(
             map(({ employment, successMessage }) => {
-              this.snackBar.open(successMessage, "Dismiss", {
-                duration: 5000,
-              });
+              this.alertsService.successAlert(successMessage);
               return employmentActions.UpdateEmploymentItemSuccess({
                 payload: employment,
               });
             }),
             catchError((error) => {
-              this.snackBar.open(error.error, "Dismiss", {
-                duration: 10000,
-                panelClass: ["snackbar-error"],
-              });
+              this.alertsService.errorAlert(error.error);
               return of(employmentActions.UpdateEmploymentItemError(error));
             })
           )
@@ -89,18 +79,13 @@ export class EmploymentEffects {
           .bulkUpdateEmploymentItems(employmentId, data)
           .pipe(
             map(({ employment, successMessage }) => {
-              this.snackBar.open(successMessage, "Dismiss", {
-                duration: 5000,
-              });
+              this.alertsService.successAlert(successMessage);
               return employmentActions.BulkUpdateEmploymentItemsSuccess({
                 payload: employment,
               });
             }),
             catchError((error) => {
-              this.snackBar.open(error.error, "Dismiss", {
-                duration: 10000,
-                panelClass: ["snackbar-error"],
-              });
+              this.alertsService.errorAlert(error.error);
               return of(
                 employmentActions.BulkUpdateEmploymentItemsError(error)
               );
@@ -118,18 +103,13 @@ export class EmploymentEffects {
           .removeEmploymentItem(payload.data.employment, payload.data)
           .pipe(
             map(({ employment, successMessage }) => {
-              this.snackBar.open(successMessage, "Dismiss", {
-                duration: 5000,
-              });
+              this.alertsService.successAlert(successMessage);
               return employmentActions.RemoveEmploymentItemSuccess({
                 payload: employment,
               });
             }),
             catchError((error) => {
-              this.snackBar.open(error.error, "Dismiss", {
-                duration: 10000,
-                panelClass: ["snackbar-error"],
-              });
+              this.alertsService.errorAlert(error.error);
               return of(employmentActions.RemoveEmploymentItemError(error));
             })
           )

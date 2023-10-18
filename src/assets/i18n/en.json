@@ -87,6 +87,39 @@
     "YES": "Yes",
     "DISMISS": "Dismiss"
   },
+  "ALERTS": {
+    "DISMISS": "Dismiss",
+    "NO_INFORMATION_PROVIDED": "No information was provided",
+    "MISSING_FIELDS": "Required information missing, please check all required fields have been filled",
+    "AUTH": {
+      "SUCCESS": {
+        "GITHUB_LINKED": "GitHub Linked Successfully"
+      },
+      "ERROR": {
+        "USER_NOT_FOUND": "User not found",
+        "USERNAME_INVALID": "Username must be of minimum length 2 characters",
+        "USERNAME_USED": "Username already in use, please try something else",
+        "EMAIL_INVALID": "Email is not valid",
+        "EMAIL_USED": "Email already in use, please log in or try a different email",
+        "PASSWORD_INVALID": "Password invalid: Passwords must be at least 6 characters long, contains at least 1 number and 1 special character (!@#$%^&*)",
+        "USERNAME_PASSWORD_INVALID": "Invalid Username or Password",
+        "TOKEN_NOT_PROVIDED": "Token not provided, please try again",
+        "GITHUB_USED": "This GitHub Account has already been linked to another roadmapr account, please unlink the other account to continue"
+      }
+    },
+    "EDUCATION": {
+      "SUCCESS": {
+        "UPDATED": "Education Updated",
+        "ITEM_UPDATED": "Education Item Updated",
+        "ITEMS_UPDATED": "Education Items Updated",
+        "ITEM_REMOVED": "Education Item Removed"
+      },
+      "ERROR": {
+        "NOT_FOUND": "Education data not found",
+        "ITEM_NOT_FOUND": "Education item not found"
+      }
+    }
+  },
   "AUTH": {
     "LOG_IN": {
       "T": "Log In",
