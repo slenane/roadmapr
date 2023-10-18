@@ -29,4 +29,11 @@ export class ProfileStoreService {
       data,
     });
   }
+
+  updateProfileImage(data: FormData) {
+    this.store.dispatch({
+      type: profileActions.UPDATE_PROFILE_IMAGE,
+      data,
+    });
+  }
 }

@@ -23,78 +23,87 @@ export class SettingsEffects {
   getSettings$ = createEffect(() =>
     this.actions$.pipe(
       ofType(settingsActions.GET_SETTINGS),
-      switchMap(() => {
-        return this.settingsService.getSettings();
-      }),
-      map((payload: Settings) => {
-        return settingsActions.GetSettingsSuccess({ payload });
-      }),
-      catchError((error) => of(settingsActions.GetSettingsError(error)))
+      switchMap(() =>
+        this.settingsService.getSettings().pipe(
+          map((payload: Settings) =>
+            settingsActions.GetSettingsSuccess({ payload })
+          ),
+          catchError((error) => of(settingsActions.GetSettingsError(error)))
+        )
+      )
     )
   );
 
   updateSettings$ = createEffect(() =>
     this.actions$.pipe(
       ofType(settingsActions.UPDATE_SETTINGS),
-      switchMap((payload: any) => {
-        return this.settingsService.updateSettings(payload.id, payload.data);
-      }),
-      map((payload: Settings) => {
-        this.snackBar.open("Settings Updated", "Dismiss", {
-          duration: 5000,
-        });
-        return settingsActions.UpdateSettingsSuccess({ payload });
-      }),
-      catchError((error) => {
-        this.snackBar.open("Settings Update Error", "Dismiss", {
-          duration: 10000,
-          panelClass: ["snackbar-error"],
-        });
-        return of(settingsActions.UpdateSettingsError(error));
-      })
+      switchMap(({ id, data }) =>
+        this.settingsService.updateSettings(id, data).pipe(
+          map(({ settings, successMessage }) => {
+            this.snackBar.open(successMessage, "Dismiss", {
+              duration: 5000,
+            });
+            return settingsActions.UpdateSettingsSuccess({ payload: settings });
+          }),
+          catchError((error) => {
+            this.snackBar.open(error.error, "Dismiss", {
+              duration: 10000,
+              panelClass: ["snackbar-error"],
+            });
+            return of(settingsActions.UpdateSettingsError(error));
+          })
+        )
+      )
     )
   );
 
   updatePassword$ = createEffect(() =>
     this.actions$.pipe(
       ofType(settingsActions.UPDATE_PASSWORD),
-      switchMap((payload: any) => {
-        return this.settingsService.updatePassword(
-          payload.id,
-          payload.password
-        );
-      }),
-      map((payload: Settings) => {
-        this.snackBar.open("Password Updated", "Dismiss", {
-          duration: 5000,
-        });
-        return settingsActions.UpdatePasswordSuccess({ payload });
-      }),
-      catchError((error) => {
-        this.snackBar.open("Password Update Error", "Dismiss", {
-          duration: 10000,
-          panelClass: ["snackbar-error"],
-        });
-        return of(settingsActions.UpdatePasswordError(error));
-      })
+      switchMap((payload: any) =>
+        this.settingsService.updatePassword(payload.id, payload.password).pipe(
+          map(({ settings, successMessage }) => {
+            this.snackBar.open(successMessage, "Dismiss", {
+              duration: 5000,
+            });
+            return settingsActions.UpdatePasswordSuccess({ payload: settings });
+          }),
+          catchError((error) => {
+            this.snackBar.open(error.error, "Dismiss", {
+              duration: 10000,
+              panelClass: ["snackbar-error"],
+            });
+            return of(settingsActions.UpdatePasswordError(error));
+          })
+        )
+      )
     )
   );
 
   DeleteAccount$ = createEffect(() =>
     this.actions$.pipe(
       ofType(settingsActions.DELETE_ACCOUNT),
-      switchMap(() => this.settingsService.deleteAccount()),
-      map(() => this.authService.logout()),
-      map(() => {
-        this.snackBar.open("Account Deleted Successfully", "Dismiss", {
-          duration: 5000,
-        });
-        this.router.navigateByUrl(ROUTES.LOGIN);
-        return settingsActions.DeleteAccountSuccess();
-      }),
-      catchError((error) => {
-        return of(settingsActions.DeleteAccountError(error));
-      })
+      switchMap(() =>
+        this.settingsService.deleteAccount().pipe(
+          map(({ successMessage }) => {
+            this.snackBar.open(successMessage, "Dismiss", {
+              duration: 5000,
+            });
+            return this.authService.logout();
+          }),
+          map(() => {
+            this.router.navigateByUrl(ROUTES.LOGIN);
+            return settingsActions.DeleteAccountSuccess();
+          }),
+          catchError((error) => {
+            this.snackBar.open(error.error, "Dismiss", {
+              duration: 10000,
+              panelClass: ["snackbar-error"],
+            });
+            return of(settingsActions.DeleteAccountError(error));
+          })
+        )
+      )
     )
   );
 }

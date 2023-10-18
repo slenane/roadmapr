@@ -15,7 +15,10 @@ export class SettingsService {
     return this.apiService.get(this.urlService.generate(API.SETTINGS_GET));
   }
 
-  public updateSettings(id: string, data: any): Observable<Settings> {
+  public updateSettings(
+    id: string,
+    data: any
+  ): Observable<{ settings: Settings; successMessage: string }> {
     return this.apiService.patch(
       this.urlService.generate(API.SETTINGS_UPDATE, id),
       {
@@ -24,14 +27,17 @@ export class SettingsService {
     );
   }
 
-  public updatePassword(id: string, password: any): Observable<Settings> {
+  public updatePassword(
+    id: string,
+    password: any
+  ): Observable<{ settings: Settings; successMessage: string }> {
     return this.apiService.patch(
       this.urlService.generate(API.SETTINGS_UPDATE_PASSWORD, id),
       { password }
     );
   }
 
-  public deleteAccount(): Observable<Settings> {
+  public deleteAccount(): Observable<{ successMessage: string }> {
     return this.apiService.get(
       this.urlService.generate(API.SETTINGS_DELETE_ACCOUNT)
     );

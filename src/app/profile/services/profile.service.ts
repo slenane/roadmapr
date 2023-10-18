@@ -15,7 +15,10 @@ export class ProfileService {
     return this.apiService.get(this.urlService.generate(API.PROFILE_GET));
   }
 
-  public updateProfile(id: string, data: any): Observable<Profile> {
+  public updateProfile(
+    id: string,
+    data: any
+  ): Observable<{ user: Profile; successMessage: string }> {
     return this.apiService.patch(
       this.urlService.generate(API.PROFILE_UPDATE, id),
       {
@@ -24,7 +27,9 @@ export class ProfileService {
     );
   }
 
-  public updateProfileImage(formData: FormData): Observable<Profile> {
+  public updateProfileImage(
+    formData: FormData
+  ): Observable<{ user: Profile; successMessage: string }> {
     return this.apiService.post(
       this.urlService.generate(API.PROFILE_IMAGE_UPDATE),
       formData

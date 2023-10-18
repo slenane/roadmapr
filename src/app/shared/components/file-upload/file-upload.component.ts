@@ -6,8 +6,8 @@ import {
   OnChanges,
 } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
-import { ProfileService } from "src/app/profile/services/profile.service";
 import { ImageCropperModalComponent } from "../image-cropper-modal/image-cropper-modal.component";
+import { ProfileStoreService } from "src/app/profile/services/profile-store.service";
 
 @Component({
   selector: "app-file-upload",
@@ -21,7 +21,7 @@ export class FileUploadComponent implements OnInit, OnChanges {
   @Input() data: any;
 
   constructor(
-    private profileService: ProfileService,
+    private profileStoreService: ProfileStoreService,
     public dialog: MatDialog
   ) {}
 
@@ -43,12 +43,7 @@ export class FileUploadComponent implements OnInit, OnChanges {
         const formData = new FormData();
         formData.append("profileImage", image);
 
-        this.profileService
-          .updateProfileImage(formData)
-          .pipe()
-          .subscribe((res) => {
-            if (res.profileImage) this.image = res.profileImage;
-          });
+        this.profileStoreService.updateProfileImage(formData);
       }
     });
   }
