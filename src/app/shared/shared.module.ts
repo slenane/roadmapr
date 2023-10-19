@@ -18,6 +18,8 @@ import { MyErrorStateMatcher } from "./services/error-state-matcher.service";
 import { FileUploadComponent } from "./components/file-upload/file-upload.component";
 import { ImageCropperModalComponent } from "./components/image-cropper-modal/image-cropper-modal.component";
 import { ImageCropperModule } from "ngx-image-cropper";
+import { AlertsComponent } from "./components/alerts/alerts.component";
+import { AlertsService } from "./services/alerts.service";
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import { ImageCropperModule } from "ngx-image-cropper";
     UpdateEmailComponent,
     FileUploadComponent,
     ImageCropperModalComponent,
+    AlertsComponent,
   ],
   exports: [
     SidebarComponent,
@@ -51,6 +54,11 @@ import { ImageCropperModule } from "ngx-image-cropper";
     TranslateModule.forChild(),
     ImageCropperModule,
   ],
-  providers: [DropListService, ValidatorsService, MyErrorStateMatcher],
+  providers: [
+    DropListService,
+    ValidatorsService,
+    MyErrorStateMatcher,
+    AlertsService,
+  ],
 })
 export class SharedModule {}

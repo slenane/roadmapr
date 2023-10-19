@@ -17,6 +17,27 @@ const initialState: Auth = {
 
 const authReducer = createReducer(
   initialState,
+  on(authActions.RegisterSuccess, (state) => {
+    return {
+      ...state,
+      registrationSuccess: true,
+      registrationError: null,
+    };
+  }),
+  on(authActions.RegisterError, (state) => {
+    return {
+      ...state,
+      registrationSuccess: null,
+      registrationError: true,
+    };
+  }),
+  on(authActions.clearRegistrationError, (state) => {
+    return {
+      ...state,
+      registrationSuccess: null,
+      registrationError: null,
+    };
+  }),
   on(authActions.LoginSuccess, (state, payload: any) => {
     return {
       ...state,
@@ -45,25 +66,10 @@ const authReducer = createReducer(
       ...(payload.token ? { token: payload.token } : {}),
     };
   }),
-  on(authActions.RegisterSuccess, (state) => {
+  on(authActions.GithubUpdateExistingUserSuccess, (state, payload: any) => {
     return {
       ...state,
-      registrationSuccess: true,
-      registrationError: null,
-    };
-  }),
-  on(authActions.RegisterError, (state) => {
-    return {
-      ...state,
-      registrationSuccess: null,
-      registrationError: true,
-    };
-  }),
-  on(authActions.clearRegistrationError, (state) => {
-    return {
-      ...state,
-      registrationSuccess: null,
-      registrationError: null,
+      ...(payload.user ? { user: payload.user._id } : {}),
     };
   })
 );

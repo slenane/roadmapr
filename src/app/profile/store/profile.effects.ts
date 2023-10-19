@@ -5,14 +5,14 @@ import { map, switchMap, catchError } from "rxjs/operators";
 import { ProfileService } from "../services/profile.service";
 import * as profileActions from "./profile.actions";
 import { Profile } from "./profile.models";
-import { MatSnackBar } from "@angular/material/snack-bar";
+import { AlertsService } from "src/app/shared/services/alerts.service";
 
 @Injectable()
 export class ProfileEffects {
   constructor(
     private actions$: Actions,
     private profileService: ProfileService,
-    private snackBar: MatSnackBar
+    private alertsService: AlertsService
   ) {}
 
   getProfile$ = createEffect(() =>
@@ -35,16 +35,11 @@ export class ProfileEffects {
       switchMap(({ id, data }) =>
         this.profileService.updateProfile(id, data).pipe(
           map(({ user, successMessage }) => {
-            this.snackBar.open(successMessage, "Dismiss", {
-              duration: 5000,
-            });
+            this.alertsService.successAlert(successMessage);
             return profileActions.UpdateProfileSuccess({ payload: user });
           }),
           catchError((error) => {
-            this.snackBar.open(error.error, "Dismiss", {
-              duration: 10000,
-              panelClass: ["snackbar-error"],
-            });
+            this.alertsService.errorAlert(error.error);
             return of(profileActions.UpdateProfileError());
           })
         )
@@ -58,16 +53,11 @@ export class ProfileEffects {
       switchMap(({ data }) =>
         this.profileService.updateProfileImage(data).pipe(
           map(({ user, successMessage }) => {
-            this.snackBar.open(successMessage, "Dismiss", {
-              duration: 5000,
-            });
+            this.alertsService.successAlert(successMessage);
             return profileActions.UpdateProfileImageSuccess({ payload: user });
           }),
           catchError((error) => {
-            this.snackBar.open(error.error, "Dismiss", {
-              duration: 10000,
-              panelClass: ["snackbar-error"],
-            });
+            this.alertsService.errorAlert(error.error);
             return of(profileActions.UpdateProfileImageError());
           })
         )

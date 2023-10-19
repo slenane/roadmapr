@@ -5,14 +5,14 @@ import { map, switchMap, catchError } from "rxjs/operators";
 import { EducationService } from "../services/education.service";
 import * as educationActions from "./education.actions";
 import { Education } from "./education.models";
-import { MatSnackBar } from "@angular/material/snack-bar";
+import { AlertsService } from "src/app/shared/services/alerts.service";
 
 @Injectable()
 export class EducationEffects {
   constructor(
     private actions$: Actions,
     private educationService: EducationService,
-    private snackBar: MatSnackBar
+    private alertsService: AlertsService
   ) {}
 
   getEducation$ = createEffect((): any =>
@@ -35,18 +35,13 @@ export class EducationEffects {
       switchMap(({ educationId, data }) =>
         this.educationService.createEducationItem(educationId, data).pipe(
           map(({ education, successMessage }) => {
-            this.snackBar.open(successMessage, "Dismiss", {
-              duration: 5000,
-            });
+            this.alertsService.successAlert(successMessage);
             return educationActions.CreateEducationItemSuccess({
               payload: education,
             });
           }),
           catchError((error) => {
-            this.snackBar.open(error.error, "Dismiss", {
-              duration: 10000,
-              panelClass: ["snackbar-error"],
-            });
+            this.alertsService.errorAlert(error.error);
             return of(educationActions.CreateEducationItemError(error));
           })
         )
@@ -62,18 +57,13 @@ export class EducationEffects {
           .updateEducationItem(payload.data.education, payload.data)
           .pipe(
             map(({ education, successMessage }) => {
-              this.snackBar.open(successMessage, "Dismiss", {
-                duration: 5000,
-              });
+              this.alertsService.successAlert(successMessage);
               return educationActions.UpdateEducationItemSuccess({
                 payload: education,
               });
             }),
             catchError((error) => {
-              this.snackBar.open(error.error, "Dismiss", {
-                duration: 10000,
-                panelClass: ["snackbar-error"],
-              });
+              this.alertsService.errorAlert(error.error);
               return of(educationActions.UpdateEducationItemError(error));
             })
           )
@@ -87,18 +77,13 @@ export class EducationEffects {
       switchMap(({ educationId, data }) =>
         this.educationService.bulkUpdateEducationItems(educationId, data).pipe(
           map(({ education, successMessage }) => {
-            this.snackBar.open(successMessage, "Dismiss", {
-              duration: 5000,
-            });
+            this.alertsService.successAlert(successMessage);
             return educationActions.BulkUpdateEducationItemsSuccess({
               payload: education,
             });
           }),
           catchError((error) => {
-            this.snackBar.open(error.error, "Dismiss", {
-              duration: 10000,
-              panelClass: ["snackbar-error"],
-            });
+            this.alertsService.errorAlert(error.error);
             return of(educationActions.BulkUpdateEducationItemsError(error));
           })
         )
@@ -114,18 +99,13 @@ export class EducationEffects {
           .removeEducationItem(item.data.education, item.data)
           .pipe(
             map(({ education, successMessage }) => {
-              this.snackBar.open(successMessage, "Dismiss", {
-                duration: 5000,
-              });
+              this.alertsService.successAlert(successMessage);
               return educationActions.RemoveEducationItemSuccess({
                 payload: education,
               });
             }),
             catchError((error) => {
-              this.snackBar.open(error.error, "Dismiss", {
-                duration: 10000,
-                panelClass: ["snackbar-error"],
-              });
+              this.alertsService.errorAlert(error.error);
               return of(educationActions.RemoveEducationItemError(error));
             })
           )

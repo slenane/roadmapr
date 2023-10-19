@@ -9,7 +9,7 @@ import { ThemeService } from "src/app/core/services/theme.service";
 import { TranslateService } from "@ngx-translate/core";
 import { ROUTES } from "src/app/core/constants/routes.constants";
 import { ProfileService } from "src/app/profile/services/profile.service";
-import { MatSnackBar } from "@angular/material/snack-bar";
+import { AlertsService } from "src/app/shared/services/alerts.service";
 
 @Injectable()
 export class AuthEffects {
@@ -20,7 +20,7 @@ export class AuthEffects {
     private themeService: ThemeService,
     private translateService: TranslateService,
     private profileService: ProfileService,
-    private snackBar: MatSnackBar
+    private alertsService: AlertsService
   ) {}
 
   register$ = createEffect((): any =>
@@ -30,10 +30,7 @@ export class AuthEffects {
         this.authService.register(userDetails).pipe(
           map(() => authActions.RegisterSuccess()),
           catchError((error) => {
-            this.snackBar.open(error.error, "Dismiss", {
-              duration: 10000,
-              panelClass: ["snackbar-error"],
-            });
+            this.alertsService.errorAlert(error.error);
             return of(authActions.RegisterError());
           })
         )
@@ -52,10 +49,7 @@ export class AuthEffects {
             return authActions.LoginSuccess(payload);
           }),
           catchError((error) => {
-            this.snackBar.open(error.error, "Dismiss", {
-              duration: 10000,
-              panelClass: ["snackbar-error"],
-            });
+            this.alertsService.errorAlert(error.error);
             return of(authActions.LoginError());
           })
         )
@@ -74,10 +68,7 @@ export class AuthEffects {
             return authActions.GithubLoginSuccess({ payload });
           }),
           catchError((error) => {
-            this.snackBar.open(error.error, "Dismiss", {
-              duration: 10000,
-              panelClass: ["snackbar-error"],
-            });
+            this.alertsService.errorAlert(error.error);
             return of(authActions.GithubLoginError());
           })
         )
@@ -90,18 +81,15 @@ export class AuthEffects {
       ofType(authActions.GITHUB_UPDATE_EXISTING_USER),
       switchMap(({ userId }) =>
         this.authService.githubUpdateExistingUser(userId).pipe(
-          map(() => {
-            this.snackBar.open("GitHub Linked Successfully", "Dismiss", {
-              duration: 5000,
-            });
+          map(({ user, successMessage }) => {
+            this.alertsService.successAlert(successMessage);
             this.router.navigateByUrl(ROUTES.SETTINGS);
-            return authActions.GithubUpdateExistingUserSuccess();
+            return authActions.GithubUpdateExistingUserSuccess({
+              payload: user,
+            });
           }),
           catchError((error) => {
-            this.snackBar.open(error.error, "Dismiss", {
-              duration: 10000,
-              panelClass: ["snackbar-error"],
-            });
+            this.alertsService.errorAlert(error.error);
             this.router.navigateByUrl(ROUTES.SETTINGS);
             return of(authActions.GithubUpdateExistingUserError());
           })
@@ -119,6 +107,7 @@ export class AuthEffects {
         return authActions.LogoutSuccess();
       }),
       catchError((error) => {
+        this.alertsService.errorAlert(error.error);
         return of(authActions.LogoutError(error));
       })
     )
