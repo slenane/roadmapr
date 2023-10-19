@@ -110,13 +110,56 @@
     "EDUCATION": {
       "SUCCESS": {
         "UPDATED": "Education Updated",
-        "ITEM_UPDATED": "Education Item Updated",
         "ITEMS_UPDATED": "Education Items Updated",
         "ITEM_REMOVED": "Education Item Removed"
       },
       "ERROR": {
         "NOT_FOUND": "Education data not found",
         "ITEM_NOT_FOUND": "Education item not found"
+      }
+    },
+    "EMPLOYMENT": {
+      "SUCCESS": {
+        "UPDATED": "Employment Updated",
+        "ITEMS_UPDATED": "Employment Items Updated",
+        "ITEM_REMOVED": "Employment Removed"
+      },
+      "ERROR": {
+        "NOT_FOUND": "Employment data not found",
+        "ITEM_NOT_FOUND": "Employment item not found"
+      }
+    },
+    "PROFILE": {
+      "SUCCESS": {
+        "UPDATED": "Profile Updated",
+        "IMAGE_UPDATED": "Profile Image Updated"
+      },
+      "ERROR": {
+        "FILE_NOT_PROVIDED": "No file was provided"
+      }
+    },
+    "PROJECTS": {
+      "SUCCESS": {
+        "UPDATED": "Projects Updated",
+        "ITEMS_UPDATED": "Project Items Updated",
+        "ITEM_REMOVED": "Project Removed"
+      },
+      "ERROR": {
+        "NOT_FOUND": "Project data not found",
+        "ITEM_NOT_FOUND": "Project item not found"
+      }
+    },
+    "SETTINGS": {
+      "SUCCESS": {
+        "UPDATED": "Settings Updated",
+        "PASSWORD_UPDATED": "Password Updated",
+        "DELETED": "Account deleted successfully"
+      },
+      "ERROR": {
+        "NOT_FOUND": "Settings not found",
+        "EDUCATION_DATA": "Education data could not be deleted",
+        "EMPLOYMENT_DATA": "Employment data could not be deleted",
+        "PROJECT_DATA": "Project data could not be deleted"
       }
     }
   },

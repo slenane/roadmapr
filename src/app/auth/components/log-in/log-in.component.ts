@@ -4,11 +4,11 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { Router, ActivatedRoute } from "@angular/router";
 import { AuthService } from "../../services/auth.service";
 import { Location } from "@angular/common";
-import { MatSnackBar } from "@angular/material/snack-bar";
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
 import * as authSelectors from "../../store/auth.selectors";
 import * as authActions from "../../store/auth.actions";
+import { AlertsService } from "src/app/shared/services/alerts.service";
 
 @Component({
   selector: "app-log-in",
@@ -36,7 +36,7 @@ export class LogInComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private location: Location,
-    private snackBar: MatSnackBar,
+    private alertsService: AlertsService,
     private store: Store
   ) {
     this.loginError$ = this.store.select(authSelectors.loginError);
@@ -52,11 +52,7 @@ export class LogInComponent implements OnInit {
 
     this.activatedRoute.queryParams.subscribe((params: any) => {
       if (params["verified"]) {
-        this.snackBar.open(
-          "Email verified successfully! Please login to continue",
-          "Dismiss",
-          { duration: 5000 }
-        );
+        this.alertsService.successAlert("AUTH.LOG_IN.EMAIL_VERIFIED");
       }
     });
 
