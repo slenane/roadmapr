@@ -9,6 +9,10 @@ import {
 } from "@angular/core";
 import { Profile } from "src/app/profile/store/profile.models";
 import { FormArray, FormControl, FormGroup } from "@angular/forms";
+import {
+  LANGUAGES,
+  LANGUAGE_LEVELS,
+} from "src/app/shared/constants/languages.constants";
 
 @Component({
   selector: "app-profile-edit-languages",
@@ -16,17 +20,8 @@ import { FormArray, FormControl, FormGroup } from "@angular/forms";
   styleUrls: ["./profile-edit-languages.component.scss"],
 })
 export class ProfileEditLanguagesComponent implements OnInit, OnChanges {
-  public languageList = ["English", "Spanish", "Italian", "Japanese"];
-  public levelList = [
-    "A1",
-    "A2",
-    "B1",
-    "B2",
-    "C1",
-    "C2",
-    "Proficient",
-    "Native",
-  ];
+  public languageList = LANGUAGES;
+  public levelList = LANGUAGE_LEVELS;
 
   public form = new FormGroup({
     languagesCtrl: new FormArray<any>([]),

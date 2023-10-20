@@ -46,7 +46,15 @@
   <div class="form-grid">
     <mat-form-field appearance="outline">
       <mat-label>{{ "FORMS.LOCATION" | translate }}</mat-label>
-      <input #location matInput formControlName="locationCtrl" />
+
+      <mat-select #location formControlName="locationCtrl">
+        <mat-option
+          *ngFor="let country of countryList"
+          [value]="country.en_short_name"
+        >
+          <div class="type-option"> {{ country.en_short_name }} </div>
+        </mat-option>
+      </mat-select>
       <mat-error *ngIf="form.controls.locationCtrl.invalid">{{
         "FORMS.REQUIRED.LOCATION" | translate
       }}</mat-error>
@@ -54,7 +62,14 @@
 
     <mat-form-field appearance="outline">
       <mat-label>{{ "FORMS.NATIONALITY" | translate }}</mat-label>
-      <input #nationality matInput formControlName="nationalityCtrl" />
+      <mat-select #nationality formControlName="nationalityCtrl">
+        <mat-option
+          *ngFor="let country of countryList"
+          [value]="country.en_short_name"
+        >
+          <div class="type-option"> {{ country.en_short_name }} </div>
+        </mat-option>
+      </mat-select>
       <mat-error *ngIf="form.controls.nationalityCtrl.invalid">{{
         "FORMS.REQUIRED.NATIONALITY" | translate
       }}</mat-error>

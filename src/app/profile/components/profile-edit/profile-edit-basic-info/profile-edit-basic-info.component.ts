@@ -12,6 +12,7 @@ import {
 import { Profile } from "src/app/profile/store/profile.models";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { DEV_PATHS } from "src/app/shared/constants/dev-paths.constants";
+import { COUNTRY_LIST } from "src/app/shared/constants/country-list.constants";
 
 @Component({
   selector: "app-profile-edit-basic-info",
@@ -19,6 +20,7 @@ import { DEV_PATHS } from "src/app/shared/constants/dev-paths.constants";
   styleUrls: ["./profile-edit-basic-info.component.scss"],
 })
 export class ProfileEditBasicInfoComponent implements OnInit, OnChanges {
+  public countryList = COUNTRY_LIST;
   public paths = DEV_PATHS;
 
   public form = new FormGroup({

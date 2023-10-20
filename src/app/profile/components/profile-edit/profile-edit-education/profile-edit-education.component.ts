@@ -11,6 +11,7 @@ import {
 } from "@angular/core";
 import { Profile } from "src/app/profile/store/profile.models";
 import { FormControl, FormGroup, FormArray, Validators } from "@angular/forms";
+import { EDUCATION_LEVELS } from "src/app/shared/constants/education.constants";
 
 @Component({
   selector: "app-profile-edit-education",
@@ -18,15 +19,7 @@ import { FormControl, FormGroup, FormArray, Validators } from "@angular/forms";
   styleUrls: ["./profile-edit-education.component.scss"],
 })
 export class ProfileEditEducationComponent implements OnInit {
-  public educationLevels = [
-    "High School",
-    "Associate Degree",
-    "Bachelor's Degree",
-    "Master's Degree",
-    "Doctorate (Ph.D.)",
-    "Professional Degree",
-    "Other",
-  ];
+  public educationLevels = EDUCATION_LEVELS;
 
   public form = new FormGroup({
     previousEducationCtrl: new FormArray<any>([]),

@@ -13,7 +13,7 @@ import {
   MatDialogRef,
 } from "@angular/material/dialog";
 import { DEV_PATHS } from "src/app/shared/constants/dev-paths.constants";
-import { COUNTRY_LIST } from "src/app/shared/constants/country-list";
+import { COUNTRY_LIST } from "src/app/shared/constants/country-list.constants";
 import { UserSetupPathQuizComponent } from "../user-setup-path-quiz/user-setup-path-quiz.component";
 import { MatStepper } from "@angular/material/stepper";
 

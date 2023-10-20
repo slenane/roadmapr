@@ -39,33 +39,6 @@ export class ProfileEditComponent implements OnInit {
   }
 
   onSave() {
-    console.log("basic info", this.basicInfo.form.valid);
-    console.log("languages", this.languages.form.valid);
-    console.log("social", this.social.form.valid);
-    console.log("education", this.education.form.valid);
-    console.log("interests", this.interests.form.valid);
-    console.log({
-      bio: this.basicInfo.form.value.bioCtrl,
-      links: {
-        cv: this.social.form.value.cvCtrl,
-        linkedin: this.social.form.value.linkedinCtrl,
-        twitter: this.social.form.value.xCtrl,
-        portfolio: this.social.form.value.portfolioCtrl,
-      },
-      interests: {
-        personal_interests: this.interests.form.value.personalCtrl,
-        professional_interests: this.interests.form.value.professionalCtrl,
-      },
-      languagesSpoken: this.languages.form.value.languagesCtrl,
-      location: this.basicInfo.form.value.locationCtrl,
-      firstName: this.basicInfo.form.value.firstNameCtrl,
-      lastName: this.basicInfo.form.value.lastNameCtrl,
-      nationality: this.basicInfo.form.value.nationalityCtrl,
-      path: this.basicInfo.form.value.pathCtrl,
-      previousEducation: this.education.form.value.previousEducationCtrl,
-    });
-
-    return;
     this.profileStoreService.updateProfile(this.user._id, {
       bio: this.basicInfo.form.value.bioCtrl,
       links: {
