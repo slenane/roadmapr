@@ -15,11 +15,12 @@ import { CommonModule } from "@angular/common";
 import { DropListService } from "./services/drop-list.service";
 import { ValidatorsService } from "./services/validators.service";
 import { MyErrorStateMatcher } from "./services/error-state-matcher.service";
-import { FileUploadComponent } from "./components/file-upload/file-upload.component";
 import { ImageCropperModalComponent } from "./components/image-cropper-modal/image-cropper-modal.component";
 import { ImageCropperModule } from "ngx-image-cropper";
 import { AlertsComponent } from "./components/alerts/alerts.component";
 import { AlertsService } from "./services/alerts.service";
+import { FileUploadProfileImageComponent } from "./components/file-upload/file-upload-profile-image/file-upload-profile-image.component";
+import { FileUploadCoverImageComponent } from "./components/file-upload/file-upload-cover-image/file-upload-cover-image.component";
 
 @NgModule({
   declarations: [
@@ -30,9 +31,10 @@ import { AlertsService } from "./services/alerts.service";
     UpdatePasswordComponent,
     UpdateUsernameComponent,
     UpdateEmailComponent,
-    FileUploadComponent,
     ImageCropperModalComponent,
     AlertsComponent,
+    FileUploadProfileImageComponent,
+    FileUploadCoverImageComponent,
   ],
   exports: [
     SidebarComponent,
@@ -42,7 +44,8 @@ import { AlertsService } from "./services/alerts.service";
     UpdatePasswordComponent,
     UpdateUsernameComponent,
     UpdateEmailComponent,
-    FileUploadComponent,
+    FileUploadProfileImageComponent,
+    FileUploadCoverImageComponent,
   ],
   imports: [
     CommonModule,

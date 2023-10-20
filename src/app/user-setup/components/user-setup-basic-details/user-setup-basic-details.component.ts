@@ -105,7 +105,6 @@ export class UserSetupBasicDetailsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        console.log(result);
         this.pathForm.patchValue({
           pathCtrl: result,
         });

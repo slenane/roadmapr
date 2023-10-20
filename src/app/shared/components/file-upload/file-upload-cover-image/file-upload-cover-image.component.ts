@@ -6,16 +6,15 @@ import {
   OnChanges,
 } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
-import { ImageCropperModalComponent } from "../image-cropper-modal/image-cropper-modal.component";
+import { ImageCropperModalComponent } from "../../image-cropper-modal/image-cropper-modal.component";
 import { ProfileStoreService } from "src/app/profile/services/profile-store.service";
 
 @Component({
-  selector: "app-file-upload",
-  templateUrl: "./file-upload.component.html",
-  styleUrls: ["./file-upload.component.scss"],
+  selector: "app-file-upload-cover-image",
+  templateUrl: "./file-upload-cover-image.component.html",
+  styleUrls: ["./file-upload-cover-image.component.scss"],
 })
-export class FileUploadComponent implements OnInit, OnChanges {
-  public fileName: string;
+export class FileUploadCoverImageComponent implements OnInit, OnChanges {
   public image: string;
 
   @Input() data: any;
@@ -35,15 +34,19 @@ export class FileUploadComponent implements OnInit, OnChanges {
     const dialogRef = this.dialog.open(ImageCropperModalComponent, {
       maxHeight: "80vh",
       maxWidth: "80vw",
-      data: event,
+      data: {
+        image: event,
+        type: "cover",
+      },
     });
 
     dialogRef.afterClosed().subscribe((image) => {
       if (image) {
         const formData = new FormData();
-        formData.append("profileImage", image);
+        formData.append("coverImage", image);
+        console.log(image);
 
-        this.profileStoreService.updateProfileImage(formData);
+        this.profileStoreService.updateCoverImage(formData);
       }
     });
   }

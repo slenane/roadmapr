@@ -36,4 +36,11 @@ export class ProfileStoreService {
       data,
     });
   }
+
+  updateCoverImage(data: FormData) {
+    this.store.dispatch({
+      type: profileActions.UPDATE_COVER_IMAGE,
+      data,
+    });
+  }
 }

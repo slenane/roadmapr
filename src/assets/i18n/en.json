@@ -133,7 +133,8 @@
     "PROFILE": {
       "SUCCESS": {
         "UPDATED": "Profile Updated",
-        "IMAGE_UPDATED": "Profile Image Updated"
+        "PROFILE_IMAGE_UPDATED": "Profile Image Updated",
+        "COVER_IMAGE_UPDATED": "Cover Image Updated"
       },
       "ERROR": {
         "FILE_NOT_PROVIDED": "No file was provided"

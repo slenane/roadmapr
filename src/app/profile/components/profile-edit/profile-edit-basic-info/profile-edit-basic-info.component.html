@@ -1,25 +1,33 @@
 <form [formGroup]="form">
   <div class="form-grid">
-    <app-file-upload
-      class="profile-image-grid-item"
-      [data]="user.profileImage"
-    ></app-file-upload>
+    <mat-card class="image-upload-card">
+      <app-file-upload-cover-image
+        [data]="user.coverImage"
+      ></app-file-upload-cover-image>
 
-    <mat-form-field appearance="outline">
-      <mat-label>{{ "FORMS.FIRST_NAME" | translate }}</mat-label>
-      <input #name matInput formControlName="firstNameCtrl" />
-      <mat-error *ngIf="form.controls.firstNameCtrl.invalid">{{
-        "FORMS.REQUIRED.FIRST_NAME" | translate
-      }}</mat-error>
-    </mat-form-field>
+      <app-file-upload-profile-image
+        class="profile-image-upload"
+        [data]="user.profileImage"
+      ></app-file-upload-profile-image>
+    </mat-card>
 
-    <mat-form-field appearance="outline">
-      <mat-label>{{ "FORMS.LAST_NAME" | translate }}</mat-label>
-      <input #name matInput formControlName="lastNameCtrl" />
-      <mat-error *ngIf="form.controls.lastNameCtrl.invalid">{{
-        "FORMS.REQUIRED.LAST_NAME" | translate
-      }}</mat-error>
-    </mat-form-field>
+    <div class="form-grid__inner">
+      <mat-form-field appearance="outline">
+        <mat-label>{{ "FORMS.FIRST_NAME" | translate }}</mat-label>
+        <input #name matInput formControlName="firstNameCtrl" />
+        <mat-error *ngIf="form.controls.firstNameCtrl.invalid">{{
+          "FORMS.REQUIRED.FIRST_NAME" | translate
+        }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{ "FORMS.LAST_NAME" | translate }}</mat-label>
+        <input #name matInput formControlName="lastNameCtrl" />
+        <mat-error *ngIf="form.controls.lastNameCtrl.invalid">{{
+          "FORMS.REQUIRED.LAST_NAME" | translate
+        }}</mat-error>
+      </mat-form-field>
+    </div>
 
     <mat-form-field appearance="outline">
       <mat-label>{{ "FORMS.PATH" | translate }}</mat-label>
@@ -54,7 +62,7 @@
 
     <mat-form-field appearance="outline">
       <mat-label>{{ "FORMS.BIO" | translate }}</mat-label>
-      <textarea matInput formControlName="bioCtrl" rows="12"></textarea>
+      <textarea matInput formControlName="bioCtrl" rows="8"></textarea>
     </mat-form-field>
   </div>
 </form>
