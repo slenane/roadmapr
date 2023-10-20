@@ -3,6 +3,7 @@ import { Profile } from "../store/profile.models";
 import { ProfileStoreService } from "../services/profile-store.service";
 import { filter, takeUntil } from "rxjs/operators";
 import { Subject } from "rxjs";
+import { profileInitialState } from "../store/profile.reducer";
 
 @Component({
   selector: "app-profile",
@@ -20,7 +21,7 @@ export class ProfileComponent implements OnInit {
     this.profileStoreService
       .getProfile()
       .pipe(
-        filter((state) => state != null),
+        filter((state) => state != null && state !== profileInitialState),
         takeUntil(this.ngUnsubscribe)
       )
       .subscribe((user: Profile) => {
@@ -33,7 +34,7 @@ export class ProfileComponent implements OnInit {
     this.ngUnsubscribe.complete();
   }
 
-  editProfile(value: boolean) {
-    this.isEditing = value;
+  toggleEditProfile() {
+    this.isEditing = !this.isEditing;
   }
 }

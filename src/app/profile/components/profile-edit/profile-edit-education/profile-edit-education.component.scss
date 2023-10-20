@@ -1,0 +1,15 @@
+.education-grid {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: auto 1fr 1fr auto;
+  gap: 1rem;
+
+  &__remove-button {
+    margin-bottom: 1.34375em;
+  }
+}
+
+.actions {
+  display: grid;
+  justify-items: end;
+}

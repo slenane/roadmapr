@@ -1,0 +1,47 @@
+<form [formGroup]="form">
+  <div class="form-title">{{ "FORMS.LANGUAGE.SPOKEN" | translate }}</div>
+  <div formArrayName="languagesCtrl">
+    <div
+      class="language-grid"
+      *ngFor="
+        let languageCtrl of form.controls.languagesCtrl.controls;
+        let i = index
+      "
+      [formGroupName]="i"
+    >
+      <mat-form-field appearance="outline">
+        <mat-label>{{ "FORMS.LANGUAGE.T" | translate }}</mat-label>
+
+        <mat-select formControlName="language">
+          <mat-option *ngFor="let option of languageList" [value]="option">
+            <div class="type-option"> {{ option }} </div>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{ "FORMS.LANGUAGE.LEVEL" | translate }}</mat-label>
+
+        <mat-select formControlName="level">
+          <mat-option *ngFor="let option of levelList" [value]="option">
+            <div class="type-option"> {{ option }} </div>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button
+        mat-button
+        color="warn"
+        class="language-grid__remove-button"
+        (click)="form.controls.languagesCtrl.removeAt(i)"
+        >{{ "ACTIONS.REMOVE" | translate }}</button
+      >
+    </div>
+  </div>
+
+  <div class="actions">
+    <button mat-raised-button color="primary" (click)="addLanguageControl()">{{
+      "FORMS.LANGUAGE.ADD" | translate
+    }}</button>
+  </div>
+</form>

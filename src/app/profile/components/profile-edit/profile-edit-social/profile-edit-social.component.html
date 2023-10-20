@@ -1,0 +1,19 @@
+<form [formGroup]="form">
+  <div class="form-title">{{ "FORMS.SOCIAL_LINKS" | translate }}</div>
+  <div class="social-grid">
+    <mat-form-field appearance="outline">
+      <mat-label>{{ "FORMS.CV" | translate }}</mat-label>
+      <input matInput formControlName="cvCtrl" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>{{ "FORMS.LINKEDIN_USER" | translate }}</mat-label>
+      <input matInput formControlName="linkedinCtrl" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>{{ "FORMS.X_USER" | translate }}</mat-label>
+      <input matInput formControlName="xCtrl" />
+    </mat-form-field>
+  </div>
+</form>

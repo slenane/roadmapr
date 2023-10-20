@@ -1,0 +1,60 @@
+<form [formGroup]="form">
+  <div class="form-grid">
+    <app-file-upload
+      class="profile-image-grid-item"
+      [data]="user.profileImage"
+    ></app-file-upload>
+
+    <mat-form-field appearance="outline">
+      <mat-label>{{ "FORMS.FIRST_NAME" | translate }}</mat-label>
+      <input #name matInput formControlName="firstNameCtrl" />
+      <mat-error *ngIf="form.controls.firstNameCtrl.invalid">{{
+        "FORMS.REQUIRED.FIRST_NAME" | translate
+      }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>{{ "FORMS.LAST_NAME" | translate }}</mat-label>
+      <input #name matInput formControlName="lastNameCtrl" />
+      <mat-error *ngIf="form.controls.lastNameCtrl.invalid">{{
+        "FORMS.REQUIRED.LAST_NAME" | translate
+      }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>{{ "FORMS.PATH" | translate }}</mat-label>
+
+      <mat-select #path formControlName="pathCtrl">
+        <mat-option *ngFor="let path of paths" [value]="path">
+          <div class="type-option"> {{ path | translate }} </div>
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.controls.pathCtrl.invalid">{{
+        "FORMS.REQUIRED.PATH" | translate
+      }}</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="form-grid">
+    <mat-form-field appearance="outline">
+      <mat-label>{{ "FORMS.LOCATION" | translate }}</mat-label>
+      <input #location matInput formControlName="locationCtrl" />
+      <mat-error *ngIf="form.controls.locationCtrl.invalid">{{
+        "FORMS.REQUIRED.LOCATION" | translate
+      }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>{{ "FORMS.NATIONALITY" | translate }}</mat-label>
+      <input #nationality matInput formControlName="nationalityCtrl" />
+      <mat-error *ngIf="form.controls.nationalityCtrl.invalid">{{
+        "FORMS.REQUIRED.NATIONALITY" | translate
+      }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>{{ "FORMS.BIO" | translate }}</mat-label>
+      <textarea matInput formControlName="bioCtrl" rows="12"></textarea>
+    </mat-form-field>
+  </div>
+</form>

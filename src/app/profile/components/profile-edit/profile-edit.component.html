@@ -1,97 +1,53 @@
 <mat-card>
   <mat-card-header>
-    <mat-card-title> Edit Profile </mat-card-title>
+    <mat-card-title> {{ "PROFILE.UPDATE.T" | translate }} </mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <form [formGroup]="profileForm" class="profile-edit">
-      <app-file-upload
-        class="profile-image-grid-item"
-        [data]="user.profileImage"
-      ></app-file-upload>
+    <mat-tab-group animationDuration="0ms">
+      <mat-tab>
+        <ng-template mat-tab-label>
+          {{ "PROFILE.UPDATE.BASIC_INFORMATION" | translate }}
+        </ng-template>
+        <app-profile-edit-basic-info
+          #basicInfo
+          [user]="user"
+        ></app-profile-edit-basic-info>
+      </mat-tab>
+      <mat-tab label="Languages & Social">
+        <ng-template mat-tab-label>
+          {{ "PROFILE.UPDATE.LANGUAGES_AND_SOCIAL" | translate }}</ng-template
+        >
+        <div class="form-grid">
+          <app-profile-edit-languages
+            #languages
+            [user]="user"
+          ></app-profile-edit-languages>
+          <app-profile-edit-social
+            #social
+            [user]="user"
+          ></app-profile-edit-social>
+        </div>
+      </mat-tab>
+      <mat-tab label="Previous Education">
+        <ng-template mat-tab-label>
+          {{ "PROFILE.UPDATE.PREVIOUS_EDUCATION" | translate }}</ng-template
+        >
+        <app-profile-edit-education
+          #education
+          [user]="user"
+        ></app-profile-edit-education>
+      </mat-tab>
+      <mat-tab label="Interests">
+        <ng-template mat-tab-label>
+          {{ "PROFILE.UPDATE.INTERESTS" | translate }}</ng-template
+        >
+        <app-profile-edit-interests
+          #interests
+          [user]="user"
+        ></app-profile-edit-interests>
+      </mat-tab>
+    </mat-tab-group>
 
-      <mat-form-field appearance="outline">
-        <mat-label>{{ "FORMS.FIRST_NAME" | translate }}</mat-label>
-        <input #name matInput formControlName="firstName" />
-        <mat-error *ngIf="profileForm.controls.firstName.invalid">{{
-          "FORMS.REQUIRED.FIRST_NAME" | translate
-        }}</mat-error>
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label>{{ "FORMS.LAST_NAME" | translate }}</mat-label>
-        <input #name matInput formControlName="lastName" />
-        <mat-error *ngIf="profileForm.controls.lastName.invalid">{{
-          "FORMS.REQUIRED.LAST_NAME" | translate
-        }}</mat-error>
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label>{{ "FORMS.USERNAME" | translate }}</mat-label>
-        <input #username matInput formControlName="username" />
-        <mat-error *ngIf="profileForm.controls.username.invalid">{{
-          "FORMS.REQUIRED.USERNAME" | translate
-        }}</mat-error>
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label>{{ "FORMS.COVER_IMAGE" | translate }}</mat-label>
-        <input matInput formControlName="coverImage" />
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label>{{ "FORMS.LOCATION" | translate }}</mat-label>
-        <input #location matInput formControlName="location" />
-        <mat-error *ngIf="profileForm.controls.location.invalid">{{
-          "FORMS.REQUIRED.LOCATION" | translate
-        }}</mat-error>
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label>{{ "FORMS.NATIONALITY" | translate }}</mat-label>
-        <input #nationality matInput formControlName="nationality" />
-        <mat-error *ngIf="profileForm.controls.nationality.invalid">{{
-          "FORMS.REQUIRED.NATIONALITY" | translate
-        }}</mat-error>
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label>{{ "FORMS.PATH" | translate }}</mat-label>
-
-        <mat-select #path formControlName="path">
-          <mat-option *ngFor="let path of paths" [value]="path">
-            <div class="type-option"> {{ path | translate }} </div>
-          </mat-option>
-        </mat-select>
-        <mat-error *ngIf="profileForm.controls.path.invalid">{{
-          "FORMS.REQUIRED.PATH" | translate
-        }}</mat-error>
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label>{{ "FORMS.BIO" | translate }}</mat-label>
-        <input matInput formControlName="bio" />
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label>{{ "FORMS.CV" | translate }}</mat-label>
-        <input matInput formControlName="cv" />
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label>{{ "FORMS.GITHUB_USER" | translate }}</mat-label>
-        <input matInput formControlName="github" />
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label>{{ "FORMS.LINKEDIN_USER" | translate }}</mat-label>
-        <input matInput formControlName="linkedin" />
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label>{{ "FORMS.X_USER" | translate }}</mat-label>
-        <input matInput formControlName="twitter" />
-      </mat-form-field>
-    </form>
     <div class="actions">
       <button mat-button (click)="onCancel()">{{
         "ACTIONS.CANCEL" | translate

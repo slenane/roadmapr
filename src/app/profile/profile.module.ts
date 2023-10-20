@@ -15,9 +15,15 @@ import { ProfileEffects } from "./store/profile.effects";
 import { ProfileEditComponent } from "./components/profile-edit/profile-edit.component";
 import { TranslateModule } from "@ngx-translate/core";
 import { ProfileRoutingModule } from "./profile-routing.module";
+import { ProfileDetailsComponent } from './components/profile-details/profile-details.component';
+import { ProfileEditBasicInfoComponent } from './components/profile-edit/profile-edit-basic-info/profile-edit-basic-info.component';
+import { ProfileEditLanguagesComponent } from './components/profile-edit/profile-edit-languages/profile-edit-languages.component';
+import { ProfileEditEducationComponent } from './components/profile-edit/profile-edit-education/profile-edit-education.component';
+import { ProfileEditInterestsComponent } from './components/profile-edit/profile-edit-interests/profile-edit-interests.component';
+import { ProfileEditSocialComponent } from './components/profile-edit/profile-edit-social/profile-edit-social.component';
 
 @NgModule({
-  declarations: [ProfileComponent, ProfileCardComponent, ProfileEditComponent],
+  declarations: [ProfileComponent, ProfileCardComponent, ProfileEditComponent, ProfileDetailsComponent, ProfileEditBasicInfoComponent, ProfileEditLanguagesComponent, ProfileEditEducationComponent, ProfileEditInterestsComponent, ProfileEditSocialComponent],
   exports: [ProfileComponent, ProfileCardComponent, ProfileEditComponent],
   imports: [
     CommonModule,

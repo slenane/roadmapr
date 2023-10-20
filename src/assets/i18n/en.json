@@ -80,6 +80,7 @@
     "CLOSE": "Close",
     "DELETE": "Delete",
     "EDIT": "Edit",
+    "REMOVE": "Remove",
     "NO": "No",
     "SAVE": "Save",
     "UPDATE": "Update",
@@ -268,6 +269,12 @@
     },
     "DESCRIPTION": "Description",
     "EMAIL": "Email",
+    "EDUCATION": {
+      "ADD": "Add Education",
+      "LEVEL": "Level",
+      "INSTITUTION": "Institution",
+      "SUBJECT": "Subject"
+    },
     "FIRST_NAME": "First Name",
     "LAST_NAME": "Last Name",
     "GITHUB": "GitHub",
@@ -275,8 +282,12 @@
     "GITHUB_USER": "GitHub Username",
     "LINKEDIN_USER": "LinkedIn Username",
     "LANGUAGE": {
-      "T": "Preferred Language",
-      "REQUIRED": "Preferred Language Required",
+      "SPOKEN": "Languages Spoken",
+      "T": "Language",
+      "LEVEL": "Level",
+      "PREFERRED": "Preferred Language",
+      "PREFERRED_REQUIRED": "Preferred Language Required",
+      "ADD": "Add Language",
       "ENGLISH": "English",
       "SPANISH": "Spanish",
       "PORTUGUESE": "Portuguese"
@@ -286,6 +297,10 @@
     "LOCATION": "Location",
     "INSTITUTION": "Institution",
     "INSTRUCTOR": "Instructor",
+    "INTERESTS": {
+      "PERSONAL": "Personal",
+      "PROFESSIONAL": "Professional"
+    },
     "NATIONALITY": "Nationality",
     "NOTES": "Private notes",
     "NOTIFICATIONS": {
@@ -301,6 +316,7 @@
     "ROLE": "Role",
     "PATH": "Path",
     "STACK": "Stack",
+    "SOCIAL_LINKS": "Social Links",
     "THEME": {
       "T": "Theme",
       "REQUIRED": "Theme Required",
@@ -382,12 +398,16 @@
     "LINKS": {
       "CV": "CV",
       "PORTFOLIO": "Portfolio",
-      "GITHUB": "CV",
+      "GITHUB": "GitHub",
       "LINKEDIN": "LinkedIn",
       "X": "X"
     },
     "UPDATE": {
-      "T": "Update Profile"
+      "T": "Update Profile",
+      "BASIC_INFORMATION": "Basic Information",
+      "LANGUAGES_AND_SOCIAL": "Languages & Social",
+      "PREVIOUS_EDUCATION": "Previous Education",
+      "INTERESTS": "Interests"
     }
   },
   "PROJECTS": {

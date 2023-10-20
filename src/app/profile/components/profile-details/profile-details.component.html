@@ -1,0 +1,122 @@
+<div class="profile-header">
+  <h1>{{ user.firstName }} {{ user.lastName }}</h1>
+  <p
+    >{{ user.path | translate }}
+    <img
+      *ngFor="let item of user.stack"
+      class="app-stack-icon profile-stack-icon"
+      src="/assets/images/stack/{{ item.name }}-original.svg"
+      alt="Stack Icon"
+    />
+  </p>
+</div>
+
+<div class="profile-body">
+  <div class="profile-section bio">
+    <div class="bio">{{ user.bio }}</div>
+  </div>
+
+  <div class="profile-section personal">
+    <h3 class="section-header">{{ "PROFILE.HEADERS.PERSONAL" | translate }}</h3>
+    <div class="profile-grid profile-grid-three">
+      <div class="grid-section">
+        <div class="label">{{
+          "PROFILE.SUB_HEADERS.LOCATION" | translate
+        }}</div>
+        <div class="value">{{ user.location }}</div>
+      </div>
+
+      <div class="grid-section">
+        <div class="label">{{
+          "PROFILE.SUB_HEADERS.NATIONALITY" | translate
+        }}</div>
+        <div class="value">{{ user.nationality }}</div>
+      </div>
+
+      <div class="grid-section">
+        <div class="label">{{
+          "PROFILE.SUB_HEADERS.LANGUAGES" | translate
+        }}</div>
+        <div class="value">
+          <span
+            class="language-item"
+            *ngFor="let item of user.languagesSpoken; let last = last"
+            >{{ item.language }} ({{ item.level }}){{ !last ? ", " : "" }}
+          </span>
+        </div>
+      </div>
+      <div class="grid-section education">
+        <div class="label">{{
+          "PROFILE.SUB_HEADERS.PREVIOUS_EDUCATION" | translate
+        }}</div>
+        <div
+          class="value education-items"
+          *ngFor="let item of user.previousEducation"
+        >
+          <div class="education-item">
+            <span class="subject">{{ item.level }} {{ item.subject }}</span>
+            <span class="school">{{ item.school }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="profile-section interests">
+    <h3 class="section-header">{{
+      "PROFILE.HEADERS.INTERESTS" | translate
+    }}</h3>
+    <div class="profile-grid profile-grid-two">
+      <div class="grid-section">
+        <div class="label">{{
+          "PROFILE.SUB_HEADERS.PROFESSIONAL" | translate
+        }}</div>
+        <div class="value">
+          {{ user.interests.professional_interests.join(", ") }}
+        </div>
+      </div>
+
+      <div class="grid-section">
+        <div class="label">{{
+          "PROFILE.SUB_HEADERS.PERSONAL" | translate
+        }}</div>
+        <div class="value">
+          {{ user.interests.personal_interests.join(", ") }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="profile-section social">
+    <h3 class="section-header">{{ "PROFILE.HEADERS.SOCIAL" | translate }}</h3>
+    <div class="profile-flex">
+      <div class="social-link cv-link" *ngIf="user.links.cv">
+        <a href="{{ user.links.cv }}" target="_blank">
+          {{ "PROFILE.LINKS.CV" | translate }}
+        </a>
+      </div>
+
+      <div class="social-link portfolio-link" *ngIf="user.links.portfolio">
+        <a href="{{ user.links.portfolio }}" target="_blank">
+          {{ "PROFILE.LINKS.PORTFOLIO" | translate }}
+        </a>
+      </div>
+
+      <div class="social-link github-link" *ngIf="user.links.github">
+        <a href="{{ user.links.github }}" target="_blank">
+          {{ "PROFILE.LINKS.GITHUB" | translate }}
+        </a>
+      </div>
+      <div class="social-link twitter-link" *ngIf="user.links.twitter">
+        <a href="{{ user.links.twitter }}" target="_blank">
+          {{ "PROFILE.LINKS.LINKEDIN" | translate }}
+        </a>
+      </div>
+      <div class="social-link linkedin-link" *ngIf="user.links.linkedin">
+        <a href="{{ user.links.linkedin }}" target="_blank">
+          {{ "PROFILE.LINKS.X" | translate }}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
