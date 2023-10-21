@@ -16,8 +16,8 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
 export class ProfileEditSocialComponent implements OnInit, OnChanges {
   public form = new FormGroup({
     cvCtrl: new FormControl(""),
-    linkedinCtrl: new FormControl(""),
-    portfolioCtrl: new FormControl("", Validators.required),
+    linkedInCtrl: new FormControl(""),
+    portfolioCtrl: new FormControl(""),
     xCtrl: new FormControl(""),
   });
 
@@ -39,7 +39,7 @@ export class ProfileEditSocialComponent implements OnInit, OnChanges {
   updateForm(user: any) {
     this.form.patchValue({
       cvCtrl: user.links.cv,
-      linkedinCtrl: user.links.linkedin,
+      linkedInCtrl: user.links.linkedIn,
       portfolioCtrl: user.links.portfolio,
       xCtrl: user.links.twitter,
     });

@@ -12,9 +12,9 @@
       <mat-form-field appearance="outline">
         <mat-label>{{ "FORMS.LANGUAGE.T" | translate }}</mat-label>
 
-        <mat-select formControlName="language">
-          <mat-option *ngFor="let option of languageList" [value]="option">
-            <div class="type-option"> {{ option }} </div>
+        <mat-select formControlName="language" [compareWith]="compareValues">
+          <mat-option *ngFor="let language of LANGUAGE_LIST" [value]="language">
+            <div class="type-option"> {{ language.name | translate }} </div>
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -22,9 +22,9 @@
       <mat-form-field appearance="outline">
         <mat-label>{{ "FORMS.LANGUAGE.LEVEL" | translate }}</mat-label>
 
-        <mat-select formControlName="level">
-          <mat-option *ngFor="let option of levelList" [value]="option">
-            <div class="type-option"> {{ option }} </div>
+        <mat-select formControlName="level" [compareWith]="compareValues">
+          <mat-option *ngFor="let level of LANGUAGE_LEVELS" [value]="level">
+            <div class="type-option"> {{ level.name | translate }} </div>
           </mat-option>
         </mat-select>
       </mat-form-field>

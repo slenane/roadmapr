@@ -1,7 +1,7 @@
 <div class="profile-header">
   <h1>{{ user.firstName }} {{ user.lastName }}</h1>
   <p
-    >{{ user.path | translate }}
+    >{{ user.path.name | translate }}
     <img
       *ngFor="let item of user.stack"
       class="app-stack-icon profile-stack-icon"
@@ -23,14 +23,14 @@
         <div class="label">{{
           "PROFILE.SUB_HEADERS.LOCATION" | translate
         }}</div>
-        <div class="value">{{ user.location }}</div>
+        <div class="value">{{ user.location.name | translate }}</div>
       </div>
 
       <div class="grid-section">
         <div class="label">{{
           "PROFILE.SUB_HEADERS.NATIONALITY" | translate
         }}</div>
-        <div class="value">{{ user.nationality }}</div>
+        <div class="value">{{ user.nationality.name | translate }}</div>
       </div>
 
       <div class="grid-section">
@@ -41,7 +41,9 @@
           <span
             class="language-item"
             *ngFor="let item of user.languagesSpoken; let last = last"
-            >{{ item.language }} ({{ item.level }}){{ !last ? ", " : "" }}
+            >{{ item.language.name | translate }} ({{
+              item.level.name | translate
+            }}){{ !last ? ", " : "" }}
           </span>
         </div>
       </div>
@@ -54,7 +56,9 @@
           *ngFor="let item of user.previousEducation"
         >
           <div class="education-item">
-            <span class="subject">{{ item.level }} {{ item.subject }}</span>
+            <span class="subject"
+              >{{ item.level.name | translate }} in {{ item.subject }}</span
+            >
             <span class="school">{{ item.school }}</span>
           </div>
         </div>
@@ -102,18 +106,21 @@
         </a>
       </div>
 
-      <div class="social-link github-link" *ngIf="user.links.github">
-        <a href="{{ user.links.github }}" target="_blank">
+      <div
+        class="social-link github-link"
+        *ngIf="user.github && user.github.username"
+      >
+        <a href="https://github.com/{{ user.github.username }}" target="_blank">
           {{ "PROFILE.LINKS.GITHUB" | translate }}
+        </a>
+      </div>
+      <div class="social-link linkedin-link" *ngIf="user.links.linkedIn">
+        <a href="{{ user.links.linkedIn }}" target="_blank">
+          {{ "PROFILE.LINKS.LINKEDIN" | translate }}
         </a>
       </div>
       <div class="social-link twitter-link" *ngIf="user.links.twitter">
         <a href="{{ user.links.twitter }}" target="_blank">
-          {{ "PROFILE.LINKS.LINKEDIN" | translate }}
-        </a>
-      </div>
-      <div class="social-link linkedin-link" *ngIf="user.links.linkedin">
-        <a href="{{ user.links.linkedin }}" target="_blank">
           {{ "PROFILE.LINKS.X" | translate }}
         </a>
       </div>

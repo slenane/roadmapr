@@ -47,11 +47,11 @@ export class ProfileService {
 
   public userBasicDetailsProvided(user: any) {
     return (
-      user.firstName?.length &&
-      user.lastName?.length &&
-      user.location?.length &&
-      user.nationality?.length &&
-      user.path?.length
+      !!user.firstName?.length &&
+      !!user.lastName?.length &&
+      !!user.location?.id &&
+      !!user.nationality?.id &&
+      !!user.path?.id
     );
   }
 }

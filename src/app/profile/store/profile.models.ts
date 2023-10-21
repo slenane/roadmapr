@@ -6,11 +6,11 @@ export interface Profile {
   firstName: string;
   lastName: string;
   email: string;
-  location: string;
-  nationality: string;
+  location: any;
+  nationality: any;
   profileImage: string;
   coverImage: string;
-  path: string;
+  path: any;
   bio: string;
   languagesSpoken: any[];
   interests: {
@@ -18,11 +18,14 @@ export interface Profile {
     personal_interests: any[];
   };
   previousEducation: PreviousEducationItem[];
+  github?: {
+    id: string;
+    username: string;
+  };
   links: {
     cv: string;
     portfolio: string;
-    github: string;
-    linkedin: string;
+    linkedIn: string;
     twitter: string;
   };
   stack: StackItem[];
@@ -37,5 +40,5 @@ export interface Profile {
 interface PreviousEducationItem {
   school: string;
   subject: string;
-  level: string;
+  level: any;
 }

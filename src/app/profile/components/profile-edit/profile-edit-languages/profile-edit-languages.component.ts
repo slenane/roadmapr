@@ -10,7 +10,7 @@ import {
 import { Profile } from "src/app/profile/store/profile.models";
 import { FormArray, FormControl, FormGroup } from "@angular/forms";
 import {
-  LANGUAGES,
+  LANGUAGE_LIST,
   LANGUAGE_LEVELS,
 } from "src/app/shared/constants/languages.constants";
 
@@ -20,8 +20,8 @@ import {
   styleUrls: ["./profile-edit-languages.component.scss"],
 })
 export class ProfileEditLanguagesComponent implements OnInit, OnChanges {
-  public languageList = LANGUAGES;
-  public levelList = LANGUAGE_LEVELS;
+  public LANGUAGE_LIST = LANGUAGE_LIST;
+  public LANGUAGE_LEVELS = LANGUAGE_LEVELS;
 
   public form = new FormGroup({
     languagesCtrl: new FormArray<any>([]),
@@ -49,6 +49,7 @@ export class ProfileEditLanguagesComponent implements OnInit, OnChanges {
   }
 
   updateForm(user: any) {
+    console.log(user);
     if (user.languagesSpoken) {
       this.form.controls.languagesCtrl.controls = [];
       for (let language of user.languagesSpoken) {
@@ -69,5 +70,9 @@ export class ProfileEditLanguagesComponent implements OnInit, OnChanges {
         level: new FormControl(""),
       })
     );
+  }
+
+  compareValues(a: any, b: any): boolean {
+    return a && b && a.id === b.id;
   }
 }

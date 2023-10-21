@@ -19,7 +19,7 @@ import { EDUCATION_LEVELS } from "src/app/shared/constants/education.constants";
   styleUrls: ["./profile-edit-education.component.scss"],
 })
 export class ProfileEditEducationComponent implements OnInit {
-  public educationLevels = EDUCATION_LEVELS;
+  public EDUCATION_LEVELS = EDUCATION_LEVELS;
 
   public form = new FormGroup({
     previousEducationCtrl: new FormArray<any>([]),
@@ -63,5 +63,9 @@ export class ProfileEditEducationComponent implements OnInit {
         level: new FormControl(""),
       })
     );
+  }
+
+  compareValues(a: any, b: any): boolean {
+    return a && b && a.id === b.id;
   }
 }

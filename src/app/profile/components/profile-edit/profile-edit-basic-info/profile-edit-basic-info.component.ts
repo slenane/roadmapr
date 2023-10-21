@@ -20,16 +20,16 @@ import { COUNTRY_LIST } from "src/app/shared/constants/country-list.constants";
   styleUrls: ["./profile-edit-basic-info.component.scss"],
 })
 export class ProfileEditBasicInfoComponent implements OnInit, OnChanges {
-  public countryList = COUNTRY_LIST;
-  public paths = DEV_PATHS;
+  public COUNTRY_LIST = COUNTRY_LIST;
+  public DEV_PATHS = DEV_PATHS;
 
   public form = new FormGroup({
     bioCtrl: new FormControl(""),
-    locationCtrl: new FormControl("", Validators.required),
+    locationCtrl: new FormControl<any>({}, Validators.required),
     firstNameCtrl: new FormControl("", Validators.required),
     lastNameCtrl: new FormControl("", Validators.required),
-    nationalityCtrl: new FormControl("", Validators.required),
-    pathCtrl: new FormControl("", Validators.required),
+    nationalityCtrl: new FormControl<any>({}, Validators.required),
+    pathCtrl: new FormControl<any>({}, Validators.required),
   });
 
   @Input() user: Profile;
@@ -62,5 +62,9 @@ export class ProfileEditBasicInfoComponent implements OnInit, OnChanges {
       nationalityCtrl: user.nationality,
       pathCtrl: user.path,
     });
+  }
+
+  compareValues(a: any, b: any): boolean {
+    return a && b && a.id === b.id;
   }
 }

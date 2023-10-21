@@ -23,8 +23,8 @@ import { MatStepper } from "@angular/material/stepper";
   styleUrls: ["./user-setup-basic-details.component.scss"],
 })
 export class UserSetupBasicDetailsComponent implements OnInit {
-  public countryList = COUNTRY_LIST;
-  public paths = DEV_PATHS;
+  public COUNTRY_LIST = COUNTRY_LIST;
+  public DEV_PATHS = DEV_PATHS;
 
   public basicDetailsForm = new FormGroup({
     firstNameCtrl: new FormControl("", Validators.required),
@@ -110,5 +110,9 @@ export class UserSetupBasicDetailsComponent implements OnInit {
         });
       }
     });
+  }
+
+  compareValues(a: any, b: any): boolean {
+    return a && b && a.id === b.id;
   }
 }

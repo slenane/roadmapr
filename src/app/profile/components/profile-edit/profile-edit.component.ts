@@ -43,7 +43,7 @@ export class ProfileEditComponent implements OnInit {
       bio: this.basicInfo.form.value.bioCtrl,
       links: {
         cv: this.social.form.value.cvCtrl,
-        linkedin: this.social.form.value.linkedinCtrl,
+        linkedIn: this.social.form.value.linkedInCtrl,
         twitter: this.social.form.value.xCtrl,
         portfolio: this.social.form.value.portfolioCtrl,
       },

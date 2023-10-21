@@ -32,9 +32,13 @@
     <mat-form-field appearance="outline">
       <mat-label>{{ "FORMS.PATH" | translate }}</mat-label>
 
-      <mat-select #path formControlName="pathCtrl">
-        <mat-option *ngFor="let path of paths" [value]="path">
-          <div class="type-option"> {{ path | translate }} </div>
+      <mat-select
+        #path
+        formControlName="pathCtrl"
+        [compareWith]="compareValues"
+      >
+        <mat-option *ngFor="let path of DEV_PATHS" [value]="path">
+          <div class="type-option"> {{ path.name | translate }} </div>
         </mat-option>
       </mat-select>
       <mat-error *ngIf="form.controls.pathCtrl.invalid">{{
@@ -47,12 +51,13 @@
     <mat-form-field appearance="outline">
       <mat-label>{{ "FORMS.LOCATION" | translate }}</mat-label>
 
-      <mat-select #location formControlName="locationCtrl">
-        <mat-option
-          *ngFor="let country of countryList"
-          [value]="country.en_short_name"
-        >
-          <div class="type-option"> {{ country.en_short_name }} </div>
+      <mat-select
+        #location
+        formControlName="locationCtrl"
+        [compareWith]="compareValues"
+      >
+        <mat-option *ngFor="let country of COUNTRY_LIST" [value]="country">
+          <div class="type-option"> {{ country.name | translate }} </div>
         </mat-option>
       </mat-select>
       <mat-error *ngIf="form.controls.locationCtrl.invalid">{{
@@ -62,12 +67,13 @@
 
     <mat-form-field appearance="outline">
       <mat-label>{{ "FORMS.NATIONALITY" | translate }}</mat-label>
-      <mat-select #nationality formControlName="nationalityCtrl">
-        <mat-option
-          *ngFor="let country of countryList"
-          [value]="country.en_short_name"
-        >
-          <div class="type-option"> {{ country.en_short_name }} </div>
+      <mat-select
+        #nationality
+        formControlName="nationalityCtrl"
+        [compareWith]="compareValues"
+      >
+        <mat-option *ngFor="let country of COUNTRY_LIST" [value]="country">
+          <div class="type-option"> {{ country.name | translate }} </div>
         </mat-option>
       </mat-select>
       <mat-error *ngIf="form.controls.nationalityCtrl.invalid">{{
