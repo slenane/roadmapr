@@ -132,7 +132,9 @@
             </mat-form-field>
 
             <mat-form-field appearance="outline">
-              <mat-label>{{ "FORMS.LANGUAGE.T" | translate }}</mat-label>
+              <mat-label>{{
+                "FORMS.LANGUAGE.PREFERRED" | translate
+              }}</mat-label>
               <mat-select
                 (selectionChange)="updateLanguage($event.value)"
                 formControlName="languageCtrl"
@@ -149,7 +151,9 @@
               </mat-select>
               <mat-error
                 *ngIf="appSettingsForm.controls.languageCtrl.invalid"
-                >{{ "FORMS.LANGUAGE.REQUIRED" | translate }}</mat-error
+                >{{
+                  "FORMS.LANGUAGE.PREFERRED_REQUIRED" | translate
+                }}</mat-error
               >
             </mat-form-field>
 

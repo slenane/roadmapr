@@ -2,10 +2,10 @@
   <image-cropper
     [imageChangedEvent]="imageChangedEvent"
     [maintainAspectRatio]="true"
-    [aspectRatio]="1 / 1"
-    [resizeToWidth]="256"
+    [aspectRatio]="aspectRatio"
+    [resizeToWidth]="resizeToWidth"
     [cropperMinWidth]="128"
-    [roundCropper]="true"
+    [roundCropper]="roundCropped"
     (imageCropped)="imageCropped($event)"
   ></image-cropper>
 

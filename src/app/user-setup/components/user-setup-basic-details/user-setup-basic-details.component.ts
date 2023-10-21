@@ -13,7 +13,7 @@ import {
   MatDialogRef,
 } from "@angular/material/dialog";
 import { DEV_PATHS } from "src/app/shared/constants/dev-paths.constants";
-import { COUNTRY_LIST } from "src/app/shared/constants/country-list";
+import { COUNTRY_LIST } from "src/app/shared/constants/country-list.constants";
 import { UserSetupPathQuizComponent } from "../user-setup-path-quiz/user-setup-path-quiz.component";
 import { MatStepper } from "@angular/material/stepper";
 
@@ -23,8 +23,8 @@ import { MatStepper } from "@angular/material/stepper";
   styleUrls: ["./user-setup-basic-details.component.scss"],
 })
 export class UserSetupBasicDetailsComponent implements OnInit {
-  public countryList = COUNTRY_LIST;
-  public paths = DEV_PATHS;
+  public COUNTRY_LIST = COUNTRY_LIST;
+  public DEV_PATHS = DEV_PATHS;
 
   public basicDetailsForm = new FormGroup({
     firstNameCtrl: new FormControl("", Validators.required),
@@ -105,11 +105,14 @@ export class UserSetupBasicDetailsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        console.log(result);
         this.pathForm.patchValue({
           pathCtrl: result,
         });
       }
     });
+  }
+
+  compareValues(a: any, b: any): boolean {
+    return a && b && a.id === b.id;
   }
 }

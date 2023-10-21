@@ -85,6 +85,12 @@ mat-button-toggle-group {
   }
 }
 
+.mat-card {
+  .image-upload-card {
+    padding: 0 0 1rem !important;
+  }
+}
+
 .mat-card-title {
   font-size: 18px;
   font-weight: 500;

@@ -18,12 +18,15 @@
       alt="User Image"
     />
     <div class="user-name">{{ user.firstName }} {{ user.lastName }}</div>
-    <div class="user-path">{{ user.path | translate }}</div>
+    <div class="user-path">{{ user.path.name | translate }}</div>
   </div>
 
   <div class="bio-grid bio-grid__social">
-    <div class="social-link github-link" *ngIf="user.links.github">
-      <a href="{{ user.links.github }}" target="_blank">
+    <div
+      class="social-link github-link"
+      *ngIf="user.github && user.github.username"
+    >
+      <a href="https://github.com/{{ user.github.username }}" target="_blank">
         <img
           class="social-image"
           src="/assets/images/stack/github-original.svg"
@@ -40,8 +43,8 @@
         />
       </a>
     </div>
-    <div class="social-link linkedIn-link" *ngIf="user.links.linkedin">
-      <a href="{{ user.links.linkedin }}" target="_blank">
+    <div class="social-link linkedIn-link" *ngIf="user.links.linkedIn">
+      <a href="{{ user.links.linkedIn }}" target="_blank">
         <img
           class="social-image"
           src="/assets/images/icons/linkedin.png"

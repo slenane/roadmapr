@@ -36,13 +36,22 @@ export class ProfileService {
     );
   }
 
+  public updateCoverImage(
+    formData: FormData
+  ): Observable<{ user: Profile; successMessage: string }> {
+    return this.apiService.post(
+      this.urlService.generate(API.PROFILE_COVER_IMAGE_UPDATE),
+      formData
+    );
+  }
+
   public userBasicDetailsProvided(user: any) {
     return (
-      user.firstName?.length &&
-      user.lastName?.length &&
-      user.location?.length &&
-      user.nationality?.length &&
-      user.path?.length
+      !!user.firstName?.length &&
+      !!user.lastName?.length &&
+      !!user.location?.id &&
+      !!user.nationality?.id &&
+      !!user.path?.id
     );
   }
 }

@@ -6,7 +6,7 @@ interface Action {
   type: string;
 }
 
-const initialState: Profile = {
+export const profileInitialState: Profile = {
   _id: "",
   firstName: "",
   lastName: "",
@@ -18,8 +18,7 @@ const initialState: Profile = {
   path: "",
   bio: "",
   links: {
-    github: "",
-    linkedin: "",
+    linkedIn: "",
     twitter: "",
     cv: "",
     portfolio: "",
@@ -41,7 +40,7 @@ const initialState: Profile = {
 };
 
 const profileReducer = createReducer(
-  initialState,
+  profileInitialState,
   on(profileActions.GetProfileSuccess, (state, { payload }) => {
     return { ...state, ...payload };
   }),

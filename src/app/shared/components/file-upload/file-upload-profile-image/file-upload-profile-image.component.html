@@ -1,0 +1,22 @@
+<!-- <p class="file-label">{{ "FORMS.PROFILE_IMAGE" | translate }}</p> -->
+
+<input
+  type="file"
+  class="file-input"
+  (change)="onFileSelected($event)"
+  #fileUpload
+/>
+
+<div class="center">
+  <img
+    class="user-image"
+    [src]="image ? image : '/assets/images/user-fallback.png'"
+    alt="User Image"
+  />
+
+  <div class="file-upload">
+    <button mat-mini-fab color="primary" (click)="fileUpload.click()">
+      <span class="material-symbols-outlined">edit</span>
+    </button>
+  </div>
+</div>

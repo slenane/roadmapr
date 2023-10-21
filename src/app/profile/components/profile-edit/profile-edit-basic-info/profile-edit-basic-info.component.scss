@@ -1,0 +1,31 @@
+form {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 1rem;
+
+  .image-upload-card {
+    margin: 0 auto 2rem;
+    width: 26rem;
+    position: relative;
+    padding-bottom: 1rem;
+
+    .profile-image-upload {
+      position: absolute;
+      bottom: -2rem;
+      left: calc(50% - 2.5rem);
+    }
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: flex-start;
+
+    &__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 1rem;
+    }
+  }
+}

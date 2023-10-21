@@ -1,0 +1,89 @@
+<form [formGroup]="form">
+  <div class="form-grid">
+    <mat-card class="image-upload-card">
+      <app-file-upload-cover-image
+        [data]="user.coverImage"
+      ></app-file-upload-cover-image>
+
+      <app-file-upload-profile-image
+        class="profile-image-upload"
+        [data]="user.profileImage"
+      ></app-file-upload-profile-image>
+    </mat-card>
+
+    <div class="form-grid__inner">
+      <mat-form-field appearance="outline">
+        <mat-label>{{ "FORMS.FIRST_NAME" | translate }}</mat-label>
+        <input #name matInput formControlName="firstNameCtrl" />
+        <mat-error *ngIf="form.controls.firstNameCtrl.invalid">{{
+          "FORMS.REQUIRED.FIRST_NAME" | translate
+        }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{ "FORMS.LAST_NAME" | translate }}</mat-label>
+        <input #name matInput formControlName="lastNameCtrl" />
+        <mat-error *ngIf="form.controls.lastNameCtrl.invalid">{{
+          "FORMS.REQUIRED.LAST_NAME" | translate
+        }}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <mat-form-field appearance="outline">
+      <mat-label>{{ "FORMS.PATH" | translate }}</mat-label>
+
+      <mat-select
+        #path
+        formControlName="pathCtrl"
+        [compareWith]="compareValues"
+      >
+        <mat-option *ngFor="let path of DEV_PATHS" [value]="path">
+          <div class="type-option"> {{ path.name | translate }} </div>
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.controls.pathCtrl.invalid">{{
+        "FORMS.REQUIRED.PATH" | translate
+      }}</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="form-grid">
+    <mat-form-field appearance="outline">
+      <mat-label>{{ "FORMS.LOCATION" | translate }}</mat-label>
+
+      <mat-select
+        #location
+        formControlName="locationCtrl"
+        [compareWith]="compareValues"
+      >
+        <mat-option *ngFor="let country of COUNTRY_LIST" [value]="country">
+          <div class="type-option"> {{ country.name | translate }} </div>
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.controls.locationCtrl.invalid">{{
+        "FORMS.REQUIRED.LOCATION" | translate
+      }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>{{ "FORMS.NATIONALITY" | translate }}</mat-label>
+      <mat-select
+        #nationality
+        formControlName="nationalityCtrl"
+        [compareWith]="compareValues"
+      >
+        <mat-option *ngFor="let country of COUNTRY_LIST" [value]="country">
+          <div class="type-option"> {{ country.name | translate }} </div>
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.controls.nationalityCtrl.invalid">{{
+        "FORMS.REQUIRED.NATIONALITY" | translate
+      }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>{{ "FORMS.BIO" | translate }}</mat-label>
+      <textarea matInput formControlName="bioCtrl" rows="8"></textarea>
+    </mat-form-field>
+  </div>
+</form>

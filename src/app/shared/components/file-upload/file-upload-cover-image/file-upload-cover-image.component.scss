@@ -1,0 +1,28 @@
+.file-label {
+  text-align: center;
+}
+
+.file-input {
+  display: none;
+}
+
+.center {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+
+  .user-image {
+    height: 8rem;
+    width: 26rem;
+    object-fit: cover;
+    background-size: cover;
+    border-radius: 4px 4px 0 0;
+  }
+
+  .file-upload {
+    position: relative;
+    top: -1.5rem;
+    right: -11rem;
+  }
+}

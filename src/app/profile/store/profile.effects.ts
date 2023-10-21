@@ -64,4 +64,22 @@ export class ProfileEffects {
       )
     )
   );
+
+  updateCoverImage$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(profileActions.UPDATE_COVER_IMAGE),
+      switchMap(({ data }) =>
+        this.profileService.updateCoverImage(data).pipe(
+          map(({ user, successMessage }) => {
+            this.alertsService.successAlert(successMessage);
+            return profileActions.UpdateProfileImageSuccess({ payload: user });
+          }),
+          catchError((error) => {
+            this.alertsService.errorAlert(error.error);
+            return of(profileActions.UpdateProfileImageError());
+          })
+        )
+      )
+    )
+  );
 }

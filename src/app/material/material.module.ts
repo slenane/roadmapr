@@ -33,6 +33,7 @@ import { ScrollingModule } from "@angular/cdk/scrolling";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatStepperModule } from "@angular/material/stepper";
 import { MatRadioModule } from "@angular/material/radio";
+import { MatTabsModule } from "@angular/material/tabs";
 
 @NgModule({
   exports: [
@@ -70,6 +71,7 @@ import { MatRadioModule } from "@angular/material/radio";
     ScrollingModule,
     MatStepperModule,
     MatRadioModule,
+    MatTabsModule,
   ],
   providers: [],
   bootstrap: [],
