@@ -17,14 +17,38 @@
   </div>
 
   <div class="profile-section">
-    <div class="section-header">Technical Experience</div>
+    <div class="section-header">{{
+      "PROFILE.HEADERS.TECHNICAL_EXPERIENCE" | translate
+    }}</div>
+    <ng-container *ngFor="let item of user.employmentList">
+      <app-profile-content-employment
+        *ngIf="item.startDate"
+        [employment]="item"
+      ></app-profile-content-employment>
+    </ng-container>
   </div>
 
   <div class="profile-section">
-    <div class="section-header">Projects</div>
+    <div class="section-header">{{
+      "PROFILE.HEADERS.PROJECTS" | translate
+    }}</div>
+    <ng-container *ngFor="let item of user.projectList">
+      <app-profile-content-projects
+        *ngIf="item.startDate"
+        [project]="item"
+      ></app-profile-content-projects>
+    </ng-container>
   </div>
 
   <div class="profile-section">
-    <div class="section-header">Education</div>
+    <div class="section-header">{{
+      "PROFILE.HEADERS.EDUCATION" | translate
+    }}</div>
+    <ng-container *ngFor="let item of user.educationList">
+      <app-profile-content-education
+        *ngIf="item.startDate"
+        [education]="item"
+      ></app-profile-content-education>
+    </ng-container>
   </div>
 </div>

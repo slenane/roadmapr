@@ -1,0 +1,26 @@
+<div class="employment">
+  <div class="employment-header">
+    <div class="employment-title"
+      >{{ employment.role }} -
+      <a href="{{ employment.companyLink }}">{{ employment.company }}</a></div
+    >
+
+    <div class="tech-stack">
+      <img
+        *ngFor="let tech of employment.stack"
+        class="app-stack-icon"
+        matTooltip="{{ tech.title }}"
+        src="/assets/images/stack/{{ tech.name }}-original.svg"
+      />
+    </div>
+  </div>
+
+  <div class="employment-subtitle"
+    >{{ employment.startDate | date }} -
+    {{
+      (employment.endDate | date) || ("FORMS.DATES.PRESENT" | translate)
+    }}</div
+  >
+
+  <div class="employment-description">{{ employment.description }}</div>
+</div>

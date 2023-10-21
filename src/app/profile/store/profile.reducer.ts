@@ -37,6 +37,9 @@ export const profileInitialState: Profile = {
   preferredLanguage: "en",
   notifications: false,
   email: "",
+  educationList: [],
+  projectList: [],
+  employmentList: [],
 };
 
 const profileReducer = createReducer(

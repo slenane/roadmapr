@@ -33,8 +33,11 @@ export interface Profile {
   theme: "light" | "dark";
   preferredLanguage: string;
   education: string;
+  educationList: any[];
   projects: string;
+  projectList: any[];
   employment: string;
+  employmentList: any[];
 }
 
 interface PreviousEducationItem {

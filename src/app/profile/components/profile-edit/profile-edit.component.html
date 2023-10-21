@@ -13,7 +13,16 @@
           [user]="user"
         ></app-profile-edit-basic-info>
       </mat-tab>
-      <mat-tab label="Languages & Social">
+      <mat-tab>
+        <ng-template mat-tab-label>
+          {{ "PROFILE.UPDATE.LAYOUT" | translate }}
+        </ng-template>
+        <app-profile-edit-layout
+          #layout
+          [user]="user"
+        ></app-profile-edit-layout>
+      </mat-tab>
+      <mat-tab>
         <ng-template mat-tab-label>
           {{ "PROFILE.UPDATE.LANGUAGES_AND_SOCIAL" | translate }}</ng-template
         >
@@ -28,7 +37,7 @@
           ></app-profile-edit-social>
         </div>
       </mat-tab>
-      <mat-tab label="Previous Education">
+      <mat-tab>
         <ng-template mat-tab-label>
           {{ "PROFILE.UPDATE.PREVIOUS_EDUCATION" | translate }}</ng-template
         >
@@ -37,7 +46,7 @@
           [user]="user"
         ></app-profile-edit-education>
       </mat-tab>
-      <mat-tab label="Interests">
+      <mat-tab>
         <ng-template mat-tab-label>
           {{ "PROFILE.UPDATE.INTERESTS" | translate }}</ng-template
         >

@@ -1,0 +1,31 @@
+<div class="education">
+  <div class="education-header">
+    <div class="education-title">
+      <img
+        src="/assets/images/icons/{{ education.type }}.png"
+        matTooltip="{{ education.type | titlecase }}"
+        class="app-education-type-icon"
+      />
+      <div>
+        {{ education.title }}
+        <span class="author">
+          - <a href="{{ education.link }}">{{ education.author }}</a></span
+        >
+      </div>
+    </div>
+
+    <div class="tech-stack">
+      <img
+        *ngFor="let tech of education.stack"
+        class="app-stack-icon"
+        matTooltip="{{ tech.title }}"
+        src="/assets/images/stack/{{ tech.name }}-original.svg"
+      />
+    </div>
+  </div>
+
+  <div class="education-subtitle"
+    >{{ education.startDate | date }} -
+    {{ (education.endDate | date) || ("FORMS.DATES.PRESENT" | translate) }}</div
+  >
+</div>

@@ -27,6 +27,7 @@
         display: grid;
         grid-template-columns: 1fr;
         gap: 1rem;
+        align-content: flex-start;
 
         .section-header {
           font-size: 0.9rem;

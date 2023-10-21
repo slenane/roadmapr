@@ -1,0 +1,28 @@
+.education {
+  margin-bottom: 1rem;
+
+  &-header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    justify-content: space-between;
+
+    .tech-stack {
+      .app-stack-icon {
+        margin: 0 0.2rem;
+      }
+    }
+  }
+
+  &-title {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 500;
+
+    .author {
+      font-size: 0.9rem;
+      font-weight: 400;
+    }
+  }
+}

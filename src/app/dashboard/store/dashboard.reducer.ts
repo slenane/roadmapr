@@ -6,7 +6,7 @@ interface Action {
   type: string;
 }
 
-const initialState: Dashboard = {
+export const dashboardInitialState: Dashboard = {
   education: [],
   employment: [],
   projects: [],
@@ -14,7 +14,7 @@ const initialState: Dashboard = {
 };
 
 const DashboardReducer = createReducer(
-  initialState,
+  dashboardInitialState,
   on(DashboardActions.GetDashboardSuccess, (state, { payload }) => {
     return { ...state, ...payload };
   })
