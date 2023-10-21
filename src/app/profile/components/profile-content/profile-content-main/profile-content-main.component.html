@@ -1,0 +1,30 @@
+<div class="profile-header">
+  <h1>{{ user.firstName }} {{ user.lastName }}</h1>
+  <p
+    >{{ user.path.name | translate }}
+    <img
+      *ngFor="let item of user.stack"
+      class="app-stack-icon profile-stack-icon"
+      src="/assets/images/stack/{{ item.name }}-original.svg"
+      alt="Stack Icon"
+    />
+  </p>
+</div>
+
+<div class="profile-body">
+  <div class="profile-section">
+    <div class="bio">{{ user.bio }}</div>
+  </div>
+
+  <div class="profile-section">
+    <div class="section-header">Technical Experience</div>
+  </div>
+
+  <div class="profile-section">
+    <div class="section-header">Projects</div>
+  </div>
+
+  <div class="profile-section">
+    <div class="section-header">Education</div>
+  </div>
+</div>

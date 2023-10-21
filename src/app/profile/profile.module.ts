@@ -2,7 +2,7 @@ import { NgModule } from "@angular/core";
 import { MaterialModule } from "../material/material.module";
 import { SharedModule } from "../shared/shared.module";
 import { ProfileComponent } from "./components/profile.component";
-import { ProfileCardComponent } from "./components/profile-card/profile-card.component";
+import { ProfileContentCardComponent } from "./components/profile-content/profile-content-card/profile-content-card.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CoreModule } from "../core/core.module";
 import { CommonModule } from "@angular/common";
@@ -15,16 +15,32 @@ import { ProfileEffects } from "./store/profile.effects";
 import { ProfileEditComponent } from "./components/profile-edit/profile-edit.component";
 import { TranslateModule } from "@ngx-translate/core";
 import { ProfileRoutingModule } from "./profile-routing.module";
-import { ProfileDetailsComponent } from './components/profile-details/profile-details.component';
-import { ProfileEditBasicInfoComponent } from './components/profile-edit/profile-edit-basic-info/profile-edit-basic-info.component';
-import { ProfileEditLanguagesComponent } from './components/profile-edit/profile-edit-languages/profile-edit-languages.component';
-import { ProfileEditEducationComponent } from './components/profile-edit/profile-edit-education/profile-edit-education.component';
-import { ProfileEditInterestsComponent } from './components/profile-edit/profile-edit-interests/profile-edit-interests.component';
-import { ProfileEditSocialComponent } from './components/profile-edit/profile-edit-social/profile-edit-social.component';
+import { ProfileContentMainComponent } from "./components/profile-content/profile-content-main/profile-content-main.component";
+import { ProfileEditBasicInfoComponent } from "./components/profile-edit/profile-edit-basic-info/profile-edit-basic-info.component";
+import { ProfileEditLanguagesComponent } from "./components/profile-edit/profile-edit-languages/profile-edit-languages.component";
+import { ProfileEditEducationComponent } from "./components/profile-edit/profile-edit-education/profile-edit-education.component";
+import { ProfileEditInterestsComponent } from "./components/profile-edit/profile-edit-interests/profile-edit-interests.component";
+import { ProfileEditSocialComponent } from "./components/profile-edit/profile-edit-social/profile-edit-social.component";
+import { ProfileContentPersonalComponent } from "./components/profile-content/profile-content-personal/profile-content-personal.component";
 
 @NgModule({
-  declarations: [ProfileComponent, ProfileCardComponent, ProfileEditComponent, ProfileDetailsComponent, ProfileEditBasicInfoComponent, ProfileEditLanguagesComponent, ProfileEditEducationComponent, ProfileEditInterestsComponent, ProfileEditSocialComponent],
-  exports: [ProfileComponent, ProfileCardComponent, ProfileEditComponent],
+  declarations: [
+    ProfileComponent,
+    ProfileContentCardComponent,
+    ProfileEditComponent,
+    ProfileContentMainComponent,
+    ProfileEditBasicInfoComponent,
+    ProfileEditLanguagesComponent,
+    ProfileEditEducationComponent,
+    ProfileEditInterestsComponent,
+    ProfileEditSocialComponent,
+    ProfileContentPersonalComponent,
+  ],
+  exports: [
+    ProfileComponent,
+    ProfileContentCardComponent,
+    ProfileEditComponent,
+  ],
   imports: [
     CommonModule,
     FormsModule,
