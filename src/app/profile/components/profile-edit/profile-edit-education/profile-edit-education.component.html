@@ -12,7 +12,7 @@
       <mat-form-field appearance="outline">
         <mat-label>{{ "FORMS.EDUCATION.LEVEL" | translate }}</mat-label>
 
-        <mat-select formControlName="level">
+        <mat-select formControlName="level" [compareWith]="compareValues">
           <mat-option *ngFor="let level of EDUCATION_LEVELS" [value]="level">
             <div class="type-option"> {{ level.name | translate }} </div>
           </mat-option>
