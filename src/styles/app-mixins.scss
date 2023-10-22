@@ -1,120 +1,5 @@
 @import "./app-vars.scss";
 
-@mixin light-theme--mixin--main() {
-  body {
-    background: $light-theme--body--background;
-    color: $light-theme--font--primary;
-
-    .auth-container {
-      background: $light-theme--body--background;
-      color: $light-theme--font--primary;
-    }
-
-    .material-symbols-outlined {
-      color: $light-theme--font--material-symbols;
-
-      &.emphasis {
-        color: $light-theme--font--tertiary !important;
-      }
-
-      &.error {
-        color: $light-theme--error--mat-error-color !important;
-      }
-
-      &.success {
-        color: $light-theme--primary--mat-primary-color !important;
-      }
-    }
-
-    .drag-group {
-      .no-item-message {
-        background: $light-theme--drag-group--background;
-      }
-    }
-  }
-}
-
-@mixin light-theme--mixin--sidebar() {
-  .sidebar {
-    background-color: $light-theme--sidebar--background;
-  }
-
-  .nav-collapse {
-    background-color: $light-theme--sidebar--background;
-  }
-
-  .sidebar-option {
-    color: $light-theme--font--primary;
-
-    &.is-active {
-      color: $light-theme--font--tertiary;
-      background-color: $light-theme--sidebar--background--active;
-
-      .material-symbols-outlined {
-        color: $light-theme--font--tertiary !important;
-      }
-    }
-  }
-}
-
-@mixin light-theme--mixin--auth() {
-  .auth-container {
-    .oauth-options {
-      .mat-github {
-        background-color: #171515;
-        color: white;
-
-        &.mat-button-disabled {
-          background-color: rgba(0, 0, 0, 0.12);
-          color: rgba(0, 0, 0, 0.26);
-        }
-      }
-    }
-
-    .divider {
-      color: $light-theme--font--sub-header;
-
-      .line {
-        border-bottom: 0.5px solid $light-theme--font--sub-header;
-      }
-    }
-  }
-}
-
-@mixin light-theme--mixin--user-profile() {
-  .user-profile {
-    .profile {
-      .profile-header {
-        h1 {
-          color: $light-theme--font--header;
-        }
-      }
-      .profile-body {
-        .section-header {
-          color: $light-theme--font--sub-header;
-        }
-        .label {
-          color: $light-theme--font--primary;
-        }
-        .value {
-          color: $light-theme--font--secondary;
-        }
-        .bio {
-          color: $light-theme--font--primary;
-        }
-        .social-link {
-          a {
-            color: $light-theme--font--link;
-            &:hover {
-              color: $light-theme--font--link--hover;
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
 @mixin dark-theme--mixin--main() {
   body {
     background: $dark-theme--body--background;
@@ -231,6 +116,121 @@
             color: $dark-theme--font--link;
             &:hover {
               color: $dark-theme--font--link--hover;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin light-theme--mixin--main() {
+  body {
+    background: $light-theme--body--background;
+    color: $light-theme--font--primary;
+
+    .auth-container {
+      background: $light-theme--body--background;
+      color: $light-theme--font--primary;
+    }
+
+    .material-symbols-outlined {
+      color: $light-theme--font--material-symbols;
+
+      &.emphasis {
+        color: $light-theme--font--tertiary !important;
+      }
+
+      &.error {
+        color: $light-theme--error--mat-error-color !important;
+      }
+
+      &.success {
+        color: $light-theme--primary--mat-primary-color !important;
+      }
+    }
+
+    .drag-group {
+      .no-item-message {
+        background: $light-theme--drag-group--background;
+      }
+    }
+  }
+}
+
+@mixin light-theme--mixin--sidebar() {
+  .sidebar {
+    background-color: $light-theme--sidebar--background;
+  }
+
+  .nav-collapse {
+    background-color: $light-theme--sidebar--background;
+  }
+
+  .sidebar-option {
+    color: $light-theme--font--primary;
+
+    &.is-active {
+      color: $light-theme--font--tertiary;
+      background-color: $light-theme--sidebar--background--active;
+
+      .material-symbols-outlined {
+        color: $light-theme--font--tertiary !important;
+      }
+    }
+  }
+}
+
+@mixin light-theme--mixin--auth() {
+  .auth-container {
+    .oauth-options {
+      .mat-github {
+        background-color: #171515;
+        color: white;
+
+        &.mat-button-disabled {
+          background-color: rgba(0, 0, 0, 0.12);
+          color: rgba(0, 0, 0, 0.26);
+        }
+      }
+    }
+
+    .divider {
+      color: $light-theme--font--sub-header;
+
+      .line {
+        border-bottom: 0.5px solid $light-theme--font--sub-header;
+      }
+    }
+  }
+}
+
+@mixin light-theme--mixin--user-profile() {
+  .user-profile {
+    .profile {
+      .profile-header {
+        h1 {
+          color: $light-theme--font--header;
+        }
+      }
+      .profile-body {
+        .section-header {
+          color: $light-theme--font--sub-header;
+        }
+        .label {
+          color: $light-theme--font--primary;
+        }
+        .value {
+          color: $light-theme--font--secondary;
+        }
+        .bio {
+          color: $light-theme--font--primary;
+        }
+        .social-link {
+          a {
+            color: $light-theme--font--link;
+            &:hover {
+              color: $light-theme--font--link--hover;
             }
           }
         }
