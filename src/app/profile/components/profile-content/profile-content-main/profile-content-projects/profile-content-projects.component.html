@@ -1,0 +1,24 @@
+<div class="project">
+  <div class="project-header">
+    <div class="project-title">
+      <a href="{{ project.link }}">{{ project.title }}</a> -
+      <span class="project-title-tagline">{{ project.tagLine }}</span></div
+    >
+
+    <div class="tech-stack">
+      <img
+        *ngFor="let tech of project.stack"
+        class="app-stack-icon"
+        matTooltip="{{ tech.title }}"
+        src="/assets/images/stack/{{ tech.name }}-original.svg"
+      />
+    </div>
+  </div>
+
+  <div class="project-subtitle"
+    >{{ project.startDate | date }} -
+    {{ (project.endDate | date) || ("FORMS.DATES.PRESENT" | translate) }}</div
+  >
+
+  <div class="project-description">{{ project.description }}</div>
+</div>

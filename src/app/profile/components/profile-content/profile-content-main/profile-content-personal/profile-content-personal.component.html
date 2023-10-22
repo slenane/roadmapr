@@ -1,0 +1,55 @@
+<div class="personal">
+  <section>
+    <h3 class="section-header">{{ "PROFILE.HEADERS.PERSONAL" | translate }}</h3>
+    <div class="label">{{ "PROFILE.SUB_HEADERS.LOCATION" | translate }}</div>
+    <div class="value">{{ user.location.name | translate }}</div>
+
+    <div class="label">{{ "PROFILE.SUB_HEADERS.NATIONALITY" | translate }}</div>
+    <div class="value">{{ user.nationality.name | translate }}</div>
+
+    <div class="label">{{ "PROFILE.SUB_HEADERS.LANGUAGES" | translate }}</div>
+    <div class="value">
+      <span
+        class="language-item"
+        *ngFor="let item of user.languagesSpoken; let last = last"
+        >{{ item.language.name | translate }} ({{
+          item.level.name | translate
+        }})
+      </span>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header">{{
+      "PROFILE.HEADERS.PREVIOUS_EDUCATION" | translate
+    }}</div>
+    <div
+      class="value education-items"
+      *ngFor="let item of user.previousEducation"
+    >
+      <div class="education-item">
+        <span class="subject"
+          >{{ item.level.name | translate }} in {{ item.subject }}</span
+        >
+        <span class="school">{{ item.school }}</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h3 class="section-header">{{
+      "PROFILE.HEADERS.INTERESTS" | translate
+    }}</h3>
+    <div class="label">{{
+      "PROFILE.SUB_HEADERS.PROFESSIONAL" | translate
+    }}</div>
+    <div class="value">
+      {{ user.interests.professional_interests.join(", ") }}
+    </div>
+
+    <div class="label">{{ "PROFILE.SUB_HEADERS.PERSONAL" | translate }}</div>
+    <div class="value">
+      {{ user.interests.personal_interests.join(", ") }}
+    </div>
+  </section>
+</div>

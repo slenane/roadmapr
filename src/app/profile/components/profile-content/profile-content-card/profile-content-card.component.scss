@@ -34,32 +34,34 @@
     }
 
     .user-path {
-      font-size: 12px;
+      font-size: 0.9rem;
     }
   }
 
-  .user-overview-container {
-    padding: 1rem;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 0.5rem;
+  .card-header {
+    text-align: center;
   }
 
-  .bio-grid {
-    display: grid;
-    grid-template-columns: auto auto auto;
+  .card-grid {
+    display: flex;
     justify-content: center;
     gap: 1rem;
     margin: 1rem auto;
 
-    &__title {
-      font-weight: 500;
-      font-size: 1rem;
-      margin-bottom: 0.5rem;
+    .contact-link {
+      a {
+        text-decoration: none;
+      }
     }
 
     .social-image {
       height: 1.5rem;
     }
+  }
+
+  .actions {
+    display: grid;
+    justify-content: center;
+    margin-bottom: 1rem;
   }
 }

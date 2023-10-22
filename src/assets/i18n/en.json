@@ -383,16 +383,20 @@
   "LANDING": {},
   "PROFILE": {
     "T": "Profile",
+    "EDIT": "Edit Profile",
     "HEADERS": {
       "PERSONAL": "Personal",
       "INTERESTS": "Interests",
-      "SOCIAL": "Social"
+      "SOCIAL": "Social",
+      "PREVIOUS_EDUCATION": "Previous Education",
+      "TECHNICAL_EXPERIENCE": "Technical Experience",
+      "PROJECTS": "Projects",
+      "EDUCATION": "Education"
     },
     "SUB_HEADERS": {
       "LOCATION": "Location",
       "NATIONALITY": "Nationality",
       "LANGUAGES": "Languages Spoken",
-      "PREVIOUS_EDUCATION": "Previous Education",
       "PROFESSIONAL": "Professional",
       "PERSONAL": "Personal"
     },
@@ -406,6 +410,7 @@
     "UPDATE": {
       "T": "Update Profile",
       "BASIC_INFORMATION": "Basic Information",
+      "LAYOUT": "Profile Layout",
       "LANGUAGES_AND_SOCIAL": "Languages & Social",
       "PREVIOUS_EDUCATION": "Previous Education",
       "INTERESTS": "Interests"

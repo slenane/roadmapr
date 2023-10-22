@@ -1,31 +1,16 @@
 <div class="profile" *ngIf="user">
-  <div class="scroll" cdkScrollable>
-    <div class="profile-content" *ngIf="!isEditing">
-      <div class="profile-content__edit">
-        <button
-          mat-raised-button
-          color="primary"
-          (click)="toggleEditProfile()"
-          >{{ "ACTIONS.EDIT" | translate }}</button
-        >
-      </div>
-      <app-profile-card
-        class="profile-content__card"
-        [user]="user"
-      ></app-profile-card>
-      <app-profile-details
-        class="profile-content__details"
-        [user]="user"
-      ></app-profile-details>
-
-      <div class="advertising-div"></div>
-    </div>
-
-    <app-profile-edit
-      *ngIf="isEditing"
-      class="edit-profile"
+  <div class="profile-content" *ngIf="!isEditing">
+    <app-profile-content-card
       [user]="user"
       (editProfile)="toggleEditProfile()"
-    ></app-profile-edit>
+    ></app-profile-content-card>
+    <app-profile-content-main [user]="user"></app-profile-content-main>
   </div>
+
+  <app-profile-edit
+    *ngIf="isEditing"
+    class="edit-profile"
+    [user]="user"
+    (editProfile)="toggleEditProfile()"
+  ></app-profile-edit>
 </div>
