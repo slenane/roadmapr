@@ -383,6 +383,7 @@
   "LANDING": {},
   "PROFILE": {
     "T": "Profile",
+    "EDIT": "Edit Profile",
     "HEADERS": {
       "PERSONAL": "Personal",
       "INTERESTS": "Interests",

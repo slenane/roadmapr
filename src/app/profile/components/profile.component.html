@@ -1,72 +1,16 @@
 <div class="profile" *ngIf="user">
-  <div class="scroll" cdkScrollable>
-    <div class="profile-content" *ngIf="!isEditing">
-      <div class="profile-content__edit">
-        <button
-          mat-raised-button
-          color="primary"
-          (click)="toggleEditProfile()"
-          >{{ "ACTIONS.EDIT" | translate }}</button
-        >
-      </div>
-      <div class="profile-content__section-1">
-        <app-profile-content-card [user]="user"></app-profile-content-card>
-
-        <div class="profile-section social">
-          <h3 class="section-header">{{
-            "PROFILE.HEADERS.SOCIAL" | translate
-          }}</h3>
-          <div class="social-link cv-link" *ngIf="user.links.cv">
-            <a href="{{ user.links.cv }}" target="_blank">
-              {{ "PROFILE.LINKS.CV" | translate }}
-            </a>
-          </div>
-
-          <div class="social-link portfolio-link" *ngIf="user.links.portfolio">
-            <a href="{{ user.links.portfolio }}" target="_blank">
-              {{ "PROFILE.LINKS.PORTFOLIO" | translate }}
-            </a>
-          </div>
-
-          <div
-            class="social-link github-link"
-            *ngIf="user.github && user.github.username"
-          >
-            <a
-              href="https://github.com/{{ user.github.username }}"
-              target="_blank"
-            >
-              {{ "PROFILE.LINKS.GITHUB" | translate }}
-            </a>
-          </div>
-          <div class="social-link linkedin-link" *ngIf="user.links.linkedIn">
-            <a href="{{ user.links.linkedIn }}" target="_blank">
-              {{ "PROFILE.LINKS.LINKEDIN" | translate }}
-            </a>
-          </div>
-          <div class="social-link twitter-link" *ngIf="user.links.twitter">
-            <a href="{{ user.links.twitter }}" target="_blank">
-              {{ "PROFILE.LINKS.X" | translate }}
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="profile-content__section-2">
-        <app-profile-content-main [user]="user"></app-profile-content-main>
-      </div>
-
-      <div class="profile-content__section-3">
-        <app-profile-content-personal
-          [user]="user"
-        ></app-profile-content-personal>
-      </div>
-    </div>
-
-    <app-profile-edit
-      *ngIf="isEditing"
-      class="edit-profile"
+  <div class="profile-content" *ngIf="!isEditing">
+    <app-profile-content-card
       [user]="user"
       (editProfile)="toggleEditProfile()"
-    ></app-profile-edit>
+    ></app-profile-content-card>
+    <app-profile-content-main [user]="user"></app-profile-content-main>
   </div>
+
+  <app-profile-edit
+    *ngIf="isEditing"
+    class="edit-profile"
+    [user]="user"
+    (editProfile)="toggleEditProfile()"
+  ></app-profile-edit>
 </div>

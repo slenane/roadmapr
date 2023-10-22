@@ -21,7 +21,19 @@
     <div class="user-path">{{ user.path.name | translate }}</div>
   </div>
 
-  <div class="bio-grid bio-grid__social">
+  <div class="card-grid">
+    <div class="contact-link email-link" *ngIf="user.email">
+      <a href="{{ user.email }}" target="_blank"> Email </a>
+    </div>
+    <div class="contact-link cv-link" *ngIf="user.links.cv">
+      <a href="{{ user.links.cv }}" target="_blank"> CV </a>
+    </div>
+    <div class="contact-link portfolio-link" *ngIf="user.links.portfolio">
+      <a href="{{ user.links.portfolio }}" target="_blank"> Portfolio </a>
+    </div>
+  </div>
+
+  <div class="card-grid">
     <div
       class="social-link github-link"
       *ngIf="user.github && user.github.username"
@@ -34,15 +46,6 @@
         />
       </a>
     </div>
-    <div class="social-link twitter-link" *ngIf="user.links.twitter">
-      <a href="{{ user.links.twitter }}" target="_blank">
-        <img
-          class="social-image"
-          src="/assets/images/icons/twitter.png"
-          alt="twitter Icon"
-        />
-      </a>
-    </div>
     <div class="social-link linkedIn-link" *ngIf="user.links.linkedIn">
       <a href="{{ user.links.linkedIn }}" target="_blank">
         <img
@@ -52,5 +55,20 @@
         />
       </a>
     </div>
+    <div class="social-link twitter-link" *ngIf="user.links.twitter">
+      <a href="{{ user.links.twitter }}" target="_blank">
+        <img
+          class="social-image"
+          src="/assets/images/icons/twitter.png"
+          alt="twitter Icon"
+        />
+      </a>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button mat-raised-button color="primary" (click)="editProfile.emit()">{{
+      "PROFILE.EDIT" | translate
+    }}</button>
   </div>
 </mat-card>
