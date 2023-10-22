@@ -8,7 +8,7 @@ interface Action {
 
 const initialState: Settings = {
   userId: "",
-  theme: "light",
+  theme: "dark",
   preferredLanguage: "en",
   notifications: false,
   email: "",
@@ -19,6 +19,7 @@ const initialState: Settings = {
     id: "",
     username: "",
   },
+  hasPassword: false,
 };
 
 const SettingsReducer = createReducer(

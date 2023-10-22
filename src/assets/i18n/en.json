@@ -452,7 +452,8 @@
       "T": "GitHub",
       "ACCOUNT": "GitHub Account: ",
       "MESSAGE": "View up to date information from GitHub on your roadmap",
-      "LINK_MESSAGE": "Link your GitHub account to display up to date information from GitHub on your roadmap"
+      "LINK_MESSAGE": "Link your GitHub account to display up to date information from GitHub on your roadmap",
+      "UNLINK_ERROR": "You must add a password before oyu can unlink your GitHub"
     }
   },
   "COUNTRIES": {

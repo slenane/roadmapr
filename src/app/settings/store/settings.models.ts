@@ -11,4 +11,5 @@ export interface Settings {
     id: string;
     username: string;
   };
+  hasPassword: boolean;
 }
