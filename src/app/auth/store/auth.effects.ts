@@ -10,6 +10,7 @@ import { TranslateService } from "@ngx-translate/core";
 import { ROUTES } from "src/app/core/constants/routes.constants";
 import { ProfileService } from "src/app/profile/services/profile.service";
 import { AlertsService } from "src/app/shared/services/alerts.service";
+import { DARK_THEME } from "src/app/core/constants/theme.constants";
 
 @Injectable()
 export class AuthEffects {
@@ -103,6 +104,7 @@ export class AuthEffects {
       ofType(authActions.LOGOUT),
       map(() => this.authService.logout()),
       map(() => {
+        this.themeService.updateTheme(DARK_THEME);
         this.router.navigateByUrl(ROUTES.LOGIN);
         return authActions.LogoutSuccess();
       }),

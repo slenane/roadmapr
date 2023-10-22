@@ -7,16 +7,6 @@
 @import "material-symbols/outlined.css";
 @include mat-core();
 
-$light-app-theme: mat-light-theme(
-  (
-    color: (
-      primary: mat-palette($mat-indigo),
-      accent: mat-palette($mat-pink, A200, A100, A400),
-      warn: mat-palette($mat-red),
-    ),
-  )
-);
-
 $dark-app-theme: mat-dark-theme(
   (
     color: (
@@ -27,12 +17,15 @@ $dark-app-theme: mat-dark-theme(
   )
 );
 
-@mixin custom-light-theme() {
-  @include light-theme--mixin--main;
-  @include light-theme--mixin--sidebar;
-  @include light-theme--mixin--auth;
-  @include light-theme--mixin--user-profile;
-}
+$light-app-theme: mat-light-theme(
+  (
+    color: (
+      primary: mat-palette($mat-indigo),
+      accent: mat-palette($mat-pink, A200, A100, A400),
+      warn: mat-palette($mat-red),
+    ),
+  )
+);
 
 @mixin custom-dark-theme() {
   @include dark-theme--mixin--main;
@@ -41,10 +34,17 @@ $dark-app-theme: mat-dark-theme(
   @include dark-theme--mixin--user-profile;
 }
 
-@include angular-material-theme($light-app-theme);
-@include custom-light-theme();
+@mixin custom-light-theme() {
+  @include light-theme--mixin--main;
+  @include light-theme--mixin--sidebar;
+  @include light-theme--mixin--auth;
+  @include light-theme--mixin--user-profile;
+}
 
-.dark-theme {
-  @include angular-material-color($dark-app-theme);
-  @include custom-dark-theme();
+@include angular-material-color($dark-app-theme);
+@include custom-dark-theme();
+
+.light-theme {
+  @include angular-material-theme($light-app-theme);
+  @include custom-light-theme();
 }
