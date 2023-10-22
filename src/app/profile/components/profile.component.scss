@@ -1,12 +1,10 @@
 .profile {
   height: 100vh;
-  margin-top: 2rem;
 
   .profile-content {
     display: grid;
     grid-template-columns: 2fr 7fr;
     column-gap: 2rem;
-    margin: 1rem;
-    margin-right: 0;
+    margin: 2rem 0 2rem 1rem;
   }
 }

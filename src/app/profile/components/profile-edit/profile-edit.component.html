@@ -1,76 +1,61 @@
-<div class="scroll" cdkScrollable>
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title> {{ "PROFILE.UPDATE.T" | translate }} </mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <mat-tab-group animationDuration="0ms">
-        <mat-tab>
-          <ng-template mat-tab-label>
-            {{ "PROFILE.UPDATE.BASIC_INFORMATION" | translate }}
-          </ng-template>
-          <app-profile-edit-basic-info
-            #basicInfo
-            [user]="user"
-          ></app-profile-edit-basic-info>
-        </mat-tab>
-        <mat-tab>
-          <ng-template mat-tab-label>
-            {{ "PROFILE.UPDATE.LAYOUT" | translate }}
-          </ng-template>
-          <app-profile-edit-layout
-            #layout
-            [user]="user"
-          ></app-profile-edit-layout>
-        </mat-tab>
-        <mat-tab>
-          <ng-template mat-tab-label>
-            {{ "PROFILE.UPDATE.LANGUAGES_AND_SOCIAL" | translate }}</ng-template
-          >
-          <div class="form-grid">
-            <app-profile-edit-languages
-              #languages
+<div class="edit-profile">
+  <div class="scroll" cdkScrollable>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title> {{ "PROFILE.UPDATE.T" | translate }} </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-tab-group animationDuration="0ms">
+          <mat-tab>
+            <ng-template mat-tab-label>
+              {{ "PROFILE.UPDATE.BASIC_INFORMATION" | translate }}
+            </ng-template>
+            <app-profile-edit-basic-info
+              #basicInfo
               [user]="user"
-            ></app-profile-edit-languages>
+            ></app-profile-edit-basic-info>
             <app-profile-edit-social
               #social
               [user]="user"
             ></app-profile-edit-social>
-          </div>
-        </mat-tab>
-        <mat-tab>
-          <ng-template mat-tab-label>
-            {{ "PROFILE.UPDATE.PREVIOUS_EDUCATION" | translate }}</ng-template
-          >
-          <app-profile-edit-education
-            #education
-            [user]="user"
-          ></app-profile-edit-education>
-        </mat-tab>
-        <mat-tab>
-          <ng-template mat-tab-label>
-            {{ "PROFILE.UPDATE.INTERESTS" | translate }}</ng-template
-          >
-          <app-profile-edit-interests
-            #interests
-            [user]="user"
-          ></app-profile-edit-interests>
-        </mat-tab>
-      </mat-tab-group>
+          </mat-tab>
+          <mat-tab>
+            <ng-template mat-tab-label>
+              {{ "PROFILE.UPDATE.SKILLS_AND_INTERESTS" | translate }}
+            </ng-template>
+            <app-profile-edit-education
+              #education
+              [user]="user"
+            ></app-profile-edit-education>
 
-      <div class="actions">
-        <button mat-button (click)="onCancel()">{{
-          "ACTIONS.CANCEL" | translate
-        }}</button>
-        <button
-          type="button"
-          mat-raised-button
-          color="primary"
-          (click)="onSave()"
-          cdkFocusInitial
-          >{{ "ACTIONS.SAVE" | translate }}</button
-        >
-      </div>
-    </mat-card-content>
-  </mat-card>
+            <div class="form-grid">
+              <app-profile-edit-languages
+                #languages
+                [user]="user"
+              ></app-profile-edit-languages>
+
+              <app-profile-edit-interests
+                #interests
+                [user]="user"
+              ></app-profile-edit-interests>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+
+        <div class="actions">
+          <button mat-button (click)="onCancel()">{{
+            "ACTIONS.CANCEL" | translate
+          }}</button>
+          <button
+            type="button"
+            mat-raised-button
+            color="primary"
+            (click)="onSave()"
+            cdkFocusInitial
+            >{{ "ACTIONS.SAVE" | translate }}</button
+          >
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>

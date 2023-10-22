@@ -1,5 +1,7 @@
 <form [formGroup]="form">
-  <div class="form-title">{{ "FORMS.SOCIAL_LINKS" | translate }}</div>
+  <div class="form-title">{{
+    "PROFILE.UPDATE.CONTACT_AND_SOCIAL" | translate
+  }}</div>
   <div class="social-grid">
     <mat-form-field appearance="outline">
       <mat-label>{{ "FORMS.CV" | translate }}</mat-label>
@@ -7,13 +9,13 @@
     </mat-form-field>
 
     <mat-form-field appearance="outline">
-      <mat-label>{{ "FORMS.PORTFOLIO" | translate }}</mat-label>
-      <input matInput formControlName="portfolioCtrl" />
+      <mat-label>{{ "FORMS.LINKEDIN_USER" | translate }}</mat-label>
+      <input matInput formControlName="linkedInCtrl" />
     </mat-form-field>
 
     <mat-form-field appearance="outline">
-      <mat-label>{{ "FORMS.LINKEDIN_USER" | translate }}</mat-label>
-      <input matInput formControlName="linkedInCtrl" />
+      <mat-label>{{ "FORMS.PORTFOLIO" | translate }}</mat-label>
+      <input matInput formControlName="portfolioCtrl" />
     </mat-form-field>
 
     <mat-form-field appearance="outline">
