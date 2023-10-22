@@ -410,10 +410,8 @@
     "UPDATE": {
       "T": "Update Profile",
       "BASIC_INFORMATION": "Basic Information",
-      "LAYOUT": "Profile Layout",
-      "LANGUAGES_AND_SOCIAL": "Languages & Social",
-      "PREVIOUS_EDUCATION": "Previous Education",
-      "INTERESTS": "Interests"
+      "SKILLS_AND_INTERESTS": "Skills & Interests",
+      "CONTACT_AND_SOCIAL": "Contact & Social"
     }
   },
   "PROJECTS": {

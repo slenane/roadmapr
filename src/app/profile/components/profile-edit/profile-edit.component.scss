@@ -1,16 +1,27 @@
-mat-card {
-  margin: 1rem;
-}
-
-.form-grid {
-  margin-top: 1rem;
+.edit-profile {
+  height: 100vh;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: flex-start;
-  column-gap: 1rem;
-}
 
-.actions {
-  margin-top: 2rem;
-  text-align: right;
+  .scroll {
+    overflow: auto;
+    display: grid;
+    align-items: flex-start;
+
+    mat-card {
+      margin: 1rem;
+    }
+
+    .form-grid {
+      margin-top: 1rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: flex-start;
+      column-gap: 1rem;
+    }
+
+    .actions {
+      margin-top: 2rem;
+      text-align: right;
+    }
+  }
 }
