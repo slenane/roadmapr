@@ -10,7 +10,8 @@ import { LANGUAGE_OPTIONS } from "../constants/settings.constants";
 import { TranslateService } from "@ngx-translate/core";
 import { SettingsDeleteAccountComponent } from "./settings-delete-account/settings-delete-account.component";
 import { MatDialog } from "@angular/material/dialog";
-import { AuthService } from "src/app/auth/services/auth.service";
+import { AlertsService } from "src/app/shared/services/alerts.service";
+import { settingsInitialState } from "../store/settings.reducer";
 
 @Component({
   selector: "app-settings",
@@ -56,6 +57,7 @@ export class SettingsComponent implements OnInit {
     private settingsStoreService: SettingsStoreService,
     private themeService: ThemeService,
     private translateService: TranslateService,
+    private alertsService: AlertsService,
     public dialog: MatDialog
   ) {}
 
@@ -63,11 +65,18 @@ export class SettingsComponent implements OnInit {
     this.settingsStoreService
       .getSettings()
       .pipe(
-        filter((state) => state != null),
+        filter((state) => state != settingsInitialState),
         takeUntil(this.ngUnsubscribe)
       )
       .subscribe((settings: Settings) => {
         this.settings = settings;
+
+        if (settings.emailUpdatePending) {
+          this.alertsService.successAlert(
+            "SETTINGS.EMAIL_VERIFICATION_PENDING",
+            settings.emailUpdatePending
+          );
+        }
         this.updateForms();
       });
   }
@@ -143,7 +152,7 @@ export class SettingsComponent implements OnInit {
 
   onSaveEmail(email: string): void {
     if (email !== this.settings.email) {
-      this.settingsStoreService.updateSettings(this.settings.userId, {
+      this.settingsStoreService.updateEmail(this.settings.userId, {
         email,
       });
       this.toggleEmailUpdate();

@@ -29,6 +29,7 @@ const AUTH_LOGIN = "/api/auth/login",
   PROFILE_COVER_IMAGE_UPDATE = "/api/profile/cover-image-upload",
   SETTINGS_GET = "/api/settings/",
   SETTINGS_UPDATE = "/api/settings/edit/",
+  SETTINGS_UPDATE_EMAIL = "/api/settings/update-email/",
   SETTINGS_UPDATE_PASSWORD = "/api/settings/update-password/",
   SETTINGS_DELETE_ACCOUNT = "/api/settings/delete-account/";
 
@@ -64,6 +65,7 @@ export const API: any = {
   PROFILE_COVER_IMAGE_UPDATE,
   SETTINGS_GET,
   SETTINGS_UPDATE,
+  SETTINGS_UPDATE_EMAIL,
   SETTINGS_UPDATE_PASSWORD,
   SETTINGS_DELETE_ACCOUNT,
 };

@@ -3,6 +3,7 @@ import { Settings } from "./settings.models";
 
 export const GET_SETTINGS = "[Settings] Get Settings";
 export const UPDATE_SETTINGS = "[Settings] Update Settings";
+export const UPDATE_EMAIL = "[Settings] Update Email";
 export const UPDATE_PASSWORD = "[Settings] Update Password";
 export const DELETE_ACCOUNT = "[Settings] Delete Account";
 
@@ -10,6 +11,8 @@ const GET_SETTINGS_SUCCESS = "[Settings] Settings Loaded Successfully",
   GET_SETTINGS_ERROR = "[Settings] Settings Load Error",
   UPDATE_SETTINGS_SUCCESS = "[Settings] Settings Updated Successfully",
   UPDATE_SETTINGS_ERROR = "[Settings] Settings Update Error",
+  UPDATE_EMAIL_SUCCESS = "[Settings] Email Updated Successfully",
+  UPDATE_EMAIL_ERROR = "[Settings] Email Update Error",
   UPDATE_PASSWORD_SUCCESS = "[Settings] Password Updated Successfully",
   UPDATE_PASSWORD_ERROR = "[Settings] Password Update Error",
   DELETE_ACCOUNT_SUCCESS = "[Settings] Account Deleted Successfully",
@@ -41,6 +44,15 @@ export const UpdateSettingsError = createAction(
   UPDATE_SETTINGS_ERROR,
   props<{ payload: string }>()
 );
+
+export const UpdateEmail = createAction(
+  UPDATE_EMAIL,
+  props<{ id: string; data: any }>()
+);
+
+export const UpdateEmailSuccess = createAction(UPDATE_EMAIL_SUCCESS);
+
+export const UpdateEmailError = createAction(UPDATE_EMAIL_ERROR);
 
 export const UpdatePassword = createAction(
   UPDATE_PASSWORD,

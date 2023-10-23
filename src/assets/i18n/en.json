@@ -94,7 +94,8 @@
     "MISSING_FIELDS": "Required information missing, please check all required fields have been filled",
     "AUTH": {
       "SUCCESS": {
-        "GITHUB_LINKED": "GitHub Linked Successfully"
+        "GITHUB_LINKED": "GitHub Linked Successfully",
+        "EMAIL_VERIFICATION": "Verification email sent to {{ value }}, please verify your new email"
       },
       "ERROR": {
         "USER_NOT_FOUND": "User not found",
@@ -102,6 +103,7 @@
         "USERNAME_USED": "Username already in use, please try something else",
         "EMAIL_INVALID": "Email is not valid",
         "EMAIL_USED": "Email already in use, please log in or try a different email",
+        "EMAIL_NOT_VERIFIED": "Please verify your email to continue",
         "PASSWORD_INVALID": "Password invalid: Passwords must be at least 6 characters long, contains at least 1 number and 1 special character (!@#$%^&*)",
         "USERNAME_PASSWORD_INVALID": "Invalid Username or Password",
         "TOKEN_NOT_PROVIDED": "Token not provided, please try again",
@@ -440,6 +442,7 @@
   "SETTINGS": {
     "T": "Settings",
     "ACCOUNT": "Account Settings",
+    "EMAIL_VERIFICATION_PENDING": "Request to update email has been sent to {{ value }} and is pending  verification, please verify this email to update your account",
     "DELETE": {
       "T": "Delete Account",
       "MESSAGE": "Are you sure you want to delete your account? This action cannot be undone",

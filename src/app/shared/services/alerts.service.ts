@@ -8,16 +8,22 @@ import { AlertsComponent } from "../components/alerts/alerts.component";
 export class AlertsService {
   constructor(private snackBar: MatSnackBar) {}
 
-  successAlert(message: string) {
+  successAlert(message: string, value?: string) {
     this.snackBar.openFromComponent(AlertsComponent, {
-      data: message,
+      data: {
+        message,
+        value,
+      },
       duration: 5000,
     });
   }
 
-  errorAlert(message: string) {
+  errorAlert(message: string, value?: string) {
     this.snackBar.openFromComponent(AlertsComponent, {
-      data: message,
+      data: {
+        message,
+        value,
+      },
       duration: 10000,
       panelClass: ["snackbar-error"],
     });
