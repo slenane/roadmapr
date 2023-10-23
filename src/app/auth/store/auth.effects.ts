@@ -102,16 +102,20 @@ export class AuthEffects {
   logout$ = createEffect(() =>
     this.actions$.pipe(
       ofType(authActions.LOGOUT),
-      map(() => this.authService.logout()),
-      map(() => {
-        this.themeService.updateTheme(DARK_THEME);
-        this.router.navigateByUrl(ROUTES.LOGIN);
-        return authActions.LogoutSuccess();
-      }),
-      catchError((error) => {
-        this.alertsService.errorAlert(error.error);
-        return of(authActions.LogoutError(error));
-      })
+      switchMap(() =>
+        this.authService.logout().pipe(
+          map(() => {
+            this.authService.clearUserData();
+            this.themeService.updateTheme(DARK_THEME);
+            this.router.navigateByUrl(ROUTES.LOGIN);
+            return authActions.LogoutSuccess();
+          }),
+          catchError((error) => {
+            this.alertsService.errorAlert(error.error);
+            return of(authActions.LogoutError(error));
+          })
+        )
+      )
     )
   );
 
