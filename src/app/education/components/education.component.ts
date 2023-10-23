@@ -3,14 +3,13 @@ import { Subject } from "rxjs";
 import { filter, takeUntil } from "rxjs/operators";
 import { CdkDragDrop } from "@angular/cdk/drag-drop";
 import { Education } from "../store/education.models";
-// import { DUMMY_EDUCATION } from "../constants/dummy.constants";
-// import { EducationService } from "../services/education.service";
 import { EducationStoreService } from "../services/education-store.service";
 import {
   EDUCATION_TYPE_CONFIG,
   STATUS,
 } from "../constants/education.constants";
 import { DropListService } from "src/app/shared/services/drop-list.service";
+import { educationInitialState } from "../store/education.reducer";
 
 @Component({
   selector: "app-education",
@@ -26,7 +25,7 @@ export class EducationComponent implements OnInit, OnDestroy {
   public languageFilterData: any = [];
   public education: Education;
   public educationId: string;
-  public educationArray: any[] = [];
+  public educationList: any[] = [];
 
   public todo: any[];
   public inProgress: any[];
@@ -35,7 +34,6 @@ export class EducationComponent implements OnInit, OnDestroy {
   // public recommendations = DUMMY_EDUCATION;
 
   constructor(
-    // private educationService: EducationService,
     private educationStoreService: EducationStoreService,
     private dropListService: DropListService
   ) {}
@@ -44,13 +42,13 @@ export class EducationComponent implements OnInit, OnDestroy {
     this.educationStoreService
       .getEducation(this.educationId ? this.educationId : "")
       .pipe(
-        filter((state) => state != null),
+        filter((state) => state != educationInitialState),
         takeUntil(this.ngUnsubscribe)
       )
       .subscribe((education: Education) => {
         this.education = education;
-        this.educationArray = this.education.educationList;
-        this.getEducationConfig(this.educationArray);
+        this.educationList = this.education.educationList;
+        this.getEducationConfig(this.educationList);
         this.getLanguageFilterData();
       });
   }
@@ -75,7 +73,7 @@ export class EducationComponent implements OnInit, OnDestroy {
     this.inProgress = this.sortItems(inProgressArray);
     this.done = this.sortItems(doneArray);
 
-    // this.recommendations = this.generateEducationArray(
+    // this.recommendations = this.generateEducationList(
     //   this.recommendations
     // );
   }
@@ -89,7 +87,7 @@ export class EducationComponent implements OnInit, OnDestroy {
   }
 
   getLanguageFilterData() {
-    const education: any[] = this.educationArray;
+    const education: any[] = this.educationList;
     const languageData: any[] = [];
     const languages: any[] = [];
 

@@ -2,7 +2,9 @@
   <div
     class="header"
     [ngStyle]="{
-      backgroundImage: user.coverImage ? 'url(' + user.coverImage + ')' : '',
+      backgroundImage: user.coverImage
+        ? 'url(' + user.coverImage + ')'
+        : 'url(\'/assets/images/cover-fallback.jpg\')',
       backgroundSize: 'cover !important'
     }"
   >

@@ -7,6 +7,7 @@ import { GITHUB_DATA } from "../constants/dashboard.constants";
 import * as moment from "moment";
 import { ProfileStoreService } from "src/app/profile/services/profile-store.service";
 import { Profile } from "src/app/profile/store/profile.models";
+import { dashboardInitialState } from "../store/dashboard.reducer";
 
 @Component({
   selector: "app-dashboard",
@@ -16,7 +17,7 @@ import { Profile } from "src/app/profile/store/profile.models";
 export class DashboardComponent implements OnInit {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
   public user: Profile;
-  public dashboard: any = {};
+  public dashboard: Dashboard;
   public stack: any = {};
   public stackList: any = [];
   public distribution: any = {};
@@ -44,7 +45,7 @@ export class DashboardComponent implements OnInit {
     this.dashboardStoreService
       .getDashboard()
       .pipe(
-        filter((state) => state != null),
+        filter((state) => state != dashboardInitialState),
         takeUntil(this.ngUnsubscribe)
       )
       .subscribe({

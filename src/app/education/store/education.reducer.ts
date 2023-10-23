@@ -6,14 +6,14 @@ interface Action {
   type: string;
 }
 
-const initialState: Education = {
+export const educationInitialState: Education = {
   educationList: [],
   user: "",
   _id: "",
 };
 
 const educationReducer = createReducer(
-  initialState,
+  educationInitialState,
   on(educationActions.GetEducationSuccess, (state, { payload }) => {
     return { ...state, ...payload };
   }),

@@ -33,6 +33,7 @@
     .drag-group {
       .no-item-message {
         background: $dark-theme--drag-group--background;
+        color: $dark-theme--font--header;
       }
     }
 
@@ -153,6 +154,7 @@
     .drag-group {
       .no-item-message {
         background: $light-theme--drag-group--background;
+        color: $light-theme--font--header;
       }
     }
   }

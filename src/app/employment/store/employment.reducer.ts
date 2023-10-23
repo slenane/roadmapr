@@ -6,14 +6,14 @@ interface Action {
   type: string;
 }
 
-const initialState: Employment = {
+export const employmentInitialState: Employment = {
   employmentList: [],
   user: "",
   _id: "",
 };
 
 const employmentReducer = createReducer(
-  initialState,
+  employmentInitialState,
   on(employmentActions.GetEmploymentSuccess, (state, { payload }) => {
     return { ...state, ...payload };
   }),

@@ -7,6 +7,7 @@ import { ProjectsService } from "../services/projects.service";
 import { ProjectsStoreService } from "../services/projects-store.service";
 import { PROJECT_TYPE_CONFIG, STATUS } from "../constants/projects.constants";
 import { DropListService } from "src/app/shared/services/drop-list.service";
+import { projectsInitialState } from "../store/projects.reducer";
 
 @Component({
   selector: "app-projects",
@@ -39,7 +40,7 @@ export class ProjectsComponent implements OnInit, OnDestroy {
     this.projectsStoreService
       .getProjects(this.projectsId ? this.projectsId : "")
       .pipe(
-        filter((state) => state != null),
+        filter((state) => state != projectsInitialState),
         takeUntil(this.ngUnsubscribe)
       )
       .subscribe((projects: Projects) => {
