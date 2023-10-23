@@ -1,4 +1,6 @@
-<div class="projects drag-group">
+<app-loading *ngIf="!projects"></app-loading>
+
+<div class="projects drag-group" *ngIf="projects">
   <div class="drag-group-header">
     <app-drop-list-filters
       *ngIf="projects"

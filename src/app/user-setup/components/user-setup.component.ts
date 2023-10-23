@@ -8,6 +8,7 @@ import { ProfileStoreService } from "src/app/profile/services/profile-store.serv
 import { Router } from "@angular/router";
 import { ProfileService } from "src/app/profile/services/profile.service";
 import { ROUTES } from "src/app/core/constants/routes.constants";
+import { profileInitialState } from "src/app/profile/store/profile.reducer";
 
 @Component({
   selector: "app-user-setup",
@@ -30,7 +31,7 @@ export class UserSetupComponent implements OnInit {
     this.profileStoreService
       .getProfile()
       .pipe(
-        filter((state) => state != null),
+        filter((state) => state != profileInitialState),
         takeUntil(this.ngUnsubscribe)
       )
       .subscribe((user: Profile) => {

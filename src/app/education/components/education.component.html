@@ -1,4 +1,6 @@
-<div class="education drag-group">
+<app-loading *ngIf="!education"></app-loading>
+
+<div class="education drag-group" *ngIf="education">
   <div class="drag-group-header">
     <app-drop-list-filters
       *ngIf="education"

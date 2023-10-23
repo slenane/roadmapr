@@ -1,3 +1,5 @@
+<app-loading *ngIf="!user"></app-loading>
+
 <div class="profile" *ngIf="user">
   <div class="profile-content" *ngIf="!isEditing">
     <app-profile-content-card

@@ -6,14 +6,14 @@ interface Action {
   type: string;
 }
 
-const initialState: Projects = {
+export const projectsInitialState: Projects = {
   projectList: [],
   user: "",
   _id: "",
 };
 
 const projectReducer = createReducer(
-  initialState,
+  projectsInitialState,
   on(projectActions.GetProjectsSuccess, (state, { payload }) => {
     return { ...state, ...payload };
   }),

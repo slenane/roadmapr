@@ -10,6 +10,7 @@ import {
   EMPLOYMENT_TYPE_CONFIG,
   STATUS,
 } from "src/app/employment/constants/employment.constants";
+import { employmentInitialState } from "../store/employment.reducer";
 
 @Component({
   selector: "app-employment",
@@ -41,7 +42,7 @@ export class EmploymentComponent implements OnInit {
     this.employmentStoreService
       .getEmployment(this.employmentId ? this.employmentId : "")
       .pipe(
-        filter((state) => state != null),
+        filter((state) => state != employmentInitialState),
         takeUntil(this.ngUnsubscribe)
       )
       .subscribe((employment: Employment) => {

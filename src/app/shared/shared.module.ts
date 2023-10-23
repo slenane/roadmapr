@@ -21,6 +21,7 @@ import { AlertsComponent } from "./components/alerts/alerts.component";
 import { AlertsService } from "./services/alerts.service";
 import { FileUploadProfileImageComponent } from "./components/file-upload/file-upload-profile-image/file-upload-profile-image.component";
 import { FileUploadCoverImageComponent } from "./components/file-upload/file-upload-cover-image/file-upload-cover-image.component";
+import { LoadingComponent } from "./components/loading/loading.component";
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { FileUploadCoverImageComponent } from "./components/file-upload/file-upl
     AlertsComponent,
     FileUploadProfileImageComponent,
     FileUploadCoverImageComponent,
+    LoadingComponent,
   ],
   exports: [
     SidebarComponent,
@@ -46,6 +48,7 @@ import { FileUploadCoverImageComponent } from "./components/file-upload/file-upl
     UpdateEmailComponent,
     FileUploadProfileImageComponent,
     FileUploadCoverImageComponent,
+    LoadingComponent,
   ],
   imports: [
     CommonModule,
