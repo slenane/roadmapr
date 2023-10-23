@@ -41,6 +41,10 @@
       background-color: $dark-theme--error--background;
       color: $dark-theme--error--font;
     }
+
+    ng-scrollbar {
+      --scrollbar-thumb-color: lightgrey !important;
+    }
   }
 }
 
@@ -157,6 +161,9 @@
         color: $light-theme--font--header;
       }
     }
+  }
+  ng-scrollbar {
+    --scrollbar-thumb-color: grey !important;
   }
 }
 

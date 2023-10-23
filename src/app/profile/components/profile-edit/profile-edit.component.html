@@ -1,61 +1,67 @@
 <div class="edit-profile">
-  <div class="scroll" cdkScrollable>
-    <mat-card>
-      <mat-card-header>
-        <mat-card-title> {{ "PROFILE.UPDATE.T" | translate }} </mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <mat-tab-group animationDuration="0ms">
-          <mat-tab>
-            <ng-template mat-tab-label>
-              {{ "PROFILE.UPDATE.BASIC_INFORMATION" | translate }}
-            </ng-template>
-            <app-profile-edit-basic-info
-              #basicInfo
-              [user]="user"
-            ></app-profile-edit-basic-info>
-            <app-profile-edit-social
-              #social
-              [user]="user"
-            ></app-profile-edit-social>
-          </mat-tab>
-          <mat-tab>
-            <ng-template mat-tab-label>
-              {{ "PROFILE.UPDATE.SKILLS_AND_INTERESTS" | translate }}
-            </ng-template>
-            <app-profile-edit-education
-              #education
-              [user]="user"
-            ></app-profile-edit-education>
+  <ng-scrollbar>
+    <div scrollViewport cdkScrollable>
+      <div class="scroll">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>
+              {{ "PROFILE.UPDATE.T" | translate }}
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <mat-tab-group animationDuration="0ms">
+              <mat-tab>
+                <ng-template mat-tab-label>
+                  {{ "PROFILE.UPDATE.BASIC_INFORMATION" | translate }}
+                </ng-template>
+                <app-profile-edit-basic-info
+                  #basicInfo
+                  [user]="user"
+                ></app-profile-edit-basic-info>
+                <app-profile-edit-social
+                  #social
+                  [user]="user"
+                ></app-profile-edit-social>
+              </mat-tab>
+              <mat-tab>
+                <ng-template mat-tab-label>
+                  {{ "PROFILE.UPDATE.SKILLS_AND_INTERESTS" | translate }}
+                </ng-template>
+                <app-profile-edit-education
+                  #education
+                  [user]="user"
+                ></app-profile-edit-education>
 
-            <div class="form-grid">
-              <app-profile-edit-languages
-                #languages
-                [user]="user"
-              ></app-profile-edit-languages>
+                <div class="form-grid">
+                  <app-profile-edit-languages
+                    #languages
+                    [user]="user"
+                  ></app-profile-edit-languages>
 
-              <app-profile-edit-interests
-                #interests
-                [user]="user"
-              ></app-profile-edit-interests>
+                  <app-profile-edit-interests
+                    #interests
+                    [user]="user"
+                  ></app-profile-edit-interests>
+                </div>
+              </mat-tab>
+            </mat-tab-group>
+
+            <div class="actions">
+              <button mat-button (click)="onCancel()">{{
+                "ACTIONS.CANCEL" | translate
+              }}</button>
+              <button
+                type="button"
+                mat-raised-button
+                color="primary"
+                (click)="onSave()"
+                cdkFocusInitial
+                >{{ "ACTIONS.SAVE" | translate }}</button
+              >
             </div>
-          </mat-tab>
-        </mat-tab-group>
-
-        <div class="actions">
-          <button mat-button (click)="onCancel()">{{
-            "ACTIONS.CANCEL" | translate
-          }}</button>
-          <button
-            type="button"
-            mat-raised-button
-            color="primary"
-            (click)="onSave()"
-            cdkFocusInitial
-            >{{ "ACTIONS.SAVE" | translate }}</button
-          >
-        </div>
-      </mat-card-content>
-    </mat-card>
-  </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </ng-scrollbar>
 </div>
