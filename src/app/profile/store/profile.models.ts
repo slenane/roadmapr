@@ -14,8 +14,8 @@ export interface Profile {
   bio: string;
   languagesSpoken: any[];
   interests: {
-    professional_interests: any[];
-    personal_interests: any[];
+    professionalInterests: any[];
+    personalInterests: any[];
   };
   previousEducation: PreviousEducationItem[];
   github?: {

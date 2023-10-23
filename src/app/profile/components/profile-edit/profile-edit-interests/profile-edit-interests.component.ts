@@ -39,8 +39,8 @@ export class ProfileEditInterestsComponent implements OnInit {
 
   updateForm(user: any) {
     this.form.patchValue({
-      personalCtrl: user.interests.personal_interests,
-      professionalCtrl: user.interests.professional_interests,
+      personalCtrl: user.interests.personalInterests,
+      professionalCtrl: user.interests.professionalInterests,
     });
   }
 }
