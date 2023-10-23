@@ -48,8 +48,8 @@ export class ProfileEditComponent implements OnInit {
         portfolio: this.social.form.value.portfolioCtrl,
       },
       interests: {
-        personal_interests: this.interests.form.value.personalCtrl,
-        professional_interests: this.interests.form.value.professionalCtrl,
+        personalInterests: this.interests.form.value.personalCtrl,
+        professionalInterests: this.interests.form.value.professionalCtrl,
       },
       languagesSpoken: this.languages.form.value.languagesCtrl,
       location: this.basicInfo.form.value.locationCtrl,

@@ -26,8 +26,8 @@ export const profileInitialState: Profile = {
   languagesSpoken: [],
   previousEducation: [],
   interests: {
-    professional_interests: [],
-    personal_interests: [],
+    professionalInterests: [],
+    personalInterests: [],
   },
   stack: [],
   education: "",
