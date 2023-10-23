@@ -1,66 +1,70 @@
 <div class="profile-main">
-  <div class="scroll" cdkScrollable>
-    <section>
-      <div class="profile-header">
-        <h1>{{ user.firstName }} {{ user.lastName }}</h1>
-        <p
-          >{{ user.path.name | translate }}
-          <img
-            *ngFor="let item of user.stack"
-            class="app-stack-icon profile-stack-icon"
-            src="/assets/images/stack/{{ item.name }}-original.svg"
-            alt="Stack Icon"
-          />
-        </p>
+  <ng-scrollbar>
+    <div scrollViewport cdkScrollable>
+      <div class="scroll">
+        <section>
+          <div class="profile-header">
+            <h1>{{ user.firstName }} {{ user.lastName }}</h1>
+            <p
+              >{{ user.path.name | translate }}
+              <img
+                *ngFor="let item of user.stack"
+                class="app-stack-icon profile-stack-icon"
+                src="/assets/images/stack/{{ item.name }}-original.svg"
+                alt="Stack Icon"
+              />
+            </p>
+          </div>
+
+          <div class="profile-body">
+            <div class="profile-section">
+              <div class="bio">{{ user.bio }}</div>
+            </div>
+
+            <div class="profile-section">
+              <div class="section-header">{{
+                "PROFILE.HEADERS.TECHNICAL_EXPERIENCE" | translate
+              }}</div>
+              <ng-container *ngFor="let item of user.employmentList">
+                <app-profile-content-employment
+                  *ngIf="item.startDate"
+                  [employment]="item"
+                ></app-profile-content-employment>
+              </ng-container>
+            </div>
+
+            <div class="profile-section">
+              <div class="section-header">{{
+                "PROFILE.HEADERS.PROJECTS" | translate
+              }}</div>
+              <ng-container *ngFor="let item of user.projectList">
+                <app-profile-content-projects
+                  *ngIf="item.startDate"
+                  [project]="item"
+                ></app-profile-content-projects>
+              </ng-container>
+            </div>
+
+            <div class="profile-section">
+              <div class="section-header">{{
+                "PROFILE.HEADERS.EDUCATION" | translate
+              }}</div>
+              <ng-container *ngFor="let item of user.educationList">
+                <app-profile-content-education
+                  *ngIf="item.startDate"
+                  [education]="item"
+                ></app-profile-content-education>
+              </ng-container>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <app-profile-content-personal
+            [user]="user"
+          ></app-profile-content-personal>
+        </section>
       </div>
-
-      <div class="profile-body">
-        <div class="profile-section">
-          <div class="bio">{{ user.bio }}</div>
-        </div>
-
-        <div class="profile-section">
-          <div class="section-header">{{
-            "PROFILE.HEADERS.TECHNICAL_EXPERIENCE" | translate
-          }}</div>
-          <ng-container *ngFor="let item of user.employmentList">
-            <app-profile-content-employment
-              *ngIf="item.startDate"
-              [employment]="item"
-            ></app-profile-content-employment>
-          </ng-container>
-        </div>
-
-        <div class="profile-section">
-          <div class="section-header">{{
-            "PROFILE.HEADERS.PROJECTS" | translate
-          }}</div>
-          <ng-container *ngFor="let item of user.projectList">
-            <app-profile-content-projects
-              *ngIf="item.startDate"
-              [project]="item"
-            ></app-profile-content-projects>
-          </ng-container>
-        </div>
-
-        <div class="profile-section">
-          <div class="section-header">{{
-            "PROFILE.HEADERS.EDUCATION" | translate
-          }}</div>
-          <ng-container *ngFor="let item of user.educationList">
-            <app-profile-content-education
-              *ngIf="item.startDate"
-              [education]="item"
-            ></app-profile-content-education>
-          </ng-container>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <app-profile-content-personal
-        [user]="user"
-      ></app-profile-content-personal>
-    </section>
-  </div>
+    </div>
+  </ng-scrollbar>
 </div>

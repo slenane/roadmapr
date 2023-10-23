@@ -22,94 +22,108 @@
     </div>
   </div>
 
-  <div class="scroll" cdkScrollable>
-    <div cdkDropListGroup class="drag-group-container">
-      <div
-        cdkDropList
-        #todoList="cdkDropList"
-        [cdkDropListData]="todo"
-        class="drag-group-items"
-        id="todo"
-        (cdkDropListDropped)="drop($event)"
-      >
-        <div class="no-item-message" *ngIf="projects && todo && !todo.length">
-          <span class="material-symbols-outlined"> add </span>
-          <p class="message-primary">{{
-            "PROJECTS.EMPTY_LIST.TO_DO_HEADER" | translate
-          }}</p>
-          <p class="message-secondary">{{
-            "PROJECTS.EMPTY_LIST.TO_DO_MESSAGE" | translate
-          }}</p>
-        </div>
-        <div *ngFor="let data of todo" class="drag-group-item" cdkDrag>
-          <app-project
-            *ngIf="matchesFilters(data)"
-            [data]="data"
-            [selectedView]="selectedView"
-            (pinItem)="onPinToggle($event, todo)"
+  <ng-scrollbar>
+    <div scrollViewport cdkScrollable>
+      <div class="scroll">
+        <div cdkDropListGroup class="drag-group-container">
+          <div
+            cdkDropList
+            #todoList="cdkDropList"
+            [cdkDropListData]="todo"
+            class="drag-group-items"
+            id="todo"
+            (cdkDropListDropped)="drop($event)"
           >
-          </app-project>
-        </div>
-      </div>
+            <div
+              class="no-item-message"
+              *ngIf="projects && todo && !todo.length"
+            >
+              <span class="material-symbols-outlined"> add </span>
+              <p class="message-primary">{{
+                "PROJECTS.EMPTY_LIST.TO_DO_HEADER" | translate
+              }}</p>
+              <p class="message-secondary">{{
+                "PROJECTS.EMPTY_LIST.TO_DO_MESSAGE" | translate
+              }}</p>
+            </div>
+            <div *ngFor="let data of todo" class="drag-group-item" cdkDrag>
+              <app-project
+                *ngIf="matchesFilters(data)"
+                [data]="data"
+                [selectedView]="selectedView"
+                (pinItem)="onPinToggle($event, todo)"
+              >
+              </app-project>
+            </div>
+          </div>
 
-      <div
-        cdkDropList
-        #inProgressList="cdkDropList"
-        [cdkDropListData]="inProgress"
-        class="drag-group-items"
-        id="inProgress"
-        (cdkDropListDropped)="drop($event)"
-      >
-        <div
-          class="no-item-message"
-          *ngIf="projects && inProgress && !inProgress.length"
-        >
-          <span class="material-symbols-outlined"> add </span>
-          <p class="message-primary">{{
-            "PROJECTS.EMPTY_LIST.IN_PROGRESS_HEADER" | translate
-          }}</p>
-          <p class="message-secondary">{{
-            "PROJECTS.EMPTY_LIST.IN_PROGRESS_MESSAGE" | translate
-          }}</p>
-        </div>
-        <div *ngFor="let data of inProgress" class="drag-group-item" cdkDrag>
-          <app-project
-            *ngIf="matchesFilters(data)"
-            [data]="data"
-            [selectedView]="selectedView"
-            (pinItem)="onPinToggle($event, inProgress)"
+          <div
+            cdkDropList
+            #inProgressList="cdkDropList"
+            [cdkDropListData]="inProgress"
+            class="drag-group-items"
+            id="inProgress"
+            (cdkDropListDropped)="drop($event)"
           >
-          </app-project>
-        </div>
-      </div>
+            <div
+              class="no-item-message"
+              *ngIf="projects && inProgress && !inProgress.length"
+            >
+              <span class="material-symbols-outlined"> add </span>
+              <p class="message-primary">{{
+                "PROJECTS.EMPTY_LIST.IN_PROGRESS_HEADER" | translate
+              }}</p>
+              <p class="message-secondary">{{
+                "PROJECTS.EMPTY_LIST.IN_PROGRESS_MESSAGE" | translate
+              }}</p>
+            </div>
+            <div
+              *ngFor="let data of inProgress"
+              class="drag-group-item"
+              cdkDrag
+            >
+              <app-project
+                *ngIf="matchesFilters(data)"
+                [data]="data"
+                [selectedView]="selectedView"
+                (pinItem)="onPinToggle($event, inProgress)"
+              >
+              </app-project>
+            </div>
+          </div>
 
-      <div
-        cdkDropList
-        #doneList="cdkDropList"
-        [cdkDropListData]="done"
-        class="drag-group-items"
-        id="done"
-        (cdkDropListDropped)="drop($event)"
-      >
-        <div class="no-item-message" *ngIf="projects && done && !done.length">
-          <span class="material-symbols-outlined"> add </span>
-          <p class="message-primary">{{
-            "PROJECTS.EMPTY_LIST.DONE_HEADER" | translate
-          }}</p>
-          <p class="message-secondary">{{
-            "PROJECTS.EMPTY_LIST.DONE_MESSAGE" | translate
-          }}</p>
-        </div>
-        <div *ngFor="let data of done" class="drag-group-item" cdkDrag>
-          <app-project
-            *ngIf="matchesFilters(data)"
-            [data]="data"
-            [selectedView]="selectedView"
-            (pinItem)="onPinToggle($event, inProgress)"
+          <div
+            cdkDropList
+            #doneList="cdkDropList"
+            [cdkDropListData]="done"
+            class="drag-group-items"
+            id="done"
+            (cdkDropListDropped)="drop($event)"
           >
-          </app-project>
+            <div
+              class="no-item-message"
+              *ngIf="projects && done && !done.length"
+            >
+              <span class="material-symbols-outlined"> add </span>
+              <p class="message-primary">{{
+                "PROJECTS.EMPTY_LIST.DONE_HEADER" | translate
+              }}</p>
+              <p class="message-secondary">{{
+                "PROJECTS.EMPTY_LIST.DONE_MESSAGE" | translate
+              }}</p>
+            </div>
+            <div *ngFor="let data of done" class="drag-group-item" cdkDrag>
+              <app-project
+                *ngIf="matchesFilters(data)"
+                [data]="data"
+                [selectedView]="selectedView"
+                (pinItem)="onPinToggle($event, inProgress)"
+              >
+              </app-project>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </ng-scrollbar>
 </div>

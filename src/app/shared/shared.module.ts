@@ -22,6 +22,7 @@ import { AlertsService } from "./services/alerts.service";
 import { FileUploadProfileImageComponent } from "./components/file-upload/file-upload-profile-image/file-upload-profile-image.component";
 import { FileUploadCoverImageComponent } from "./components/file-upload/file-upload-cover-image/file-upload-cover-image.component";
 import { LoadingComponent } from "./components/loading/loading.component";
+import { NgScrollbarModule } from "ngx-scrollbar";
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { LoadingComponent } from "./components/loading/loading.component";
     FileUploadProfileImageComponent,
     FileUploadCoverImageComponent,
     LoadingComponent,
+    NgScrollbarModule,
   ],
   imports: [
     CommonModule,
