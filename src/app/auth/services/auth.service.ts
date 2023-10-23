@@ -87,7 +87,11 @@ export class AuthService {
     );
   }
 
-  public logout(): void {
+  logout(): Observable<any> {
+    return this.apiService.get(this.urlService.generate(API.AUTH_LOGOUT));
+  }
+
+  clearUserData(): void {
     this.token = "";
     this.authenticated.next(false);
     this.clearLocalStorage();
