@@ -6,7 +6,7 @@ interface Action {
   type: string;
 }
 
-const initialState: Settings = {
+export const settingsInitialState: Settings = {
   userId: "",
   theme: "dark",
   preferredLanguage: "en",
@@ -20,10 +20,11 @@ const initialState: Settings = {
     username: "",
   },
   hasPassword: false,
+  emailUpdatePending: "",
 };
 
 const SettingsReducer = createReducer(
-  initialState,
+  settingsInitialState,
   on(SettingsActions.GetSettingsSuccess, (state, { payload }) => {
     return { ...state, ...payload };
   }),

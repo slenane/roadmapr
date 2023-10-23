@@ -52,6 +52,24 @@ export class SettingsEffects {
     )
   );
 
+  updateEmail$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(settingsActions.UPDATE_EMAIL),
+      switchMap((payload: any) =>
+        this.settingsService.updateEmail(payload.id, payload.email).pipe(
+          map(({ successMessage, successValue }) => {
+            this.alertsService.successAlert(successMessage, successValue);
+            return settingsActions.UpdateEmailSuccess();
+          }),
+          catchError((error) => {
+            this.alertsService.errorAlert(error.error);
+            return of(settingsActions.UpdateEmailError());
+          })
+        )
+      )
+    )
+  );
+
   updatePassword$ = createEffect(() =>
     this.actions$.pipe(
       ofType(settingsActions.UPDATE_PASSWORD),

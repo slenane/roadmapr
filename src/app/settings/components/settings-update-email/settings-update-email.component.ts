@@ -36,7 +36,7 @@ export class SettingsUpdateEmailComponent implements OnInit {
       const email = this.emailUpdate.form.value.emailCtrl;
       this.onSaveEmail.emit(email);
       this.emailUpdate.form.reset();
-      this.emailUpdate.form.patchValue({ emailCtrl: email });
+      this.emailUpdate.form.patchValue({ emailCtrl: this.email });
     }
   }
 }

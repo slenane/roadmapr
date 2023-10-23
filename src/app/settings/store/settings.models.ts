@@ -12,4 +12,5 @@ export interface Settings {
     username: string;
   };
   hasPassword: boolean;
+  emailUpdatePending: string;
 }

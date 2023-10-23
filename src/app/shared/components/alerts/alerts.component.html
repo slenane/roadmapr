@@ -1,5 +1,5 @@
 <span
-  >{{ data | translate }}
+  >{{ data.message | translate : { value: data.value } }}
   <button mat-button (click)="onActionClick()">{{
     "ALERTS.DISMISS" | translate
   }}</button></span

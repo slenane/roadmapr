@@ -27,6 +27,16 @@ export class SettingsService {
     );
   }
 
+  public updateEmail(
+    id: string,
+    email: string
+  ): Observable<{ successMessage: string; successValue: string }> {
+    return this.apiService.patch(
+      this.urlService.generate(API.SETTINGS_UPDATE_EMAIL, id),
+      email
+    );
+  }
+
   public updatePassword(
     id: string,
     password: any

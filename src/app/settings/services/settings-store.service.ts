@@ -30,6 +30,14 @@ export class SettingsStoreService {
     });
   }
 
+  updateEmail(id: string, email: any) {
+    this.store.dispatch({
+      type: settingsActions.UPDATE_EMAIL,
+      id,
+      email,
+    });
+  }
+
   updatePassword(id: string, password: any) {
     this.store.dispatch({
       type: settingsActions.UPDATE_PASSWORD,
