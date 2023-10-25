@@ -9,7 +9,8 @@
   },
   "ROUTES": {
     "LOGIN": "roadmapr",
-    "REGISTER": "roadmapr",
+    "RESET_PASSWORD": "Reset Password | roadmapr",
+    "REGISTER": "Register | roadmapr",
     "REDIRECT": "Redirecting... | roadmapr",
     "ROADMAP": "Roadmap | roadmapr",
     "EDUCATION": "Education | roadmapr",
@@ -174,6 +175,7 @@
   "AUTH": {
     "LOG_IN": {
       "T": "Log In",
+      "FORGOT_PASSWORD": "Forgot Password?",
       "NOT_REGISTERED": "Not Registered?",
       "EMAIL_VERIFIED": "Email verified successfully! Please login to continue"
     },

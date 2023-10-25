@@ -1,7 +1,14 @@
 <div class="landing-grid">
   <div class="landing-grid__1"> </div>
   <div class="landing-grid__2">
-    <app-register *ngIf="isRegistering" [theme]="currentTheme"></app-register>
-    <app-log-in *ngIf="!isRegistering" [theme]="currentTheme"></app-log-in>
+    <app-reset-password *ngIf="resetPassword"></app-reset-password>
+    <app-register
+      *ngIf="!resetPassword && isRegistering"
+      [theme]="currentTheme"
+    ></app-register>
+    <app-log-in
+      *ngIf="!resetPassword && !isRegistering"
+      [theme]="currentTheme"
+    ></app-log-in>
   </div>
 </div>

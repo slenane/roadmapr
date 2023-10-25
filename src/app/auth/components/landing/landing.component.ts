@@ -15,6 +15,7 @@ export class LandingComponent implements OnInit {
   public theme$: Observable<string>;
   public currentTheme: string;
   public isRegistering: boolean;
+  public resetPassword: boolean;
 
   constructor(
     private location: Location,
@@ -34,6 +35,7 @@ export class LandingComponent implements OnInit {
 
     this.location.onUrlChange((url, state) => {
       this.isRegistering = url === "/register" ? true : false;
+      this.resetPassword = url === "/reset-password" ? true : false;
     });
   }
 }

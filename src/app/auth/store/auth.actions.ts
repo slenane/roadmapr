@@ -3,6 +3,7 @@ import { TokenResponse, User } from "./auth.models";
 
 export const REGISTER = "[Auth] Register";
 export const LOGIN = "[Auth] Login";
+export const SEND_RESET_PASSWORD_EMAIL = "[Auth] Send Reset Password Email";
 export const GITHUB_LOGIN = "[Auth] GitHub login";
 export const GITHUB_UPDATE_EXISTING_USER = "[Auth] GitHub update existing user";
 export const LOGOUT = "[Auth] Log out";
@@ -11,6 +12,8 @@ const REGISTER_SUCCESS = "[Auth] Registered Successfully",
   REGISTER_CLEAR_ERROR = "[Auth] Clear Registration Error",
   LOGIN_SUCCESS = "[Auth] Logged In Successfully",
   LOGIN_ERROR = "[Auth] Log In Error",
+  SEND_RESET_PASSWORD_EMAIL_SUCCESS = "[Auth] Logged In Successfully",
+  SEND_RESET_PASSWORD_EMAIL_ERROR = "[Auth] Log In Error",
   LOGIN_CLEAR_ERROR = "[Auth] Clear Login Error",
   GITHUB_LOGIN_SUCCESS = "[Auth] GitHub Logged In Successfully",
   GITHUB_LOGIN_ERROR = "[Auth] GitHub Log In Error",
@@ -38,6 +41,19 @@ export const LoginSuccess = createAction(
 
 export const LoginError = createAction(LOGIN_ERROR);
 
+export const SendResetPasswordEmail = createAction(
+  SEND_RESET_PASSWORD_EMAIL,
+  props<{ email: string }>()
+);
+
+export const SendResetPasswordEmailSuccess = createAction(
+  SEND_RESET_PASSWORD_EMAIL_SUCCESS
+);
+
+export const SendResetPasswordEmailError = createAction(
+  SEND_RESET_PASSWORD_EMAIL_ERROR
+);
+
 export const clearLoginError = createAction(LOGIN_CLEAR_ERROR);
 
 export const GithubLogin = createAction(GITHUB_LOGIN);
@@ -50,7 +66,8 @@ export const GithubLoginSuccess = createAction(
 export const GithubLoginError = createAction(GITHUB_LOGIN_ERROR);
 
 export const GithubUpdateExistingUser = createAction(
-  GITHUB_UPDATE_EXISTING_USER
+  GITHUB_UPDATE_EXISTING_USER,
+  props<{ userId: string }>()
 );
 
 export const GithubUpdateExistingUserSuccess = createAction(

@@ -87,6 +87,10 @@ export class LogInComponent implements OnInit {
     this.loginPending = false;
   }
 
+  showForgotPassword() {
+    this.location.replaceState("/reset-password");
+  }
+
   showRegister() {
     this.location.replaceState("/register");
   }
