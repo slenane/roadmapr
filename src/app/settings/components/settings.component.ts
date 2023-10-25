@@ -21,10 +21,8 @@ import { settingsInitialState } from "../store/settings.reducer";
 export class SettingsComponent implements OnInit {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
   public settings: Settings;
-
   public languageOptions = LANGUAGE_OPTIONS;
   public themeOptions = THEME_OPTIONS;
-
   public isEditingName: boolean = false;
   public isEditingUsername: boolean = false;
   public isEditingEmail: boolean = false;
@@ -69,6 +67,7 @@ export class SettingsComponent implements OnInit {
         takeUntil(this.ngUnsubscribe)
       )
       .subscribe((settings: Settings) => {
+        if (this.isEditingPassword) this.togglePasswordUpdate(); // Ensure password input closed when update successful
         this.settings = settings;
 
         if (settings.emailUpdatePending) {
@@ -162,6 +161,13 @@ export class SettingsComponent implements OnInit {
   onSavePassword(password: string): void {
     this.settingsStoreService.updatePassword(this.settings.userId, password);
     this.togglePasswordUpdate();
+  }
+
+  onUpdatePassword(passwordConfig: { current: string; new: string }): void {
+    this.settingsStoreService.updateExistingPassword(
+      this.settings.userId,
+      passwordConfig
+    );
   }
 
   deleteAccount(): void {

@@ -39,11 +39,21 @@ export class SettingsService {
 
   public updatePassword(
     id: string,
-    password: any
+    password: string
   ): Observable<{ settings: Settings; successMessage: string }> {
     return this.apiService.patch(
       this.urlService.generate(API.SETTINGS_UPDATE_PASSWORD, id),
       { password }
+    );
+  }
+
+  public updateExistingPassword(
+    id: string,
+    passwordConfig: { current: string; new: string }
+  ): Observable<{ settings: Settings; successMessage: string }> {
+    return this.apiService.patch(
+      this.urlService.generate(API.SETTINGS_UPDATE_EXISTING_PASSWORD, id),
+      passwordConfig
     );
   }
 

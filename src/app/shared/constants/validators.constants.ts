@@ -16,6 +16,15 @@ export const passwordMatchValidator: ValidatorFn = (
     : { mismatch: true };
 };
 
+export function conditionalRequiredValidator(condition: boolean): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+    if (condition && !control.value) {
+      return { required: true };
+    }
+    return null;
+  };
+}
+
 // export const countryMatchValidator: ValidatorFn = (
 //   control: AbstractControl
 // ): ValidationErrors | null => {

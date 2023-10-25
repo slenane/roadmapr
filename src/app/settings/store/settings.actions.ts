@@ -5,6 +5,7 @@ export const GET_SETTINGS = "[Settings] Get Settings";
 export const UPDATE_SETTINGS = "[Settings] Update Settings";
 export const UPDATE_EMAIL = "[Settings] Update Email";
 export const UPDATE_PASSWORD = "[Settings] Update Password";
+export const UPDATE_EXISTING_PASSWORD = "[Settings] Update Existing Password";
 export const DELETE_ACCOUNT = "[Settings] Delete Account";
 
 const GET_SETTINGS_SUCCESS = "[Settings] Settings Loaded Successfully",
@@ -15,6 +16,9 @@ const GET_SETTINGS_SUCCESS = "[Settings] Settings Loaded Successfully",
   UPDATE_EMAIL_ERROR = "[Settings] Email Update Error",
   UPDATE_PASSWORD_SUCCESS = "[Settings] Password Updated Successfully",
   UPDATE_PASSWORD_ERROR = "[Settings] Password Update Error",
+  UPDATE_EXISTING_PASSWORD_SUCCESS =
+    "[Settings] Existing Password Updated Successfully",
+  UPDATE_EXISTING_PASSWORD_ERROR = "[Settings] Existing Password Update Error",
   DELETE_ACCOUNT_SUCCESS = "[Settings] Account Deleted Successfully",
   DELETE_ACCOUNT_ERROR = "[Settings] Account Deletion Error";
 
@@ -47,7 +51,7 @@ export const UpdateSettingsError = createAction(
 
 export const UpdateEmail = createAction(
   UPDATE_EMAIL,
-  props<{ id: string; data: any }>()
+  props<{ id: string; email: any }>()
 );
 
 export const UpdateEmailSuccess = createAction(UPDATE_EMAIL_SUCCESS);
@@ -56,7 +60,7 @@ export const UpdateEmailError = createAction(UPDATE_EMAIL_ERROR);
 
 export const UpdatePassword = createAction(
   UPDATE_PASSWORD,
-  props<{ id: string; data: any }>()
+  props<{ id: string; password: string }>()
 );
 
 export const UpdatePasswordSuccess = createAction(
@@ -66,6 +70,21 @@ export const UpdatePasswordSuccess = createAction(
 
 export const UpdatePasswordError = createAction(
   UPDATE_PASSWORD_ERROR,
+  props<{ payload: string }>()
+);
+
+export const UpdateExistingPassword = createAction(
+  UPDATE_EXISTING_PASSWORD,
+  props<{ id: string; passwordConfig: { current: string; new: string } }>()
+);
+
+export const UpdateExistingPasswordSuccess = createAction(
+  UPDATE_EXISTING_PASSWORD_SUCCESS,
+  props<{ payload: Settings }>()
+);
+
+export const UpdateExistingPasswordError = createAction(
+  UPDATE_EXISTING_PASSWORD_ERROR,
   props<{ payload: string }>()
 );
 

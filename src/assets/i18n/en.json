@@ -163,7 +163,11 @@
         "NOT_FOUND": "Settings not found",
         "EDUCATION_DATA": "Education data could not be deleted",
         "EMPLOYMENT_DATA": "Employment data could not be deleted",
-        "PROJECT_DATA": "Project data could not be deleted"
+        "PROJECT_DATA": "Project data could not be deleted",
+        "CURRENT_PASSWORD_REQUIRED": "Current password required",
+        "NEW_PASSWORD_REQUIRED": "New password required",
+        "PASSWORDS_MATCH": "New password must not be the same as the current password",
+        "CURRENT_PASSWORD_INCORRECT": "Current password is incorrect, please try again"
       }
     }
   },
@@ -311,6 +315,7 @@
       "EMAIL": "Receive notifications by email"
     },
     "PASSWORD": "Password",
+    "CURRENT_PASSWORD": "Verify Current Password *",
     "NEW_PASSWORD": "New Password",
     "NEW_PASSWORD_CONFIRM": "Confirm New Password",
     "PORTFOLIO": "Portfolio",
@@ -349,6 +354,7 @@
       "LOCATION": "Location Required",
       "NATIONALITY": "Nationality Required",
       "PASSWORD": "Password Required",
+      "CURRENT_PASSWORD": "Current Password Required",
       "NEW_PASSWORD": "New Password Required",
       "PASSWORD_CONFIRM": "Password Confirmation Required",
       "ROLE": "Role Required",

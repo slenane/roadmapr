@@ -22,7 +22,7 @@ export class SettingsEffects {
 
   getSettings$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(settingsActions.GET_SETTINGS),
+      ofType(settingsActions.GetSettings),
       switchMap(() =>
         this.settingsService.getSettings().pipe(
           map((payload: Settings) =>
@@ -36,7 +36,7 @@ export class SettingsEffects {
 
   updateSettings$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(settingsActions.UPDATE_SETTINGS),
+      ofType(settingsActions.UpdateSettings),
       switchMap(({ id, data }) =>
         this.settingsService.updateSettings(id, data).pipe(
           map(({ settings, successMessage }) => {
@@ -54,7 +54,7 @@ export class SettingsEffects {
 
   updateEmail$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(settingsActions.UPDATE_EMAIL),
+      ofType(settingsActions.UpdateEmail),
       switchMap((payload: any) =>
         this.settingsService.updateEmail(payload.id, payload.email).pipe(
           map(({ successMessage, successValue }) => {
@@ -72,7 +72,7 @@ export class SettingsEffects {
 
   updatePassword$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(settingsActions.UPDATE_PASSWORD),
+      ofType(settingsActions.UpdatePassword),
       switchMap((payload: any) =>
         this.settingsService.updatePassword(payload.id, payload.password).pipe(
           map(({ settings, successMessage }) => {
@@ -88,9 +88,31 @@ export class SettingsEffects {
     )
   );
 
+  updateExistingPassword$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(settingsActions.UpdateExistingPassword),
+      switchMap((payload: any) =>
+        this.settingsService
+          .updateExistingPassword(payload.id, payload.passwordConfig)
+          .pipe(
+            map(({ settings, successMessage }) => {
+              this.alertsService.successAlert(successMessage);
+              return settingsActions.UpdateExistingPasswordSuccess({
+                payload: settings,
+              });
+            }),
+            catchError((error) => {
+              this.alertsService.errorAlert(error.error);
+              return of(settingsActions.UpdateExistingPasswordError(error));
+            })
+          )
+      )
+    )
+  );
+
   DeleteAccount$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(settingsActions.DELETE_ACCOUNT),
+      ofType(settingsActions.DeleteAccount),
       switchMap(() =>
         this.settingsService.deleteAccount().pipe(
           map(({ successMessage }) => {

@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
 import {
   passwordMatchValidator,
   validPasswordPattern,
+  conditionalRequiredValidator,
 } from "../../../constants/validators.constants";
 
 @Component({
@@ -15,6 +16,9 @@ export class UpdatePasswordComponent implements OnInit {
   public passwordMatch: boolean = false;
   public updatePasswordForm = new FormGroup(
     {
+      currentPasswordCtrl: new FormControl("", [
+        Validators.pattern(validPasswordPattern),
+      ]),
       newPasswordCtrl: new FormControl("", [
         Validators.required,
         Validators.pattern(validPasswordPattern),
@@ -24,8 +28,11 @@ export class UpdatePasswordComponent implements OnInit {
     { validators: passwordMatchValidator }
   );
 
+  @Input() hasPassword: boolean;
   @Output() togglePasswordUpdate: EventEmitter<any> = new EventEmitter();
   @Output() onSavePassword: EventEmitter<string> = new EventEmitter();
+  @Output() onUpdatePassword: EventEmitter<{ current: string; new: string }> =
+    new EventEmitter();
 
   constructor() {}
 
@@ -51,6 +58,10 @@ export class UpdatePasswordComponent implements OnInit {
         }
       }
     });
+
+    this.updatePasswordForm.controls.currentPasswordCtrl.setValidators([
+      conditionalRequiredValidator(this.hasPassword),
+    ]);
   }
 
   isPasswordMatch(): boolean {
@@ -67,7 +78,17 @@ export class UpdatePasswordComponent implements OnInit {
       this.updatePasswordForm.value.newPasswordConfirmCtrl &&
       this.isPasswordMatch()
     ) {
-      this.onSavePassword.emit(this.updatePasswordForm.value.newPasswordCtrl);
+      if (!this.hasPassword) {
+        this.onSavePassword.emit(this.updatePasswordForm.value.newPasswordCtrl);
+      } else if (
+        this.hasPassword &&
+        this.updatePasswordForm.value.currentPasswordCtrl
+      ) {
+        this.onUpdatePassword.emit({
+          current: this.updatePasswordForm.value.currentPasswordCtrl,
+          new: this.updatePasswordForm.value.newPasswordCtrl,
+        });
+      }
     }
   }
 

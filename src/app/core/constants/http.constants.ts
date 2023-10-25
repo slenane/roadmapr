@@ -32,6 +32,7 @@ const AUTH_LOGIN = "/api/auth/login",
   SETTINGS_UPDATE = "/api/settings/edit/",
   SETTINGS_UPDATE_EMAIL = "/api/settings/update-email/",
   SETTINGS_UPDATE_PASSWORD = "/api/settings/update-password/",
+  SETTINGS_UPDATE_EXISTING_PASSWORD = "/api/settings/update-existing-password/",
   SETTINGS_DELETE_ACCOUNT = "/api/settings/delete-account/";
 
 export const API: any = {
@@ -69,5 +70,6 @@ export const API: any = {
   SETTINGS_UPDATE,
   SETTINGS_UPDATE_EMAIL,
   SETTINGS_UPDATE_PASSWORD,
+  SETTINGS_UPDATE_EXISTING_PASSWORD,
   SETTINGS_DELETE_ACCOUNT,
 };
