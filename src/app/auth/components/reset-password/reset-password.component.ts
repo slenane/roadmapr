@@ -1,7 +1,8 @@
-import { Component, OnInit } from "@angular/core";
-import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { Location } from "@angular/common";
+import { ActivatedRoute } from "@angular/router";
 import { AuthStoreService } from "../../services/auth-store.service";
+import { UpdatePasswordInputsComponent } from "src/app/shared/components/forms/update-password/update-password-inputs/update-password-inputs.component";
 
 @Component({
   selector: "app-reset-password",
@@ -9,22 +10,32 @@ import { AuthStoreService } from "../../services/auth-store.service";
   styleUrls: ["./reset-password.component.scss"],
 })
 export class ResetPasswordComponent implements OnInit {
-  emailSending: boolean = false;
+  public resetPasswordPending: boolean = false;
+  public verificationToken: string;
 
-  public form = new FormGroup({
-    emailCtrl: new FormControl("", [Validators.required, Validators.email]),
-  });
+  @ViewChild("inputs") inputs: UpdatePasswordInputsComponent;
 
   constructor(
+    private activatedRoute: ActivatedRoute,
     private authStoreService: AuthStoreService,
     private location: Location
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.activatedRoute.queryParams.subscribe((params: any) => {
+      if (params["token"]) {
+        this.verificationToken = params["token"];
+      }
+    });
+  }
 
-  sendResetPasswordEmail() {
-    if (this.form.value.emailCtrl) {
-      this.authStoreService.sendPasswordResetEmail(this.form.value.emailCtrl);
+  resetPassword() {
+    console.log(this.verificationToken);
+    console.log(this.inputs.form.valid);
+    console.log(this.inputs.form.value);
+    const password = this.inputs.form.value.newPasswordCtrl;
+    if (this.verificationToken && this.inputs.form.valid && password) {
+      this.authStoreService.resetPassword(this.verificationToken, password);
     }
   }
 

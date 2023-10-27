@@ -46,6 +46,13 @@ export class AuthService {
     );
   }
 
+  public resetPassword(token: string, password: string): Observable<any> {
+    return this.apiService.patch(
+      this.urlService.generate(API.AUTH_RESET_PASSWORD),
+      { token, password }
+    );
+  }
+
   public getGithubAuthPage(): Observable<string> {
     return this.apiService.get(
       this.urlService.generate(API.AUTH_GITHUB_AUTH_PAGE)

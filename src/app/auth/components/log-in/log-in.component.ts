@@ -88,7 +88,7 @@ export class LogInComponent implements OnInit {
   }
 
   showForgotPassword() {
-    this.location.replaceState("/reset-password");
+    this.location.replaceState("/send-reset-password-email");
   }
 
   showRegister() {

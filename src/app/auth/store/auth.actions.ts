@@ -4,6 +4,7 @@ import { TokenResponse, User } from "./auth.models";
 export const REGISTER = "[Auth] Register";
 export const LOGIN = "[Auth] Login";
 export const SEND_RESET_PASSWORD_EMAIL = "[Auth] Send Reset Password Email";
+export const RESET_PASSWORD = "[Auth] Reset Password";
 export const GITHUB_LOGIN = "[Auth] GitHub login";
 export const GITHUB_UPDATE_EXISTING_USER = "[Auth] GitHub update existing user";
 export const LOGOUT = "[Auth] Log out";
@@ -12,8 +13,13 @@ const REGISTER_SUCCESS = "[Auth] Registered Successfully",
   REGISTER_CLEAR_ERROR = "[Auth] Clear Registration Error",
   LOGIN_SUCCESS = "[Auth] Logged In Successfully",
   LOGIN_ERROR = "[Auth] Log In Error",
-  SEND_RESET_PASSWORD_EMAIL_SUCCESS = "[Auth] Logged In Successfully",
-  SEND_RESET_PASSWORD_EMAIL_ERROR = "[Auth] Log In Error",
+  SEND_RESET_PASSWORD_EMAIL_SUCCESS =
+    "[Auth] Send Reset Password Email Successfully",
+  SEND_RESET_PASSWORD_EMAIL_ERROR = "[Auth] Send Reset Password Email Error",
+  SEND_RESET_PASSWORD_EMAIL_CLEAR_ERROR =
+    "[Auth] Send Reset Password Email Clear Error",
+  RESET_PASSWORD_SUCCESS = "[Auth] Reset Password Successfully",
+  RESET_PASSWORD_ERROR = "[Auth] Reset Password Error",
   LOGIN_CLEAR_ERROR = "[Auth] Clear Login Error",
   GITHUB_LOGIN_SUCCESS = "[Auth] GitHub Logged In Successfully",
   GITHUB_LOGIN_ERROR = "[Auth] GitHub Log In Error",
@@ -53,6 +59,19 @@ export const SendResetPasswordEmailSuccess = createAction(
 export const SendResetPasswordEmailError = createAction(
   SEND_RESET_PASSWORD_EMAIL_ERROR
 );
+
+export const clearSendResetPasswordEmailError = createAction(
+  SEND_RESET_PASSWORD_EMAIL_CLEAR_ERROR
+);
+
+export const ResetPassword = createAction(
+  RESET_PASSWORD,
+  props<{ token: string; password: string }>()
+);
+
+export const ResetPasswordSuccess = createAction(RESET_PASSWORD_SUCCESS);
+
+export const ResetPasswordError = createAction(RESET_PASSWORD_ERROR);
 
 export const clearLoginError = createAction(LOGIN_CLEAR_ERROR);
 

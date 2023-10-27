@@ -63,13 +63,29 @@ export class AuthEffects {
       ofType(authActions.SendResetPasswordEmail),
       switchMap(({ email }) =>
         this.authService.sendResetPasswordEmail(email).pipe(
-          map(() => {
-            this.router.navigateByUrl(ROUTES.LOGIN);
-            return authActions.SendResetPasswordEmailSuccess();
-          }),
+          map(() => authActions.SendResetPasswordEmailSuccess()),
           catchError((error) => {
             this.alertsService.errorAlert(error.error);
             return of(authActions.SendResetPasswordEmailError());
+          })
+        )
+      )
+    )
+  );
+
+  resetPassword$ = createEffect((): any =>
+    this.actions$.pipe(
+      ofType(authActions.ResetPassword),
+      switchMap(({ token, password }) =>
+        this.authService.resetPassword(token, password).pipe(
+          map(({ successMessage }) => {
+            this.alertsService.successAlert(successMessage);
+            this.router.navigateByUrl(ROUTES.LOGIN);
+            return authActions.ResetPasswordSuccess();
+          }),
+          catchError((error) => {
+            this.alertsService.errorAlert(error.error);
+            return of(authActions.ResetPasswordError());
           })
         )
       )

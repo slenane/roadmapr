@@ -17,6 +17,7 @@ import { GitAuthComponent } from "../auth/components/git-auth/git-auth.component
 import { ExtUrlResolverService } from "./services/ext-url-resolver.service";
 import { CoreModule } from "../core/core.module";
 import { AuthRoutingModule } from "./auth-routing.module";
+import { SendResetPasswordEmailComponent } from "./components/send-reset-password-email/send-reset-password-email.component";
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 
 @NgModule({
@@ -25,6 +26,7 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
     LogInComponent,
     RegisterComponent,
     GitAuthComponent,
+    SendResetPasswordEmailComponent,
     ResetPasswordComponent,
   ],
   exports: [

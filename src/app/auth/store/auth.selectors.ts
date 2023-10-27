@@ -15,4 +15,14 @@ export const registrationError = createSelector(
   fromAuth.registrationError
 );
 
+export const sendResetPasswordEmailSuccess = createSelector(
+  getAuthState,
+  fromAuth.sendResetPasswordEmailSuccess
+);
+
+export const sendResetPasswordEmailError = createSelector(
+  getAuthState,
+  fromAuth.sendResetPasswordEmailError
+);
+
 export const loginError = createSelector(getAuthState, fromAuth.loginError);

@@ -9,6 +9,7 @@
   },
   "ROUTES": {
     "LOGIN": "roadmapr",
+    "SEND_RESET_PASSWORD_EMAIL": "Send Reset Password Email | roadmapr",
     "RESET_PASSWORD": "Reset Password | roadmapr",
     "REGISTER": "Register | roadmapr",
     "REDIRECT": "Redirecting... | roadmapr",
@@ -177,7 +178,7 @@
       "T": "Log In",
       "FORGOT_PASSWORD": "Forgot Password?",
       "NOT_REGISTERED": "Not Registered?",
-      "EMAIL_VERIFIED": "Email verified successfully! Please login to continue"
+      "EMAIL_VERIFIED": "Email verified successfully!"
     },
     "LOG_OUT": {
       "T": "Logout",
@@ -186,10 +187,15 @@
     "REGISTER": {
       "T": "Register",
       "ALREADY_REGISTERED": "Already Registered?",
-      "VERIFY_EMAIL_HEADER": "Please verify your email address",
+      "VERIFY_EMAIL_HEADER": "Please verify your email",
       "VERIFY_EMAIL_MESSAGE_1": "A verification email has been sent to ",
       "VERIFY_EMAIL_MESSAGE_2": "If you have not received the verification email within 60 seconds you can resend it by clicking the button below",
+
       "VERIFY_EMAIL_RESEND": "Resend Email"
+    },
+    "RESET_PASSWORD": {
+      "T": "Reset Password",
+      "VERIFY_EMAIL_HEADER": "Please verify your email to reset your password"
     },
     "O_AUTH": {
       "GITHUB_LOGIN": "Log in with GitHub",

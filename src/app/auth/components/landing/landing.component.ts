@@ -1,7 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { Location } from "@angular/common";
-import { Observable } from "rxjs";
-import { ThemeService } from "src/app/core/services/theme.service";
 import { AuthService } from "../../services/auth.service";
 import { ROUTES } from "src/app/core/constants/routes.constants";
 import { Router } from "@angular/router";
@@ -12,30 +10,28 @@ import { Router } from "@angular/router";
   styleUrls: ["./landing.component.scss"],
 })
 export class LandingComponent implements OnInit {
-  public theme$: Observable<string>;
-  public currentTheme: string;
-  public isRegistering: boolean;
-  public resetPassword: boolean;
+  public currentView: string;
 
   constructor(
     private location: Location,
     private router: Router,
-    private themeService: ThemeService,
     private authService: AuthService
-  ) {
-    this.theme$ = this.themeService.selectedTheme;
-  }
+  ) {}
 
   ngOnInit(): void {
-    this.theme$.subscribe((theme: string) => {
-      this.currentTheme = theme;
-    });
-
     if (this.authService.isLoggedIn()) this.router.navigate([ROUTES.DASHBOARD]);
+    this.updateView(this.location.path());
 
     this.location.onUrlChange((url, state) => {
-      this.isRegistering = url === "/register" ? true : false;
-      this.resetPassword = url === "/reset-password" ? true : false;
+      this.updateView(url);
     });
+  }
+
+  updateView(path: string) {
+    if (path === "/login") this.currentView = "login";
+    else if (path === "/register") this.currentView = "register";
+    else if (path === "/send-reset-password-email")
+      this.currentView = "sendResetPasswordEmail";
+    else if (path === "/reset-password") this.currentView = "resetPassword";
   }
 }

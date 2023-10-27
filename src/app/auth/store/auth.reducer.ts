@@ -7,6 +7,8 @@ export interface Auth {
   token?: string | null;
   registrationSuccess?: boolean | null;
   registrationError?: boolean | null;
+  sendResetPasswordEmailSuccess?: boolean | null;
+  sendResetPasswordEmailError?: boolean | null;
   loginError?: boolean | null;
   isLoggedIn: boolean;
 }
@@ -71,6 +73,27 @@ const authReducer = createReducer(
       ...state,
       ...(payload.user ? { user: payload.user._id } : {}),
     };
+  }),
+  on(authActions.SendResetPasswordEmailSuccess, (state) => {
+    return {
+      ...state,
+      sendResetPasswordEmailSuccess: true,
+      sendResetPasswordEmailError: null,
+    };
+  }),
+  on(authActions.SendResetPasswordEmailError, (state) => {
+    return {
+      ...state,
+      sendResetPasswordEmailSuccess: null,
+      sendResetPasswordEmailError: true,
+    };
+  }),
+  on(authActions.clearSendResetPasswordEmailError, (state) => {
+    return {
+      ...state,
+      sendResetPasswordEmailSuccess: null,
+      sendResetPasswordEmailError: null,
+    };
   })
 );
 
@@ -81,4 +104,8 @@ export const reducer = (state: Auth | undefined, action: Action) => {
 export const getUserId = (state: Auth) => state.user;
 export const registrationSuccess = (state: Auth) => state.registrationSuccess;
 export const registrationError = (state: Auth) => state.registrationError;
+export const sendResetPasswordEmailSuccess = (state: Auth) =>
+  state.sendResetPasswordEmailSuccess;
+export const sendResetPasswordEmailError = (state: Auth) =>
+  state.sendResetPasswordEmailError;
 export const loginError = (state: Auth) => state.loginError;
