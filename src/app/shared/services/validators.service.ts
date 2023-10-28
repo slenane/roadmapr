@@ -20,7 +20,7 @@ export class ValidatorsService {
         return of(null);
       } else {
         return control.valueChanges.pipe(
-          debounceTime(400),
+          debounceTime(1000),
           distinctUntilChanged(),
           switchMap(() => {
             return this.authService.checkUniqueUsername(control.value);
@@ -42,7 +42,7 @@ export class ValidatorsService {
         return of(null);
       } else {
         return control.valueChanges.pipe(
-          debounceTime(400),
+          debounceTime(1000),
           distinctUntilChanged(),
           switchMap(() => {
             return this.authService.checkUniqueEmail(control.value);

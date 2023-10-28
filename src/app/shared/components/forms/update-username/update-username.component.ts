@@ -6,6 +6,7 @@ import {
   SimpleChanges,
 } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { validUsernamePattern } from "src/app/shared/constants/validators.constants";
 import { MyErrorStateMatcher } from "src/app/shared/services/error-state-matcher.service";
 import { ValidatorsService } from "src/app/shared/services/validators.service";
 
@@ -18,7 +19,10 @@ export class UpdateUsernameComponent implements OnInit, OnChanges {
   public matcher = new MyErrorStateMatcher();
   public initialUsername: string;
   public form = new FormGroup({
-    usernameCtrl: new FormControl("", [Validators.required]),
+    usernameCtrl: new FormControl("", [
+      Validators.required,
+      Validators.pattern(validUsernamePattern),
+    ]),
   });
 
   @Input() username: string | undefined;

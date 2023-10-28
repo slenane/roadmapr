@@ -193,7 +193,6 @@
       "VERIFY_EMAIL_HEADER": "Please verify your email",
       "VERIFY_EMAIL_MESSAGE_1": "A verification email has been sent to ",
       "VERIFY_EMAIL_MESSAGE_2": "If you have not received the verification email within 60 seconds you can resend it by clicking the button below",
-
       "VERIFY_EMAIL_RESEND": "Resend Email"
     },
     "RESET_PASSWORD": {
@@ -382,6 +381,7 @@
       "PASSWORD_PATTERN_SHORT": "Password does not match pattern",
       "PASSWORD_CONFIRM": "Passwords must match",
       "EMAIL_PATTERN": "Input must be an email",
+      "USERNAME_PATTERN": "Username must not contain spaces",
       "UNIQUE_USERNAME": "This username is already in use",
       "UNIQUE_EMAIL": "This email address is already in use"
     },
