@@ -49,5 +49,8 @@
     <mat-error *ngIf="form.controls.usernameCtrl?.hasError('required')">{{
       "FORMS.REQUIRED.USERNAME" | translate
     }}</mat-error>
+    <mat-error *ngIf="form.controls.usernameCtrl?.hasError('pattern')">{{
+      "FORMS.ERROR.USERNAME_PATTERN" | translate
+    }}</mat-error>
   </mat-form-field>
 </form>
