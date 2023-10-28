@@ -25,18 +25,21 @@ export class ResetPasswordComponent implements OnInit {
     this.activatedRoute.queryParams.subscribe((params: any) => {
       if (params["token"]) {
         this.verificationToken = params["token"];
+      } else {
+        this.showSendResetPasswordEmail();
       }
     });
   }
 
   resetPassword() {
-    console.log(this.verificationToken);
-    console.log(this.inputs.form.valid);
-    console.log(this.inputs.form.value);
     const password = this.inputs.form.value.newPasswordCtrl;
     if (this.verificationToken && this.inputs.form.valid && password) {
       this.authStoreService.resetPassword(this.verificationToken, password);
     }
+  }
+
+  showSendResetPasswordEmail() {
+    this.location.replaceState("/send-reset-password-email");
   }
 
   showLogin() {

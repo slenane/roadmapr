@@ -97,15 +97,18 @@
     "AUTH": {
       "SUCCESS": {
         "GITHUB_LINKED": "GitHub Linked Successfully",
-        "EMAIL_VERIFICATION": "Verification email sent to {{ value }}, please verify your new email"
+        "EMAIL_VERIFICATION": "Verification email sent to {{ value }}, please verify your new email",
+        "PASSWORD_UPDATED": "Password Updated Successfully"
       },
       "ERROR": {
         "USER_NOT_FOUND": "User not found",
         "USERNAME_INVALID": "Username must be of minimum length 2 characters",
         "USERNAME_USED": "Username already in use, please try something else",
         "EMAIL_INVALID": "Email is not valid",
+        "EMAIL_NOT_PROVIDED": "Email not provided",
         "EMAIL_USED": "Email already in use, please log in or try a different email",
         "EMAIL_NOT_VERIFIED": "Please verify your email to continue",
+        "PASSWORD_NOT_PROVIDED": "Password not provided",
         "PASSWORD_INVALID": "Password invalid: Passwords must be at least 6 characters long, contains at least 1 number and 1 special character (!@#$%^&*)",
         "USERNAME_PASSWORD_INVALID": "Invalid Username or Password",
         "TOKEN_NOT_PROVIDED": "Token not provided, please try again",
@@ -195,6 +198,7 @@
     },
     "RESET_PASSWORD": {
       "T": "Reset Password",
+      "BACK_TO_LOGIN": "Back to Login",
       "VERIFY_EMAIL_HEADER": "Please verify your email to reset your password"
     },
     "O_AUTH": {
