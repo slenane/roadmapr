@@ -2,11 +2,7 @@
   <div class="auth-brand">
     <img
       class="menu-brand"
-      [src]="
-        theme === 'dark'
-          ? '/assets/images/logo/logo-dark.png'
-          : '/assets/images/logo/logo.png'
-      "
+      src="/assets/images/logo/logo-dark.png"
       routerLink="/dashboard"
       alt="roadmapr Logo"
     />
@@ -23,11 +19,7 @@
       >
         <img
           class="github-icon"
-          [src]="
-            theme === 'dark'
-              ? '/assets/images/stack/github-original.svg'
-              : '/assets/images/stack/github-alternate.svg'
-          "
+          src="/assets/images/stack/github-original.svg"
           alt="Github Icon"
         />
         <span>{{ "AUTH.O_AUTH.GITHUB_REGISTRATION" | translate }}</span>
@@ -125,10 +117,16 @@
     </p>
 
     <p>{{ "AUTH.REGISTER.VERIFY_EMAIL_MESSAGE_2" | translate }}</p>
-    <button mat-raised-button color="primary" [disabled]="!resendEmailReady">{{
-      resendEmailReady
-        ? ("AUTH.REGISTER.VERIFY_EMAIL_RESEND" | translate)
-        : resendEmailTimeout
-    }}</button>
+    <button
+      mat-raised-button
+      color="primary"
+      [disabled]="!resendEmailReady"
+      (click)="register()"
+      >{{
+        resendEmailReady
+          ? ("AUTH.REGISTER.VERIFY_EMAIL_RESEND" | translate)
+          : resendEmailTimeout
+      }}</button
+    >
   </div>
 </div>

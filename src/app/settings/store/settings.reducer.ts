@@ -33,6 +33,9 @@ const SettingsReducer = createReducer(
   }),
   on(SettingsActions.UpdatePasswordSuccess, (state, { payload }) => {
     return { ...state, ...payload };
+  }),
+  on(SettingsActions.UpdateExistingPasswordSuccess, (state, { payload }) => {
+    return { ...state, ...payload };
   })
 );
 

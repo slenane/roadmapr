@@ -94,8 +94,10 @@
 
                 <app-update-password
                   *ngIf="isEditingPassword"
+                  [hasPassword]="settings.hasPassword"
                   (togglePasswordUpdate)="togglePasswordUpdate()"
                   (onSavePassword)="onSavePassword($event)"
+                  (onUpdatePassword)="onUpdatePassword($event)"
                 ></app-update-password>
               </div>
             </mat-card-content>

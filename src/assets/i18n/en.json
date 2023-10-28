@@ -9,7 +9,9 @@
   },
   "ROUTES": {
     "LOGIN": "roadmapr",
-    "REGISTER": "roadmapr",
+    "SEND_RESET_PASSWORD_EMAIL": "Send Reset Password Email | roadmapr",
+    "RESET_PASSWORD": "Reset Password | roadmapr",
+    "REGISTER": "Register | roadmapr",
     "REDIRECT": "Redirecting... | roadmapr",
     "ROADMAP": "Roadmap | roadmapr",
     "EDUCATION": "Education | roadmapr",
@@ -95,15 +97,18 @@
     "AUTH": {
       "SUCCESS": {
         "GITHUB_LINKED": "GitHub Linked Successfully",
-        "EMAIL_VERIFICATION": "Verification email sent to {{ value }}, please verify your new email"
+        "EMAIL_VERIFICATION": "Verification email sent to {{ value }}, please verify your new email",
+        "PASSWORD_UPDATED": "Password Updated Successfully"
       },
       "ERROR": {
         "USER_NOT_FOUND": "User not found",
         "USERNAME_INVALID": "Username must be of minimum length 2 characters",
         "USERNAME_USED": "Username already in use, please try something else",
         "EMAIL_INVALID": "Email is not valid",
+        "EMAIL_NOT_PROVIDED": "Email not provided",
         "EMAIL_USED": "Email already in use, please log in or try a different email",
         "EMAIL_NOT_VERIFIED": "Please verify your email to continue",
+        "PASSWORD_NOT_PROVIDED": "Password not provided",
         "PASSWORD_INVALID": "Password invalid: Passwords must be at least 6 characters long, contains at least 1 number and 1 special character (!@#$%^&*)",
         "USERNAME_PASSWORD_INVALID": "Invalid Username or Password",
         "TOKEN_NOT_PROVIDED": "Token not provided, please try again",
@@ -163,15 +168,20 @@
         "NOT_FOUND": "Settings not found",
         "EDUCATION_DATA": "Education data could not be deleted",
         "EMPLOYMENT_DATA": "Employment data could not be deleted",
-        "PROJECT_DATA": "Project data could not be deleted"
+        "PROJECT_DATA": "Project data could not be deleted",
+        "CURRENT_PASSWORD_REQUIRED": "Current password required",
+        "NEW_PASSWORD_REQUIRED": "New password required",
+        "PASSWORDS_MATCH": "New password must not be the same as the current password",
+        "CURRENT_PASSWORD_INCORRECT": "Current password is incorrect, please try again"
       }
     }
   },
   "AUTH": {
     "LOG_IN": {
       "T": "Log In",
+      "FORGOT_PASSWORD": "Forgot Password?",
       "NOT_REGISTERED": "Not Registered?",
-      "EMAIL_VERIFIED": "Email verified successfully! Please login to continue"
+      "EMAIL_VERIFIED": "Email verified successfully!"
     },
     "LOG_OUT": {
       "T": "Logout",
@@ -180,10 +190,16 @@
     "REGISTER": {
       "T": "Register",
       "ALREADY_REGISTERED": "Already Registered?",
-      "VERIFY_EMAIL_HEADER": "Please verify your email address",
+      "VERIFY_EMAIL_HEADER": "Please verify your email",
       "VERIFY_EMAIL_MESSAGE_1": "A verification email has been sent to ",
       "VERIFY_EMAIL_MESSAGE_2": "If you have not received the verification email within 60 seconds you can resend it by clicking the button below",
+
       "VERIFY_EMAIL_RESEND": "Resend Email"
+    },
+    "RESET_PASSWORD": {
+      "T": "Reset Password",
+      "BACK_TO_LOGIN": "Back to Login",
+      "VERIFY_EMAIL_HEADER": "Please verify your email to reset your password"
     },
     "O_AUTH": {
       "GITHUB_LOGIN": "Log in with GitHub",
@@ -311,6 +327,7 @@
       "EMAIL": "Receive notifications by email"
     },
     "PASSWORD": "Password",
+    "CURRENT_PASSWORD": "Verify Current Password *",
     "NEW_PASSWORD": "New Password",
     "NEW_PASSWORD_CONFIRM": "Confirm New Password",
     "PORTFOLIO": "Portfolio",
@@ -349,6 +366,7 @@
       "LOCATION": "Location Required",
       "NATIONALITY": "Nationality Required",
       "PASSWORD": "Password Required",
+      "CURRENT_PASSWORD": "Current Password Required",
       "NEW_PASSWORD": "New Password Required",
       "PASSWORD_CONFIRM": "Password Confirmation Required",
       "ROLE": "Role Required",

@@ -1,5 +1,7 @@
 const AUTH_LOGIN = "/api/auth/login",
   AUTH_REGISTER = "/api/auth/register",
+  AUTH_SEND_RESET_PASSWORD_EMAIL = "/api/auth/send-reset-password-email/",
+  AUTH_RESET_PASSWORD = "/api/auth/reset-password/",
   AUTH_GITHUB_AUTH_PAGE = "/api/auth/github/auth-page",
   AUTH_GITHUB_ACCESS_TOKEN = "/api/auth/github/get-access-token",
   AUTH_GITHUB_LOGIN = "/api/auth/github/get-user-details/",
@@ -32,11 +34,14 @@ const AUTH_LOGIN = "/api/auth/login",
   SETTINGS_UPDATE = "/api/settings/edit/",
   SETTINGS_UPDATE_EMAIL = "/api/settings/update-email/",
   SETTINGS_UPDATE_PASSWORD = "/api/settings/update-password/",
+  SETTINGS_UPDATE_EXISTING_PASSWORD = "/api/settings/update-existing-password/",
   SETTINGS_DELETE_ACCOUNT = "/api/settings/delete-account/";
 
 export const API: any = {
   AUTH_LOGIN,
   AUTH_REGISTER,
+  AUTH_SEND_RESET_PASSWORD_EMAIL,
+  AUTH_RESET_PASSWORD,
   AUTH_GITHUB_AUTH_PAGE,
   AUTH_GITHUB_ACCESS_TOKEN,
   AUTH_GITHUB_LOGIN,
@@ -69,5 +74,6 @@ export const API: any = {
   SETTINGS_UPDATE,
   SETTINGS_UPDATE_EMAIL,
   SETTINGS_UPDATE_PASSWORD,
+  SETTINGS_UPDATE_EXISTING_PASSWORD,
   SETTINGS_DELETE_ACCOUNT,
 };

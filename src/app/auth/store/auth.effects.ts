@@ -26,7 +26,7 @@ export class AuthEffects {
 
   register$ = createEffect((): any =>
     this.actions$.pipe(
-      ofType(authActions.REGISTER),
+      ofType(authActions.Register),
       switchMap(({ userDetails }) =>
         this.authService.register(userDetails).pipe(
           map(() => authActions.RegisterSuccess()),
@@ -41,7 +41,7 @@ export class AuthEffects {
 
   login$ = createEffect((): any =>
     this.actions$.pipe(
-      ofType(authActions.LOGIN),
+      ofType(authActions.Login),
       switchMap(({ userDetails }) =>
         this.authService.login(userDetails).pipe(
           map((payload) => {
@@ -58,9 +58,43 @@ export class AuthEffects {
     )
   );
 
+  sendResetPasswordEmail$ = createEffect((): any =>
+    this.actions$.pipe(
+      ofType(authActions.SendResetPasswordEmail),
+      switchMap(({ email }) =>
+        this.authService.sendResetPasswordEmail(email).pipe(
+          map(() => authActions.SendResetPasswordEmailSuccess()),
+          catchError((error) => {
+            this.alertsService.errorAlert(error.error);
+            return of(authActions.SendResetPasswordEmailError());
+          })
+        )
+      )
+    )
+  );
+
+  resetPassword$ = createEffect((): any =>
+    this.actions$.pipe(
+      ofType(authActions.ResetPassword),
+      switchMap(({ token, password }) =>
+        this.authService.resetPassword(token, password).pipe(
+          map(({ successMessage }) => {
+            this.alertsService.successAlert(successMessage);
+            this.router.navigateByUrl(ROUTES.LOGIN);
+            return authActions.ResetPasswordSuccess();
+          }),
+          catchError((error) => {
+            this.alertsService.errorAlert(error.error);
+            return of(authActions.ResetPasswordError());
+          })
+        )
+      )
+    )
+  );
+
   githubLogin$ = createEffect((): any =>
     this.actions$.pipe(
-      ofType(authActions.GITHUB_LOGIN),
+      ofType(authActions.GithubLogin),
       switchMap(() =>
         this.authService.githubLogin().pipe(
           map((payload) => {
@@ -79,7 +113,7 @@ export class AuthEffects {
 
   githubUpdateExistingUser$ = createEffect((): any =>
     this.actions$.pipe(
-      ofType(authActions.GITHUB_UPDATE_EXISTING_USER),
+      ofType(authActions.GithubUpdateExistingUser),
       switchMap(({ userId }) =>
         this.authService.githubUpdateExistingUser(userId).pipe(
           map(({ user, successMessage }) => {
@@ -101,7 +135,7 @@ export class AuthEffects {
 
   logout$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(authActions.LOGOUT),
+      ofType(authActions.Logout),
       switchMap(() =>
         this.authService.logout().pipe(
           map(() => {

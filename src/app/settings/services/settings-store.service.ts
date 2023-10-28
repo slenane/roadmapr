@@ -38,11 +38,22 @@ export class SettingsStoreService {
     });
   }
 
-  updatePassword(id: string, password: any) {
+  updatePassword(id: string, password: string) {
     this.store.dispatch({
       type: settingsActions.UPDATE_PASSWORD,
       id,
       password,
+    });
+  }
+
+  updateExistingPassword(
+    id: string,
+    passwordConfig: { current: string; new: string }
+  ) {
+    this.store.dispatch({
+      type: settingsActions.UPDATE_EXISTING_PASSWORD,
+      id,
+      passwordConfig,
     });
   }
 

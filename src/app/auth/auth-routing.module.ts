@@ -16,6 +16,16 @@ const routes: Routes = [
     title: "ROUTES.LOGIN",
   },
   {
+    path: "send-reset-password-email",
+    component: LandingComponent,
+    title: "ROUTES.SEND_RESET_PASSWORD_EMAIL",
+  },
+  {
+    path: "reset-password",
+    component: LandingComponent,
+    title: "ROUTES.RESET_PASSWORD",
+  },
+  {
     path: "register",
     component: LandingComponent,
     title: "ROUTES.REGISTER",

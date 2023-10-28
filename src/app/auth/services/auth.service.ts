@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable } from "rxjs";
 import { map } from "rxjs/operators";
-import { User, TokenPayload, TokenResponse } from "../store/auth.models";
+import { User, TokenResponse } from "../store/auth.models";
 import { ApiService } from "../../core/services/api.service";
 import { UrlService } from "../../core/services/url.service";
 import { API } from "src/app/core/constants/http.constants";
@@ -19,14 +19,14 @@ export class AuthService {
 
   constructor(private apiService: ApiService, private urlService: UrlService) {}
 
-  public register(user: TokenPayload): Observable<any> {
+  public register(user: User): Observable<any> {
     return this.apiService.post(
       this.urlService.generate(API.AUTH_REGISTER),
       user
     );
   }
 
-  public login(user: TokenPayload): Observable<any> {
+  public login(user: User): Observable<any> {
     return this.apiService
       .post(this.urlService.generate(API.AUTH_LOGIN), user)
       .pipe(
@@ -38,6 +38,19 @@ export class AuthService {
           return data;
         })
       );
+  }
+
+  public sendResetPasswordEmail(email: string): Observable<any> {
+    return this.apiService.get(
+      this.urlService.generate(API.AUTH_SEND_RESET_PASSWORD_EMAIL, email)
+    );
+  }
+
+  public resetPassword(token: string, password: string): Observable<any> {
+    return this.apiService.patch(
+      this.urlService.generate(API.AUTH_RESET_PASSWORD),
+      { token, password }
+    );
   }
 
   public getGithubAuthPage(): Observable<string> {

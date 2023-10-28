@@ -23,6 +23,7 @@ import { FileUploadProfileImageComponent } from "./components/file-upload/file-u
 import { FileUploadCoverImageComponent } from "./components/file-upload/file-upload-cover-image/file-upload-cover-image.component";
 import { LoadingComponent } from "./components/loading/loading.component";
 import { NgScrollbarModule } from "ngx-scrollbar";
+import { UpdatePasswordInputsComponent } from "./components/forms/update-password/update-password-inputs/update-password-inputs.component";
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { NgScrollbarModule } from "ngx-scrollbar";
     FileUploadProfileImageComponent,
     FileUploadCoverImageComponent,
     LoadingComponent,
+    UpdatePasswordInputsComponent,
   ],
   exports: [
     SidebarComponent,
@@ -51,6 +53,7 @@ import { NgScrollbarModule } from "ngx-scrollbar";
     FileUploadCoverImageComponent,
     LoadingComponent,
     NgScrollbarModule,
+    UpdatePasswordInputsComponent,
   ],
   imports: [
     CommonModule,

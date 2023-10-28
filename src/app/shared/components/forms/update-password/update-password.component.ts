@@ -1,9 +1,12 @@
-import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
-import { FormControl, FormGroup, Validators } from "@angular/forms";
 import {
-  passwordMatchValidator,
-  validPasswordPattern,
-} from "../../../constants/validators.constants";
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+} from "@angular/core";
+import { UpdatePasswordInputsComponent } from "./update-password-inputs/update-password-inputs.component";
 
 @Component({
   selector: "app-update-password",
@@ -11,67 +14,36 @@ import {
   styleUrls: ["./update-password.component.scss"],
 })
 export class UpdatePasswordComponent implements OnInit {
-  public hidePasswords: boolean = true;
-  public passwordMatch: boolean = false;
-  public updatePasswordForm = new FormGroup(
-    {
-      newPasswordCtrl: new FormControl("", [
-        Validators.required,
-        Validators.pattern(validPasswordPattern),
-      ]),
-      newPasswordConfirmCtrl: new FormControl("", [Validators.required]),
-    },
-    { validators: passwordMatchValidator }
-  );
-
+  @Input() hasPassword: boolean;
   @Output() togglePasswordUpdate: EventEmitter<any> = new EventEmitter();
   @Output() onSavePassword: EventEmitter<string> = new EventEmitter();
+  @Output() onUpdatePassword: EventEmitter<{ current: string; new: string }> =
+    new EventEmitter();
+
+  @ViewChild("inputs") inputs: UpdatePasswordInputsComponent;
 
   constructor() {}
 
-  ngOnInit(): void {
-    this.updatePasswordForm.valueChanges.subscribe((form) => {
-      const newPassword = this.formControls.newPasswordCtrl;
-      const newPasswordConfirm = this.formControls.newPasswordConfirmCtrl;
-
-      if (
-        !newPassword.hasError("required") &&
-        !newPassword.hasError("pattern") &&
-        !newPasswordConfirm.hasError("required")
-      ) {
-        if (form.newPasswordCtrl !== form.newPasswordConfirmCtrl) {
-          newPasswordConfirm.setErrors({ mismatch: true });
-        } else {
-          if (newPassword.hasError("mismatch")) {
-            delete newPassword.errors?.mismatch;
-          }
-          if (newPasswordConfirm.hasError("mismatch")) {
-            delete newPasswordConfirm.errors?.mismatch;
-          }
-        }
-      }
-    });
-  }
-
-  isPasswordMatch(): boolean {
-    return (
-      this.updatePasswordForm.value.newPasswordCtrl ===
-      this.updatePasswordForm.value.newPasswordConfirmCtrl
-    );
-  }
+  ngOnInit(): void {}
 
   onSaveClick(): void {
     if (
-      this.updatePasswordForm.valid &&
-      this.updatePasswordForm.value.newPasswordCtrl &&
-      this.updatePasswordForm.value.newPasswordConfirmCtrl &&
-      this.isPasswordMatch()
+      this.inputs.form.valid &&
+      this.inputs.form.value.newPasswordCtrl &&
+      this.inputs.form.value.newPasswordConfirmCtrl &&
+      this.inputs.isPasswordMatch()
     ) {
-      this.onSavePassword.emit(this.updatePasswordForm.value.newPasswordCtrl);
+      if (!this.hasPassword) {
+        this.onSavePassword.emit(this.inputs.form.value.newPasswordCtrl);
+      } else if (
+        this.hasPassword &&
+        this.inputs.form.value.currentPasswordCtrl
+      ) {
+        this.onUpdatePassword.emit({
+          current: this.inputs.form.value.currentPasswordCtrl,
+          new: this.inputs.form.value.newPasswordCtrl,
+        });
+      }
     }
-  }
-
-  get formControls() {
-    return this.updatePasswordForm.controls;
   }
 }

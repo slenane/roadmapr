@@ -23,6 +23,21 @@ export class AuthStoreService {
     });
   }
 
+  sendPasswordResetEmail(email: string) {
+    this.store.dispatch({
+      type: authActions.SEND_RESET_PASSWORD_EMAIL,
+      email,
+    });
+  }
+
+  resetPassword(token: string, password: string) {
+    this.store.dispatch({
+      type: authActions.RESET_PASSWORD,
+      token,
+      password,
+    });
+  }
+
   githubLogin() {
     this.store.dispatch({
       type: authActions.GITHUB_LOGIN,
