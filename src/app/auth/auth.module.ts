@@ -1,7 +1,6 @@
 import { NgModule } from "@angular/core";
 import { AuthService } from "./services/auth.service";
 import { MaterialModule } from "../material/material.module";
-import { LandingComponent } from "./components/landing/landing.component";
 import { LogInComponent } from "./components/log-in/log-in.component";
 import { RegisterComponent } from "./components/register/register.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -16,13 +15,11 @@ import { TranslateModule } from "@ngx-translate/core";
 import { GitAuthComponent } from "../auth/components/git-auth/git-auth.component";
 import { ExtUrlResolverService } from "./services/ext-url-resolver.service";
 import { CoreModule } from "../core/core.module";
-import { AuthRoutingModule } from "./auth-routing.module";
 import { SendResetPasswordEmailComponent } from "./components/send-reset-password-email/send-reset-password-email.component";
-import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { ResetPasswordComponent } from "./components/reset-password/reset-password.component";
 
 @NgModule({
   declarations: [
-    LandingComponent,
     LogInComponent,
     RegisterComponent,
     GitAuthComponent,
@@ -30,10 +27,11 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
     ResetPasswordComponent,
   ],
   exports: [
-    LandingComponent,
     LogInComponent,
     RegisterComponent,
     GitAuthComponent,
+    SendResetPasswordEmailComponent,
+    ResetPasswordComponent,
   ],
   imports: [
     CommonModule,
@@ -45,7 +43,6 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
     StoreModule.forFeature("auth", fromAuth.reducer),
     EffectsModule.forFeature([AuthEffects]),
     TranslateModule.forChild(),
-    AuthRoutingModule,
   ],
   providers: [ExtUrlResolverService, AuthService, AuthStoreService],
 })

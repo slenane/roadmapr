@@ -9,6 +9,9 @@
   },
   "ROUTES": {
     "LOGIN": "roadmapr",
+    "BLOG": "Blog | roadmapr",
+    "ABOUT": "About | roadmapr",
+    "CONTACT": "Contact | roadmapr",
     "SEND_RESET_PASSWORD_EMAIL": "Send Reset Password Email | roadmapr",
     "RESET_PASSWORD": "Reset Password | roadmapr",
     "REGISTER": "Register | roadmapr",
@@ -400,7 +403,14 @@
       "GITHUB": "Link GitHub Account"
     }
   },
-  "LANDING": {},
+  "LANDING": {
+    "SECTIONS": {
+      "HOME": "Home",
+      "BLOG": "Blog",
+      "ABOUT": "About",
+      "CONTACT": "Contact"
+    }
+  },
   "PROFILE": {
     "T": "Profile",
     "EDIT": "Edit Profile",

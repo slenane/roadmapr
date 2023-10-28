@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Location } from "@angular/common";
-import { AuthService } from "../../services/auth.service";
+import { AuthService } from "src/app/auth/services/auth.service";
 import { ROUTES } from "src/app/core/constants/routes.constants";
 import { Router } from "@angular/router";
 
@@ -19,6 +19,7 @@ export class LandingComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    console.log("PING");
     if (this.authService.isLoggedIn()) this.router.navigate([ROUTES.DASHBOARD]);
     this.updateView(this.location.path());
 
@@ -28,11 +29,11 @@ export class LandingComponent implements OnInit {
   }
 
   updateView(path: string) {
-    if (new RegExp("/login").test(path)) this.currentView = "login";
-    else if (new RegExp("/register").test(path)) this.currentView = "register";
+    if (new RegExp("/register").test(path)) this.currentView = "register";
     else if (new RegExp("/send-reset-password-email").test(path))
       this.currentView = "sendResetPasswordEmail";
     else if (new RegExp("/reset-password").test(path))
       this.currentView = "resetPassword";
+    else this.currentView = "login";
   }
 }

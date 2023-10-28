@@ -1,0 +1,26 @@
+mat-toolbar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  background: transparent;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+
+  .menu-brand {
+    height: 2.5rem;
+    cursor: pointer;
+  }
+
+  .navbar-options {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    gap: 5rem;
+    font-size: 1.1rem;
+
+    a {
+      text-decoration: none;
+    }
+  }
+}
