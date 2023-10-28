@@ -28,10 +28,11 @@ export class LandingComponent implements OnInit {
   }
 
   updateView(path: string) {
-    if (path === "/login") this.currentView = "login";
-    else if (path === "/register") this.currentView = "register";
-    else if (path === "/send-reset-password-email")
+    if (new RegExp("/login").test(path)) this.currentView = "login";
+    else if (new RegExp("/register").test(path)) this.currentView = "register";
+    else if (new RegExp("/send-reset-password-email").test(path))
       this.currentView = "sendResetPasswordEmail";
-    else if (path === "/reset-password") this.currentView = "resetPassword";
+    else if (new RegExp("/reset-password").test(path))
+      this.currentView = "resetPassword";
   }
 }
