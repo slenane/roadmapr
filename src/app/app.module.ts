@@ -30,6 +30,7 @@ import { LOGOUT } from "./auth/store/auth.actions";
 import { DELETE_ACCOUNT } from "./settings/store/settings.actions";
 import { TitleStrategy } from "@angular/router";
 import { UserSetupModule } from "./user-setup/user-setup.module";
+import { HomeModule } from "./home/home.module";
 
 export function clearState(reducer: ActionReducer<any>): ActionReducer<any> {
   return function (state, action) {
@@ -69,6 +70,7 @@ export const metaReducers: MetaReducer<any>[] = [clearState];
     }),
     AuthModule,
     CoreModule,
+    HomeModule,
     EmploymentModule,
     DashboardModule,
     EducationModule,

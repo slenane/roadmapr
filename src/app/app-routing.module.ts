@@ -35,7 +35,7 @@ export class CustomTitleStrategy extends TitleStrategy {
 const routes: Routes = [
   {
     path: "",
-    loadChildren: () => import("./auth/auth.module").then((m) => m.AuthModule),
+    loadChildren: () => import("./home/home.module").then((m) => m.HomeModule),
   },
   {
     path: "redirect",

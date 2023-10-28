@@ -1,0 +1,23 @@
+<mat-toolbar>
+  <img
+    class="menu-brand"
+    src="/assets/images/logo/logo-dark.png"
+    routerLink="/login"
+    alt="roadmapr Logo"
+  />
+
+  <div class="navbar-options">
+    <a routerLink="/" routerLinkActive="is-active" class="menu-option">
+      {{ "LANDING.SECTIONS.HOME" | translate }}
+    </a>
+    <a routerLink="/blog" routerLinkActive="is-active" class="menu-option">
+      {{ "LANDING.SECTIONS.BLOG" | translate }}
+    </a>
+    <a routerLink="/about" routerLinkActive="is-active" class="menu-option">
+      {{ "LANDING.SECTIONS.ABOUT" | translate }}
+    </a>
+    <a routerLink="/contact" routerLinkActive="is-active" class="menu-option">
+      {{ "LANDING.SECTIONS.CONTACT" | translate }}
+    </a>
+  </div>
+</mat-toolbar>
