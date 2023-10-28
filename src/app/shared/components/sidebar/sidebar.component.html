@@ -74,17 +74,20 @@
           >
           <span *ngIf="!navbarCollapsed">{{ "SETTINGS.T" | translate }}</span>
         </a>
-        <a mat-list-item class="sidebar-option">
+        <a
+          mat-list-item
+          class="sidebar-option"
+          [matMenuTriggerFor]="logoutMenu"
+        >
           <span
             class="material-symbols-outlined"
             #tooltip="matTooltip"
             matTooltipShowDelay="500"
             matTooltip="{{ navbarCollapsed ? 'Logout' : null }}"
             matTooltipPosition="right"
-            [matMenuTriggerFor]="logoutMenu"
             >logout</span
           >
-          <span *ngIf="!navbarCollapsed" [matMenuTriggerFor]="logoutMenu">{{
+          <span *ngIf="!navbarCollapsed">{{
             "AUTH.LOG_OUT.T" | translate
           }}</span>
           <mat-menu #logoutMenu="matMenu">
