@@ -22,7 +22,6 @@ export class EmploymentUpdateComponent implements OnInit {
     company: new FormControl("", Validators.required),
     companyLink: new FormControl(""),
     description: new FormControl(""),
-    github: new FormControl(""),
     project: new FormControl(""),
     endDate: new FormControl<Date | null>(null),
     startDate: new FormControl<Date | null>(null),

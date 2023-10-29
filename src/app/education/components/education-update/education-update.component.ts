@@ -26,7 +26,6 @@ export class EducationUpdateComponent implements OnInit {
     endDate: new FormControl<Date | null>(null),
     description: new FormControl(),
     link: new FormControl("", Validators.required),
-    github: new FormControl(),
   });
 
   @ViewChild("stack") stack: StackSelectorComponent;
@@ -49,7 +48,6 @@ export class EducationUpdateComponent implements OnInit {
         author: this.data.author,
         link: this.data.link,
         description: this.data.description,
-        github: this.data.github,
         endDate: this.data.endDate,
         startDate: this.data.startDate,
         type: this.data.type,
