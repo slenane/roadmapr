@@ -8,116 +8,114 @@
   </div>
 </div>
 <div mat-dialog-content>
-  <form [formGroup]="employmentForm">
-    <mat-form-field appearance="outline" class="full-width-grid-item">
-      <mat-label>{{ "FORMS.TYPE" | translate }}</mat-label>
-      <mat-select
-        #type
-        formControlName="type"
-        [placeholder]="'FORMS.PLACEHOLDER.TYPE' | translate"
-      >
-        <mat-option value="employment">
-          <img
-            src="/assets/images/icons/employment.png"
-            class="app-education-type-icon"
-          />
-          {{ "EMPLOYMENT.TYPES.EMPLOYMENT" | translate }}
-        </mat-option>
-        <mat-option value="freelance">
-          <img
-            src="/assets/images/icons/freelance.png"
-            class="app-education-type-icon"
-          />
-          {{ "EMPLOYMENT.TYPES.FREELANCE" | translate }}
-        </mat-option>
-      </mat-select>
-      <mat-error *ngIf="employmentForm.controls.type.invalid">{{
-        "FORMS.REQUIRED.TYPE" | translate
-      }}</mat-error>
-    </mat-form-field>
+  <ng-scrollbar class="form-scroll">
+    <form [formGroup]="employmentForm">
+      <div class="grid-section">
+        <mat-form-field appearance="outline">
+          <mat-label>{{ "FORMS.TYPE" | translate }}</mat-label>
+          <mat-select
+            #type
+            formControlName="type"
+            [placeholder]="'FORMS.PLACEHOLDER.TYPE' | translate"
+            cdkFocusInitial
+          >
+            <mat-option value="employment">
+              <img
+                src="/assets/images/icons/employment.png"
+                class="app-education-type-icon"
+              />
+              {{ "EMPLOYMENT.TYPES.EMPLOYMENT" | translate }}
+            </mat-option>
+            <mat-option value="freelance">
+              <img
+                src="/assets/images/icons/freelance.png"
+                class="app-education-type-icon"
+              />
+              {{ "EMPLOYMENT.TYPES.FREELANCE" | translate }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="employmentForm.controls.type.invalid">{{
+            "FORMS.REQUIRED.TYPE" | translate
+          }}</mat-error>
+        </mat-form-field>
 
-    <ng-container *ngIf="employmentForm.controls.type.value">
-      <mat-form-field appearance="outline">
-        <mat-label>{{ "FORMS.ROLE" | translate }}</mat-label>
-        <input cdkFocusInitial #role matInput formControlName="role" />
-        <mat-error *ngIf="employmentForm.controls.role.invalid">{{
-          "FORMS.REQUIRED.ROLE" | translate
-        }}</mat-error>
-      </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>{{ "FORMS.ROLE" | translate }}</mat-label>
+          <input #role matInput formControlName="role" />
+          <mat-error *ngIf="employmentForm.controls.role.invalid">{{
+            "FORMS.REQUIRED.ROLE" | translate
+          }}</mat-error>
+        </mat-form-field>
 
-      <mat-form-field appearance="outline">
-        <mat-label>{{ "FORMS.COMPANY" | translate }}</mat-label>
-        <input #company matInput formControlName="company" />
-        <mat-error *ngIf="employmentForm.controls.company.invalid">{{
-          "FORMS.REQUIRED.COMPANY" | translate
-        }}</mat-error>
-      </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>{{ "FORMS.COMPANY" | translate }}</mat-label>
+          <input #company matInput formControlName="company" />
+          <mat-error *ngIf="employmentForm.controls.company.invalid">{{
+            "FORMS.REQUIRED.COMPANY" | translate
+          }}</mat-error>
+        </mat-form-field>
 
-      <mat-form-field appearance="outline">
-        <mat-label>{{ "FORMS.DATES.START" | translate }}</mat-label>
-        <input
-          matInput
-          [matDatepicker]="startDate"
-          formControlName="startDate"
-        />
-        <mat-hint>{{ "FORMS.DATES.HINT" | translate }}</mat-hint>
-        <mat-datepicker-toggle
-          matSuffix
-          [for]="startDate"
-        ></mat-datepicker-toggle>
-        <mat-datepicker #startDate></mat-datepicker>
-      </mat-form-field>
+        <mat-form-field
+          appearance="outline"
+          *ngIf="employmentForm.controls.type.value !== 'freelance'"
+        >
+          <mat-label>{{ "FORMS.COMPANY_LINK" | translate }}</mat-label>
+          <input matInput formControlName="companyLink" />
+        </mat-form-field>
 
-      <mat-form-field appearance="outline">
-        <mat-label>{{ "FORMS.DATES.END" | translate }}</mat-label>
-        <input matInput [matDatepicker]="endDate" formControlName="endDate" />
-        <mat-hint>{{ "FORMS.DATES.HINT" | translate }}</mat-hint>
-        <mat-datepicker-toggle
-          matSuffix
-          [for]="endDate"
-        ></mat-datepicker-toggle>
-        <mat-datepicker #endDate></mat-datepicker>
-      </mat-form-field>
+        <mat-form-field
+          appearance="outline"
+          *ngIf="employmentForm.controls.type.value === 'freelance'"
+        >
+          <mat-label>{{ "FORMS.PROJECT_LINK" | translate }}</mat-label>
+          <input matInput formControlName="project" />
+        </mat-form-field>
+      </div>
+      <div class="grid-section">
+        <div class="sub-grid">
+          <mat-form-field appearance="outline">
+            <mat-label>{{ "FORMS.DATES.START" | translate }}</mat-label>
+            <input
+              matInput
+              [matDatepicker]="startDate"
+              formControlName="startDate"
+            />
+            <mat-hint>{{ "FORMS.DATES.HINT" | translate }}</mat-hint>
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="startDate"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #startDate></mat-datepicker>
+          </mat-form-field>
 
-      <mat-form-field appearance="outline" class="full-width-grid-item">
-        <mat-label>{{ "FORMS.DESCRIPTION" | translate }}</mat-label>
-        <textarea matInput formControlName="description"></textarea>
-      </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>{{ "FORMS.DATES.END" | translate }}</mat-label>
+            <input
+              matInput
+              [matDatepicker]="endDate"
+              formControlName="endDate"
+            />
+            <mat-hint>{{ "FORMS.DATES.HINT" | translate }}</mat-hint>
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="endDate"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #endDate></mat-datepicker>
+          </mat-form-field>
+        </div>
 
-      <app-stack-selector
-        #stack
-        [data]="data && data.stack"
-        class="full-width-grid-item"
-      >
-      </app-stack-selector>
+        <app-stack-selector #stack [data]="data && data.stack">
+        </app-stack-selector>
 
-      <mat-form-field
-        appearance="outline"
-        *ngIf="employmentForm.controls.type.value === 'freelance'"
-      >
-        <mat-label>{{ "FORMS.GITHUB_LINK" | translate }}</mat-label>
-        <input matInput formControlName="github" />
-      </mat-form-field>
-
-      <mat-form-field
-        appearance="outline"
-        *ngIf="employmentForm.controls.type.value === 'freelance'"
-      >
-        <mat-label>{{ "FORMS.PROJECT_LINK" | translate }}</mat-label>
-        <input matInput formControlName="project" />
-      </mat-form-field>
-
-      <mat-form-field
-        appearance="outline"
-        *ngIf="employmentForm.controls.type.value === 'employment'"
-        class="full-width-grid-item"
-      >
-        <mat-label>{{ "FORMS.COMPANY_LINK" | translate }}</mat-label>
-        <input matInput formControlName="companyLink" />
-      </mat-form-field>
-    </ng-container>
-  </form>
+        <mat-form-field appearance="outline">
+          <mat-label>{{ "FORMS.DESCRIPTION" | translate }}</mat-label>
+          <textarea matInput formControlName="description" rows="5"></textarea>
+        </mat-form-field>
+      </div>
+    </form>
+  </ng-scrollbar>
 </div>
+
 <div mat-dialog-actions class="actions">
   <button mat-raised-button (click)="onNoClick()">{{
     "ACTIONS.CANCEL" | translate
