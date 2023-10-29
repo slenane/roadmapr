@@ -46,20 +46,6 @@
           />
           {{ "EDUCATION.TYPES.COURSES_SINGULAR" | translate }}
         </mat-option>
-        <mat-option value="degree">
-          <img
-            src="/assets/images/icons/degree.png"
-            class="app-education-type-icon"
-          />
-          {{ "EDUCATION.TYPES.DEGREES_SINGULAR" | translate }}
-        </mat-option>
-        <mat-option value="tutorial">
-          <img
-            src="/assets/images/icons/tutorial.png"
-            class="app-education-type-icon"
-          />
-          {{ "EDUCATION.TYPES.TUTORIALS_SINGULAR" | translate }}
-        </mat-option>
       </mat-select>
       <mat-error *ngIf="educationForm.controls.type.invalid">{{
         "FORMS.REQUIRED.TYPE" | translate
@@ -79,12 +65,7 @@
         <mat-label>
           {{ selectedType === "book" ? ("FORMS.AUTHOR" | translate) : "" }}
           {{
-            selectedType === "course" || selectedType === "tutorial"
-              ? ("FORMS.INSTRUCTOR" | translate)
-              : ""
-          }}
-          {{
-            selectedType === "degree" ? ("FORMS.INSTITUTION" | translate) : ""
+            selectedType === "course" ? ("FORMS.INSTRUCTOR" | translate) : ""
           }}
         </mat-label>
         <input #author matInput formControlName="author" />
@@ -93,13 +74,8 @@
             selectedType === "book" ? ("FORMS.REQUIRED.AUTHOR" | translate) : ""
           }}
           {{
-            selectedType === "course" || selectedType === "tutorial"
+            selectedType === "course"
               ? ("FORMS.REQUIRED.INSTRUCTOR" | translate)
-              : ""
-          }}
-          {{
-            selectedType === "degree"
-              ? ("FORMS.REQUIRED.INSTITUTION" | translate)
               : ""
           }}
         </mat-error>

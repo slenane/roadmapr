@@ -234,12 +234,8 @@
     "TYPES": {
       "BOOKS": "Books",
       "COURSES": "Courses",
-      "DEGREES": "Degrees",
-      "TUTORIALS": "Tutorials",
       "BOOKS_SINGULAR": "Book",
-      "COURSES_SINGULAR": "Course",
-      "DEGREES_SINGULAR": "Degree",
-      "TUTORIALS_SINGULAR": "Tutorial"
+      "COURSES_SINGULAR": "Course"
     },
     "UPDATE": {
       "T": "Update Education",

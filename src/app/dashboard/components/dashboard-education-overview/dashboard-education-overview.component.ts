@@ -63,20 +63,6 @@ export class DashboardEducationOverviewComponent implements OnInit, OnChanges {
             // backgroundColor: "blue",
             tension: 0.5,
           },
-          {
-            label: "Degrees",
-            data: [0, 0, 0, 0, 0, 0, 0],
-            // borderColor: "green",
-            // backgroundColor: "green",
-            tension: 0.5,
-          },
-          {
-            label: "Tutorials",
-            data: [1, 2, 5, 7, 8, 9, 11],
-            // borderColor: "#ffcb53",
-            // backgroundColor: "#ffcb53",
-            tension: 0.5,
-          },
         ],
       },
     });

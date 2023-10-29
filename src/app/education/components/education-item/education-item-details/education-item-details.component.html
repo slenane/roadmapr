@@ -30,12 +30,7 @@
         <div class="grid-item__title">
           {{ data.type === "book" ? ("FORMS.AUTHOR" | translate) : "" }}
           {{
-            data.type === "course" || data.type === "tutorial"
-              ? ("FORMS.INSTRUCTOR" | translate)
-              : ""
-          }}
-          {{
-            data.type === "degree" ? ("FORMS.INSTITUTION" | translate) : ""
+            data.type === "course" ? ("FORMS.INSTRUCTOR" | translate) : ""
           }}</div
         >
         <p>{{ data.author }}</p>
