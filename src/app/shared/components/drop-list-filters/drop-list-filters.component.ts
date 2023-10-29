@@ -83,12 +83,16 @@ export class DropListFiltersComponent implements OnInit, OnChanges {
 
     if (this.type === "employment")
       dialogRef = this.dialog.open(EmploymentUpdateComponent, {
-        width: "50vw",
+        minWidth: "70vw",
       });
     else if (this.type === "education")
-      dialogRef = this.dialog.open(EducationUpdateComponent, { width: "50vw" });
+      dialogRef = this.dialog.open(EducationUpdateComponent, {
+        minWidth: "70vw",
+      });
     else
-      dialogRef = this.dialog.open(ProjectsUpdateComponent, { width: "50vw" });
+      dialogRef = this.dialog.open(ProjectsUpdateComponent, {
+        minWidth: "70vw",
+      });
 
     dialogRef.afterClosed().subscribe((result: any) => {
       this.onUpdate.emit({ id: this.parentId, data: result });

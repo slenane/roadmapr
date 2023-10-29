@@ -7,8 +7,6 @@ import {
 } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
-// import { EducationService } from "../../services/education.service";
-// import { takeUntil } from "rxjs/operators";
 import { Subject } from "rxjs";
 import { StackSelectorComponent } from "src/app/shared/components/stack-selector/stack-selector.component";
 
@@ -38,7 +36,6 @@ export class EducationUpdateComponent implements OnInit {
   @ViewChild("link") link: ElementRef;
 
   constructor(
-    // private educationService: EducationService,
     private el: ElementRef,
     public dialogRef: MatDialogRef<EducationUpdateComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
@@ -67,24 +64,6 @@ export class EducationUpdateComponent implements OnInit {
     this.ngUnsubscribe.next();
     this.ngUnsubscribe.complete();
   }
-
-  // fetchDetails() {
-  //   this.educationService
-  //     .getItemDetailsFromLink(this.educationForm.value.link)
-  //     .pipe(takeUntil(this.ngUnsubscribe))
-  //     .subscribe((res: any) => {
-  //       if (res.type) {
-  //         this.selectedType = res.type;
-  //         this.educationForm.patchValue({ type: res.type });
-  //       }
-  //       console.log(res.type);
-  //       this.data = {
-  //         ...this.data,
-  //         ...res,
-  //       };
-  //       console.log(this.data);
-  //     });
-  // }
 
   focusError() {
     for (const key of Object.keys(this.educationForm.controls)) {
