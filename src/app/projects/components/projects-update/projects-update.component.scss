@@ -6,7 +6,6 @@
 
   .icon {
     .material-symbols-outlined {
-      // color: black;
       padding-top: 0.3rem;
     }
   }
@@ -24,11 +23,31 @@
   }
 }
 
-form {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  column-gap: 1rem;
+.mat-dialog-content {
+  padding: 0 12px 0 24px;
+
+  .form-scroll {
+    height: 23rem;
+
+    form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-right: 1.5rem;
+
+      .grid-section {
+        display: grid;
+        width: 100%;
+        grid-template-columns: 1fr;
+
+        .sub-grid {
+          display: grid;
+          grid-template-columns: auto auto;
+          grid-gap: 1rem;
+        }
+      }
+    }
+  }
 }
 
 .actions {
