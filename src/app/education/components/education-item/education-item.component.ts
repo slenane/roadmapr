@@ -74,4 +74,8 @@ export class EducationItemComponent implements OnInit, OnChanges {
     this.isPinned = !this.isPinned;
     this.pinItem.emit(this.data);
   }
+
+  getProviderClass() {
+    return this.data.metadata?.provider ? this.data.metadata.provider : "";
+  }
 }

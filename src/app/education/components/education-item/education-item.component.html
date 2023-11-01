@@ -67,9 +67,21 @@
 
       <p class="actions">
         <a href="data.link" *ngIf="data.link">
-          <button mat-raised-button color="primary" type="button">{{
-            "FORMS.LINK" | translate
-          }}</button>
+          <button
+            mat-raised-button
+            type="button"
+            [ngClass]="getProviderClass()"
+          >
+            <img
+              class="provider-icon"
+              *ngIf="data.metadata?.provider"
+              src="/assets/images/icons/{{ data.metadata?.provider }}.svg"
+            />
+
+            <span *ngIf="!data.metadata?.provider">{{
+              "FORMS.LINK" | translate
+            }}</span>
+          </button>
         </a>
 
         <a href="data.github" *ngIf="data.github">

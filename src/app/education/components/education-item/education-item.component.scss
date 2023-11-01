@@ -78,6 +78,38 @@ mat-card {
         grid-template-columns: auto auto;
         justify-content: end;
         gap: 0.5rem;
+
+        .amazon {
+          background-color: white;
+        }
+        .codecademy {
+          background-color: white;
+        }
+        .coursera {
+          background-color: white;
+        }
+        .edx {
+          background-color: white;
+        }
+        .freecodecamp {
+          background-color: white;
+        }
+        .khanacademy {
+          background-color: white;
+        }
+        .pluralsight {
+          background-color: white;
+        }
+        .udemy {
+          background-color: white;
+        }
+        .youtube {
+          background-color: white;
+        }
+
+        .provider-icon {
+          height: 1rem;
+        }
       }
     }
 
