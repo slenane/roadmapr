@@ -45,6 +45,10 @@
     ng-scrollbar {
       --scrollbar-thumb-color: lightgrey !important;
     }
+
+    .provider-button {
+      background: white !important;
+    }
   }
 }
 
@@ -167,9 +171,14 @@
         color: $light-theme--font--header;
       }
     }
-  }
-  ng-scrollbar {
-    --scrollbar-thumb-color: grey !important;
+
+    ng-scrollbar {
+      --scrollbar-thumb-color: grey !important;
+    }
+
+    .provider-button {
+      background: lightgrey !important;
+    }
   }
 }
 

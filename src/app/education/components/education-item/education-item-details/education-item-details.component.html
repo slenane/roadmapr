@@ -73,10 +73,23 @@
             "FORMS.GITHUB" | translate
           }}</button>
         </a>
-        <a *ngIf="data.link" target="_blank" href="{{ data.link }}">
-          <button mat-raised-button cdkFocusInitial color="primary">{{
-            "FORMS.LINK" | translate
-          }}</button>
+        <a [href]="data.link" target="_blank" *ngIf="data.link">
+          <button
+            mat-raised-button
+            type="button"
+            class="provider-button"
+            [ngClass]="getProviderClass()"
+          >
+            <img
+              class="provider-icon"
+              *ngIf="data.metadata?.provider"
+              src="/assets/images/icons/{{ data.metadata?.provider }}.svg"
+            />
+
+            <span *ngIf="!data.metadata?.provider">{{
+              "FORMS.LINK" | translate
+            }}</span>
+          </button>
         </a>
         <a>
           <button mat-raised-button color="default" (click)="onCancel()">{{

@@ -50,6 +50,38 @@ app-root {
   margin: 0 0.5rem 0.5rem;
 }
 
+.provider-button {
+  .provider-icon {
+    height: 1rem;
+  }
+
+  &.coursera,
+  &.freecodecamp {
+    .provider-icon {
+      height: 0.8rem;
+    }
+  }
+
+  &.edx,
+  &.udemy {
+    .provider-icon {
+      height: 1.2rem;
+    }
+  }
+
+  &.pluralsight {
+    .provider-icon {
+      height: 1.4rem;
+    }
+  }
+
+  &.khanacademy {
+    .provider-icon {
+      height: 2rem;
+    }
+  }
+}
+
 .material-symbols-outlined {
   font-display: block;
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 20;

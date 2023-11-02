@@ -44,4 +44,8 @@ export class EducationItemDetailsComponent implements OnInit {
     this.educationStoreService.removeEducationItem(this.data);
     this.dialogRef.close(false);
   }
+
+  getProviderClass() {
+    return this.data.metadata?.provider ? this.data.metadata.provider : "";
+  }
 }
