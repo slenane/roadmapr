@@ -11,7 +11,7 @@
   <ng-scrollbar class="form-scroll">
     <form [formGroup]="projectForm">
       <div class="grid-section">
-        <mat-form-field appearance="outline" class="full-width-grid-item">
+        <mat-form-field appearance="outline">
           <mat-label>{{ "FORMS.TYPE" | translate }}</mat-label>
           <mat-select
             #type
@@ -98,16 +98,16 @@
         <app-stack-selector
           #stack
           [data]="data && data.stack"
-          class="full-width-grid-item"
+          [type]="projectForm.value.type"
         >
         </app-stack-selector>
 
-        <mat-form-field appearance="outline" class="full-width-grid-item">
+        <mat-form-field appearance="outline">
           <mat-label>{{ "FORMS.DESCRIPTION" | translate }}</mat-label>
           <textarea matInput formControlName="description" rows="5"></textarea>
         </mat-form-field>
 
-        <mat-form-field appearance="outline" class="full-width-grid-item">
+        <mat-form-field appearance="outline">
           <mat-label>{{ "FORMS.NOTES" | translate }}</mat-label>
           <textarea matInput formControlName="notes"></textarea>
         </mat-form-field>
@@ -121,7 +121,7 @@
   }}</button>
   <button
     mat-raised-button
-    *ngIf="projectForm.controls.type.value"
+    [disabled]="!projectForm.valid || !stack.isStackValid()"
     color="primary"
     (click)="onSaveClick()"
     cdkFocusInitial

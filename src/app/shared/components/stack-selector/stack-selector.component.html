@@ -1,6 +1,8 @@
 <mat-form-field appearance="outline" class="full-width">
-  <mat-label>{{ "FORMS.STACK" | translate }}</mat-label>
-  <mat-chip-list #chipList aria-label="Stack selection" required>
+  <mat-label
+    >{{ "FORMS.STACK" | translate }} {{ type !== "book" ? "*" : "" }}</mat-label
+  >
+  <mat-chip-list #chipList aria-label="Stack selection">
     <mat-chip
       *ngFor="let item of selectedStack"
       [selectable]="selectable"
@@ -23,6 +25,7 @@
     </mat-chip>
     <input
       [placeholder]="'FORMS.PLACEHOLDER.STACK' | translate"
+      matInput
       #stackInput
       [formControl]="stackCtrl"
       [matAutocomplete]="auto"
@@ -30,14 +33,16 @@
       matChipInputAddOnBlur="false"
       [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
       (matChipInputTokenEnd)="addStackItem($event)"
-      required
+      (blur)="getRequiredOnBlur()"
     />
   </mat-chip-list>
-  <mat-error>{{ "FORMS.REQUIRED.STACK" | translate }}</mat-error>
+  <mat-error *ngIf="chipList.errorState">{{
+    "FORMS.REQUIRED.STACK" | translate
+  }}</mat-error>
+
   <mat-autocomplete
     #auto="matAutocomplete"
     (optionSelected)="selectedStackItem($event)"
-    required
   >
     <mat-option *ngFor="let item of filteredStackItems | async" [value]="item">
       <div class="options">
