@@ -1,4 +1,11 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from "@angular/core";
+import {
+  Component,
+  ElementRef,
+  Input,
+  OnInit,
+  ViewChild,
+  SimpleChanges,
+} from "@angular/core";
 import { STACK_LIST } from "src/app/shared/constants/stack-list.constants";
 import {
   MatAutocompleteSelectedEvent,
@@ -23,7 +30,8 @@ export class StackSelectorComponent implements OnInit {
   public separatorKeysCodes: number[] = [13, 16];
   public stack: any[] = [...STACK_LIST];
 
-  @Input("data") data: any;
+  @Input() data: any;
+  @Input() type: any;
 
   @ViewChild("stackInput") stackInput: ElementRef<HTMLInputElement>;
   @ViewChild("auto") matAutocomplete: MatAutocomplete;
@@ -40,6 +48,17 @@ export class StackSelectorComponent implements OnInit {
     if (this.data) {
       this.selectedStack = [...this.data];
       this.updateStackList();
+    }
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (
+      changes.type &&
+      changes.type.currentValue !== changes.type.previousValue
+    ) {
+      if (changes.type.currentValue === "book") {
+        this.chipList.errorState = false;
+      }
     }
   }
 
@@ -96,8 +115,18 @@ export class StackSelectorComponent implements OnInit {
     }
   }
 
+  isStackValid() {
+    return this.type === "book" || this.selectedStack.length ? true : false;
+  }
+
+  getRequiredOnBlur() {
+    if (!this.isStackValid()) {
+      this.chipList.errorState = true;
+    }
+  }
+
   getData(): any {
-    if (!this.selectedStack.length) {
+    if (!this.isStackValid()) {
       this.chipList.errorState = true;
       this.stackInput.nativeElement.focus();
     }

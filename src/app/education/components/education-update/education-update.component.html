@@ -107,7 +107,11 @@
           </mat-form-field>
         </div>
 
-        <app-stack-selector #stack [data]="data && data.stack">
+        <app-stack-selector
+          #stack
+          [data]="data && data.stack"
+          [type]="educationForm.value.type"
+        >
         </app-stack-selector>
 
         <mat-form-field appearance="outline" class="full-height">
@@ -130,10 +134,9 @@
   }}</button>
   <button
     mat-raised-button
-    *ngIf="educationForm.controls.type.value"
     color="primary"
     (click)="onSaveClick()"
-    [disabled]="!educationForm.valid"
+    [disabled]="!educationForm.valid || !stack.isStackValid()"
     cdkFocusInitial
     >{{
       "ACTIONS.SAVE_TYPE" | translate : { type: (selectedType | titlecase) }

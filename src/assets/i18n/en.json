@@ -349,11 +349,12 @@
     "PLACEHOLDER": {
       "EMAIL": "Enter your email",
       "PASSWORD": "Enter your password",
-      "STACK": "Start typing to find stack...",
+      "STACK": "Start typing to find languages...",
       "TYPE": "Select Type",
       "USERNAME": "Enter your username"
     },
     "REQUIRED": {
+      "COMPANY": "Company Required",
       "AUTHOR": "Author Required",
       "EMAIL": "Email Required",
       "FIRST_NAME": "First Name Required",
