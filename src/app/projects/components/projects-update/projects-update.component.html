@@ -126,8 +126,11 @@
     (click)="onSaveClick()"
     cdkFocusInitial
     >{{
-      "ACTIONS.SAVE_TYPE"
-        | translate : { type: ("PROJECTS.T_SINGLE" | translate) }
+      isUpdating
+        ? ("ACTIONS.UPDATE_TYPE"
+          | translate : { type: ("PROJECTS.T_SINGLE" | translate) })
+        : ("ACTIONS.SAVE_TYPE"
+          | translate : { type: ("PROJECTS.T_SINGLE" | translate) })
     }}</button
   >
 </div>

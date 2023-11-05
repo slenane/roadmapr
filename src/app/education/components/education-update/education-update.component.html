@@ -139,7 +139,11 @@
     [disabled]="!educationForm.valid || !stack.isStackValid()"
     cdkFocusInitial
     >{{
-      "ACTIONS.SAVE_TYPE" | translate : { type: (selectedType | titlecase) }
+      isUpdating
+        ? ("ACTIONS.UPDATE_TYPE"
+          | translate : { type: (selectedType | titlecase) })
+        : ("ACTIONS.SAVE_TYPE"
+          | translate : { type: (selectedType | titlecase) })
     }}</button
   >
 </div>

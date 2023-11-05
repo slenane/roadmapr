@@ -17,6 +17,7 @@ import { StackSelectorComponent } from "src/app/shared/components/stack-selector
 })
 export class EmploymentUpdateComponent implements OnInit {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
+  public isUpdating: boolean = false;
   public employmentForm = new FormGroup({
     role: new FormControl("", Validators.required),
     company: new FormControl("", Validators.required),
@@ -42,6 +43,7 @@ export class EmploymentUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.data) {
+      this.isUpdating = true;
       this.employmentForm.patchValue({
         role: this.data.role,
         company: this.data.company,

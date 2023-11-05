@@ -17,6 +17,7 @@ import { StackSelectorComponent } from "src/app/shared/components/stack-selector
 })
 export class EducationUpdateComponent implements OnInit {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
+  public isUpdating: boolean = false;
   public selectedType: string = "";
   public educationForm = new FormGroup({
     type: new FormControl("", Validators.required),
@@ -42,6 +43,7 @@ export class EducationUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.data?.type) {
+      this.isUpdating = true;
       this.selectedType = this.data.type;
       this.educationForm.patchValue({
         title: this.data.title,
@@ -83,7 +85,10 @@ export class EducationUpdateComponent implements OnInit {
   onSaveClick(): void {
     const stack = this.stack.getData() || [];
 
-    if (this.educationForm.valid && stack.length) {
+    if (
+      this.educationForm.valid &&
+      (this.educationForm.value.type === "book" || stack.length)
+    ) {
       return this.dialogRef.close({ ...this.educationForm.value, stack });
     } else {
       this.focusError();
