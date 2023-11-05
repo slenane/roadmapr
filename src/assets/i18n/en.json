@@ -90,6 +90,7 @@
     "SAVE": "Save",
     "UPDATE": "Update",
     "SAVE_TYPE": "Save {{type}}",
+    "UPDATE_TYPE": "Update {{type}}",
     "YES": "Yes",
     "DISMISS": "Dismiss"
   },
@@ -120,24 +121,34 @@
     },
     "EDUCATION": {
       "SUCCESS": {
-        "UPDATED": "Education Updated",
-        "ITEMS_UPDATED": "Education Items Updated",
-        "ITEM_REMOVED": "Education Item Removed"
+        "BOOK": {
+          "CREATED": "Book Added",
+          "UPDATED": "Book Updated",
+          "REMOVED": "Book Removed"
+        },
+        "COURSE": {
+          "CREATED": "Course Added",
+          "UPDATED": "Course Updated",
+          "REMOVED": "Course Removed"
+        },
+        "ITEMS_UPDATED": "Education Updated"
       },
       "ERROR": {
-        "NOT_FOUND": "Education data not found",
-        "ITEM_NOT_FOUND": "Education item not found"
+        "NOT_FOUND": "Education history not found",
+        "BOOK_NOT_FOUND": "Book not found",
+        "COURSE_NOT_FOUND": "Course not found"
       }
     },
     "EMPLOYMENT": {
       "SUCCESS": {
-        "UPDATED": "Employment Updated",
-        "ITEMS_UPDATED": "Employment Items Updated",
-        "ITEM_REMOVED": "Employment Removed"
+        "CREATED": "Experience Added",
+        "UPDATED": "Experience Updated",
+        "REMOVED": "Experience Removed",
+        "ITEMS_UPDATED": "Employment Updated"
       },
       "ERROR": {
-        "NOT_FOUND": "Employment data not found",
-        "ITEM_NOT_FOUND": "Employment item not found"
+        "NOT_FOUND": "Employment history not found",
+        "ITEM_NOT_FOUND": "Experience not found"
       }
     },
     "PROFILE": {
@@ -152,13 +163,14 @@
     },
     "PROJECTS": {
       "SUCCESS": {
-        "UPDATED": "Projects Updated",
-        "ITEMS_UPDATED": "Project Items Updated",
-        "ITEM_REMOVED": "Project Removed"
+        "CREATED": "Project Added",
+        "UPDATED": "Project Updated",
+        "REMOVED": "Project Removed",
+        "ITEMS_UPDATED": "Projects Updated"
       },
       "ERROR": {
-        "NOT_FOUND": "Project data not found",
-        "ITEM_NOT_FOUND": "Project item not found"
+        "NOT_FOUND": "Project history not found",
+        "ITEM_NOT_FOUND": "Project not found"
       }
     },
     "SETTINGS": {

@@ -17,6 +17,7 @@ import { StackSelectorComponent } from "src/app/shared/components/stack-selector
 })
 export class ProjectsUpdateComponent implements OnInit {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
+  public isUpdating: boolean = false;
   public projectForm = new FormGroup({
     description: new FormControl(""),
     github: new FormControl(""),
@@ -41,6 +42,7 @@ export class ProjectsUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.data) {
+      this.isUpdating = true;
       this.projectForm.patchValue({
         description: this.data.description,
         github: this.data.github,
