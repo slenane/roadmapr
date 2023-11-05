@@ -55,6 +55,7 @@
           matInput
           type="password"
           [placeholder]="'FORMS.PLACEHOLDER.PASSWORD' | translate"
+          [type]="hidePassword ? 'password' : 'text'"
           name="password"
           formControlName="passwordCtrl"
           required

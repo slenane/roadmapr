@@ -19,7 +19,6 @@ export class LandingComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log("PING");
     if (this.authService.isLoggedIn()) this.router.navigate([ROUTES.DASHBOARD]);
     this.updateView(this.location.path());
 
