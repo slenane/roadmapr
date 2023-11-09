@@ -106,7 +106,7 @@
       },
       "ERROR": {
         "USER_NOT_FOUND": "User not found",
-        "USERNAME_INVALID": "Username must be of minimum length 2 characters",
+        "USERNAME_INVALID": "Username must be a minimum of 2 and maximum of 20 characters",
         "USERNAME_USED": "Username already in use, please try something else",
         "EMAIL_INVALID": "Email is not valid",
         "EMAIL_NOT_PROVIDED": "Email not provided",
@@ -395,7 +395,12 @@
       "EMAIL_PATTERN": "Input must be an email",
       "USERNAME_PATTERN": "Username must not contain spaces",
       "UNIQUE_USERNAME": "This username is already in use",
-      "UNIQUE_EMAIL": "This email address is already in use"
+      "UNIQUE_EMAIL": "This email address is already in use",
+      "EDUCATION_TYPE_PATTERN": "Type must be either 'Book' or 'Course'",
+      "TITLE_INVALID": "Title must be at least 3 characters in length",
+      "AUTHOR_INVALID": "Author must be at least 3 characters in length",
+      "PROVIDER_INVALID": "Provider must be at least 3 characters in length",
+      "LINK_INVALID": "Links may start with \"http://\" or \"https://\" followed by a domain name (including subdomains) and a top-level domain (like \".com\", \".org\", etc.), and may include a path"
     },
     "HINT": {
       "PASSWORD": "Passwords must be at least 6 characters long, contains at least 1 number and 1 special character (!@#$%^&*)"

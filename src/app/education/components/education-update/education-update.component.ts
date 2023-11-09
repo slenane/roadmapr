@@ -20,13 +20,21 @@ export class EducationUpdateComponent implements OnInit {
   public isUpdating: boolean = false;
   public selectedType: string = "";
   public educationForm = new FormGroup({
-    type: new FormControl("", Validators.required),
-    title: new FormControl("", Validators.required),
-    author: new FormControl("", Validators.required),
+    type: new FormControl("", [
+      Validators.required,
+      Validators.pattern(/^(book|course)$/),
+    ]),
+    title: new FormControl("", [Validators.required, Validators.minLength(3)]),
+    author: new FormControl("", [Validators.required, Validators.minLength(3)]),
     startDate: new FormControl<Date | null>(new Date()),
     endDate: new FormControl<Date | null>(null),
     description: new FormControl(),
-    link: new FormControl("", Validators.required),
+    link: new FormControl("", [
+      Validators.required,
+      Validators.pattern(
+        /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/
+      ),
+    ]),
   });
 
   @ViewChild("stack") stack: StackSelectorComponent;
