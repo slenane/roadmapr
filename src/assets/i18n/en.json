@@ -136,7 +136,13 @@
       "ERROR": {
         "NOT_FOUND": "Education history not found",
         "BOOK_NOT_FOUND": "Book not found",
-        "COURSE_NOT_FOUND": "Course not found"
+        "COURSE_NOT_FOUND": "Course not found",
+        "TYPE_INVALID": "Type must be either 'Book' or 'Course'",
+        "TITLE_INVALID": "Title must be at least 3 characters in length",
+        "AUTHOR_INVALID": "Author must be at least 3 characters in length",
+        "PROVIDER_INVALID": "Provider must be at least 3 characters in length",
+        "LINK_INVALID": "Links may start with \"http://\" or \"https://\" followed by a domain name (including subdomains) and a top-level domain (like \".com\", \".org\", etc.), and may include a path",
+        "STACK_INVALID": "Programming stack must be provided"
       }
     },
     "EMPLOYMENT": {
@@ -148,7 +154,11 @@
       },
       "ERROR": {
         "NOT_FOUND": "Employment history not found",
-        "ITEM_NOT_FOUND": "Experience not found"
+        "ITEM_NOT_FOUND": "Experience not found",
+        "TYPE_INVALID": "Type must be either 'Freelance' or 'Employment'",
+        "COMPANY_INVALID": "Company must be at least 3 characters in length",
+        "ROLE_INVALID": "Role must be at least 3 characters in length",
+        "STACK_INVALID": "Programming stack must be provided"
       }
     },
     "PROFILE": {
@@ -396,11 +406,15 @@
       "USERNAME_PATTERN": "Username must not contain spaces",
       "UNIQUE_USERNAME": "This username is already in use",
       "UNIQUE_EMAIL": "This email address is already in use",
-      "EDUCATION_TYPE_PATTERN": "Type must be either 'Book' or 'Course'",
+      "EDUCATION_TYPE_INVALID": "Type must be either 'Book' or 'Course'",
+      "EMPLOYMENT_TYPE_INVALID": "Type must be either 'Freelance' or 'Employment'",
       "TITLE_INVALID": "Title must be at least 3 characters in length",
+      "ROLE_INVALID": "Role must be at least 3 characters in length",
       "AUTHOR_INVALID": "Author must be at least 3 characters in length",
       "PROVIDER_INVALID": "Provider must be at least 3 characters in length",
-      "LINK_INVALID": "Links may start with \"http://\" or \"https://\" followed by a domain name (including subdomains) and a top-level domain (like \".com\", \".org\", etc.), and may include a path"
+      "COMPANY_INVALID": "Company must be at least 3 characters in length",
+      "LINK_INVALID": "Links may start with \"http://\" or \"https://\" followed by a domain name (including subdomains) and a top-level domain (like \".com\", \".org\", etc.), and may include a path",
+      "STACK_INVALID": "Programming stack must be provided"
     },
     "HINT": {
       "PASSWORD": "Passwords must be at least 6 characters long, contains at least 1 number and 1 special character (!@#$%^&*)"

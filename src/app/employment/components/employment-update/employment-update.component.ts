@@ -19,14 +19,20 @@ export class EmploymentUpdateComponent implements OnInit {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
   public isUpdating: boolean = false;
   public employmentForm = new FormGroup({
-    role: new FormControl("", Validators.required),
-    company: new FormControl("", Validators.required),
+    role: new FormControl("", [Validators.required, Validators.minLength(3)]),
+    company: new FormControl("", [
+      Validators.required,
+      Validators.minLength(3),
+    ]),
     companyLink: new FormControl(""),
     description: new FormControl(""),
     project: new FormControl(""),
     endDate: new FormControl<Date | null>(null),
     startDate: new FormControl<Date | null>(null),
-    type: new FormControl("", Validators.required),
+    type: new FormControl("", [
+      Validators.required,
+      Validators.pattern(/^(freelance|employment)$/),
+    ]),
   });
 
   @ViewChild("stack") stack: StackSelectorComponent;
