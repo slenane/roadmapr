@@ -8,6 +8,9 @@ export const validPasswordPattern =
 
 export const validUsernamePattern = /^[^\s]+$/;
 
+export const validLinkPattern =
+  /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
+
 export const passwordMatchValidator: ValidatorFn = (
   control: AbstractControl
 ): ValidationErrors | null => {

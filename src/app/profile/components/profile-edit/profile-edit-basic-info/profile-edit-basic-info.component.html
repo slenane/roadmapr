@@ -14,7 +14,7 @@
     <div class="form-grid__inner">
       <mat-form-field appearance="outline">
         <mat-label>{{ "FORMS.FIRST_NAME" | translate }}</mat-label>
-        <input #name matInput formControlName="firstNameCtrl" />
+        <input #firstName matInput formControlName="firstNameCtrl" />
         <mat-error *ngIf="form.controls.firstNameCtrl.invalid">{{
           "FORMS.REQUIRED.FIRST_NAME" | translate
         }}</mat-error>
@@ -22,7 +22,7 @@
 
       <mat-form-field appearance="outline">
         <mat-label>{{ "FORMS.LAST_NAME" | translate }}</mat-label>
-        <input #name matInput formControlName="lastNameCtrl" />
+        <input #lastName matInput formControlName="lastNameCtrl" />
         <mat-error *ngIf="form.controls.lastNameCtrl.invalid">{{
           "FORMS.REQUIRED.LAST_NAME" | translate
         }}</mat-error>

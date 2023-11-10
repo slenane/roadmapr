@@ -9,6 +9,7 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { Subject } from "rxjs";
 import { StackSelectorComponent } from "src/app/shared/components/stack-selector/stack-selector.component";
+import { validLinkPattern } from "src/app/shared/constants/validators.constants";
 
 @Component({
   selector: "app-education-update",
@@ -31,9 +32,7 @@ export class EducationUpdateComponent implements OnInit {
     description: new FormControl(),
     link: new FormControl("", [
       Validators.required,
-      Validators.pattern(
-        /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/
-      ),
+      Validators.pattern(validLinkPattern),
     ]),
   });
 

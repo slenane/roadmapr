@@ -12,8 +12,8 @@
       <span
         class="language-item"
         *ngFor="let item of user.languagesSpoken; let last = last"
-        >{{ item.language.name | translate }} ({{
-          item.level.name | translate
+        >{{ item.language?.name | translate }} ({{
+          item.level?.name | translate
         }})
       </span>
     </div>
@@ -29,7 +29,7 @@
     >
       <div class="education-item">
         <span class="subject"
-          >{{ item.level.name | translate }} in {{ item.subject }}</span
+          >{{ item.level?.name | translate }} in {{ item.subject }}</span
         >
         <span class="school">{{ item.school }}</span>
       </div>

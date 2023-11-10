@@ -53,6 +53,26 @@ export class ProfileEditBasicInfoComponent implements OnInit, OnChanges {
     }
   }
 
+  focusErrorInput() {
+    for (const input of Object.keys(this.form.controls)) {
+      const control = this.form.get(input);
+
+      if (control?.invalid) {
+        this.form.markAllAsTouched();
+        this.form.markAsDirty();
+
+        if (input === "locationCtrl") this.location.nativeElement.focus();
+        if (input === "firstNameCtrl") this.firstName.nativeElement.focus();
+        if (input === "lastNameCtrl") this.lastName.nativeElement.focus();
+        if (input === "nationalityCtrl") this.nationality.nativeElement.focus();
+        if (input === "pathCtrl") this.path.nativeElement.focus();
+
+        return true;
+      }
+    }
+    return false;
+  }
+
   updateForm(user: any) {
     this.form.patchValue({
       bioCtrl: user.bio,
