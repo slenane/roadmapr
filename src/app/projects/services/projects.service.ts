@@ -20,18 +20,14 @@ export class ProjectsService {
   public createProject(projectsId: string, data: any): Observable<any> {
     return this.apiService.post(
       this.urlService.generate(API.PROJECTS_CREATE, projectsId),
-      {
-        data,
-      }
+      data
     );
   }
 
   public updateProject(projectsId: string, data: any): Observable<any> {
     return this.apiService.patch(
       this.urlService.generate(API.PROJECTS_UPDATE, projectsId),
-      {
-        data,
-      }
+      data
     );
   }
 
@@ -41,18 +37,14 @@ export class ProjectsService {
   ): Observable<any> {
     return this.apiService.patch(
       this.urlService.generate(API.PROJECTS_BULK_UPDATE, projectsId),
-      {
-        data,
-      }
+      data
     );
   }
 
   public removeProject(projectsId: string, data: any): Observable<any> {
     return this.apiService.post(
       this.urlService.generate(API.PROJECTS_REMOVE, projectsId),
-      {
-        data,
-      }
+      data
     );
   }
 }

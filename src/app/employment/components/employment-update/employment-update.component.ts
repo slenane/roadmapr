@@ -9,6 +9,7 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { Subject } from "rxjs";
 import { StackSelectorComponent } from "src/app/shared/components/stack-selector/stack-selector.component";
+import { validLinkPattern } from "src/app/shared/constants/validators.constants";
 
 @Component({
   selector: "app-employment-update",
@@ -24,9 +25,9 @@ export class EmploymentUpdateComponent implements OnInit {
       Validators.required,
       Validators.minLength(3),
     ]),
-    companyLink: new FormControl(""),
+    companyLink: new FormControl("", [Validators.pattern(validLinkPattern)]),
     description: new FormControl(""),
-    project: new FormControl(""),
+    project: new FormControl("", [Validators.pattern(validLinkPattern)]),
     endDate: new FormControl<Date | null>(null),
     startDate: new FormControl<Date | null>(null),
     type: new FormControl("", [

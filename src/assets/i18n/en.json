@@ -102,6 +102,8 @@
     "END_DATE_INVALID": "End Date must be a valid date",
     "TITLE_INVALID": "Title must be at least 3 characters in length",
     "STACK_INVALID": "Programming stack must be provided",
+    "DESCRIPTION_INVALID": "Description invalid",
+    "NOTES_INVALID": "Notes invalid",
     "LINK_INVALID": "Links may start with \"http://\" or \"https://\" followed by a domain name (including subdomains) and a top-level domain (like \".com\", \".org\", etc.), and may include a path",
     "AUTH": {
       "SUCCESS": {
@@ -186,7 +188,8 @@
       },
       "ERROR": {
         "NOT_FOUND": "Project history not found",
-        "ITEM_NOT_FOUND": "Project not found"
+        "ITEM_NOT_FOUND": "Project not found",
+        "TYPE_INVALID": "Type must be either 'Educational' or 'Personal'"
       }
     },
     "SETTINGS": {

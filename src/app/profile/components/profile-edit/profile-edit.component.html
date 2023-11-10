@@ -55,6 +55,7 @@
                 mat-raised-button
                 color="primary"
                 (click)="onSave()"
+                [disabled]="!basicInfo.form.valid || !social.form.valid"
                 cdkFocusInitial
                 >{{ "ACTIONS.SAVE" | translate }}</button
               >

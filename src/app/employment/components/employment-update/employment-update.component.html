@@ -82,6 +82,11 @@
         >
           <mat-label>{{ "FORMS.COMPANY_LINK" | translate }}</mat-label>
           <input matInput formControlName="companyLink" />
+          <mat-error
+            *ngIf="employmentForm.controls.companyLink.hasError('pattern')"
+          >
+            {{ "FORMS.ERROR.LINK_INVALID" | translate }}
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field
@@ -90,6 +95,11 @@
         >
           <mat-label>{{ "FORMS.PROJECT_LINK" | translate }}</mat-label>
           <input matInput formControlName="project" />
+          <mat-error
+            *ngIf="employmentForm.controls.project.hasError('pattern')"
+          >
+            {{ "FORMS.ERROR.LINK_INVALID" | translate }}
+          </mat-error>
         </mat-form-field>
       </div>
       <div class="grid-section">

@@ -42,9 +42,16 @@
         <mat-form-field appearance="outline">
           <mat-label>{{ "FORMS.TITLE" | translate }}</mat-label>
           <input #title matInput formControlName="title" />
-          <mat-error *ngIf="projectForm.controls.title.invalid">{{
+          <mat-error *ngIf="projectForm.controls.title?.hasError('required')">{{
             "FORMS.REQUIRED.TITLE" | translate
           }}</mat-error>
+          <mat-error
+            *ngIf="
+              !projectForm.controls.title?.hasError('required') &&
+              projectForm.controls.title?.hasError('minlength')
+            "
+            >{{ "FORMS.ERROR.TITLE_INVALID" | translate }}</mat-error
+          >
         </mat-form-field>
 
         <mat-form-field appearance="outline">
@@ -55,11 +62,17 @@
         <mat-form-field appearance="outline">
           <mat-label>{{ "FORMS.GITHUB_LINK" | translate }}</mat-label>
           <input matInput formControlName="github" />
+          <mat-error *ngIf="projectForm.controls.github.hasError('pattern')">
+            {{ "FORMS.ERROR.LINK_INVALID" | translate }}
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>{{ "FORMS.PROJECT_LINK" | translate }}</mat-label>
           <input matInput formControlName="link" />
+          <mat-error *ngIf="projectForm.controls.link.hasError('pattern')">
+            {{ "FORMS.ERROR.LINK_INVALID" | translate }}
+          </mat-error>
         </mat-form-field>
       </div>
       <div class="grid-section">
