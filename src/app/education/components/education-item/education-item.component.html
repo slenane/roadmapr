@@ -1,5 +1,4 @@
 <mat-card
-  [ngClass]="{ recommendation: data.recommendation }"
   (click)="openItemDetails()"
   (mouseenter)="showPin()"
   (mouseleave)="hidePin()"
@@ -65,7 +64,7 @@
         <p class="description_text">{{ data.description }}</p>
       </div>
 
-      <p class="actions">
+      <div class="actions">
         <a [href]="data.link" target="_blank" *ngIf="data.link">
           <button
             mat-raised-button
@@ -92,20 +91,7 @@
             "FORMS.GITHUB" | translate
           }}</button>
         </a>
-      </p>
+      </div>
     </div>
-
-    <!-- <mat-chip-list class="chips" *ngIf="data.recommendation">
-      <mat-chip class="users-chip"> 1K+ Users </mat-chip>
-      <mat-chip
-        class="recommendation-chip"
-        (removed)="removeRecommendation(data)"
-      >
-        Recommended
-        <button matChipRemove [attr.aria-label]="'Remove recommendation'">
-          <span class="material-symbols-outlined">cancel</span>
-        </button>
-      </mat-chip>
-    </mat-chip-list> -->
   </mat-card-content>
 </mat-card>

@@ -1,16 +1,17 @@
 import { StackItem } from "src/app/shared/store/stack.models";
 
 export interface Recommendation {
-  description?: String;
-  link?: String;
+  description?: string;
+  link?: string;
   stack?: StackItem[];
   paths: any;
   locations: any;
   nationalities: any;
-  title: String;
-  provider: String;
-  count: Number;
-  recommended: Number;
-  percentageRecommended?: Number;
+  title: string;
+  provider: string;
+  count: number;
+  recommended: number;
+  percentageRecommended?: number;
+  type?: string;
   _id: string;
 }

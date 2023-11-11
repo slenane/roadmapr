@@ -35,18 +35,6 @@
             id="todo"
             (cdkDropListDropped)="drop($event)"
           >
-            <div
-              class="no-item-message"
-              *ngIf="education && todo && !todo.length"
-            >
-              <span class="material-symbols-outlined"> add </span>
-              <p class="message-primary">{{
-                "EMPLOYMENT.EMPTY_LIST.TO_DO_HEADER" | translate
-              }}</p>
-              <p class="message-secondary">{{
-                "EMPLOYMENT.EMPTY_LIST.TO_DO_MESSAGE" | translate
-              }}</p>
-            </div>
             <div *ngFor="let data of todo" class="drag-group-item" cdkDrag>
               <app-education-item
                 *ngIf="matchesFilters(data)"
@@ -56,12 +44,25 @@
               >
               </app-education-item>
             </div>
-            <!-- <div
-          class="drag-group-item recommendation"
-          *ngFor="let data of recommendationsArray"
-        >
-          <app-education-item [data]="data"> </app-education-item>
-        </div> -->
+
+            <div
+              class="drag-group-item recommendation"
+              *ngFor="let recommendation of recommendations; let i = index"
+            >
+              <app-recommendation
+                [data]="recommendation"
+                [index]="i"
+                [selectedView]="selectedView"
+                (onRemoveRecommendation)="removeRecommendationAtIndex($event)"
+              >
+              </app-recommendation>
+            </div>
+
+            <app-drop-list-empty
+              *ngIf="education && !todo?.length && !recommendations?.length"
+              [header]="'EDUCATION.EMPTY_LIST.TO_DO_HEADER'"
+              [message]="'EDUCATION.EMPTY_LIST.TO_DO_MESSAGE'"
+            ></app-drop-list-empty>
           </div>
 
           <div
@@ -72,18 +73,6 @@
             id="inProgress"
             (cdkDropListDropped)="drop($event)"
           >
-            <div
-              class="no-item-message"
-              *ngIf="education && inProgress && !inProgress.length"
-            >
-              <span class="material-symbols-outlined"> add </span>
-              <p class="message-primary">{{
-                "EMPLOYMENT.EMPTY_LIST.IN_PROGRESS_HEADER" | translate
-              }}</p>
-              <p class="message-secondary">{{
-                "EMPLOYMENT.EMPTY_LIST.IN_PROGRESS_MESSAGE" | translate
-              }}</p>
-            </div>
             <div
               *ngFor="let data of inProgress"
               class="drag-group-item"
@@ -97,6 +86,12 @@
               >
               </app-education-item>
             </div>
+
+            <app-drop-list-empty
+              *ngIf="education && inProgress && !inProgress.length"
+              [header]="'EDUCATION.EMPTY_LIST.IN_PROGRESS_HEADER'"
+              [message]="'EDUCATION.EMPTY_LIST.IN_PROGRESS_MESSAGE'"
+            ></app-drop-list-empty>
           </div>
 
           <div
@@ -107,18 +102,6 @@
             id="done"
             (cdkDropListDropped)="drop($event)"
           >
-            <div
-              class="no-item-message"
-              *ngIf="education && done && !done.length"
-            >
-              <span class="material-symbols-outlined"> add </span>
-              <p class="message-primary">{{
-                "EMPLOYMENT.EMPTY_LIST.DONE_HEADER" | translate
-              }}</p>
-              <p class="message-secondary">{{
-                "EMPLOYMENT.EMPTY_LIST.DONE_MESSAGE" | translate
-              }}</p>
-            </div>
             <div *ngFor="let data of done" class="drag-group-item" cdkDrag>
               <app-education-item
                 *ngIf="matchesFilters(data)"
@@ -128,6 +111,12 @@
               >
               </app-education-item>
             </div>
+
+            <app-drop-list-empty
+              *ngIf="education && done && !done.length"
+              [header]="'EDUCATION.EMPTY_LIST.DONE_HEADER'"
+              [message]="'EDUCATION.EMPTY_LIST.DONE_MESSAGE'"
+            ></app-drop-list-empty>
           </div>
         </div>
       </div>

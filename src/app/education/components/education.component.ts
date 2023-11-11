@@ -56,10 +56,12 @@ export class EducationComponent implements OnInit, OnDestroy {
 
     this.recommendationsStoreService
       .getRecommendations()
-      .pipe(takeUntil(this.ngUnsubscribe))
+      .pipe(
+        filter((state) => state?.length),
+        takeUntil(this.ngUnsubscribe)
+      )
       .subscribe((recommendations: Recommendation[]) => {
-        this.recommendations = recommendations;
-        console.log(this.recommendations);
+        this.recommendations = [...recommendations].splice(0, 3);
       });
   }
 
@@ -189,5 +191,9 @@ export class EducationComponent implements OnInit, OnDestroy {
         updatedItems
       );
     }
+  }
+
+  removeRecommendationAtIndex(index: number): void {
+    this.recommendations.splice(index, 1);
   }
 }
