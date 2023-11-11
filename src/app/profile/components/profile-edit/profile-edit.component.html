@@ -9,7 +9,7 @@
             </mat-card-title>
           </mat-card-header>
           <mat-card-content>
-            <mat-tab-group animationDuration="0ms">
+            <mat-tab-group #tabGroup animationDuration="0ms">
               <mat-tab>
                 <ng-template mat-tab-label>
                   {{ "PROFILE.UPDATE.BASIC_INFORMATION" | translate }}
@@ -55,6 +55,7 @@
                 mat-raised-button
                 color="primary"
                 (click)="onSave()"
+                [disabled]="!basicInfo.form.valid || !social.form.valid"
                 cdkFocusInitial
                 >{{ "ACTIONS.SAVE" | translate }}</button
               >

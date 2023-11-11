@@ -21,9 +21,7 @@ export class SettingsService {
   ): Observable<{ settings: Settings; successMessage: string }> {
     return this.apiService.patch(
       this.urlService.generate(API.SETTINGS_UPDATE, id),
-      {
-        data,
-      }
+      data
     );
   }
 

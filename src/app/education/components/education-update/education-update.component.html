@@ -33,17 +33,29 @@
               {{ "EDUCATION.TYPES.COURSES_SINGULAR" | translate }}
             </mat-option>
           </mat-select>
-          <mat-error *ngIf="educationForm.controls.type.invalid">{{
-            "FORMS.REQUIRED.TYPE" | translate
+          <mat-error
+            *ngIf="educationForm.controls.type?.hasError('required')"
+            >{{ "FORMS.REQUIRED.TYPE" | translate }}</mat-error
+          >
+          <mat-error *ngIf="educationForm.controls.type?.hasError('pattern')">{{
+            "FORMS.ERROR.EDUCATION_TYPE_INVALID" | translate
           }}</mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>{{ "FORMS.TITLE" | translate }}</mat-label>
           <input #title matInput formControlName="title" />
-          <mat-error *ngIf="educationForm.controls.title.invalid">{{
-            "FORMS.REQUIRED.TITLE" | translate
-          }}</mat-error>
+          <mat-error
+            *ngIf="educationForm.controls.title?.hasError('required')"
+            >{{ "FORMS.REQUIRED.TITLE" | translate }}</mat-error
+          >
+          <mat-error
+            *ngIf="
+              !educationForm.controls.title?.hasError('required') &&
+              educationForm.controls.title?.hasError('minlength')
+            "
+            >{{ "FORMS.ERROR.TITLE_INVALID" | translate }}</mat-error
+          >
         </mat-form-field>
 
         <mat-form-field appearance="outline">
@@ -55,11 +67,25 @@
             }}
           </mat-label>
           <input #author matInput formControlName="author" />
-          <mat-error *ngIf="educationForm.controls.author.invalid">
+          <mat-error
+            *ngIf="educationForm.controls.author?.hasError('required')"
+          >
             {{
               selectedType === "course"
                 ? ("FORMS.REQUIRED.INSTRUCTOR" | translate)
                 : ("FORMS.REQUIRED.AUTHOR" | translate)
+            }}
+          </mat-error>
+          <mat-error
+            *ngIf="
+              !educationForm.controls.author?.hasError('required') &&
+              educationForm.controls.title?.hasError('minlength')
+            "
+          >
+            {{
+              selectedType === "course"
+                ? ("FORMS.ERROR.INSTRUCTOR_INVALID" | translate)
+                : ("FORMS.ERROR.AUTHOR_INVALID" | translate)
             }}
           </mat-error>
         </mat-form-field>
@@ -68,9 +94,17 @@
           <mat-label>{{ "FORMS.LINK" | translate }}</mat-label>
           <input #link matInput formControlName="link" />
           <mat-hint>{{ "FORMS.LINK_HINT" | translate }}</mat-hint>
-          <mat-error *ngIf="educationForm.controls.link.invalid">{{
-            "FORMS.REQUIRED.LINK" | translate
-          }}</mat-error>
+          <mat-error
+            *ngIf="educationForm.controls.link?.hasError('required')"
+            >{{ "FORMS.REQUIRED.LINK" | translate }}</mat-error
+          >
+          <mat-error
+            *ngIf="
+              !educationForm.controls.link?.hasError('required') &&
+              educationForm.controls.link?.hasError('pattern')
+            "
+            >{{ "FORMS.ERROR.LINK_INVALID" | translate }}</mat-error
+          >
         </mat-form-field>
       </div>
 

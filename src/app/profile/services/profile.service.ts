@@ -21,9 +21,7 @@ export class ProfileService {
   ): Observable<{ user: Profile; successMessage: string }> {
     return this.apiService.patch(
       this.urlService.generate(API.PROFILE_UPDATE, id),
-      {
-        data,
-      }
+      data
     );
   }
 

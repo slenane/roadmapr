@@ -6,7 +6,10 @@ export const validateConfirmPattern = "SETTINGS.DELETE.CONFIRM | translate";
 export const validPasswordPattern =
   /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,20}$/;
 
-export const validUsernamePattern = /^[^\s]+$/;
+export const validUsernamePattern = /^[^\s]{3,20}$/;
+
+export const validLinkPattern =
+  /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
 
 export const passwordMatchValidator: ValidatorFn = (
   control: AbstractControl

@@ -9,6 +9,7 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { Subject } from "rxjs";
 import { StackSelectorComponent } from "src/app/shared/components/stack-selector/stack-selector.component";
+import { validLinkPattern } from "src/app/shared/constants/validators.constants";
 
 @Component({
   selector: "app-education-update",
@@ -20,13 +21,19 @@ export class EducationUpdateComponent implements OnInit {
   public isUpdating: boolean = false;
   public selectedType: string = "";
   public educationForm = new FormGroup({
-    type: new FormControl("", Validators.required),
-    title: new FormControl("", Validators.required),
-    author: new FormControl("", Validators.required),
+    type: new FormControl("", [
+      Validators.required,
+      Validators.pattern(/^(book|course)$/),
+    ]),
+    title: new FormControl("", [Validators.required, Validators.minLength(3)]),
+    author: new FormControl("", [Validators.required, Validators.minLength(3)]),
     startDate: new FormControl<Date | null>(new Date()),
     endDate: new FormControl<Date | null>(null),
     description: new FormControl(),
-    link: new FormControl("", Validators.required),
+    link: new FormControl("", [
+      Validators.required,
+      Validators.pattern(validLinkPattern),
+    ]),
   });
 
   @ViewChild("stack") stack: StackSelectorComponent;

@@ -34,25 +34,46 @@
               {{ "EMPLOYMENT.TYPES.FREELANCE" | translate }}
             </mat-option>
           </mat-select>
-          <mat-error *ngIf="employmentForm.controls.type.invalid">{{
-            "FORMS.REQUIRED.TYPE" | translate
-          }}</mat-error>
+          <mat-error
+            *ngIf="employmentForm.controls.type?.hasError('required')"
+            >{{ "FORMS.REQUIRED.TYPE" | translate }}</mat-error
+          >
+          <mat-error
+            *ngIf="employmentForm.controls.type?.hasError('pattern')"
+            >{{ "FORMS.ERROR.EMPLOYMENT_TYPE_INVALID" | translate }}</mat-error
+          >
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>{{ "FORMS.ROLE" | translate }}</mat-label>
           <input #role matInput formControlName="role" />
-          <mat-error *ngIf="employmentForm.controls.role.invalid">{{
-            "FORMS.REQUIRED.ROLE" | translate
-          }}</mat-error>
+          <mat-error
+            *ngIf="employmentForm.controls.role?.hasError('required')"
+            >{{ "FORMS.REQUIRED.ROLE" | translate }}</mat-error
+          >
+          <mat-error
+            *ngIf="
+              !employmentForm.controls.role?.hasError('required') &&
+              employmentForm.controls.role?.hasError('minlength')
+            "
+            >{{ "FORMS.ERROR.ROLE_INVALID" | translate }}</mat-error
+          >
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>{{ "FORMS.COMPANY" | translate }}</mat-label>
           <input #company matInput formControlName="company" />
-          <mat-error *ngIf="employmentForm.controls.company.invalid">{{
-            "FORMS.REQUIRED.COMPANY" | translate
-          }}</mat-error>
+          <mat-error
+            *ngIf="employmentForm.controls.company?.hasError('required')"
+            >{{ "FORMS.REQUIRED.COMPANY" | translate }}</mat-error
+          >
+          <mat-error
+            *ngIf="
+              !employmentForm.controls.company?.hasError('required') &&
+              employmentForm.controls.company?.hasError('minlength')
+            "
+            >{{ "FORMS.ERROR.COMPANY_INVALID" | translate }}</mat-error
+          >
         </mat-form-field>
 
         <mat-form-field
@@ -61,6 +82,11 @@
         >
           <mat-label>{{ "FORMS.COMPANY_LINK" | translate }}</mat-label>
           <input matInput formControlName="companyLink" />
+          <mat-error
+            *ngIf="employmentForm.controls.companyLink.hasError('pattern')"
+          >
+            {{ "FORMS.ERROR.LINK_INVALID" | translate }}
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field
@@ -69,6 +95,11 @@
         >
           <mat-label>{{ "FORMS.PROJECT_LINK" | translate }}</mat-label>
           <input matInput formControlName="project" />
+          <mat-error
+            *ngIf="employmentForm.controls.project.hasError('pattern')"
+          >
+            {{ "FORMS.ERROR.LINK_INVALID" | translate }}
+          </mat-error>
         </mat-form-field>
       </div>
       <div class="grid-section">

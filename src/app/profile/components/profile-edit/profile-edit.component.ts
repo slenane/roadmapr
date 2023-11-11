@@ -13,6 +13,8 @@ import { ProfileEditLanguagesComponent } from "./profile-edit-languages/profile-
 import { ProfileEditSocialComponent } from "./profile-edit-social/profile-edit-social.component";
 import { ProfileEditEducationComponent } from "./profile-edit-education/profile-edit-education.component";
 import { ProfileEditInterestsComponent } from "./profile-edit-interests/profile-edit-interests.component";
+import { MatTabGroup } from "@angular/material/tabs";
+import { AlertsService } from "src/app/shared/services/alerts.service";
 
 @Component({
   selector: "app-profile-edit",
@@ -29,8 +31,12 @@ export class ProfileEditComponent implements OnInit {
   @ViewChild("social") social: ProfileEditSocialComponent;
   @ViewChild("education") education: ProfileEditEducationComponent;
   @ViewChild("interests") interests: ProfileEditInterestsComponent;
+  @ViewChild("tabGroup") tabGroup: MatTabGroup;
 
-  constructor(private profileStoreService: ProfileStoreService) {}
+  constructor(
+    private profileStoreService: ProfileStoreService,
+    private alertsService: AlertsService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -38,7 +44,28 @@ export class ProfileEditComponent implements OnInit {
     this.editProfile.emit(false);
   }
 
+  isFormValid(): boolean {
+    return (
+      this.basicInfo.form.valid &&
+      this.languages.form.valid &&
+      this.social.form.valid &&
+      this.education.form.valid &&
+      this.interests.form.valid
+    );
+  }
+
   onSave() {
+    if (!this.isFormValid()) {
+      const socialFormError = this.social.focusErrorInput();
+      const basicFormError = this.basicInfo.focusErrorInput();
+
+      if (basicFormError || socialFormError) {
+        this.tabGroup.selectedIndex = 0;
+        this.alertsService.errorAlert("PROFILE.UPDATE.MISSING_FIELDS");
+        return;
+      }
+    }
+
     this.profileStoreService.updateProfile(this.user._id, {
       bio: this.basicInfo.form.value.bioCtrl,
       links: {

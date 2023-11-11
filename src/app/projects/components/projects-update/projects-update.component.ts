@@ -9,6 +9,7 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { Subject } from "rxjs";
 import { StackSelectorComponent } from "src/app/shared/components/stack-selector/stack-selector.component";
+import { validLinkPattern } from "src/app/shared/constants/validators.constants";
 
 @Component({
   selector: "app-project-update",
@@ -20,14 +21,17 @@ export class ProjectsUpdateComponent implements OnInit {
   public isUpdating: boolean = false;
   public projectForm = new FormGroup({
     description: new FormControl(""),
-    github: new FormControl(""),
+    github: new FormControl("", [Validators.pattern(validLinkPattern)]),
     endDate: new FormControl<Date | null>(null),
-    link: new FormControl(""),
+    link: new FormControl("", [Validators.pattern(validLinkPattern)]),
     notes: new FormControl(""),
     startDate: new FormControl<Date | null>(null),
     tagLine: new FormControl(""),
-    title: new FormControl("", Validators.required),
-    type: new FormControl("", Validators.required),
+    title: new FormControl("", [Validators.required, Validators.minLength(3)]),
+    type: new FormControl("", [
+      Validators.required,
+      Validators.pattern(/^(educational|personal)$/),
+    ]),
   });
 
   @ViewChild("stack") stack: StackSelectorComponent;

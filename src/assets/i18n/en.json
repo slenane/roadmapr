@@ -98,6 +98,13 @@
     "DISMISS": "Dismiss",
     "NO_INFORMATION_PROVIDED": "No information was provided",
     "MISSING_FIELDS": "Required information missing, please check all required fields have been filled",
+    "START_DATE_INVALID": "Start Date must be a valid date",
+    "END_DATE_INVALID": "End Date must be a valid date",
+    "TITLE_INVALID": "Title must be at least 3 characters in length",
+    "STACK_INVALID": "Programming stack must be provided",
+    "DESCRIPTION_INVALID": "Description invalid",
+    "NOTES_INVALID": "Notes invalid",
+    "LINK_INVALID": "Links may start with \"http://\" or \"https://\" followed by a domain name (including subdomains) and a top-level domain (like \".com\", \".org\", etc.), and may include a path",
     "AUTH": {
       "SUCCESS": {
         "GITHUB_LINKED": "GitHub Linked Successfully",
@@ -106,7 +113,7 @@
       },
       "ERROR": {
         "USER_NOT_FOUND": "User not found",
-        "USERNAME_INVALID": "Username must be of minimum length 2 characters",
+        "USERNAME_INVALID": "Username must be a minimum of 2 and maximum of 20 characters",
         "USERNAME_USED": "Username already in use, please try something else",
         "EMAIL_INVALID": "Email is not valid",
         "EMAIL_NOT_PROVIDED": "Email not provided",
@@ -136,7 +143,10 @@
       "ERROR": {
         "NOT_FOUND": "Education history not found",
         "BOOK_NOT_FOUND": "Book not found",
-        "COURSE_NOT_FOUND": "Course not found"
+        "COURSE_NOT_FOUND": "Course not found",
+        "TYPE_INVALID": "Type must be either 'Book' or 'Course'",
+        "AUTHOR_INVALID": "Author must be at least 3 characters in length",
+        "PROVIDER_INVALID": "Provider must be at least 3 characters in length"
       }
     },
     "EMPLOYMENT": {
@@ -148,7 +158,10 @@
       },
       "ERROR": {
         "NOT_FOUND": "Employment history not found",
-        "ITEM_NOT_FOUND": "Experience not found"
+        "ITEM_NOT_FOUND": "Experience not found",
+        "TYPE_INVALID": "Type must be either 'Freelance' or 'Employment'",
+        "COMPANY_INVALID": "Company must be at least 3 characters in length",
+        "ROLE_INVALID": "Role must be at least 3 characters in length"
       }
     },
     "PROFILE": {
@@ -158,7 +171,12 @@
         "COVER_IMAGE_UPDATED": "Cover Image Updated"
       },
       "ERROR": {
-        "FILE_NOT_PROVIDED": "No file was provided"
+        "FILE_NOT_PROVIDED": "No file was provided",
+        "LOCATION_INVALID": "Location is invalid, please choose from the provided list",
+        "NATIONALITY_INVALID": "Nationality is invalid, please choose from the provided list",
+        "PATH_INVALID": "Path is invalid, please choose from the provided list",
+        "FIRST_NAME_INVALID": "First Name is required",
+        "LAST_NAME_INVALID": "Last Name is required"
       }
     },
     "PROJECTS": {
@@ -170,7 +188,8 @@
       },
       "ERROR": {
         "NOT_FOUND": "Project history not found",
-        "ITEM_NOT_FOUND": "Project not found"
+        "ITEM_NOT_FOUND": "Project not found",
+        "TYPE_INVALID": "Type must be either 'Educational' or 'Personal'"
       }
     },
     "SETTINGS": {
@@ -393,9 +412,18 @@
       "PASSWORD_PATTERN_SHORT": "Password does not match pattern",
       "PASSWORD_CONFIRM": "Passwords must match",
       "EMAIL_PATTERN": "Input must be an email",
-      "USERNAME_PATTERN": "Username must not contain spaces",
+      "USERNAME_PATTERN": "Username must be between 3 and 20 characters and not contain spaces",
       "UNIQUE_USERNAME": "This username is already in use",
-      "UNIQUE_EMAIL": "This email address is already in use"
+      "UNIQUE_EMAIL": "This email address is already in use",
+      "EDUCATION_TYPE_INVALID": "Type must be either 'Book' or 'Course'",
+      "EMPLOYMENT_TYPE_INVALID": "Type must be either 'Freelance' or 'Employment'",
+      "TITLE_INVALID": "Title must be at least 3 characters in length",
+      "ROLE_INVALID": "Role must be at least 3 characters in length",
+      "AUTHOR_INVALID": "Author must be at least 3 characters in length",
+      "PROVIDER_INVALID": "Provider must be at least 3 characters in length",
+      "COMPANY_INVALID": "Company must be at least 3 characters in length",
+      "LINK_INVALID": "Must be a valid URL",
+      "STACK_INVALID": "Programming stack must be provided"
     },
     "HINT": {
       "PASSWORD": "Passwords must be at least 6 characters long, contains at least 1 number and 1 special character (!@#$%^&*)"
@@ -450,7 +478,8 @@
       "T": "Update Profile",
       "BASIC_INFORMATION": "Basic Information",
       "SKILLS_AND_INTERESTS": "Skills & Interests",
-      "CONTACT_AND_SOCIAL": "Contact & Social"
+      "CONTACT_AND_SOCIAL": "Contact & Social",
+      "MISSING_FIELDS": "Some Basic Information is missing, please ensure you have filled all required fields"
     }
   },
   "PROJECTS": {

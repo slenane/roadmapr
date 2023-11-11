@@ -49,7 +49,6 @@ export class ProfileEditLanguagesComponent implements OnInit, OnChanges {
   }
 
   updateForm(user: any) {
-    console.log(user);
     if (user.languagesSpoken) {
       this.form.controls.languagesCtrl.controls = [];
       for (let language of user.languagesSpoken) {

@@ -23,9 +23,7 @@ export class EmploymentService {
   ): Observable<any> {
     return this.apiService.post(
       this.urlService.generate(API.EMPLOYMENT_CREATE, employmentId),
-      {
-        data,
-      }
+      data
     );
   }
 
@@ -35,9 +33,7 @@ export class EmploymentService {
   ): Observable<any> {
     return this.apiService.patch(
       this.urlService.generate(API.EMPLOYMENT_UPDATE, employmentId),
-      {
-        data,
-      }
+      data
     );
   }
 
@@ -47,9 +43,7 @@ export class EmploymentService {
   ): Observable<any> {
     return this.apiService.patch(
       this.urlService.generate(API.EMPLOYMENT_BULK_UPDATE, employmentId),
-      {
-        data,
-      }
+      data
     );
   }
 
@@ -59,9 +53,7 @@ export class EmploymentService {
   ): Observable<any> {
     return this.apiService.post(
       this.urlService.generate(API.EMPLOYMENT_REMOVE, employmentId),
-      {
-        data,
-      }
+      data
     );
   }
 }
