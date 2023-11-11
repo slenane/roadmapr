@@ -9,7 +9,10 @@ export const validPasswordPattern =
 export const validUsernamePattern = /^[^\s]{3,20}$/;
 
 export const validLinkPattern =
-  /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
+  /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?(\?[a-z\d\.\-_%&=\+]+)?$/;
+
+export const validYouTubeLink =
+  /^https?:\/\/(?:www\.)?youtube\.com\/watch\?v=[a-zA-Z0-9_-]{11}/;
 
 export const passwordMatchValidator: ValidatorFn = (
   control: AbstractControl
@@ -29,6 +32,15 @@ export function conditionalRequiredValidator(condition: boolean): ValidatorFn {
     return null;
   };
 }
+
+export const validEducationUrlValidator: ValidatorFn = (
+  control: AbstractControl
+): ValidationErrors | null => {
+  return control.value.match(validLinkPattern) ||
+    control.value.match(validYouTubeLink)
+    ? null
+    : { pattern: true };
+};
 
 // export const countryMatchValidator: ValidatorFn = (
 //   control: AbstractControl

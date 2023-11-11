@@ -48,6 +48,10 @@
 
     .provider-button {
       background: white !important;
+
+      &__text {
+        color: black;
+      }
     }
   }
 }
@@ -178,6 +182,10 @@
 
     .provider-button {
       background: lightgrey !important;
+
+      &__text {
+        color: black !important;
+      }
     }
   }
 }
