@@ -270,7 +270,8 @@
     },
     "UPDATE": {
       "T": "Update Education",
-      "MESSAGE": "Share what you've been learning"
+      "MESSAGE": "Share what you've been learning",
+      "RECOMMEND": "Would you recommend this {{type}}?"
     }
   },
   "EMPLOYMENT": {

@@ -9,7 +9,7 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { Subject } from "rxjs";
 import { StackSelectorComponent } from "src/app/shared/components/stack-selector/stack-selector.component";
-import { validLinkPattern } from "src/app/shared/constants/validators.constants";
+import { validEducationUrlValidator } from "src/app/shared/constants/validators.constants";
 
 @Component({
   selector: "app-education-update",
@@ -32,8 +32,9 @@ export class EducationUpdateComponent implements OnInit {
     description: new FormControl(),
     link: new FormControl("", [
       Validators.required,
-      Validators.pattern(validLinkPattern),
+      validEducationUrlValidator,
     ]),
+    isRecommended: new FormControl(true, [Validators.required]),
   });
 
   @ViewChild("stack") stack: StackSelectorComponent;
@@ -60,6 +61,7 @@ export class EducationUpdateComponent implements OnInit {
         endDate: this.data.endDate,
         startDate: this.data.startDate,
         type: this.data.type,
+        isRecommended: this.data.isRecommended,
       });
     }
     this.educationForm.controls.type.valueChanges.subscribe(

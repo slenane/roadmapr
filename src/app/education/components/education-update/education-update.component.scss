@@ -52,6 +52,13 @@
           grid-gap: 1rem;
         }
       }
+
+      .recommendation-options {
+        display: grid;
+        grid-template-columns: auto auto;
+        justify-content: flex-start;
+        gap: 1rem;
+      }
     }
   }
 }

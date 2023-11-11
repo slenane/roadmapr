@@ -79,9 +79,11 @@
               src="/assets/images/icons/{{ data.metadata?.provider }}.svg"
             />
 
-            <span *ngIf="!data.metadata?.provider">{{
-              "FORMS.LINK" | translate
-            }}</span>
+            <span
+              *ngIf="!data.metadata?.provider"
+              class="provider-button__text"
+              >{{ "FORMS.LINK" | translate }}</span
+            >
           </button>
         </a>
 
