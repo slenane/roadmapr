@@ -412,7 +412,7 @@
       "PASSWORD_PATTERN_SHORT": "Password does not match pattern",
       "PASSWORD_CONFIRM": "Passwords must match",
       "EMAIL_PATTERN": "Input must be an email",
-      "USERNAME_PATTERN": "Username must not contain spaces",
+      "USERNAME_PATTERN": "Username must be between 3 and 20 characters and not contain spaces",
       "UNIQUE_USERNAME": "This username is already in use",
       "UNIQUE_EMAIL": "This email address is already in use",
       "EDUCATION_TYPE_INVALID": "Type must be either 'Book' or 'Course'",
