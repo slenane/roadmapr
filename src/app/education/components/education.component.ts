@@ -10,6 +10,8 @@ import {
 } from "../constants/education.constants";
 import { DropListService } from "src/app/shared/services/drop-list.service";
 import { educationInitialState } from "../store/education.reducer";
+import { RecommendationsStoreService } from "src/app/recommendations/services/recommendations-store.service";
+import { Recommendation } from "src/app/recommendations/store/recommendations.models";
 
 @Component({
   selector: "app-education",
@@ -30,11 +32,11 @@ export class EducationComponent implements OnInit, OnDestroy {
   public todo: any[];
   public inProgress: any[];
   public done: any[];
-  public recommendations: any[];
-  // public recommendations = DUMMY_EDUCATION;
+  public recommendations: Recommendation[];
 
   constructor(
     private educationStoreService: EducationStoreService,
+    private recommendationsStoreService: RecommendationsStoreService,
     private dropListService: DropListService
   ) {}
 
@@ -50,6 +52,14 @@ export class EducationComponent implements OnInit, OnDestroy {
         this.educationList = this.education.educationList;
         this.getEducationConfig(this.educationList);
         this.getLanguageFilterData();
+      });
+
+    this.recommendationsStoreService
+      .getRecommendations()
+      .pipe(takeUntil(this.ngUnsubscribe))
+      .subscribe((recommendations: Recommendation[]) => {
+        this.recommendations = recommendations;
+        console.log(this.recommendations);
       });
   }
 
