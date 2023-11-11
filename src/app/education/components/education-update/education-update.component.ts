@@ -34,6 +34,7 @@ export class EducationUpdateComponent implements OnInit {
       Validators.required,
       Validators.pattern(validLinkPattern),
     ]),
+    isRecommended: new FormControl(true, [Validators.required]),
   });
 
   @ViewChild("stack") stack: StackSelectorComponent;
@@ -60,6 +61,7 @@ export class EducationUpdateComponent implements OnInit {
         endDate: this.data.endDate,
         startDate: this.data.startDate,
         type: this.data.type,
+        isRecommended: this.data.isRecommended,
       });
     }
     this.educationForm.controls.type.valueChanges.subscribe(
