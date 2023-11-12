@@ -21,7 +21,7 @@ import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 import { ProjectsModule } from "./projects/projects.module";
 import { ExperienceModule } from "./experience/experience.module";
 import { SettingsModule } from "./settings/settings.module";
-import { DashboardModule } from "./dashboard/dashboard.module";
+import { RoadmapModule } from "./roadmap/roadmap.module";
 import { NgChartsModule } from "ng2-charts";
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
@@ -73,7 +73,7 @@ export const metaReducers: MetaReducer<any>[] = [clearState];
     CoreModule,
     HomeModule,
     ExperienceModule,
-    DashboardModule,
+    RoadmapModule,
     EducationModule,
     RecommendationsModule,
     ProfileModule,

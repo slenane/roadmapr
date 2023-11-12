@@ -1,0 +1,22 @@
+Education Section:
+
+Bar Chart: Number of Courses Completed
+Pie Chart: Distribution of Education Sources (Udemy, freecodecamp, books, YouTube tutorials, university degrees)
+Table: List of Completed Courses, including Course Name, Provider, and Completion Date
+Personal Projects Section:
+
+Line Chart: Number of Completed Personal Projects Over Time
+Radar Chart: Skills Utilized in Personal Projects (e.g., programming languages, frameworks, tools)
+Table: List of Personal Projects, including Project Name, Description, Technologies Used, and Completion Date
+Experience History Section:
+
+Bar Chart: Duration of Experience in Different Companies
+Stacked Bar Chart: Distribution of Skills Used in Experience (e.g., frontend, backend, database)
+Table: List of Previous Experience, including Company Name, Job Title, Duration, and Key Responsibilities
+Additionally, the roadmap could include some overall summary statistics and visualizations:
+
+Skills Tag Cloud: Displaying the most frequently used skills based on education, personal projects, and experience history
+Skill Progression Line Chart: Tracking the improvement of skills over time
+Certification Progress: Showing the completion status of various certifications or degrees pursued by the developer
+
+Slider -. back / full / front based on courses and projects

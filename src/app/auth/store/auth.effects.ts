@@ -164,7 +164,7 @@ export class AuthEffects {
 
   redirectUser(user: any) {
     if (this.profileService.userBasicDetailsProvided(user)) {
-      this.router.navigateByUrl(ROUTES.DASHBOARD);
+      this.router.navigateByUrl(ROUTES.ROADMAP);
     } else {
       this.router.navigateByUrl(ROUTES.WELCOME);
     }
