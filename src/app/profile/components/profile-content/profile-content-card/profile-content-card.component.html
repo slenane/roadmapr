@@ -57,12 +57,12 @@
         />
       </a>
     </div>
-    <div class="social-link twitter-link" *ngIf="user.links.twitter">
-      <a href="{{ user.links.twitter }}" target="_blank">
+    <div class="social-link x-link" *ngIf="user.links.x">
+      <a [href]="user.links.x" target="_blank">
         <img
           class="social-image"
           src="/assets/images/icons/x.svg"
-          alt="twitter Icon"
+          alt="x Icon"
         />
       </a>
     </div>

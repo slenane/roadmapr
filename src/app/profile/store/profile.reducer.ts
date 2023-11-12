@@ -19,7 +19,7 @@ export const profileInitialState: Profile = {
   bio: "",
   links: {
     linkedIn: "",
-    twitter: "",
+    x: "",
     cv: "",
     portfolio: "",
   },

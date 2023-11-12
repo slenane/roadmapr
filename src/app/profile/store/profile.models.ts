@@ -26,7 +26,7 @@ export interface Profile {
     cv: string;
     portfolio: string;
     linkedIn: string;
-    twitter: string;
+    x: string;
   };
   stack: StackItem[];
   notifications: boolean;
