@@ -1,18 +1,18 @@
-<app-loading *ngIf="!employment"></app-loading>
+<app-loading *ngIf="!experience"></app-loading>
 
-<div class="employment drag-group" *ngIf="employment">
+<div class="experience drag-group" *ngIf="experience">
   <div class="drag-group-header">
     <app-drop-list-filters
-      *ngIf="employment"
-      [type]="'employment'"
-      [parentId]="employment._id"
+      *ngIf="experience"
+      [type]="'experience'"
+      [parentId]="experience._id"
       [selectedView]="selectedView"
       [typeConfig]="typeConfig"
       [languageConfig]="languageFilterData"
       (onFilterLanguage)="filterByLanguage($event)"
       (onFilterType)="filterByType($event)"
       (onUpdateView)="updateView($event)"
-      (onUpdate)="createEmploymentItem($event)"
+      (onUpdate)="createExperienceItem($event)"
     >
     </app-drop-list-filters>
 
@@ -36,19 +36,19 @@
             (cdkDropListDropped)="drop($event)"
           >
             <div *ngFor="let data of todo" class="drag-group-item" cdkDrag>
-              <app-employment-item
+              <app-experience-item
                 *ngIf="matchesFilters(data)"
                 [data]="data"
                 [selectedView]="selectedView"
                 (pinItem)="onPinToggle($event, todo)"
               >
-              </app-employment-item>
+              </app-experience-item>
             </div>
 
             <app-drop-list-empty
-              *ngIf="employment && todo && !todo.length"
-              [header]="'EMPLOYMENT.EMPTY_LIST.TO_DO_HEADER'"
-              [message]="'EMPLOYMENT.EMPTY_LIST.TO_DO_MESSAGE'"
+              *ngIf="experience && todo && !todo.length"
+              [header]="'EXPERIENCE.EMPTY_LIST.TO_DO_HEADER'"
+              [message]="'EXPERIENCE.EMPTY_LIST.TO_DO_MESSAGE'"
             ></app-drop-list-empty>
           </div>
 
@@ -65,19 +65,19 @@
               class="drag-group-item"
               cdkDrag
             >
-              <app-employment-item
+              <app-experience-item
                 *ngIf="matchesFilters(data)"
                 [data]="data"
                 [selectedView]="selectedView"
                 (pinItem)="onPinToggle($event, inProgress)"
               >
-              </app-employment-item>
+              </app-experience-item>
             </div>
 
             <app-drop-list-empty
-              *ngIf="employment && inProgress && !inProgress.length"
-              [header]="'EMPLOYMENT.EMPTY_LIST.IN_PROGRESS_HEADER'"
-              [message]="'EMPLOYMENT.EMPTY_LIST.IN_PROGRESS_MESSAGE'"
+              *ngIf="experience && inProgress && !inProgress.length"
+              [header]="'EXPERIENCE.EMPTY_LIST.IN_PROGRESS_HEADER'"
+              [message]="'EXPERIENCE.EMPTY_LIST.IN_PROGRESS_MESSAGE'"
             ></app-drop-list-empty>
           </div>
 
@@ -90,19 +90,19 @@
             (cdkDropListDropped)="drop($event)"
           >
             <div *ngFor="let data of done" class="drag-group-item" cdkDrag>
-              <app-employment-item
+              <app-experience-item
                 *ngIf="matchesFilters(data)"
                 [data]="data"
                 [selectedView]="selectedView"
                 (pinItem)="onPinToggle($event, done)"
               >
-              </app-employment-item>
+              </app-experience-item>
             </div>
 
             <app-drop-list-empty
-              *ngIf="employment && done && !done.length"
-              [header]="'EMPLOYMENT.EMPTY_LIST.DONE_HEADER'"
-              [message]="'EMPLOYMENT.EMPTY_LIST.DONE_MESSAGE'"
+              *ngIf="experience && done && !done.length"
+              [header]="'EXPERIENCE.EMPTY_LIST.DONE_HEADER'"
+              [message]="'EXPERIENCE.EMPTY_LIST.DONE_MESSAGE'"
             ></app-drop-list-empty>
           </div>
         </div>

@@ -51,40 +51,40 @@ export class DashboardComponent implements OnInit {
       .subscribe({
         next: (dashboard: Dashboard) => {
           this.dashboard = dashboard;
-          const [education, employment, projects] =
+          const [education, experience, projects] =
             this.filterAndExtractData(dashboard);
 
           if (education.length || projects.length) {
             this.stack = this.extractStackData({ education, projects });
           }
-          if (education.length || projects.length || employment.length) {
+          if (education.length || projects.length || experience.length) {
             this.distribution = this.extractStackData({
               education,
               projects,
-              employment,
+              experience,
             });
 
             this.stackList = this.extractStackList({
               education,
               projects,
-              employment,
+              experience,
             });
 
             this.radar = this.extractStackRadarData({
               personal: [...education, ...projects],
-              professional: employment,
+              professional: experience,
             });
 
             // this.timeline = this.extractTimelineData({
             //   education,
             //   projects,
-            //   employment,
+            //   experience,
             // });
 
             this.overviewData = this.extractOverviewData({
               education,
               projects,
-              employment,
+              experience,
             });
           }
 
@@ -188,7 +188,7 @@ export class DashboardComponent implements OnInit {
   //     ...data.education,
   //     ...data.projects,
   //   ]);
-  //   const professionalStartDate = this.getStartDate([...data.employment]);
+  //   const professionalStartDate = this.getStartDate([...data.experience]);
 
   //   const personalTotalTime = this.getTotalTime(personalStartDate);
   //   const professionalTotalTime = this.getTotalTime(professionalStartDate);
@@ -211,7 +211,7 @@ export class DashboardComponent implements OnInit {
         this.getStartDate([
           ...data.education,
           ...data.projects,
-          ...data.employment,
+          ...data.experience,
         ])
       ),
       totalCourses: data.education.length,
@@ -222,9 +222,9 @@ export class DashboardComponent implements OnInit {
   filterAndExtractData(dashboard: Dashboard) {
     const education = dashboard.education.filter((item) => !!item.startDate);
     const projects = dashboard.projects.filter((item) => !!item.startDate);
-    const employment = dashboard.employment.filter((item) => !!item.startDate);
+    const experience = dashboard.experience.filter((item) => !!item.startDate);
 
-    return [education, employment, projects];
+    return [education, experience, projects];
   }
 
   getStartDate(data: any) {

@@ -7,7 +7,7 @@ const routes: Routes = [
   {
     path: "",
     component: ExperienceComponent,
-    title: "ROUTES.Experience",
+    title: "ROUTES.EXPERIENCE",
   },
 ];
 

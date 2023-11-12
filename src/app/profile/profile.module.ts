@@ -22,7 +22,7 @@ import { ProfileEditEducationComponent } from "./components/profile-edit/profile
 import { ProfileEditInterestsComponent } from "./components/profile-edit/profile-edit-interests/profile-edit-interests.component";
 import { ProfileEditSocialComponent } from "./components/profile-edit/profile-edit-social/profile-edit-social.component";
 import { ProfileContentPersonalComponent } from "./components/profile-content/profile-content-main/profile-content-personal/profile-content-personal.component";
-import { ProfileContentEmploymentComponent } from "./components/profile-content/profile-content-main/profile-content-employment/profile-content-employment.component";
+import { ProfileContentExperienceComponent } from "./components/profile-content/profile-content-main/profile-content-experience/profile-content-experience.component";
 import { ProfileContentEducationComponent } from "./components/profile-content/profile-content-main/profile-content-education/profile-content-education.component";
 import { ProfileContentProjectsComponent } from "./components/profile-content/profile-content-main/profile-content-projects/profile-content-projects.component";
 
@@ -38,7 +38,7 @@ import { ProfileContentProjectsComponent } from "./components/profile-content/pr
     ProfileEditInterestsComponent,
     ProfileEditSocialComponent,
     ProfileContentPersonalComponent,
-    ProfileContentEmploymentComponent,
+    ProfileContentExperienceComponent,
     ProfileContentEducationComponent,
     ProfileContentProjectsComponent,
   ],

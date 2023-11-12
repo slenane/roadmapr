@@ -1,4 +1,4 @@
-import { EmploymentItem } from "src/app/employment/store/employment.models";
+import { ExperienceItem } from "src/app/experience/store/experience.models";
 import { ProjectItem } from "src/app/projects/store/projects.models";
 import { EducationItem } from "src/app/education/store/education.models";
 
@@ -14,7 +14,7 @@ interface Github {
 
 export interface Dashboard {
   education: EducationItem[];
-  employment: EmploymentItem[];
+  experience: ExperienceItem[];
   projects: ProjectItem[];
   github: Github[];
 }

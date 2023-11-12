@@ -19,7 +19,7 @@
     "ROADMAP": "Roadmap | roadmapr",
     "EDUCATION": "Education | roadmapr",
     "PROJECTS": "Projects | roadmapr",
-    "EMPLOYMENT": "Employment | roadmapr",
+    "EXPERIENCE": "Experience | roadmapr",
     "PROFILE": "Profile | roadmapr",
     "SETTINGS": "Settings | roadmapr",
     "USER_SETUP": "Welcome to roadmapr",
@@ -149,17 +149,17 @@
         "PROVIDER_INVALID": "Provider must be at least 3 characters in length"
       }
     },
-    "EMPLOYMENT": {
+    "EXPERIENCE": {
       "SUCCESS": {
         "CREATED": "Experience Added",
         "UPDATED": "Experience Updated",
         "REMOVED": "Experience Removed",
-        "ITEMS_UPDATED": "Employment Updated"
+        "ITEMS_UPDATED": "Experience Updated"
       },
       "ERROR": {
-        "NOT_FOUND": "Employment history not found",
+        "NOT_FOUND": "Experience history not found",
         "ITEM_NOT_FOUND": "Experience not found",
-        "TYPE_INVALID": "Type must be either 'Freelance' or 'Employment'",
+        "TYPE_INVALID": "Type must be either 'Freelance' or 'Professional'",
         "COMPANY_INVALID": "Company must be at least 3 characters in length",
         "ROLE_INVALID": "Role must be at least 3 characters in length"
       }
@@ -201,7 +201,7 @@
       "ERROR": {
         "NOT_FOUND": "Settings not found",
         "EDUCATION_DATA": "Education data could not be deleted",
-        "EMPLOYMENT_DATA": "Employment data could not be deleted",
+        "EXPERIENCE_DATA": "Experience data could not be deleted",
         "PROJECT_DATA": "Project data could not be deleted",
         "CURRENT_PASSWORD_REQUIRED": "Current password required",
         "NEW_PASSWORD_REQUIRED": "New password required",
@@ -275,19 +275,19 @@
       "ADD_TO_LIST": "Add to list"
     }
   },
-  "EMPLOYMENT": {
-    "T": "Employment",
+  "EXPERIENCE": {
+    "T": "Experience",
     "T_SINGLE": "Experience",
     "EMPTY_LIST": {
-      "TO_DO_HEADER": "No Future Employment Plans",
+      "TO_DO_HEADER": "No Future Experience Plans",
       "TO_DO_MESSAGE": "Securing work ahead of time will help keep you motivated",
-      "IN_PROGRESS_HEADER": "No Employment In Progress",
+      "IN_PROGRESS_HEADER": "No Experience In Progress",
       "IN_PROGRESS_MESSAGE": "Keep your CV up to date and keep learning!",
-      "DONE_HEADER": "No Completed Employment",
+      "DONE_HEADER": "No Completed Experience",
       "DONE_MESSAGE": "Freelance work is a great way to earn money while developing your skills"
     },
     "TYPES": {
-      "EMPLOYMENT": "Employment",
+      "PROFESSIONAL": "Professional",
       "FREELANCE": "Freelance"
     },
     "UPDATE": {
@@ -418,7 +418,7 @@
       "UNIQUE_USERNAME": "This username is already in use",
       "UNIQUE_EMAIL": "This email address is already in use",
       "EDUCATION_TYPE_INVALID": "Type must be either 'Book' or 'Course'",
-      "EMPLOYMENT_TYPE_INVALID": "Type must be either 'Freelance' or 'Employment'",
+      "EXPERIENCE_TYPE_INVALID": "Type must be either 'Freelance' or 'Professional'",
       "TITLE_INVALID": "Title must be at least 3 characters in length",
       "ROLE_INVALID": "Role must be at least 3 characters in length",
       "AUTHOR_INVALID": "Author must be at least 3 characters in length",

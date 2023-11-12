@@ -1,15 +1,15 @@
-<div class="employment-header">
+<div class="experience-header">
   <div class="icon">
     <span class="material-symbols-outlined emphasis"> work </span>
   </div>
   <div class="text">
-    <h1>{{ "EMPLOYMENT.UPDATE.T" | translate }}</h1>
-    <p>{{ "EMPLOYMENT.UPDATE.MESSAGE" | translate }}</p>
+    <h1>{{ "EXPERIENCE.UPDATE.T" | translate }}</h1>
+    <p>{{ "EXPERIENCE.UPDATE.MESSAGE" | translate }}</p>
   </div>
 </div>
 <div mat-dialog-content>
   <ng-scrollbar class="form-scroll">
-    <form [formGroup]="employmentForm">
+    <form [formGroup]="experienceForm">
       <div class="grid-section">
         <mat-form-field appearance="outline">
           <mat-label>{{ "FORMS.TYPE" | translate }}</mat-label>
@@ -19,28 +19,28 @@
             [placeholder]="'FORMS.PLACEHOLDER.TYPE' | translate"
             cdkFocusInitial
           >
-            <mat-option value="employment">
+            <mat-option value="professional">
               <img
-                src="/assets/images/icons/employment.png"
+                src="/assets/images/icons/professional.png"
                 class="app-education-type-icon"
               />
-              {{ "EMPLOYMENT.TYPES.EMPLOYMENT" | translate }}
+              {{ "EXPERIENCE.TYPES.PROFESSIONAL" | translate }}
             </mat-option>
             <mat-option value="freelance">
               <img
                 src="/assets/images/icons/freelance.png"
                 class="app-education-type-icon"
               />
-              {{ "EMPLOYMENT.TYPES.FREELANCE" | translate }}
+              {{ "EXPERIENCE.TYPES.FREELANCE" | translate }}
             </mat-option>
           </mat-select>
           <mat-error
-            *ngIf="employmentForm.controls.type?.hasError('required')"
+            *ngIf="experienceForm.controls.type?.hasError('required')"
             >{{ "FORMS.REQUIRED.TYPE" | translate }}</mat-error
           >
           <mat-error
-            *ngIf="employmentForm.controls.type?.hasError('pattern')"
-            >{{ "FORMS.ERROR.EMPLOYMENT_TYPE_INVALID" | translate }}</mat-error
+            *ngIf="experienceForm.controls.type?.hasError('pattern')"
+            >{{ "FORMS.ERROR.EXPERIENCE_TYPE_INVALID" | translate }}</mat-error
           >
         </mat-form-field>
 
@@ -48,13 +48,13 @@
           <mat-label>{{ "FORMS.ROLE" | translate }}</mat-label>
           <input #role matInput formControlName="role" />
           <mat-error
-            *ngIf="employmentForm.controls.role?.hasError('required')"
+            *ngIf="experienceForm.controls.role?.hasError('required')"
             >{{ "FORMS.REQUIRED.ROLE" | translate }}</mat-error
           >
           <mat-error
             *ngIf="
-              !employmentForm.controls.role?.hasError('required') &&
-              employmentForm.controls.role?.hasError('minlength')
+              !experienceForm.controls.role?.hasError('required') &&
+              experienceForm.controls.role?.hasError('minlength')
             "
             >{{ "FORMS.ERROR.ROLE_INVALID" | translate }}</mat-error
           >
@@ -64,13 +64,13 @@
           <mat-label>{{ "FORMS.COMPANY" | translate }}</mat-label>
           <input #company matInput formControlName="company" />
           <mat-error
-            *ngIf="employmentForm.controls.company?.hasError('required')"
+            *ngIf="experienceForm.controls.company?.hasError('required')"
             >{{ "FORMS.REQUIRED.COMPANY" | translate }}</mat-error
           >
           <mat-error
             *ngIf="
-              !employmentForm.controls.company?.hasError('required') &&
-              employmentForm.controls.company?.hasError('minlength')
+              !experienceForm.controls.company?.hasError('required') &&
+              experienceForm.controls.company?.hasError('minlength')
             "
             >{{ "FORMS.ERROR.COMPANY_INVALID" | translate }}</mat-error
           >
@@ -78,12 +78,12 @@
 
         <mat-form-field
           appearance="outline"
-          *ngIf="employmentForm.controls.type.value !== 'freelance'"
+          *ngIf="experienceForm.controls.type.value !== 'freelance'"
         >
           <mat-label>{{ "FORMS.COMPANY_LINK" | translate }}</mat-label>
           <input matInput formControlName="companyLink" />
           <mat-error
-            *ngIf="employmentForm.controls.companyLink.hasError('pattern')"
+            *ngIf="experienceForm.controls.companyLink.hasError('pattern')"
           >
             {{ "FORMS.ERROR.LINK_INVALID" | translate }}
           </mat-error>
@@ -91,12 +91,12 @@
 
         <mat-form-field
           appearance="outline"
-          *ngIf="employmentForm.controls.type.value === 'freelance'"
+          *ngIf="experienceForm.controls.type.value === 'freelance'"
         >
           <mat-label>{{ "FORMS.PROJECT_LINK" | translate }}</mat-label>
           <input matInput formControlName="project" />
           <mat-error
-            *ngIf="employmentForm.controls.project.hasError('pattern')"
+            *ngIf="experienceForm.controls.project.hasError('pattern')"
           >
             {{ "FORMS.ERROR.LINK_INVALID" | translate }}
           </mat-error>
@@ -138,7 +138,7 @@
         <app-stack-selector
           #stack
           [data]="data && data.stack"
-          [type]="employmentForm.value.type"
+          [type]="experienceForm.value.type"
         >
         </app-stack-selector>
 
@@ -156,7 +156,7 @@
     "ACTIONS.CANCEL" | translate
   }}</button>
   <button
-    [disabled]="!employmentForm.valid || !stack.isStackValid()"
+    [disabled]="!experienceForm.valid || !stack.isStackValid()"
     mat-raised-button
     color="primary"
     (click)="onSaveClick()"
@@ -164,9 +164,9 @@
     >{{
       isUpdating
         ? ("ACTIONS.UPDATE_TYPE"
-          | translate : { type: ("EMPLOYMENT.T_SINGLE" | translate) })
+          | translate : { type: ("EXPERIENCE.T_SINGLE" | translate) })
         : ("ACTIONS.SAVE_TYPE"
-          | translate : { type: ("EMPLOYMENT.T_SINGLE" | translate) })
+          | translate : { type: ("EXPERIENCE.T_SINGLE" | translate) })
     }}</button
   >
 </div>

@@ -15,9 +15,9 @@ export const SIDEBAR_OPTIONS = [
     link: "/projects",
   },
   {
-    title: "EMPLOYMENT.T",
-    icon: "work",
-    link: "/employment",
+    title: "EXPERIENCE.T",
+    icon: "logo_dev",
+    link: "/experience",
   },
   {
     title: "PROFILE.T",
