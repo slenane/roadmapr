@@ -50,10 +50,6 @@ export class EducationItemComponent implements OnInit, OnChanges {
     return stack.sort((a: any, b: any) => a.name.localeCompare(b.name));
   }
 
-  removeRecommendation(item: any) {
-    console.log(item);
-  }
-
   openItemDetails() {
     this.dialog.open(EducationItemDetailsComponent, {
       width: "50vw",

@@ -4,7 +4,7 @@ import { StackSelectorComponent } from "./components/stack-selector/stack-select
 import { MaterialModule } from "../material/material.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
-import { DropListFiltersComponent } from "./components/drop-list-filters/drop-list-filters.component";
+import { DropListFiltersComponent } from "./components/drop-list/drop-list-filters/drop-list-filters.component";
 import { IconCardComponent } from "./components/icon-card/icon-card.component";
 import { TranslateModule } from "@ngx-translate/core";
 import { UpdatePasswordComponent } from "./components/forms/update-password/update-password.component";
@@ -25,6 +25,7 @@ import { LoadingComponent } from "./components/loading/loading.component";
 import { NgScrollbarModule } from "ngx-scrollbar";
 import { UpdatePasswordInputsComponent } from "./components/forms/update-password/update-password-inputs/update-password-inputs.component";
 import { HomeMenuComponent } from "./components/home-menu/home-menu.component";
+import { DropListEmptyComponent } from "./components/drop-list/drop-list-empty/drop-list-empty.component";
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { HomeMenuComponent } from "./components/home-menu/home-menu.component";
     LoadingComponent,
     UpdatePasswordInputsComponent,
     HomeMenuComponent,
+    DropListEmptyComponent,
   ],
   exports: [
     SidebarComponent,
@@ -57,6 +59,7 @@ import { HomeMenuComponent } from "./components/home-menu/home-menu.component";
     NgScrollbarModule,
     UpdatePasswordInputsComponent,
     HomeMenuComponent,
+    DropListEmptyComponent,
   ],
   imports: [
     CommonModule,

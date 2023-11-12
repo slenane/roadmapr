@@ -10,7 +10,7 @@
         matTooltip="{{ data.type | titlecase }}"
         class="app-education-type-icon"
       />
-      {{ data.title }}
+      <span [innerHTML]="data.title"></span>
     </mat-card-title>
 
     <div
@@ -42,9 +42,7 @@
     >
   </mat-card-header>
   <mat-card-content>
-    <mat-card-subtitle>
-      {{ data.tagLine }}
-    </mat-card-subtitle>
+    <mat-card-subtitle [innerHTML]="data.tagLine"> </mat-card-subtitle>
 
     <div class="content" *ngIf="selectedView === 'expanded'">
       <div class="timeline" *ngIf="data.startDate">
@@ -61,7 +59,7 @@
         <div class="description_title">{{
           "FORMS.DESCRIPTION" | translate
         }}</div>
-        <p class="description_text">{{ data.description }}</p>
+        <p class="description_text" [innerHTML]="data.description"></p>
       </div>
 
       <p class="actions">

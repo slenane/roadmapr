@@ -35,18 +35,6 @@
             id="todo"
             (cdkDropListDropped)="drop($event)"
           >
-            <div
-              class="no-item-message"
-              *ngIf="employment && todo && !todo.length"
-            >
-              <span class="material-symbols-outlined"> add </span>
-              <p class="message-primary">{{
-                "EMPLOYMENT.EMPTY_LIST.TO_DO_HEADER" | translate
-              }}</p>
-              <p class="message-secondary">{{
-                "EMPLOYMENT.EMPTY_LIST.TO_DO_MESSAGE" | translate
-              }}</p>
-            </div>
             <div *ngFor="let data of todo" class="drag-group-item" cdkDrag>
               <app-employment-item
                 *ngIf="matchesFilters(data)"
@@ -56,6 +44,12 @@
               >
               </app-employment-item>
             </div>
+
+            <app-drop-list-empty
+              *ngIf="employment && todo && !todo.length"
+              [header]="'EMPLOYMENT.EMPTY_LIST.TO_DO_HEADER'"
+              [message]="'EMPLOYMENT.EMPTY_LIST.TO_DO_MESSAGE'"
+            ></app-drop-list-empty>
           </div>
 
           <div
@@ -66,18 +60,6 @@
             id="inProgress"
             (cdkDropListDropped)="drop($event)"
           >
-            <div
-              class="no-item-message"
-              *ngIf="employment && inProgress && !inProgress.length"
-            >
-              <span class="material-symbols-outlined"> add </span>
-              <p class="message-primary">{{
-                "EMPLOYMENT.EMPTY_LIST.IN_PROGRESS_HEADER" | translate
-              }}</p>
-              <p class="message-secondary">{{
-                "EMPLOYMENT.EMPTY_LIST.IN_PROGRESS_MESSAGE" | translate
-              }}</p>
-            </div>
             <div
               *ngFor="let data of inProgress"
               class="drag-group-item"
@@ -91,6 +73,12 @@
               >
               </app-employment-item>
             </div>
+
+            <app-drop-list-empty
+              *ngIf="employment && inProgress && !inProgress.length"
+              [header]="'EMPLOYMENT.EMPTY_LIST.IN_PROGRESS_HEADER'"
+              [message]="'EMPLOYMENT.EMPTY_LIST.IN_PROGRESS_MESSAGE'"
+            ></app-drop-list-empty>
           </div>
 
           <div
@@ -101,18 +89,6 @@
             id="done"
             (cdkDropListDropped)="drop($event)"
           >
-            <div
-              class="no-item-message"
-              *ngIf="employment && done && !done.length"
-            >
-              <span class="material-symbols-outlined"> add </span>
-              <p class="message-primary">{{
-                "EMPLOYMENT.EMPTY_LIST.DONE_HEADER" | translate
-              }}</p>
-              <p class="message-secondary">{{
-                "EMPLOYMENT.EMPTY_LIST.DONE_MESSAGE" | translate
-              }}</p>
-            </div>
             <div *ngFor="let data of done" class="drag-group-item" cdkDrag>
               <app-employment-item
                 *ngIf="matchesFilters(data)"
@@ -122,6 +98,12 @@
               >
               </app-employment-item>
             </div>
+
+            <app-drop-list-empty
+              *ngIf="employment && done && !done.length"
+              [header]="'EMPLOYMENT.EMPTY_LIST.DONE_HEADER'"
+              [message]="'EMPLOYMENT.EMPTY_LIST.DONE_MESSAGE'"
+            ></app-drop-list-empty>
           </div>
         </div>
       </div>

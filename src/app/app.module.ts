@@ -31,6 +31,7 @@ import { DELETE_ACCOUNT } from "./settings/store/settings.actions";
 import { TitleStrategy } from "@angular/router";
 import { UserSetupModule } from "./user-setup/user-setup.module";
 import { HomeModule } from "./home/home.module";
+import { RecommendationsModule } from "./recommendations/recommendations.module";
 
 export function clearState(reducer: ActionReducer<any>): ActionReducer<any> {
   return function (state, action) {
@@ -74,6 +75,7 @@ export const metaReducers: MetaReducer<any>[] = [clearState];
     EmploymentModule,
     DashboardModule,
     EducationModule,
+    RecommendationsModule,
     ProfileModule,
     ProjectsModule,
     SettingsModule,

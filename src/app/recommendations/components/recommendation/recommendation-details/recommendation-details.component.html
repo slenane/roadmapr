@@ -1,0 +1,68 @@
+<div class="content">
+  <div class="header">
+    <div class="title">
+      <img
+        src="/assets/images/icons/{{ data.type }}.png"
+        class="app-education-type-icon__large"
+      />
+      <h2 [innerHTML]="data.title"></h2>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="column">
+      <div class="row">
+        <div class="grid-item__title">
+          {{ data.type === "book" ? ("FORMS.AUTHOR" | translate) : "" }}
+          {{
+            data.type === "course" ? ("FORMS.INSTRUCTOR" | translate) : ""
+          }}</div
+        >
+        <p [innerHTML]="data.author"></p>
+      </div>
+
+      <div class="row">
+        <div class="grid-item__title">{{ "FORMS.STACK" | translate }}</div>
+        <div class="education-stack">
+          <img
+            *ngFor="let tech of data.stack"
+            class="app-stack-icon__large"
+            matTooltip="{{ tech.title }}"
+            src="/assets/images/stack/{{ tech.name }}-original.svg"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="column description-column">
+      <div class="row">
+        <div class="grid-item__title">{{
+          "FORMS.DESCRIPTION" | translate
+        }}</div>
+        <p class="description-text" [innerHTML]="data.description"></p>
+      </div>
+
+      <div class="body-actions">
+        <a [href]="data.link" target="_blank">
+          <button
+            mat-raised-button
+            type="button"
+            class="provider-button"
+            [ngClass]="data.internal.provider"
+          >
+            <img
+              class="provider-icon"
+              src="/assets/images/icons/{{ data.internal.provider }}.svg"
+            />
+          </button>
+        </a>
+        <button mat-raised-button color="primary" (click)="onAddToList()">{{
+          "EDUCATION.UPDATE.ADD_TO_LIST" | translate
+        }}</button>
+        <button mat-raised-button color="default" (click)="onCancel()">{{
+          "ACTIONS.CLOSE" | translate
+        }}</button>
+      </div>
+    </div>
+  </div>
+</div>

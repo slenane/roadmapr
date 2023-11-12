@@ -10,9 +10,9 @@
         matTooltip="{{ data.type | titlecase }}"
         class="app-education-type-icon"
       />
-      {{ data.role }}
+      <span [innerHTML]="data.role"></span>
     </mat-card-title>
-    <mat-card-subtitle> {{ data.company }}</mat-card-subtitle>
+    <mat-card-subtitle [innerHTML]="data.company"> </mat-card-subtitle>
 
     <div
       class="tech-stack"
@@ -55,7 +55,7 @@
       </div>
 
       <div class="description_title">{{ "FORMS.DESCRIPTION" | translate }}</div>
-      <p class="description">{{ data.description }}</p>
+      <p class="description" [innerHTML]="data.description"></p>
 
       <p class="actions">
         <a href="data.companyLink" *ngIf="data.companyLink">

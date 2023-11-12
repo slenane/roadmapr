@@ -1,0 +1,89 @@
+<mat-card
+  class="recommendation"
+  (click)="openRecommendationDetails()"
+  (mouseenter)="showRemoveButton()"
+  (mouseleave)="hideRemoveButton()"
+>
+  <mat-card-header>
+    <mat-card-title>
+      <img
+        src="/assets/images/icons/{{ data.type }}.png"
+        matTooltip="{{ data.type | titlecase }}"
+        class="app-education-type-icon"
+      />
+      <span [innerHTML]="data.title"></span>
+    </mat-card-title>
+    <mat-card-subtitle [innerHTML]="data.author"> </mat-card-subtitle>
+
+    <div
+      class="education-stack"
+      [ngClass]="{ 'pin-displayed': removeButtonDisplayed }"
+    >
+      <img
+        *ngFor="let tech of data.stack"
+        class="app-stack-icon"
+        matTooltip="{{ tech.title }}"
+        src="/assets/images/stack/{{ tech.name }}-original.svg"
+      />
+    </div>
+
+    <div
+      class="remove-item"
+      *ngIf="removeButtonDisplayed"
+      (click)="onRemoveRecommendation.emit(index)"
+    >
+      <span class="material-symbols-outlined remove-item__icon">cancel</span>
+    </div>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="content" *ngIf="selectedView === 'expanded'">
+      <div class="description" *ngIf="data.description">
+        <div class="description_title">{{
+          "FORMS.DESCRIPTION" | translate
+        }}</div>
+        <p class="description_text" [innerHTML]="data.description"></p>
+      </div>
+
+      <div class="actions">
+        <a [href]="data.link" target="_blank" *ngIf="data.link">
+          <button
+            mat-raised-button
+            type="button"
+            class="provider-button"
+            [ngClass]="data.internal.provider"
+          >
+            <img
+              class="provider-icon"
+              *ngIf="data.internal.provider"
+              src="/assets/images/icons/{{ data.internal.provider }}.svg"
+            />
+
+            <span
+              *ngIf="!data.internal.provider"
+              class="provider-button__text"
+              >{{ "FORMS.LINK" | translate }}</span
+            >
+          </button>
+        </a>
+      </div>
+    </div>
+
+    <mat-chip-list class="chips">
+      <mat-chip
+        matTooltip="{{ data.count }} users have taken this course"
+        matTooltipShowDelay="500"
+      >
+        {{ data.count }} <span class="material-symbols-outlined"> person </span>
+      </mat-chip>
+      <mat-chip
+        matTooltip="{{
+          (data.recommended / data.count) * 100
+        }}% of users recommend this course"
+        matTooltipShowDelay="500"
+      >
+        {{ (data.recommended / data.count) * 100 }}%
+        <span class="material-symbols-outlined"> recommend </span>
+      </mat-chip>
+    </mat-chip-list>
+  </mat-card-content>
+</mat-card>
