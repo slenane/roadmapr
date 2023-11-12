@@ -22,7 +22,7 @@ export class DropListFiltersComponent implements OnInit, OnChanges {
   public selectedLanguage: any = null;
   public selectedType: null | "book" | "course" = null;
 
-  @Input() type: "experience" | "education" | "projects";
+  @Input() type: string;
   @Input() parentId: string;
   @Input() typeConfig: any[];
   @Input() selectedView: "compact" | "expanded";
@@ -81,18 +81,21 @@ export class DropListFiltersComponent implements OnInit, OnChanges {
   addItem(): void {
     let dialogRef;
 
-    if (this.type === "experience")
+    if (this.type === "EXPERIENCE.T")
       dialogRef = this.dialog.open(ExperienceUpdateComponent, {
         minWidth: "70vw",
       });
-    else if (this.type === "education")
+    else if (this.type === "EDUCATION.T")
       dialogRef = this.dialog.open(EducationUpdateComponent, {
         minWidth: "70vw",
       });
-    else
+    else if (this.type === "PROJECTS.T") {
       dialogRef = this.dialog.open(ProjectsUpdateComponent, {
         minWidth: "70vw",
       });
+    } else {
+      return;
+    }
 
     dialogRef.afterClosed().subscribe((result: any) => {
       this.onUpdate.emit({ id: this.parentId, data: result });

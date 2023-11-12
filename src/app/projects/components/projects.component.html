@@ -4,6 +4,7 @@
   <div class="drag-group-header">
     <app-drop-list-filters
       *ngIf="projects"
+      [type]="'PROJECTS.T'"
       [parentId]="projects._id"
       [selectedView]="selectedView"
       [typeConfig]="typeConfig"

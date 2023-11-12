@@ -1,6 +1,6 @@
 .filter-container {
   display: grid;
-  grid-template-columns: 1fr auto auto;
+  grid-template-columns: 1fr auto;
   gap: 1rem;
 
   .filters {
@@ -10,6 +10,11 @@
     gap: 1rem;
     justify-content: flex-start;
     font-size: 0.9rem;
+
+    .section-header {
+      font-size: 1.3rem;
+      font-weight: 500;
+    }
 
     .filter-type {
       font-weight: 500;

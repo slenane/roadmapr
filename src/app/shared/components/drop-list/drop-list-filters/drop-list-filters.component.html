@@ -1,5 +1,6 @@
 <div class="filter-container">
   <div class="filters">
+    <span class="section-header">{{ type | translate }}</span>
     <div *ngIf="typeConfig">
       <span class="filter-type">{{ "FILTERS.TYPE" | translate }}</span>
       <mat-button-toggle-group
