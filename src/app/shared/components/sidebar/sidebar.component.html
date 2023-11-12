@@ -43,6 +43,7 @@
           class="sidebar-option"
         >
           <span
+            *ngIf="option.icon"
             class="material-symbols-outlined"
             #tooltip="matTooltip"
             matTooltipShowDelay="500"
@@ -52,6 +53,18 @@
             matTooltipPosition="right"
             >{{ option.icon }}</span
           >
+          <img
+            *ngIf="option.image"
+            class="sidebar-image"
+            [src]="option.image"
+            alt="sidebar icon"
+            #tooltip="matTooltip"
+            matTooltipShowDelay="500"
+            matTooltip="{{
+              navbarCollapsed ? (option.title | translate) : null
+            }}"
+            matTooltipPosition="right"
+          />
           <span *ngIf="!navbarCollapsed">{{ option.title | translate }}</span>
         </a>
       </mat-nav-list>

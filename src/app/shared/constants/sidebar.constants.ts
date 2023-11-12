@@ -1,7 +1,7 @@
 export const SIDEBAR_OPTIONS = [
   {
     title: "ROADMAP.T",
-    icon: "timeline",
+    image: "/assets/images/logo/roadmap-link.png",
     link: "/roadmap",
   },
   {
@@ -16,7 +16,7 @@ export const SIDEBAR_OPTIONS = [
   },
   {
     title: "EXPERIENCE.T",
-    icon: "logo_dev",
+    icon: "work",
     link: "/experience",
   },
   {
