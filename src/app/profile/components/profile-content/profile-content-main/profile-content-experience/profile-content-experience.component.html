@@ -1,0 +1,26 @@
+<div class="experience">
+  <div class="experience-header">
+    <div class="experience-title"
+      >{{ experience.role }}
+      <span class="company"> - {{ experience.company }}</span></div
+    >
+
+    <div class="tech-stack">
+      <img
+        *ngFor="let tech of experience.stack"
+        class="app-stack-icon"
+        matTooltip="{{ tech.title }}"
+        src="/assets/images/stack/{{ tech.name }}-original.svg"
+      />
+    </div>
+  </div>
+
+  <div class="experience-subtitle"
+    >{{ experience.startDate | date }} -
+    {{
+      (experience.endDate | date) || ("FORMS.DATES.PRESENT" | translate)
+    }}</div
+  >
+
+  <div class="experience-description">{{ experience.description }}</div>
+</div>

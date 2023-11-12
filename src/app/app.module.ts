@@ -19,7 +19,7 @@ import { EducationModule } from "./education/education.module";
 import { ProfileModule } from "./profile/profile.module";
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 import { ProjectsModule } from "./projects/projects.module";
-import { EmploymentModule } from "./employment/employment.module";
+import { ExperienceModule } from "./experience/experience.module";
 import { SettingsModule } from "./settings/settings.module";
 import { DashboardModule } from "./dashboard/dashboard.module";
 import { NgChartsModule } from "ng2-charts";
@@ -72,7 +72,7 @@ export const metaReducers: MetaReducer<any>[] = [clearState];
     AuthModule,
     CoreModule,
     HomeModule,
-    EmploymentModule,
+    ExperienceModule,
     DashboardModule,
     EducationModule,
     RecommendationsModule,

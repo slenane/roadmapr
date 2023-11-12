@@ -8,7 +8,7 @@ interface Action {
 
 export const dashboardInitialState: Dashboard = {
   education: [],
-  employment: [],
+  experience: [],
   projects: [],
   github: [],
 };

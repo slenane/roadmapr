@@ -32,14 +32,14 @@ export const profileInitialState: Profile = {
   stack: [],
   education: "",
   projects: "",
-  employment: "",
+  experience: "",
   theme: "light",
   preferredLanguage: "en",
   notifications: false,
   email: "",
   educationList: [],
   projectList: [],
-  employmentList: [],
+  experienceList: [],
 };
 
 const profileReducer = createReducer(

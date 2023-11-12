@@ -36,8 +36,8 @@ export interface Profile {
   educationList: any[];
   projects: string;
   projectList: any[];
-  employment: string;
-  employmentList: any[];
+  experience: string;
+  experienceList: any[];
 }
 
 interface PreviousEducationItem {

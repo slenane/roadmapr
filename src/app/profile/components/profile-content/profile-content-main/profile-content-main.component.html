@@ -25,11 +25,11 @@
               <div class="section-header">{{
                 "PROFILE.HEADERS.TECHNICAL_EXPERIENCE" | translate
               }}</div>
-              <ng-container *ngFor="let item of user.employmentList">
-                <app-profile-content-employment
+              <ng-container *ngFor="let item of user.experienceList">
+                <app-profile-content-experience
                   *ngIf="item.startDate"
-                  [employment]="item"
-                ></app-profile-content-employment>
+                  [experience]="item"
+                ></app-profile-content-experience>
               </ng-container>
             </div>
 

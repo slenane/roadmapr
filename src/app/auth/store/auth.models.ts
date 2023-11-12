@@ -1,6 +1,6 @@
 import { Projects } from "src/app/projects/store/projects.models";
 import { Education } from "../../education/store/education.models";
-import { Employment } from "src/app/employment/store/employment.models";
+import { Experience } from "src/app/experience/store/experience.models";
 
 export interface Action {
   type: string;
@@ -22,7 +22,7 @@ export interface User {
   linkedIn: string;
   twitter: string;
   cv: string;
-  employment: Employment;
+  experience: Experience;
   education: Education;
   Projects: Projects;
   skills: object;

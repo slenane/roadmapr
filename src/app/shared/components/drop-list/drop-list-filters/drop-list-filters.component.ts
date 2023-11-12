@@ -8,7 +8,7 @@ import {
   OnChanges,
 } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
-import { EmploymentUpdateComponent } from "src/app/employment/components/employment-update/employment-update.component";
+import { ExperienceUpdateComponent } from "src/app/experience/components/experience-update/experience-update.component";
 import { ProjectsUpdateComponent } from "src/app/projects/components/projects-update/projects-update.component";
 import { EducationUpdateComponent } from "src/app/education/components/education-update/education-update.component";
 
@@ -22,7 +22,7 @@ export class DropListFiltersComponent implements OnInit, OnChanges {
   public selectedLanguage: any = null;
   public selectedType: null | "book" | "course" = null;
 
-  @Input() type: "employment" | "education" | "projects";
+  @Input() type: "experience" | "education" | "projects";
   @Input() parentId: string;
   @Input() typeConfig: any[];
   @Input() selectedView: "compact" | "expanded";
@@ -81,8 +81,8 @@ export class DropListFiltersComponent implements OnInit, OnChanges {
   addItem(): void {
     let dialogRef;
 
-    if (this.type === "employment")
-      dialogRef = this.dialog.open(EmploymentUpdateComponent, {
+    if (this.type === "experience")
+      dialogRef = this.dialog.open(ExperienceUpdateComponent, {
         minWidth: "70vw",
       });
     else if (this.type === "education")

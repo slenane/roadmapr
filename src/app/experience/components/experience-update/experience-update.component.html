@@ -1,0 +1,172 @@
+<div class="experience-header">
+  <div class="icon">
+    <span class="material-symbols-outlined emphasis"> work </span>
+  </div>
+  <div class="text">
+    <h1>{{ "EXPERIENCE.UPDATE.T" | translate }}</h1>
+    <p>{{ "EXPERIENCE.UPDATE.MESSAGE" | translate }}</p>
+  </div>
+</div>
+<div mat-dialog-content>
+  <ng-scrollbar class="form-scroll">
+    <form [formGroup]="experienceForm">
+      <div class="grid-section">
+        <mat-form-field appearance="outline">
+          <mat-label>{{ "FORMS.TYPE" | translate }}</mat-label>
+          <mat-select
+            #type
+            formControlName="type"
+            [placeholder]="'FORMS.PLACEHOLDER.TYPE' | translate"
+            cdkFocusInitial
+          >
+            <mat-option value="professional">
+              <img
+                src="/assets/images/icons/professional.png"
+                class="app-education-type-icon"
+              />
+              {{ "EXPERIENCE.TYPES.PROFESSIONAL" | translate }}
+            </mat-option>
+            <mat-option value="freelance">
+              <img
+                src="/assets/images/icons/freelance.png"
+                class="app-education-type-icon"
+              />
+              {{ "EXPERIENCE.TYPES.FREELANCE" | translate }}
+            </mat-option>
+          </mat-select>
+          <mat-error
+            *ngIf="experienceForm.controls.type?.hasError('required')"
+            >{{ "FORMS.REQUIRED.TYPE" | translate }}</mat-error
+          >
+          <mat-error
+            *ngIf="experienceForm.controls.type?.hasError('pattern')"
+            >{{ "FORMS.ERROR.EXPERIENCE_TYPE_INVALID" | translate }}</mat-error
+          >
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>{{ "FORMS.ROLE" | translate }}</mat-label>
+          <input #role matInput formControlName="role" />
+          <mat-error
+            *ngIf="experienceForm.controls.role?.hasError('required')"
+            >{{ "FORMS.REQUIRED.ROLE" | translate }}</mat-error
+          >
+          <mat-error
+            *ngIf="
+              !experienceForm.controls.role?.hasError('required') &&
+              experienceForm.controls.role?.hasError('minlength')
+            "
+            >{{ "FORMS.ERROR.ROLE_INVALID" | translate }}</mat-error
+          >
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>{{ "FORMS.COMPANY" | translate }}</mat-label>
+          <input #company matInput formControlName="company" />
+          <mat-error
+            *ngIf="experienceForm.controls.company?.hasError('required')"
+            >{{ "FORMS.REQUIRED.COMPANY" | translate }}</mat-error
+          >
+          <mat-error
+            *ngIf="
+              !experienceForm.controls.company?.hasError('required') &&
+              experienceForm.controls.company?.hasError('minlength')
+            "
+            >{{ "FORMS.ERROR.COMPANY_INVALID" | translate }}</mat-error
+          >
+        </mat-form-field>
+
+        <mat-form-field
+          appearance="outline"
+          *ngIf="experienceForm.controls.type.value !== 'freelance'"
+        >
+          <mat-label>{{ "FORMS.COMPANY_LINK" | translate }}</mat-label>
+          <input matInput formControlName="companyLink" />
+          <mat-error
+            *ngIf="experienceForm.controls.companyLink.hasError('pattern')"
+          >
+            {{ "FORMS.ERROR.LINK_INVALID" | translate }}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field
+          appearance="outline"
+          *ngIf="experienceForm.controls.type.value === 'freelance'"
+        >
+          <mat-label>{{ "FORMS.PROJECT_LINK" | translate }}</mat-label>
+          <input matInput formControlName="project" />
+          <mat-error
+            *ngIf="experienceForm.controls.project.hasError('pattern')"
+          >
+            {{ "FORMS.ERROR.LINK_INVALID" | translate }}
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="grid-section">
+        <div class="sub-grid">
+          <mat-form-field appearance="outline">
+            <mat-label>{{ "FORMS.DATES.START" | translate }}</mat-label>
+            <input
+              matInput
+              [matDatepicker]="startDate"
+              formControlName="startDate"
+            />
+            <mat-hint>{{ "FORMS.DATES.HINT" | translate }}</mat-hint>
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="startDate"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #startDate></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>{{ "FORMS.DATES.END" | translate }}</mat-label>
+            <input
+              matInput
+              [matDatepicker]="endDate"
+              formControlName="endDate"
+            />
+            <mat-hint>{{ "FORMS.DATES.HINT" | translate }}</mat-hint>
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="endDate"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #endDate></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <app-stack-selector
+          #stack
+          [data]="data && data.stack"
+          [type]="experienceForm.value.type"
+        >
+        </app-stack-selector>
+
+        <mat-form-field appearance="outline">
+          <mat-label>{{ "FORMS.DESCRIPTION" | translate }}</mat-label>
+          <textarea matInput formControlName="description" rows="5"></textarea>
+        </mat-form-field>
+      </div>
+    </form>
+  </ng-scrollbar>
+</div>
+
+<div mat-dialog-actions class="actions">
+  <button mat-raised-button (click)="onNoClick()">{{
+    "ACTIONS.CANCEL" | translate
+  }}</button>
+  <button
+    [disabled]="!experienceForm.valid || !stack.isStackValid()"
+    mat-raised-button
+    color="primary"
+    (click)="onSaveClick()"
+    cdkFocusInitial
+    >{{
+      isUpdating
+        ? ("ACTIONS.UPDATE_TYPE"
+          | translate : { type: ("EXPERIENCE.T_SINGLE" | translate) })
+        : ("ACTIONS.SAVE_TYPE"
+          | translate : { type: ("EXPERIENCE.T_SINGLE" | translate) })
+    }}</button
+  >
+</div>
