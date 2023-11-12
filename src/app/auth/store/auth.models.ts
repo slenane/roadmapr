@@ -20,7 +20,7 @@ export interface User {
   bio: string;
   github: string;
   linkedIn: string;
-  twitter: string;
+  x: string;
   cv: string;
   experience: Experience;
   education: Education;

@@ -84,7 +84,7 @@
           </button>
         </a>
 
-        <a href="data.github" *ngIf="data.github">
+        <a [href]="data.github" *ngIf="data.github">
           <button mat-raised-button color="default" type="button">{{
             "FORMS.GITHUB" | translate
           }}</button>

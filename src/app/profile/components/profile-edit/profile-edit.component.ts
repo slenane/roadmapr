@@ -71,7 +71,7 @@ export class ProfileEditComponent implements OnInit {
       links: {
         cv: this.social.form.value.cvCtrl,
         linkedIn: this.social.form.value.linkedInCtrl,
-        twitter: this.social.form.value.xCtrl,
+        x: this.social.form.value.xCtrl,
         portfolio: this.social.form.value.portfolioCtrl,
       },
       interests: {

@@ -68,7 +68,7 @@ export class ProfileEditSocialComponent implements OnInit, OnChanges {
       cvCtrl: user.links.cv,
       linkedInCtrl: user.links.linkedIn,
       portfolioCtrl: user.links.portfolio,
-      xCtrl: user.links.twitter,
+      xCtrl: user.links.x,
     });
   }
 }
