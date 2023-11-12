@@ -1,0 +1,77 @@
+<app-loading *ngIf="!roadmap"></app-loading>
+
+<div class="roadmap" *ngIf="roadmap">
+  <app-roadmap-filters [languageConfig]="stackList"></app-roadmap-filters>
+
+  <ng-scrollbar>
+    <div scrollViewport cdkScrollable>
+      <div class="scroll">
+        <div class="user-overview-container">
+          <app-icon-card
+            [icon]="'school'"
+            [title]="'Education'"
+            [value]="12"
+            [trend]="1"
+          ></app-icon-card>
+
+          <app-icon-card
+            [icon]="'code'"
+            [title]="'Projects'"
+            [value]="6"
+            [trend]="2"
+          ></app-icon-card>
+
+          <app-icon-card
+            [icon]="'timer'"
+            [title]="'Experience'"
+            [value]="'3 years, 19 days'"
+          ></app-icon-card>
+
+          <app-icon-card
+            [icon]="'timer'"
+            [title]="'Professional Experience'"
+            [value]="'1 years, 249 days'"
+          ></app-icon-card>
+        </div>
+
+        <div class="grid-1fr-1fr">
+          <app-roadmap-stack-radar
+            class="stack-radar-container"
+            *ngIf="radar"
+            [data]="radar"
+          ></app-roadmap-stack-radar>
+
+          <app-roadmap-stack
+            class="stack-container"
+            *ngIf="stack"
+            [data]="stack"
+          ></app-roadmap-stack>
+        </div>
+
+        <app-roadmap-education-overview
+          *ngIf="stack"
+          [data]="stack"
+        ></app-roadmap-education-overview>
+
+        <app-roadmap-projects-overview
+          [data]="stack"
+        ></app-roadmap-projects-overview>
+
+        <div class="grid-1fr-1fr">
+          <app-roadmap-github
+            class="github-container"
+            *ngIf="github"
+            [data]="github"
+          ></app-roadmap-github>
+        </div>
+      </div>
+    </div>
+  </ng-scrollbar>
+</div>
+
+<!--         
+                <app-roadmap-skill-distribution
+                  class="skills-distribution-container"
+                  *ngIf="distribution"
+                  [data]="distribution"
+                ></app-roadmap-skill-distribution> -->

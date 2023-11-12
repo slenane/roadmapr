@@ -49,9 +49,9 @@ const routes: Routes = [
     canActivate: [AuthGuardService],
   },
   {
-    path: "dashboard",
+    path: "roadmap",
     loadChildren: () =>
-      import("./dashboard/dashboard.module").then((m) => m.DashboardModule),
+      import("./roadmap/roadmap.module").then((m) => m.RoadmapModule),
     canActivate: [AuthGuardService],
   },
   {

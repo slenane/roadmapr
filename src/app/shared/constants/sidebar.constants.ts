@@ -2,7 +2,7 @@ export const SIDEBAR_OPTIONS = [
   {
     title: "ROADMAP.T",
     icon: "timeline",
-    link: "/dashboard",
+    link: "/roadmap",
   },
   {
     title: "EDUCATION.T",

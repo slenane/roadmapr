@@ -40,7 +40,7 @@ export class UserSetupComponent implements OnInit {
           if (!this.profileService.userBasicDetailsProvided(user)) {
             this.displayWelcomeSteps(user);
           } else {
-            this.router.navigate([ROUTES.DASHBOARD]);
+            this.router.navigate([ROUTES.ROADMAP]);
           }
         }
       });
@@ -66,7 +66,7 @@ export class UserSetupComponent implements OnInit {
         this.userSetupInitialised = true;
         this.profileStoreService.updateProfile(this.user._id, user.data);
 
-        if (user.action === "skip") this.router.navigateByUrl(ROUTES.DASHBOARD);
+        if (user.action === "skip") this.router.navigateByUrl(ROUTES.ROADMAP);
         else this.router.navigateByUrl(ROUTES.TOUR);
       }
     });
