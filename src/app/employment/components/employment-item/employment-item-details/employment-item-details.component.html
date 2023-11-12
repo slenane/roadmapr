@@ -5,7 +5,7 @@
         src="/assets/images/icons/{{ data.type }}.png"
         class="app-education-type-icon__large"
       />
-      <h2>{{ data.role }}</h2>
+      <h2 [innerHTML]="data.role"></h2>
     </div>
 
     <div class="actions">
@@ -28,7 +28,7 @@
     <div class="column">
       <div class="row">
         <div class="grid-item__title">{{ "FORMS.COMPANY" | translate }}</div>
-        <p>{{ data.company }}</p>
+        <p [innerHTML]="data.company"></p>
       </div>
 
       <div class="row">
@@ -59,7 +59,7 @@
         <div class="grid-item__title">{{
           "FORMS.DESCRIPTION" | translate
         }}</div>
-        <p class="description-text">{{ data.description }}</p>
+        <p class="description-text" [innerHTML]="data.description"></p>
       </div>
 
       <div class="body-actions">

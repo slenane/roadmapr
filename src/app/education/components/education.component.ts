@@ -61,7 +61,7 @@ export class EducationComponent implements OnInit, OnDestroy {
         takeUntil(this.ngUnsubscribe)
       )
       .subscribe((recommendations: Recommendation[]) => {
-        this.recommendations = [...recommendations].splice(0, 3);
+        this.recommendations = [...recommendations];
       });
   }
 
@@ -171,6 +171,27 @@ export class EducationComponent implements OnInit, OnDestroy {
     }
   }
 
+  createEducationItemFromRecommendation(item: any) {
+    console.log(item);
+    if (item.data) {
+      const newItem = {
+        author: item.data.author,
+        description: item.data.description,
+        endDate: null,
+        link: item.data.link,
+        stack: item.data.stack,
+        startDate: null,
+        title: item.data.title,
+        type: item.data.type,
+        pinned: false,
+        status: STATUS.TODO,
+        position: this.todo.length,
+      };
+
+      this.educationStoreService.createEducationItem(item.id, newItem);
+    }
+  }
+
   drop(event: CdkDragDrop<any[]>) {
     const updatedItems = this.dropListService.drop(event);
 
@@ -195,5 +216,13 @@ export class EducationComponent implements OnInit, OnDestroy {
 
   removeRecommendationAtIndex(index: number): void {
     this.recommendations.splice(index, 1);
+  }
+
+  addRecommendationToList(data: { item: Recommendation; index: number }): void {
+    this.createEducationItemFromRecommendation({
+      id: this.education._id,
+      data: data.item,
+    });
+    this.removeRecommendationAtIndex(data.index);
   }
 }

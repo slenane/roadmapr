@@ -5,7 +5,7 @@
         src="/assets/images/icons/{{ data.type }}.png"
         class="app-education-type-icon__large"
       />
-      <h2>{{ data.title }}</h2>
+      <h2 [innerHtml]="data.title"></h2>
     </div>
 
     <div class="actions">
@@ -33,10 +33,10 @@
             data.type === "course" ? ("FORMS.INSTRUCTOR" | translate) : ""
           }}</div
         >
-        <p>{{ data.author }}</p>
+        <p [innerHTML]="data.author"></p>
       </div>
 
-      <div class="row">
+      <div class="row" *ngIf="data.startDate">
         <div class="grid-item__title">{{
           "FORMS.DATES.TIMELINE" | translate
         }}</div>
@@ -64,7 +64,7 @@
         <div class="grid-item__title">{{
           "FORMS.DESCRIPTION" | translate
         }}</div>
-        <p class="description-text">{{ data.description }}</p>
+        <p class="description-text" [innerHtml]="data.description"></p>
       </div>
 
       <div class="body-actions">
@@ -78,7 +78,7 @@
             mat-raised-button
             type="button"
             class="provider-button"
-            [ngClass]="getProviderClass()"
+            [ngClass]="data.metadata?.provider"
           >
             <img
               class="provider-icon"

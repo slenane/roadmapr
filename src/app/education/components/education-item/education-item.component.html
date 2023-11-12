@@ -10,11 +10,9 @@
         matTooltip="{{ data.type | titlecase }}"
         class="app-education-type-icon"
       />
-      {{ data.title }}
+      <span [innerHTML]="data.title"></span>
     </mat-card-title>
-    <mat-card-subtitle>
-      {{ data.author }}
-    </mat-card-subtitle>
+    <mat-card-subtitle [innerHTML]="data.author"> </mat-card-subtitle>
 
     <div
       class="education-stack"
@@ -61,7 +59,7 @@
         <div class="description_title">{{
           "FORMS.DESCRIPTION" | translate
         }}</div>
-        <p class="description_text">{{ data.description }}</p>
+        <p class="description_text" [innerHtml]="data.description"></p>
       </div>
 
       <div class="actions">
