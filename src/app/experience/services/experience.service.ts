@@ -2,57 +2,57 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { ApiService } from "src/app/core/services/api.service";
 import { UrlService } from "src/app/core/services/url.service";
-import { Employment } from "../store/employment.models";
+import { Experience } from "../store/experience.models";
 import { API } from "src/app/core/constants/http.constants";
 
 @Injectable({
   providedIn: "root",
 })
-export class EmploymentService {
+export class ExperienceService {
   constructor(private apiService: ApiService, private urlService: UrlService) {}
 
-  public getEmployment(employmentId: string): Observable<Employment> {
+  public getExperience(experienceId: string): Observable<Experience> {
     return this.apiService.get(
-      this.urlService.generate(API.EMPLOYMENT_GET, employmentId)
+      this.urlService.generate(API.EXPERIENCE_GET, experienceId)
     );
   }
 
-  public createEmploymentItem(
-    employmentId: string,
+  public createExperienceItem(
+    experienceId: string,
     data: any
   ): Observable<any> {
     return this.apiService.post(
-      this.urlService.generate(API.EMPLOYMENT_CREATE, employmentId),
+      this.urlService.generate(API.EXPERIENCE_CREATE, experienceId),
       data
     );
   }
 
-  public updateEmploymentItem(
-    employmentId: string,
+  public updateExperienceItem(
+    experienceId: string,
     data: any
   ): Observable<any> {
     return this.apiService.patch(
-      this.urlService.generate(API.EMPLOYMENT_UPDATE, employmentId),
+      this.urlService.generate(API.EXPERIENCE_UPDATE, experienceId),
       data
     );
   }
 
-  public bulkUpdateEmploymentItems(
-    employmentId: string,
+  public bulkUpdateExperienceItems(
+    experienceId: string,
     data: any
   ): Observable<any> {
     return this.apiService.patch(
-      this.urlService.generate(API.EMPLOYMENT_BULK_UPDATE, employmentId),
+      this.urlService.generate(API.EXPERIENCE_BULK_UPDATE, experienceId),
       data
     );
   }
 
-  public removeEmploymentItem(
-    employmentId: string,
+  public removeExperienceItem(
+    experienceId: string,
     data: any
   ): Observable<any> {
     return this.apiService.post(
-      this.urlService.generate(API.EMPLOYMENT_REMOVE, employmentId),
+      this.urlService.generate(API.EXPERIENCE_REMOVE, experienceId),
       data
     );
   }

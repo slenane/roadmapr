@@ -1,54 +1,54 @@
 import { Component, OnInit } from "@angular/core";
 import { Subject } from "rxjs";
 import { filter, takeUntil } from "rxjs/operators";
-import { Employment } from "../store/employment.models";
-import { EmploymentStoreService } from "../services/employment-store.service";
-// import { EmploymentService } from "../services/employment.service";
+import { Experience } from "../store/experience.models";
+// import { ExperienceService } from "../services/experience.service";
 import { CdkDragDrop } from "@angular/cdk/drag-drop";
 import { DropListService } from "src/app/shared/services/drop-list.service";
 import {
-  EMPLOYMENT_TYPE_CONFIG,
+  EXPERIENCE_TYPE_CONFIG,
   STATUS,
-} from "src/app/employment/constants/employment.constants";
-import { employmentInitialState } from "../store/employment.reducer";
+} from "src/app/experience/constants/experience.constants";
+import { experienceInitialState } from "../store/experience.reducer";
+import { ExperienceStoreService } from "../services/experience-store.service";
 
 @Component({
-  selector: "app-employment",
-  templateUrl: "./employment.component.html",
-  styleUrls: ["./employment.component.scss"],
+  selector: "app-experience",
+  templateUrl: "./experience.component.html",
+  styleUrls: ["./experience.component.scss"],
 })
-export class EmploymentComponent implements OnInit {
+export class ExperienceComponent implements OnInit {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
   public selectedFilterType: null | string = null;
   public selectedFilterLanguage: null | string = null;
   public selectedView: "compact" | "expanded" = "compact";
-  public typeConfig = EMPLOYMENT_TYPE_CONFIG;
+  public typeConfig = EXPERIENCE_TYPE_CONFIG;
   public languageFilterData: any = [];
-  public employment: Employment;
-  public employmentId: string;
-  public employmentList: any[];
+  public experience: Experience;
+  public experienceId: string;
+  public experienceList: any[];
 
   public todo: any[];
   public inProgress: any[];
   public done: any[];
 
   constructor(
-    // private employmentService: EmploymentService,
-    private employmentStoreService: EmploymentStoreService,
+    // private experienceService: ExperienceService,
+    private experienceStoreService: ExperienceStoreService,
     private dropListService: DropListService
   ) {}
 
   ngOnInit(): void {
-    this.employmentStoreService
-      .getEmployment(this.employmentId ? this.employmentId : "")
+    this.experienceStoreService
+      .getExperience(this.experienceId ? this.experienceId : "")
       .pipe(
-        filter((state) => state != employmentInitialState),
+        filter((state) => state != experienceInitialState),
         takeUntil(this.ngUnsubscribe)
       )
-      .subscribe((employment: Employment) => {
-        this.employment = employment;
-        this.employmentList = this.employment.employmentList;
-        this.getEmploymentConfig(this.employment.employmentList);
+      .subscribe((experience: Experience) => {
+        this.experience = experience;
+        this.experienceList = this.experience.experienceList;
+        this.getExperienceConfig(this.experience.experienceList);
         this.getLanguageFilterData();
       });
   }
@@ -58,12 +58,12 @@ export class EmploymentComponent implements OnInit {
     this.ngUnsubscribe.complete();
   }
 
-  getEmploymentConfig(employment: any[]): void {
+  getExperienceConfig(experience: any[]): void {
     const todoArray: any[] = [],
       inProgressArray: any[] = [],
       doneArray: any[] = [];
 
-    employment.forEach((item) => {
+    experience.forEach((item) => {
       if (item.status === STATUS.IN_PROGRESS) inProgressArray.push(item);
       else if (item.status === STATUS.DONE) doneArray.push(item);
       else todoArray.push(item);
@@ -83,11 +83,11 @@ export class EmploymentComponent implements OnInit {
   }
 
   getLanguageFilterData() {
-    const employment: any[] = this.employmentList;
+    const experience: any[] = this.experienceList;
     const languageData: any[] = [];
     const languages: any[] = [];
 
-    employment.forEach((item) => {
+    experience.forEach((item) => {
       item.stack.forEach((language: any) => {
         if (!languageData[language.name]) {
           languageData[language.name] = {
@@ -135,22 +135,22 @@ export class EmploymentComponent implements OnInit {
     );
   }
 
-  // sortEmploymentList(list: any[]) {
-  //   const previousEmployment = list.filter((item) => item.endDate);
-  //   const currentEmployment = list.filter((item) => !item.endDate);
+  // sortExperienceList(list: any[]) {
+  //   const previousExperience = list.filter((item) => item.endDate);
+  //   const currentExperience = list.filter((item) => !item.endDate);
 
-  //   this.employmentList = [
-  //     ...currentEmployment.sort(
+  //   this.experienceList = [
+  //     ...currentExperience.sort(
   //       (a, b) =>
   //         new Date(b.startDate).getTime() - new Date(a.startDate).getTime()
   //     ),
-  //     ...previousEmployment.sort(
+  //     ...previousExperience.sort(
   //       (a, b) => new Date(b.endDate).getTime() - new Date(a.endDate).getTime()
   //     ),
   //   ];
   // }
 
-  createEmploymentItem(item: any) {
+  createExperienceItem(item: any) {
     if (item.data) {
       const newItem = { ...item.data };
       newItem.pinned = false;
@@ -166,7 +166,7 @@ export class EmploymentComponent implements OnInit {
         newItem.position = this.done.length;
       }
 
-      this.employmentStoreService.createEmploymentItem(item.id, item.data);
+      this.experienceStoreService.createExperienceItem(item.id, item.data);
     }
   }
 
@@ -175,8 +175,8 @@ export class EmploymentComponent implements OnInit {
 
     console.log(updatedItems);
     if (updatedItems.length) {
-      this.employmentStoreService.bulkUpdateEmploymentItems(
-        this.employment._id,
+      this.experienceStoreService.bulkUpdateExperienceItems(
+        this.experience._id,
         updatedItems
       );
     }
@@ -186,8 +186,8 @@ export class EmploymentComponent implements OnInit {
     const updatedItems = this.dropListService.onPinToggle(itemList, data);
 
     if (updatedItems) {
-      this.employmentStoreService.bulkUpdateEmploymentItems(
-        this.employment._id,
+      this.experienceStoreService.bulkUpdateExperienceItems(
+        this.experience._id,
         updatedItems
       );
     }

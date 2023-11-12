@@ -8,15 +8,15 @@ import {
   EventEmitter,
 } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
-// import { EmploymentStoreService } from "../../services/employment-store.service";
-import { EmploymentItemDetailsComponent } from "./employment-item-details/employment-item-details.component";
+// import { ExperienceStoreService } from "../../services/experience-store.service";
+import { ExperienceItemDetailsComponent } from "./experience-item-details/experience-item-details.component";
 
 @Component({
-  selector: "app-employment-item",
-  templateUrl: "./employment-item.component.html",
-  styleUrls: ["./employment-item.component.scss"],
+  selector: "app-experience-item",
+  templateUrl: "./experience-item.component.html",
+  styleUrls: ["./experience-item.component.scss"],
 })
-export class EmploymentItemComponent implements OnInit, OnChanges {
+export class ExperienceItemComponent implements OnInit, OnChanges {
   public sortedStack: any[] = [];
   public pinDisplayed: boolean = false;
   public isPinned: boolean = false;
@@ -26,9 +26,8 @@ export class EmploymentItemComponent implements OnInit, OnChanges {
   @Output() pinItem: EventEmitter<any> = new EventEmitter();
 
   constructor(
-    public dialog: MatDialog
-  ) // private employmentStoreService: EmploymentStoreService
-  {}
+    public dialog: MatDialog // private experienceStoreService: ExperienceStoreService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -55,7 +54,7 @@ export class EmploymentItemComponent implements OnInit, OnChanges {
   }
 
   openItemDetails() {
-    this.dialog.open(EmploymentItemDetailsComponent, {
+    this.dialog.open(ExperienceItemDetailsComponent, {
       width: "50vw",
       data: { ...this.data, stack: this.sortedStack },
     });

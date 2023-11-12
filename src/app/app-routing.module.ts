@@ -67,9 +67,9 @@ const routes: Routes = [
     canActivate: [AuthGuardService],
   },
   {
-    path: "employment",
+    path: "experience",
     loadChildren: () =>
-      import("./employment/employment.module").then((m) => m.EmploymentModule),
+      import("./experience/experience.module").then((m) => m.ExperienceModule),
     canActivate: [AuthGuardService],
   },
   {
