@@ -19,3 +19,16 @@ export interface Recommendation {
   type: string;
   _id: string;
 }
+
+export interface RemoteJob {
+  position: string;
+  company: string;
+  companyLogo: string;
+  date: string;
+  tags: string[];
+  stack: StackItem[];
+  types: any[];
+  description: string;
+  url: string;
+  applyUrl: string;
+}

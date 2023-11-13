@@ -10,12 +10,22 @@ import { StoreModule } from "@ngrx/store";
 import { EffectsModule } from "@ngrx/effects";
 import * as fromRecommendations from "./store/recommendations.reducer";
 import { RecommendationsEffects } from "./store/recommendations.effects";
-import { RecommendationComponent } from "./components/recommendation/recommendation.component";
-import { RecommendationDetailsComponent } from './components/recommendation/recommendation-details/recommendation-details.component';
+import { ExperienceRecommendationComponent } from "./components/experience-recommendation/experience-recommendation.component";
+import { EducationRecommendationComponent } from "./components/education-recommendation/education-recommendation.component";
+import { EducationRecommendationDetailsComponent } from "./components/education-recommendation/education-recommendation-details/education-recommendation-details.component";
+import { ExperienceRecommendationDetailsComponent } from "./components/experience-recommendation/experience-recommendation-details/experience-recommendation-details.component";
 
 @NgModule({
-  declarations: [RecommendationComponent, RecommendationDetailsComponent],
-  exports: [RecommendationComponent],
+  declarations: [
+    EducationRecommendationComponent,
+    EducationRecommendationDetailsComponent,
+    ExperienceRecommendationComponent,
+    ExperienceRecommendationDetailsComponent,
+  ],
+  exports: [
+    EducationRecommendationComponent,
+    ExperienceRecommendationComponent,
+  ],
   imports: [
     CommonModule,
     RouterModule,

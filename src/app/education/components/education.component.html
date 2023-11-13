@@ -49,14 +49,14 @@
               class="drag-group-item recommendation"
               *ngFor="let recommendation of recommendations; let i = index"
             >
-              <app-recommendation
+              <app-education-recommendation
                 [data]="recommendation"
                 [index]="i"
                 [selectedView]="selectedView"
                 (onRemoveRecommendation)="removeRecommendationAtIndex($event)"
                 (onAddToList)="addRecommendationToList($event)"
               >
-              </app-recommendation>
+              </app-education-recommendation>
             </div>
 
             <app-drop-list-empty

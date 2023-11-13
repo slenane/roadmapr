@@ -1,14 +1,14 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
-import { Recommendation } from "../../store/recommendations.models";
-import { RecommendationDetailsComponent } from "./recommendation-details/recommendation-details.component";
+import { Recommendation } from "src/app/recommendations/store/recommendations.models";
+import { EducationRecommendationDetailsComponent } from "./education-recommendation-details/education-recommendation-details.component";
 import { MatDialog } from "@angular/material/dialog";
 
 @Component({
-  selector: "app-recommendation",
-  templateUrl: "./recommendation.component.html",
-  styleUrls: ["./recommendation.component.scss"],
+  selector: "app-education-recommendation",
+  templateUrl: "./education-recommendation.component.html",
+  styleUrls: ["./education-recommendation.component.scss"],
 })
-export class RecommendationComponent implements OnInit {
+export class EducationRecommendationComponent implements OnInit {
   public percentageRecommended: number;
   public removeButtonDisplayed: boolean = false;
 
@@ -28,10 +28,13 @@ export class RecommendationComponent implements OnInit {
   }
 
   openRecommendationDetails() {
-    const dialogRef = this.dialog.open(RecommendationDetailsComponent, {
-      width: "50vw",
-      data: { ...this.data },
-    });
+    const dialogRef = this.dialog.open(
+      EducationRecommendationDetailsComponent,
+      {
+        width: "50vw",
+        data: { ...this.data },
+      }
+    );
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {

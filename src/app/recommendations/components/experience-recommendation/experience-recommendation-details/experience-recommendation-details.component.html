@@ -1,0 +1,51 @@
+<div class="content">
+  <div class="header">
+    <div class="role">
+      <h2 [innerHTML]="data.position"></h2>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="column">
+      <div class="row">
+        <div class="grid-item__title">{{ "FORMS.COMPANY" | translate }}</div>
+        <p [innerHTML]="data.company"></p>
+      </div>
+
+      <div class="row">
+        <div class="grid-item__title">{{ "FORMS.STACK" | translate }}</div>
+        <div class="education-stack">
+          <img
+            *ngFor="let tech of data.stack"
+            class="app-stack-icon__large"
+            matTooltip="{{ tech.title }}"
+            src="/assets/images/stack/{{ tech.name }}-original.svg"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="column description-column">
+      <div class="row">
+        <div class="grid-item__title">{{
+          "FORMS.DESCRIPTION" | translate
+        }}</div>
+        <p class="description-text" [innerHTML]="data.description"></p>
+      </div>
+
+      <div class="body-actions">
+        <a *ngIf="data.url" target="_blank" href="{{ data.url }}">
+          <button mat-raised-button color="black">Remote OK</button>
+        </a>
+        <a *ngIf="data.applyUrl" target="_blank" href="{{ data.applyUrl }}">
+          <button mat-raised-button color="secondary">Apply now</button>
+        </a>
+        <a>
+          <button mat-raised-button color="default" (click)="onCancel()">{{
+            "ACTIONS.CLOSE" | translate
+          }}</button>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

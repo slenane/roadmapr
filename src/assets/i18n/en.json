@@ -1,6 +1,7 @@
 {
   "GENERAL": {
     "STATUS": {
+      "OPPORTUNITIES": "Remote Opportunities",
       "TO_DO": "To Do",
       "IN_PROGRESS": "In Progress",
       "DONE": "Done"
@@ -30,43 +31,15 @@
       "FRONTEND": "Frontend Developer",
       "BACKEND": "Backend Developer",
       "FULL_STACK": "Full-Stack Developer",
-      "DEV_OPS": "DevOps Developer",
-      "BLOCKCHAIN": "Blockchain Developer",
       "GAME": "Game Developer",
-      "MOBILE": "Mobile Developer",
-      "SECURITY": "Ethical Hacker / Security Analyst",
-      "DATA": "Data Scientist / Data Engineer",
-      "MACHINE_LEARNING": "Machine Learning Engineer",
-      "AI": "AI (Artificial Intelligence) Developer",
-      "CLOUD": "Cloud Engineer / Cloud Developer",
-      "QA": "QA (Quality Assurance) Engineer",
-      "UI_UX": "UX/UI Designer",
-      "GIS": "GIS (Geographic Information Systems) Developer",
-      "CRM": "CRM (Customer Relationship Management) Developer",
-      "E_COMMERCE": "E-commerce Developer",
-      "ERP": "ERP (Enterprise Resource Planning) Developer",
-      "CMS": "Content Management System (CMS) Developer"
+      "MOBILE": "Mobile Developer"
     },
     "DESCRIPTIONS": {
       "FRONTEND": "Designs and implements user interfaces for websites and web applications using HTML, CSS, and JavaScript.",
       "BACKEND": "Manages server-side logic and databases, ensuring the functionality of web applications.",
       "FULL_STACK": "Proficient in both frontend and backend development, handling client-side and server-side tasks.",
-      "DEV_OPS": "Automates and streamlines software development, integrating operations for efficient deployment.",
-      "BLOCKCHAIN": "Specializes in creating applications using blockchain technology, such as decentralized apps and smart contracts.",
       "GAME": "Designs, develops, and tests video games, involving programming, design, and animation.",
-      "MOBILE": "Specializes in creating applications for mobile platforms like iOS and Android.",
-      "SECURITY": "Ethical Hacker / Security Analyst",
-      "DATA": "Focuses on working with data, including data analysis, data engineering, and machine learning.",
-      "MACHINE_LEARNING": "Designs, implements, and deploys machine learning models and algorithms.",
-      "AI": "Develops applications that can perform tasks that normally require human intelligence.",
-      "CLOUD": "Manages and develops applications for cloud computing platforms like AWS, Google Cloud, or Azure.",
-      "QA": "Focuses on testing software to ensure it meets quality and performance standards.",
-      "UI_UX": "Designs user interfaces and experiences to create intuitive and user-friendly software.",
-      "GIS": "Specializes in creating applications for mapping and geospatial analysis.",
-      "CRM": "Designs and develops software for managing customer interactions and relationships.",
-      "E_COMMERCE": "Works on developing and maintaining online shopping platforms.",
-      "ERP": "Specializes in creating software for managing business processes and operations.",
-      "CMS": "Develops and customizes content management platforms for websites and applications."
+      "MOBILE": "Specializes in creating applications for mobile platforms like iOS and Android."
     },
     "DETAILED_DESCRIPTIONS": {
       "FRONTEND": "A frontend developer is a professional responsible for designing and implementing the user interface and user experience of a website or web application. They work on the client side of web development, focusing on how the website looks, feels, and interacts with users.",
@@ -279,8 +252,6 @@
     "T": "Experience",
     "T_SINGLE": "Experience",
     "EMPTY_LIST": {
-      "TO_DO_HEADER": "No Future Experience Plans",
-      "TO_DO_MESSAGE": "Securing work ahead of time will help keep you motivated",
       "IN_PROGRESS_HEADER": "No Experience In Progress",
       "IN_PROGRESS_MESSAGE": "Keep your CV up to date and keep learning!",
       "DONE_HEADER": "No Completed Experience",

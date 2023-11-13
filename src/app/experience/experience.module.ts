@@ -16,6 +16,7 @@ import { ExperienceUpdateComponent } from "./components/experience-update/experi
 import { ExperienceItemDetailsComponent } from "./components/experience-item/experience-item-details/experience-item-details.component";
 import { TranslateModule } from "@ngx-translate/core";
 import { ExperienceRoutingModule } from "./experience-routing.module";
+import { RecommendationsModule } from "../recommendations/recommendations.module";
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { ExperienceRoutingModule } from "./experience-routing.module";
     EffectsModule.forFeature([ExperienceEffects]),
     TranslateModule.forChild(),
     ExperienceRoutingModule,
+    RecommendationsModule,
   ],
   providers: [ExperienceService, ExperienceStoreService],
 })

@@ -21,4 +21,14 @@ export class RecommendationsStoreService {
       .select(recommendationsSelectors.getRecommendations)
       .pipe(filter((data) => !!data));
   }
+
+  getRemoteJobs(): Observable<any> {
+    this.store.dispatch({
+      type: recommendationsActions.GET_REMOTE_JOBS,
+    });
+
+    return this.store
+      .select(recommendationsSelectors.getRemoteJobs)
+      .pipe(filter((data) => !!data));
+  }
 }
