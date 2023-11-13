@@ -1,9 +1,4 @@
-<mat-card
-  class="recommendation"
-  (click)="openRecommendationDetails()"
-  (mouseenter)="showRemoveButton()"
-  (mouseleave)="hideRemoveButton()"
->
+<mat-card class="recommendation" (click)="openRecommendationDetails()">
   <mat-card-header>
     <mat-card-title>
       <span [innerHTML]="data.position"></span>
@@ -19,47 +14,17 @@
         src="/assets/images/stack/{{ tech.name }}-original.svg"
       />
     </div>
-
-    <div
-      class="remove-item"
-      *ngIf="removeButtonDisplayed"
-      (click)="onRemoveRecommendation.emit(index)"
-    >
-      <span class="material-symbols-outlined remove-item__icon">cancel</span>
-    </div>
   </mat-card-header>
   <mat-card-content>
     <mat-chip-list class="chips" *ngIf="data.tags">
-      <!-- <ng-container *ngFor="let tag of data.tags"> -->
-      <mat-chip
-        *ngIf="data.tags[0]"
-        matTooltip="{{ data.tags[0] | titlecase }}"
-        matTooltipShowDelay="500"
-      >
-        {{ data.tags[0] | titlecase }}
+      <ng-container *ngFor="let tag of data.tags.slice(0, 3)">
+        <mat-chip *ngIf="tag">
+          {{ tag | titlecase }}
+        </mat-chip>
+      </ng-container>
+      <mat-chip *ngIf="data.salary">
+        {{ data.salary }}
       </mat-chip>
-      <mat-chip
-        *ngIf="data.tags[1]"
-        matTooltip="{{ data.tags[1] | titlecase }}"
-        matTooltipShowDelay="500"
-      >
-        {{ data.tags[1] | titlecase }}
-      </mat-chip>
-      <mat-chip
-        *ngIf="data.tags[2]"
-        matTooltip="{{ data.tags[2] | titlecase }}"
-        matTooltipShowDelay="500"
-      >
-        {{ data.tags[2] | titlecase }}
-      </mat-chip>
-      <mat-chip
-        *ngIf="data.tags[3]"
-        matTooltip="{{ data.tags[3] | titlecase }}"
-        matTooltipShowDelay="500"
-      >
-        {{ data.tags[3] | titlecase }}
-      </mat-chip>
-      <!-- </ng-container> -->
     </mat-chip-list>
   </mat-card-content>
 </mat-card>

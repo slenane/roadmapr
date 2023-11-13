@@ -252,6 +252,8 @@
     "T": "Experience",
     "T_SINGLE": "Experience",
     "EMPTY_LIST": {
+      "OPPORTUNITIES_HEADER": "No opportunities available",
+      "OPPORTUNITIES_MESSAGE": "Check Remote OK, Indeed or LinkedIn for remote work",
       "IN_PROGRESS_HEADER": "No Experience In Progress",
       "IN_PROGRESS_MESSAGE": "Keep your CV up to date and keep learning!",
       "DONE_HEADER": "No Completed Experience",

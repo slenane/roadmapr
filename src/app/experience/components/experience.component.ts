@@ -29,10 +29,12 @@ export class ExperienceComponent implements OnInit {
   public experience: Experience;
   public experienceId: string;
   public experienceList: any[];
+  public displayAllOpportunities: boolean = false;
+  public opportunitiesFullArray: RemoteJob[];
 
-  public opportunities: any[];
-  public inProgress: any[];
-  public done: any[];
+  public opportunities: RemoteJob[];
+  public inProgress: Experience[];
+  public done: Experience[];
 
   constructor(
     // private experienceService: ExperienceService,
@@ -62,7 +64,8 @@ export class ExperienceComponent implements OnInit {
         takeUntil(this.ngUnsubscribe)
       )
       .subscribe((jobs: RemoteJob[]) => {
-        this.opportunities = [...jobs];
+        this.opportunitiesFullArray = [...jobs];
+        this.opportunities = [...this.opportunitiesFullArray].splice(0, 4);
       });
   }
 
@@ -196,6 +199,16 @@ export class ExperienceComponent implements OnInit {
         this.experience._id,
         updatedItems
       );
+    }
+  }
+
+  toggleShowAllOpportunities() {
+    if (this.displayAllOpportunities) {
+      this.opportunities = [...this.opportunitiesFullArray].splice(0, 4);
+      this.displayAllOpportunities = false;
+    } else {
+      this.opportunities = [...this.opportunitiesFullArray];
+      this.displayAllOpportunities = true;
     }
   }
 }

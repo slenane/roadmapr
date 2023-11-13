@@ -9,7 +9,6 @@ import { STACK_LIST } from "src/app/shared/constants/stack-list.constants";
   styleUrls: ["./experience-recommendation.component.scss"],
 })
 export class ExperienceRecommendationComponent implements OnInit {
-  public removeButtonDisplayed: boolean = false;
   public stack: any[] = [...STACK_LIST];
 
   @Input() data: any;
@@ -19,22 +18,14 @@ export class ExperienceRecommendationComponent implements OnInit {
 
   constructor(public dialog: MatDialog) {}
 
-  ngOnInit(): void {
-    console.log(this.data);
-  }
+  ngOnInit(): void {}
 
   openRecommendationDetails() {
     this.dialog.open(ExperienceRecommendationDetailsComponent, {
-      width: "50vw",
+      maxHeight: "80vh",
+      minWidth: "70vw",
       data: { ...this.data },
+      autoFocus: false,
     });
-  }
-
-  showRemoveButton() {
-    this.removeButtonDisplayed = true;
-  }
-
-  hideRemoveButton() {
-    this.removeButtonDisplayed = false;
   }
 }

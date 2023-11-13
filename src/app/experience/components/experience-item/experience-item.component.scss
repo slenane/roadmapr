@@ -5,7 +5,7 @@ mat-card {
 
   mat-card-header {
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: 2fr 1fr auto;
     justify-content: space-between;
 
     mat-card-title {

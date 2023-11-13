@@ -14,6 +14,7 @@ import { ExperienceRecommendationComponent } from "./components/experience-recom
 import { EducationRecommendationComponent } from "./components/education-recommendation/education-recommendation.component";
 import { EducationRecommendationDetailsComponent } from "./components/education-recommendation/education-recommendation-details/education-recommendation-details.component";
 import { ExperienceRecommendationDetailsComponent } from "./components/experience-recommendation/experience-recommendation-details/experience-recommendation-details.component";
+import { SharedModule } from "../shared/shared.module";
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { ExperienceRecommendationDetailsComponent } from "./components/experienc
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    SharedModule,
     TranslateModule.forChild(),
     StoreModule.forFeature("recommendations", fromRecommendations.reducer),
     EffectsModule.forFeature([RecommendationsEffects]),

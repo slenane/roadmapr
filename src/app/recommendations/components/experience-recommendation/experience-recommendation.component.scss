@@ -5,14 +5,10 @@ mat-card {
   cursor: pointer;
 
   mat-card-header {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
+    display: flex;
     justify-content: space-between;
 
     mat-card-title {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      align-items: center;
       font-size: 1rem;
     }
 
@@ -24,19 +20,6 @@ mat-card {
     .education-stack {
       text-align: end;
       padding-right: 1rem;
-
-      &.pin-displayed {
-        padding-right: 0.3rem;
-      }
-    }
-
-    .remove-item {
-      margin-right: 1rem;
-      cursor: pointer;
-
-      &__icon {
-        font-size: 1.3rem !important;
-      }
     }
   }
 

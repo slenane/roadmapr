@@ -1,14 +1,15 @@
 .header {
-  display: grid;
-  grid-template-columns: 1fr auto;
   margin-bottom: 1rem;
-  gap: 1rem;
 
-  .title {
+  .role {
     display: grid;
     grid-template-columns: auto 1fr;
     gap: 0.5rem;
     align-items: center;
+
+    img {
+      height: 3rem;
+    }
 
     h2 {
       margin: 0;
@@ -22,43 +23,49 @@
   }
 }
 
-.body {
+.mat-dialog-content {
+  padding: 0 12px 0 24px;
+
+  .form-scroll {
+    height: 23rem;
+    margin-bottom: 1rem;
+
+    .body {
+      display: grid;
+      grid-template-columns: 1fr 3fr;
+      gap: 1rem;
+      margin-right: 1.5rem;
+
+      .column {
+        display: grid;
+        grid-template-columns: 1fr;
+        align-content: flex-start;
+        gap: 1rem;
+
+        &.description-column {
+          align-content: space-between;
+        }
+      }
+
+      .row {
+        .grid-item__title {
+          font-weight: 500;
+          padding-bottom: 0.2rem;
+        }
+      }
+
+      .education-stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.2rem;
+      }
+    }
+  }
+}
+
+.body-actions {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: auto auto;
+  justify-content: end;
   gap: 1rem;
-
-  .column {
-    display: grid;
-    grid-template-columns: 1fr;
-    align-content: flex-start;
-    gap: 1rem;
-
-    &.description-column {
-      align-content: space-between;
-    }
-  }
-
-  .row {
-    .grid-item__title {
-      font-weight: 500;
-      padding-bottom: 0.2rem;
-    }
-  }
-
-  .education-stack {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.2rem;
-  }
-
-  .description-text {
-    white-space: pre-line;
-  }
-
-  .body-actions {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    justify-content: end;
-    gap: 1rem;
-  }
 }
