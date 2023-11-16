@@ -11,6 +11,8 @@ import {
 } from "src/app/experience/constants/experience.constants";
 import { experienceInitialState } from "../store/experience.reducer";
 import { ExperienceStoreService } from "../services/experience-store.service";
+import { RecommendationsStoreService } from "src/app/recommendations/services/recommendations-store.service";
+import { RemoteJob } from "src/app/recommendations/store/recommendations.models";
 
 @Component({
   selector: "app-experience",
@@ -27,14 +29,17 @@ export class ExperienceComponent implements OnInit {
   public experience: Experience;
   public experienceId: string;
   public experienceList: any[];
+  public displayAllOpportunities: boolean = false;
+  public opportunitiesFullArray: RemoteJob[];
 
-  public todo: any[];
-  public inProgress: any[];
-  public done: any[];
+  public opportunities: RemoteJob[];
+  public inProgress: Experience[];
+  public done: Experience[];
 
   constructor(
     // private experienceService: ExperienceService,
     private experienceStoreService: ExperienceStoreService,
+    private recommendationsStoreService: RecommendationsStoreService,
     private dropListService: DropListService
   ) {}
 
@@ -51,6 +56,17 @@ export class ExperienceComponent implements OnInit {
         this.getExperienceConfig(this.experience.experienceList);
         this.getLanguageFilterData();
       });
+
+    this.recommendationsStoreService
+      .getRemoteJobs()
+      .pipe(
+        filter((state) => state?.length),
+        takeUntil(this.ngUnsubscribe)
+      )
+      .subscribe((jobs: RemoteJob[]) => {
+        this.opportunitiesFullArray = [...jobs];
+        this.opportunities = [...this.opportunitiesFullArray].splice(0, 4);
+      });
   }
 
   ngOnDestroy() {
@@ -59,17 +75,14 @@ export class ExperienceComponent implements OnInit {
   }
 
   getExperienceConfig(experience: any[]): void {
-    const todoArray: any[] = [],
-      inProgressArray: any[] = [],
+    const inProgressArray: any[] = [],
       doneArray: any[] = [];
 
     experience.forEach((item) => {
       if (item.status === STATUS.IN_PROGRESS) inProgressArray.push(item);
       else if (item.status === STATUS.DONE) doneArray.push(item);
-      else todoArray.push(item);
     });
 
-    this.todo = this.sortItems(todoArray);
     this.inProgress = this.sortItems(inProgressArray);
     this.done = this.sortItems(doneArray);
   }
@@ -155,10 +168,7 @@ export class ExperienceComponent implements OnInit {
       const newItem = { ...item.data };
       newItem.pinned = false;
 
-      if (!newItem.startDate && !newItem.endDate) {
-        newItem.status = STATUS.TODO;
-        newItem.position = this.todo.length;
-      } else if (newItem.startDate && !newItem.endDate) {
+      if (newItem.startDate && !newItem.endDate) {
         newItem.status = STATUS.IN_PROGRESS;
         newItem.position = this.inProgress.length;
       } else {
@@ -173,7 +183,6 @@ export class ExperienceComponent implements OnInit {
   drop(event: CdkDragDrop<any[]>) {
     const updatedItems = this.dropListService.drop(event);
 
-    console.log(updatedItems);
     if (updatedItems.length) {
       this.experienceStoreService.bulkUpdateExperienceItems(
         this.experience._id,
@@ -190,6 +199,16 @@ export class ExperienceComponent implements OnInit {
         this.experience._id,
         updatedItems
       );
+    }
+  }
+
+  toggleShowAllOpportunities() {
+    if (this.displayAllOpportunities) {
+      this.opportunities = [...this.opportunitiesFullArray].splice(0, 4);
+      this.displayAllOpportunities = false;
+    } else {
+      this.opportunities = [...this.opportunitiesFullArray];
+      this.displayAllOpportunities = true;
     }
   }
 }

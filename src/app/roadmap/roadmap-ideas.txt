@@ -20,3 +20,169 @@ Skill Progression Line Chart: Tracking the improvement of skills over time
 Certification Progress: Showing the completion status of various certifications or degrees pursued by the developer
 
 Slider -. back / full / front based on courses and projects
+
+
+
+
+STACKS:
+
+### Frontend Developer:
+
+1. **React Stack:**
+   - React (JavaScript Library)
+   - Redux (State Management)
+   - React Router (Routing)
+   - Axios (HTTP Client)
+
+2. **Vue.js Stack:**
+   - Vue.js (JavaScript Framework)
+   - Vuex (State Management)
+   - Vue Router (Routing)
+   - Axios (HTTP Client)
+
+3. **Angular Stack:**
+   - Angular (JavaScript Framework)
+   - RxJS (Reactive Extensions for JavaScript)
+   - Angular Router (Routing)
+   - HttpClient (HTTP Client)
+
+4. **Svelte Stack:**
+   - Svelte (Frontend Framework)
+   - SvelteKit (Application Framework)
+   - Stores (State Management)
+   - Axios (HTTP Client)
+
+5. **Next.js Stack:**
+   - React (JavaScript Library)
+   - Next.js (React Framework)
+   - Redux or Zustand (State Management)
+   - Axios (HTTP Client)
+
+### Backend Developer:
+
+1. **Node.js Stack:**
+   - Node.js (Runtime Environment)
+   - Express.js (Web Framework)
+   - MongoDB or PostgreSQL (Database)
+   - Mongoose or Sequelize (Object-Relational Mapping)
+
+2. **Django Stack:**
+   - Django (Python Web Framework)
+   - Django REST Framework (API Framework)
+   - PostgreSQL or MySQL (Database)
+   - Gunicorn or uWSGI (Application Server)
+
+3. **Ruby on Rails Stack:**
+   - Ruby on Rails (Ruby Web Framework)
+   - ActiveRecord (Object-Relational Mapping)
+   - PostgreSQL or MySQL (Database)
+   - Puma or Unicorn (Application Server)
+
+4. **Spring Boot Stack:**
+   - Spring Boot (Java Framework)
+   - Spring Data JPA (Data Access)
+   - Hibernate (Object-Relational Mapping)
+   - PostgreSQL or MySQL (Database)
+
+5. **Express.js Stack:**
+   - Node.js (Runtime Environment)
+   - Express.js (Web Framework)
+   - MongoDB or MySQL (Database)
+   - Mongoose or Sequelize (Object-Relational Mapping)
+
+### Full-Stack Developer:
+
+1. **MEAN Stack:**
+   - MongoDB (Database)
+   - Express.js (Backend Framework)
+   - Angular (Frontend Framework)
+   - Node.js (Runtime Environment)
+
+2. **MERN Stack:**
+   - MongoDB (Database)
+   - Express.js (Backend Framework)
+   - React (Frontend Framework)
+   - Node.js (Runtime Environment)
+
+3. **MEVN Stack:**
+   - MongoDB (Database)
+   - Express.js (Backend Framework)
+   - Vue.js (Frontend Framework)
+   - Node.js (Runtime Environment)
+
+4. **LAMP Stack:**
+   - Linux (Operating System)
+   - Apache (Web Server)
+   - MySQL (Database)
+   - PHP (Server-Side Scripting Language)
+
+5. **Dockerized Stack:**
+   - Docker (Containerization)
+   - Kubernetes (Container Orchestration)
+   - Node.js (Runtime Environment)
+   - React (Frontend Framework)
+   - Express.js (Backend Framework)
+
+### Mobile Developer:
+
+1. **React Native Stack:**
+   - React Native (JavaScript Framework)
+   - Redux (State Management)
+   - Axios (HTTP Client)
+   - Expo (Development Environment)
+
+2. **Flutter Stack:**
+   - Flutter (UI Toolkit)
+   - Dart (Programming Language)
+   - Provider (State Management)
+   - Dio (HTTP Client)
+
+3. **Swift Stack:**
+   - Swift (Programming Language)
+   - SwiftUI (UI Framework)
+   - Combine (Reactive Framework)
+   - Alamofire (HTTP Client)
+
+4. **Kotlin (Android) Stack:**
+   - Kotlin (Programming Language)
+   - Android Jetpack (Android Framework)
+   - Retrofit (HTTP Client)
+   - Room (Database)
+
+5. **Xamarin Stack:**
+   - Xamarin (Cross-Platform Framework)
+   - C# (Programming Language)
+   - Xamarin.Forms (UI Toolkit)
+   - Entity Framework (Data Access)
+
+### Game Developer:
+
+1. **Unity Stack:**
+   - Unity (Game Development Framework)
+   - C# (Programming Language)
+   - Visual Studio (IDE)
+   - Photon (Multiplayer Networking)
+
+2. **Unreal Engine Stack:**
+   - Unreal Engine (Game Development Framework)
+   - C++ (Programming Language)
+   - Blueprints (Visual Scripting)
+   - Unreal Motion Graphics (UMG)
+
+3. **Godot Stack:**
+   - Godot Engine (Game Development Framework)
+   - GDScript (Scripting Language)
+   - VisualScript (Visual Programming)
+   - Aseprite or Blender (Graphics)
+
+4. **Cocos2d-x Stack:**
+   - Cocos2d-x (Game Development Framework)
+   - C++ (Programming Language)
+   - Box2D (Physics Engine)
+   - Spine (2D Animation)
+
+5. **Phaser Stack:**
+   - Phaser (HTML5 Game Framework)
+   - JavaScript (Programming Language)
+   - Tiled (Map Editor)
+   - TexturePacker (Sprite Sheet Packer)

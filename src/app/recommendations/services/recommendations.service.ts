@@ -16,4 +16,10 @@ export class RecommendationsService {
       this.urlService.generate(API.RECOMMENDATIONS_GET)
     );
   }
+
+  public getRemoteJobs(): Observable<any[]> {
+    return this.apiService.get(
+      this.urlService.generate(API.RECOMMENDATIONS_JOBS_GET)
+    );
+  }
 }

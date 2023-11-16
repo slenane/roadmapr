@@ -1,0 +1,30 @@
+<mat-card class="recommendation" (click)="openRecommendationDetails()">
+  <mat-card-header>
+    <mat-card-title>
+      <span [innerHTML]="data.position"></span>
+    </mat-card-title>
+    <mat-card-subtitle [innerHTML]="data.company | titlecase">
+    </mat-card-subtitle>
+
+    <div class="education-stack">
+      <img
+        *ngFor="let tech of data.stack"
+        class="app-stack-icon"
+        matTooltip="{{ tech.title }}"
+        src="/assets/images/stack/{{ tech.name }}-original.svg"
+      />
+    </div>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-chip-list class="chips" *ngIf="data.tags">
+      <ng-container *ngFor="let tag of data.tags.slice(0, 2)">
+        <mat-chip *ngIf="tag">
+          {{ tag | titlecase }}
+        </mat-chip>
+      </ng-container>
+      <mat-chip *ngIf="data.salary">
+        {{ data.salary }}
+      </mat-chip>
+    </mat-chip-list>
+  </mat-card-content>
+</mat-card>
