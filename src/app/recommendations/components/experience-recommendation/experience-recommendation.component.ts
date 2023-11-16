@@ -22,7 +22,7 @@ export class ExperienceRecommendationComponent implements OnInit {
 
   openRecommendationDetails() {
     this.dialog.open(ExperienceRecommendationDetailsComponent, {
-      maxHeight: "80vh",
+      maxHeight: "90vh",
       minWidth: "70vw",
       data: { ...this.data },
       autoFocus: false,

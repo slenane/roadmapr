@@ -27,7 +27,7 @@
   padding: 0 12px 0 24px;
 
   .form-scroll {
-    height: 23rem;
+    height: 27rem;
     margin-bottom: 1rem;
 
     .body {
@@ -60,6 +60,11 @@
         gap: 0.2rem;
       }
     }
+  }
+
+  .mat-standard-chip {
+    min-height: 24px;
+    font-size: 0.8rem;
   }
 }
 

@@ -65,7 +65,9 @@
     "SAVE_TYPE": "Save {{type}}",
     "UPDATE_TYPE": "Update {{type}}",
     "YES": "Yes",
-    "DISMISS": "Dismiss"
+    "DISMISS": "Dismiss",
+    "SHOW_MORE": "Show More",
+    "SHOW_LESS": "Show Less"
   },
   "ALERTS": {
     "DISMISS": "Dismiss",
@@ -479,6 +481,15 @@
   },
   "ROADMAP": {
     "T": "Roadmap"
+  },
+  "RECOMMENDATIONS": {
+    "T": "Remote Opportunities",
+    "SALARY": "Expected Salary",
+    "LOCATION": "Location",
+    "TAGS": "Tags",
+    "PROVIDER": "Provider",
+    "REMOTE_OK": "Remote OK",
+    "APPLY": "Apply"
   },
   "SETTINGS": {
     "T": "Settings",

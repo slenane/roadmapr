@@ -37,9 +37,14 @@
             </div>
 
             <mat-card
+              *ngIf="opportunities?.length"
               class="see-more-card"
               (click)="toggleShowAllOpportunities()"
-              >{{ displayAllOpportunities ? "Show Less" : "Show More" }}
+              >{{
+                displayAllOpportunities
+                  ? ("ACTIONS.SHOW_LESS" | translate)
+                  : ("ACTIONS.SHOW_MORE" | translate)
+              }}
             </mat-card>
 
             <app-drop-list-empty

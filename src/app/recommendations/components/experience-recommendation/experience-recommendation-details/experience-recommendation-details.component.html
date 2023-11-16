@@ -22,12 +22,16 @@
           </div>
 
           <div class="row" *ngIf="data.salary">
-            <div class="grid-item__title">Expected Salary</div>
+            <div class="grid-item__title">{{
+              "RECOMMENDATIONS.SALARY" | translate
+            }}</div>
             <p [innerHTML]="data.salary"></p>
           </div>
 
           <div class="row">
-            <div class="grid-item__title">Location</div>
+            <div class="grid-item__title">{{
+              "RECOMMENDATIONS.LOCATION" | translate
+            }}</div>
             <p>{{ location }}</p>
           </div>
 
@@ -44,9 +48,24 @@
           </div>
 
           <div class="row">
-            <div class="grid-item__title">Provider</div>
+            <div class="grid-item__title">{{
+              "RECOMMENDATIONS.TAGS" | translate
+            }}</div>
+            <mat-chip-list class="chips" *ngIf="data.tags">
+              <ng-container *ngFor="let tag of data.tags">
+                <mat-chip class="recommendation-tag">
+                  {{ tag | titlecase }}
+                </mat-chip>
+              </ng-container>
+            </mat-chip-list>
+          </div>
+
+          <div class="row">
+            <div class="grid-item__title">{{
+              "RECOMMENDATIONS.PROVIDER" | translate
+            }}</div>
             <a target="_blank" href="https://remoteok.com/remote-dev-jobs">
-              Remote OK
+              {{ "RECOMMENDATIONS.REMOTE_OK" | translate }}
             </a>
           </div>
         </div>
@@ -65,7 +84,9 @@
 
   <div class="body-actions">
     <a *ngIf="data.applyUrl" target="_blank" href="{{ data.applyUrl }}">
-      <button mat-raised-button color="primary">Apply</button>
+      <button mat-raised-button color="primary">{{
+        "RECOMMENDATIONS.APPLY" | translate
+      }}</button>
     </a>
     <a>
       <button mat-raised-button color="default" (click)="onCancel()">{{
