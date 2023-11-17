@@ -1,58 +1,15 @@
-:host {
-  .mat-expansion-panel,
-  .mat-expansion-panel:not(.mat-expanded) {
-    background: none !important;
-    box-shadow: none;
-
-    .mat-expansion-panel-header {
-      padding-left: 0;
-
-      .header {
-        width: 100%;
-        display: grid;
-        grid-template-columns: 1fr auto;
-        justify-content: space-between;
-
-        .more-filters {
-          display: grid;
-          grid-template-columns: 1fr auto;
-          align-items: center;
-          font-size: 0.9rem;
-          font-weight: 500;
-        }
-      }
-
-      &:hover:not([aria-disabled="true"]) {
-        background: none !important;
-      }
-    }
-  }
-
-  .mat-expansion-panel-content {
-    .mat-expansion-panel-body {
-      padding-left: 0;
-    }
-  }
-}
-
 .filter-container {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr auto;
   gap: 1rem;
 
-  .row {
+  .filters {
     display: grid;
+    grid-template-columns: auto auto;
     gap: 1rem;
+    align-items: center;
     justify-content: flex-start;
     font-size: 0.9rem;
-
-    &.filters {
-      grid-template-columns: auto auto auto;
-    }
-
-    &.language-select {
-      grid-template-columns: 1fr auto;
-    }
 
     .filter-type {
       font-weight: 500;
