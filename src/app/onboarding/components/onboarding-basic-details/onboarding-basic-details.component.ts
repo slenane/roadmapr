@@ -14,15 +14,15 @@ import {
 } from "@angular/material/dialog";
 import { DEV_PATHS } from "src/app/shared/constants/dev-paths.constants";
 import { COUNTRY_LIST } from "src/app/shared/constants/country-list.constants";
-import { UserSetupPathQuizComponent } from "../user-setup-path-quiz/user-setup-path-quiz.component";
+import { OnboardingPathQuizComponent } from "../onboarding-path-quiz/onboarding-path-quiz.component";
 import { MatStepper } from "@angular/material/stepper";
 
 @Component({
-  selector: "app-user-setup-basic-details",
-  templateUrl: "./user-setup-basic-details.component.html",
-  styleUrls: ["./user-setup-basic-details.component.scss"],
+  selector: "app-onboarding-basic-details",
+  templateUrl: "./onboarding-basic-details.component.html",
+  styleUrls: ["./onboarding-basic-details.component.scss"],
 })
-export class UserSetupBasicDetailsComponent implements OnInit {
+export class OnboardingBasicDetailsComponent implements OnInit {
   public COUNTRY_LIST = COUNTRY_LIST;
   public DEV_PATHS = DEV_PATHS;
 
@@ -48,7 +48,7 @@ export class UserSetupBasicDetailsComponent implements OnInit {
   constructor(
     private el: ElementRef,
     private cdr: ChangeDetectorRef,
-    public dialogRef: MatDialogRef<UserSetupBasicDetailsComponent>,
+    public dialogRef: MatDialogRef<OnboardingBasicDetailsComponent>,
     public dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
@@ -99,7 +99,7 @@ export class UserSetupBasicDetailsComponent implements OnInit {
   }
 
   openPathQuiz() {
-    const dialogRef = this.dialog.open(UserSetupPathQuizComponent, {
+    const dialogRef = this.dialog.open(OnboardingPathQuizComponent, {
       width: "50vw",
     });
 

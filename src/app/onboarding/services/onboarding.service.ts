@@ -8,7 +8,7 @@ import {
 @Injectable({
   providedIn: "root",
 })
-export class UserSetupService {
+export class OnboardingService {
   constructor() {}
 
   getRecommendedPath(results: any) {

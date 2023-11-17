@@ -43,9 +43,9 @@ const routes: Routes = [
     title: "ROUTES.REDIRECT",
   },
   {
-    path: "welcome",
+    path: "onboarding",
     loadChildren: () =>
-      import("./user-setup/user-setup.module").then((m) => m.UserSetupModule),
+      import("./onboarding/onboarding.module").then((m) => m.OnboardingModule),
     canActivate: [AuthGuardService],
   },
   {

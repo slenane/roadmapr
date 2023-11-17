@@ -26,6 +26,7 @@ import { NgScrollbarModule } from "ngx-scrollbar";
 import { UpdatePasswordInputsComponent } from "./components/forms/update-password/update-password-inputs/update-password-inputs.component";
 import { HomeMenuComponent } from "./components/home-menu/home-menu.component";
 import { DropListEmptyComponent } from "./components/drop-list/drop-list-empty/drop-list-empty.component";
+import { PathSelectorComponent } from './components/path-selector/path-selector.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { DropListEmptyComponent } from "./components/drop-list/drop-list-empty/d
     UpdatePasswordInputsComponent,
     HomeMenuComponent,
     DropListEmptyComponent,
+    PathSelectorComponent,
   ],
   exports: [
     SidebarComponent,

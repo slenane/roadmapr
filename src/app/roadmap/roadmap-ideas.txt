@@ -21,7 +21,7 @@ Certification Progress: Showing the completion status of various certifications 
 
 Slider -. back / full / front based on courses and projects
 
-
+Use common stacks or customize your own -> Give it a name -> if a stack is common then add itttt
 
 
 STACKS:

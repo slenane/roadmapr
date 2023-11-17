@@ -29,7 +29,7 @@ import { AuthModule } from "./auth/auth.module";
 import { LOGOUT } from "./auth/store/auth.actions";
 import { DELETE_ACCOUNT } from "./settings/store/settings.actions";
 import { TitleStrategy } from "@angular/router";
-import { UserSetupModule } from "./user-setup/user-setup.module";
+import { OnboardingModule } from "./onboarding/onboarding.module";
 import { HomeModule } from "./home/home.module";
 import { RecommendationsModule } from "./recommendations/recommendations.module";
 
@@ -79,7 +79,7 @@ export const metaReducers: MetaReducer<any>[] = [clearState];
     ProfileModule,
     ProjectsModule,
     SettingsModule,
-    UserSetupModule,
+    OnboardingModule,
     HttpClientModule,
     HttpClientXsrfModule,
     BrowserModule,

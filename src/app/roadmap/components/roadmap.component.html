@@ -6,7 +6,7 @@
   <ng-scrollbar>
     <div scrollViewport cdkScrollable>
       <div class="scroll">
-        <div class="user-overview-container">
+        <!-- <div class="user-overview-container">
           <app-icon-card
             [icon]="'school'"
             [title]="'Education'"
@@ -32,8 +32,8 @@
             [title]="'Professional Experience'"
             [value]="'1 years, 249 days'"
           ></app-icon-card>
-        </div>
-
+        </div> -->
+        <!-- 
         <div class="grid-1fr-1fr">
           <app-roadmap-stack-radar
             class="stack-radar-container"
@@ -46,32 +46,25 @@
             *ngIf="stack"
             [data]="stack"
           ></app-roadmap-stack>
-        </div>
+        </div> -->
 
-        <app-roadmap-education-overview
+        <!-- <app-roadmap-education-overview
           *ngIf="stack"
           [data]="stack"
-        ></app-roadmap-education-overview>
+        ></app-roadmap-education-overview> -->
 
-        <app-roadmap-projects-overview
+        <!-- <app-roadmap-projects-overview
           [data]="stack"
-        ></app-roadmap-projects-overview>
+        ></app-roadmap-projects-overview> -->
 
-        <div class="grid-1fr-1fr">
+        <!-- <div class="grid-1fr-1fr">
           <app-roadmap-github
             class="github-container"
             *ngIf="github"
             [data]="github"
           ></app-roadmap-github>
-        </div>
+        </div> -->
       </div>
     </div>
   </ng-scrollbar>
 </div>
-
-<!--         
-                <app-roadmap-skill-distribution
-                  class="skills-distribution-container"
-                  *ngIf="distribution"
-                  [data]="distribution"
-                ></app-roadmap-skill-distribution> -->
