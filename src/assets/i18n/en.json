@@ -214,7 +214,7 @@
       "GITHUB_REGISTRATION": "Register with GitHub"
     }
   },
-  "USER_SETUP": {
+  "ONBOARDING": {
     "BASIC_DETAILS": "Basic Details",
     "DEVELOPMENT_PATH": "Development Path",
     "DEVELOPMENT_PATH_SUB": "Choose your path in software development",

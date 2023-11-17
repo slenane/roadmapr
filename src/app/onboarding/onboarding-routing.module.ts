@@ -7,7 +7,7 @@ const routes: Routes = [
   {
     path: "",
     component: OnboardingComponent,
-    title: "ROUTES.USER_SETUP",
+    title: "ROUTES.ONBOARDING",
   },
   {
     path: "tour",
