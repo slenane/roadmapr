@@ -3,6 +3,7 @@
 <div class="roadmap" *ngIf="roadmap">
   <app-roadmap-filters
     [languageConfig]="stackList"
+    [user]="user"
     (onUpdate)="updateRoadmap($event)"
   ></app-roadmap-filters>
 

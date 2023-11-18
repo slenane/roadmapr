@@ -27,6 +27,7 @@ export class RoadmapFiltersComponent implements OnInit, OnChanges {
   public selectedPeriod: any;
 
   @Input() languageConfig: any[] = [];
+  @Input() user: any;
   @Output() onFilterLanguage: EventEmitter<null | string> = new EventEmitter();
   @Output() onFilterPeriod: EventEmitter<null | string> = new EventEmitter();
   @Output() onUpdate = new EventEmitter();
@@ -75,7 +76,9 @@ export class RoadmapFiltersComponent implements OnInit, OnChanges {
 
   editRoadmap() {
     const dialogRef = this.dialog.open(RoadmapUpdateComponent, {
+      minHeight: "90vh",
       minWidth: "70vw",
+      data: this.user,
     });
 
     dialogRef.afterClosed().subscribe((result: any) => {

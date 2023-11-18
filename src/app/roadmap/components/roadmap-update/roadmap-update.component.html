@@ -1,4 +1,7 @@
 <div class="roadmapr-update-header">
+  <div class="icon">
+    <span class="material-symbols-outlined emphasis"> code </span>
+  </div>
   <div class="text">
     <h1>{{ "ROADMAP.UPDATE.T" | translate }}</h1>
     <p>{{ "ROADMAP.UPDATE.MESSAGE" | translate }}</p>
@@ -6,7 +9,7 @@
 </div>
 <div mat-dialog-content>
   <ng-scrollbar class="form-scroll">
-    <form [formGroup]="stackForm">
+    <form [formGroup]="form">
       <mat-form-field appearance="outline" class="full-width-grid-item">
         <mat-label>{{ "FORMS.PATH" | translate }}</mat-label>
 
@@ -15,14 +18,63 @@
           formControlName="pathCtrl"
           [compareWith]="compareValues"
         >
-          <mat-option *ngFor="let path of DEV_PATHS" [value]="path">
+          <mat-option *ngFor="let path of developerPaths" [value]="path">
             <div class="type-option"> {{ path.name | translate }} </div>
           </mat-option>
         </mat-select>
-        <mat-error *ngIf="stackForm.controls.pathCtrl.invalid">{{
+        <mat-error *ngIf="form.controls.pathCtrl.invalid">{{
           "FORMS.REQUIRED.PATH" | translate
         }}</mat-error>
       </mat-form-field>
+
+      <mat-card
+        class="stack-card"
+        [ngClass]="{ selected: selectedStack === stack }"
+        *ngFor="let stack of getStackListArray()"
+        (click)="selectStack(stack)"
+      >
+        <mat-card-header>
+          <mat-card-title>{{ stack?.title }}</mat-card-title>
+
+          <div class="tech-stack">
+            <img
+              *ngFor="let tech of stack?.stack"
+              class="app-stack-icon"
+              matTooltip="{{ tech.title }}"
+              src="/assets/images/stack/{{ tech.name }}-original.svg"
+            />
+            <img
+              *ngFor="let tech of stack?.choose"
+              class="app-stack-icon"
+              matTooltip="{{ tech.title }}"
+              src="/assets/images/stack/{{ tech.name }}-original.svg"
+            />
+          </div>
+        </mat-card-header>
+        <mat-card-content>
+          <p>
+            {{ stack?.description | translate }}
+          </p>
+        </mat-card-content>
+      </mat-card>
+      <mat-card
+        class="stack-card"
+        [ngClass]="{ selected: selectedStack === customStack }"
+        (click)="selectStack(customStack)"
+      >
+        <mat-card-header>
+          <mat-card-title>{{ customStack.title }}</mat-card-title>
+
+          <div class="custom-tech-stack">
+            <div class="custom-icon"></div>
+            <div class="custom-icon"></div>
+            <div class="custom-icon"></div>
+          </div>
+        </mat-card-header>
+        <mat-card-content>
+          <p [innerHTML]="customStack.description | translate"> </p>
+        </mat-card-content>
+      </mat-card>
     </form>
   </ng-scrollbar>
 </div>
@@ -32,11 +84,11 @@
     "ACTIONS.CANCEL" | translate
   }}</button>
   <button
-    [disabled]="!stackForm.valid"
+    [disabled]="!form.valid"
     mat-raised-button
     color="primary"
     (click)="onSaveClick()"
     cdkFocusInitial
-    >Update</button
+    >{{ "ACTIONS.UPDATE" | translate }}</button
   >
 </div>

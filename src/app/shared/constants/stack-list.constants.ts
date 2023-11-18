@@ -244,6 +244,7 @@ export const STACK_LIST = [
   { title: "Tower Git", name: "towergit", type: "backend" },
   { title: "Travis CI", name: "travis", type: "backend" },
   { title: "TypeScript", name: "typescript", type: "backend" },
+  { title: "Truffle", name: "truffle", type: "backend" },
   { title: "TYPO3", name: "typo3", type: "backend" },
   { title: "Unity", name: "unity", type: "backend" },
   { title: "Unreal Engine", name: "unrealengine", type: "backend" },

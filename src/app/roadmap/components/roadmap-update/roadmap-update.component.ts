@@ -1,10 +1,18 @@
-import { Component, ElementRef, OnInit, Inject } from "@angular/core";
-import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
+import { Component, OnInit, Inject } from "@angular/core";
+import {
+  MAT_DIALOG_DATA,
+  MatDialog,
+  MatDialogRef,
+} from "@angular/material/dialog";
 import { Subject } from "rxjs";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import {
+  CUSTOM_STACK,
   DEV_PATHS,
   DEV_STACKS,
+  IDeveloperPath,
+  IDeveloperStacks,
+  IStack,
 } from "src/app/shared/constants/dev-paths.constants";
 
 @Component({
@@ -14,25 +22,66 @@ import {
 })
 export class RoadmapUpdateComponent implements OnInit {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
-  public DEV_PATHS = DEV_PATHS;
-  public DEV_STACKS = DEV_STACKS;
+  public developerPaths: IDeveloperPath[] = DEV_PATHS;
+  public developerStacks: IDeveloperStacks = DEV_STACKS;
+  public customStack: IStack = CUSTOM_STACK;
+  public currentPath: IDeveloperPath;
+  public stackList: any;
+  public selectedStack: any;
 
   public isUpdating: boolean = false;
-  public stackForm = new FormGroup({
-    pathCtrl: new FormControl("", Validators.required),
+  public form = new FormGroup({
+    pathCtrl: new FormControl<IDeveloperPath | null>(null, Validators.required),
+    stackCtrl: new FormControl<string | null>(null, Validators.required),
   });
 
   constructor(
-    private el: ElementRef,
+    public dialog: MatDialog,
     public dialogRef: MatDialogRef<RoadmapUpdateComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.form.controls.pathCtrl.valueChanges.subscribe(
+      (path: IDeveloperPath | null) => {
+        if (path) {
+          this.currentPath = path;
+          this.form.patchValue({
+            stackCtrl: null,
+          });
+          this.selectedStack = null;
+          this.updateStackList(path);
+        }
+      }
+    );
+
+    if (this.data.path) {
+      this.form.patchValue({
+        pathCtrl: this.data.path,
+        stackCtrl: this.data.desiredStack,
+      });
+    }
+  }
 
   ngOnDestroy() {
     this.ngUnsubscribe.next();
     this.ngUnsubscribe.complete();
+  }
+
+  updateStackList(path: IDeveloperPath) {
+    this.stackList = this.developerStacks[path.name];
+  }
+
+  getStackListArray(): any[] {
+    return Object.values(this.stackList) ? Object.values(this.stackList) : [];
+  }
+
+  selectStack(stack: IStack) {
+    this.selectedStack = stack;
+
+    this.form.patchValue({
+      stackCtrl: this.selectedStack.id,
+    });
   }
 
   onNoClick(): void {
@@ -40,12 +89,12 @@ export class RoadmapUpdateComponent implements OnInit {
   }
 
   onSaveClick(): void {
-    // const stack = this.stack.getData() || [];
-    // if (this.experienceForm.valid && stack.length) {
-    //   return this.dialogRef.close({ ...this.experienceForm.value, stack });
-    // } else {
-    //   this.focusError();
-    // }
+    if (this.form.valid) {
+      return this.dialogRef.close({
+        path: this.form.value.pathCtrl,
+        desiredStack: this.form.value.stackCtrl,
+      });
+    }
   }
 
   compareValues(a: any, b: any): boolean {

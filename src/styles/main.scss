@@ -128,6 +128,12 @@ mat-button-toggle-group {
   font-weight: 500;
 }
 
+.stack-card {
+  .mat-card-header-text {
+    margin: 0 !important;
+  }
+}
+
 .compact-table {
   tr.mat-header-row {
     height: 30px;

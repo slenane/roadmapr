@@ -1,4 +1,28 @@
-export const DEV_PATHS = [
+export interface IDeveloperPath {
+  id: number;
+  name: string;
+}
+
+export interface IStackItem {
+  title: string;
+  name: string;
+  type: string;
+}
+
+export interface IStack {
+  id: string;
+  title: string;
+  stack: IStackItem[];
+  choose?: IStackItem[];
+  extras?: IStackItem[];
+  description: string;
+}
+
+export interface IDeveloperStacks {
+  [key: string]: IStack[];
+}
+
+export const DEV_PATHS: IDeveloperPath[] = [
   { id: 0, name: "PATHS.TITLES.FRONTEND" },
   { id: 1, name: "PATHS.TITLES.BACKEND" },
   { id: 2, name: "PATHS.TITLES.FULL_STACK" },
@@ -7,9 +31,11 @@ export const DEV_PATHS = [
 ];
 
 export const DEV_STACKS = {
-  "PATHS.TITLES.FRONTEND": {
-    react: {
+  "PATHS.TITLES.FRONTEND": [
+    {
+      id: "react",
       title: "React Stack",
+      description: "STACKS.REACT",
       stack: [
         { title: "HTML", name: "html5", type: "frontend" },
         { title: "CSS", name: "css3", type: "frontend" },
@@ -26,8 +52,10 @@ export const DEV_STACKS = {
         { title: "Material UI", name: "materialui", type: "frontend" },
       ],
     },
-    vue: {
+    {
+      id: "vue",
       title: "Vue.js Stack",
+      description: "STACKS.VUE",
       stack: [
         { title: "HTML", name: "html5", type: "frontend" },
         { title: "CSS", name: "css3", type: "frontend" },
@@ -43,8 +71,10 @@ export const DEV_STACKS = {
         { title: "Jest", name: "jest", type: "frontend" },
       ],
     },
-    angular: {
+    {
+      id: "angular",
       title: "Angular Stack",
+      description: "STACKS.ANGULAR",
       stack: [
         { title: "HTML", name: "html5", type: "frontend" },
         { title: "CSS", name: "css3", type: "frontend" },
@@ -62,8 +92,10 @@ export const DEV_STACKS = {
         { title: "Karma", name: "karma", type: "frontend" },
       ],
     },
-    svelte: {
+    {
+      id: "svelte",
       title: "Svelte Stack",
+      description: "STACKS.SVELTE",
       stack: [
         { title: "HTML", name: "html5", type: "frontend" },
         { title: "CSS", name: "css3", type: "frontend" },
@@ -77,8 +109,10 @@ export const DEV_STACKS = {
         { title: "Webpack", name: "webpack", type: "backend" },
       ],
     },
-    next: {
+    {
+      id: "next",
       title: "Next.js Stack",
+      description: "STACKS.NEXT",
       stack: [
         { title: "HTML", name: "html5", type: "frontend" },
         { title: "CSS", name: "css3", type: "frontend" },
@@ -94,10 +128,12 @@ export const DEV_STACKS = {
         { title: "Webpack", name: "webpack", type: "backend" },
       ],
     },
-  },
-  "PATHS.TITLES.BACKEND": {
-    node: {
-      title: "Node.jsStack",
+  ],
+  "PATHS.TITLES.BACKEND": [
+    {
+      id: "node",
+      title: "Node.js Stack",
+      description: "STACKS.NODE",
       stack: [
         { title: "JavaScript", name: "javascript", type: "full-stack" },
         { title: "Node.js", name: "nodejs", type: "backend" },
@@ -119,8 +155,10 @@ export const DEV_STACKS = {
         { title: "Sequelize", name: "sequelize", type: "backend" },
       ],
     },
-    django: {
+    {
+      id: "django",
       title: "Django Stack",
+      description: "STACKS.DJANGO",
       stack: [
         { title: "Python", name: "python", type: "backend" },
         { title: "Django", name: "django", type: "backend" },
@@ -139,8 +177,10 @@ export const DEV_STACKS = {
         { title: "Docker", name: "docker", type: "backend" },
       ],
     },
-    ruby: {
+    {
+      id: "ruby",
       title: "Ruby on Rails Stack",
+      description: "STACKS.RUBY",
       stack: [
         { title: "Ruby", name: "ruby", type: "backend" },
         { title: "Rails", name: "rails", type: "backend" },
@@ -159,8 +199,10 @@ export const DEV_STACKS = {
         { title: "Docker", name: "docker", type: "backend" },
       ],
     },
-    springboot: {
+    {
+      id: "springboot",
       title: "Spring Boot Stack",
+      description: "STACKS.SPRINGBOOT",
       stack: [
         { title: "Java", name: "java", type: "backend" },
         { title: "Spring", name: "spring", type: "backend" },
@@ -179,10 +221,12 @@ export const DEV_STACKS = {
         { title: "Docker", name: "docker", type: "backend" },
       ],
     },
-  },
-  "PATHS.TITLES.FULL_STACK": {
-    mean: {
+  ],
+  "PATHS.TITLES.FULL_STACK": [
+    {
+      id: "mean",
       title: "MEAN Stack",
+      description: "STACKS.MEAN",
       stack: [
         { title: "HTML", name: "html5", type: "frontend" },
         { title: "CSS", name: "css3", type: "frontend" },
@@ -202,8 +246,10 @@ export const DEV_STACKS = {
         { title: "Karma", name: "karma", type: "frontend" },
       ],
     },
-    mern: {
+    {
+      id: "mern",
       title: "MERN Stack",
+      description: "STACKS.MERN",
       stack: [
         { title: "HTML", name: "html5", type: "frontend" },
         { title: "CSS", name: "css3", type: "frontend" },
@@ -222,8 +268,10 @@ export const DEV_STACKS = {
         { title: "Jest", name: "jest", type: "frontend" },
       ],
     },
-    mevn: {
+    {
+      id: "mevn",
       title: "MEVN Stack",
+      description: "STACKS.MEVN",
       stack: [
         { title: "HTML", name: "html5", type: "frontend" },
         { title: "CSS", name: "css3", type: "frontend" },
@@ -242,8 +290,29 @@ export const DEV_STACKS = {
         { title: "Jest", name: "jest", type: "frontend" },
       ],
     },
-    lamp: {
+    {
+      id: "blockchain",
+      title: "Blockchain Stack",
+      description: "STACKS.BLOCKCHAIN",
+      stack: [
+        { title: "Solidity", name: "solidity", type: "backend" },
+        { title: "Truffle", name: "truffle", type: "backend" },
+      ],
+      choose: [
+        { title: "Python", name: "python", type: "backend" },
+        { title: "Django", name: "django", type: "backend" },
+        { title: "Node.js", name: "nodejs", type: "backend" },
+        { title: "JavaScript", name: "javascript", type: "full-stack" },
+        { title: "React", name: "react", type: "frontend" },
+        { title: "Vue.js", name: "vuejs", type: "frontend" },
+        { title: "Angular", name: "angularjs", type: "frontend" },
+      ],
+      extras: [{ title: "Git", name: "git", type: "backend" }],
+    },
+    {
+      id: "lamp",
       title: "LAMP Stack",
+      description: "STACKS.LAMP",
       stack: [
         { title: "Linux", name: "linux", type: "backend" },
         { title: "Apache", name: "apache", type: "backend" },
@@ -259,8 +328,10 @@ export const DEV_STACKS = {
       ],
       extras: [{ title: "Git", name: "git", type: "backend" }],
     },
-    docker: {
+    {
+      id: "docker",
       title: "Dockerized Stack",
+      description: "STACKS.DOCKER",
       stack: [
         { title: "HTML", name: "html5", type: "frontend" },
         { title: "CSS", name: "css3", type: "frontend" },
@@ -279,10 +350,12 @@ export const DEV_STACKS = {
         { title: "Jest", name: "jest", type: "frontend" },
       ],
     },
-  },
-  "PATHS.TITLES.GAME": {
-    unity: {
+  ],
+  "PATHS.TITLES.GAME": [
+    {
+      id: "unity",
       title: "Unity Stack",
+      description: "STACKS.UNITY",
       stack: [
         { title: "Unity", name: "unity", type: "backend" },
         { title: "C#", name: "csharp", type: "backend" },
@@ -293,11 +366,13 @@ export const DEV_STACKS = {
         { title: "JavaScript", name: "javascript", type: "full-stack" },
       ],
     },
-    unreal: {
+    {
+      id: "unreal",
       title: "Unreal Engine Stack",
+      description: "STACKS.UNREAL",
       stack: [
         { title: "Unreal Engine", name: "unrealengine", type: "backend" },
-        { title: "C#", name: "csharp", type: "backend" },
+        { title: "C++", name: "cplusplus", type: "backend" },
         { title: "Visual Studio", name: "visualstudio", type: "backend" },
       ],
       extras: [
@@ -305,8 +380,10 @@ export const DEV_STACKS = {
         { title: "JavaScript", name: "javascript", type: "full-stack" },
       ],
     },
-    godot: {
+    {
+      id: "godot",
       title: "Godot Stack",
+      description: "STACKS.GODOT",
       stack: [
         { title: "Godot", name: "godot", type: "frontend" },
         { title: "C#", name: "csharp", type: "backend" },
@@ -317,17 +394,23 @@ export const DEV_STACKS = {
         { title: "JavaScript", name: "javascript", type: "full-stack" },
       ],
     },
-    cocos2dx: {
-      title: "",
-      stack: [{ title: "C++", name: "cplusplus", type: "backend" }],
+    {
+      id: "cocos2dx",
+      title: "Cocos2d-x Stack",
+      description: "STACKS.COCOS",
+      stack: [
+        { title: "C++", name: "cplusplus", type: "backend" },
+        { title: "Lua", name: "lua", type: "backend" },
+      ],
       extras: [
         { title: "Git", name: "git", type: "backend" },
-        { title: "Lua", name: "lua", type: "backend" },
         { title: "JavaScript", name: "javascript", type: "full-stack" },
       ],
     },
-    phaser: {
+    {
+      id: "phaser",
       title: "Phaser Stack",
+      description: "STACKS.PHASER",
       stack: [
         { title: "JavaScript", name: "javascript", type: "full-stack" },
         { title: "HTML", name: "html5", type: "frontend" },
@@ -336,10 +419,12 @@ export const DEV_STACKS = {
       ],
       extras: [{ title: "Git", name: "git", type: "backend" }],
     },
-  },
-  "PATHS.TITLES.MOBILE": {
-    react_native: {
+  ],
+  "PATHS.TITLES.MOBILE": [
+    {
+      id: "react_native",
       title: "React Native Stack",
+      description: "STACKS.REACT_NATIVE",
       stack: [
         { title: "HTML", name: "html5", type: "frontend" },
         { title: "CSS", name: "css3", type: "frontend" },
@@ -351,8 +436,10 @@ export const DEV_STACKS = {
       ],
       extras: [{ title: "Git", name: "git", type: "backend" }],
     },
-    flutter: {
+    {
+      id: "flutter",
       title: "Flutter Stack",
+      description: "STACKS.FLUTTER",
       stack: [
         { title: "Dart", name: "dart", type: "frontend" },
         { title: "Flutter", name: "flutter", type: "frontend" },
@@ -369,8 +456,10 @@ export const DEV_STACKS = {
         { title: "MySQL", name: "mysql", type: "database" },
       ],
     },
-    swift: {
+    {
+      id: "swift",
       title: "Swift Stack",
+      description: "STACKS.SWIFT",
       stack: [
         { title: "Swift", name: "swift", type: "backend" },
         { title: "Objective-C", name: "objectivec", type: "backend" },
@@ -383,8 +472,10 @@ export const DEV_STACKS = {
         { title: "MySQL", name: "mysql", type: "database" },
       ],
     },
-    kotlin: {
+    {
+      id: "kotlin",
       title: "Kotlin Stack",
+      description: "STACKS.KOTLIN",
       stack: [
         { title: "Kotlin", name: "kotlin", type: "backend" },
         { title: "Android", name: "android", type: "frontend" },
@@ -396,8 +487,10 @@ export const DEV_STACKS = {
         { title: "MySQL", name: "mysql", type: "database" },
       ],
     },
-    xamarin: {
+    {
+      id: "xamarin",
       title: "Xamarin Stack",
+      description: "STACKS.XAMARIN",
       stack: [
         { title: "Xamarin", name: "xamarin", type: "backend" },
         { title: "C#", name: "csharp", type: "backend" },
@@ -408,5 +501,12 @@ export const DEV_STACKS = {
         { title: "JavaScript", name: "javascript", type: "full-stack" },
       ],
     },
-  },
+  ],
+};
+
+export const CUSTOM_STACK: IStack = {
+  title: "Custom Stack",
+  id: "custom",
+  stack: [],
+  description: "STACKS.CUSTOM",
 };
