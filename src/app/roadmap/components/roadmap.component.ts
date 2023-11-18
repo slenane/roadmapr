@@ -255,4 +255,8 @@ export class RoadmapComponent implements OnInit {
         }`
       : `${remainingDays} day${remainingDays !== 1 ? "s" : ""}`;
   }
+
+  updateRoadmap(data: any) {
+    console.log(data);
+  }
 }

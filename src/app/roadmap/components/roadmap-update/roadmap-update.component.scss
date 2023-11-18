@@ -1,0 +1,48 @@
+.roadmapr-update-header {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-bottom: 0.5rem;
+
+  .text {
+    h1 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-bottom: 0;
+    }
+
+    p {
+      font-weight: 300;
+    }
+  }
+}
+
+.mat-dialog-content {
+  padding: 0 12px 0 24px;
+
+  .form-scroll {
+    height: 23rem;
+
+    form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-right: 1.5rem;
+
+      .grid-section {
+        display: grid;
+        width: 100%;
+        grid-template-columns: 1fr;
+
+        .sub-grid {
+          display: grid;
+          grid-template-columns: auto auto;
+          grid-gap: 1rem;
+        }
+      }
+    }
+  }
+}
+
+.actions {
+  float: right;
+}

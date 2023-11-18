@@ -481,7 +481,11 @@
     }
   },
   "ROADMAP": {
-    "T": "Roadmap"
+    "T": "Roadmap",
+    "UPDATE": {
+      "T": "Update Stack",
+      "MESSAGE": "Choose a Stack to follow or create a custom stack"
+    }
   },
   "RECOMMENDATIONS": {
     "T": "Remote Opportunities",

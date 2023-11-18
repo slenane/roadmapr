@@ -37,7 +37,6 @@ export class ExperienceComponent implements OnInit {
   public done: Experience[];
 
   constructor(
-    // private experienceService: ExperienceService,
     private experienceStoreService: ExperienceStoreService,
     private recommendationsStoreService: RecommendationsStoreService,
     private dropListService: DropListService
@@ -147,21 +146,6 @@ export class ExperienceComponent implements OnInit {
         ))
     );
   }
-
-  // sortExperienceList(list: any[]) {
-  //   const previousExperience = list.filter((item) => item.endDate);
-  //   const currentExperience = list.filter((item) => !item.endDate);
-
-  //   this.experienceList = [
-  //     ...currentExperience.sort(
-  //       (a, b) =>
-  //         new Date(b.startDate).getTime() - new Date(a.startDate).getTime()
-  //     ),
-  //     ...previousExperience.sort(
-  //       (a, b) => new Date(b.endDate).getTime() - new Date(a.endDate).getTime()
-  //     ),
-  //   ];
-  // }
 
   createExperienceItem(item: any) {
     if (item.data) {

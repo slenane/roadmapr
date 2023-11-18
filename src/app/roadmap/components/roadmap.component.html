@@ -1,7 +1,10 @@
 <app-loading *ngIf="!roadmap"></app-loading>
 
 <div class="roadmap" *ngIf="roadmap">
-  <app-roadmap-filters [languageConfig]="stackList"></app-roadmap-filters>
+  <app-roadmap-filters
+    [languageConfig]="stackList"
+    (onUpdate)="updateRoadmap($event)"
+  ></app-roadmap-filters>
 
   <ng-scrollbar>
     <div scrollViewport cdkScrollable>

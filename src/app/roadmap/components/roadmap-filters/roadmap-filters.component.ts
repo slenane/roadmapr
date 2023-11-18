@@ -7,6 +7,8 @@ import {
   EventEmitter,
   SimpleChanges,
 } from "@angular/core";
+import { MatDialog } from "@angular/material/dialog";
+import { RoadmapUpdateComponent } from "../roadmap-update/roadmap-update.component";
 
 @Component({
   selector: "app-roadmap-filters",
@@ -27,8 +29,9 @@ export class RoadmapFiltersComponent implements OnInit, OnChanges {
   @Input() languageConfig: any[] = [];
   @Output() onFilterLanguage: EventEmitter<null | string> = new EventEmitter();
   @Output() onFilterPeriod: EventEmitter<null | string> = new EventEmitter();
+  @Output() onUpdate = new EventEmitter();
 
-  constructor() {}
+  constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {}
 
@@ -70,5 +73,13 @@ export class RoadmapFiltersComponent implements OnInit, OnChanges {
     }
   }
 
-  editRoadmap() {}
+  editRoadmap() {
+    const dialogRef = this.dialog.open(RoadmapUpdateComponent, {
+      minWidth: "70vw",
+    });
+
+    dialogRef.afterClosed().subscribe((result: any) => {
+      this.onUpdate.emit(result);
+    });
+  }
 }
