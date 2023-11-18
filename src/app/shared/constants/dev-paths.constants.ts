@@ -3,6 +3,11 @@ export interface IDeveloperPath {
   name: string;
 }
 
+export interface IDeveloperStack {
+  id: number;
+  name: string;
+}
+
 export interface IStackItem {
   title: string;
   name: string;
@@ -10,7 +15,7 @@ export interface IStackItem {
 }
 
 export interface IStack {
-  id: string;
+  type: IDeveloperStack;
   title: string;
   stack: IStackItem[];
   choose?: IStackItem[];
@@ -33,7 +38,7 @@ export const DEV_PATHS: IDeveloperPath[] = [
 export const DEV_STACKS = {
   "PATHS.TITLES.FRONTEND": [
     {
-      id: "react",
+      type: { id: 1, name: "react" },
       title: "React Stack",
       description: "STACKS.REACT",
       stack: [
@@ -53,7 +58,7 @@ export const DEV_STACKS = {
       ],
     },
     {
-      id: "vue",
+      type: { id: 2, name: "vue" },
       title: "Vue.js Stack",
       description: "STACKS.VUE",
       stack: [
@@ -72,7 +77,7 @@ export const DEV_STACKS = {
       ],
     },
     {
-      id: "angular",
+      type: { id: 3, name: "angular" },
       title: "Angular Stack",
       description: "STACKS.ANGULAR",
       stack: [
@@ -93,7 +98,7 @@ export const DEV_STACKS = {
       ],
     },
     {
-      id: "svelte",
+      type: { id: 4, name: "svelte" },
       title: "Svelte Stack",
       description: "STACKS.SVELTE",
       stack: [
@@ -110,7 +115,7 @@ export const DEV_STACKS = {
       ],
     },
     {
-      id: "next",
+      type: { id: 5, name: "next" },
       title: "Next.js Stack",
       description: "STACKS.NEXT",
       stack: [
@@ -131,7 +136,7 @@ export const DEV_STACKS = {
   ],
   "PATHS.TITLES.BACKEND": [
     {
-      id: "node",
+      type: { id: 6, name: "node" },
       title: "Node.js Stack",
       description: "STACKS.NODE",
       stack: [
@@ -156,7 +161,7 @@ export const DEV_STACKS = {
       ],
     },
     {
-      id: "django",
+      type: { id: 7, name: "django" },
       title: "Django Stack",
       description: "STACKS.DJANGO",
       stack: [
@@ -178,7 +183,7 @@ export const DEV_STACKS = {
       ],
     },
     {
-      id: "ruby",
+      type: { id: 8, name: "ruby" },
       title: "Ruby on Rails Stack",
       description: "STACKS.RUBY",
       stack: [
@@ -200,7 +205,7 @@ export const DEV_STACKS = {
       ],
     },
     {
-      id: "springboot",
+      type: { id: 9, name: "springboot" },
       title: "Spring Boot Stack",
       description: "STACKS.SPRINGBOOT",
       stack: [
@@ -224,7 +229,7 @@ export const DEV_STACKS = {
   ],
   "PATHS.TITLES.FULL_STACK": [
     {
-      id: "mean",
+      type: { id: 10, name: "mean" },
       title: "MEAN Stack",
       description: "STACKS.MEAN",
       stack: [
@@ -247,7 +252,7 @@ export const DEV_STACKS = {
       ],
     },
     {
-      id: "mern",
+      type: { id: 11, name: "mern" },
       title: "MERN Stack",
       description: "STACKS.MERN",
       stack: [
@@ -269,7 +274,7 @@ export const DEV_STACKS = {
       ],
     },
     {
-      id: "mevn",
+      type: { id: 12, name: "mevn" },
       title: "MEVN Stack",
       description: "STACKS.MEVN",
       stack: [
@@ -291,7 +296,7 @@ export const DEV_STACKS = {
       ],
     },
     {
-      id: "blockchain",
+      type: { id: 13, name: "blockchain" },
       title: "Blockchain Stack",
       description: "STACKS.BLOCKCHAIN",
       stack: [
@@ -310,7 +315,7 @@ export const DEV_STACKS = {
       extras: [{ title: "Git", name: "git", type: "backend" }],
     },
     {
-      id: "lamp",
+      type: { id: 14, name: "lamp" },
       title: "LAMP Stack",
       description: "STACKS.LAMP",
       stack: [
@@ -329,7 +334,7 @@ export const DEV_STACKS = {
       extras: [{ title: "Git", name: "git", type: "backend" }],
     },
     {
-      id: "docker",
+      type: { id: 15, name: "docker" },
       title: "Dockerized Stack",
       description: "STACKS.DOCKER",
       stack: [
@@ -353,7 +358,7 @@ export const DEV_STACKS = {
   ],
   "PATHS.TITLES.GAME": [
     {
-      id: "unity",
+      type: { id: 16, name: "unity" },
       title: "Unity Stack",
       description: "STACKS.UNITY",
       stack: [
@@ -367,7 +372,7 @@ export const DEV_STACKS = {
       ],
     },
     {
-      id: "unreal",
+      type: { id: 17, name: "unreal" },
       title: "Unreal Engine Stack",
       description: "STACKS.UNREAL",
       stack: [
@@ -381,7 +386,7 @@ export const DEV_STACKS = {
       ],
     },
     {
-      id: "godot",
+      type: { id: 18, name: "godot" },
       title: "Godot Stack",
       description: "STACKS.GODOT",
       stack: [
@@ -395,7 +400,7 @@ export const DEV_STACKS = {
       ],
     },
     {
-      id: "cocos2dx",
+      type: { id: 19, name: "cocos2dx" },
       title: "Cocos2d-x Stack",
       description: "STACKS.COCOS",
       stack: [
@@ -408,7 +413,7 @@ export const DEV_STACKS = {
       ],
     },
     {
-      id: "phaser",
+      type: { id: 20, name: "phaser" },
       title: "Phaser Stack",
       description: "STACKS.PHASER",
       stack: [
@@ -422,7 +427,7 @@ export const DEV_STACKS = {
   ],
   "PATHS.TITLES.MOBILE": [
     {
-      id: "react_native",
+      type: { id: 21, name: "react_native" },
       title: "React Native Stack",
       description: "STACKS.REACT_NATIVE",
       stack: [
@@ -437,7 +442,7 @@ export const DEV_STACKS = {
       extras: [{ title: "Git", name: "git", type: "backend" }],
     },
     {
-      id: "flutter",
+      type: { id: 22, name: "flutter" },
       title: "Flutter Stack",
       description: "STACKS.FLUTTER",
       stack: [
@@ -457,7 +462,7 @@ export const DEV_STACKS = {
       ],
     },
     {
-      id: "swift",
+      type: { id: 23, name: "swift" },
       title: "Swift Stack",
       description: "STACKS.SWIFT",
       stack: [
@@ -473,7 +478,7 @@ export const DEV_STACKS = {
       ],
     },
     {
-      id: "kotlin",
+      type: { id: 24, name: "kotlin" },
       title: "Kotlin Stack",
       description: "STACKS.KOTLIN",
       stack: [
@@ -488,7 +493,7 @@ export const DEV_STACKS = {
       ],
     },
     {
-      id: "xamarin",
+      type: { id: 25, name: "xamarin" },
       title: "Xamarin Stack",
       description: "STACKS.XAMARIN",
       stack: [
@@ -506,7 +511,7 @@ export const DEV_STACKS = {
 
 export const CUSTOM_STACK: IStack = {
   title: "Custom Stack",
-  id: "custom",
+  type: { id: 0, name: "custom" },
   stack: [],
   description: "STACKS.CUSTOM",
 };

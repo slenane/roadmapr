@@ -29,9 +29,9 @@
 
       <mat-card
         class="stack-card"
-        [ngClass]="{ selected: selectedStack === stack }"
+        [ngClass]="{ selected: selectedStack.id === stack.type.id }"
         *ngFor="let stack of getStackListArray()"
-        (click)="selectStack(stack)"
+        (click)="selectStack(stack.type)"
       >
         <mat-card-header>
           <mat-card-title>{{ stack?.title }}</mat-card-title>
@@ -59,8 +59,8 @@
       </mat-card>
       <mat-card
         class="stack-card"
-        [ngClass]="{ selected: selectedStack === customStack }"
-        (click)="selectStack(customStack)"
+        [ngClass]="{ selected: selectedStack.id === customStack.type.id }"
+        (click)="selectStack(customStack.type)"
       >
         <mat-card-header>
           <mat-card-title>{{ customStack.title }}</mat-card-title>

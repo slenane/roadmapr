@@ -9,6 +9,7 @@ import {
 } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { RoadmapUpdateComponent } from "../roadmap-update/roadmap-update.component";
+import { Roadmap } from "../../store/roadmap.models";
 
 @Component({
   selector: "app-roadmap-filters",
@@ -27,7 +28,7 @@ export class RoadmapFiltersComponent implements OnInit, OnChanges {
   public selectedPeriod: any;
 
   @Input() languageConfig: any[] = [];
-  @Input() user: any;
+  @Input() roadmap: Roadmap;
   @Output() onFilterLanguage: EventEmitter<null | string> = new EventEmitter();
   @Output() onFilterPeriod: EventEmitter<null | string> = new EventEmitter();
   @Output() onUpdate = new EventEmitter();
@@ -78,7 +79,11 @@ export class RoadmapFiltersComponent implements OnInit, OnChanges {
     const dialogRef = this.dialog.open(RoadmapUpdateComponent, {
       minHeight: "90vh",
       minWidth: "70vw",
-      data: this.user,
+      autoFocus: false,
+      data: {
+        path: this.roadmap.path,
+        stack: this.roadmap.stack,
+      },
     });
 
     dialogRef.afterClosed().subscribe((result: any) => {

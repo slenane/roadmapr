@@ -11,6 +11,7 @@ import {
   DEV_PATHS,
   DEV_STACKS,
   IDeveloperPath,
+  IDeveloperStack,
   IDeveloperStacks,
   IStack,
 } from "src/app/shared/constants/dev-paths.constants";
@@ -25,14 +26,17 @@ export class RoadmapUpdateComponent implements OnInit {
   public developerPaths: IDeveloperPath[] = DEV_PATHS;
   public developerStacks: IDeveloperStacks = DEV_STACKS;
   public customStack: IStack = CUSTOM_STACK;
-  public currentPath: IDeveloperPath;
-  public stackList: any;
+  public currentPath: IDeveloperPath = this.developerPaths[0];
+  public stackList: IStack[] = this.developerStacks[this.currentPath.name];
   public selectedStack: any;
 
   public isUpdating: boolean = false;
   public form = new FormGroup({
     pathCtrl: new FormControl<IDeveloperPath | null>(null, Validators.required),
-    stackCtrl: new FormControl<string | null>(null, Validators.required),
+    stackCtrl: new FormControl<IDeveloperStack | null>(
+      null,
+      Validators.required
+    ),
   });
 
   constructor(
@@ -46,20 +50,25 @@ export class RoadmapUpdateComponent implements OnInit {
       (path: IDeveloperPath | null) => {
         if (path) {
           this.currentPath = path;
-          this.form.patchValue({
-            stackCtrl: null,
-          });
-          this.selectedStack = null;
           this.updateStackList(path);
+
+          if (!this.stackListIncludesSelected()) {
+            this.form.patchValue({
+              stackCtrl: null,
+            });
+            this.selectedStack = null;
+          }
         }
       }
     );
 
-    if (this.data.path) {
+    if (this.data) {
       this.form.patchValue({
         pathCtrl: this.data.path,
-        stackCtrl: this.data.desiredStack,
+        stackCtrl: this.selectedStack,
       });
+
+      this.selectedStack = this.data.stack;
     }
   }
 
@@ -72,15 +81,26 @@ export class RoadmapUpdateComponent implements OnInit {
     this.stackList = this.developerStacks[path.name];
   }
 
+  stackListIncludesSelected() {
+    if (this.stackList.length && this.selectedStack?.id) {
+      for (let item in this.stackList) {
+        if (this.stackList[item].type.id === this.selectedStack.id) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
   getStackListArray(): any[] {
     return Object.values(this.stackList) ? Object.values(this.stackList) : [];
   }
 
-  selectStack(stack: IStack) {
+  selectStack(stack: IDeveloperStack) {
     this.selectedStack = stack;
 
     this.form.patchValue({
-      stackCtrl: this.selectedStack.id,
+      stackCtrl: this.selectedStack,
     });
   }
 
@@ -92,7 +112,7 @@ export class RoadmapUpdateComponent implements OnInit {
     if (this.form.valid) {
       return this.dialogRef.close({
         path: this.form.value.pathCtrl,
-        desiredStack: this.form.value.stackCtrl,
+        stack: this.form.value.stackCtrl,
       });
     }
   }

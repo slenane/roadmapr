@@ -3,10 +3,8 @@ import { RoadmapStoreService } from "../services/roadmap-store.service";
 import { filter, takeUntil } from "rxjs/operators";
 import { Subject } from "rxjs";
 import { Roadmap } from "../store/roadmap.models";
-import { GITHUB_DATA } from "../constants/roadmap.constants";
+// import { GITHUB_DATA } from "../constants/roadmap.constants";
 import * as moment from "moment";
-import { ProfileStoreService } from "src/app/profile/services/profile-store.service";
-import { Profile } from "src/app/profile/store/profile.models";
 import { roadmapInitialState } from "../store/roadmap.reducer";
 
 @Component({
@@ -16,7 +14,6 @@ import { roadmapInitialState } from "../store/roadmap.reducer";
 })
 export class RoadmapComponent implements OnInit {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
-  public user: Profile;
   public roadmap: Roadmap;
   public stack: any = {};
   public stackList: any = [];
@@ -26,22 +23,9 @@ export class RoadmapComponent implements OnInit {
   public radar: any = {};
   public github: any = [];
 
-  constructor(
-    private roadmapStoreService: RoadmapStoreService,
-    private profileStoreService: ProfileStoreService
-  ) {}
+  constructor(private roadmapStoreService: RoadmapStoreService) {}
 
   ngOnInit(): void {
-    this.profileStoreService
-      .getProfile()
-      .pipe(
-        filter((state) => state != null),
-        takeUntil(this.ngUnsubscribe)
-      )
-      .subscribe((user: Profile) => {
-        this.user = user;
-      });
-
     this.roadmapStoreService
       .getRoadmap()
       .pipe(
@@ -58,11 +42,11 @@ export class RoadmapComponent implements OnInit {
             this.stack = this.extractStackData({ education, projects });
           }
           if (education.length || projects.length || experience.length) {
-            this.distribution = this.extractStackData({
-              education,
-              projects,
-              experience,
-            });
+            // this.distribution = this.extractStackData({
+            //   education,
+            //   projects,
+            //   experience,
+            // });
 
             this.stackList = this.extractStackList({
               education,
@@ -70,10 +54,10 @@ export class RoadmapComponent implements OnInit {
               experience,
             });
 
-            this.radar = this.extractStackRadarData({
-              personal: [...education, ...projects],
-              professional: experience,
-            });
+            // this.radar = this.extractStackRadarData({
+            //   personal: [...education, ...projects],
+            //   professional: experience,
+            // });
 
             // this.timeline = this.extractTimelineData({
             //   education,
@@ -81,16 +65,16 @@ export class RoadmapComponent implements OnInit {
             //   experience,
             // });
 
-            this.overviewData = this.extractOverviewData({
-              education,
-              projects,
-              experience,
-            });
+            // this.overviewData = this.extractOverviewData({
+            //   education,
+            //   projects,
+            //   experience,
+            // });
           }
 
-          if (this.roadmap.projects.length) {
-            this.github = [...GITHUB_DATA];
-          }
+          // if (this.roadmap.projects.length) {
+          //   this.github = [...GITHUB_DATA];
+          // }
         },
         error: (error) => {
           console.log(error);
@@ -257,6 +241,11 @@ export class RoadmapComponent implements OnInit {
   }
 
   updateRoadmap(data: any) {
-    console.log(data);
+    if (data.path && data.stack) {
+      this.roadmapStoreService.updateRoadmap({
+        path: data.path,
+        stack: data.stack,
+      });
+    }
   }
 }

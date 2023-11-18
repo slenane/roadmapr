@@ -196,6 +196,11 @@
         "TYPE_INVALID": "Type must be either 'Educational' or 'Personal'"
       }
     },
+    "ROADMAP": {
+      "SUCCESS": {
+        "UPDATED": "Roadmap Updated"
+      } 
+    },
     "SETTINGS": {
       "SUCCESS": {
         "UPDATED": "Settings Updated",
