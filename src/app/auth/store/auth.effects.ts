@@ -166,7 +166,7 @@ export class AuthEffects {
     if (this.profileService.userBasicDetailsProvided(user)) {
       this.router.navigateByUrl(ROUTES.ROADMAP);
     } else {
-      this.router.navigateByUrl(ROUTES.WELCOME);
+      this.router.navigateByUrl(ROUTES.ONBOARDING);
     }
   }
 }

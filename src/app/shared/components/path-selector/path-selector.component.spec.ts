@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UserSetupTourComponent } from './user-setup-tour.component';
+import { PathSelectorComponent } from './path-selector.component';
 
-describe('UserSetupTourComponent', () => {
-  let component: UserSetupTourComponent;
-  let fixture: ComponentFixture<UserSetupTourComponent>;
+describe('PathSelectorComponent', () => {
+  let component: PathSelectorComponent;
+  let fixture: ComponentFixture<PathSelectorComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UserSetupTourComponent ]
+      declarations: [ PathSelectorComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(UserSetupTourComponent);
+    fixture = TestBed.createComponent(PathSelectorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

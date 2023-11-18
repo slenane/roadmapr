@@ -3,14 +3,14 @@ import { MatDialogRef } from "@angular/material/dialog";
 import { DEVELOPER_PATH_QUESTIONS } from "../../constants/developer-path.constants";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { MatStepper } from "@angular/material/stepper";
-import { UserSetupService } from "../../services/user-setup.service";
+import { OnboardingService } from "../../services/onboarding.service";
 
 @Component({
-  selector: "app-user-setup-path-quiz",
-  templateUrl: "./user-setup-path-quiz.component.html",
-  styleUrls: ["./user-setup-path-quiz.component.scss"],
+  selector: "app-onboarding-path-quiz",
+  templateUrl: "./onboarding-path-quiz.component.html",
+  styleUrls: ["./onboarding-path-quiz.component.scss"],
 })
-export class UserSetupPathQuizComponent implements OnInit {
+export class OnboardingPathQuizComponent implements OnInit {
   public progress = 0;
   public questions = DEVELOPER_PATH_QUESTIONS;
   public results = {
@@ -44,8 +44,8 @@ export class UserSetupPathQuizComponent implements OnInit {
   @ViewChild("stepper", { static: false }) stepper: MatStepper;
 
   constructor(
-    public dialogRef: MatDialogRef<UserSetupPathQuizComponent>,
-    private userSetupService: UserSetupService
+    public dialogRef: MatDialogRef<OnboardingPathQuizComponent>,
+    private onboardingService: OnboardingService
   ) {}
 
   ngOnInit(): void {}
@@ -65,7 +65,7 @@ export class UserSetupPathQuizComponent implements OnInit {
       4: this.questionFourForm.value.questionCtrl,
     };
 
-    this.recommendation = this.userSetupService.getRecommendedPath(results);
+    this.recommendation = this.onboardingService.getRecommendedPath(results);
   }
 
   acceptPath() {

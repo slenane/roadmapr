@@ -7,6 +7,8 @@ interface Action {
 }
 
 export const roadmapInitialState: Roadmap = {
+  path: null,
+  stack: null,
   education: [],
   experience: [],
   projects: [],
@@ -16,6 +18,9 @@ export const roadmapInitialState: Roadmap = {
 const RoadmapReducer = createReducer(
   roadmapInitialState,
   on(RoadmapActions.GetRoadmapSuccess, (state, { payload }) => {
+    return { ...state, ...payload };
+  }),
+  on(RoadmapActions.UpdateRoadmapSuccess, (state, { payload }) => {
     return { ...state, ...payload };
   })
 );

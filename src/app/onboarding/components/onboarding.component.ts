@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
-import { UserSetupBasicDetailsComponent } from "./user-setup-basic-details/user-setup-basic-details.component";
+import { OnboardingBasicDetailsComponent } from "./onboarding-basic-details/onboarding-basic-details.component";
 import { Profile } from "src/app/profile/store/profile.models";
 import { filter, takeUntil } from "rxjs/operators";
 import { Subject } from "rxjs";
@@ -11,14 +11,14 @@ import { ROUTES } from "src/app/core/constants/routes.constants";
 import { profileInitialState } from "src/app/profile/store/profile.reducer";
 
 @Component({
-  selector: "app-user-setup",
-  templateUrl: "./user-setup.component.html",
-  styleUrls: ["./user-setup.component.scss"],
+  selector: "app-onboarding",
+  templateUrl: "./onboarding.component.html",
+  styleUrls: ["./onboarding.component.scss"],
 })
-export class UserSetupComponent implements OnInit {
+export class OnboardingComponent implements OnInit {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
   public user: any;
-  public userSetupInitialised: boolean = false;
+  public onboardingInitialised: boolean = false;
 
   constructor(
     public dialog: MatDialog,
@@ -35,10 +35,10 @@ export class UserSetupComponent implements OnInit {
         takeUntil(this.ngUnsubscribe)
       )
       .subscribe((user: Profile) => {
-        if (!this.userSetupInitialised && user._id) {
+        if (!this.onboardingInitialised && user._id) {
           this.user = user;
           if (!this.profileService.userBasicDetailsProvided(user)) {
-            this.displayWelcomeSteps(user);
+            this.displayOnboardingSteps(user);
           } else {
             this.router.navigate([ROUTES.ROADMAP]);
           }
@@ -46,8 +46,8 @@ export class UserSetupComponent implements OnInit {
       });
   }
 
-  displayWelcomeSteps(user: any) {
-    const dialogRef = this.dialog.open(UserSetupBasicDetailsComponent, {
+  displayOnboardingSteps(user: any) {
+    const dialogRef = this.dialog.open(OnboardingBasicDetailsComponent, {
       width: "50vw",
       data: {
         profileImage: user.profileImage,
@@ -63,7 +63,7 @@ export class UserSetupComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((user) => {
       if (user) {
-        this.userSetupInitialised = true;
+        this.onboardingInitialised = true;
         this.profileStoreService.updateProfile(this.user._id, user.data);
 
         if (user.action === "skip") this.router.navigateByUrl(ROUTES.ROADMAP);

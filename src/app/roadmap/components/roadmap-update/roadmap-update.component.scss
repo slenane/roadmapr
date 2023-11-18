@@ -1,0 +1,100 @@
+.roadmapr-update-header {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+
+  .icon {
+    .material-symbols-outlined {
+      padding-top: 0.3rem;
+    }
+  }
+
+  .text {
+    h1 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-bottom: 0;
+    }
+
+    p {
+      font-weight: 300;
+    }
+  }
+}
+
+.mat-dialog-content {
+  padding: 0 12px 0 24px;
+
+  .form-scroll {
+    height: 28rem;
+
+    form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-right: 1.5rem;
+
+      .grid-section {
+        display: grid;
+        width: 100%;
+        grid-template-columns: 1fr;
+
+        .sub-grid {
+          display: grid;
+          grid-template-columns: auto auto;
+          grid-gap: 1rem;
+        }
+      }
+    }
+  }
+}
+
+.actions {
+  float: right;
+}
+
+.stack-card {
+  box-sizing: border-box;
+  border: 2px solid #7b7b7b;
+  cursor: pointer;
+
+  &:hover {
+    border: 2px solid white;
+  }
+
+  &.selected {
+    border: 2px solid #00bcd4;
+  }
+
+  mat-card-header {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    justify-content: space-between;
+
+    mat-card-title {
+      font-size: 1rem;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+    }
+
+    .tech-stack {
+      text-align: end;
+    }
+
+    .custom-tech-stack {
+      display: grid;
+      grid-template-columns: auto auto auto;
+      justify-content: end;
+      gap: 0.2rem;
+
+      .custom-icon {
+        border-radius: 50%;
+        height: 1.2rem;
+        width: 1.2rem;
+        background-color: #7b7b7b;
+      }
+    }
+  }
+}

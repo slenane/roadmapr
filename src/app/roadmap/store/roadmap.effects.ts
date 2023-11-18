@@ -31,4 +31,22 @@ export class RoadmapEffects {
       })
     )
   );
+
+  updateRoadmap$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(roadmapActions.UPDATE_ROADMAP),
+      switchMap(({ data }) =>
+        this.roadmapService.updateRoadmap(data).pipe(
+          map(({ roadmap, successMessage }) => {
+            this.alertsService.successAlert(successMessage);
+            return roadmapActions.UpdateRoadmapSuccess({ payload: roadmap });
+          }),
+          catchError((error) => {
+            this.alertsService.errorAlert(error.error);
+            return of(roadmapActions.UpdateRoadmapError());
+          })
+        )
+      )
+    )
+  );
 }

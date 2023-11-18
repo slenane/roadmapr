@@ -23,7 +23,7 @@
     "EXPERIENCE": "Experience | roadmapr",
     "PROFILE": "Profile | roadmapr",
     "SETTINGS": "Settings | roadmapr",
-    "USER_SETUP": "Welcome to roadmapr",
+    "ONBOARDING": "Onboarding | roadmapr",
     "TOUR": "Tour | roadmapr"
   },
   "PATHS": {
@@ -49,6 +49,34 @@
       "MOBILE": "A mobile developer is a professional who specializes in creating applications for mobile devices, such as smartphones and tablets. They work on both the frontend (user interface) and backend (logic and data management) of mobile applications."
     }
   },
+  "STACKS": {
+    "REACT": "React, a declarative front-end library, excels in dynamic UIs with a virtual DOM for performance. It promotes reusable components and unidirectional data flow for simplicity. However, varied state practices and a learning curve may challenge beginners. Overall, React offers a powerful and efficient UI development toolset",
+    "VUE": "Vue.js, a progressive JavaScript framework, simplifies UI development with flexibility and reactivity. Its component-based architecture aids code reuse, promoting maintainability. While beginner-friendly, it may have a smaller ecosystem. Vue.js strikes a balance between simplicity and power.",
+    "ANGULAR": "Angular, a comprehensive front-end framework, fosters robust web development with a modular architecture for dynamic, interactive single-page applications. Two-way data binding and dependency injection enhance real-time updates and maintainability. While mastering Angular may have a steeper learning curve, its opinionated structure aids scalability and consistency in large projects",
+    "SVELTE": "Svelte shifts work to build time, optimizing runtime with highly efficient JavaScript. It minimizes boilerplate code, simplifies state management, and lacks a runtime library for lightweight applications. While emphasizing efficiency and simplicity, Svelte's newer status may mean a smaller ecosystem and community support compared to established alternatives.",
+    "NEXT": "Next.js, a React-based framework, simplifies server-rendered React apps with efficient server-side rendering and static site generation. It enhances project structure, supports automatic code splitting, and streamlines development. However, the learning curve, especially for React newcomers, might be steeper. Overall, Next.js is a versatile tool for scalable and performant web apps.",
+    "NODE": "Node.js, on Chrome's V8, executes server-side code for scalable, high-performance apps. Event-driven, non-blocking I/O handles concurrency. npm aids rapid development. Ideal for real-time apps, but single-threaded nature may challenge CPU-intensive tasks, and asynchronous ops need vigilance. In summary, Node.js is widely adopted for server-side JavaScript.",
+    "DJANGO": "Django, a high-level Python web framework, streamlines robust app development with a \"batteries-included\" approach. Its MVC architecture ensures code organization, emphasizing DRY principles. Strong security features enhance application reliability, but some find its opinionated nature limiting. The learning curve, especially for beginners, may be a consideration. Overall, Django strikes a balance between productivity and convention.",
+    "RUBY": "Ruby on Rails, a full-stack web framework in Ruby, prioritizes convention over configuration for rapid development. MVC architecture, integrated ORM, and built-in tools streamline tasks. Conventions may limit configurability, and initial comprehension for newcomers might pose a challenge. Overall, Rails balances productivity with convention.",
+    "SPRINGBOOT": "Spring Boot, a Java-based framework, simplifies building robust, scalable web applications. It embraces convention over configuration, offers seamless integration with various technologies, and provides features like dependency injection and aspect-oriented programming. However, Java verbosity and a steeper learning curve can be challenges. Overall, Spring Boot streamlines Java web development with powerful features and broad community support.",
+    "MEAN": "The MEAN stack, comprising MongoDB, Express.js, Angular, and Node.js, forms a full JavaScript technology suite for web development. MongoDB for flexible data storage, Express.js for server-side operations, Angular for dynamic front-end, and Node.js for server-side execution. Offers end-to-end JavaScript development but may have a steeper learning curve. Enables seamless data flow and code reuse.",
+    "MERN": "The MERN stack, MongoDB, Express.js, React, and Node.js, forms a cohesive JavaScript framework for full-stack web development. MongoDB offers flexible data storage, Express.js for server-side operations, React for dynamic UIs, and Node.js for server execution. Seamlessly integrates for efficient end-to-end development.",
+    "MEVN": "The MEVN stack - MongoDB, Express.js, Vue.js, and Node.js - creates a full-stack JavaScript framework for web development. MongoDB stores data, Express.js manages server-side operations, Vue.js handles dynamic UIs, and Node.js executes server-side code. It fosters efficient end-to-end development, balancing flexibility and simplicity.",
+    "BLOCKCHAIN": "The Ethereum stack, Solidity, Truffle, React, and Node.js, shapes a robust framework for blockchain development. Solidity handles smart contracts, Truffle streamlines DApp creation, React crafts dynamic interfaces, and Node.js executes server-side tasks. Seamless integration ensures efficient end-to-end blockchain application development.",
+    "LAMP": "The LAMP stack—Linux, Apache, MySQL, and PHP/Python/Perl—forms a robust web development foundation. Linux as the operating system, Apache for web server, MySQL for relational database, and PHP/Python/Perl for server-side scripting. Provides a versatile, open-source solution for building dynamic websites and applications.",
+    "DOCKER": "A Dockerized stack leverages containerization for efficient deployment. Docker ensures consistent environments across development, testing, and production. It encapsulates applications and dependencies, enhancing scalability and portability. Simplifies configuration and minimizes compatibility issues, streamlining deployment workflows.",
+    "UNITY": "The Unity stack, prevalent in game development, includes Unity3D game engine, C# scripting language, and a vast asset store. Unity streamlines cross-platform game creation with robust graphics and physics engines. C# provides flexibility and productivity, while the asset store accelerates development with pre-built resources. Offers a comprehensive ecosystem for diverse game projects.",
+    "UNREAL": "The Unreal Engine stack, a powerhouse in game development, features Unreal Engine, a C++ based game engine, and a rich blueprint visual scripting system. Renowned for high-fidelity graphics and scalability, it facilitates cross-platform game creation. C++ provides performance and customization, while blueprints enable rapid prototyping. Unreal Marketplace offers a wealth of assets and plugins, enhancing development efficiency. Ideal for creating visually stunning and immersive games.",
+    "GODOT": "The Godot stack, a versatile game development solution, centers around the Godot engine using GDScript or C#. Godot's open-source nature allows collaborative development, fostering a supportive community. With a scene system and visual scripting, Godot facilitates efficient cross-platform game creation. Lightweight yet powerful, it offers a customizable, beginner-friendly framework. Ideal for diverse game projects with a focus on flexibility and accessibility.",
+    "COCOS": "The Cocos2d-x stack is a robust game development framework featuring C++/Lua scripting. Renowned for cross-platform versatility, it provides a rich set of APIs for graphics, physics, and networking. The framework's open-source nature encourages community contributions. Cocos Creator adds visual scripting and JavaScript support, enhancing accessibility. With a focus on performance and flexibility, Cocos2d-x caters to diverse game development needs",
+    "PHASER": "The Phaser stack, a lightweight HTML5 game framework, employs JavaScript for rapid game development. Renowned for simplicity and flexibility, Phaser facilitates 2D game creation. It features a robust set of APIs for physics, input, and sound. Phaser's open-source nature and active community foster continuous improvement. Ideal for browser-based games, it emphasizes quick prototyping and ease of use.",
+    "REACT_NATIVE": "The React Native stack utilizes React and JavaScript to build cross-platform mobile applications. With a single codebase, it deploys natively on iOS and Android. Leveraging native components ensures high performance. React Native's hot-reloading expedites development, and its large community provides extensive support and libraries. Ideal for efficient mobile app development with a familiar React syntax.",
+    "FLUTTER": "The Flutter stack, powered by Dart, enables cross-platform mobile app development with a single codebase. Known for its expressive UI, it utilizes a reactive framework. Hot-reloading enhances development speed, and a rich set of pre-designed widgets simplifies UI creation. Flutter compiles to native ARM code, ensuring high performance. Its vibrant community and strong documentation support rapid development, making it an ideal choice for building visually appealing and performant mobile applications.",
+    "SWIFT": "The Swift stack, focused on iOS/macOS app development, utilizes the Swift programming language. Known for its safety features and performance, Swift is integrated with Xcode IDE. The SwiftUI framework simplifies UI development, and Swift's modern syntax enhances developer productivity. Swift Playgrounds aids experimentation, while a vibrant community and Apple's support ensure robust app creation. Ideal for building native, secure, and efficient applications.",
+    "KOTLIN": "The Kotlin stack, endorsed by Google for Android development, is a versatile language with concise syntax and interoperability with Java. It offers enhanced safety features, concise code, and modern language features. Kotlin Android Extensions streamline UI development. With an expressive nature and strong community support, Kotlin is ideal for creating robust, efficient, and modern Android applications.",
+    "XAMARIN": "The Xamarin stack, using C# and .NET, facilitates cross-platform mobile app development. Shared codebase deploys natively on iOS, Android, and Windows. Xamarin.Forms streamlines UI development, while Xamarin.Native enables platform-specific code. Leveraging the .NET ecosystem, Xamarin ensures code efficiency and performance. Microsoft's support and a vibrant community enhance development. Ideal for building feature-rich, cross-platform mobile applications.",
+    "CUSTOM": "Embark on your unique journey by crafting a personalized stack. Your  choices profoundly influence learning resources and career  opportunities, so do your research first. <br /> Make sure you have selected the correct path for you as we will make recommendations based on your choice."
+  },
   "ACTIONS": {
     "NEXT": "Next",
     "BACK": "Back",
@@ -58,6 +86,7 @@
     "CLOSE": "Close",
     "DELETE": "Delete",
     "EDIT": "Edit",
+    "EDIT_ROADMAP": "Edit Roadmap",
     "REMOVE": "Remove",
     "NO": "No",
     "SAVE": "Save",
@@ -167,6 +196,11 @@
         "TYPE_INVALID": "Type must be either 'Educational' or 'Personal'"
       }
     },
+    "ROADMAP": {
+      "SUCCESS": {
+        "UPDATED": "Roadmap Updated"
+      } 
+    },
     "SETTINGS": {
       "SUCCESS": {
         "UPDATED": "Settings Updated",
@@ -214,7 +248,7 @@
       "GITHUB_REGISTRATION": "Register with GitHub"
     }
   },
-  "USER_SETUP": {
+  "ONBOARDING": {
     "BASIC_DETAILS": "Basic Details",
     "DEVELOPMENT_PATH": "Development Path",
     "DEVELOPMENT_PATH_SUB": "Choose your path in software development",
@@ -480,7 +514,11 @@
     }
   },
   "ROADMAP": {
-    "T": "Roadmap"
+    "T": "Roadmap",
+    "UPDATE": {
+      "T": "Update Development Path & Stack",
+      "MESSAGE": "Choose a development path and a stack from the options below or create a custom stack to follow"
+    }
   },
   "RECOMMENDATIONS": {
     "T": "Remote Opportunities",

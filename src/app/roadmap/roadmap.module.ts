@@ -12,7 +12,6 @@ import { EffectsModule } from "@ngrx/effects";
 import * as fromRoadmap from "./store/roadmap.reducer";
 import { RoadmapEffects } from "./store/roadmap.effects";
 import { RoadmapStackComponent } from "./components/roadmap-stack/roadmap-stack.component";
-import { RoadmapSkillDistributionComponent } from "./components/roadmap-skill-distribution/roadmap-skill-distribution.component";
 import { RoadmapGithubComponent } from "./components/roadmap-github/roadmap-github.component";
 import { RoadmapFiltersComponent } from "./components/roadmap-filters/roadmap-filters.component";
 import { RoadmapStackRadarComponent } from "./components/roadmap-stack-radar/roadmap-stack-radar.component";
@@ -20,17 +19,18 @@ import { RoadmapEducationOverviewComponent } from "./components/roadmap-educatio
 import { RoadmapProjectsOverviewComponent } from "./components/roadmap-projects-overview/roadmap-projects-overview.component";
 import { TranslateModule } from "@ngx-translate/core";
 import { RoadmapRoutingModule } from "./roadmap-routing.module";
+import { RoadmapUpdateComponent } from "./components/roadmap-update/roadmap-update.component";
 
 @NgModule({
   declarations: [
     RoadmapComponent,
     RoadmapStackComponent,
-    RoadmapSkillDistributionComponent,
     RoadmapGithubComponent,
     RoadmapFiltersComponent,
     RoadmapStackRadarComponent,
     RoadmapEducationOverviewComponent,
     RoadmapProjectsOverviewComponent,
+    RoadmapUpdateComponent,
   ],
   exports: [RoadmapComponent],
   imports: [
