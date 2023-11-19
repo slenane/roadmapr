@@ -7,8 +7,6 @@ interface Action {
 }
 
 export const roadmapInitialState: Roadmap = {
-  path: null,
-  stack: null,
   education: [],
   experience: [],
   projects: [],

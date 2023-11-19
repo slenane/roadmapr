@@ -164,3 +164,9 @@ mat-form-field {
 .mat-step-label {
   min-width: 0 !important;
 }
+
+.mat-progress-bar,
+.mat-progress-bar-fill {
+  height: 0.5rem !important;
+  border-radius: 4px;
+}

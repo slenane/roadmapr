@@ -29,22 +29,22 @@
 
       <mat-card
         class="stack-card"
-        [ngClass]="{ selected: selectedStack.id === stack.type.id }"
+        [ngClass]="{ selected: selectedStack?.id === stack.type?.id }"
         *ngFor="let stack of getStackListArray()"
         (click)="selectStack(stack.type)"
       >
         <mat-card-header>
-          <mat-card-title>{{ stack?.title }}</mat-card-title>
+          <mat-card-title>{{ stack?.title | translate }}</mat-card-title>
 
           <div class="tech-stack">
             <img
-              *ngFor="let tech of stack?.stack"
+              *ngFor="let tech of stack?.stack.core"
               class="app-stack-icon"
               matTooltip="{{ tech.title }}"
               src="/assets/images/stack/{{ tech.name }}-original.svg"
             />
             <img
-              *ngFor="let tech of stack?.choose"
+              *ngFor="let tech of stack?.stack.choice"
               class="app-stack-icon"
               matTooltip="{{ tech.title }}"
               src="/assets/images/stack/{{ tech.name }}-original.svg"
@@ -52,18 +52,18 @@
           </div>
         </mat-card-header>
         <mat-card-content>
-          <p>
+          <p class="stack-description">
             {{ stack?.description | translate }}
           </p>
         </mat-card-content>
       </mat-card>
       <mat-card
         class="stack-card"
-        [ngClass]="{ selected: selectedStack.id === customStack.type.id }"
+        [ngClass]="{ selected: selectedStack?.id === customStack.type.id }"
         (click)="selectStack(customStack.type)"
       >
         <mat-card-header>
-          <mat-card-title>{{ customStack.title }}</mat-card-title>
+          <mat-card-title>{{ customStack.title | translate }}</mat-card-title>
 
           <div class="custom-tech-stack">
             <div class="custom-icon"></div>

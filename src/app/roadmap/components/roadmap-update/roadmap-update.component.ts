@@ -12,7 +12,6 @@ import {
   DEV_STACKS,
   IDeveloperPath,
   IDeveloperStack,
-  IDeveloperStacks,
   IStack,
 } from "src/app/shared/constants/dev-paths.constants";
 
@@ -24,10 +23,12 @@ import {
 export class RoadmapUpdateComponent implements OnInit {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
   public developerPaths: IDeveloperPath[] = DEV_PATHS;
-  public developerStacks: IDeveloperStacks = DEV_STACKS;
+  public developerStacks: IStack[] = DEV_STACKS;
   public customStack: IStack = CUSTOM_STACK;
   public currentPath: IDeveloperPath = this.developerPaths[0];
-  public stackList: IStack[] = this.developerStacks[this.currentPath.name];
+  public stackList: IStack[] = this.developerStacks.filter(
+    (stack) => stack.path.name === this.currentPath.name
+  );
   public selectedStack: any;
 
   public isUpdating: boolean = false;
@@ -78,7 +79,9 @@ export class RoadmapUpdateComponent implements OnInit {
   }
 
   updateStackList(path: IDeveloperPath) {
-    this.stackList = this.developerStacks[path.name];
+    this.stackList = this.developerStacks.filter(
+      (stack) => stack.path.name === path.name
+    );
   }
 
   stackListIncludesSelected() {

@@ -6,6 +6,7 @@ import { Roadmap } from "../store/roadmap.models";
 // import { GITHUB_DATA } from "../constants/roadmap.constants";
 import * as moment from "moment";
 import { roadmapInitialState } from "../store/roadmap.reducer";
+import { IStack } from "src/app/shared/constants/dev-paths.constants";
 
 @Component({
   selector: "app-roadmap",
@@ -16,7 +17,7 @@ export class RoadmapComponent implements OnInit {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
   public roadmap: Roadmap;
   public stack: any = {};
-  public stackList: any = [];
+  public stackList: IStack[] = [];
   public distribution: any = {};
   public timeline: any = {};
   public overviewData: any = {};
@@ -42,11 +43,11 @@ export class RoadmapComponent implements OnInit {
             this.stack = this.extractStackData({ education, projects });
           }
           if (education.length || projects.length || experience.length) {
-            // this.distribution = this.extractStackData({
-            //   education,
-            //   projects,
-            //   experience,
-            // });
+            this.distribution = this.extractStackData({
+              education,
+              projects,
+              experience,
+            });
 
             this.stackList = this.extractStackList({
               education,
