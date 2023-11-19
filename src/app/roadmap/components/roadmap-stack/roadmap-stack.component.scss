@@ -1,75 +1,54 @@
-// .header {
-//   display: grid;
-//   grid-template-columns: auto 1fr;
-//   gap: 1rem;
-//   align-items: center;
-//   margin-bottom: 1rem;
-//   font-weight: 500;
-
-//   .content-title {
-//     font-size: 1rem;
-//   }
-// }
-
-// .body {
-//   display: grid;
-//   grid-template-columns: 1fr;
-//   gap: 1rem;
-
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(4, auto);
-  gap: 1rem;
-
-  &__title {
-    font-weight: 500;
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .skill-item {
+.stack-card {
+  mat-card-header {
     display: grid;
-    grid-template-columns: 1fr;
-    text-align: center;
-    justify-items: center;
-    position: relative;
+    grid-template-columns: 1fr 2fr;
+    justify-content: space-between;
 
-    .stack-title {
-      font-weight: 500;
-      font-size: 0.9rem;
+    mat-card-title {
+      font-size: 1rem;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: center;
     }
 
-    .stack-image {
-      height: 1.5rem;
-      margin-bottom: 1rem;
+    mat-card-subtitle {
+      font-size: 1rem;
+      margin-bottom: 0;
+    }
+
+    .tech-stack {
+      text-align: end;
     }
   }
-}
 
-.stack-cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-
-  .stack-card {
+  .progress-grid {
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 1rem;
 
-    .stack-title {
+    .list-title {
+      font-size: 0.9rem;
       font-weight: 500;
-      font-size: 0.9rem;
+      letter-spacing: 0.05rem;
+      text-align: center;
     }
 
-    .stack-count {
-      margin-left: 1rem;
-      font-weight: 300;
-      font-size: 0.9rem;
-    }
+    .stack-progress {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 1rem;
+      margin-bottom: 0.8rem;
+      align-items: center;
 
-    .stack-image {
-      height: 1.5rem;
+      .stack-icon {
+        height: 1.2rem;
+        width: 1.2rem;
+      }
+
+      .count {
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.7);
+      }
     }
   }
 }
-// }

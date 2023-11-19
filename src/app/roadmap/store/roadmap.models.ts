@@ -17,8 +17,8 @@ interface Github {
 }
 
 export interface Roadmap {
-  path: IDeveloperPath | null;
-  stack: IDeveloperStack | null;
+  path?: IDeveloperPath;
+  stack?: IDeveloperStack;
   education: EducationItem[];
   experience: ExperienceItem[];
   projects: ProjectItem[];

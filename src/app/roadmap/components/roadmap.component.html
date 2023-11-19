@@ -10,6 +10,11 @@
   <ng-scrollbar>
     <div scrollViewport cdkScrollable>
       <div class="scroll">
+        <app-roadmap-stack
+          [roadmap]="roadmap"
+          [stackList]="distribution"
+        ></app-roadmap-stack>
+
         <!-- <div class="user-overview-container">
           <app-icon-card
             [icon]="'school'"
