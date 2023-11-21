@@ -4,7 +4,7 @@
   gap: 1rem;
   padding: 0.5rem 1rem;
   align-items: center;
-  // border: 1px solid lightgrey;
+  border: 1px solid #7b7b7b;
   // border-radius: 4px;
 
   .icon {
@@ -36,7 +36,9 @@
   .trend {
     display: grid;
     grid-template-columns: auto auto;
-    align-content: center;
-    color: green;
+    align-items: center;
+    color: #00bcd4;
+    font-size: 1.1rem;
+    font-weight: 500;
   }
 }

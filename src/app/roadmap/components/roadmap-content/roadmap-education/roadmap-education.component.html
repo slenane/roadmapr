@@ -1,0 +1,62 @@
+<mat-card>
+  <mat-card-title>Education</mat-card-title>
+
+  <mat-card-content>
+    <div class="chart-container">
+      <div class="chart">
+        <div class="percentage">70%</div>
+        <mat-progress-spinner
+          class="example-margin"
+          [mode]="'determinate'"
+          [value]="70"
+        >
+        </mat-progress-spinner>
+        <span>Completion Rate</span>
+      </div>
+
+      <div class="chart">
+        <div class="percentage">30%</div>
+        <mat-progress-spinner
+          class="example-margin"
+          [mode]="'determinate'"
+          [value]="30"
+        >
+        </mat-progress-spinner>
+        <span>Stack Coverage</span>
+      </div>
+    </div>
+    <div class="card-container">
+      <app-icon-card
+        [icon]="'menu_book'"
+        [iconStyle]="'alternate'"
+        [title]="'Books'"
+        [value]="3"
+        [trend]="1"
+      ></app-icon-card>
+
+      <app-icon-card
+        [icon]="'workspace_premium'"
+        [iconStyle]="'alternate'"
+        [title]="'Courses'"
+        [value]="2"
+        [trend]="2"
+      ></app-icon-card>
+
+      <app-icon-card
+        [icon]="'menu_book'"
+        [iconStyle]="'alternate'"
+        [title]="'Books'"
+        [value]="3"
+        [trend]="1"
+      ></app-icon-card>
+
+      <app-icon-card
+        [icon]="'workspace_premium'"
+        [iconStyle]="'alternate'"
+        [title]="'Courses'"
+        [value]="2"
+        [trend]="2"
+      ></app-icon-card>
+    </div>
+  </mat-card-content>
+</mat-card>

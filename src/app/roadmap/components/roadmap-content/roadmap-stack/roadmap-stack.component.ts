@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, SimpleChanges } from "@angular/core";
-import { Roadmap } from "../../store/roadmap.models";
+import { Roadmap } from "src/app/roadmap/store/roadmap.models";
 import {
   CUSTOM_STACK,
   DEV_STACKS,

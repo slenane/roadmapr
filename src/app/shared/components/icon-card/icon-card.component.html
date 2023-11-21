@@ -1,6 +1,8 @@
 <mat-card class="card">
   <div class="icon">
-    <span class="material-symbols-outlined"> {{ icon }}</span>
+    <span class="material-symbols-outlined" [ngClass]="iconStyle">
+      {{ icon }}</span
+    >
   </div>
   <div class="content">
     <div class="title"> {{ title }} </div>
@@ -9,7 +11,9 @@
     </div>
   </div>
   <div *ngIf="trend" class="trend"
-    ><span class="material-symbols-outlined"> arrow_drop_up </span>
+    ><span class="material-symbols-outlined" [ngClass]="{ success: trend > 0 }">
+      arrow_drop_up
+    </span>
     {{ trend }}</div
   >
 </mat-card>
