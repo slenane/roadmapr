@@ -170,3 +170,9 @@ mat-form-field {
   height: 0.5rem !important;
   border-radius: 4px;
 }
+
+.mat-progress-spinner {
+  box-shadow: 0 0 0 10px #245359 inset;
+  border-radius: 50%;
+  margin-bottom: 0.5rem;
+}

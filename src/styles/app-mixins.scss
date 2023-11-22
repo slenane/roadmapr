@@ -17,6 +17,10 @@
     .material-symbols-outlined {
       color: $dark-theme--font--material-symbols;
 
+      &.alternate {
+        color: $dark-theme--font--material-symbols--alternate;
+      }
+
       &.emphasis {
         color: $dark-theme--font--tertiary !important;
       }

@@ -11,12 +11,11 @@ import { StoreModule } from "@ngrx/store";
 import { EffectsModule } from "@ngrx/effects";
 import * as fromRoadmap from "./store/roadmap.reducer";
 import { RoadmapEffects } from "./store/roadmap.effects";
-import { RoadmapStackComponent } from "./components/roadmap-stack/roadmap-stack.component";
-import { RoadmapGithubComponent } from "./components/roadmap-github/roadmap-github.component";
+import { RoadmapStackComponent } from "./components/roadmap-content/roadmap-stack/roadmap-stack.component";
+import { RoadmapGithubComponent } from "./components/roadmap-content/roadmap-github/roadmap-github.component";
 import { RoadmapFiltersComponent } from "./components/roadmap-filters/roadmap-filters.component";
-import { RoadmapStackRadarComponent } from "./components/roadmap-stack-radar/roadmap-stack-radar.component";
-import { RoadmapEducationOverviewComponent } from "./components/roadmap-education-overview/roadmap-education-overview.component";
-import { RoadmapProjectsOverviewComponent } from "./components/roadmap-projects-overview/roadmap-projects-overview.component";
+import { RoadmapEducationComponent } from "./components/roadmap-content/roadmap-education/roadmap-education.component";
+import { RoadmapProjectsComponent } from "./components/roadmap-content/roadmap-projects/roadmap-projects.component";
 import { TranslateModule } from "@ngx-translate/core";
 import { RoadmapRoutingModule } from "./roadmap-routing.module";
 import { RoadmapUpdateComponent } from "./components/roadmap-update/roadmap-update.component";
@@ -27,9 +26,8 @@ import { RoadmapUpdateComponent } from "./components/roadmap-update/roadmap-upda
     RoadmapStackComponent,
     RoadmapGithubComponent,
     RoadmapFiltersComponent,
-    RoadmapStackRadarComponent,
-    RoadmapEducationOverviewComponent,
-    RoadmapProjectsOverviewComponent,
+    RoadmapEducationComponent,
+    RoadmapProjectsComponent,
     RoadmapUpdateComponent,
   ],
   exports: [RoadmapComponent],

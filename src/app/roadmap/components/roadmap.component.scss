@@ -13,7 +13,7 @@
     display: grid;
     grid-template-columns: 3fr 2fr;
     align-content: start;
-    gap: 3rem;
+    gap: 1rem;
 
     .user-overview-container {
       display: grid;
@@ -26,11 +26,11 @@
       font-weight: 500;
     }
 
-    .grid-1fr-1fr {
+    .grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
+      grid-template-columns: 1fr;
       gap: 1rem;
+      align-content: start;
     }
   }
 }

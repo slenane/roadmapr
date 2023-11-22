@@ -7,6 +7,7 @@ import { Component, OnInit, Input } from "@angular/core";
 })
 export class IconCardComponent implements OnInit {
   @Input() icon: string;
+  @Input() iconStyle: string;
   @Input() title: string;
   @Input() value: number | string;
   @Input() trend: number;

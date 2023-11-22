@@ -1,0 +1,62 @@
+<mat-card>
+  <mat-card-title>{{ "ROADMAP.EDUCATION.T" | translate }}</mat-card-title>
+
+  <mat-card-content>
+    <div class="chart-container">
+      <div class="chart">
+        <div class="percentage">{{ completionRate }}%</div>
+        <mat-progress-spinner
+          class="example-margin"
+          [mode]="'determinate'"
+          [value]="completionRate"
+        >
+        </mat-progress-spinner>
+        <span>{{ "ROADMAP.EDUCATION.COMPLETION_RATE" | translate }}</span>
+      </div>
+
+      <div class="chart">
+        <div class="percentage">{{ stackCoverage }}%</div>
+        <mat-progress-spinner
+          class="example-margin"
+          [mode]="'determinate'"
+          [value]="stackCoverage"
+        >
+        </mat-progress-spinner>
+        <span>{{ "ROADMAP.EDUCATION.STACK_COVERAGE" | translate }}</span>
+      </div>
+    </div>
+    <div class="card-container">
+      <app-icon-card
+        [icon]="'menu_book'"
+        [iconStyle]="'alternate'"
+        [title]="'ROADMAP.EDUCATION.BOOKS'"
+        [value]="books"
+        [trend]="1"
+      ></app-icon-card>
+
+      <app-icon-card
+        [icon]="'workspace_premium'"
+        [iconStyle]="'alternate'"
+        [title]="'ROADMAP.EDUCATION.COURSES'"
+        [value]="courses"
+        [trend]="2"
+      ></app-icon-card>
+
+      <app-icon-card
+        [icon]="'list'"
+        [iconStyle]="'alternate'"
+        [title]="'ROADMAP.EDUCATION.IN_PROGRESS'"
+        [value]="inProgress"
+        [trend]="1"
+      ></app-icon-card>
+
+      <app-icon-card
+        [icon]="'checklist_rtl'"
+        [iconStyle]="'alternate'"
+        [title]="'ROADMAP.EDUCATION.COMPLETED'"
+        [value]="completed"
+        [trend]="2"
+      ></app-icon-card>
+    </div>
+  </mat-card-content>
+</mat-card>

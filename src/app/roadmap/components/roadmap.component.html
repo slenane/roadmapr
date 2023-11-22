@@ -2,7 +2,7 @@
 
 <div class="roadmap" *ngIf="roadmap">
   <app-roadmap-filters
-    [languageConfig]="stackList"
+    [languageConfig]="languageFilterConfig"
     [roadmap]="roadmap"
     (onUpdate)="updateRoadmap($event)"
   ></app-roadmap-filters>
@@ -10,69 +10,29 @@
   <ng-scrollbar>
     <div scrollViewport cdkScrollable>
       <div class="scroll">
-        <app-roadmap-stack
-          [roadmap]="roadmap"
-          [stackList]="distribution"
-        ></app-roadmap-stack>
-
-        <!-- <div class="user-overview-container">
-          <app-icon-card
-            [icon]="'school'"
-            [title]="'Education'"
-            [value]="12"
-            [trend]="1"
-          ></app-icon-card>
-
-          <app-icon-card
-            [icon]="'code'"
-            [title]="'Projects'"
-            [value]="6"
-            [trend]="2"
-          ></app-icon-card>
-
-          <app-icon-card
-            [icon]="'timer'"
-            [title]="'Experience'"
-            [value]="'3 years, 19 days'"
-          ></app-icon-card>
-
-          <app-icon-card
-            [icon]="'timer'"
-            [title]="'Professional Experience'"
-            [value]="'1 years, 249 days'"
-          ></app-icon-card>
-        </div> -->
-        <!-- 
-        <div class="grid-1fr-1fr">
-          <app-roadmap-stack-radar
-            class="stack-radar-container"
-            *ngIf="radar"
-            [data]="radar"
-          ></app-roadmap-stack-radar>
-
+        <div class="grid">
           <app-roadmap-stack
-            class="stack-container"
-            *ngIf="stack"
-            [data]="stack"
+            [stackList]="stackList"
+            [path]="roadmap.path"
+            [userStack]="userStack"
           ></app-roadmap-stack>
-        </div> -->
 
-        <!-- <app-roadmap-education-overview
-          *ngIf="stack"
-          [data]="stack"
-        ></app-roadmap-education-overview> -->
+          <app-roadmap-education
+            *ngIf="education"
+            [data]="education"
+            [userStack]="userStack"
+            [stackList]="stackList"
+          ></app-roadmap-education>
+        </div>
 
-        <!-- <app-roadmap-projects-overview
-          [data]="stack"
-        ></app-roadmap-projects-overview> -->
+        <div class="grid">
+          <app-roadmap-projects
+            *ngIf="projects"
+            [data]="projects"
+          ></app-roadmap-projects>
 
-        <!-- <div class="grid-1fr-1fr">
-          <app-roadmap-github
-            class="github-container"
-            *ngIf="github"
-            [data]="github"
-          ></app-roadmap-github>
-        </div> -->
+          <app-roadmap-github *ngIf="stack" [data]="stack"></app-roadmap-github>
+        </div>
       </div>
     </div>
   </ng-scrollbar>
