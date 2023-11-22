@@ -2,7 +2,7 @@
 
 <div class="roadmap" *ngIf="roadmap">
   <app-roadmap-filters
-    [languageConfig]="stackList"
+    [languageConfig]="languageFilterConfig"
     [roadmap]="roadmap"
     (onUpdate)="updateRoadmap($event)"
   ></app-roadmap-filters>
@@ -12,20 +12,23 @@
       <div class="scroll">
         <div class="grid">
           <app-roadmap-stack
-            [roadmap]="roadmap"
-            [stackList]="distribution"
+            [stackList]="stackList"
+            [path]="roadmap.path"
+            [userStack]="userStack"
           ></app-roadmap-stack>
 
           <app-roadmap-education
-            *ngIf="stack"
-            [data]="stack"
+            *ngIf="education"
+            [data]="education"
+            [userStack]="userStack"
+            [stackList]="stackList"
           ></app-roadmap-education>
         </div>
 
         <div class="grid">
           <app-roadmap-projects
-            *ngIf="stack"
-            [data]="stack"
+            *ngIf="projects"
+            [data]="projects"
           ></app-roadmap-projects>
 
           <app-roadmap-github *ngIf="stack" [data]="stack"></app-roadmap-github>

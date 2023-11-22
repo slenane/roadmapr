@@ -1,8 +1,5 @@
 import { Component, Input, OnInit, SimpleChanges } from "@angular/core";
-import { Roadmap } from "src/app/roadmap/store/roadmap.models";
 import {
-  CUSTOM_STACK,
-  DEV_STACKS,
   IDeveloperPath,
   IStack,
   IStackItem,
@@ -15,16 +12,13 @@ import {
   styleUrls: ["./roadmap-stack.component.scss"],
 })
 export class RoadmapStackComponent implements OnInit {
-  public developerStacks: IStack[] = DEV_STACKS;
-  public customStack: IStack = CUSTOM_STACK;
-  public userStack: IStack | undefined;
-  public path: IDeveloperPath | undefined;
   public incrementValue: number;
   public stackGridOne: IStackItemCount[] = [];
   public stackGridTwo: IStackItemCount[] = [];
 
   @Input() stackList: any;
-  @Input() roadmap: Roadmap;
+  @Input() userStack: IStack | undefined;
+  @Input() path: IDeveloperPath | undefined;
 
   constructor() {}
 
@@ -34,8 +28,8 @@ export class RoadmapStackComponent implements OnInit {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (
-      (changes.roadmap &&
-        changes.roadmap.currentValue != changes.roadmap.previousValue) ||
+      (changes.userStack &&
+        changes.userStack.currentValue != changes.userStack.previousValue) ||
       (changes.stackList &&
         changes.stackList.currentValue != changes.stackList.previousValue)
     ) {
@@ -44,11 +38,6 @@ export class RoadmapStackComponent implements OnInit {
   }
 
   updateStackData() {
-    this.userStack = this.developerStacks.find(
-      (item) => item.type.id === this.roadmap.stack?.id
-    );
-    this.path = this.roadmap.path;
-
     this.getIncrementValue();
     this.getSortedStack();
   }

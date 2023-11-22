@@ -1,60 +1,60 @@
 <mat-card>
-  <mat-card-title>Education</mat-card-title>
+  <mat-card-title>{{ "ROADMAP.EDUCATION.T" | translate }}</mat-card-title>
 
   <mat-card-content>
     <div class="chart-container">
       <div class="chart">
-        <div class="percentage">70%</div>
+        <div class="percentage">{{ completionRate }}%</div>
         <mat-progress-spinner
           class="example-margin"
           [mode]="'determinate'"
-          [value]="70"
+          [value]="completionRate"
         >
         </mat-progress-spinner>
-        <span>Completion Rate</span>
+        <span>{{ "ROADMAP.EDUCATION.COMPLETION_RATE" | translate }}</span>
       </div>
 
       <div class="chart">
-        <div class="percentage">30%</div>
+        <div class="percentage">{{ stackCoverage }}%</div>
         <mat-progress-spinner
           class="example-margin"
           [mode]="'determinate'"
-          [value]="30"
+          [value]="stackCoverage"
         >
         </mat-progress-spinner>
-        <span>Stack Coverage</span>
+        <span>{{ "ROADMAP.EDUCATION.STACK_COVERAGE" | translate }}</span>
       </div>
     </div>
     <div class="card-container">
       <app-icon-card
         [icon]="'menu_book'"
         [iconStyle]="'alternate'"
-        [title]="'Books'"
-        [value]="3"
+        [title]="'ROADMAP.EDUCATION.BOOKS'"
+        [value]="books"
         [trend]="1"
       ></app-icon-card>
 
       <app-icon-card
         [icon]="'workspace_premium'"
         [iconStyle]="'alternate'"
-        [title]="'Courses'"
-        [value]="2"
+        [title]="'ROADMAP.EDUCATION.COURSES'"
+        [value]="courses"
         [trend]="2"
       ></app-icon-card>
 
       <app-icon-card
-        [icon]="'menu_book'"
+        [icon]="'list'"
         [iconStyle]="'alternate'"
-        [title]="'Books'"
-        [value]="3"
+        [title]="'ROADMAP.EDUCATION.IN_PROGRESS'"
+        [value]="inProgress"
         [trend]="1"
       ></app-icon-card>
 
       <app-icon-card
-        [icon]="'workspace_premium'"
+        [icon]="'checklist_rtl'"
         [iconStyle]="'alternate'"
-        [title]="'Courses'"
-        [value]="2"
+        [title]="'ROADMAP.EDUCATION.COMPLETED'"
+        [value]="completed"
         [trend]="2"
       ></app-icon-card>
     </div>

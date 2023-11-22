@@ -548,6 +548,15 @@
     "UPDATE": {
       "T": "Update Development Path & Stack",
       "MESSAGE": "Choose a development path and a stack from the options below or create a custom stack to follow"
+    },
+    "EDUCATION": {
+      "T": "Education",
+      "COMPLETION_RATE": "Completion Rate",
+      "STACK_COVERAGE": "Stack Coverage",
+      "BOOKS": "Books",
+      "COURSES": "Courses",
+      "IN_PROGRESS": "In Progress",
+      "COMPLETED": "Completed"
     }
   },
   "RECOMMENDATIONS": {
