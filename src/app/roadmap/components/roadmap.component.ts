@@ -130,35 +130,6 @@ export class RoadmapComponent implements OnInit {
     return stack;
   }
 
-  getStartDate(data: any) {
-    const milliseconds = Math.min(
-      ...data.map((item: any) => new Date(item.startDate))
-    );
-    return moment(milliseconds).format("M/D/YYYY");
-  }
-
-  getDays(start: any, end: any) {
-    const startDate = new Date(start).getTime();
-    const endDate = end ? new Date(end).getTime() : new Date().getTime();
-
-    return Math.floor((endDate - startDate) / (1000 * 3600 * 24));
-  }
-
-  getTotalTime(date: any) {
-    const totalDays = Math.floor(
-      (new Date().getTime() - new Date(date).getTime()) / (1000 * 3600 * 24)
-    );
-
-    const years = Math.floor(totalDays / 365);
-    const remainingDays = totalDays % 365;
-
-    return years > 0
-      ? `${years} year${years > 1 ? "s" : ""}, ${remainingDays} day${
-          remainingDays !== 1 ? "s" : ""
-        }`
-      : `${remainingDays} day${remainingDays !== 1 ? "s" : ""}`;
-  }
-
   updateRoadmap(data: any) {
     if (data.path && data.stack) {
       this.roadmapStoreService.updateRoadmap({
