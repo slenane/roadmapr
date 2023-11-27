@@ -9,28 +9,35 @@
 
   .scroll {
     overflow: auto;
-    padding: 1rem;
+    padding: 1rem 1.5rem 1rem 1rem;
     display: grid;
-    grid-template-columns: 3fr 2fr;
+    grid-template-columns: 1fr;
     align-content: start;
     gap: 1rem;
 
-    .user-overview-container {
+    .grid-container {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
-      gap: 1rem;
-    }
-
-    .section-title {
-      font-size: 1.2rem;
-      font-weight: 500;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1rem;
+      grid-template-columns: 3fr 2fr;
       align-content: start;
+      gap: 1rem;
+
+      .user-overview-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 1rem;
+      }
+
+      .section-title {
+        font-size: 1.2rem;
+        font-weight: 500;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        align-content: start;
+      }
     }
   }
 }

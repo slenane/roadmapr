@@ -547,6 +547,11 @@
     "T": "Roadmap",
     "IN_PROGRESS": "In Progress",
     "COMPLETED": "Completed",
+    "LANGUAGES": "Languages",
+    "TIME": "Total Time",
+    "DATE_YEARS": "{{ years }} years, {{ days }} days",
+    "DATE_YEAR": "{{ years }} year, {{ days }} days",
+    "DATE_DAYS": "{{ days }} days",
     "UPDATE": {
       "T": "Update Development Path & Stack",
       "MESSAGE": "Choose a development path and a stack from the options below or create a custom stack to follow"
@@ -557,6 +562,11 @@
       "STACK_COVERAGE": "Stack Coverage",
       "BOOKS": "Books",
       "COURSES": "Courses"
+    },
+    "EXPERIENCE": {
+      "T": "Experience",
+      "FREELANCE": "Freelance",
+      "PROFESSIONAL": "Professional"
     },
     "PROJECTS": {
       "T": "Projects",

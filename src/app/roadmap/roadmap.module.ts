@@ -19,6 +19,7 @@ import { RoadmapProjectsComponent } from "./components/roadmap-content/roadmap-p
 import { TranslateModule } from "@ngx-translate/core";
 import { RoadmapRoutingModule } from "./roadmap-routing.module";
 import { RoadmapUpdateComponent } from "./components/roadmap-update/roadmap-update.component";
+import { RoadmapOverviewComponent } from './components/roadmap-content/roadmap-overview/roadmap-overview.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { RoadmapUpdateComponent } from "./components/roadmap-update/roadmap-upda
     RoadmapEducationComponent,
     RoadmapProjectsComponent,
     RoadmapUpdateComponent,
+    RoadmapOverviewComponent,
   ],
   exports: [RoadmapComponent],
   imports: [
