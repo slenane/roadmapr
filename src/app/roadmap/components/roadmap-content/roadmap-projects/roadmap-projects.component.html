@@ -1,20 +1,38 @@
 <mat-card>
-  <mat-card-title>Projects</mat-card-title>
+  <mat-card-title>{{ "ROADMAP.PROJECTS.T" | translate }}</mat-card-title>
 
   <mat-card-content>
     <div class="card-container">
       <app-icon-card
-        [icon]="'menu_book'"
+        [icon]="'lightbulb'"
         [iconStyle]="'alternate'"
-        [title]="'Personal Projects'"
-        [value]="3"
+        [title]="'ROADMAP.PROJECTS.PERSONAL'"
+        [value]="personal"
+        [trend]="1"
       ></app-icon-card>
 
       <app-icon-card
-        [icon]="'workspace_premium'"
+        [icon]="'school'"
         [iconStyle]="'alternate'"
-        [title]="'Educational Projects'"
-        [value]="5"
+        [title]="'ROADMAP.PROJECTS.EDUCATIONAL'"
+        [value]="educational"
+        [trend]="2"
+      ></app-icon-card>
+
+      <app-icon-card
+        [icon]="'list'"
+        [iconStyle]="'alternate'"
+        [title]="'ROADMAP.IN_PROGRESS'"
+        [value]="inProgress"
+        [trend]="1"
+      ></app-icon-card>
+
+      <app-icon-card
+        [icon]="'checklist_rtl'"
+        [iconStyle]="'alternate'"
+        [title]="'ROADMAP.COMPLETED'"
+        [value]="completed"
+        [trend]="2"
       ></app-icon-card>
     </div>
   </mat-card-content>
