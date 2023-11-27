@@ -545,6 +545,8 @@
   },
   "ROADMAP": {
     "T": "Roadmap",
+    "IN_PROGRESS": "In Progress",
+    "COMPLETED": "Completed",
     "UPDATE": {
       "T": "Update Development Path & Stack",
       "MESSAGE": "Choose a development path and a stack from the options below or create a custom stack to follow"
@@ -554,9 +556,12 @@
       "COMPLETION_RATE": "Completion Rate",
       "STACK_COVERAGE": "Stack Coverage",
       "BOOKS": "Books",
-      "COURSES": "Courses",
-      "IN_PROGRESS": "In Progress",
-      "COMPLETED": "Completed"
+      "COURSES": "Courses"
+    },
+    "PROJECTS": {
+      "T": "Projects",
+      "PERSONAL": "Personal",
+      "EDUCATIONAL": "Educational"
     }
   },
   "RECOMMENDATIONS": {
