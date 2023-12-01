@@ -17,6 +17,50 @@ mat-card-content {
   gap: 0.5rem;
   position: relative;
 
+  .bio-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+
+    .avatar {
+      height: 4rem;
+      width: 4rem;
+      border: 3px solid white;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+  }
+
+  .featured-repo {
+    border: 1px solid #7b7b7b;
+    margin-bottom: 0.5rem;
+    border-top: 3px solid #00bcd4;
+    padding: 1rem 0 0.5rem;
+
+    mat-card-header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      justify-content: space-between;
+      padding-right: 1rem;
+
+      mat-card-title {
+        display: grid;
+        grid-template-columns: 1fr;
+        align-items: center;
+        font-size: 1rem;
+      }
+
+      mat-card-subtitle {
+        font-size: 1rem;
+        margin-bottom: 0;
+      }
+    }
+
+    mat-card-content {
+      padding: 0 1rem;
+    }
+  }
+
   .card-container {
     display: grid;
     grid-template-columns: 1fr 1fr;

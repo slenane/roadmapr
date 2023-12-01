@@ -7,6 +7,39 @@
     />GitHub</mat-card-title
   >
   <mat-card-content>
+    <div class="bio-grid">
+      <img src="{{ data.avatar }}" class="avatar" alt="GitHub Avatar" />
+      <div>
+        <p>{{ data.name }}</p>
+        <p>{{ data.bio }}</p>
+      </div>
+    </div>
+    <mat-card class="featured-repo" *ngIf="data.featuredRepo">
+      <mat-card-header>
+        <mat-card-title>{{
+          data.featuredRepo.name | translate
+        }}</mat-card-title>
+        <mat-card-subtitle>{{ data.login | translate }}</mat-card-subtitle>
+
+        <div class="tech-stack">
+          <img
+            *ngFor="let tech of languages"
+            class="app-stack-icon"
+            matTooltip="{{ tech.title }}"
+            src="/assets/images/stack/{{ tech.name }}-original.svg"
+          />
+        </div>
+      </mat-card-header>
+      <mat-card-content>
+        <p>Description: {{ data.featuredRepo.description }}</p>
+        <p>Last updated on:{{ updated }}</p>
+        <p>Created on: {{ created }}</p>
+        <a href="{{ data.featuredRepo.link }}">
+          <button mat-raised-button color="primary">View Repo</button>
+        </a>
+      </mat-card-content>
+    </mat-card>
+
     <div class="card-container">
       <app-icon-card
         [icon]="'lightbulb'"

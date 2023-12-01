@@ -8,13 +8,25 @@ import {
 
 export interface Github {
   lastUpdated: Date;
+  name: string;
+  avatar: string;
+  bio: string;
   url: string;
+  link: string;
   login: string;
   publicRepos: number;
   privateRepos: number;
-  followers: number;
   reposUrl: string;
-  stack: string[];
+  featuredRepo: {
+    createdAt: Date;
+    updatedAt: Date;
+    link: string;
+    name: string;
+    description: string;
+    languages: {
+      [key: string]: number;
+    };
+  };
 }
 
 export interface Roadmap {
