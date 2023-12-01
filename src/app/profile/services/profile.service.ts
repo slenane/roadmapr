@@ -49,7 +49,8 @@ export class ProfileService {
       !!user.lastName?.length &&
       !!user.location?.id &&
       !!user.nationality?.id &&
-      !!user.path?.id
+      !!user.path?.id &&
+      !!user.stack?.id
     );
   }
 }

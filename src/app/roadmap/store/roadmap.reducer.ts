@@ -10,7 +10,6 @@ export const roadmapInitialState: Roadmap = {
   education: [],
   experience: [],
   projects: [],
-  github: [],
 };
 
 const RoadmapReducer = createReducer(

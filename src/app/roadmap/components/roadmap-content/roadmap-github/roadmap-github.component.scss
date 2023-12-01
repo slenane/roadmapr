@@ -2,7 +2,7 @@ mat-card-title {
   display: grid;
   grid-template-columns: auto 1fr;
   gap: 0.5rem;
-  align-items: center;
+  align-items: flex-end;
   font-size: 1rem;
 
   .github-icon {
@@ -11,20 +11,15 @@ mat-card-title {
   }
 }
 
-table {
-  width: 100%;
+mat-card-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+  position: relative;
 
-  .link {
-    text-decoration: none;
+  .card-container {
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 0.5rem;
-    align-items: center;
-
-    .language-icon {
-      width: 1.5rem;
-      height: 1.5rem;
-      border-radius: 50%;
-    }
   }
 }
