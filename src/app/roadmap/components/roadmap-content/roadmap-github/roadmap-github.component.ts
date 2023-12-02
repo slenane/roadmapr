@@ -4,12 +4,10 @@ import {
   Input,
   OnChanges,
   SimpleChanges,
-  ViewChild,
 } from "@angular/core";
-import { MatPaginator } from "@angular/material/paginator";
-import { MatSort } from "@angular/material/sort";
-import { MatTableDataSource } from "@angular/material/table";
+import { Github } from "src/app/roadmap/store/roadmap.models";
 import { STACK_LIST } from "src/app/shared/constants/stack-list.constants";
+import { StackItem } from "src/app/shared/store/stack.models";
 
 @Component({
   selector: "app-roadmap-github",
@@ -17,45 +15,45 @@ import { STACK_LIST } from "src/app/shared/constants/stack-list.constants";
   styleUrls: ["./roadmap-github.component.scss"],
 })
 export class RoadmapGithubComponent implements OnInit, OnChanges {
-  public displayedColumns: string[] = ["name"];
-  public dataSource: MatTableDataSource<any>;
-  public mostRecent: any[] = [];
-  public stack: any[] = [...STACK_LIST];
+  public languages: StackItem[];
+  public stack: StackItem[] = [...STACK_LIST];
+  public created: string;
+  public updated: string;
 
-  @Input() data: any;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+  @Input() data: Github;
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getStackList();
+    this.getDates();
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (
       changes.data.currentValue &&
       changes.data.currentValue != changes.data.previousValue
     ) {
-      if (changes.data.currentValue.length) {
-        this.getRecentRepos(changes.data.currentValue);
-      }
     }
   }
 
-  getRecentRepos(data: any) {
-    data = data.sort(
-      (a: any, b: any) =>
-        new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
-    );
-    data.forEach((item: any) => {
-      const language = this.stack.find(
-        (language) => language.title == item.language
-      );
-      if (language && language.name) item.language = language.name;
-      else item.language = "javascript";
-    });
+  getStackList() {
+    this.languages = this.stack.filter((item: StackItem) => {
+      const repoLanguages = this.data.featuredRepo.languages;
+      const itemTitleLower = item.title.toLowerCase();
 
-    this.dataSource = new MatTableDataSource(data);
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+      return Object.keys(repoLanguages).some((key) =>
+        itemTitleLower.includes(key.toLowerCase())
+      );
+    });
+  }
+
+  getDates() {
+    this.created = new Date(
+      this.data.featuredRepo.createdAt
+    ).toLocaleDateString("en-GB");
+    this.updated = new Date(
+      this.data.featuredRepo.updatedAt
+    ).toLocaleDateString("en-GB");
   }
 }

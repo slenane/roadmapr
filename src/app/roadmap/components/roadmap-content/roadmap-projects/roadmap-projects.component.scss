@@ -8,28 +8,6 @@ mat-card-content {
   gap: 0.5rem;
   position: relative;
 
-  .chart-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.5rem;
-    align-items: center;
-
-    .chart {
-      position: relative;
-      display: grid;
-      justify-content: center;
-
-      .percentage {
-        position: absolute;
-        top: calc(50% - 12px);
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 1.5rem;
-        font-weight: 500;
-      }
-    }
-  }
-
   .card-container {
     display: grid;
     grid-template-columns: 1fr 1fr;

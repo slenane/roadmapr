@@ -6,14 +6,29 @@ import {
   IDeveloperStack,
 } from "src/app/shared/constants/dev-paths.constants";
 
-interface Github {
+export interface Github {
+  lastUpdated: Date;
   name: string;
-  id: number;
+  avatar: string;
+  bio: string;
   url: string;
-  language: string;
-  forks: number;
-  created_at: Date;
-  updated_at: Date;
+  link: string;
+  login: string;
+  publicRepos: number;
+  privateRepos: number;
+  followers: number;
+  following: number;
+  reposUrl: string;
+  featuredRepo: {
+    createdAt: Date;
+    updatedAt: Date;
+    link: string;
+    name: string;
+    description: string;
+    languages: {
+      [key: string]: number;
+    };
+  };
 }
 
 export interface Roadmap {
@@ -22,5 +37,5 @@ export interface Roadmap {
   education: EducationItem[];
   experience: ExperienceItem[];
   projects: ProjectItem[];
-  github: Github[];
+  github?: Github;
 }

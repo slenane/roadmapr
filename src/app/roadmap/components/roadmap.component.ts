@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { RoadmapStoreService } from "../services/roadmap-store.service";
 import { filter, takeUntil } from "rxjs/operators";
 import { Subject } from "rxjs";
-import { Roadmap } from "../store/roadmap.models";
+import { Github, Roadmap } from "../store/roadmap.models";
 import * as moment from "moment";
 import { roadmapInitialState } from "../store/roadmap.reducer";
 import {
@@ -32,11 +32,11 @@ export class RoadmapComponent implements OnInit {
   public education: EducationItem[] = [];
   public experience: ExperienceItem[] = [];
   public projects: ProjectItem[] = [];
+  public github: Github;
   public developerStacks: IStack[] = DEV_STACKS;
   public customStack: IStack = CUSTOM_STACK;
   public userStack: IStack | undefined;
   public stackList: any = {};
-  public github: any = [];
 
   constructor(private roadmapStoreService: RoadmapStoreService) {}
 
@@ -54,6 +54,9 @@ export class RoadmapComponent implements OnInit {
           this.education = this.roadmap.education;
           this.experience = this.roadmap.experience;
           this.projects = this.roadmap.projects;
+          if (this.roadmap.github) {
+            this.github = this.roadmap.github;
+          }
 
           if (this.roadmap?.stack) {
             this.getUserStack(this.roadmap.stack);

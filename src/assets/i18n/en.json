@@ -572,6 +572,20 @@
       "T": "Projects",
       "PERSONAL": "Personal",
       "EDUCATIONAL": "Educational"
+    },
+    "GITHUB": {
+      "T": "Github",
+      "PROFILE": "Profile",
+      "PUBLIC_REPOS_ONLY": "Public repos only",
+      "PUBLIC": "Public Repos",
+      "PRIVATE": "Private Repos",
+      "FOLLOWERS": "Followers",
+      "FOLLOWING": "Following",
+      "RECENT_ACTIVITY": "Recent Activity",
+      "COMMITS": "Commits",
+      "COMMITS_LAST": "Last:",
+      "COMMITS_FIRST": "First:",
+      "VIEW_REPO": "View Repo"
     }
   },
   "RECOMMENDATIONS": {
