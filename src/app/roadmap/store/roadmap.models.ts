@@ -16,6 +16,8 @@ export interface Github {
   login: string;
   publicRepos: number;
   privateRepos: number;
+  followers: number;
+  following: number;
   reposUrl: string;
   featuredRepo: {
     createdAt: Date;

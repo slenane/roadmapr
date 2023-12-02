@@ -4,22 +4,73 @@
       class="github-icon"
       src="/assets/images/stack/github-alternate.svg"
       alt="Github Icon"
-    />GitHub</mat-card-title
+    />{{ "ROADMAP.GITHUB.T" | translate }}</mat-card-title
   >
   <mat-card-content>
     <div class="bio-grid">
       <img src="{{ data.avatar }}" class="avatar" alt="GitHub Avatar" />
       <div>
-        <p>{{ data.name }}</p>
-        <p>{{ data.bio }}</p>
+        <div>{{ data.name }}</div>
+        <div class="user-bio">{{ data.bio }}</div>
       </div>
+      <a target="_blank" href="{{ data.link }}">
+        <button mat-raised-button color="primary">{{
+          "ROADMAP.GITHUB.PROFILE" | translate
+        }}</button>
+      </a>
     </div>
+
+    <img
+      class="github-chart"
+      [matTooltip]="'Public contributions only'"
+      src="http://ghchart.rshah.org/00bcd4/{{ data.login }}"
+      alt="Github chart"
+    />
+
+    <div class="card-container">
+      <app-icon-card
+        [icon]="'public'"
+        [iconStyle]="'alternate'"
+        [title]="'ROADMAP.GITHUB.PUBLIC'"
+        [value]="data.publicRepos"
+      ></app-icon-card>
+
+      <app-icon-card
+        [icon]="'lock'"
+        [iconStyle]="'alternate'"
+        [title]="'ROADMAP.GITHUB.PRIVATE'"
+        [value]="data.privateRepos"
+      ></app-icon-card>
+
+      <app-icon-card
+        [icon]="'group'"
+        [iconStyle]="'alternate'"
+        [title]="'ROADMAP.GITHUB.FOLLOWERS'"
+        [value]="data.followers"
+      ></app-icon-card>
+
+      <app-icon-card
+        [icon]="'groups'"
+        [iconStyle]="'alternate'"
+        [title]="'ROADMAP.GITHUB.FOLLOWING'"
+        [value]="data.following"
+      ></app-icon-card>
+    </div>
+
+    <div class="recent-activity"
+      ><span class="material-symbols-outlined recent-activity-icon">
+        folder_data
+      </span>
+      {{ "ROADMAP.GITHUB.RECENT_ACTIVITY" | translate }}</div
+    >
     <mat-card class="featured-repo" *ngIf="data.featuredRepo">
       <mat-card-header>
         <mat-card-title>{{
           data.featuredRepo.name | translate
         }}</mat-card-title>
-        <mat-card-subtitle>{{ data.login | translate }}</mat-card-subtitle>
+        <mat-card-subtitle>{{
+          data.featuredRepo.description | translate
+        }}</mat-card-subtitle>
 
         <div class="tech-stack">
           <img
@@ -31,29 +82,34 @@
         </div>
       </mat-card-header>
       <mat-card-content>
-        <p>Description: {{ data.featuredRepo.description }}</p>
-        <p>Last updated on:{{ updated }}</p>
-        <p>Created on: {{ created }}</p>
-        <a href="{{ data.featuredRepo.link }}">
-          <button mat-raised-button color="primary">View Repo</button>
-        </a>
+        <div class="repo-details">
+          <div class="commits">
+            <span class="commits-title">{{
+              "ROADMAP.GITHUB.COMMITS" | translate
+            }}</span>
+            <p class="commit-items">
+              <span
+                >{{ "ROADMAP.GITHUB.COMMITS_LAST" | translate }}
+                {{ updated }}</span
+              >
+              <span
+                >{{ "ROADMAP.GITHUB.COMMITS_FIRST" | translate }}
+                {{ created }}</span
+              >
+            </p>
+          </div>
+
+          <a
+            class="repo-link"
+            target="_blank"
+            href="{{ data.featuredRepo.link }}"
+          >
+            <button mat-raised-button color="primary">{{
+              "ROADMAP.GITHUB.VIEW_REPO" | translate
+            }}</button>
+          </a>
+        </div>
       </mat-card-content>
     </mat-card>
-
-    <div class="card-container">
-      <app-icon-card
-        [icon]="'lightbulb'"
-        [iconStyle]="'alternate'"
-        [title]="'Public Repos'"
-        [value]="data.publicRepos"
-      ></app-icon-card>
-
-      <app-icon-card
-        [icon]="'school'"
-        [iconStyle]="'alternate'"
-        [title]="'Private Repos'"
-        [value]="data.privateRepos"
-      ></app-icon-card>
-    </div>
   </mat-card-content>
 </mat-card>

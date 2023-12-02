@@ -14,20 +14,49 @@ mat-card-title {
 mat-card-content {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 0.5rem;
+  gap: 1rem;
   position: relative;
 
   .bio-grid {
     display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 1rem;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    margin: 0.5rem 0;
+    gap: 0.5rem;
 
     .avatar {
-      height: 4rem;
-      width: 4rem;
+      height: 3rem;
+      width: 3rem;
       border: 3px solid white;
       border-radius: 50%;
       object-fit: cover;
+    }
+
+    .user-bio {
+      color: rgba(255, 255, 255, 0.7);
+    }
+  }
+
+  .card-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+
+  .github-chart {
+    margin-bottom: 0.5rem;
+    width: 100%;
+  }
+
+  .recent-activity {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.5rem;
+    align-items: center;
+    font-size: 0.9rem;
+
+    &-icon {
+      font-size: 1.3rem;
     }
   }
 
@@ -52,18 +81,41 @@ mat-card-content {
 
       mat-card-subtitle {
         font-size: 1rem;
-        margin-bottom: 0;
+        margin-bottom: 0.5rem;
       }
     }
 
     mat-card-content {
       padding: 0 1rem;
-    }
-  }
+      gap: 0;
 
-  .card-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.5rem;
+      .repo-details {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+        align-items: center;
+        justify-content: space-between;
+
+        .commits-title {
+          font-size: 0.8rem;
+          font-weight: 500;
+          letter-spacing: 0.05rem;
+          text-transform: uppercase;
+          margin-bottom: 0;
+        }
+
+        .commit-items {
+          display: grid;
+          grid-template-columns: auto auto;
+          justify-content: flex-start;
+          gap: 0.5rem;
+        }
+
+        .repo-link {
+          text-align: end;
+        }
+      }
+    }
   }
 }
