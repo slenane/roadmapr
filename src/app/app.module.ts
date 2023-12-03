@@ -22,7 +22,6 @@ import { ProjectsModule } from "./projects/projects.module";
 import { ExperienceModule } from "./experience/experience.module";
 import { SettingsModule } from "./settings/settings.module";
 import { RoadmapModule } from "./roadmap/roadmap.module";
-import { NgChartsModule } from "ng2-charts";
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import { AuthModule } from "./auth/auth.module";
@@ -89,7 +88,6 @@ export const metaReducers: MetaReducer<any>[] = [clearState];
     ReactiveFormsModule,
     MaterialModule,
     SharedModule,
-    NgChartsModule,
   ],
   providers: [
     AuthGuardService,

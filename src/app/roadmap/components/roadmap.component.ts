@@ -54,6 +54,7 @@ export class RoadmapComponent implements OnInit {
           this.education = this.roadmap.education;
           this.experience = this.roadmap.experience;
           this.projects = this.roadmap.projects;
+
           if (this.roadmap.github) {
             this.github = this.roadmap.github;
           }

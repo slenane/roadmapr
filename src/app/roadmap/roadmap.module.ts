@@ -19,7 +19,8 @@ import { RoadmapProjectsComponent } from "./components/roadmap-content/roadmap-p
 import { TranslateModule } from "@ngx-translate/core";
 import { RoadmapRoutingModule } from "./roadmap-routing.module";
 import { RoadmapUpdateComponent } from "./components/roadmap-update/roadmap-update.component";
-import { RoadmapOverviewComponent } from './components/roadmap-content/roadmap-overview/roadmap-overview.component';
+import { RoadmapOverviewComponent } from "./components/roadmap-content/roadmap-overview/roadmap-overview.component";
+import { NgApexchartsModule } from "ng-apexcharts";
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { RoadmapOverviewComponent } from './components/roadmap-content/roadmap-o
     EffectsModule.forFeature([RoadmapEffects]),
     TranslateModule.forChild(),
     RoadmapRoutingModule,
+    NgApexchartsModule,
   ],
   providers: [RoadmapStoreService, RoadmapService],
 })
