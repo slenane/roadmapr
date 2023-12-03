@@ -9,6 +9,12 @@
       display: grid;
       grid-template-columns: auto 1fr;
       align-items: center;
+      gap: 0.5rem;
+
+      .roadmap-title-icon {
+        font-size: 1.3rem;
+        margin-bottom: 0.1rem;
+      }
     }
 
     mat-card-subtitle {

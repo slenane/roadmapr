@@ -10,28 +10,28 @@
   <ng-scrollbar>
     <div scrollViewport cdkScrollable>
       <div class="scroll">
-        <app-roadmap-overview
-          [data]="roadmap"
-          [stackList]="stackList"
-        ></app-roadmap-overview>
-
         <div class="grid-container">
           <div class="grid">
-            <app-roadmap-stack
-              [stackList]="stackList"
-              [path]="roadmap.path"
-              [userStack]="userStack"
-            ></app-roadmap-stack>
-
             <app-roadmap-education
               *ngIf="education"
               [data]="education"
               [userStack]="userStack"
               [stackList]="stackList"
             ></app-roadmap-education>
+
+            <app-roadmap-stack
+              [stackList]="stackList"
+              [path]="roadmap.path"
+              [userStack]="userStack"
+            ></app-roadmap-stack>
           </div>
 
           <div class="grid">
+            <app-roadmap-overview
+              [data]="roadmap"
+              [stackList]="stackList"
+            ></app-roadmap-overview>
+
             <app-roadmap-projects
               *ngIf="projects"
               [data]="projects"

@@ -1,38 +1,50 @@
 mat-card-title {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.5rem;
+  align-items: center;
   font-size: 1rem;
+
+  .roadmap-title-icon {
+    font-size: 1.3rem;
+    margin-bottom: 0.1rem;
+  }
 }
 
 mat-card-content {
-  display: grid;
-  grid-template-columns: 2fr 3fr;
-  gap: 0.5rem;
-  position: relative;
-
-  .chart-container {
+  .grid {
+    margin-top: 1rem;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 3fr;
     gap: 0.5rem;
-    align-items: center;
+    position: relative;
 
-    .chart {
-      position: relative;
+    .chart-container {
       display: grid;
-      justify-content: center;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+      align-items: center;
 
-      .percentage {
-        position: absolute;
-        top: calc(50% - 12px);
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 1.5rem;
-        font-weight: 500;
+      .chart {
+        position: relative;
+        display: grid;
+        justify-content: center;
+
+        .percentage {
+          position: absolute;
+          top: calc(50% - 12px);
+          left: 50%;
+          transform: translate(-50%, -50%);
+          font-size: 1.5rem;
+          font-weight: 500;
+        }
       }
     }
-  }
 
-  .card-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.5rem;
+    .card-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+    }
   }
 }

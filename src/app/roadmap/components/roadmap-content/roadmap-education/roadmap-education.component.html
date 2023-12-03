@@ -1,62 +1,90 @@
 <mat-card>
-  <mat-card-title>{{ "ROADMAP.EDUCATION.T" | translate }}</mat-card-title>
+  <mat-card-title
+    ><span class="material-symbols-outlined roadmap-title-icon"> school </span>
+    {{ "ROADMAP.EDUCATION.T" | translate }}</mat-card-title
+  >
 
   <mat-card-content>
-    <div class="chart-container">
-      <div class="chart">
-        <div class="percentage">{{ completionRate }}%</div>
-        <mat-progress-spinner
-          class="example-margin"
-          [mode]="'determinate'"
-          [value]="completionRate"
+    <div class="grid">
+      <div class="chart-container">
+        <div
+          class="chart"
+          [matTooltip]="
+            'Completion percentage compared to all books/courses started'
+          "
+          [matTooltipShowDelay]="'500'"
         >
-        </mat-progress-spinner>
-        <span>{{ "ROADMAP.EDUCATION.COMPLETION_RATE" | translate }}</span>
-      </div>
+          <div class="percentage">{{ completionRate }}%</div>
+          <mat-progress-spinner
+            class="example-margin"
+            [mode]="'determinate'"
+            [value]="completionRate"
+          >
+          </mat-progress-spinner>
+          <span>{{ "ROADMAP.EDUCATION.COMPLETION_RATE" | translate }}</span>
+        </div>
 
-      <div class="chart">
-        <div class="percentage">{{ stackCoverage }}%</div>
-        <mat-progress-spinner
-          class="example-margin"
-          [mode]="'determinate'"
-          [value]="stackCoverage"
+        <div
+          class="chart"
+          [matTooltip]="
+            'Percentage of core languages studied from selected development stack'
+          "
+          [matTooltipShowDelay]="'500'"
         >
-        </mat-progress-spinner>
-        <span>{{ "ROADMAP.EDUCATION.STACK_COVERAGE" | translate }}</span>
+          <div class="percentage">{{ stackCoverage }}%</div>
+          <mat-progress-spinner
+            class="example-margin"
+            [mode]="'determinate'"
+            [value]="stackCoverage"
+          >
+          </mat-progress-spinner>
+          <span>{{ "ROADMAP.EDUCATION.STACK_COVERAGE" | translate }}</span>
+        </div>
+      </div>
+      <div class="card-container">
+        <app-icon-card
+          [icon]="'menu_book'"
+          [iconStyle]="'alternate'"
+          [title]="'ROADMAP.EDUCATION.BOOKS'"
+          [value]="books"
+          [trend]="bookTrend"
+        ></app-icon-card>
+
+        <app-icon-card
+          [icon]="'workspace_premium'"
+          [iconStyle]="'alternate'"
+          [title]="'ROADMAP.EDUCATION.COURSES'"
+          [value]="courses"
+          [trend]="courseTrend"
+        ></app-icon-card>
+
+        <app-icon-card
+          [icon]="'list'"
+          [iconStyle]="'alternate'"
+          [title]="'ROADMAP.IN_PROGRESS'"
+          [value]="inProgress"
+        ></app-icon-card>
+
+        <app-icon-card
+          [icon]="'checklist_rtl'"
+          [iconStyle]="'alternate'"
+          [title]="'ROADMAP.COMPLETED'"
+          [value]="completed"
+          [trend]="bookTrend + courseTrend"
+        ></app-icon-card>
       </div>
     </div>
-    <div class="card-container">
-      <app-icon-card
-        [icon]="'menu_book'"
-        [iconStyle]="'alternate'"
-        [title]="'ROADMAP.EDUCATION.BOOKS'"
-        [value]="books"
-        [trend]="1"
-      ></app-icon-card>
 
-      <app-icon-card
-        [icon]="'workspace_premium'"
-        [iconStyle]="'alternate'"
-        [title]="'ROADMAP.EDUCATION.COURSES'"
-        [value]="courses"
-        [trend]="2"
-      ></app-icon-card>
-
-      <app-icon-card
-        [icon]="'list'"
-        [iconStyle]="'alternate'"
-        [title]="'ROADMAP.IN_PROGRESS'"
-        [value]="inProgress"
-        [trend]="1"
-      ></app-icon-card>
-
-      <app-icon-card
-        [icon]="'checklist_rtl'"
-        [iconStyle]="'alternate'"
-        [title]="'ROADMAP.COMPLETED'"
-        [value]="completed"
-        [trend]="2"
-      ></app-icon-card>
+    <div id="chart">
+      <apx-chart
+        [theme]="chartOptions.theme"
+        [series]="chartOptions.series"
+        [chart]="chartOptions.chart"
+        [xaxis]="chartOptions.xaxis"
+        [yaxis]="chartOptions.yaxis"
+        [dataLabels]="chartOptions.dataLabels"
+        [stroke]="chartOptions.stroke"
+      ></apx-chart>
     </div>
   </mat-card-content>
 </mat-card>

@@ -1,6 +1,11 @@
 <mat-card class="stack-card" *ngIf="userStack && path">
   <mat-card-header>
-    <mat-card-title>{{ userStack.title | translate }}</mat-card-title>
+    <mat-card-title
+      ><span class="material-symbols-outlined roadmap-title-icon">
+        data_object
+      </span>
+      {{ userStack.title | translate }}</mat-card-title
+    >
     <mat-card-subtitle>{{ path.name | translate }}</mat-card-subtitle>
 
     <div class="tech-stack">
