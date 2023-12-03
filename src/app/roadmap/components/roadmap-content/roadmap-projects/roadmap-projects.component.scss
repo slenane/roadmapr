@@ -6,7 +6,13 @@ mat-card-content {
   display: grid;
   grid-template-columns: 1fr;
   gap: 0.5rem;
+  justify-content: center;
   position: relative;
+
+  #chart {
+    position: relative;
+    margin: -2rem 0 -3rem 0;
+  }
 
   .card-container {
     display: grid;

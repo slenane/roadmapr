@@ -2,6 +2,14 @@
   <mat-card-title>{{ "ROADMAP.PROJECTS.T" | translate }}</mat-card-title>
 
   <mat-card-content>
+    <div id="chart">
+      <apx-chart
+        [series]="chartOptions.series"
+        [chart]="chartOptions.chart"
+        [xaxis]="chartOptions.xaxis"
+      ></apx-chart>
+    </div>
+
     <div class="card-container">
       <app-icon-card
         [icon]="'lightbulb'"
