@@ -1,5 +1,16 @@
 mat-card-title {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.5rem;
+  align-items: center;
   font-size: 1rem;
+  position: relative;
+  z-index: 1000;
+
+  .roadmap-title-icon {
+    font-size: 1.3rem;
+    margin-bottom: 0.1rem;
+  }
 }
 
 mat-card-content {

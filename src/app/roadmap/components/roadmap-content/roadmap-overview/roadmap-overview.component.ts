@@ -5,6 +5,7 @@ import {
   Input,
   SimpleChanges,
 } from "@angular/core";
+import { Profile } from "src/app/profile/store/profile.models";
 import { Roadmap } from "src/app/roadmap/store/roadmap.models";
 
 @Component({
@@ -20,6 +21,7 @@ export class RoadmapOverviewComponent implements OnInit, OnChanges {
   public time: { years: number; days: number };
 
   @Input() data: Roadmap;
+  @Input() user: Profile;
   @Input() stackList: any[];
 
   constructor() {}

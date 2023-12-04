@@ -1,22 +1,23 @@
 <app-loading *ngIf="!roadmap"></app-loading>
 
 <div class="roadmap" *ngIf="roadmap">
-  <app-roadmap-filters
+  <!-- <app-roadmap-filters
     [languageConfig]="languageFilterConfig"
     [roadmap]="roadmap"
     (onUpdate)="updateRoadmap($event)"
-  ></app-roadmap-filters>
+  ></app-roadmap-filters> -->
 
   <ng-scrollbar>
     <div scrollViewport cdkScrollable>
       <div class="scroll">
-        <app-roadmap-overview
-          [data]="roadmap"
-          [stackList]="stackList"
-        ></app-roadmap-overview>
-
         <div class="grid-container">
           <div class="grid">
+            <app-roadmap-overview
+              [data]="roadmap"
+              [user]="user"
+              [stackList]="stackList"
+            ></app-roadmap-overview>
+
             <app-roadmap-stack
               [stackList]="stackList"
               [path]="roadmap.path"

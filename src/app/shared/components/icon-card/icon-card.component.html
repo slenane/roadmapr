@@ -10,7 +10,11 @@
       {{ value }}
     </div>
   </div>
-  <div *ngIf="trend" class="trend"
+  <div
+    *ngIf="trend"
+    class="trend"
+    [matTooltip]="'Compared to previous month'"
+    [matTooltipShowDelay]="'500'"
     ><span class="material-symbols-outlined" [ngClass]="{ success: trend > 0 }">
       arrow_drop_up
     </span>

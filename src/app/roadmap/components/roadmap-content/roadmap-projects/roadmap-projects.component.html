@@ -1,9 +1,14 @@
 <mat-card>
-  <mat-card-title>{{ "ROADMAP.PROJECTS.T" | translate }}</mat-card-title>
+  <mat-card-title
+    ><span class="material-symbols-outlined roadmap-title-icon"> code </span
+    >{{ "ROADMAP.PROJECTS.T" | translate }}</mat-card-title
+  >
 
   <mat-card-content>
     <div id="chart">
       <apx-chart
+        [fill]="chartOptions.fill"
+        [theme]="chartOptions.theme"
         [series]="chartOptions.series"
         [chart]="chartOptions.chart"
         [xaxis]="chartOptions.xaxis"
@@ -16,7 +21,7 @@
         [iconStyle]="'alternate'"
         [title]="'ROADMAP.PROJECTS.PERSONAL'"
         [value]="personal"
-        [trend]="1"
+        [trend]="personalTrend"
       ></app-icon-card>
 
       <app-icon-card
@@ -24,7 +29,7 @@
         [iconStyle]="'alternate'"
         [title]="'ROADMAP.PROJECTS.EDUCATIONAL'"
         [value]="educational"
-        [trend]="2"
+        [trend]="educationalTrend"
       ></app-icon-card>
 
       <app-icon-card
@@ -32,7 +37,6 @@
         [iconStyle]="'alternate'"
         [title]="'ROADMAP.IN_PROGRESS'"
         [value]="inProgress"
-        [trend]="1"
       ></app-icon-card>
 
       <app-icon-card
@@ -40,7 +44,7 @@
         [iconStyle]="'alternate'"
         [title]="'ROADMAP.COMPLETED'"
         [value]="completed"
-        [trend]="2"
+        [trend]="personalTrend + educationalTrend"
       ></app-icon-card>
     </div>
   </mat-card-content>

@@ -1,6 +1,6 @@
 .roadmap-overview {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
 
   .card {
@@ -19,13 +19,21 @@
       }
     }
 
+    .user-image {
+      height: 3rem;
+      width: 3rem;
+      border: 3px solid white;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
     .content {
       display: grid;
       grid-template-columns: 1fr;
       align-items: center;
 
       .title {
-        font-size: 1rem;
+        font-size: 0.9rem;
         color: rgba(255, 255, 255, 0.7) !important;
       }
 
@@ -34,7 +42,7 @@
         grid-template-columns: 1fr auto;
         align-content: center;
         font-weight: 500;
-        font-size: 1.2rem;
+        font-size: 1rem;
         margin-bottom: 0.2rem;
       }
     }

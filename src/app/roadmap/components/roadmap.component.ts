@@ -3,21 +3,19 @@ import { RoadmapStoreService } from "../services/roadmap-store.service";
 import { filter, takeUntil } from "rxjs/operators";
 import { Subject } from "rxjs";
 import { Github, Roadmap } from "../store/roadmap.models";
-import * as moment from "moment";
 import { roadmapInitialState } from "../store/roadmap.reducer";
 import {
   CUSTOM_STACK,
   DEV_STACKS,
   IDeveloperStack,
   IStack,
-  IStackItem,
 } from "src/app/shared/constants/dev-paths.constants";
-import {
-  Education,
-  EducationItem,
-} from "src/app/education/store/education.models";
+import { EducationItem } from "src/app/education/store/education.models";
 import { ProjectItem } from "src/app/projects/store/projects.models";
 import { ExperienceItem } from "src/app/experience/store/experience.models";
+import { ProfileStoreService } from "src/app/profile/services/profile-store.service";
+import { profileInitialState } from "src/app/profile/store/profile.reducer";
+import { Profile } from "src/app/profile/store/profile.models";
 
 @Component({
   selector: "app-roadmap",
@@ -26,6 +24,7 @@ import { ExperienceItem } from "src/app/experience/store/experience.models";
 })
 export class RoadmapComponent implements OnInit {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
+  public user: Profile;
   public roadmap: Roadmap;
   public stack: any = {};
   public languageFilterConfig: IStack[] = [];
@@ -38,9 +37,34 @@ export class RoadmapComponent implements OnInit {
   public userStack: IStack | undefined;
   public stackList: any = {};
 
-  constructor(private roadmapStoreService: RoadmapStoreService) {}
+  constructor(
+    private roadmapStoreService: RoadmapStoreService,
+    private profileStoreService: ProfileStoreService
+  ) {}
 
   ngOnInit(): void {
+    this.getUser();
+    this.getRoadmap();
+  }
+
+  ngOnDestroy() {
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
+  }
+
+  getUser() {
+    this.profileStoreService
+      .getProfile()
+      .pipe(
+        filter((state) => state != profileInitialState),
+        takeUntil(this.ngUnsubscribe)
+      )
+      .subscribe((user: Profile) => {
+        this.user = user;
+      });
+  }
+
+  getRoadmap() {
     this.roadmapStoreService
       .getRoadmap()
       .pipe(
@@ -91,11 +115,6 @@ export class RoadmapComponent implements OnInit {
           console.log(error);
         },
       });
-  }
-
-  ngOnDestroy() {
-    this.ngUnsubscribe.next();
-    this.ngUnsubscribe.complete();
   }
 
   getUserStack(stack: IDeveloperStack): void {
