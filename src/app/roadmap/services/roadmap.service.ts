@@ -8,6 +8,7 @@ import {
   IDeveloperPath,
   IDeveloperStack,
 } from "src/app/shared/constants/dev-paths.constants";
+import { ExperienceItem } from "src/app/experience/store/experience.models";
 
 @Injectable({
   providedIn: "root",
@@ -27,5 +28,43 @@ export class RoadmapService {
       this.urlService.generate(API.ROADMAP_UPDATE),
       data
     );
+  }
+
+  getStartDate(data: any): number {
+    const dates = data
+      .filter((item: any) => !!item.startDate)
+      .map((item: any) => new Date(item.startDate).getTime());
+
+    return Math.min(...dates);
+  }
+
+  getTotalTime(date: number): { years: number; days: number } {
+    const totalDays = Math.floor(
+      (new Date().getTime() - date) / (1000 * 3600 * 24)
+    );
+
+    const years = Math.floor(totalDays / 365) || 0;
+    const remainingDays = totalDays % 365 || 0;
+
+    return { years: years, days: remainingDays };
+  }
+
+  getPercentageOfTotalTime(
+    allItems: any[],
+    experienceItems: ExperienceItem[]
+  ): number {
+    const allStartDate = this.getStartDate(allItems);
+    const professionalStartDate = this.getStartDate(experienceItems);
+
+    const totalDays = Math.floor(
+      (new Date().getTime() - allStartDate) / (1000 * 3600 * 24)
+    );
+    const totalProfessionalDays = Math.floor(
+      (new Date().getTime() - professionalStartDate) / (1000 * 3600 * 24)
+    );
+
+    const percentage = (totalProfessionalDays / totalDays) * 100;
+
+    return Math.floor(percentage);
   }
 }

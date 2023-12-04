@@ -21,6 +21,7 @@ import { RoadmapRoutingModule } from "./roadmap-routing.module";
 import { RoadmapUpdateComponent } from "./components/roadmap-update/roadmap-update.component";
 import { RoadmapOverviewComponent } from "./components/roadmap-content/roadmap-overview/roadmap-overview.component";
 import { NgApexchartsModule } from "ng-apexcharts";
+import { RoadmapExperienceComponent } from "./components/roadmap-content/roadmap-experience/roadmap-experience.component";
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { NgApexchartsModule } from "ng-apexcharts";
     RoadmapProjectsComponent,
     RoadmapUpdateComponent,
     RoadmapOverviewComponent,
+    RoadmapExperienceComponent,
   ],
   exports: [RoadmapComponent],
   imports: [

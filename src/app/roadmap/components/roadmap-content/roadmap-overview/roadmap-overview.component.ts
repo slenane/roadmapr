@@ -6,6 +6,7 @@ import {
   SimpleChanges,
 } from "@angular/core";
 import { Profile } from "src/app/profile/store/profile.models";
+import { RoadmapService } from "src/app/roadmap/services/roadmap.service";
 import { Roadmap } from "src/app/roadmap/store/roadmap.models";
 
 @Component({
@@ -24,7 +25,7 @@ export class RoadmapOverviewComponent implements OnInit, OnChanges {
   @Input() user: Profile;
   @Input() stackList: any[];
 
-  constructor() {}
+  constructor(private roadmapService: RoadmapService) {}
 
   ngOnInit(): void {}
 
@@ -42,31 +43,12 @@ export class RoadmapOverviewComponent implements OnInit, OnChanges {
     this.projects = this.data.projects.length;
     this.experience = this.data.experience.length;
     this.languages = Object.keys(this.stackList).length;
-    this.time = this.getTotalTime(
-      this.getStartDate([
+    this.time = this.roadmapService.getTotalTime(
+      this.roadmapService.getStartDate([
         ...this.data.education,
         ...this.data.projects,
         ...this.data.experience,
       ])
     );
-  }
-
-  getStartDate(data: any): number {
-    const dates = data
-      .filter((item: any) => !!item.startDate)
-      .map((item: any) => new Date(item.startDate).getTime());
-
-    return Math.min(...dates);
-  }
-
-  getTotalTime(date: number): { years: number; days: number } {
-    const totalDays = Math.floor(
-      (new Date().getTime() - date) / (1000 * 3600 * 24)
-    );
-
-    const years = Math.floor(totalDays / 365) || 0;
-    const remainingDays = totalDays % 365 || 0;
-
-    return { years: years, days: remainingDays };
   }
 }

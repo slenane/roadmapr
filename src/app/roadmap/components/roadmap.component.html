@@ -13,16 +13,11 @@
         <div class="grid-container">
           <div class="grid">
             <app-roadmap-overview
+              *ngIf="roadmap && user"
               [data]="roadmap"
               [user]="user"
               [stackList]="stackList"
             ></app-roadmap-overview>
-
-            <app-roadmap-stack
-              [stackList]="stackList"
-              [path]="roadmap.path"
-              [userStack]="userStack"
-            ></app-roadmap-stack>
 
             <app-roadmap-education
               *ngIf="education"
@@ -30,6 +25,18 @@
               [userStack]="userStack"
               [stackList]="stackList"
             ></app-roadmap-education>
+
+            <app-roadmap-stack
+              [stackList]="stackList"
+              [path]="roadmap.path"
+              [userStack]="userStack"
+            ></app-roadmap-stack>
+
+            <app-roadmap-experience
+              *ngIf="experience"
+              [experience]="experience"
+              [education]="education"
+            ></app-roadmap-experience>
           </div>
 
           <div class="grid">
