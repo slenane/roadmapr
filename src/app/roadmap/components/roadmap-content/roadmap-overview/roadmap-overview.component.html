@@ -1,5 +1,21 @@
 <div class="roadmap-overview">
   <mat-card class="card">
+    <img
+      class="user-image"
+      [src]="
+        user.profileImage
+          ? user.profileImage
+          : '/assets/images/user-fallback.png'
+      "
+      alt="User Image"
+    />
+    <div class="content">
+      <div class="value">{{ user.firstName }} {{ user.lastName }}</div>
+      <div class="title">{{ user.path.name | translate }} </div>
+    </div>
+  </mat-card>
+
+  <mat-card class="card">
     <div class="icon">
       <span class="material-symbols-outlined alternate"> data_object </span>
     </div>

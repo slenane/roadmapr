@@ -1,37 +1,38 @@
 <app-loading *ngIf="!roadmap"></app-loading>
 
 <div class="roadmap" *ngIf="roadmap">
-  <app-roadmap-filters
+  <!-- <app-roadmap-filters
     [languageConfig]="languageFilterConfig"
     [roadmap]="roadmap"
     (onUpdate)="updateRoadmap($event)"
-  ></app-roadmap-filters>
+  ></app-roadmap-filters> -->
 
   <ng-scrollbar>
     <div scrollViewport cdkScrollable>
       <div class="scroll">
         <div class="grid-container">
           <div class="grid">
-            <app-roadmap-education
-              *ngIf="education"
-              [data]="education"
-              [userStack]="userStack"
+            <app-roadmap-overview
+              [data]="roadmap"
+              [user]="user"
               [stackList]="stackList"
-            ></app-roadmap-education>
+            ></app-roadmap-overview>
 
             <app-roadmap-stack
               [stackList]="stackList"
               [path]="roadmap.path"
               [userStack]="userStack"
             ></app-roadmap-stack>
+
+            <app-roadmap-education
+              *ngIf="education"
+              [data]="education"
+              [userStack]="userStack"
+              [stackList]="stackList"
+            ></app-roadmap-education>
           </div>
 
           <div class="grid">
-            <app-roadmap-overview
-              [data]="roadmap"
-              [stackList]="stackList"
-            ></app-roadmap-overview>
-
             <app-roadmap-projects
               *ngIf="projects"
               [data]="projects"
