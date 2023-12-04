@@ -13,7 +13,7 @@ mat-card-title {
 
 mat-card-content {
   .grid {
-    margin-top: 1rem;
+    margin-top: 1.5rem;
     display: grid;
     grid-template-columns: 2fr 3fr;
     gap: 0.5rem;
@@ -46,5 +46,9 @@ mat-card-content {
       grid-template-columns: 1fr 1fr;
       gap: 0.5rem;
     }
+  }
+
+  #chart {
+    margin: 0 -1rem;
   }
 }

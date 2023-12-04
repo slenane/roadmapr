@@ -123,7 +123,7 @@ export class RoadmapEducationComponent implements OnInit, OnChanges {
         },
       ],
       chart: {
-        height: 350,
+        height: 250,
         type: "area",
         zoom: {
           enabled: false,
