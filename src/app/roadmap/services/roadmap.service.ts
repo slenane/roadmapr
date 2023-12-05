@@ -38,11 +38,26 @@ export class RoadmapService {
     return Math.min(...dates);
   }
 
-  getTotalTime(date: number): { years: number; days: number } {
+  getTimeStringSinceDate(date: number): { years: number; days: number } {
     const totalDays = Math.floor(
       (new Date().getTime() - date) / (1000 * 3600 * 24)
     );
 
+    const years = Math.floor(totalDays / 365) || 0;
+    const remainingDays = totalDays % 365 || 0;
+
+    return { years: years, days: remainingDays };
+  }
+
+  getCombinedTime(timeSet: number[][]): { years: number; days: number } {
+    let time = 0;
+
+    for (let set of timeSet) {
+      const total = set[1] - set[0];
+      time += total;
+    }
+
+    const totalDays = Math.floor(time / (1000 * 3600 * 24));
     const years = Math.floor(totalDays / 365) || 0;
     const remainingDays = totalDays % 365 || 0;
 

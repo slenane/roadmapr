@@ -116,10 +116,12 @@ export class RoadmapEducationComponent implements OnInit, OnChanges {
         {
           name: "Courses",
           data: courseData,
+          color: "#00BBD4",
         },
         {
           name: "Books",
           data: bookData,
+          color: "#00D4A6",
         },
       ],
       chart: {

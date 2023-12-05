@@ -10,6 +10,7 @@ export class IconCardComponent implements OnInit {
   @Input() iconStyle: string;
   @Input() title: string;
   @Input() value: number | string;
+  @Input() timeValue: { years: number; days: number };
   @Input() trend: number;
 
   constructor() {}

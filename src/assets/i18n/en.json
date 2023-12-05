@@ -565,7 +565,7 @@
     },
     "EXPERIENCE": {
       "T": "Experience",
-      "EDUCATION": "Freelance",
+      "EDUCATION": "Education",
       "FREELANCE": "Freelance",
       "PROFESSIONAL": "Professional",
       "FREELANCE_TIME": "Freelance Total Time",
@@ -573,7 +573,7 @@
       "FREELANCE_POSITIONS": "Freelance Positions",
       "PROFESSIONAL_POSITIONS": "Professional Positions",
       "EMPLOYMENT_RATE": "Employment Rate",
-      "EMPLOYMENT_RATE_TOOLTIP": "EPercentage of total time in employment"
+      "EMPLOYMENT_RATE_TOOLTIP": "Percentage of total time in employment"
     },
     "PROJECTS": {
       "T": "Projects",

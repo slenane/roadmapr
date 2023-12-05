@@ -16,9 +16,11 @@ import {
   ApexXAxis,
   ApexDataLabels,
   ApexYAxis,
+  ApexFill,
 } from "ng-apexcharts";
 import { EducationItem } from "src/app/education/store/education.models";
 import { RoadmapService } from "src/app/roadmap/services/roadmap.service";
+import { TranslateService } from "@ngx-translate/core";
 
 export type ChartOptions = {
   theme: { mode: "dark" };
@@ -27,6 +29,7 @@ export type ChartOptions = {
   dataLabels: ApexDataLabels;
   yaxis: ApexYAxis;
   xaxis: ApexXAxis;
+  fill: ApexFill;
   plotOptions: ApexPlotOptions;
 };
 
@@ -36,6 +39,10 @@ export type ChartOptions = {
   styleUrls: ["./roadmap-experience.component.scss"],
 })
 export class RoadmapExperienceComponent implements OnInit {
+  public freelanceCount: number;
+  public professionalCount: number;
+  public freelanceTotalTime: { years: number; days: number };
+  public professionalTotalTime: { years: number; days: number };
   public totalTime: number;
   @Input() experience: ExperienceItem[];
   @Input() education: EducationItem[];
@@ -43,9 +50,13 @@ export class RoadmapExperienceComponent implements OnInit {
   @ViewChild("chart") chart: ChartComponent;
   public chartOptions: ChartOptions;
 
-  constructor(private roadmapService: RoadmapService) {}
+  constructor(
+    private roadmapService: RoadmapService,
+    private translate: TranslateService
+  ) {}
 
   ngOnInit(): void {
+    this.setInitialValues();
     this.generateChart();
     this.getTotalProfessionalTime();
   }
@@ -80,12 +91,26 @@ export class RoadmapExperienceComponent implements OnInit {
       plotOptions: {
         bar: {
           horizontal: true,
+          borderRadius: 4,
         },
       },
       dataLabels: {
         enabled: true,
         formatter: function (val, opts) {
           return opts.w.globals.labels[opts.dataPointIndex];
+        },
+      },
+      fill: {
+        type: "gradient",
+        gradient: {
+          shade: "light",
+          type: "vertical",
+          shadeIntensity: 0.25,
+          gradientToColors: undefined,
+          inverseColors: true,
+          opacityFrom: 1,
+          opacityTo: 1,
+          stops: [50, 0, 100, 100],
         },
       },
       xaxis: {
@@ -102,6 +127,13 @@ export class RoadmapExperienceComponent implements OnInit {
       this.education.filter((item) => !!item.startDate)
     );
 
+    let educationLabel = "Education";
+    this.translate
+      .get("ROADMAP.EXPERIENCE.EDUCATION")
+      .subscribe((data: any) => {
+        educationLabel = data;
+      });
+
     const data: any = [];
 
     for (let item of items) {
@@ -111,8 +143,7 @@ export class RoadmapExperienceComponent implements OnInit {
         : new Date().getTime();
 
       data.push({
-        // x: "ROADMAP.EXPERIENCE.EDUCATION",
-        x: "Education",
+        x: educationLabel,
         y: [startDate, endDate],
         fillColor: "#00bcd4",
       });
@@ -124,6 +155,20 @@ export class RoadmapExperienceComponent implements OnInit {
   getExperienceData() {
     const freelance: any = [];
     const professional: any = [];
+    let freelanceLabel = "Freelance",
+      professionalLabel = "Professional";
+
+    this.translate
+      .get("ROADMAP.EXPERIENCE.FREELANCE")
+      .subscribe((data: any) => {
+        freelanceLabel = data;
+      });
+    this.translate
+      .get("ROADMAP.EXPERIENCE.PROFESSIONAL")
+      .subscribe((data: any) => {
+        professionalLabel = data;
+      });
+
     for (let item of this.experience) {
       const startDate = new Date(item.startDate).getTime();
       const endDate = item.endDate
@@ -132,20 +177,29 @@ export class RoadmapExperienceComponent implements OnInit {
 
       if (item.type === "freelance") {
         freelance.push({
-          // x: "ROADMAP.EXPERIENCE.FREELANCE",
-          x: "Freelance",
+          x: freelanceLabel,
           y: [startDate, endDate],
-          fillColor: "#00bcd4",
+          fillColor: "#00D4A6",
         });
+
+        this.freelanceCount++;
       } else {
         professional.push({
-          // x: "ROADMAP.EXPERIENCE.PROFESSIONAL",
-          x: "Experience",
+          x: professionalLabel,
           y: [startDate, endDate],
-          fillColor: "#00bcd4",
+          fillColor: "#00D4A6",
         });
+
+        this.professionalCount++;
       }
     }
+
+    this.freelanceTotalTime = this.roadmapService.getCombinedTime(
+      freelance.map((item: any) => item.y)
+    );
+    this.professionalTotalTime = this.roadmapService.getCombinedTime(
+      professional.map((item: any) => item.y)
+    );
 
     return [freelance, professional];
   }
@@ -196,5 +250,13 @@ export class RoadmapExperienceComponent implements OnInit {
       [...this.education, ...this.experience],
       this.experience
     );
+  }
+
+  setInitialValues() {
+    this.freelanceCount = 0;
+    this.professionalCount = 0;
+    this.freelanceTotalTime = { years: 0, days: 0 };
+    this.professionalTotalTime = { years: 0, days: 0 };
+    this.totalTime = 0;
   }
 }

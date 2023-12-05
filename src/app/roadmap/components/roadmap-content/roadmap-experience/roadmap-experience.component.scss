@@ -36,14 +36,15 @@ mat-card-content {
       .chart {
         position: relative;
         display: grid;
+        justify-items: center;
         justify-content: center;
 
         .percentage {
           position: absolute;
-          top: calc(50% - 12px);
-          left: 48%;
+          top: calc(50% - 1rem);
+          left: 50%;
           transform: translate(-50%, -50%);
-          font-size: 1.5rem;
+          font-size: 1.2rem;
           font-weight: 500;
         }
       }

@@ -1,6 +1,6 @@
 .roadmap-overview {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 3fr 2fr 2fr;
   gap: 1rem;
 
   .card {
@@ -9,6 +9,10 @@
     gap: 1rem;
     padding: 1rem;
     align-items: center;
+
+    &.user-card {
+      grid-template-columns: auto 1fr auto;
+    }
 
     .icon {
       .material-symbols-outlined {

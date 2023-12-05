@@ -43,7 +43,7 @@ export class RoadmapOverviewComponent implements OnInit, OnChanges {
     this.projects = this.data.projects.length;
     this.experience = this.data.experience.length;
     this.languages = Object.keys(this.stackList).length;
-    this.time = this.roadmapService.getTotalTime(
+    this.time = this.roadmapService.getTimeStringSinceDate(
       this.roadmapService.getStartDate([
         ...this.data.education,
         ...this.data.projects,
@@ -52,3 +52,5 @@ export class RoadmapOverviewComponent implements OnInit, OnChanges {
     );
   }
 }
+
+//  MOVE EDIT HERERER
