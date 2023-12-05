@@ -1,5 +1,5 @@
 <div class="roadmap-overview">
-  <mat-card class="card">
+  <mat-card class="card user-card">
     <img
       class="user-image"
       [src]="
@@ -13,6 +13,7 @@
       <div class="value">{{ user.firstName }} {{ user.lastName }}</div>
       <div class="title">{{ user.path.name | translate }} </div>
     </div>
+    <button mat-raised-button color="primary">Edit</button>
   </mat-card>
 
   <mat-card class="card">

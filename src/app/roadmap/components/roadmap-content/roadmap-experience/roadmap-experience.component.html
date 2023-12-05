@@ -1,0 +1,72 @@
+<mat-card>
+  <mat-card-title
+    ><span class="material-symbols-outlined roadmap-title-icon"> work </span>
+    {{ "ROADMAP.EXPERIENCE.T" | translate }}</mat-card-title
+  >
+
+  <mat-card-content>
+    <div id="chart">
+      <apx-chart
+        [theme]="chartOptions.theme"
+        [series]="chartOptions.series"
+        [chart]="chartOptions.chart"
+        [dataLabels]="chartOptions.dataLabels"
+        [plotOptions]="chartOptions.plotOptions"
+        [fill]="chartOptions.fill"
+        [xaxis]="chartOptions.xaxis"
+        [yaxis]="chartOptions.yaxis"
+      ></apx-chart>
+    </div>
+
+    <div class="grid">
+      <div class="card-container">
+        <app-icon-card
+          [icon]="'person'"
+          [iconStyle]="'alternate'"
+          [title]="'ROADMAP.EXPERIENCE.FREELANCE_POSITIONS'"
+          [value]="freelanceCount"
+        ></app-icon-card>
+
+        <app-icon-card
+          [icon]="'badge'"
+          [iconStyle]="'alternate'"
+          [title]="'ROADMAP.EXPERIENCE.PROFESSIONAL_POSITIONS'"
+          [value]="professionalCount"
+        ></app-icon-card>
+
+        <app-icon-card
+          [icon]="'hourglass'"
+          [iconStyle]="'alternate'"
+          [title]="'ROADMAP.EXPERIENCE.FREELANCE_TIME'"
+          [timeValue]="freelanceTotalTime"
+        ></app-icon-card>
+
+        <app-icon-card
+          [icon]="'hourglass'"
+          [iconStyle]="'alternate'"
+          [title]="'ROADMAP.EXPERIENCE.PROFESSIONAL_TIME'"
+          [timeValue]="professionalTotalTime"
+        ></app-icon-card>
+      </div>
+
+      <div class="chart-container">
+        <div
+          class="chart"
+          [matTooltip]="
+            'ROADMAP.EXPERIENCE.EMPLOYMENT_RATE_TOOLTIP' | translate
+          "
+          [matTooltipShowDelay]="'500'"
+        >
+          <div class="percentage">{{ totalTime }}%</div>
+          <mat-progress-spinner
+            class="example-margin"
+            [mode]="'determinate'"
+            [value]="totalTime"
+          >
+          </mat-progress-spinner>
+          <span>{{ "ROADMAP.EXPERIENCE.EMPLOYMENT_RATE" | translate }}</span>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

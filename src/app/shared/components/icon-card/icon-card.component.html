@@ -6,8 +6,23 @@
   </div>
   <div class="content">
     <div class="title"> {{ title | translate }} </div>
-    <div class="value">
+    <div class="value" *ngIf="value">
       {{ value }}
+    </div>
+    <div class="value" *ngIf="timeValue && timeValue.years > 1">
+      {{
+        "ROADMAP.DATE_YEARS"
+          | translate : { years: timeValue.years, days: timeValue.days }
+      }}
+    </div>
+    <div class="value" *ngIf="timeValue && timeValue.years === 1">
+      {{
+        "ROADMAP.DATE_YEAR"
+          | translate : { years: timeValue.years, days: timeValue.days }
+      }}
+    </div>
+    <div class="value" *ngIf="timeValue && timeValue.years === 0">
+      {{ "ROADMAP.DATE_DAYS" | translate : { days: timeValue.days } }}
     </div>
   </div>
   <div
