@@ -14,9 +14,10 @@
           <div class="grid">
             <app-roadmap-overview
               *ngIf="roadmap && user"
-              [data]="roadmap"
+              [roadmap]="roadmap"
               [user]="user"
               [stackList]="stackList"
+              (onUpdate)="updateRoadmap($event)"
             ></app-roadmap-overview>
 
             <app-roadmap-education

@@ -13,7 +13,9 @@
       <div class="value">{{ user.firstName }} {{ user.lastName }}</div>
       <div class="title">{{ user.path.name | translate }} </div>
     </div>
-    <button mat-raised-button color="primary">Edit</button>
+    <button mat-raised-button color="primary" (click)="editRoadmap()"
+      >Edit</button
+    >
   </mat-card>
 
   <mat-card class="card">
