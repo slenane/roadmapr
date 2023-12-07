@@ -43,9 +43,9 @@ export class RoadmapEducationComponent implements OnInit, OnChanges {
   public courseTrend: number;
   public completionRate: number;
   public stackCoverage: number;
+  public chartOptions: ChartOptions;
 
   @ViewChild("chart") chart: ChartComponent;
-  public chartOptions: ChartOptions;
 
   @Input() data: EducationItem[];
   @Input() userStack: IStack | undefined;
