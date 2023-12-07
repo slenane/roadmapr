@@ -4,10 +4,14 @@ import {
   OnInit,
   Input,
   SimpleChanges,
+  Output,
+  EventEmitter,
 } from "@angular/core";
 import { Profile } from "src/app/profile/store/profile.models";
 import { RoadmapService } from "src/app/roadmap/services/roadmap.service";
 import { Roadmap } from "src/app/roadmap/store/roadmap.models";
+import { RoadmapUpdateComponent } from "../../roadmap-update/roadmap-update.component";
+import { MatDialog } from "@angular/material/dialog";
 
 @Component({
   selector: "app-roadmap-overview",
@@ -15,42 +19,54 @@ import { Roadmap } from "src/app/roadmap/store/roadmap.models";
   styleUrls: ["./roadmap-overview.component.scss"],
 })
 export class RoadmapOverviewComponent implements OnInit, OnChanges {
-  public education: number = 0;
-  public projects: number = 0;
-  public experience: number = 0;
   public languages: number = 0;
   public time: { years: number; days: number };
 
-  @Input() data: Roadmap;
+  @Input() roadmap: Roadmap;
   @Input() user: Profile;
   @Input() stackList: any[];
+  @Output() onUpdate = new EventEmitter();
 
-  constructor(private roadmapService: RoadmapService) {}
+  constructor(
+    private roadmapService: RoadmapService,
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {}
 
   ngOnChanges(changes: SimpleChanges) {
     if (
-      changes.data &&
-      changes.data.currentValue != changes.data.previousValue
+      changes.roadmap &&
+      changes.roadmap.currentValue != changes.roadmap.previousValue
     ) {
       this.generateData();
     }
   }
 
   generateData() {
-    this.education = this.data.education.length;
-    this.projects = this.data.projects.length;
-    this.experience = this.data.experience.length;
     this.languages = Object.keys(this.stackList).length;
     this.time = this.roadmapService.getTimeStringSinceDate(
       this.roadmapService.getStartDate([
-        ...this.data.education,
-        ...this.data.projects,
-        ...this.data.experience,
+        ...this.roadmap.education,
+        ...this.roadmap.projects,
+        ...this.roadmap.experience,
       ])
     );
   }
-}
 
-//  MOVE EDIT HERERER
+  editRoadmap() {
+    const dialogRef = this.dialog.open(RoadmapUpdateComponent, {
+      minHeight: "90vh",
+      minWidth: "70vw",
+      autoFocus: false,
+      data: {
+        path: this.roadmap.path,
+        stack: this.roadmap.stack,
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((result: any) => {
+      this.onUpdate.emit(result);
+    });
+  }
+}
