@@ -8,16 +8,18 @@ import { CommonModule } from "@angular/common";
 import { AuthStoreService } from "../auth/services/auth-store.service";
 import { HttpInterceptProviders } from "./services/http-interceptors";
 import { RedirectComponent } from "./components/redirect/redirect.component";
+import { PageNotFoundComponent } from "./components/page-not-found/page-not-found.component";
+import { TranslateModule } from "@ngx-translate/core";
 
 @NgModule({
-  declarations: [RedirectComponent],
-  exports: [RedirectComponent],
+  declarations: [RedirectComponent, PageNotFoundComponent],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
     SharedModule,
+    TranslateModule.forChild(),
   ],
   providers: [AuthStoreService, UrlService, ApiService, HttpInterceptProviders],
 })

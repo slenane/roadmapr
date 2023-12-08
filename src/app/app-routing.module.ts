@@ -10,6 +10,7 @@ import { Injectable } from "@angular/core";
 import { Title } from "@angular/platform-browser";
 import { TranslateService } from "@ngx-translate/core";
 import { RedirectComponent } from "./core/components/redirect/redirect.component";
+import { PageNotFoundComponent } from "./core/components/page-not-found/page-not-found.component";
 
 @Injectable()
 export class CustomTitleStrategy extends TitleStrategy {
@@ -84,7 +85,12 @@ const routes: Routes = [
       import("./settings/settings.module").then((m) => m.SettingsModule),
     canActivate: [AuthGuardService],
   },
-  { path: "**", redirectTo: "" },
+  {
+    path: "page-not-found",
+    component: PageNotFoundComponent,
+    title: "ROUTES.PAGE_NOT_FOUND",
+  },
+  { path: "**", pathMatch: "full", redirectTo: "/page-not-found" },
 ];
 
 @NgModule({
