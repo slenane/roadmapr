@@ -24,7 +24,8 @@
     "PROFILE": "Profile | roadmapr",
     "SETTINGS": "Settings | roadmapr",
     "ONBOARDING": "Onboarding | roadmapr",
-    "TOUR": "Tour | roadmapr"
+    "TOUR": "Tour | roadmapr",
+    "PAGE_NOT_FOUND": "Page Not Found | roadmapr"
   },
   "PATHS": {
     "TITLES": {
@@ -623,6 +624,16 @@
       "LINK_MESSAGE": "Link your GitHub account to display up to date information from GitHub on your roadmap",
       "UNLINK_ERROR": "You must add a password before oyu can unlink your GitHub"
     }
+  },
+  "REDIRECTING": {
+    "T": "Redirecting",
+    "PLEASE_WAIT": "Please wait"
+  },
+  "PAGE_NOT_FOUND": {
+    "T": "404",
+    "SUB": "Something went wrong",
+    "NOT_FOUND": "We cannot find the page you are looking for",
+    "HOME": "Go Home"
   },
   "COUNTRIES": {
     "AD": "Andorra",
