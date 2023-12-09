@@ -1,7 +1,6 @@
 import { Component, OnInit, Inject } from "@angular/core";
 import {
   MAT_DIALOG_DATA,
-  MatDialog,
   MatDialogRef,
 } from "@angular/material/dialog";
 import { Subject } from "rxjs";
@@ -41,7 +40,6 @@ export class RoadmapUpdateComponent implements OnInit {
   });
 
   constructor(
-    public dialog: MatDialog,
     public dialogRef: MatDialogRef<RoadmapUpdateComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}

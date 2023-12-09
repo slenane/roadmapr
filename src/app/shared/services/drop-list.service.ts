@@ -4,7 +4,6 @@ import {
   transferArrayItem,
 } from "@angular/cdk/drag-drop";
 import { Injectable } from "@angular/core";
-import { STATUS } from "src/app/education/constants/education.constants";
 
 @Injectable({
   providedIn: "root",
@@ -12,7 +11,10 @@ import { STATUS } from "src/app/education/constants/education.constants";
 export class DropListService {
   constructor() {}
 
-  drop(event: CdkDragDrop<any[]>) {
+  drop(
+    event: CdkDragDrop<any[]>,
+    dateConfig?: { end?: Date | null; start?: Date | null }
+  ) {
     const currentContainer = event.container;
     const previousContainer = event.previousContainer;
     const currentIndex = event.currentIndex;
@@ -44,17 +46,13 @@ export class DropListService {
         }
       });
     } else {
-      if (currentContainer.id === STATUS.TODO) {
-        if (droppedItem.startDate) droppedItem.startDate = null;
-        if (droppedItem.endDate) droppedItem.endDate = null;
-      }
-      if (currentContainer.id === STATUS.IN_PROGRESS) {
-        if (droppedItem.endDate) droppedItem.endDate = null;
-        if (!droppedItem.startDate) droppedItem.startDate = new Date();
-      }
-      if (currentContainer.id === STATUS.DONE) {
-        if (!droppedItem.startDate) droppedItem.startDate = new Date();
-        droppedItem.endDate = new Date();
+      if (dateConfig) {
+        if (dateConfig.hasOwnProperty("end")) {
+          droppedItem.endDate = dateConfig.end;
+        }
+        if (dateConfig.hasOwnProperty("start")) {
+          droppedItem.startDate = dateConfig.start;
+        }
       }
 
       transferArrayItem(

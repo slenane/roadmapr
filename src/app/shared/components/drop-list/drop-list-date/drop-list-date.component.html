@@ -1,0 +1,62 @@
+<div class="drop-list-dates-header">
+  <div class="icon">
+    <span class="material-symbols-outlined emphasis"> calendar_today </span>
+  </div>
+  <div class="text">
+    <h1>{{ "FORMS.UPDATE.UPDATE_DATES" | translate }}</h1>
+  </div>
+</div>
+<div mat-dialog-content>
+  <form [formGroup]="form">
+    <div class="grid-section">
+      <mat-form-field appearance="outline" *ngIf="showStartDate">
+        <mat-label>{{ "FORMS.DATES.START" | translate }}</mat-label>
+        <input
+          matInput
+          [matDatepicker]="startDate"
+          formControlName="startDate"
+        />
+        <mat-hint>{{ "FORMS.DATES.HINT" | translate }}</mat-hint>
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="startDate"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #startDate></mat-datepicker>
+        <mat-error *ngIf="form.controls.startDate?.hasError('required')">{{
+          "FORMS.REQUIRED.START_DATE" | translate
+        }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" *ngIf="showEndDate">
+        <mat-label>{{ "FORMS.DATES.END" | translate }}</mat-label>
+        <input matInput [matDatepicker]="endDate" formControlName="endDate" />
+        <mat-hint>{{ "FORMS.DATES.HINT" | translate }}</mat-hint>
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="endDate"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #endDate></mat-datepicker>
+
+        <mat-error *ngIf="form.controls.endDate?.hasError('required')">{{
+          "FORMS.REQUIRED.END_DATE" | translate
+        }}</mat-error>
+      </mat-form-field>
+    </div>
+  </form>
+</div>
+<div *ngIf="invalidDates" class="custom-error">{{
+  "FORMS.DATES.INVALID" | translate
+}}</div>
+<div mat-dialog-actions class="actions">
+  <button mat-raised-button (click)="onCancelClick()">{{
+    "ACTIONS.CANCEL" | translate
+  }}</button>
+  <button
+    mat-raised-button
+    [disabled]="!form.valid"
+    color="primary"
+    (click)="onSaveClick()"
+    cdkFocusInitial
+    >{{ "ACTIONS.UPDATE" | translate }}</button
+  >
+</div>

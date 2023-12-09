@@ -72,8 +72,7 @@ export class ProjectEffects {
       ofType(projectActions.BULK_UPDATE_PROJECT_ITEMS),
       switchMap(({ projectsId, data }) =>
         this.projectsService.bulkUpdateProjectItems(projectsId, data).pipe(
-          map(({ projects, successMessage }) => {
-            this.alertsService.errorAlert(successMessage);
+          map(({ projects }) => {
             return projectActions.BulkUpdateProjectItemsSuccess({
               payload: projects,
             });

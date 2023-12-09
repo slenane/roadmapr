@@ -12,6 +12,8 @@ import { DropListService } from "src/app/shared/services/drop-list.service";
 import { educationInitialState } from "../store/education.reducer";
 import { RecommendationsStoreService } from "src/app/recommendations/services/recommendations-store.service";
 import { Recommendation } from "src/app/recommendations/store/recommendations.models";
+import { DropListDateComponent } from "src/app/shared/components/drop-list/drop-list-date/drop-list-date.component";
+import { MatDialog } from "@angular/material/dialog";
 
 @Component({
   selector: "app-education",
@@ -37,7 +39,8 @@ export class EducationComponent implements OnInit, OnDestroy {
   constructor(
     private educationStoreService: EducationStoreService,
     private recommendationsStoreService: RecommendationsStoreService,
-    private dropListService: DropListService
+    private dropListService: DropListService,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -172,7 +175,6 @@ export class EducationComponent implements OnInit, OnDestroy {
   }
 
   createEducationItemFromRecommendation(item: any) {
-    console.log(item);
     if (item.data) {
       const newItem = {
         author: item.data.author,
@@ -193,13 +195,52 @@ export class EducationComponent implements OnInit, OnDestroy {
   }
 
   drop(event: CdkDragDrop<any[]>) {
-    const updatedItems = this.dropListService.drop(event);
+    const currentContainer = event.container;
+    const previousContainer = event.previousContainer;
+    const previousIndex = event.previousIndex;
 
-    if (updatedItems.length) {
-      this.educationStoreService.bulkUpdateEducationItems(
-        this.education._id,
-        updatedItems
-      );
+    const handleUpdate = (result?: {
+      end?: Date | null;
+      start?: Date | null;
+    }) => {
+      const updatedItems = this.dropListService.drop(event, result);
+
+      if (updatedItems.length) {
+        this.educationStoreService.bulkUpdateEducationItems(
+          this.education._id,
+          updatedItems
+        );
+      }
+    };
+
+    if (previousContainer !== currentContainer) {
+      const droppedItem = previousContainer.data[previousIndex];
+
+      if (currentContainer.id === STATUS.TODO) {
+        handleUpdate({ end: null, start: null });
+      } else if (
+        currentContainer.id === STATUS.IN_PROGRESS &&
+        droppedItem.startDate
+      ) {
+        handleUpdate({ end: null });
+      } else {
+        this.dialog
+          .open(DropListDateComponent, {
+            minWidth: "40vw",
+            disableClose: true,
+            data: {
+              item: droppedItem,
+              container: currentContainer.id,
+            },
+          })
+          .afterClosed()
+          .subscribe((result: any) => {
+            if (result) handleUpdate(result);
+            else return;
+          });
+      }
+    } else {
+      handleUpdate();
     }
   }
 

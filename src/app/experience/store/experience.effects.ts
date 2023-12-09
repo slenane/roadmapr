@@ -78,8 +78,7 @@ export class ExperienceEffects {
         this.experienceService
           .bulkUpdateExperienceItems(experienceId, data)
           .pipe(
-            map(({ experience, successMessage }) => {
-              this.alertsService.successAlert(successMessage);
+            map(({ experience }) => {
               return experienceActions.BulkUpdateExperienceItemsSuccess({
                 payload: experience,
               });
