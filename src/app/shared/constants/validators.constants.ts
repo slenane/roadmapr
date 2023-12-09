@@ -48,11 +48,7 @@ export const dateRangeValidator: ValidatorFn = (
   const startDate = control.get("startDate");
   const endDate = control.get("endDate");
 
-  if (!startDate && endDate) {
-    return { startDateRequiredValidator: true };
-  }
-
-  if (startDate && endDate) {
+  if (startDate?.value && endDate?.value) {
     const originalStartDate = new Date(startDate.value);
     const originalEndDate = new Date(endDate.value);
 

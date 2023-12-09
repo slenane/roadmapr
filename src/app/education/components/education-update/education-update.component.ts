@@ -9,7 +9,10 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { Subject } from "rxjs";
 import { StackSelectorComponent } from "src/app/shared/components/stack-selector/stack-selector.component";
-import { validEducationUrlValidator } from "src/app/shared/constants/validators.constants";
+import {
+  dateRangeValidator,
+  validEducationUrlValidator,
+} from "src/app/shared/constants/validators.constants";
 
 @Component({
   selector: "app-education-update",
@@ -18,24 +21,34 @@ import { validEducationUrlValidator } from "src/app/shared/constants/validators.
 })
 export class EducationUpdateComponent implements OnInit {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
+  public updatingForm = false;
   public isUpdating: boolean = false;
   public selectedType: string = "";
-  public educationForm = new FormGroup({
-    type: new FormControl("", [
-      Validators.required,
-      Validators.pattern(/^(book|course)$/),
-    ]),
-    title: new FormControl("", [Validators.required, Validators.minLength(3)]),
-    author: new FormControl("", [Validators.required, Validators.minLength(3)]),
-    startDate: new FormControl<Date | null>(new Date()),
-    endDate: new FormControl<Date | null>(null),
-    description: new FormControl(),
-    link: new FormControl("", [
-      Validators.required,
-      validEducationUrlValidator,
-    ]),
-    isRecommended: new FormControl(true, [Validators.required]),
-  });
+  public educationForm = new FormGroup(
+    {
+      type: new FormControl("", [
+        Validators.required,
+        Validators.pattern(/^(book|course)$/),
+      ]),
+      title: new FormControl("", [
+        Validators.required,
+        Validators.minLength(3),
+      ]),
+      author: new FormControl("", [
+        Validators.required,
+        Validators.minLength(3),
+      ]),
+      startDate: new FormControl<Date | null>(new Date()),
+      endDate: new FormControl<Date | null>(null),
+      description: new FormControl(),
+      link: new FormControl("", [
+        Validators.required,
+        validEducationUrlValidator,
+      ]),
+      isRecommended: new FormControl(true, [Validators.required]),
+    },
+    { validators: dateRangeValidator }
+  );
 
   @ViewChild("stack") stack: StackSelectorComponent;
   @ViewChild("type") type: ElementRef;
@@ -50,6 +63,26 @@ export class EducationUpdateComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.educationForm.valueChanges.subscribe(() => {
+      if (!this.updatingForm) {
+        this.updatingForm = true;
+
+        if (this.educationForm.value.endDate) {
+          this.setControlValidators("startDate", [Validators.required]);
+        } else if (!this.educationForm.value.endDate) {
+          this.clearControlValidators("startDate");
+        }
+
+        if (this.educationForm.errors?.dateRangeValidator) {
+          this.educationForm.controls.endDate.setErrors({ invalidDate: true });
+        } else {
+          this.educationForm.controls.endDate.setErrors(null);
+        }
+      }
+
+      this.updatingForm = false;
+    });
+
     if (this.data?.type) {
       this.isUpdating = true;
       this.selectedType = this.data.type;
@@ -72,6 +105,24 @@ export class EducationUpdateComponent implements OnInit {
   ngOnDestroy() {
     this.ngUnsubscribe.next();
     this.ngUnsubscribe.complete();
+  }
+
+  setControlValidators(controlName: string, validators: any[]) {
+    const control = this.educationForm.get(controlName);
+
+    if (control) {
+      control.setValidators(validators);
+      control.updateValueAndValidity(); // Update the validity status
+    }
+  }
+
+  clearControlValidators(controlName: string) {
+    const control = this.educationForm.get(controlName);
+
+    if (control) {
+      control.clearValidators();
+      control.updateValueAndValidity(); // Update the validity status
+    }
   }
 
   focusError() {

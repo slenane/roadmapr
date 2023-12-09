@@ -10,14 +10,18 @@ import { dateRangeValidator } from "src/app/shared/constants/validators.constant
   styleUrls: ["./drop-list-date.component.scss"],
 })
 export class DropListDateComponent implements OnInit {
+  public updatingForm = false;
   public showEndDate = false;
   public showStartDate = false;
   public invalidDates = false;
 
-  public form = new FormGroup({
-    endDate: new FormControl<Date | null>(null),
-    startDate: new FormControl<Date | null>(null),
-  });
+  public form = new FormGroup(
+    {
+      endDate: new FormControl<Date | null>(null),
+      startDate: new FormControl<Date | null>(null),
+    },
+    { validators: dateRangeValidator }
+  );
 
   constructor(
     public dialogRef: MatDialogRef<DropListDateComponent>,
@@ -25,19 +29,26 @@ export class DropListDateComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.form.valueChanges.subscribe((form) => {
-      if (this.form.errors) {
-        this.invalidDates = true;
-        this.form.setErrors({ invalidDates: true });
-      } else {
-        this.invalidDates = false;
+    this.form.valueChanges.subscribe(() => {
+      if (!this.updatingForm && this.showEndDate) {
+        this.updatingForm = true;
+
+        if (this.form.errors?.dateRangeValidator) {
+          this.form.controls.endDate.setErrors({ invalidDate: true });
+        } else {
+          if (this.form.controls.endDate.errors?.required) {
+            this.form.controls.endDate.setErrors({ required: true });
+          } else {
+            this.form.controls.endDate.setErrors(null);
+          }
+        }
       }
 
-      console.log(this.invalidDates);
+      this.updatingForm = false;
     });
-
     this.configureForm();
   }
+
   configureForm() {
     const startDateValue =
       this.data.container === STATUS.IN_PROGRESS
@@ -59,7 +70,6 @@ export class DropListDateComponent implements OnInit {
 
     if (this.data.container !== STATUS.IN_PROGRESS) {
       this.setControlValidators("endDate", [Validators.required]);
-      this.form.setValidators(dateRangeValidator);
     }
   }
 
@@ -68,6 +78,15 @@ export class DropListDateComponent implements OnInit {
 
     if (control) {
       control.setValidators(validators);
+      control.updateValueAndValidity(); // Update the validity status
+    }
+  }
+
+  clearControlValidators(controlName: string) {
+    const control = this.form.get(controlName);
+
+    if (control) {
+      control.clearValidators();
       control.updateValueAndValidity(); // Update the validity status
     }
   }

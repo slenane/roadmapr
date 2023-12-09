@@ -123,6 +123,10 @@
               [for]="startDate"
             ></mat-datepicker-toggle>
             <mat-datepicker #startDate></mat-datepicker>
+            <mat-error
+              *ngIf="educationForm.controls.startDate?.hasError('required')"
+              >{{ "FORMS.REQUIRED.START_DATE" | translate }}</mat-error
+            >
           </mat-form-field>
 
           <mat-form-field appearance="outline">
@@ -138,6 +142,10 @@
               [for]="endDate"
             ></mat-datepicker-toggle>
             <mat-datepicker #endDate></mat-datepicker>
+            <mat-error
+              *ngIf="educationForm.controls.endDate?.hasError('invalidDate')"
+              >{{ "FORMS.DATES.INVALID" | translate }}</mat-error
+            >
           </mat-form-field>
         </div>
 

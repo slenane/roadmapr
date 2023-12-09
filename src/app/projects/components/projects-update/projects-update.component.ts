@@ -9,7 +9,10 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { Subject } from "rxjs";
 import { StackSelectorComponent } from "src/app/shared/components/stack-selector/stack-selector.component";
-import { validLinkPattern } from "src/app/shared/constants/validators.constants";
+import {
+  dateRangeValidator,
+  validLinkPattern,
+} from "src/app/shared/constants/validators.constants";
 
 @Component({
   selector: "app-project-update",
@@ -18,21 +21,28 @@ import { validLinkPattern } from "src/app/shared/constants/validators.constants"
 })
 export class ProjectsUpdateComponent implements OnInit {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
+  public updatingForm = false;
   public isUpdating: boolean = false;
-  public projectForm = new FormGroup({
-    description: new FormControl(""),
-    github: new FormControl("", [Validators.pattern(validLinkPattern)]),
-    endDate: new FormControl<Date | null>(null),
-    link: new FormControl("", [Validators.pattern(validLinkPattern)]),
-    notes: new FormControl(""),
-    startDate: new FormControl<Date | null>(null),
-    tagLine: new FormControl(""),
-    title: new FormControl("", [Validators.required, Validators.minLength(3)]),
-    type: new FormControl("", [
-      Validators.required,
-      Validators.pattern(/^(educational|personal)$/),
-    ]),
-  });
+  public projectForm = new FormGroup(
+    {
+      description: new FormControl(""),
+      github: new FormControl("", [Validators.pattern(validLinkPattern)]),
+      endDate: new FormControl<Date | null>(null),
+      link: new FormControl("", [Validators.pattern(validLinkPattern)]),
+      notes: new FormControl(""),
+      startDate: new FormControl<Date | null>(null),
+      tagLine: new FormControl(""),
+      title: new FormControl("", [
+        Validators.required,
+        Validators.minLength(3),
+      ]),
+      type: new FormControl("", [
+        Validators.required,
+        Validators.pattern(/^(educational|personal)$/),
+      ]),
+    },
+    { validators: dateRangeValidator }
+  );
 
   @ViewChild("stack") stack: StackSelectorComponent;
   @ViewChild("title") title: ElementRef;
@@ -45,6 +55,26 @@ export class ProjectsUpdateComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.projectForm.valueChanges.subscribe(() => {
+      if (!this.updatingForm) {
+        this.updatingForm = true;
+
+        if (this.projectForm.value.endDate) {
+          this.setControlValidators("startDate", [Validators.required]);
+        } else if (!this.projectForm.value.endDate) {
+          this.clearControlValidators("startDate");
+        }
+
+        if (this.projectForm.errors?.dateRangeValidator) {
+          this.projectForm.controls.endDate.setErrors({ invalidDate: true });
+        } else {
+          this.projectForm.controls.endDate.setErrors(null);
+        }
+      }
+
+      this.updatingForm = false;
+    });
+
     if (this.data) {
       this.isUpdating = true;
       this.projectForm.patchValue({
@@ -64,6 +94,24 @@ export class ProjectsUpdateComponent implements OnInit {
   ngOnDestroy() {
     this.ngUnsubscribe.next();
     this.ngUnsubscribe.complete();
+  }
+
+  setControlValidators(controlName: string, validators: any[]) {
+    const control = this.projectForm.get(controlName);
+
+    if (control) {
+      control.setValidators(validators);
+      control.updateValueAndValidity(); // Update the validity status
+    }
+  }
+
+  clearControlValidators(controlName: string) {
+    const control = this.projectForm.get(controlName);
+
+    if (control) {
+      control.clearValidators();
+      control.updateValueAndValidity(); // Update the validity status
+    }
   }
 
   focusError() {

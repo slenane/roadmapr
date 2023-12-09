@@ -36,17 +36,21 @@
           [for]="endDate"
         ></mat-datepicker-toggle>
         <mat-datepicker #endDate></mat-datepicker>
-
         <mat-error *ngIf="form.controls.endDate?.hasError('required')">{{
           "FORMS.REQUIRED.END_DATE" | translate
         }}</mat-error>
+        <mat-error
+          *ngIf="
+            !form.controls.endDate?.hasError('required') &&
+            form.controls.endDate?.hasError('invalidDate')
+          "
+          >{{ "FORMS.DATES.INVALID" | translate }}</mat-error
+        >
       </mat-form-field>
     </div>
   </form>
 </div>
-<div *ngIf="invalidDates" class="custom-error">{{
-  "FORMS.DATES.INVALID" | translate
-}}</div>
+
 <div mat-dialog-actions class="actions">
   <button mat-raised-button (click)="onCancelClick()">{{
     "ACTIONS.CANCEL" | translate

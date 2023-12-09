@@ -1,5 +1,3 @@
-@import "src/styles/app-vars.scss";
-
 .drop-list-dates-header {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -35,11 +33,6 @@
       grid-template-columns: 1fr;
     }
   }
-}
-
-.custom-error {
-  color: $dark-theme--error--mat-error-color;
-  text-align: right;
 }
 
 .actions {
