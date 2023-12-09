@@ -42,5 +42,6 @@ export class ExperienceItemDetailsComponent implements OnInit {
 
   deleteItem() {
     this.experienceStoreService.removeExperienceItem(this.data);
+    this.dialogRef.close(false);
   }
 }

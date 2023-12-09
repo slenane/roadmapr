@@ -319,6 +319,8 @@
     "T": "Experience",
     "T_SINGLE": "Experience",
     "EMPTY_LIST": {
+      "OPPORTUNITIES_LOADING_HEADER": "Loading Remote Opportunities",
+      "OPPORTUNITIES_LOADING_MESSAGE": "Retrieving opportunities from remoteok.com",
       "OPPORTUNITIES_HEADER": "No opportunities available",
       "OPPORTUNITIES_MESSAGE": "Check Remote OK, Indeed or LinkedIn for remote work",
       "IN_PROGRESS_HEADER": "No Experience In Progress",
