@@ -27,6 +27,7 @@ import { UpdatePasswordInputsComponent } from "./components/forms/update-passwor
 import { HomeMenuComponent } from "./components/home-menu/home-menu.component";
 import { DropListEmptyComponent } from "./components/drop-list/drop-list-empty/drop-list-empty.component";
 import { PathSelectorComponent } from './components/path-selector/path-selector.component';
+import { DropListDateComponent } from './components/drop-list/drop-list-date/drop-list-date.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { PathSelectorComponent } from './components/path-selector/path-selector.
     HomeMenuComponent,
     DropListEmptyComponent,
     PathSelectorComponent,
+    DropListDateComponent,
   ],
   exports: [
     SidebarComponent,

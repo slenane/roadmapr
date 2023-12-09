@@ -8,6 +8,7 @@ import { Component, OnInit, Input } from "@angular/core";
 export class DropListEmptyComponent implements OnInit {
   @Input() header: string;
   @Input() message: string;
+  @Input() showLoader: boolean;
 
   constructor() {}
 

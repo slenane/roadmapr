@@ -42,6 +42,35 @@ export const validEducationUrlValidator: ValidatorFn = (
     : { pattern: true };
 };
 
+export const dateRangeValidator: ValidatorFn = (
+  control: AbstractControl
+): ValidationErrors | null => {
+  const startDate = control.get("startDate");
+  const endDate = control.get("endDate");
+
+  if (startDate?.value && endDate?.value) {
+    const originalStartDate = new Date(startDate.value);
+    const originalEndDate = new Date(endDate.value);
+
+    const start = new Date(
+      originalStartDate.getFullYear(),
+      originalStartDate.getMonth(),
+      originalStartDate.getDate()
+    );
+    const end = new Date(
+      originalEndDate.getFullYear(),
+      originalEndDate.getMonth(),
+      originalEndDate.getDate()
+    );
+
+    if (start.getTime() > end.getTime()) {
+      return { dateRangeValidator: true };
+    }
+  }
+
+  return null;
+};
+
 // export const countryMatchValidator: ValidatorFn = (
 //   control: AbstractControl
 // ): ValidationErrors | null => {

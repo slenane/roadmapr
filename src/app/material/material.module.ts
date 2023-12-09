@@ -34,6 +34,7 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatStepperModule } from "@angular/material/stepper";
 import { MatRadioModule } from "@angular/material/radio";
 import { MatTabsModule } from "@angular/material/tabs";
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 
 @NgModule({
   exports: [
@@ -73,7 +74,7 @@ import { MatTabsModule } from "@angular/material/tabs";
     MatRadioModule,
     MatTabsModule,
   ],
-  providers: [],
+  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'en-GB' }],
   bootstrap: [],
 })
 export class MaterialModule {}

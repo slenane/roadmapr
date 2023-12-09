@@ -1,5 +1,8 @@
 <div class="no-item-message">
-  <span class="material-symbols-outlined"> add </span>
+  <div *ngIf="showLoader" class="loader">
+    <img [src]="'/assets/images/logo/logo-dark.gif'" />
+  </div>
+  <span *ngIf="!showLoader" class="material-symbols-outlined"> add </span>
   <p class="message-primary">{{ header | translate }}</p>
   <p class="message-secondary">{{ message | translate }}</p>
 </div>

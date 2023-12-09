@@ -76,8 +76,7 @@ export class EducationEffects {
       ofType(educationActions.BULK_UPDATE_EDUCATION_ITEMS),
       switchMap(({ educationId, data }) =>
         this.educationService.bulkUpdateEducationItems(educationId, data).pipe(
-          map(({ education, successMessage }) => {
-            this.alertsService.successAlert(successMessage);
+          map(({ education }) => {
             return educationActions.BulkUpdateEducationItemsSuccess({
               payload: education,
             });

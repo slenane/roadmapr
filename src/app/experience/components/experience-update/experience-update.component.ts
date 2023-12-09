@@ -9,7 +9,10 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { Subject } from "rxjs";
 import { StackSelectorComponent } from "src/app/shared/components/stack-selector/stack-selector.component";
-import { validLinkPattern } from "src/app/shared/constants/validators.constants";
+import {
+  dateRangeValidator,
+  validLinkPattern,
+} from "src/app/shared/constants/validators.constants";
 
 @Component({
   selector: "app-experience-update",
@@ -18,23 +21,27 @@ import { validLinkPattern } from "src/app/shared/constants/validators.constants"
 })
 export class ExperienceUpdateComponent implements OnInit {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
+  public updatingForm = false;
   public isUpdating: boolean = false;
-  public experienceForm = new FormGroup({
-    role: new FormControl("", [Validators.required, Validators.minLength(3)]),
-    company: new FormControl("", [
-      Validators.required,
-      Validators.minLength(3),
-    ]),
-    companyLink: new FormControl("", [Validators.pattern(validLinkPattern)]),
-    description: new FormControl(""),
-    project: new FormControl("", [Validators.pattern(validLinkPattern)]),
-    endDate: new FormControl<Date | null>(null),
-    startDate: new FormControl<Date | null>(null),
-    type: new FormControl("", [
-      Validators.required,
-      Validators.pattern(/^(freelance|professional)$/),
-    ]),
-  });
+  public experienceForm = new FormGroup(
+    {
+      role: new FormControl("", [Validators.required, Validators.minLength(3)]),
+      company: new FormControl("", [
+        Validators.required,
+        Validators.minLength(3),
+      ]),
+      companyLink: new FormControl("", [Validators.pattern(validLinkPattern)]),
+      description: new FormControl(""),
+      project: new FormControl("", [Validators.pattern(validLinkPattern)]),
+      endDate: new FormControl(null),
+      startDate: new FormControl(new Date(), [Validators.required]),
+      type: new FormControl("", [
+        Validators.required,
+        Validators.pattern(/^(freelance|professional)$/),
+      ]),
+    },
+    { validators: dateRangeValidator }
+  );
 
   @ViewChild("stack") stack: StackSelectorComponent;
   @ViewChild("role") role: ElementRef;
@@ -49,6 +56,20 @@ export class ExperienceUpdateComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.experienceForm.valueChanges.subscribe(() => {
+      if (!this.updatingForm) {
+        this.updatingForm = true;
+
+        if (this.experienceForm.errors?.dateRangeValidator) {
+          this.experienceForm.controls.endDate.setErrors({ invalidDate: true });
+        } else {
+          this.experienceForm.controls.endDate.setErrors(null);
+        }
+      }
+
+      this.updatingForm = false;
+    });
+
     if (this.data) {
       this.isUpdating = true;
       this.experienceForm.patchValue({

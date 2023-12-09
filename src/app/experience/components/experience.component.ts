@@ -13,6 +13,8 @@ import { experienceInitialState } from "../store/experience.reducer";
 import { ExperienceStoreService } from "../services/experience-store.service";
 import { RecommendationsStoreService } from "src/app/recommendations/services/recommendations-store.service";
 import { RemoteJob } from "src/app/recommendations/store/recommendations.models";
+import { DropListDateComponent } from "src/app/shared/components/drop-list/drop-list-date/drop-list-date.component";
+import { MatDialog } from "@angular/material/dialog";
 
 @Component({
   selector: "app-experience",
@@ -39,7 +41,8 @@ export class ExperienceComponent implements OnInit {
   constructor(
     private experienceStoreService: ExperienceStoreService,
     private recommendationsStoreService: RecommendationsStoreService,
-    private dropListService: DropListService
+    private dropListService: DropListService,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -165,13 +168,52 @@ export class ExperienceComponent implements OnInit {
   }
 
   drop(event: CdkDragDrop<any[]>) {
-    const updatedItems = this.dropListService.drop(event);
+    const currentContainer = event.container;
+    const previousContainer = event.previousContainer;
+    const previousIndex = event.previousIndex;
 
-    if (updatedItems.length) {
-      this.experienceStoreService.bulkUpdateExperienceItems(
-        this.experience._id,
-        updatedItems
-      );
+    const handleUpdate = (result?: {
+      end?: Date | null;
+      start?: Date | null;
+    }) => {
+      const updatedItems = this.dropListService.drop(event, result);
+
+      if (updatedItems.length) {
+        this.experienceStoreService.bulkUpdateExperienceItems(
+          this.experience._id,
+          updatedItems
+        );
+      }
+    };
+
+    if (previousContainer !== currentContainer) {
+      const droppedItem = previousContainer.data[previousIndex];
+
+      if (currentContainer.id === STATUS.TODO) {
+        handleUpdate({ end: null, start: null });
+      } else if (
+        currentContainer.id === STATUS.IN_PROGRESS &&
+        droppedItem.startDate
+      ) {
+        handleUpdate({ end: null });
+      } else {
+        this.dialog
+          .open(DropListDateComponent, {
+            minWidth: "40vw",
+            disableClose: true,
+            data: {
+              item: droppedItem,
+              container: currentContainer.id,
+            },
+          })
+          .afterClosed()
+          .subscribe((result: any) => {
+            if (result) handleUpdate(result);
+            else return;
+          });
+      }
+    } else {
+      handleUpdate();
     }
   }
 

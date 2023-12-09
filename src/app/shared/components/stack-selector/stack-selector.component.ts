@@ -57,7 +57,9 @@ export class StackSelectorComponent implements OnInit {
       changes.type.currentValue !== changes.type.previousValue
     ) {
       if (changes.type.currentValue === "book") {
-        this.chipList.errorState = false;
+        if (this.chipList) {
+          this.chipList.errorState = false;
+        }
       }
     }
   }
@@ -69,7 +71,9 @@ export class StackSelectorComponent implements OnInit {
     if (value) this.matAutocomplete.options.some((option) => option.selected);
     if (input) input.value = "";
     this.stackCtrl.setValue("");
-    this.chipList.errorState = false;
+    if (this.chipList) {
+      this.chipList.errorState = false;
+    }
   }
 
   removeStackItem(stack: any): void {
@@ -92,7 +96,9 @@ export class StackSelectorComponent implements OnInit {
     if (!this.selectedStack.includes(current)) {
       this.selectedStack.push(current);
       this.updateStackList();
-      this.chipList.errorState = false;
+      if (this.chipList) {
+        this.chipList.errorState = false;
+      }
     }
     this.stackInput.nativeElement.value = "";
     this.stackCtrl.setValue("");
@@ -120,13 +126,13 @@ export class StackSelectorComponent implements OnInit {
   }
 
   getRequiredOnBlur() {
-    if (!this.isStackValid()) {
+    if (!this.isStackValid() && this.chipList) {
       this.chipList.errorState = true;
     }
   }
 
   getData(): any {
-    if (!this.isStackValid()) {
+    if (!this.isStackValid() && this.chipList) {
       this.chipList.errorState = true;
       this.stackInput.nativeElement.focus();
     }

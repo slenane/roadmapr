@@ -8,6 +8,8 @@ import { ProjectsStoreService } from "../services/projects-store.service";
 import { PROJECT_TYPE_CONFIG, STATUS } from "../constants/projects.constants";
 import { DropListService } from "src/app/shared/services/drop-list.service";
 import { projectsInitialState } from "../store/projects.reducer";
+import { MatDialog } from "@angular/material/dialog";
+import { DropListDateComponent } from "src/app/shared/components/drop-list/drop-list-date/drop-list-date.component";
 
 @Component({
   selector: "app-projects",
@@ -33,7 +35,8 @@ export class ProjectsComponent implements OnInit, OnDestroy {
   constructor(
     private projectService: ProjectsService,
     private projectsStoreService: ProjectsStoreService,
-    private dropListService: DropListService
+    private dropListService: DropListService,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -154,13 +157,52 @@ export class ProjectsComponent implements OnInit, OnDestroy {
   }
 
   drop(event: CdkDragDrop<any[]>) {
-    const updatedItems = this.dropListService.drop(event);
+    const currentContainer = event.container;
+    const previousContainer = event.previousContainer;
+    const previousIndex = event.previousIndex;
 
-    if (updatedItems.length) {
-      this.projectsStoreService.bulkUpdateProjectItems(
-        this.projects._id,
-        updatedItems
-      );
+    const handleUpdate = (result?: {
+      end?: Date | null;
+      start?: Date | null;
+    }) => {
+      const updatedItems = this.dropListService.drop(event, result);
+
+      if (updatedItems.length) {
+        this.projectsStoreService.bulkUpdateProjectItems(
+          this.projects._id,
+          updatedItems
+        );
+      }
+    };
+
+    if (previousContainer !== currentContainer) {
+      const droppedItem = previousContainer.data[previousIndex];
+
+      if (currentContainer.id === STATUS.TODO) {
+        handleUpdate({ end: null, start: null });
+      } else if (
+        currentContainer.id === STATUS.IN_PROGRESS &&
+        droppedItem.startDate
+      ) {
+        handleUpdate({ end: null });
+      } else {
+        this.dialog
+          .open(DropListDateComponent, {
+            minWidth: "40vw",
+            disableClose: true,
+            data: {
+              item: droppedItem,
+              container: currentContainer.id,
+            },
+          })
+          .afterClosed()
+          .subscribe((result: any) => {
+            if (result) handleUpdate(result);
+            else return;
+          });
+      }
+    } else {
+      handleUpdate();
     }
   }
 
