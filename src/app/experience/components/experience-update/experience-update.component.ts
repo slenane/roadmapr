@@ -33,8 +33,8 @@ export class ExperienceUpdateComponent implements OnInit {
       companyLink: new FormControl("", [Validators.pattern(validLinkPattern)]),
       description: new FormControl(""),
       project: new FormControl("", [Validators.pattern(validLinkPattern)]),
-      endDate: new FormControl<Date | null>(null),
-      startDate: new FormControl<Date>(new Date(), Validators.required),
+      endDate: new FormControl(null),
+      startDate: new FormControl(new Date(), [Validators.required]),
       type: new FormControl("", [
         Validators.required,
         Validators.pattern(/^(freelance|professional)$/),
