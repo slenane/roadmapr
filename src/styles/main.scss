@@ -183,3 +183,11 @@ mat-form-field {
 .mat-progress-bar-buffer {
   background-color: #e8e8e8 !important;
 }
+
+.snackbar {
+  &-error {
+    background-color: red !important;
+    color: white !important;
+    font-weight: 500;
+  }
+}

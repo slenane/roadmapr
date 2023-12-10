@@ -9,6 +9,7 @@ import {
   DEV_STACKS,
   IDeveloperStack,
   IStack,
+  IStackItem,
 } from "src/app/shared/constants/dev-paths.constants";
 import { EducationItem } from "src/app/education/store/education.models";
 import { ProjectItem } from "src/app/projects/store/projects.models";
@@ -27,7 +28,7 @@ export class RoadmapComponent implements OnInit {
   public user: Profile;
   public roadmap: Roadmap;
   public stack: any = {};
-  public languageFilterConfig: IStack[] = [];
+  public languageFilterConfig: IStackItem[] = [];
   public education: EducationItem[] = [];
   public experience: ExperienceItem[] = [];
   public projects: ProjectItem[] = [];
@@ -118,16 +119,16 @@ export class RoadmapComponent implements OnInit {
   }
 
   getUserStack(stack: IDeveloperStack): void {
-    this.userStack = this.developerStacks.find(
+    this.userStack = [...this.developerStacks, this.customStack].find(
       (item) => item.type.id === stack.id
     );
   }
 
-  extractLanguageFilterConfig(data: any) {
+  extractLanguageFilterConfig(data: any): IStackItem[] {
     const stack: any = [];
     for (const section in data) {
       data[section].forEach((item: any) => {
-        item.stack.forEach((language: any) => {
+        item.stack.forEach((language: IStackItem) => {
           if (!stack.find((curr: any) => curr.name === language.name)) {
             stack.push(language);
           }

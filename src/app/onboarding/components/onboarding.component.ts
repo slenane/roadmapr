@@ -9,6 +9,7 @@ import { Router } from "@angular/router";
 import { ProfileService } from "src/app/profile/services/profile.service";
 import { ROUTES } from "src/app/core/constants/routes.constants";
 import { profileInitialState } from "src/app/profile/store/profile.reducer";
+import { RoadmapStoreService } from "src/app/roadmap/services/roadmap-store.service";
 
 @Component({
   selector: "app-onboarding",
@@ -24,6 +25,7 @@ export class OnboardingComponent implements OnInit {
     public dialog: MatDialog,
     private profileStoreService: ProfileStoreService,
     private profileService: ProfileService,
+    private roadmapStoreService: RoadmapStoreService,
     private router: Router
   ) {}
 
@@ -65,6 +67,9 @@ export class OnboardingComponent implements OnInit {
       if (user) {
         this.onboardingInitialised = true;
         this.profileStoreService.updateProfile(this.user._id, user.data);
+        this.roadmapStoreService.updateRoadmap({
+          path: user.data.path,
+        });
 
         if (user.action === "skip") this.router.navigateByUrl(ROUTES.ROADMAP);
         else this.router.navigateByUrl(ROUTES.TOUR);

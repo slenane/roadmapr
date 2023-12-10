@@ -60,7 +60,7 @@ export class RoadmapOverviewComponent implements OnInit, OnChanges {
       minWidth: "70vw",
       autoFocus: false,
       data: {
-        path: this.roadmap.path,
+        path: this.user.path,
         stack: this.roadmap.stack,
       },
     });

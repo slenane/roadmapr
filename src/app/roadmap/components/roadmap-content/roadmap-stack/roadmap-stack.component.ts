@@ -1,10 +1,19 @@
-import { Component, Input, OnInit, SimpleChanges } from "@angular/core";
+import {
+  Component,
+  Input,
+  OnInit,
+  SimpleChanges,
+  Output,
+  EventEmitter,
+} from "@angular/core";
+import { MatDialog } from "@angular/material/dialog";
 import {
   IDeveloperPath,
   IStack,
   IStackItem,
   IStackItemCount,
 } from "src/app/shared/constants/dev-paths.constants";
+import { RoadmapUpdateComponent } from "../../roadmap-update/roadmap-update.component";
 
 @Component({
   selector: "app-roadmap-stack",
@@ -15,12 +24,17 @@ export class RoadmapStackComponent implements OnInit {
   public incrementValue: number;
   public stackGridOne: IStackItemCount[] = [];
   public stackGridTwo: IStackItemCount[] = [];
+  public activeStack: IStack | undefined;
+  public showStackSubHeaders = true;
+  public isCustomStackEmpty = false;
 
   @Input() stackList: any;
   @Input() userStack: IStack | undefined;
+  @Input() stackItemConfig: IStackItem[];
   @Input() path: IDeveloperPath | undefined;
+  @Output() onUpdate = new EventEmitter();
 
-  constructor() {}
+  constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.updateStackData();
@@ -38,8 +52,29 @@ export class RoadmapStackComponent implements OnInit {
   }
 
   updateStackData() {
-    this.getIncrementValue();
-    this.getSortedStack();
+    if (this.userStack) {
+      this.activeStack = this.getActiveStackData(this.userStack);
+      this.getIncrementValue();
+      this.getSortedStack();
+    } else {
+      this.activeStack = undefined;
+    }
+  }
+
+  getActiveStackData(stack: IStack): IStack | undefined {
+    if (stack.title !== "STACKS.TITLES.CUSTOM") {
+      this.isCustomStackEmpty = false;
+      return stack;
+    } else {
+      this.isCustomStackEmpty = !this.stackItemConfig.length;
+      return {
+        ...stack,
+        title: "STACKS.TITLES.STACK",
+        stack: {
+          core: [...this.stackItemConfig],
+        },
+      };
+    }
   }
 
   getIncrementValue() {
@@ -56,8 +91,9 @@ export class RoadmapStackComponent implements OnInit {
       choice: IStackItemCount[] = [],
       bonus: IStackItemCount[] = [];
 
-    if (this.userStack?.stack.core) {
-      for (let stack of this.userStack?.stack.core) {
+    if (this.activeStack?.stack.core) {
+      this.showStackSubHeaders = false;
+      for (let stack of this.activeStack?.stack.core) {
         core.push({
           ...stack,
           count: this.getCount(stack),
@@ -65,8 +101,10 @@ export class RoadmapStackComponent implements OnInit {
         });
       }
     }
-    if (this.userStack?.stack.choice) {
-      for (let stack of this.userStack?.stack.choice) {
+
+    if (this.activeStack?.stack.choice) {
+      this.showStackSubHeaders = true;
+      for (let stack of this.activeStack?.stack.choice) {
         choice.push({
           ...stack,
           count: this.getCount(stack),
@@ -74,8 +112,9 @@ export class RoadmapStackComponent implements OnInit {
         });
       }
     }
-    if (this.userStack?.stack.bonus) {
-      for (let stack of this.userStack?.stack.bonus) {
+    if (this.activeStack?.stack.bonus) {
+      this.showStackSubHeaders = true;
+      for (let stack of this.activeStack?.stack.bonus) {
         bonus.push({
           ...stack,
           count: this.getCount(stack),
@@ -122,5 +161,21 @@ export class RoadmapStackComponent implements OnInit {
     const column2 = arr.slice(midpoint);
 
     return [column1, column2];
+  }
+
+  editRoadmap() {
+    const dialogRef = this.dialog.open(RoadmapUpdateComponent, {
+      minHeight: "90vh",
+      minWidth: "70vw",
+      autoFocus: false,
+      data: {
+        path: this.path,
+        stack: undefined,
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((result: any) => {
+      this.onUpdate.emit(result);
+    });
   }
 }
