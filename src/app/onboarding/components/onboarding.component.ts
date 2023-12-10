@@ -71,8 +71,7 @@ export class OnboardingComponent implements OnInit {
           path: user.data.path,
         });
 
-        if (user.action === "skip") this.router.navigateByUrl(ROUTES.ROADMAP);
-        else this.router.navigateByUrl(ROUTES.TOUR);
+        this.router.navigateByUrl(ROUTES.ROADMAP);
       }
     });
   }

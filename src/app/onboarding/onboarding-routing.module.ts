@@ -9,11 +9,11 @@ const routes: Routes = [
     component: OnboardingComponent,
     title: "ROUTES.ONBOARDING",
   },
-  {
-    path: "tour",
-    component: OnboardingTourComponent,
-    title: "ROUTES.TOUR",
-  },
+  // {
+  //   path: "tour",
+  //   component: OnboardingTourComponent,
+  //   title: "ROUTES.TOUR",
+  // },
 ];
 
 @NgModule({
