@@ -6,7 +6,7 @@
   </div>
   <div class="content">
     <div class="title"> {{ title | translate }} </div>
-    <div class="value" *ngIf="value">
+    <div class="value" *ngIf="value || value === 0">
       {{ value }}
     </div>
     <div class="value" *ngIf="timeValue && timeValue.years > 1">

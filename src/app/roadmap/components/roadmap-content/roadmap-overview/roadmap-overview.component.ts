@@ -20,7 +20,7 @@ import { MatDialog } from "@angular/material/dialog";
 })
 export class RoadmapOverviewComponent implements OnInit, OnChanges {
   public languages: number = 0;
-  public time: { years: number; days: number };
+  public time: { years: number; days: number } = { years: 0, days: 0 };
 
   @Input() roadmap: Roadmap;
   @Input() user: Profile;
