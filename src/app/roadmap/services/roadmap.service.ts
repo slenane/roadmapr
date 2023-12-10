@@ -30,23 +30,30 @@ export class RoadmapService {
     );
   }
 
-  getStartDate(data: any): number {
+  getStartDate(data: any): number | undefined {
     const dates = data
       .filter((item: any) => !!item.startDate)
       .map((item: any) => new Date(item.startDate).getTime());
 
-    return Math.min(...dates);
+    return dates.length ? Math.min(...dates) : undefined;
   }
 
-  getTimeStringSinceDate(date: number): { years: number; days: number } {
-    const totalDays = Math.floor(
-      (new Date().getTime() - date) / (1000 * 3600 * 24)
-    );
+  getTimeStringSinceDate(date: number | undefined): {
+    years: number;
+    days: number;
+  } {
+    if (!!date) {
+      const totalDays = Math.floor(
+        (new Date().getTime() - date) / (1000 * 3600 * 24)
+      );
 
-    const years = Math.floor(totalDays / 365) || 0;
-    const remainingDays = totalDays % 365 || 0;
+      const years = Math.floor(totalDays / 365) || 0;
+      const remainingDays = totalDays % 365 || 0;
 
-    return { years: years, days: remainingDays };
+      return { years: years, days: remainingDays };
+    }
+
+    return { years: 0, days: 0 };
   }
 
   getCombinedTime(timeSet: number[][]): { years: number; days: number } {
@@ -67,19 +74,23 @@ export class RoadmapService {
   getPercentageOfTotalTime(
     allItems: any[],
     experienceItems: ExperienceItem[]
-  ): number {
+  ): number | "N/A" {
     const allStartDate = this.getStartDate(allItems);
     const professionalStartDate = this.getStartDate(experienceItems);
 
-    const totalDays = Math.floor(
-      (new Date().getTime() - allStartDate) / (1000 * 3600 * 24)
-    );
-    const totalProfessionalDays = Math.floor(
-      (new Date().getTime() - professionalStartDate) / (1000 * 3600 * 24)
-    );
+    if (allStartDate && professionalStartDate) {
+      const totalDays = Math.floor(
+        (new Date().getTime() - allStartDate) / (1000 * 3600 * 24)
+      );
+      const totalProfessionalDays = Math.floor(
+        (new Date().getTime() - professionalStartDate) / (1000 * 3600 * 24)
+      );
 
-    const percentage = (totalProfessionalDays / totalDays) * 100;
+      const percentage = (totalProfessionalDays / totalDays) * 100;
 
-    return Math.floor(percentage);
+      return Math.floor(percentage);
+    }
+
+    return "N/A";
   }
 }

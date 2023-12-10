@@ -42,7 +42,7 @@ export class RoadmapEducationComponent implements OnInit, OnChanges {
   public bookTrend: number;
   public courseTrend: number;
   public completionRate: number;
-  public stackCoverage: number;
+  public stackCoverage: number | "N/A" = "N/A";
   public chartOptions: ChartOptions;
 
   @ViewChild("chart") chart: ChartComponent;
@@ -53,7 +53,9 @@ export class RoadmapEducationComponent implements OnInit, OnChanges {
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.setInitialValues();
+  }
 
   ngOnChanges(changes: SimpleChanges) {
     if (

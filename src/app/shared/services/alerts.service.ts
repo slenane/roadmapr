@@ -10,16 +10,19 @@ export class AlertsService {
 
   successAlert(message: string, value?: string) {
     this.snackBar.openFromComponent(AlertsComponent, {
+      horizontalPosition: "right",
       data: {
         message,
         value,
       },
-      duration: 5000,
+      duration: 3000,
+      panelClass: ["snackbar-success"],
     });
   }
 
   errorAlert(message: string, value?: string) {
     this.snackBar.openFromComponent(AlertsComponent, {
+      horizontalPosition: "right",
       data: {
         message,
         value,

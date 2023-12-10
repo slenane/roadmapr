@@ -26,7 +26,7 @@ export class RoadmapStoreService {
       .pipe(filter((data) => !!data));
   }
 
-  updateRoadmap(data: { path: IDeveloperPath; stack: IDeveloperStack }) {
+  updateRoadmap(data: { path: IDeveloperPath; stack?: IDeveloperStack }) {
     this.store.dispatch({
       type: roadmapActions.UPDATE_ROADMAP,
       data,

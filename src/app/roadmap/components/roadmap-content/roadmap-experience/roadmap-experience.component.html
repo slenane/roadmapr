@@ -57,9 +57,11 @@
           "
           [matTooltipShowDelay]="'500'"
         >
-          <div class="percentage">{{ totalTime }}%</div>
+          <div class="percentage"
+            >{{ totalTime }}{{ totalTime !== "N/A" ? "%" : "" }}</div
+          >
           <mat-progress-spinner
-            class="example-margin"
+            class="roadmap-percentage-wheel"
             [mode]="'determinate'"
             [value]="totalTime"
           >

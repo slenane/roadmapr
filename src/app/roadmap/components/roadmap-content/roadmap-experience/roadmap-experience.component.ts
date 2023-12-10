@@ -43,7 +43,7 @@ export class RoadmapExperienceComponent implements OnInit {
   public professionalCount: number;
   public freelanceTotalTime: { years: number; days: number };
   public professionalTotalTime: { years: number; days: number };
-  public totalTime: number;
+  public totalTime: number | "N/A";
   @Input() experience: ExperienceItem[];
   @Input() education: EducationItem[];
 

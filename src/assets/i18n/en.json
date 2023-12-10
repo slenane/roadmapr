@@ -77,7 +77,8 @@
       "SWIFT": "Swift Stack",
       "KOTLIN": "Kotlin Stack",
       "XAMARIN": "Xamarin Stack",
-      "CUSTOM": "Custom Stack"
+      "CUSTOM": "Custom Stack",
+      "STACK": "Stack"
     },
     "DESCRIPTIONS": {
       "REACT": "React, a declarative front-end library, excels in dynamic UIs with a virtual DOM for performance. It promotes reusable components and unidirectional data flow for simplicity. However, varied state practices and a learning curve may challenge beginners. Overall, React offers a powerful and efficient UI development toolset",
@@ -476,7 +477,7 @@
       "PASSWORD": "Passwords must be at least 6 characters long, contains at least 1 number and 1 special character (!@#$%^&*)"
     },
     "REMOVE": {
-      "GITHUB": "Remove GitHub Account"
+      "GITHUB": "Unlink GitHub Account"
     },
     "UPDATE": {
       "EMAIL": "Update Email",
@@ -599,7 +600,15 @@
       "COMMITS": "Commits",
       "COMMITS_LAST": "Last:",
       "COMMITS_FIRST": "First:",
-      "VIEW_REPO": "View Repo"
+      "VIEW_REPO": "View Repo",
+      "LINK_MESSAGE": "Link your GitHub account to display data on your recent activity including contributions, repos, bio and more"
+    },
+    "STACK": {
+      "T": "Stack",
+      "EMPTY_CUSTOM": "Complete courses, books and projects to update your stack",
+      "SELECT_HEADER": "Follow a popular development stack or customize your own.",
+      "SELECT_BODY": "A structured plan, whether conventional or tailored, boosts efficiency, coherence, and job readiness. Flexibility in choosing your tools ensures a well-rounded skill set for a successful coding career.",
+      "SELECT_BUTTON": "Select Stack"
     }
   },
   "RECOMMENDATIONS": {
@@ -633,7 +642,7 @@
   },
   "REDIRECTING": {
     "T": "Redirecting",
-    "PLEASE_WAIT": "Please wait"
+    "PLEASE_WAIT": "Please wait..."
   },
   "PAGE_NOT_FOUND": {
     "T": "404",

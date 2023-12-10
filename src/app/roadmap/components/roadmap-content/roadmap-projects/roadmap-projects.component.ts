@@ -42,9 +42,7 @@ export class RoadmapProjectsComponent implements OnInit, OnChanges {
 
   constructor() {}
 
-  ngOnInit(): void {
-    this.generateChartData();
-  }
+  ngOnInit(): void {}
 
   ngOnChanges(changes: SimpleChanges) {
     if (
@@ -52,6 +50,7 @@ export class RoadmapProjectsComponent implements OnInit, OnChanges {
       changes.data.currentValue != changes.data.previousValue
     ) {
       this.generateData();
+      this.generateChartData();
     }
   }
 
@@ -90,32 +89,30 @@ export class RoadmapProjectsComponent implements OnInit, OnChanges {
       else if (item === "database") db++;
     }
 
-    if (list.length) {
-      this.chartOptions = {
-        fill: {
-          colors: ["#00bcd4"],
+    this.chartOptions = {
+      fill: {
+        colors: ["#00bcd4"],
+      },
+      theme: {
+        mode: "dark",
+      },
+      series: [
+        {
+          name: "Languages used",
+          data: [front, full, back, db],
         },
-        theme: {
-          mode: "dark",
+      ],
+      chart: {
+        height: 300,
+        type: "radar",
+        toolbar: {
+          show: false,
         },
-        series: [
-          {
-            name: "Languages used",
-            data: [front, full, back, db],
-          },
-        ],
-        chart: {
-          height: 300,
-          type: "radar",
-          toolbar: {
-            show: false,
-          },
-        },
-        xaxis: {
-          categories: labels,
-        },
-      };
-    }
+      },
+      xaxis: {
+        categories: labels,
+      },
+    };
   }
 
   isInCurrentMonth(date: Date) {

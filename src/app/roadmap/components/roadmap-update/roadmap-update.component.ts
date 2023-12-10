@@ -1,8 +1,5 @@
 import { Component, OnInit, Inject } from "@angular/core";
-import {
-  MAT_DIALOG_DATA,
-  MatDialogRef,
-} from "@angular/material/dialog";
+import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { Subject } from "rxjs";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import {

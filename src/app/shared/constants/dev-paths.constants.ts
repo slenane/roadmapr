@@ -206,8 +206,6 @@ export const DEV_STACKS: IStack[] = [
         { title: "HTML", name: "html5", type: "frontend" },
         { title: "CSS", name: "css3", type: "frontend" },
         { title: "JavaScript", name: "javascript", type: "full-stack" },
-        { title: "MySQL", name: "mysql", type: "database" },
-        { title: "PostgreSQL", name: "postgresql", type: "database" },
         { title: "Docker", name: "docker", type: "backend" },
       ],
     },

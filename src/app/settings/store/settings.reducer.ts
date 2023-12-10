@@ -31,6 +31,9 @@ const SettingsReducer = createReducer(
   on(SettingsActions.UpdateSettingsSuccess, (state, { payload }) => {
     return { ...state, ...payload };
   }),
+  on(SettingsActions.RemoveGithubSuccess, (state, { payload }) => {
+    return { ...state, ...payload };
+  }),
   on(SettingsActions.UpdatePasswordSuccess, (state, { payload }) => {
     return { ...state, ...payload };
   }),

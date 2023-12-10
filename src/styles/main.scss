@@ -172,12 +172,22 @@ mat-form-field {
 }
 
 .mat-progress-spinner {
-  box-shadow: 0 0 0 10px #e8e8e8 inset;
-  border-radius: 50%;
-  margin-bottom: 1rem;
-  zoom: 0.8;
+  &.roadmap-percentage-wheel {
+    transform: scale(0.8);
+    box-shadow: 0 0 0 10px #e8e8e8 inset;
+    margin-bottom: 1rem;
+    border-radius: 50%;
+  }
 }
 
 .mat-progress-bar-buffer {
   background-color: #e8e8e8 !important;
+}
+
+.snackbar {
+  &-error {
+    background-color: red !important;
+    color: white !important;
+    font-weight: 500;
+  }
 }

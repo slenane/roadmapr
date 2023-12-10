@@ -17,7 +17,7 @@ export class ApiService {
     return this.http.post(url, body);
   }
 
-  public patch(url: string, body: any): Observable<any> {
+  public patch(url: string, body?: any): Observable<any> {
     return this.http.patch(url, body);
   }
 

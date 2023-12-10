@@ -1,32 +1,40 @@
-<mat-card class="stack-card" *ngIf="userStack && path">
+<mat-card class="stack-card" *ngIf="this.activeStack; else addStack">
   <mat-card-header>
     <mat-card-title
       ><span class="material-symbols-outlined roadmap-title-icon">
         data_object
       </span>
-      {{ userStack.title | translate }}
+      {{ activeStack.title | translate }}
     </mat-card-title>
 
-    <div class="tech-stack">
+    <div class="tech-stack" *ngIf="!isCustomStackEmpty">
       <img
-        *ngFor="let tech of userStack.stack?.core"
+        *ngFor="let tech of activeStack.stack?.core"
         class="app-stack-icon"
         matTooltip="{{ tech.title }}"
         src="/assets/images/stack/{{ tech.name }}-original.svg"
       />
       <img
-        *ngFor="let tech of userStack.stack?.choice"
+        *ngFor="let tech of activeStack.stack?.choice"
         class="app-stack-icon"
         matTooltip="{{ tech.title }}"
         src="/assets/images/stack/{{ tech.name }}-original.svg"
       />
     </div>
+
+    <div class="custom-tech-stack" *ngIf="isCustomStackEmpty">
+      <div class="custom-icon"></div>
+      <div class="custom-icon"></div>
+      <div class="custom-icon"></div>
+      <div class="custom-icon"></div>
+      <div class="custom-icon"></div>
+    </div>
   </mat-card-header>
   <mat-card-content>
-    <div class="progress-grid">
+    <div class="progress-grid" *ngIf="!isCustomStackEmpty">
       <div class="progress-grid-section">
         <ng-container *ngFor="let tech of stackGridOne">
-          <div *ngIf="tech.first" class="list-title">{{
+          <div *ngIf="tech.first && showStackSubHeaders" class="list-title">{{
             tech.list | uppercase
           }}</div>
 
@@ -72,5 +80,41 @@
         </ng-container>
       </div>
     </div>
+
+    <div class="custom-stack-empty-message" *ngIf="isCustomStackEmpty">
+      {{ "ROADMAP.STACK.EMPTY_CUSTOM" | translate }}
+    </div>
   </mat-card-content>
 </mat-card>
+
+<ng-template #addStack>
+  <mat-card class="stack-card">
+    <mat-card-header>
+      <mat-card-title
+        ><span class="material-symbols-outlined roadmap-title-icon">
+          data_object
+        </span>
+        {{ "ROADMAP.STACK.T" | translate }}
+      </mat-card-title>
+
+      <div class="custom-tech-stack">
+        <div class="custom-icon"></div>
+        <div class="custom-icon"></div>
+        <div class="custom-icon"></div>
+        <div class="custom-icon"></div>
+        <div class="custom-icon"></div>
+      </div>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="select-stack-message">
+        <p> {{ "ROADMAP.STACK.SELECT_HEADER" | translate }}</p>
+        <p> {{ "ROADMAP.STACK.SELECT_BODY" | translate }}</p>
+      </div>
+      <div class="actions">
+        <button mat-raised-button color="primary" (click)="editRoadmap()">
+          {{ "ROADMAP.STACK.SELECT_BUTTON" | translate }}</button
+        >
+      </div>
+    </mat-card-content>
+  </mat-card>
+</ng-template>

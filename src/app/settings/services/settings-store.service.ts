@@ -30,6 +30,13 @@ export class SettingsStoreService {
     });
   }
 
+  removeGithub(id: string) {
+    this.store.dispatch({
+      type: settingsActions.REMOVE_GITHUB,
+      id,
+    });
+  }
+
   updateEmail(id: string, email: any) {
     this.store.dispatch({
       type: settingsActions.UPDATE_EMAIL,

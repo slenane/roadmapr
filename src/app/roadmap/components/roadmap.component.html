@@ -1,6 +1,6 @@
-<app-loading *ngIf="!roadmap"></app-loading>
+<app-loading *ngIf="!roadmap || !user"></app-loading>
 
-<div class="roadmap" *ngIf="roadmap">
+<div class="roadmap" *ngIf="roadmap && user">
   <!-- <app-roadmap-filters
     [languageConfig]="languageFilterConfig"
     [roadmap]="roadmap"
@@ -13,7 +13,6 @@
         <div class="grid-container">
           <div class="grid">
             <app-roadmap-overview
-              *ngIf="roadmap && user"
               [roadmap]="roadmap"
               [user]="user"
               [stackList]="stackList"
@@ -21,7 +20,6 @@
             ></app-roadmap-overview>
 
             <app-roadmap-education
-              *ngIf="education"
               [data]="education"
               [userStack]="userStack"
               [stackList]="stackList"
@@ -31,6 +29,8 @@
               [stackList]="stackList"
               [path]="roadmap.path"
               [userStack]="userStack"
+              [stackItemConfig]="languageFilterConfig"
+              (onUpdate)="updateRoadmap($event)"
             ></app-roadmap-stack>
 
             <app-roadmap-experience
@@ -41,15 +41,9 @@
           </div>
 
           <div class="grid">
-            <app-roadmap-projects
-              *ngIf="projects"
-              [data]="projects"
-            ></app-roadmap-projects>
+            <app-roadmap-projects [data]="projects"></app-roadmap-projects>
 
-            <app-roadmap-github
-              *ngIf="github"
-              [data]="github"
-            ></app-roadmap-github>
+            <app-roadmap-github [data]="github"></app-roadmap-github>
           </div>
         </div>
       </div>

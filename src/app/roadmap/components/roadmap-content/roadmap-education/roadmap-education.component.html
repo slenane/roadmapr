@@ -16,7 +16,7 @@
         >
           <div class="percentage">{{ completionRate }}%</div>
           <mat-progress-spinner
-            class="example-margin"
+            class="roadmap-percentage-wheel"
             [mode]="'determinate'"
             [value]="completionRate"
           >
@@ -31,9 +31,11 @@
           "
           [matTooltipShowDelay]="'500'"
         >
-          <div class="percentage">{{ stackCoverage }}%</div>
+          <div class="percentage"
+            >{{ stackCoverage }}{{ stackCoverage !== "N/A" ? "%" : "" }}</div
+          >
           <mat-progress-spinner
-            class="example-margin"
+            class="roadmap-percentage-wheel"
             [mode]="'determinate'"
             [value]="stackCoverage"
           >

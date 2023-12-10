@@ -118,4 +118,14 @@ mat-card-content {
       }
     }
   }
+
+  .add-github-message {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7) !important;
+    margin: 1rem 3rem;
+  }
+
+  .actions {
+    text-align: right;
+  }
 }
