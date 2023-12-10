@@ -1,7 +1,7 @@
-<mat-card class="profile-main">
-  <ng-scrollbar>
-    <div scrollViewport cdkScrollable>
-      <div class="scroll">
+<ng-scrollbar class="profile-main">
+  <div scrollViewport cdkScrollable>
+    <div class="scroll">
+      <mat-card>
         <section>
           <div class="profile-header">
             <h1>{{ user.firstName }} {{ user.lastName }}</h1>
@@ -64,7 +64,7 @@
             [user]="user"
           ></app-profile-content-personal>
         </section>
-      </div>
+      </mat-card>
     </div>
-  </ng-scrollbar>
-</mat-card>
+  </div>
+</ng-scrollbar>
