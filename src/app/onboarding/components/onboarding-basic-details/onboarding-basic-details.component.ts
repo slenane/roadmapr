@@ -83,10 +83,9 @@ export class OnboardingBasicDetailsComponent implements OnInit {
     }
   }
 
-  onFormCompletion(actionType: "skip" | "tour") {
+  onFormCompletion() {
     if (this.basicDetailsForm.valid && this.pathForm.valid) {
       return this.dialogRef.close({
-        action: actionType,
         data: {
           firstName: this.basicDetailsForm.value.firstNameCtrl,
           lastName: this.basicDetailsForm.value.lastNameCtrl,

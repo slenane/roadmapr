@@ -109,24 +109,8 @@
         mat-raised-button
         color="primary"
         [disabled]="!pathForm.value.pathCtrl"
-        matStepperNext
-        >{{ "ACTIONS.NEXT" | translate }}</button
-      >
-    </div>
-  </mat-step>
-  <mat-step>
-    <ng-template matStepLabel>{{ "ONBOARDING.DONE" | translate }}</ng-template>
-    <h3>{{ "ONBOARDING.DONE_SUB" | translate }}</h3>
-    <p>{{ "ONBOARDING.DONE_MESSAGE" | translate }}</p>
-    <div class="actions">
-      <button mat-raised-button (click)="onFormCompletion('skip')">{{
-        "ACTIONS.SKIP" | translate
-      }}</button>
-      <button
-        mat-raised-button
-        color="primary"
-        (click)="onFormCompletion('tour')"
-        >{{ "ONBOARDING.TOUR" | translate }}</button
+        (click)="onFormCompletion()"
+        >{{ "ACTIONS.COMPLETE" | translate }}</button
       >
     </div>
   </mat-step>
