@@ -32,7 +32,7 @@ export class RoadmapComponent implements OnInit {
   public education: EducationItem[] = [];
   public experience: ExperienceItem[] = [];
   public projects: ProjectItem[] = [];
-  public github: Github;
+  public github: Github | undefined;
   public developerStacks: IStack[] = DEV_STACKS;
   public customStack: IStack = CUSTOM_STACK;
   public userStack: IStack | undefined;
@@ -62,6 +62,10 @@ export class RoadmapComponent implements OnInit {
       )
       .subscribe((user: Profile) => {
         this.user = user;
+
+        if (this.githubRemoved()) {
+          this.removeGithubData();
+        }
       });
   }
 
@@ -110,6 +114,10 @@ export class RoadmapComponent implements OnInit {
               projects: this.projects,
               experience: this.experience,
             });
+          }
+
+          if (this.githubRemoved()) {
+            this.removeGithubData();
           }
         },
         error: (error) => {
@@ -161,5 +169,18 @@ export class RoadmapComponent implements OnInit {
         stack: data.stack,
       });
     }
+  }
+
+  githubRemoved(): boolean {
+    if (this.user && this.roadmap) {
+      if (this.user.github?.id === "" && !!this.roadmap.github) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  removeGithubData() {
+    this.github = undefined;
   }
 }

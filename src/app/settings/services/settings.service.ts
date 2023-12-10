@@ -25,6 +25,14 @@ export class SettingsService {
     );
   }
 
+  public removeGithub(
+    id: string
+  ): Observable<{ settings: Settings; successMessage: string }> {
+    return this.apiService.patch(
+      this.urlService.generate(API.REMOVE_GITHUB, id)
+    );
+  }
+
   public updateEmail(
     id: string,
     email: string

@@ -118,14 +118,14 @@ export class AuthEffects {
         this.authService.githubUpdateExistingUser(userId).pipe(
           map(({ user, successMessage }) => {
             this.alertsService.successAlert(successMessage);
-            this.router.navigateByUrl(ROUTES.SETTINGS);
+            this.router.navigateByUrl(ROUTES.ROADMAP);
             return authActions.GithubUpdateExistingUserSuccess({
               payload: user,
             });
           }),
           catchError((error) => {
             this.alertsService.errorAlert(error.error);
-            this.router.navigateByUrl(ROUTES.SETTINGS);
+            this.router.navigateByUrl(ROUTES.ROADMAP);
             return of(authActions.GithubUpdateExistingUserError());
           })
         )

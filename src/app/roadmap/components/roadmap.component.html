@@ -1,6 +1,6 @@
-<app-loading *ngIf="!roadmap"></app-loading>
+<app-loading *ngIf="!roadmap || !user"></app-loading>
 
-<div class="roadmap" *ngIf="roadmap">
+<div class="roadmap" *ngIf="roadmap && user">
   <!-- <app-roadmap-filters
     [languageConfig]="languageFilterConfig"
     [roadmap]="roadmap"

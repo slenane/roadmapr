@@ -40,12 +40,7 @@ export class SettingsGithubComponent implements OnInit {
 
   removeGithubAccount(): void {
     if (this.hasPassword) {
-      this.settingsStoreService.updateSettings(this.userId, {
-        github: {
-          id: "",
-          username: "",
-        },
-      });
+      this.settingsStoreService.removeGithub(this.userId);
     } else {
       this.alertsService.errorAlert("SETTINGS.GITHUB.UNLINK_ERROR");
     }

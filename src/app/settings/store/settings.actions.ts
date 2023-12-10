@@ -3,6 +3,7 @@ import { Settings } from "./settings.models";
 
 export const GET_SETTINGS = "[Settings] Get Settings";
 export const UPDATE_SETTINGS = "[Settings] Update Settings";
+export const REMOVE_GITHUB = "[Settings] Remove GitHub";
 export const UPDATE_EMAIL = "[Settings] Update Email";
 export const UPDATE_PASSWORD = "[Settings] Update Password";
 export const UPDATE_EXISTING_PASSWORD = "[Settings] Update Existing Password";
@@ -12,6 +13,8 @@ const GET_SETTINGS_SUCCESS = "[Settings] Settings Loaded Successfully",
   GET_SETTINGS_ERROR = "[Settings] Settings Load Error",
   UPDATE_SETTINGS_SUCCESS = "[Settings] Settings Updated Successfully",
   UPDATE_SETTINGS_ERROR = "[Settings] Settings Update Error",
+  REMOVE_GITHUB_SUCCESS = "[Settings] GitHub Removed Successfully",
+  REMOVE_GITHUB_ERROR = "[Settings] GitHub Remove Error",
   UPDATE_EMAIL_SUCCESS = "[Settings] Email Updated Successfully",
   UPDATE_EMAIL_ERROR = "[Settings] Email Update Error",
   UPDATE_PASSWORD_SUCCESS = "[Settings] Password Updated Successfully",
@@ -46,6 +49,21 @@ export const UpdateSettingsSuccess = createAction(
 
 export const UpdateSettingsError = createAction(
   UPDATE_SETTINGS_ERROR,
+  props<{ payload: string }>()
+);
+
+export const RemoveGithub = createAction(
+  REMOVE_GITHUB,
+  props<{ id: string }>()
+);
+
+export const RemoveGithubSuccess = createAction(
+  REMOVE_GITHUB_SUCCESS,
+  props<{ payload: Settings }>()
+);
+
+export const RemoveGithubError = createAction(
+  REMOVE_GITHUB_ERROR,
   props<{ payload: string }>()
 );
 

@@ -477,7 +477,7 @@
       "PASSWORD": "Passwords must be at least 6 characters long, contains at least 1 number and 1 special character (!@#$%^&*)"
     },
     "REMOVE": {
-      "GITHUB": "Remove GitHub Account"
+      "GITHUB": "Unlink GitHub Account"
     },
     "UPDATE": {
       "EMAIL": "Update Email",
@@ -600,7 +600,8 @@
       "COMMITS": "Commits",
       "COMMITS_LAST": "Last:",
       "COMMITS_FIRST": "First:",
-      "VIEW_REPO": "View Repo"
+      "VIEW_REPO": "View Repo",
+      "LINK_MESSAGE": "Link your GitHub account to display data on your recent activity including contributions, repos, bio and more"
     },
     "STACK": {
       "T": "Stack",
@@ -641,7 +642,7 @@
   },
   "REDIRECTING": {
     "T": "Redirecting",
-    "PLEASE_WAIT": "Please wait"
+    "PLEASE_WAIT": "Please wait..."
   },
   "PAGE_NOT_FOUND": {
     "T": "404",

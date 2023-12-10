@@ -52,6 +52,24 @@ export class SettingsEffects {
     )
   );
 
+  removeGithub$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(settingsActions.RemoveGithub),
+      switchMap(({ id }) =>
+        this.settingsService.removeGithub(id).pipe(
+          map(({ settings, successMessage }) => {
+            this.alertsService.successAlert(successMessage);
+            return settingsActions.RemoveGithubSuccess({ payload: settings });
+          }),
+          catchError((error) => {
+            this.alertsService.errorAlert(error.error);
+            return of(settingsActions.RemoveGithubError(error));
+          })
+        )
+      )
+    )
+  );
+
   updateEmail$ = createEffect(() =>
     this.actions$.pipe(
       ofType(settingsActions.UpdateEmail),

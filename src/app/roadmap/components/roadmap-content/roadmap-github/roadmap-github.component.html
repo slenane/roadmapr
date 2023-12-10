@@ -6,7 +6,7 @@
       alt="Github Icon"
     />{{ "ROADMAP.GITHUB.T" | translate }}</mat-card-title
   >
-  <mat-card-content>
+  <mat-card-content *ngIf="data; else addGithub">
     <div class="bio-grid">
       <img src="{{ data.avatar }}" class="avatar" alt="GitHub Avatar" />
       <div>
@@ -112,4 +112,22 @@
       </mat-card-content>
     </mat-card>
   </mat-card-content>
+
+  <ng-template #addGithub>
+    <mat-card-content>
+      <p class="add-github-message">
+        {{ "ROADMAP.GITHUB.LINK_MESSAGE" | translate }}
+      </p>
+
+      <div class="actions">
+        <button
+          mat-raised-button
+          color="primary"
+          [disabled]="!githubAuthUrl"
+          (click)="linkGithubAccount()"
+          >{{ "FORMS.UPDATE.GITHUB" | translate }}</button
+        >
+      </div>
+    </mat-card-content>
+  </ng-template>
 </mat-card>
