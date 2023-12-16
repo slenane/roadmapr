@@ -1,7 +1,7 @@
 <app-loading *ngIf="!experience"></app-loading>
 
-<div class="experience drag-group" *ngIf="experience">
-  <div class="drag-group-header">
+<div class="experience drag-container" *ngIf="experience">
+  <div class="drag-container-header">
     <app-drop-list-filters
       *ngIf="experience"
       [type]="'EXPERIENCE.T'"
@@ -15,104 +15,115 @@
       (onUpdate)="createExperienceItem($event)"
     >
     </app-drop-list-filters>
-
-    <div class="drag-group-titles">
-      <h2>{{ "GENERAL.STATUS.OPPORTUNITIES" | translate }}</h2>
-      <h2>{{ "GENERAL.STATUS.IN_PROGRESS" | translate }}</h2>
-      <h2>{{ "GENERAL.STATUS.DONE" | translate }}</h2>
-    </div>
   </div>
 
   <ng-scrollbar>
     <div scrollViewport cdkScrollable>
       <div class="scroll">
-        <div cdkDropListGroup class="drag-group-container">
-          <div class="drag-group-items" id="opportunities">
-            <div *ngFor="let data of opportunities" class="drag-group-item">
-              <app-experience-recommendation
-                *ngIf="matchesFilters(data)"
-                [data]="data"
-              >
-              </app-experience-recommendation>
+        <div cdkDropListGroup class="drag-container-groups">
+          <div class="drag-group">
+            <h2 class="drag-group-title">{{
+              "GENERAL.STATUS.OPPORTUNITIES" | translate
+            }}</h2>
+            <div class="drag-group-items" id="opportunities">
+              <div *ngFor="let data of opportunities" class="drag-group-item">
+                <app-experience-recommendation
+                  *ngIf="matchesFilters(data)"
+                  [data]="data"
+                >
+                </app-experience-recommendation>
+              </div>
+
+              <mat-card
+                *ngIf="opportunities?.length"
+                class="see-more-card"
+                (click)="toggleShowAllOpportunities()"
+                >{{
+                  displayAllOpportunities
+                    ? ("ACTIONS.SHOW_LESS" | translate)
+                    : ("ACTIONS.SHOW_MORE" | translate)
+                }}
+              </mat-card>
+
+              <app-drop-list-empty
+                *ngIf="!opportunities"
+                [header]="'EXPERIENCE.EMPTY_LIST.OPPORTUNITIES_LOADING_HEADER'"
+                [message]="
+                  'EXPERIENCE.EMPTY_LIST.OPPORTUNITIES_LOADING_MESSAGE'
+                "
+                [showLoader]="true"
+              ></app-drop-list-empty>
+
+              <app-drop-list-empty
+                *ngIf="opportunities && !opportunities.length"
+                [header]="'EXPERIENCE.EMPTY_LIST.OPPORTUNITIES_HEADER'"
+                [message]="'EXPERIENCE.EMPTY_LIST.OPPORTUNITIES_MESSAGE'"
+              ></app-drop-list-empty>
             </div>
-
-            <mat-card
-              *ngIf="opportunities?.length"
-              class="see-more-card"
-              (click)="toggleShowAllOpportunities()"
-              >{{
-                displayAllOpportunities
-                  ? ("ACTIONS.SHOW_LESS" | translate)
-                  : ("ACTIONS.SHOW_MORE" | translate)
-              }}
-            </mat-card>
-
-            <app-drop-list-empty
-              *ngIf="!opportunities"
-              [header]="'EXPERIENCE.EMPTY_LIST.OPPORTUNITIES_LOADING_HEADER'"
-              [message]="'EXPERIENCE.EMPTY_LIST.OPPORTUNITIES_LOADING_MESSAGE'"
-              [showLoader]="true"
-            ></app-drop-list-empty>
-
-            <app-drop-list-empty
-              *ngIf="opportunities && !opportunities.length"
-              [header]="'EXPERIENCE.EMPTY_LIST.OPPORTUNITIES_HEADER'"
-              [message]="'EXPERIENCE.EMPTY_LIST.OPPORTUNITIES_MESSAGE'"
-            ></app-drop-list-empty>
           </div>
 
-          <div
-            cdkDropList
-            #inProgressList="cdkDropList"
-            [cdkDropListData]="inProgress"
-            class="drag-group-items"
-            id="inProgress"
-            (cdkDropListDropped)="drop($event)"
-          >
+          <div class="drag-group">
+            <h2 class="drag-group-title">{{
+              "GENERAL.STATUS.IN_PROGRESS" | translate
+            }}</h2>
             <div
-              *ngFor="let data of inProgress"
-              class="drag-group-item"
-              cdkDrag
+              cdkDropList
+              #inProgressList="cdkDropList"
+              [cdkDropListData]="inProgress"
+              class="drag-group-items"
+              id="inProgress"
+              (cdkDropListDropped)="drop($event)"
             >
-              <app-experience-item
-                *ngIf="matchesFilters(data)"
-                [data]="data"
-                [selectedView]="selectedView"
-                (pinItem)="onPinToggle($event, inProgress)"
+              <div
+                *ngFor="let data of inProgress"
+                class="drag-group-item"
+                cdkDrag
               >
-              </app-experience-item>
-            </div>
+                <app-experience-item
+                  *ngIf="matchesFilters(data)"
+                  [data]="data"
+                  [selectedView]="selectedView"
+                  (pinItem)="onPinToggle($event, inProgress)"
+                >
+                </app-experience-item>
+              </div>
 
-            <app-drop-list-empty
-              *ngIf="experience && inProgress && !inProgress.length"
-              [header]="'EXPERIENCE.EMPTY_LIST.IN_PROGRESS_HEADER'"
-              [message]="'EXPERIENCE.EMPTY_LIST.IN_PROGRESS_MESSAGE'"
-            ></app-drop-list-empty>
+              <app-drop-list-empty
+                *ngIf="experience && inProgress && !inProgress.length"
+                [header]="'EXPERIENCE.EMPTY_LIST.IN_PROGRESS_HEADER'"
+                [message]="'EXPERIENCE.EMPTY_LIST.IN_PROGRESS_MESSAGE'"
+              ></app-drop-list-empty>
+            </div>
           </div>
 
-          <div
-            cdkDropList
-            #doneList="cdkDropList"
-            [cdkDropListData]="done"
-            class="drag-group-items"
-            id="done"
-            (cdkDropListDropped)="drop($event)"
-          >
-            <div *ngFor="let data of done" class="drag-group-item" cdkDrag>
-              <app-experience-item
-                *ngIf="matchesFilters(data)"
-                [data]="data"
-                [selectedView]="selectedView"
-                (pinItem)="onPinToggle($event, done)"
-              >
-              </app-experience-item>
-            </div>
+          <div class="drag-group">
+            <h2 class="drag-group-title">{{
+              "GENERAL.STATUS.DONE" | translate
+            }}</h2>
+            <div
+              cdkDropList
+              #doneList="cdkDropList"
+              [cdkDropListData]="done"
+              class="drag-group-items"
+              id="done"
+              (cdkDropListDropped)="drop($event)"
+            >
+              <div *ngFor="let data of done" class="drag-group-item" cdkDrag>
+                <app-experience-item
+                  *ngIf="matchesFilters(data)"
+                  [data]="data"
+                  [selectedView]="selectedView"
+                  (pinItem)="onPinToggle($event, done)"
+                >
+                </app-experience-item>
+              </div>
 
-            <app-drop-list-empty
-              *ngIf="experience && done && !done.length"
-              [header]="'EXPERIENCE.EMPTY_LIST.DONE_HEADER'"
-              [message]="'EXPERIENCE.EMPTY_LIST.DONE_MESSAGE'"
-            ></app-drop-list-empty>
+              <app-drop-list-empty
+                *ngIf="experience && done && !done.length"
+                [header]="'EXPERIENCE.EMPTY_LIST.DONE_HEADER'"
+                [message]="'EXPERIENCE.EMPTY_LIST.DONE_MESSAGE'"
+              ></app-drop-list-empty>
+            </div>
           </div>
         </div>
       </div>
