@@ -1,7 +1,17 @@
-<app-home-menu></app-home-menu>
+<!-- <app-home-menu></app-home-menu> -->
 
 <div class="landing-grid">
-  <div class="landing-grid__1"> </div>
+  <div class="landing-grid__1">
+    <div class="auth-brand">
+      <img
+        class="menu-brand"
+        src="/assets/images/logo/logo-dark.png"
+        routerLink="/roadmap"
+        alt="roadmapr Logo"
+      />
+    </div>
+    <h2>Your personal roadmap to a career in software development</h2>
+  </div>
   <div class="landing-grid__2">
     <app-log-in *ngIf="currentView === 'login'"></app-log-in>
     <app-register *ngIf="currentView === 'register'"></app-register>

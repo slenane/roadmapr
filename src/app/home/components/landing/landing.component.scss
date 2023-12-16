@@ -1,9 +1,22 @@
 .landing-grid {
-  background-image: url("/assets/images/landing-image.jpg");
-  background-size: cover;
+  // background-image: url("/assets/images/landing-image.jpg");
+  // background-size: cover;
   height: 100vh;
   overflow: hidden;
   display: grid;
   grid-template-columns: 2fr 1fr;
   align-content: center;
+
+  &__1 {
+    display: grid;
+    align-content: center;
+    justify-content: center;
+
+    .auth-brand {
+      margin-bottom: 1rem;
+      img {
+        height: 3rem;
+      }
+    }
+  }
 }
