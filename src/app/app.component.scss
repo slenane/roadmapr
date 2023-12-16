@@ -1,3 +1,5 @@
+@import "src/styles/app-vars.scss";
+
 app-menu {
   position: fixed;
   top: 0;
@@ -10,23 +12,49 @@ app-menu {
   display: grid;
   grid-template-columns: 1fr;
   height: 100vh;
-  width: 100wh;
+  width: 100vw;
   overflow: hidden;
 
-  &.authenticated {
-    grid-template-columns: 12% 88%;
-    transition: all 0.5s;
+  app-mobile-navigation,
+  app-navigation {
+    display: none;
+  }
 
-    &.collapsed {
-      grid-template-columns: 4% 96%;
+  @media screen and (min-width: $breakpoint-mobile) {
+    app-mobile-navigation {
+      display: block;
+      width: 100vw;
     }
 
-    .mat-drawer-side {
-      border: none;
+    app-navigation {
+      display: none;
+    }
+  }
+
+  @media screen and (min-width: $breakpoint-tablet-large) {
+    app-mobile-navigation {
+      display: none;
     }
 
-    .mat-drawer {
-      background-color: #fafafa;
+    app-navigation {
+      display: block;
+    }
+
+    &.authenticated {
+      grid-template-columns: 12% 88%;
+      transition: all 0.5s;
+
+      &.collapsed {
+        grid-template-columns: 4% 96%;
+      }
+
+      .mat-drawer-side {
+        border: none;
+      }
+
+      .mat-drawer {
+        background-color: #fafafa;
+      }
     }
   }
 }

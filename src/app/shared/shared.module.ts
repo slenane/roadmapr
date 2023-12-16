@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { SidebarComponent } from "./components/sidebar/sidebar.component";
+import { NavigationComponent } from "./components/navigation/navigation/navigation.component";
 import { StackSelectorComponent } from "./components/stack-selector/stack-selector.component";
 import { MaterialModule } from "../material/material.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -28,10 +28,11 @@ import { HomeMenuComponent } from "./components/home-menu/home-menu.component";
 import { DropListEmptyComponent } from "./components/drop-list/drop-list-empty/drop-list-empty.component";
 import { PathSelectorComponent } from "./components/path-selector/path-selector.component";
 import { DropListDateComponent } from "./components/drop-list/drop-list-date/drop-list-date.component";
+import { MobileNavigationComponent } from "./components/navigation/mobile-navigation/mobile-navigation.component";
 
 @NgModule({
   declarations: [
-    SidebarComponent,
+    NavigationComponent,
     StackSelectorComponent,
     DropListFiltersComponent,
     IconCardComponent,
@@ -48,9 +49,10 @@ import { DropListDateComponent } from "./components/drop-list/drop-list-date/dro
     DropListEmptyComponent,
     PathSelectorComponent,
     DropListDateComponent,
+    MobileNavigationComponent,
   ],
   exports: [
-    SidebarComponent,
+    NavigationComponent,
     StackSelectorComponent,
     DropListFiltersComponent,
     IconCardComponent,
@@ -64,6 +66,7 @@ import { DropListDateComponent } from "./components/drop-list/drop-list-date/dro
     UpdatePasswordInputsComponent,
     HomeMenuComponent,
     DropListEmptyComponent,
+    MobileNavigationComponent,
   ],
   imports: [
     CommonModule,

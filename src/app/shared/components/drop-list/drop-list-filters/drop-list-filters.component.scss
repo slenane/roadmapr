@@ -1,3 +1,5 @@
+@import "src/styles/app-vars.scss";
+
 .filter-container {
   display: grid;
   grid-template-columns: 1fr auto;
@@ -5,11 +7,18 @@
 
   .filters {
     display: grid;
-    grid-template-columns: auto auto auto auto auto;
     align-items: center;
     gap: 1rem;
     justify-content: flex-start;
     font-size: 0.9rem;
+
+    @media screen and (min-width: $breakpoint-mobile-large) {
+      grid-template-columns: auto;
+    }
+
+    @media screen and (min-width: $breakpoint-tablet-large) {
+      grid-template-columns: auto auto auto auto auto;
+    }
 
     .section-header {
       font-size: 1.3rem;

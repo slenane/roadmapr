@@ -1,0 +1,40 @@
+mat-toolbar {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  justify-content: space-between;
+
+  .menu-brand {
+    height: 2rem;
+  }
+}
+
+.mobile-navigation-sidenav-container {
+  position: absolute;
+  background: none;
+  height: 95%;
+  width: 30%;
+
+  &.closed {
+    z-index: 0;
+  }
+
+  .mobile-navigation-sidenav {
+    padding: 20% 0;
+    width: 100%;
+
+    .sidebar-option {
+      font-size: 0.9rem;
+      padding: 0 10%;
+
+      .material-symbols-outlined {
+        margin-right: 0.5rem;
+      }
+
+      .sidebar-image {
+        height: 1.2rem;
+        margin-right: 0.4rem;
+        padding-left: 0.2rem;
+      }
+    }
+  }
+}

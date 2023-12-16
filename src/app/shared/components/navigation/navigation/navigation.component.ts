@@ -2,16 +2,16 @@ import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 import { Observable } from "rxjs";
 import { AuthStoreService } from "src/app/auth/services/auth-store.service";
 import { ThemeService } from "src/app/core/services/theme.service";
-import { SIDEBAR_OPTIONS } from "src/app/shared/constants/sidebar.constants";
+import { NAVIGATION_OPTIONS } from "src/app/shared/constants/navigation.constants";
 
 @Component({
-  selector: "app-sidebar",
-  templateUrl: "./sidebar.component.html",
-  styleUrls: ["./sidebar.component.scss"],
+  selector: "app-navigation",
+  templateUrl: "./navigation.component.html",
+  styleUrls: ["./navigation.component.scss"],
 })
-export class SidebarComponent implements OnInit {
+export class NavigationComponent implements OnInit {
   public theme$: Observable<string>;
-  public options = SIDEBAR_OPTIONS;
+  public options = NAVIGATION_OPTIONS;
   public currentTheme: string;
   public navbarCollapsed: boolean = true;
   public displayLargeLogo: boolean = false;
