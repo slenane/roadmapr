@@ -17,7 +17,7 @@
     </app-drop-list-filters>
   </div>
 
-  <ng-scrollbar>
+  <ng-scrollbar class="main-container">
     <div scrollViewport cdkScrollable>
       <div class="scroll">
         <div cdkDropListGroup class="drag-container-groups">
@@ -114,6 +114,124 @@
               ></app-drop-list-empty>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </ng-scrollbar>
+
+  <ng-scrollbar class="mobile-container">
+    <div scrollViewport cdkScrollable>
+      <div class="scroll">
+        <div class="drag-container-groups">
+          <mat-tab-group #tabGroup animationDuration="0ms" [selectedIndex]="1">
+            <mat-tab>
+              <ng-template mat-tab-label>
+                {{ "GENERAL.STATUS.TO_DO" | translate }}
+              </ng-template>
+              <div class="drag-group">
+                <div
+                  cdkDropList
+                  #todoList="cdkDropList"
+                  [cdkDropListData]="todo"
+                  class="drag-group-items"
+                  id="todo"
+                  (cdkDropListDropped)="drop($event)"
+                >
+                  <div
+                    *ngFor="let data of todo"
+                    class="drag-group-item"
+                    cdkDrag
+                  >
+                    <app-project
+                      *ngIf="matchesFilters(data)"
+                      [data]="data"
+                      [selectedView]="selectedView"
+                      (pinItem)="onPinToggle($event, todo)"
+                    >
+                    </app-project>
+                  </div>
+
+                  <app-drop-list-empty
+                    *ngIf="projects && todo && !todo.length"
+                    [header]="'PROJECTS.EMPTY_LIST.TO_DO_HEADER'"
+                    [message]="'PROJECTS.EMPTY_LIST.TO_DO_MESSAGE'"
+                  ></app-drop-list-empty>
+                </div>
+              </div>
+            </mat-tab>
+
+            <mat-tab>
+              <ng-template mat-tab-label>
+                {{ "GENERAL.STATUS.IN_PROGRESS" | translate }}
+              </ng-template>
+              <div class="drag-group">
+                <div
+                  cdkDropList
+                  #inProgressList="cdkDropList"
+                  [cdkDropListData]="inProgress"
+                  class="drag-group-items"
+                  id="inProgress"
+                  (cdkDropListDropped)="drop($event)"
+                >
+                  <div
+                    *ngFor="let data of inProgress"
+                    class="drag-group-item"
+                    cdkDrag
+                  >
+                    <app-project
+                      *ngIf="matchesFilters(data)"
+                      [data]="data"
+                      [selectedView]="selectedView"
+                      (pinItem)="onPinToggle($event, inProgress)"
+                    >
+                    </app-project>
+                  </div>
+
+                  <app-drop-list-empty
+                    *ngIf="projects && inProgress && !inProgress.length"
+                    [header]="'PROJECTS.EMPTY_LIST.IN_PROGRESS_HEADER'"
+                    [message]="'PROJECTS.EMPTY_LIST.IN_PROGRESS_MESSAGE'"
+                  ></app-drop-list-empty>
+                </div>
+              </div>
+            </mat-tab>
+
+            <mat-tab>
+              <ng-template mat-tab-label>
+                {{ "GENERAL.STATUS.DONE" | translate }}
+              </ng-template>
+              <div class="drag-group">
+                <div
+                  cdkDropList
+                  #doneList="cdkDropList"
+                  [cdkDropListData]="done"
+                  class="drag-group-items"
+                  id="done"
+                  (cdkDropListDropped)="drop($event)"
+                >
+                  <div
+                    *ngFor="let data of done"
+                    class="drag-group-item"
+                    cdkDrag
+                  >
+                    <app-project
+                      *ngIf="matchesFilters(data)"
+                      [data]="data"
+                      [selectedView]="selectedView"
+                      (pinItem)="onPinToggle($event, inProgress)"
+                    >
+                    </app-project>
+                  </div>
+
+                  <app-drop-list-empty
+                    *ngIf="projects && done && !done.length"
+                    [header]="'PROJECTS.EMPTY_LIST.DONE_HEADER'"
+                    [message]="'PROJECTS.EMPTY_LIST.DONE_MESSAGE'"
+                  ></app-drop-list-empty>
+                </div>
+              </div>
+            </mat-tab>
+          </mat-tab-group>
         </div>
       </div>
     </div>
