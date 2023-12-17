@@ -1,9 +1,6 @@
 <div class="project">
   <div class="project-header">
-    <div class="project-title">
-      {{ project.title }} -
-      <span class="project-title-tagline">{{ project.tagLine }}</span></div
-    >
+    <div class="project-title"> {{ project.title }} </div>
 
     <div class="tech-stack">
       <img
@@ -15,10 +12,11 @@
     </div>
   </div>
 
-  <div class="project-subtitle"
-    >{{ project.startDate | date }} -
-    {{ (project.endDate | date) || ("FORMS.DATES.PRESENT" | translate) }}</div
-  >
+  <div class="project-subtitle">
+    <span class="project-title-tagline">{{ project.tagLine }}</span>
+    ({{ project.startDate | date }} -
+    {{ (project.endDate | date) || ("FORMS.DATES.PRESENT" | translate) }})
+  </div>
 
   <div class="project-description">{{ project.description }}</div>
 </div>

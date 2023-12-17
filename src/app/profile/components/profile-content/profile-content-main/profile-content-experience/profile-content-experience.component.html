@@ -1,9 +1,6 @@
 <div class="experience">
   <div class="experience-header">
-    <div class="experience-title"
-      >{{ experience.role }}
-      <span class="company"> - {{ experience.company }}</span></div
-    >
+    <div class="experience-title">{{ experience.role }} </div>
 
     <div class="tech-stack">
       <img
@@ -15,11 +12,13 @@
     </div>
   </div>
 
-  <div class="experience-subtitle"
-    >{{ experience.startDate | date }} -
+  <div class="experience-subtitle">
+    <span class="company">{{ experience.company }} </span>
+
+    ({{ experience.startDate | date }} -
     {{
       (experience.endDate | date) || ("FORMS.DATES.PRESENT" | translate)
-    }}</div
+    }})</div
   >
 
   <div class="experience-description">{{ experience.description }}</div>

@@ -195,3 +195,7 @@ mat-form-field {
 .mat-horizontal-stepper-header-container {
   margin: 0 5rem;
 }
+
+.mobile-navigation-sidenav-container {
+  z-index: 99999 !important;
+}

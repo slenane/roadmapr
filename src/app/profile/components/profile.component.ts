@@ -12,7 +12,7 @@ import { profileInitialState } from "../store/profile.reducer";
 })
 export class ProfileComponent implements OnInit {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
-  public isEditing: boolean = true;
+  public isEditing: boolean = false;
   public user: Profile;
 
   constructor(private profileStoreService: ProfileStoreService) {}
