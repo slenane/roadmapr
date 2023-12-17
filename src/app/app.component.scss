@@ -15,20 +15,13 @@ app-menu {
   width: 100vw;
   overflow: hidden;
 
-  app-mobile-navigation,
-  app-navigation {
-    display: none;
+  app-mobile-navigation {
+    display: block;
+    width: 100vw;
   }
 
-  @media screen and (min-width: $breakpoint-mobile) {
-    app-mobile-navigation {
-      display: block;
-      width: 100vw;
-    }
-
-    app-navigation {
-      display: none;
-    }
+  app-navigation {
+    display: none;
   }
 
   @media screen and (min-width: $breakpoint-tablet-large) {

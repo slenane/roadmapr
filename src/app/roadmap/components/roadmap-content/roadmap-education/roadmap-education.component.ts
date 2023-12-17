@@ -17,6 +17,7 @@ import {
   ApexYAxis,
   ApexDataLabels,
   ApexStroke,
+  ApexResponsive,
 } from "ng-apexcharts";
 
 export type ChartOptions = {
