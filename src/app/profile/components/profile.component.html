@@ -3,10 +3,14 @@
 <div class="profile" *ngIf="user">
   <div class="profile-content" *ngIf="!isEditing">
     <app-profile-content-card
+      class="profile-card"
       [user]="user"
       (editProfile)="toggleEditProfile()"
     ></app-profile-content-card>
-    <app-profile-content-main [user]="user"></app-profile-content-main>
+    <app-profile-content-main
+      [user]="user"
+      (toggleEditProfile)="toggleEditProfile()"
+    ></app-profile-content-main>
   </div>
 
   <app-profile-edit

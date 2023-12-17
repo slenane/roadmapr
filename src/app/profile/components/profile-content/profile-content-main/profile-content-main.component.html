@@ -1,6 +1,11 @@
 <ng-scrollbar class="profile-main">
   <div scrollViewport cdkScrollable>
     <div class="scroll">
+      <app-profile-content-card
+        class="profile-card"
+        [user]="user"
+        (editProfile)="toggleEditProfile.emit()"
+      ></app-profile-content-card>
       <mat-card>
         <section>
           <div class="profile-header">

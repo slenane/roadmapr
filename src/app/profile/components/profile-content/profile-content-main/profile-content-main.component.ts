@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { Profile } from "src/app/profile/store/profile.models";
 
 @Component({
@@ -8,6 +8,7 @@ import { Profile } from "src/app/profile/store/profile.models";
 })
 export class ProfileContentMainComponent implements OnInit {
   @Input() user: Profile;
+  @Output() toggleEditProfile: EventEmitter<any> = new EventEmitter();
 
   constructor() {}
 

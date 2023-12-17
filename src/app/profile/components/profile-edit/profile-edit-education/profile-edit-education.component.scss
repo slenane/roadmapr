@@ -1,11 +1,17 @@
+@import "src/styles/app-vars.scss";
+
 form {
   margin-top: 1rem;
 
   .education-grid {
     margin-top: 1rem;
     display: grid;
-    grid-template-columns: auto 1fr 1fr auto;
-    gap: 1rem;
+    grid-template-columns: 1fr;
+
+    @media screen and (min-width: $breakpoint-tablet-large) {
+      grid-template-columns: auto 1fr 1fr auto;
+      gap: 1rem;
+    }
 
     &__remove-button {
       margin-bottom: 1.34375em;

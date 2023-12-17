@@ -1,7 +1,7 @@
 @import "src/styles/app-vars.scss";
 
 .settings {
-  height: 95vh;
+  height: 90vh;
 
   @media screen and (min-width: $breakpoint-tablet-large) {
     height: 100vh;
@@ -45,10 +45,7 @@
     .update-details-container {
       display: grid;
       align-items: center;
-
-      @media screen and (min-width: $breakpoint-mobile) {
-        grid-template-columns: 1fr;
-      }
+      grid-template-columns: 1fr;
 
       @media screen and (min-width: $breakpoint-tablet-large) {
         grid-template-columns: 1fr 20%;

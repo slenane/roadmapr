@@ -1,24 +1,29 @@
 @import "src/styles/app-vars.scss";
 
 .profile {
-  height: 100vh;
+  height: 95vh;
+
+  @media screen and (min-width: $breakpoint-tablet-large) {
+    height: 100vh;
+  }
 
   .profile-content {
     display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
     margin: 1rem 0 1rem 1rem;
-
-    @media screen and (min-width: $breakpoint-mobile) {
-      grid-template-columns: 1fr;
-      gap: 1rem;
-
-      app-profile-content-card {
-        margin: 0 30%;
-      }
-    }
 
     @media screen and (min-width: $breakpoint-tablet-large) {
       grid-template-columns: 2fr 7fr;
       column-gap: 1rem;
+    }
+
+    .profile-card {
+      display: none;
+
+      @media screen and (min-width: $breakpoint-tablet-large) {
+        display: block;
+      }
     }
   }
 }

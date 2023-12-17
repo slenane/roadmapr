@@ -1,10 +1,16 @@
+@import "src/styles/app-vars.scss";
+
 .form-title {
   margin-bottom: 1rem;
 }
 
 .social-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   align-items: flex-start;
-  column-gap: 1rem;
+
+  @media screen and (min-width: $breakpoint-tablet-large) {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1rem;
+  }
 }
