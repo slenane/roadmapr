@@ -10,42 +10,18 @@
     align-items: center;
     gap: 1rem;
     justify-content: flex-start;
-    font-size: 0.9rem;
-
-    @media screen and (min-width: $breakpoint-mobile-large) {
-      grid-template-columns: auto;
-    }
-
-    @media screen and (min-width: $breakpoint-tablet-large) {
-      grid-template-columns: auto auto auto auto auto;
-    }
+    grid-template-columns: auto 1fr;
 
     .section-header {
       font-size: 1.3rem;
       font-weight: 500;
     }
 
-    .filter-type {
-      font-weight: 500;
-      margin-right: 0.5rem;
-    }
+    .filter-items {
+      display: none;
 
-    .toggle-view {
-      .material-symbols-outlined.view {
-        font-size: 1.5rem;
-
-        &.compact {
-          margin-right: 0.2rem;
-        }
-      }
-    }
-
-    .mat-chip {
-      font-size: 0.9rem;
-      cursor: pointer;
-
-      .mat-chip-trailing-icon {
-        margin-left: 4px;
+      @media screen and (min-width: $breakpoint-tablet-large) {
+        display: block;
       }
     }
   }

@@ -198,4 +198,8 @@ mat-form-field {
 
 .mobile-navigation-sidenav-container {
   z-index: 99999 !important;
+
+  &.closed {
+    z-index: 0 !important;
+  }
 }

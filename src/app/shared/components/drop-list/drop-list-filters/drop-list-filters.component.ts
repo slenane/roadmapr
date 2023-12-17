@@ -20,7 +20,7 @@ import { EducationUpdateComponent } from "src/app/education/components/education
 export class DropListFiltersComponent implements OnInit, OnChanges {
   public sortedStack: any[] = [];
   public selectedLanguage: any = null;
-  public selectedType: null | "book" | "course" = null;
+  public selectedType: any = null;
 
   @Input() type: string;
   @Input() parentId: string;
