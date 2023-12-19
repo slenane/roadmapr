@@ -30,6 +30,7 @@ export class EducationItemDetailsComponent implements OnInit {
     const dialogRef = this.dialog.open(EducationUpdateComponent, {
       minWidth: "70vw",
       data: this.data,
+      autoFocus: false,
     });
 
     dialogRef.afterClosed().subscribe((result) => {

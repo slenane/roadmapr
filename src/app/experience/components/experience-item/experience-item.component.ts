@@ -55,7 +55,7 @@ export class ExperienceItemComponent implements OnInit, OnChanges {
 
   openItemDetails() {
     this.dialog.open(ExperienceItemDetailsComponent, {
-      width: "50vw",
+      minWidth: "50vw",
       data: { ...this.data, stack: this.sortedStack },
     });
   }

@@ -52,7 +52,7 @@ export class ProjectComponent implements OnInit, OnChanges {
 
   openItemDetails() {
     this.dialog.open(ProjectDetailsComponent, {
-      width: "50vw",
+      minWidth: "50vw",
       data: { ...this.data, stack: this.sortedStack },
     });
   }

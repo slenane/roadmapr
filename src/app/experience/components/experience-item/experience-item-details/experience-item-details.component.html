@@ -22,19 +22,21 @@
 
   <div class="body">
     <div class="column">
-      <div class="row">
-        <div class="grid-item__title">{{ "FORMS.COMPANY" | translate }}</div>
-        <p [innerHTML]="data.company"></p>
-      </div>
+      <div class="column-grid">
+        <div class="row">
+          <div class="grid-item__title">{{ "FORMS.COMPANY" | translate }}</div>
+          <p [innerHTML]="data.company"></p>
+        </div>
 
-      <div class="row">
-        <div class="grid-item__title">{{
-          "FORMS.DATES.TIMELINE" | translate
-        }}</div>
-        <p>
-          {{ data.startDate | date }} -
-          {{ (data.endDate | date) || ("FORMS.DATES.PRESENT" | translate) }}
-        </p>
+        <div class="row">
+          <div class="grid-item__title">{{
+            "FORMS.DATES.TIMELINE" | translate
+          }}</div>
+          <p>
+            {{ data.startDate | date }} -
+            {{ (data.endDate | date) || ("FORMS.DATES.PRESENT" | translate) }}
+          </p>
+        </div>
       </div>
 
       <div class="row">
