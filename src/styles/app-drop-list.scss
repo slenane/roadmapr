@@ -101,11 +101,15 @@
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
 
-      .mat-tab-label .mat-tab-label-content {
-        white-space: normal;
+      .mat-tab-label {
+        padding: 0;
 
-        @media screen and (min-width: $breakpoint-tablet-large) {
-          white-space: nowrap;
+        .mat-tab-label-content {
+          white-space: normal;
+
+          @media screen and (min-width: $breakpoint-tablet-large) {
+            white-space: nowrap;
+          }
         }
       }
     }

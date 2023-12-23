@@ -1,41 +1,56 @@
 @import "src/styles/app-vars.scss";
 
-mat-toolbar {
+.navigation {
   display: grid;
-  grid-template-columns: 1fr auto;
-  justify-content: space-between;
+  grid-template-rows: auto 1fr;
 
-  .menu-brand {
-    height: 2rem;
-  }
-}
+  mat-toolbar {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    justify-content: space-between;
+    z-index: 5 !important;
 
-.mobile-navigation-sidenav-container {
-  position: absolute;
-  background: none;
-  height: 95%;
-  width: 50%;
-
-  @media screen and (min-width: $breakpoint-tablet) {
-    width: 30%;
+    .menu-brand {
+      height: 2rem;
+    }
   }
 
-  .mobile-navigation-sidenav {
-    padding: 20% 0;
-    width: 100%;
+  .mobile-navigation-sidenav-container {
+    position: fixed;
+    background: none;
+    height: 100%;
+    width: 50%;
+    z-index: 2 !important;
 
-    .sidebar-option {
-      font-size: 0.9rem;
-      padding: 0 10%;
+    @media screen and (min-width: $breakpoint-tablet) {
+      width: 30%;
+    }
 
-      .material-symbols-outlined {
-        margin-right: 0.5rem;
-      }
+    .mobile-navigation-sidenav {
+      padding: 30% 0 20%;
+      width: 100%;
 
-      .sidebar-image {
-        height: 1.2rem;
-        margin-right: 0.4rem;
-        padding-left: 0.2rem;
+      .sidebar-content {
+        width: 100%;
+        height: 100%;
+        display: grid;
+        align-content: space-between;
+        overflow: hidden;
+
+        .sidebar-option {
+          font-size: 0.9rem;
+          padding: 0 10%;
+
+          .material-symbols-outlined {
+            margin-right: 0.5rem;
+          }
+
+          .sidebar-image {
+            height: 1.2rem;
+            margin-right: 0.4rem;
+            padding-left: 0.2rem;
+          }
+        }
       }
     }
   }
