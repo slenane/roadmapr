@@ -12,6 +12,7 @@
         [selectedType]="selectedType"
         (onFilterType)="filterType($event)"
         (onFilterLanguage)="filterLanguage($event)"
+        (onUpdateView)="onUpdateView.emit($event)"
         (onClearFilters)="clearFilters()"
       ></app-drop-list-filter-items>
     </div>
@@ -42,6 +43,7 @@
       [selectedType]="selectedType"
       (onFilterType)="filterType($event)"
       (onFilterLanguage)="filterLanguage($event)"
+      (onUpdateView)="onUpdateView.emit($event)"
       (onClearFilters)="clearFilters()"
     ></app-drop-list-filter-items>
   </div>
