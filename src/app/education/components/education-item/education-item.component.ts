@@ -52,8 +52,8 @@ export class EducationItemComponent implements OnInit, OnChanges {
 
   openItemDetails() {
     this.dialog.open(EducationItemDetailsComponent, {
-      width: "50vw",
       data: { ...this.data, stack: this.sortedStack },
+      panelClass: "modal-class",
     });
   }
 

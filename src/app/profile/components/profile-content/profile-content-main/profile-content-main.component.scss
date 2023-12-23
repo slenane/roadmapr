@@ -1,17 +1,41 @@
+@import "src/styles/app-vars.scss";
+
 .profile-main {
-  height: 100vh;
   display: grid;
+  height: 95vh;
+
+  @media screen and (min-width: $breakpoint-tablet-large) {
+    height: 100vh;
+  }
 
   .scroll {
     overflow: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+
+    .profile-card {
+      display: block;
+      margin-right: 1rem;
+
+      @media screen and (min-width: $breakpoint-tablet-large) {
+        display: none;
+      }
+    }
 
     mat-card {
       display: grid;
-      grid-template-columns: 4fr 1fr;
-      gap: 2rem;
+      grid-template-columns: 1fr;
+      gap: 1rem;
       align-items: flex-start;
       margin-right: 1rem;
       margin-bottom: 2rem;
+
+      @media screen and (min-width: $breakpoint-tablet-large) {
+        grid-template-columns: 4fr 1fr;
+        gap: 2rem;
+      }
 
       .profile-header {
         border-bottom: 1px solid #ece9e7;
@@ -21,7 +45,9 @@
           font-weight: 500;
         }
         .profile-stack-icon {
-          margin: 0 0.5rem;
+          @media screen and (min-width: $breakpoint-tablet-large) {
+            margin: 0 0.5rem;
+          }
         }
       }
 
@@ -31,6 +57,7 @@
         gap: 1rem;
         margin-top: 1rem;
         font-size: 0.9rem;
+        font-weight: 400;
 
         .section-header {
           font-size: 0.9rem;

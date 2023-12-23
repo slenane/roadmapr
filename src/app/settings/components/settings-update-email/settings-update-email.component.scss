@@ -1,8 +1,15 @@
+@import "src/styles/app-vars.scss";
+
 .email-update-container {
   display: grid;
-  grid-template-columns: 1fr 20%;
+  grid-template-columns: 1fr;
+  justify-content: end;
   gap: 1rem;
   align-items: center;
+
+  @media screen and (min-width: $breakpoint-tablet-large) {
+    grid-template-columns: 1fr 20%;
+  }
 
   .mat-form-field {
     display: block;
@@ -13,7 +20,6 @@
     column-gap: 0.5rem;
     justify-content: end;
     align-items: center;
-    margin-bottom: 1.34375em;
   }
 
   .update-details-button {

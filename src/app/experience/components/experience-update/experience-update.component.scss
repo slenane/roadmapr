@@ -1,3 +1,5 @@
+@import "src/styles/app-vars.scss";
+
 .experience-header {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -31,9 +33,13 @@
 
     form {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
       gap: 1rem;
       margin-right: 1.5rem;
+
+      @media screen and (min-width: $breakpoint-tablet-large) {
+        grid-template-columns: 1fr 1fr;
+      }
 
       .grid-section {
         display: grid;
@@ -42,8 +48,12 @@
 
         .sub-grid {
           display: grid;
-          grid-template-columns: auto auto;
-          grid-gap: 1rem;
+          grid-template-columns: auto;
+          gap: 1rem;
+
+          @media screen and (min-width: $breakpoint-tablet-large) {
+            grid-template-columns: auto auto;
+          }
         }
       }
     }

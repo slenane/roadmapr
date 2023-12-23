@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { SidebarComponent } from "./components/sidebar/sidebar.component";
+import { NavigationComponent } from "./components/navigation/navigation/navigation.component";
 import { StackSelectorComponent } from "./components/stack-selector/stack-selector.component";
 import { MaterialModule } from "../material/material.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -26,12 +26,14 @@ import { NgScrollbarModule } from "ngx-scrollbar";
 import { UpdatePasswordInputsComponent } from "./components/forms/update-password/update-password-inputs/update-password-inputs.component";
 import { HomeMenuComponent } from "./components/home-menu/home-menu.component";
 import { DropListEmptyComponent } from "./components/drop-list/drop-list-empty/drop-list-empty.component";
-import { PathSelectorComponent } from './components/path-selector/path-selector.component';
-import { DropListDateComponent } from './components/drop-list/drop-list-date/drop-list-date.component';
+import { PathSelectorComponent } from "./components/path-selector/path-selector.component";
+import { DropListDateComponent } from "./components/drop-list/drop-list-date/drop-list-date.component";
+import { MobileNavigationComponent } from "./components/navigation/mobile-navigation/mobile-navigation.component";
+import { DropListFilterItemsComponent } from "./components/drop-list/drop-list-filters/drop-list-filter-items/drop-list-filter-items.component";
 
 @NgModule({
   declarations: [
-    SidebarComponent,
+    NavigationComponent,
     StackSelectorComponent,
     DropListFiltersComponent,
     IconCardComponent,
@@ -48,9 +50,11 @@ import { DropListDateComponent } from './components/drop-list/drop-list-date/dro
     DropListEmptyComponent,
     PathSelectorComponent,
     DropListDateComponent,
+    MobileNavigationComponent,
+    DropListFilterItemsComponent,
   ],
   exports: [
-    SidebarComponent,
+    NavigationComponent,
     StackSelectorComponent,
     DropListFiltersComponent,
     IconCardComponent,
@@ -64,6 +68,8 @@ import { DropListDateComponent } from './components/drop-list/drop-list-date/dro
     UpdatePasswordInputsComponent,
     HomeMenuComponent,
     DropListEmptyComponent,
+    MobileNavigationComponent,
+    DropListFilterItemsComponent,
   ],
   imports: [
     CommonModule,

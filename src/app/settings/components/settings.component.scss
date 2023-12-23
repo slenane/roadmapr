@@ -1,13 +1,25 @@
+@import "src/styles/app-vars.scss";
+
 .settings {
-  height: 100vh;
+  height: 90vh;
+
+  @media screen and (min-width: $breakpoint-tablet-large) {
+    height: 100vh;
+  }
 
   .scroll {
     overflow: auto;
     display: grid;
-    grid-template-columns: 2fr 1fr;
     align-items: flex-start;
-    gap: 1rem;
+    grid-template-columns: 1fr;
     padding: 1rem;
+    margin-bottom: 1rem;
+    gap: 1rem;
+
+    @media screen and (min-width: $breakpoint-tablet-large) {
+      grid-template-columns: 2fr 1fr;
+      margin-bottom: 0;
+    }
 
     .card-container {
       display: grid;
@@ -20,23 +32,31 @@
       grid-template-columns: 1fr;
 
       &.name-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 1rem;
+        grid-template-columns: 1fr;
+        justify-content: end;
+
+        @media screen and (min-width: $breakpoint-tablet-large) {
+          grid-template-columns: 1fr 1fr;
+          gap: 1rem;
+        }
       }
     }
 
     .update-details-container {
       display: grid;
-      grid-template-columns: 1fr 20%;
-      gap: 1rem;
       align-items: center;
+      grid-template-columns: 1fr;
+
+      @media screen and (min-width: $breakpoint-tablet-large) {
+        grid-template-columns: 1fr 20%;
+        gap: 1rem;
+      }
 
       .actions {
         display: flex;
         column-gap: 0.5rem;
         justify-content: flex-end;
         align-items: center;
-        margin-bottom: 1.34375em;
       }
 
       .update-details-button {
@@ -47,7 +67,16 @@
     }
 
     .update-password-header {
+      display: grid;
+      grid-template-columns: auto auto;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
       margin: 1rem 0;
+
+      @media screen and (min-width: $breakpoint-tablet-large) {
+        justify-content: flex-start;
+      }
 
       .update-password-text {
         margin-right: 1rem;

@@ -172,7 +172,7 @@ export class SettingsComponent implements OnInit {
 
   deleteAccount(): void {
     const dialogRef = this.dialog.open(SettingsDeleteAccountComponent, {
-      width: "50vw",
+      minWidth: "50vw",
     });
 
     dialogRef.afterClosed().subscribe((confirmed: any) => {

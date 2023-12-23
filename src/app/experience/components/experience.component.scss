@@ -1,3 +1,21 @@
+@import "src/styles/app-vars.scss";
+
+.main-container {
+  display: none;
+
+  @media screen and (min-width: $breakpoint-tablet-large) {
+    display: block;
+  }
+}
+
+.mobile-container {
+  display: block;
+
+  @media screen and (min-width: $breakpoint-tablet-large) {
+    display: none;
+  }
+}
+
 .see-more-card {
   padding: 12px 16px !important;
   text-align: center;

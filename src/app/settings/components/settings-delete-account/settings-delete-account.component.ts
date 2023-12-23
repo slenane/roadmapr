@@ -10,7 +10,7 @@ import { MatDialogRef, MatDialog } from "@angular/material/dialog";
 })
 export class SettingsDeleteAccountComponent implements OnInit {
   public deleteAccountForm = new FormGroup({
-    deleteCtrl: new FormControl("", Validators.pattern("confirm")),
+    deleteCtrl: new FormControl("", Validators.pattern(/confirm/i)),
   });
 
   constructor(
@@ -25,7 +25,9 @@ export class SettingsDeleteAccountComponent implements OnInit {
   }
 
   onDeleteClick(): void {
-    if (this.deleteAccountForm.value.deleteCtrl === "confirm") {
+    if (
+      this.deleteAccountForm.value.deleteCtrl?.toLocaleLowerCase() === "confirm"
+    ) {
       this.dialogRef.close(true);
     }
   }

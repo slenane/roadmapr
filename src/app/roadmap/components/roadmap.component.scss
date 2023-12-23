@@ -1,3 +1,5 @@
+@import "src/styles/app-vars.scss";
+
 .roadmap {
   height: 100vh;
   // display: grid;
@@ -17,9 +19,16 @@
 
     .grid-container {
       display: grid;
-      grid-template-columns: 3fr 2fr;
       align-content: start;
       gap: 1rem;
+
+      @media screen and (min-width: $breakpoint-mobile) {
+        grid-template-columns: 1fr;
+      }
+
+      @media screen and (min-width: $breakpoint-tablet-large) {
+        grid-template-columns: 3fr 2fr;
+      }
 
       .user-overview-container {
         display: grid;

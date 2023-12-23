@@ -1,4 +1,4 @@
-export const SIDEBAR_OPTIONS = [
+export const NAVIGATION_OPTIONS = [
   {
     title: "ROADMAP.T",
     image: "/assets/images/logo/roadmap-link.png",

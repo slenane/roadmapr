@@ -5,10 +5,11 @@
     authenticated: authenticated$ | async
   }"
 >
-  <app-sidebar
+  <app-mobile-navigation *ngIf="authenticated$ | async"></app-mobile-navigation>
+  <app-navigation
     *ngIf="authenticated$ | async"
     (onCollapseNavbar)="collapseNavbar($event)"
-  ></app-sidebar>
+  ></app-navigation>
   <section class="main-content">
     <router-outlet></router-outlet>
   </section>

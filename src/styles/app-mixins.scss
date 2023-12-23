@@ -61,7 +61,8 @@
 }
 
 @mixin dark-theme--mixin--sidebar() {
-  .sidebar {
+  .sidebar,
+  .mobile-nav {
     background-color: $dark-theme--sidebar--background;
   }
 

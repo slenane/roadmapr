@@ -23,12 +23,13 @@
     }}</button>
   </div>
 
-  <button
-    mat-raised-button
-    color="primary"
-    class="update-details-button"
-    *ngIf="!isEditing"
-    (click)="toggleUsernameUpdate.emit()"
-    >{{ "ACTIONS.UPDATE" | translate }}</button
-  >
+  <div class="actions" *ngIf="!isEditing">
+    <button
+      mat-raised-button
+      color="primary"
+      class="update-details-button"
+      (click)="toggleUsernameUpdate.emit()"
+      >{{ "ACTIONS.UPDATE" | translate }}</button
+    >
+  </div>
 </div>

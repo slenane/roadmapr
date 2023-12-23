@@ -1,3 +1,5 @@
+@import "src/styles/app-vars.scss";
+
 .landing-grid {
   background-image: url("/assets/images/landing-image.jpg");
   background-size: cover;
@@ -6,4 +8,12 @@
   display: grid;
   grid-template-columns: 2fr 1fr;
   align-content: center;
+
+  @media screen and (min-width: $breakpoint-mobile) {
+    grid-template-columns: 1fr;
+  }
+
+  @media screen and (min-width: $breakpoint-tablet-large) {
+    grid-template-columns: 2fr 1fr;
+  }
 }

@@ -53,14 +53,15 @@
                   >
                 </div>
 
-                <button
-                  mat-raised-button
-                  color="primary"
-                  class="update-details-button"
-                  *ngIf="!isEditingName"
-                  (click)="toggleNameUpdate()"
-                  >{{ "ACTIONS.UPDATE" | translate }}</button
-                >
+                <div class="actions" *ngIf="!isEditingName">
+                  <button
+                    mat-raised-button
+                    color="primary"
+                    class="update-details-button"
+                    (click)="toggleNameUpdate()"
+                    >{{ "ACTIONS.UPDATE" | translate }}</button
+                  >
+                </div>
               </div>
 
               <app-settings-update-username
@@ -103,17 +104,11 @@
             </mat-card-content>
           </mat-card>
 
-          <mat-card>
-            <h2>{{ "SETTINGS.DELETE.T" | translate }}</h2>
-
-            <button
-              mat-raised-button
-              class="delete-account-button"
-              color="warn"
-              (click)="deleteAccount()"
-              >{{ "SETTINGS.DELETE.T" | translate }}</button
-            >
-          </mat-card>
+          <app-settings-github
+            [hasPassword]="settings.hasPassword"
+            [userId]="settings.userId"
+            [github]="settings.github"
+          ></app-settings-github>
         </div>
 
         <div class="card-container">
@@ -176,11 +171,17 @@
             </mat-card-content>
           </mat-card>
 
-          <app-settings-github
-            [hasPassword]="settings.hasPassword"
-            [userId]="settings.userId"
-            [github]="settings.github"
-          ></app-settings-github>
+          <mat-card>
+            <h2>{{ "SETTINGS.DELETE.T" | translate }}</h2>
+
+            <button
+              mat-raised-button
+              class="delete-account-button"
+              color="warn"
+              (click)="deleteAccount()"
+              >{{ "SETTINGS.DELETE.T" | translate }}</button
+            >
+          </mat-card>
         </div>
       </div>
     </div>

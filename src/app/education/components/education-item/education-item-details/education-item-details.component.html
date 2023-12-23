@@ -20,81 +20,98 @@
     </div>
   </div>
 
-  <div class="body">
-    <div class="column">
-      <div class="row">
-        <div class="grid-item__title">
-          {{ data.type === "book" ? ("FORMS.AUTHOR" | translate) : "" }}
-          {{
-            data.type === "course" ? ("FORMS.INSTRUCTOR" | translate) : ""
-          }}</div
-        >
-        <p [innerHTML]="data.author"></p>
-      </div>
+  <ng-scrollbar>
+    <div scrollViewport cdkScrollable>
+      <div class="scroll">
+        <div class="body">
+          <div class="column">
+            <div class="column-grid">
+              <div class="row">
+                <div class="grid-item__title">
+                  {{ data.type === "book" ? ("FORMS.AUTHOR" | translate) : "" }}
+                  {{
+                    data.type === "course"
+                      ? ("FORMS.INSTRUCTOR" | translate)
+                      : ""
+                  }}</div
+                >
+                <p [innerHTML]="data.author"></p>
+              </div>
 
-      <div class="row" *ngIf="data.startDate">
-        <div class="grid-item__title">{{
-          "FORMS.DATES.TIMELINE" | translate
-        }}</div>
-        <p>
-          {{ data.startDate | date }} -
-          {{ (data.endDate | date) || ("FORMS.DATES.PRESENT" | translate) }}
-        </p>
-      </div>
+              <div class="row" *ngIf="data.startDate">
+                <div class="grid-item__title">{{
+                  "FORMS.DATES.TIMELINE" | translate
+                }}</div>
+                <p>
+                  {{ data.startDate | date }} -
+                  {{
+                    (data.endDate | date) || ("FORMS.DATES.PRESENT" | translate)
+                  }}
+                </p>
+              </div>
+            </div>
 
-      <div class="row">
-        <div class="grid-item__title">{{ "FORMS.STACK" | translate }}</div>
-        <div class="education-stack">
-          <img
-            *ngFor="let tech of data.stack"
-            class="app-stack-icon__large"
-            matTooltip="{{ tech.title }}"
-            src="/assets/images/stack/{{ tech.name }}-original.svg"
-          />
+            <div class="row">
+              <div class="grid-item__title">{{
+                "FORMS.STACK" | translate
+              }}</div>
+              <div class="education-stack">
+                <img
+                  *ngFor="let tech of data.stack"
+                  class="app-stack-icon__large"
+                  matTooltip="{{ tech.title }}"
+                  src="/assets/images/stack/{{ tech.name }}-original.svg"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="column description-column">
+            <div class="row">
+              <div class="grid-item__title">{{
+                "FORMS.DESCRIPTION" | translate
+              }}</div>
+              <p class="description-text" [innerHtml]="data.description"></p>
+            </div>
+
+            <div class="body-actions">
+              <a *ngIf="data.github" target="_blank" href="{{ data.github }}">
+                <button mat-raised-button color="black">{{
+                  "FORMS.GITHUB" | translate
+                }}</button>
+              </a>
+              <a [href]="data.link" target="_blank" *ngIf="data.link">
+                <button
+                  mat-raised-button
+                  type="button"
+                  class="provider-button"
+                  [ngClass]="data.metadata?.provider"
+                >
+                  <img
+                    class="provider-icon"
+                    *ngIf="data.metadata?.provider"
+                    src="/assets/images/icons/{{ data.metadata?.provider }}.svg"
+                  />
+
+                  <span
+                    *ngIf="!data.metadata?.provider"
+                    class="provider-button__text"
+                    >{{ "FORMS.LINK" | translate }}</span
+                  >
+                </button>
+              </a>
+              <a>
+                <button
+                  mat-raised-button
+                  color="default"
+                  (click)="onCancel()"
+                  >{{ "ACTIONS.CLOSE" | translate }}</button
+                >
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-
-    <div class="column description-column">
-      <div class="row">
-        <div class="grid-item__title">{{
-          "FORMS.DESCRIPTION" | translate
-        }}</div>
-        <p class="description-text" [innerHtml]="data.description"></p>
-      </div>
-
-      <div class="body-actions">
-        <a *ngIf="data.github" target="_blank" href="{{ data.github }}">
-          <button mat-raised-button color="black">{{
-            "FORMS.GITHUB" | translate
-          }}</button>
-        </a>
-        <a [href]="data.link" target="_blank" *ngIf="data.link">
-          <button
-            mat-raised-button
-            type="button"
-            class="provider-button"
-            [ngClass]="data.metadata?.provider"
-          >
-            <img
-              class="provider-icon"
-              *ngIf="data.metadata?.provider"
-              src="/assets/images/icons/{{ data.metadata?.provider }}.svg"
-            />
-
-            <span
-              *ngIf="!data.metadata?.provider"
-              class="provider-button__text"
-              >{{ "FORMS.LINK" | translate }}</span
-            >
-          </button>
-        </a>
-        <a>
-          <button mat-raised-button color="default" (click)="onCancel()">{{
-            "ACTIONS.CLOSE" | translate
-          }}</button>
-        </a>
-      </div>
-    </div>
-  </div>
+  </ng-scrollbar>
 </div>

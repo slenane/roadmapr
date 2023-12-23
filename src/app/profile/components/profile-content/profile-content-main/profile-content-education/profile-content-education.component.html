@@ -8,7 +8,6 @@
       />
       <div>
         {{ education.title }}
-        <span class="author"> - {{ education.author }}</span>
       </div>
     </div>
 
@@ -22,8 +21,11 @@
     </div>
   </div>
 
-  <div class="education-subtitle"
-    >{{ education.startDate | date }} -
-    {{ (education.endDate | date) || ("FORMS.DATES.PRESENT" | translate) }}</div
+  <div class="education-subtitle">
+    <span class="author">{{ education.author }}</span>
+    ({{ education.startDate | date }} -
+    {{
+      (education.endDate | date) || ("FORMS.DATES.PRESENT" | translate)
+    }})</div
   >
 </div>
