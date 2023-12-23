@@ -1,55 +1,50 @@
 @import "src/styles/app-vars.scss";
 
-.navigation {
+mat-toolbar {
   display: grid;
-  grid-template-rows: auto 1fr;
+  grid-template-columns: 1fr auto;
+  justify-content: space-between;
+  z-index: 1000 !important;
 
-  mat-toolbar {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    justify-content: space-between;
-    z-index: 5 !important;
+  .menu-brand {
+    height: 2rem;
+  }
+}
 
-    .menu-brand {
-      height: 2rem;
-    }
+.mobile-navigation-sidenav-container {
+  position: absolute;
+  background: none;
+  top: 56px;
+  bottom: 0;
+  left: 0;
+  width: 50%;
+
+  @media screen and (min-width: $breakpoint-tablet) {
+    width: 30%;
   }
 
-  .mobile-navigation-sidenav-container {
-    position: fixed;
-    background: none;
-    height: 100%;
-    width: 50%;
-    z-index: 2 !important;
+  .mobile-navigation-sidenav {
+    width: 100%;
 
-    @media screen and (min-width: $breakpoint-tablet) {
-      width: 30%;
-    }
-
-    .mobile-navigation-sidenav {
-      padding: 30% 0 20%;
+    .sidebar-content {
       width: 100%;
+      height: 100%;
+      display: grid;
+      align-content: space-around;
+      overflow: hidden;
 
-      .sidebar-content {
-        width: 100%;
-        height: 100%;
-        display: grid;
-        align-content: space-between;
-        overflow: hidden;
+      .sidebar-option {
+        font-size: 0.9rem;
+        padding: 0 10%;
 
-        .sidebar-option {
-          font-size: 0.9rem;
-          padding: 0 10%;
+        .material-symbols-outlined {
+          margin-right: 0.5rem;
+        }
 
-          .material-symbols-outlined {
-            margin-right: 0.5rem;
-          }
-
-          .sidebar-image {
-            height: 1.2rem;
-            margin-right: 0.4rem;
-            padding-left: 0.2rem;
-          }
+        .sidebar-image {
+          height: 1.2rem;
+          margin-right: 0.4rem;
+          padding-left: 0.2rem;
         }
       }
     }
