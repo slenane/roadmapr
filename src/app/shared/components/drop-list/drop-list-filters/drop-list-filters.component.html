@@ -15,11 +15,34 @@
         (onClearFilters)="clearFilters()"
       ></app-drop-list-filter-items>
     </div>
+
+    <div class="show-filters-button">
+      <button mat-raised-button (click)="toggleDisplayFilters()"
+        >Filters</button
+      >
+    </div>
   </div>
 
   <div class="add-container">
     <button mat-raised-button color="primary" (click)="addItem()">{{
       "ACTIONS.ADD" | translate
     }}</button>
+  </div>
+
+  <div
+    class="mobile-filter-items"
+    [ngClass]="{ 'display-filters': displayFilters }"
+  >
+    <app-drop-list-filter-items
+      [type]="type"
+      [typeConfig]="typeConfig"
+      [selectedView]="selectedView"
+      [sortedStack]="sortedStack"
+      [selectedLanguage]="selectedLanguage"
+      [selectedType]="selectedType"
+      (onFilterType)="filterType($event)"
+      (onFilterLanguage)="filterLanguage($event)"
+      (onClearFilters)="clearFilters()"
+    ></app-drop-list-filter-items>
   </div>
 </div>

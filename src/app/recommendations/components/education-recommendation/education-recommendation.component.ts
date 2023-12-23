@@ -31,7 +31,7 @@ export class EducationRecommendationComponent implements OnInit {
     const dialogRef = this.dialog.open(
       EducationRecommendationDetailsComponent,
       {
-        width: "50vw",
+        panelClass: "modal-class",
         data: { ...this.data },
       }
     );
