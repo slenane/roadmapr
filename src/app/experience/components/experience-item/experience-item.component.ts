@@ -55,7 +55,8 @@ export class ExperienceItemComponent implements OnInit, OnChanges {
 
   openItemDetails() {
     this.dialog.open(ExperienceItemDetailsComponent, {
-      minWidth: "50vw",
+      panelClass: "modal-class",
+      autoFocus: false,
       data: { ...this.data, stack: this.sortedStack },
     });
   }

@@ -1,22 +1,21 @@
 <div class="content">
+  <div class="actions">
+    <button mat-button [matMenuTriggerFor]="menu"
+      ><span class="material-symbols-outlined">more_horiz</span></button
+    >
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="editItem()">{{
+        "ACTIONS.EDIT" | translate
+      }}</button>
+      <button mat-menu-item (click)="deleteItem()">{{
+        "ACTIONS.DELETE" | translate
+      }}</button>
+    </mat-menu>
+  </div>
+
   <div class="header">
     <div class="role">
       <h2 [innerHTML]="data.role"></h2>
-    </div>
-
-    <div class="actions">
-      <button mat-button [matMenuTriggerFor]="menu"
-        ><span class="material-symbols-outlined">more_horiz</span></button
-      >
-
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item (click)="editItem()">{{
-          "ACTIONS.EDIT" | translate
-        }}</button>
-        <button mat-menu-item (click)="deleteItem()">{{
-          "ACTIONS.DELETE" | translate
-        }}</button>
-      </mat-menu>
     </div>
   </div>
 
@@ -25,14 +24,14 @@
       <div class="column-grid">
         <div class="row">
           <div class="grid-item__title">{{ "FORMS.COMPANY" | translate }}</div>
-          <p [innerHTML]="data.company"></p>
+          <p class="item-value" [innerHTML]="data.company"></p>
         </div>
 
         <div class="row">
           <div class="grid-item__title">{{
             "FORMS.DATES.TIMELINE" | translate
           }}</div>
-          <p>
+          <p class="item-value">
             {{ data.startDate | date }} -
             {{ (data.endDate | date) || ("FORMS.DATES.PRESENT" | translate) }}
           </p>
@@ -57,7 +56,10 @@
         <div class="grid-item__title">{{
           "FORMS.DESCRIPTION" | translate
         }}</div>
-        <p class="description-text" [innerHTML]="data.description"></p>
+        <p
+          class="item-value description-text"
+          [innerHTML]="data.description"
+        ></p>
       </div>
 
       <div class="body-actions">

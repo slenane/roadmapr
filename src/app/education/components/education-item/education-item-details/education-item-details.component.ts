@@ -28,7 +28,7 @@ export class EducationItemDetailsComponent implements OnInit {
 
   editItem() {
     const dialogRef = this.dialog.open(EducationUpdateComponent, {
-      minWidth: "70vw",
+      panelClass: "modal-class",
       data: this.data,
       autoFocus: false,
     });

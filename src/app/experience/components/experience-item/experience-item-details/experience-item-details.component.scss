@@ -1,80 +1,82 @@
 @import "src/styles/app-vars.scss";
 
-.header {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  margin-bottom: 1rem;
-  gap: 1rem;
+.content {
+  position: relative;
 
-  .role {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 0.5rem;
-    align-items: center;
+  .actions {
+    position: absolute;
+    top: -1.5rem;
+    right: -1.5rem;
+  }
 
-    h2 {
-      margin: 0;
+  .header {
+    margin-bottom: 1rem;
+
+    .role {
+      h2 {
+        margin: 0;
+        font-size: 1.2rem;
+      }
     }
   }
 
-  .actions {
-    display: grid;
-    grid-template-columns: auto auto;
-    gap: 0.5rem;
-  }
-}
-
-.body {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
-
-  @media screen and (min-width: $breakpoint-tablet-large) {
-    grid-template-columns: 1fr 2fr;
-  }
-
-  .column {
+  .body {
     display: grid;
     grid-template-columns: 1fr;
-    align-content: flex-start;
     gap: 1rem;
 
-    .column-grid {
+    @media screen and (min-width: $breakpoint-tablet-large) {
+      grid-template-columns: 1fr 2fr;
+    }
+
+    .column {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
+      align-content: flex-start;
       gap: 1rem;
 
-      @media screen and (min-width: $breakpoint-tablet-large) {
-        grid-template-columns: 1fr;
+      .column-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+
+        @media screen and (min-width: $breakpoint-tablet-large) {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      &.description-column {
+        align-content: space-between;
       }
     }
 
-    &.description-column {
-      align-content: space-between;
+    .row {
+      .grid-item__title {
+        font-weight: 500;
+        padding-bottom: 0.2rem;
+      }
+
+      .item-value {
+        color: rgba(255, 255, 255, 0.7);
+      }
     }
-  }
 
-  .row {
-    .grid-item__title {
-      font-weight: 500;
-      padding-bottom: 0.2rem;
+    .education-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.2rem;
     }
-  }
 
-  .education-stack {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.2rem;
-  }
+    .description-text {
+      white-space: pre-line;
+    }
 
-  .description-text {
-    white-space: pre-line;
-  }
-
-  .body-actions {
-    display: grid;
-    grid-template-columns: auto auto;
-    justify-content: end;
-    gap: 1rem;
+    .body-actions {
+      display: grid;
+      grid-template-columns: auto auto;
+      justify-content: end;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
   }
 }
