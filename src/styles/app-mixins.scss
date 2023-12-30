@@ -50,8 +50,14 @@
       --scrollbar-thumb-color: lightgrey !important;
     }
 
+    .github-button,
     .provider-button {
       background: white !important;
+
+      .github-icon {
+        height: 1.4rem;
+        margin-right: 0.5rem;
+      }
 
       &__text {
         color: black;

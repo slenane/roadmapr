@@ -23,7 +23,7 @@
   <div class="body">
     <div class="column">
       <div class="column-grid">
-        <div class="row">
+        <div class="row" *ngIf="data.startDate">
           <div class="grid-item__title">{{
             "FORMS.DATES.TIMELINE" | translate
           }}</div>
@@ -60,12 +60,15 @@
 
       <div class="body-actions">
         <a *ngIf="data.github" target="_blank" href="{{ data.github }}">
-          <button mat-raised-button color="black">
+          <button mat-raised-button class="github-button">
             <img
               class="github-icon"
               src="/assets/images/stack/github-original.svg"
               alt="Github Icon"
-            />{{ "FORMS.GITHUB" | translate }}</button
+            />
+            <span class="github-button__text">{{
+              "FORMS.GITHUB" | translate
+            }}</span></button
           >
         </a>
         <a *ngIf="data.link" target="_blank" href="{{ data.link }}">

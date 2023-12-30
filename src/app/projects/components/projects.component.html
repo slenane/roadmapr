@@ -137,11 +137,7 @@
                   id="todo"
                   (cdkDropListDropped)="drop($event)"
                 >
-                  <div
-                    *ngFor="let data of todo"
-                    class="drag-group-item"
-                    cdkDrag
-                  >
+                  <div *ngFor="let data of todo" class="drag-group-item">
                     <app-project
                       *ngIf="matchesFilters(data)"
                       [data]="data"
@@ -173,11 +169,7 @@
                   id="inProgress"
                   (cdkDropListDropped)="drop($event)"
                 >
-                  <div
-                    *ngFor="let data of inProgress"
-                    class="drag-group-item"
-                    cdkDrag
-                  >
+                  <div *ngFor="let data of inProgress" class="drag-group-item">
                     <app-project
                       *ngIf="matchesFilters(data)"
                       [data]="data"
@@ -209,11 +201,7 @@
                   id="done"
                   (cdkDropListDropped)="drop($event)"
                 >
-                  <div
-                    *ngFor="let data of done"
-                    class="drag-group-item"
-                    cdkDrag
-                  >
+                  <div *ngFor="let data of done" class="drag-group-item">
                     <app-project
                       *ngIf="matchesFilters(data)"
                       [data]="data"

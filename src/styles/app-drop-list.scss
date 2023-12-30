@@ -54,7 +54,11 @@
             justify-content: center;
             align-content: center;
             text-align: center;
-            padding: 0 1rem;
+            padding: 2rem 1rem;
+
+            @media screen and (min-width: $breakpoint-tablet-large) {
+              padding: 0 1rem;
+            }
 
             .material-symbols-outlined {
               font-size: 5rem;

@@ -64,10 +64,17 @@
           }}</button>
         </a>
 
-        <a href="data.github" *ngIf="data.github">
-          <button mat-raised-button color="default" type="button">{{
-            "FORMS.GITHUB" | translate
-          }}</button>
+        <a *ngIf="data.github" target="_blank" href="{{ data.github }}">
+          <button mat-raised-button class="github-button">
+            <img
+              class="github-icon"
+              src="/assets/images/stack/github-original.svg"
+              alt="Github Icon"
+            />
+            <span class="github-button__text">{{
+              "FORMS.GITHUB" | translate
+            }}</span></button
+          >
         </a>
       </p>
     </div>
