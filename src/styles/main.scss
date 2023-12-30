@@ -2,6 +2,8 @@
 
 * {
   box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: #f1f1f1 none;
 }
 
 html,
@@ -14,19 +16,21 @@ body {
   font-family: Mona Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
   margin: 0;
 
-  //   &::-webkit-scrollbar {
-  //     width: 1em;
-  //   }
+  @media screen and (min-width: $breakpoint-desktop) {
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
 
-  //   &::-webkit-scrollbar-track {
-  //     box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  //   }
+    ::-webkit-scrollbar-thumb {
+      background-color: #f1f1f1;
+      border-radius: 6px;
+    }
 
-  //   &::-webkit-scrollbar-thumb {
-  //     background-color: darkgrey;
-  //     outline: 1px solid slategrey;
-  //     border-radius: 4px;
-  //   }
+    ::-webkit-scrollbar-track,
+    ::-webkit-scrollbar-corner {
+      background-color: none;
+    }
+  }
 }
 
 app-root {
@@ -228,6 +232,8 @@ mat-form-field {
 
 .modal-class {
   min-width: 90%;
+  max-height: 90vh !important;
+  overflow: auto;
 
   @media screen and (min-width: $breakpoint-tablet-large) {
     min-width: 50%;

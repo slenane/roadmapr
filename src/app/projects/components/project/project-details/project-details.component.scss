@@ -1,84 +1,80 @@
 @import "src/styles/app-vars.scss";
 
-.header {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  margin-bottom: 1rem;
-  gap: 1rem;
-
-  .title {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 0.5rem;
-    align-items: center;
-
-    h2 {
-      margin: 0;
-    }
-  }
+.content {
+  position: relative;
 
   .actions {
-    display: grid;
-    grid-template-columns: auto auto;
-    gap: 0.5rem;
-  }
-}
-
-.body {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
-
-  @media screen and (min-width: $breakpoint-tablet-large) {
-    grid-template-columns: 1fr 2fr;
+    position: absolute;
+    top: -1.5rem;
+    right: -1.5rem;
   }
 
-  .column {
-    display: grid;
-    grid-template-columns: 1fr;
-    align-content: flex-start;
-    gap: 1rem;
+  .header {
+    margin-bottom: 1rem;
 
-    .column-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-
-      @media screen and (min-width: $breakpoint-tablet-large) {
-        grid-template-columns: 1fr;
+    .title {
+      h2 {
+        margin: 0;
+        font-size: 1.2rem;
       }
     }
-    &.description-column {
-      align-content: space-between;
-    }
   }
 
-  .row {
-    .grid-item__title {
-      font-weight: 500;
-      padding-bottom: 0.2rem;
-    }
-  }
-
-  .education-stack {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.2rem;
-  }
-
-  .description-text {
-    white-space: pre-line;
-  }
-
-  .body-actions {
+  .body {
     display: grid;
-    grid-template-columns: auto auto auto;
-    justify-content: end;
+    grid-template-columns: 1fr;
     gap: 1rem;
 
-    .github-icon {
-      height: 1.4rem;
-      margin-right: 0.5rem;
+    @media screen and (min-width: $breakpoint-tablet-large) {
+      grid-template-columns: 1fr 2fr;
+    }
+
+    .column {
+      display: grid;
+      grid-template-columns: 1fr;
+      align-content: flex-start;
+      gap: 1rem;
+
+      .column-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+
+        @media screen and (min-width: $breakpoint-tablet-large) {
+          grid-template-columns: 1fr;
+        }
+      }
+      &.description-column {
+        align-content: space-between;
+      }
+    }
+
+    .row {
+      .grid-item__title {
+        font-weight: 500;
+        padding-bottom: 0.2rem;
+      }
+
+      .item-value {
+        color: rgba(255, 255, 255, 0.7);
+      }
+    }
+
+    .education-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.2rem;
+    }
+
+    .description-text {
+      white-space: pre-line;
+    }
+
+    .body-actions {
+      display: grid;
+      grid-template-columns: auto auto auto;
+      justify-content: end;
+      gap: 1rem;
     }
   }
 }

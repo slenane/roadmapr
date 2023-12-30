@@ -9,8 +9,14 @@
     display: grid;
     align-items: center;
     gap: 1rem;
-    justify-content: flex-start;
-    grid-template-columns: auto 1fr;
+    justify-content: space-between;
+    grid-template-columns: 1fr auto;
+
+    @media screen and (min-width: $breakpoint-tablet-large) {
+      justify-content: flex-start;
+      grid-template-columns: auto 1fr;
+      margin-right: 1rem;
+    }
 
     .section-header {
       font-size: 1.3rem;
@@ -23,6 +29,31 @@
       @media screen and (min-width: $breakpoint-tablet-large) {
         display: block;
       }
+    }
+
+    .show-filters-button {
+      display: block;
+
+      @media screen and (min-width: $breakpoint-tablet-large) {
+        display: none;
+      }
+    }
+  }
+
+  .mobile-filter-items {
+    display: block;
+    position: relative;
+    visibility: hidden;
+    grid-column: 1 / -1;
+    height: 0;
+
+    &.display-filters {
+      visibility: visible;
+      height: auto;
+    }
+
+    @media screen and (min-width: $breakpoint-tablet-large) {
+      display: none;
     }
   }
 }

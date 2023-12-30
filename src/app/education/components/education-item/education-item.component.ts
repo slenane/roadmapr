@@ -54,6 +54,7 @@ export class EducationItemComponent implements OnInit, OnChanges {
     this.dialog.open(EducationItemDetailsComponent, {
       data: { ...this.data, stack: this.sortedStack },
       panelClass: "modal-class",
+      autoFocus: false,
     });
   }
 

@@ -139,8 +139,9 @@ export class EducationComponent implements OnInit, OnDestroy {
     this.selectedFilterLanguage = $event;
   }
 
-  updateView($event: any) {
-    this.selectedView = $event;
+  updateView(view: "compact" | "expanded") {
+    console.log(view);
+    this.selectedView = view;
   }
 
   matchesFilters(data: any) {

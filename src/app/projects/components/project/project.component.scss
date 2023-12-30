@@ -1,3 +1,5 @@
+@import "src/styles/app-vars.scss";
+
 mat-card {
   cursor: grab;
   padding: 1rem 0;
@@ -5,8 +7,12 @@ mat-card {
 
   mat-card-header {
     display: grid;
-    grid-template-columns: 2fr 1fr auto;
+    grid-template-columns: auto 1fr auto;
     justify-content: space-between;
+
+    @media screen and (min-width: $breakpoint-tablet-large) {
+      grid-template-columns: 2fr 1fr auto;
+    }
 
     mat-card-title {
       display: grid;

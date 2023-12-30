@@ -35,12 +35,25 @@
     }
   }
 
+  mat-button-toggle-group {
+    display: inline-flex;
+    flex-wrap: wrap;
+  }
+
   .mat-chip {
     font-size: 0.9rem;
     cursor: pointer;
 
     .mat-chip-trailing-icon {
       margin-left: 4px;
+
+      .clear-button {
+        font-size: 18px;
+
+        @media screen and (min-width: $breakpoint-tablet-large) {
+          font-size: inherit;
+        }
+      }
     }
   }
 }

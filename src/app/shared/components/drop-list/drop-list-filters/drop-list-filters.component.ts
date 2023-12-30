@@ -21,6 +21,7 @@ export class DropListFiltersComponent implements OnInit, OnChanges {
   public sortedStack: any[] = [];
   public selectedLanguage: any = null;
   public selectedType: any = null;
+  public displayFilters: boolean = false;
 
   @Input() type: string;
   @Input() parentId: string;
@@ -83,15 +84,18 @@ export class DropListFiltersComponent implements OnInit, OnChanges {
 
     if (this.type === "EXPERIENCE.T")
       dialogRef = this.dialog.open(ExperienceUpdateComponent, {
-        minWidth: "70vw",
+        panelClass: "modal-class",
+        autoFocus: false,
       });
     else if (this.type === "EDUCATION.T")
       dialogRef = this.dialog.open(EducationUpdateComponent, {
-        minWidth: "70vw",
+        panelClass: "modal-class",
+        autoFocus: false,
       });
     else if (this.type === "PROJECTS.T") {
       dialogRef = this.dialog.open(ProjectsUpdateComponent, {
-        minWidth: "70vw",
+        panelClass: "modal-class",
+        autoFocus: false,
       });
     } else {
       return;
@@ -107,5 +111,9 @@ export class DropListFiltersComponent implements OnInit, OnChanges {
     this.selectedLanguage = null;
     this.onFilterType.emit(null);
     this.selectedType = null;
+  }
+
+  toggleDisplayFilters() {
+    this.displayFilters = !this.displayFilters;
   }
 }
