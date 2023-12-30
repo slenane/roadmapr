@@ -15,6 +15,7 @@
 
     mat-card {
       margin: 1rem;
+      margin-bottom: 2rem;
     }
 
     .form-grid {
@@ -31,7 +32,10 @@
 
     .actions {
       margin-top: 2rem;
-      text-align: right;
+      display: grid;
+      grid-template-columns: auto auto;
+      gap: 1rem;
+      justify-content: flex-end;
     }
   }
 }
