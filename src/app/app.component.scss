@@ -34,11 +34,11 @@ app-menu {
     }
 
     &.authenticated {
-      grid-template-columns: 12% 88%;
+      grid-template-columns: 12rem 1fr;
       transition: all 0.5s;
 
       &.collapsed {
-        grid-template-columns: 4% 96%;
+        grid-template-columns: 4rem 1fr;
       }
 
       .mat-drawer-side {

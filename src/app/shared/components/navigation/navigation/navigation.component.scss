@@ -4,11 +4,11 @@
   left: 0;
   bottom: 0;
   min-height: 100vh;
-  width: 12%;
+  width: 12rem;
   transition: width 0.5s;
 
   &.collapsed {
-    width: 4%;
+    width: 4rem;
 
     .material-symbols-outlined {
       margin-right: 0 !important;
