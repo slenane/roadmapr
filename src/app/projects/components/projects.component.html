@@ -37,6 +37,7 @@
                 <app-project
                   *ngIf="matchesFilters(data)"
                   [data]="data"
+                  [listsLastIndex]="listsLastIndex"
                   [selectedView]="selectedView"
                   (pinItem)="onPinToggle($event, todo)"
                 >
@@ -71,6 +72,7 @@
                 <app-project
                   *ngIf="matchesFilters(data)"
                   [data]="data"
+                  [listsLastIndex]="listsLastIndex"
                   [selectedView]="selectedView"
                   (pinItem)="onPinToggle($event, inProgress)"
                 >
@@ -101,6 +103,7 @@
                 <app-project
                   *ngIf="matchesFilters(data)"
                   [data]="data"
+                  [listsLastIndex]="listsLastIndex"
                   [selectedView]="selectedView"
                   (pinItem)="onPinToggle($event, inProgress)"
                 >
@@ -141,6 +144,7 @@
                     <app-project
                       *ngIf="matchesFilters(data)"
                       [data]="data"
+                      [listsLastIndex]="listsLastIndex"
                       [selectedView]="selectedView"
                       (pinItem)="onPinToggle($event, todo)"
                     >
@@ -173,6 +177,7 @@
                     <app-project
                       *ngIf="matchesFilters(data)"
                       [data]="data"
+                      [listsLastIndex]="listsLastIndex"
                       [selectedView]="selectedView"
                       (pinItem)="onPinToggle($event, inProgress)"
                     >
@@ -205,6 +210,7 @@
                     <app-project
                       *ngIf="matchesFilters(data)"
                       [data]="data"
+                      [listsLastIndex]="listsLastIndex"
                       [selectedView]="selectedView"
                       (pinItem)="onPinToggle($event, inProgress)"
                     >

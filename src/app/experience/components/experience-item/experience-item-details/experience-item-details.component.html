@@ -15,7 +15,7 @@
 
   <div class="header">
     <div class="role">
-      <h2 [innerHTML]="data.role"></h2>
+      <h2 [innerHTML]="item.role"></h2>
     </div>
   </div>
 
@@ -24,16 +24,16 @@
       <div class="column-grid">
         <div class="row">
           <div class="grid-item__title">{{ "FORMS.COMPANY" | translate }}</div>
-          <p class="item-value" [innerHTML]="data.company"></p>
+          <p class="item-value" [innerHTML]="item.company"></p>
         </div>
 
-        <div class="row" *ngIf="data.startDate">
+        <div class="row" *ngIf="item.startDate">
           <div class="grid-item__title">{{
             "FORMS.DATES.TIMELINE" | translate
           }}</div>
           <p class="item-value">
-            {{ data.startDate | date }} -
-            {{ (data.endDate | date) || ("FORMS.DATES.PRESENT" | translate) }}
+            {{ item.startDate | date }} -
+            {{ (item.endDate | date) || ("FORMS.DATES.PRESENT" | translate) }}
           </p>
         </div>
       </div>
@@ -42,7 +42,7 @@
         <div class="grid-item__title">{{ "FORMS.STACK" | translate }}</div>
         <div class="education-stack">
           <img
-            *ngFor="let tech of data.stack"
+            *ngFor="let tech of item.stack"
             class="app-stack-icon__large"
             matTooltip="{{ tech.title }}"
             src="/assets/images/stack/{{ tech.name }}-original.svg"
@@ -58,12 +58,12 @@
         }}</div>
         <p
           class="item-value description-text"
-          [innerHTML]="data.description"
+          [innerHTML]="item.description"
         ></p>
       </div>
 
       <div class="body-actions">
-        <a *ngIf="data.github" target="_blank" href="{{ data.github }}">
+        <a *ngIf="item.github" target="_blank" href="{{ item.github }}">
           <button mat-raised-button class="github-button">
             <img
               class="github-icon"
@@ -75,15 +75,15 @@
             }}</span></button
           >
         </a>
-        <a *ngIf="data.project" target="_blank" href="{{ data.project }}">
+        <a *ngIf="item.project" target="_blank" href="{{ item.project }}">
           <button mat-raised-button color="secondary">{{
             "FORMS.PROJECT_LINK" | translate
           }}</button>
         </a>
         <a
-          *ngIf="data.companyLink"
+          *ngIf="item.companyLink"
           target="_blank"
-          href="{{ data.companyLink }}"
+          href="{{ item.companyLink }}"
         >
           <button mat-raised-button cdkFocusInitial color="primary">{{
             "FORMS.COMPANY" | translate

@@ -22,6 +22,7 @@ export class ProjectComponent implements OnInit, OnChanges {
 
   @Input() selectedView: any;
   @Input() data: any;
+  @Input() listsLastIndex: { inProgress: number; done: number };
   @Output() pinItem: EventEmitter<any> = new EventEmitter();
 
   constructor(public dialog: MatDialog) {}
@@ -52,7 +53,13 @@ export class ProjectComponent implements OnInit, OnChanges {
 
   openItemDetails() {
     this.dialog.open(ProjectDetailsComponent, {
-      data: { ...this.data, stack: this.sortedStack },
+      data: {
+        item: {
+          ...this.data,
+          stack: this.sortedStack,
+        },
+        listsLastIndex: this.listsLastIndex,
+      },
       panelClass: "modal-class",
       autoFocus: false,
     });

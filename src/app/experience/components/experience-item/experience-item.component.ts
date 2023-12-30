@@ -23,6 +23,7 @@ export class ExperienceItemComponent implements OnInit, OnChanges {
 
   @Input() selectedView: any;
   @Input() data: any;
+  @Input() listsLastIndex: { inProgress: number; done: number };
   @Output() pinItem: EventEmitter<any> = new EventEmitter();
 
   constructor(
@@ -57,7 +58,13 @@ export class ExperienceItemComponent implements OnInit, OnChanges {
     this.dialog.open(ExperienceItemDetailsComponent, {
       panelClass: "modal-class",
       autoFocus: false,
-      data: { ...this.data, stack: this.sortedStack },
+      data: {
+        item: {
+          ...this.data,
+          stack: this.sortedStack,
+        },
+        listsLastIndex: this.listsLastIndex,
+      },
     });
   }
 

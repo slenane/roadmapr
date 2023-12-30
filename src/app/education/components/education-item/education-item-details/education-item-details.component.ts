@@ -6,6 +6,7 @@ import {
 } from "@angular/material/dialog";
 import { EducationUpdateComponent } from "../../education-update/education-update.component";
 import { EducationStoreService } from "src/app/education/services/education-store.service";
+import { DropListService } from "src/app/shared/services/drop-list.service";
 
 @Component({
   selector: "app-education-item-details",
@@ -13,14 +14,19 @@ import { EducationStoreService } from "src/app/education/services/education-stor
   styleUrls: ["./education-item-details.component.scss"],
 })
 export class EducationItemDetailsComponent implements OnInit {
+  public item: any;
+
   constructor(
     private educationStoreService: EducationStoreService,
+    private dropListService: DropListService,
     public dialogRef: MatDialogRef<EducationItemDetailsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialog: MatDialog
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.item = this.data.item;
+  }
 
   onCancel(): void {
     this.dialogRef.close(false);
@@ -29,20 +35,24 @@ export class EducationItemDetailsComponent implements OnInit {
   editItem() {
     const dialogRef = this.dialog.open(EducationUpdateComponent, {
       panelClass: "modal-class",
-      data: this.data,
+      data: this.item,
       autoFocus: false,
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.data = { ...this.data, ...result };
-        this.educationStoreService.updateEducationItem(this.data);
+        this.item = { ...this.item, ...result };
+        this.item = this.dropListService.getItemListAndPosition(
+          this.item,
+          this.data.listsLastIndex
+        );
+        this.educationStoreService.updateEducationItem(this.item);
       }
     });
   }
 
   deleteItem() {
-    this.educationStoreService.removeEducationItem(this.data);
+    this.educationStoreService.removeEducationItem(this.item);
     this.dialogRef.close(false);
   }
 }

@@ -4,6 +4,7 @@ import {
   transferArrayItem,
 } from "@angular/cdk/drag-drop";
 import { Injectable } from "@angular/core";
+import { STATUS } from "src/app/education/constants/education.constants";
 
 @Injectable({
   providedIn: "root",
@@ -169,5 +170,30 @@ export class DropListService {
         index = item.position;
     });
     return index;
+  }
+
+  getItemListAndPosition(item: any, lastIndexes: any) {
+    const initialStatus = item.status;
+
+    if (!item.startDate && !item.endDate && initialStatus !== STATUS.TODO) {
+      item.status = STATUS.TODO;
+      item.position = lastIndexes.todo;
+    } else if (
+      item.startDate &&
+      !item.endDate &&
+      initialStatus !== STATUS.IN_PROGRESS
+    ) {
+      item.status = STATUS.IN_PROGRESS;
+      item.position = lastIndexes.inProgress;
+    } else if (
+      item.startDate &&
+      item.endDate &&
+      initialStatus !== STATUS.DONE
+    ) {
+      item.status = STATUS.DONE;
+      item.position = lastIndexes.done;
+    }
+
+    return item;
   }
 }
