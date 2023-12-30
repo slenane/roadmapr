@@ -25,6 +25,11 @@ export class ProjectsComponent implements OnInit, OnDestroy {
   public projects: Projects;
   public projectsId: string;
   public projectsArray: any[] = [];
+  public listsLastIndex: { todo: number; inProgress: number; done: number } = {
+    todo: 0,
+    inProgress: 0,
+    done: 0,
+  };
 
   public languageFilterData: any = [];
 
@@ -73,6 +78,12 @@ export class ProjectsComponent implements OnInit, OnDestroy {
     this.todo = this.sortItems(todoArray);
     this.inProgress = this.sortItems(inProgressArray);
     this.done = this.sortItems(doneArray);
+
+    this.listsLastIndex = {
+      todo: this.todo.length,
+      inProgress: this.inProgress.length,
+      done: this.done.length,
+    };
   }
 
   sortItems(arr: any[]): any[] {
@@ -138,20 +149,13 @@ export class ProjectsComponent implements OnInit, OnDestroy {
 
   createProject(item: any) {
     if (item.data) {
-      const newItem = { ...item.data };
+      let newItem = { ...item.data };
       newItem.pinned = false;
 
-      if (!newItem.startDate && !newItem.endDate) {
-        newItem.status = STATUS.TODO;
-        newItem.position = this.todo.length;
-      } else if (newItem.startDate && !newItem.endDate) {
-        newItem.status = STATUS.IN_PROGRESS;
-        newItem.position = this.inProgress.length;
-      } else {
-        newItem.status = STATUS.DONE;
-        newItem.position = this.done.length;
-      }
-
+      newItem = this.dropListService.getItemListAndPosition(
+        newItem,
+        this.listsLastIndex
+      );
       this.projectsStoreService.createProject(item.id, item.data);
     }
   }

@@ -16,7 +16,7 @@
 
   <div class="header">
     <div class="title">
-      <h2 [innerHtml]="data.title"></h2>
+      <h2 [innerHtml]="item.title"></h2>
     </div>
   </div>
 
@@ -25,21 +25,21 @@
       <div class="column-grid">
         <div class="row">
           <div class="grid-item__title">
-            {{ data.type === "book" ? ("FORMS.AUTHOR" | translate) : "" }}
+            {{ item.type === "book" ? ("FORMS.AUTHOR" | translate) : "" }}
             {{
-              data.type === "course" ? ("FORMS.INSTRUCTOR" | translate) : ""
+              item.type === "course" ? ("FORMS.INSTRUCTOR" | translate) : ""
             }}</div
           >
-          <p class="item-value" [innerHTML]="data.author"></p>
+          <p class="item-value" [innerHTML]="item.author"></p>
         </div>
 
-        <div class="row" *ngIf="data.startDate">
+        <div class="row" *ngIf="item.startDate">
           <div class="grid-item__title">{{
             "FORMS.DATES.TIMELINE" | translate
           }}</div>
           <p class="item-value">
-            {{ data.startDate | date }} -
-            {{ (data.endDate | date) || ("FORMS.DATES.PRESENT" | translate) }}
+            {{ item.startDate | date }} -
+            {{ (item.endDate | date) || ("FORMS.DATES.PRESENT" | translate) }}
           </p>
         </div>
       </div>
@@ -48,7 +48,7 @@
         <div class="grid-item__title">{{ "FORMS.STACK" | translate }}</div>
         <div class="education-stack">
           <img
-            *ngFor="let tech of data.stack"
+            *ngFor="let tech of item.stack"
             class="app-stack-icon__large"
             matTooltip="{{ tech.title }}"
             src="/assets/images/stack/{{ tech.name }}-original.svg"
@@ -64,12 +64,12 @@
         }}</div>
         <p
           class="item-value description-text"
-          [innerHtml]="data.description"
+          [innerHtml]="item.description"
         ></p>
       </div>
 
       <div class="body-actions">
-        <a *ngIf="data.github" target="_blank" href="{{ data.github }}">
+        <a *ngIf="item.github" target="_blank" href="{{ item.github }}">
           <button mat-raised-button class="github-button">
             <img
               class="github-icon"
@@ -81,21 +81,21 @@
             }}</span></button
           >
         </a>
-        <a [href]="data.link" target="_blank" *ngIf="data.link">
+        <a [href]="item.link" target="_blank" *ngIf="item.link">
           <button
             mat-raised-button
             type="button"
             class="provider-button"
-            [ngClass]="data.metadata?.provider"
+            [ngClass]="item.metadata?.provider"
           >
             <img
               class="provider-icon"
-              *ngIf="data.metadata?.provider"
-              src="/assets/images/icons/{{ data.metadata?.provider }}.svg"
+              *ngIf="item.metadata?.provider"
+              src="/assets/images/icons/{{ item.metadata?.provider }}.svg"
             />
 
             <span
-              *ngIf="!data.metadata?.provider"
+              *ngIf="!item.metadata?.provider"
               class="provider-button__text"
               >{{ "FORMS.LINK" | translate }}</span
             >

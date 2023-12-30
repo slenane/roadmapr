@@ -30,6 +30,11 @@ export class EducationComponent implements OnInit, OnDestroy {
   public education: Education;
   public educationId: string;
   public educationList: any[] = [];
+  public listsLastIndex: { todo: number; inProgress: number; done: number } = {
+    todo: 0,
+    inProgress: 0,
+    done: 0,
+  };
 
   public todo: any[];
   public inProgress: any[];
@@ -88,9 +93,11 @@ export class EducationComponent implements OnInit, OnDestroy {
     this.inProgress = this.sortItems(inProgressArray);
     this.done = this.sortItems(doneArray);
 
-    // this.recommendations = this.generateEducationList(
-    //   this.recommendations
-    // );
+    this.listsLastIndex = {
+      todo: this.todo.length,
+      inProgress: this.inProgress.length,
+      done: this.done.length,
+    };
   }
 
   sortItems(arr: any[]): any[] {
@@ -157,20 +164,13 @@ export class EducationComponent implements OnInit, OnDestroy {
 
   createEducationItem(item: any) {
     if (item.data) {
-      const newItem = { ...item.data };
+      let newItem = { ...item.data };
       newItem.pinned = false;
 
-      if (!newItem.startDate && !newItem.endDate) {
-        newItem.status = STATUS.TODO;
-        newItem.position = this.todo.length;
-      } else if (newItem.startDate && !newItem.endDate) {
-        newItem.status = STATUS.IN_PROGRESS;
-        newItem.position = this.inProgress.length;
-      } else {
-        newItem.status = STATUS.DONE;
-        newItem.position = this.done.length;
-      }
-
+      newItem = this.dropListService.getItemListAndPosition(
+        newItem,
+        this.listsLastIndex
+      );
       this.educationStoreService.createEducationItem(item.id, newItem);
     }
   }

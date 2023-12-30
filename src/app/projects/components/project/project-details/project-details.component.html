@@ -16,20 +16,20 @@
 
   <div class="header">
     <div class="title">
-      <h2 [innerHTML]="data.title"></h2>
+      <h2 [innerHTML]="item.title"></h2>
     </div>
   </div>
 
   <div class="body">
     <div class="column">
       <div class="column-grid">
-        <div class="row" *ngIf="data.startDate">
+        <div class="row" *ngIf="item.startDate">
           <div class="grid-item__title">{{
             "FORMS.DATES.TIMELINE" | translate
           }}</div>
           <p class="item-value">
-            {{ data.startDate | date }} -
-            {{ (data.endDate | date) || ("FORMS.DATES.PRESENT" | translate) }}
+            {{ item.startDate | date }} -
+            {{ (item.endDate | date) || ("FORMS.DATES.PRESENT" | translate) }}
           </p>
         </div>
 
@@ -37,7 +37,7 @@
           <div class="grid-item__title">{{ "FORMS.STACK" | translate }}</div>
           <div class="education-stack">
             <img
-              *ngFor="let tech of data.stack"
+              *ngFor="let tech of item.stack"
               class="app-stack-icon__large"
               matTooltip="{{ tech.title }}"
               src="/assets/images/stack/{{ tech.name }}-original.svg"
@@ -54,12 +54,12 @@
         }}</div>
         <p
           class="item-value description-text"
-          [innerHTML]="data.description"
+          [innerHTML]="item.description"
         ></p>
       </div>
 
       <div class="body-actions">
-        <a *ngIf="data.github" target="_blank" href="{{ data.github }}">
+        <a *ngIf="item.github" target="_blank" href="{{ item.github }}">
           <button mat-raised-button class="github-button">
             <img
               class="github-icon"
@@ -71,7 +71,7 @@
             }}</span></button
           >
         </a>
-        <a *ngIf="data.link" target="_blank" href="{{ data.link }}">
+        <a *ngIf="item.link" target="_blank" href="{{ item.link }}">
           <button mat-raised-button cdkFocusInitial color="primary">{{
             "FORMS.PROJECT_LINK" | translate
           }}</button>

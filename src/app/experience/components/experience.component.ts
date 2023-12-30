@@ -33,6 +33,10 @@ export class ExperienceComponent implements OnInit {
   public experienceList: any[];
   public displayAllOpportunities: boolean = false;
   public opportunitiesFullArray: RemoteJob[];
+  public listsLastIndex: { inProgress: number; done: number } = {
+    inProgress: 0,
+    done: 0,
+  };
 
   public opportunities: RemoteJob[];
   public inProgress: Experience[];
@@ -87,6 +91,11 @@ export class ExperienceComponent implements OnInit {
 
     this.inProgress = this.sortItems(inProgressArray);
     this.done = this.sortItems(doneArray);
+
+    this.listsLastIndex = {
+      inProgress: this.inProgress.length,
+      done: this.done.length,
+    };
   }
 
   sortItems(arr: any[]): any[] {
@@ -152,17 +161,13 @@ export class ExperienceComponent implements OnInit {
 
   createExperienceItem(item: any) {
     if (item.data) {
-      const newItem = { ...item.data };
+      let newItem = { ...item.data };
       newItem.pinned = false;
 
-      if (newItem.startDate && !newItem.endDate) {
-        newItem.status = STATUS.IN_PROGRESS;
-        newItem.position = this.inProgress.length;
-      } else {
-        newItem.status = STATUS.DONE;
-        newItem.position = this.done.length;
-      }
-
+      newItem = this.dropListService.getItemListAndPosition(
+        newItem,
+        this.listsLastIndex
+      );
       this.experienceStoreService.createExperienceItem(item.id, item.data);
     }
   }

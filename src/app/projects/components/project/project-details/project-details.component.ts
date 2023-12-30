@@ -6,6 +6,7 @@ import {
 } from "@angular/material/dialog";
 import { ProjectsStoreService } from "src/app/projects/services/projects-store.service";
 import { ProjectsUpdateComponent } from "../../projects-update/projects-update.component";
+import { DropListService } from "src/app/shared/services/drop-list.service";
 
 @Component({
   selector: "app-project-details",
@@ -13,14 +14,19 @@ import { ProjectsUpdateComponent } from "../../projects-update/projects-update.c
   styleUrls: ["./project-details.component.scss"],
 })
 export class ProjectDetailsComponent implements OnInit {
+  public item: any;
+
   constructor(
     private projectsStoreService: ProjectsStoreService,
+    private dropListService: DropListService,
     public dialogRef: MatDialogRef<ProjectDetailsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialog: MatDialog
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.item = this.data.item;
+  }
 
   onCancel(): void {
     this.dialogRef.close(false);
@@ -29,20 +35,24 @@ export class ProjectDetailsComponent implements OnInit {
   editItem() {
     const dialogRef = this.dialog.open(ProjectsUpdateComponent, {
       panelClass: "modal-class",
-      data: this.data,
+      data: this.item,
       autoFocus: false,
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.data = { ...this.data, ...result };
-        this.projectsStoreService.updateProject(this.data);
+        this.item = { ...this.item, ...result };
+        this.item = this.dropListService.getItemListAndPosition(
+          this.item,
+          this.data.listsLastIndex
+        );
+        this.projectsStoreService.updateProject(this.item);
       }
     });
   }
 
   deleteItem() {
-    this.projectsStoreService.removeProject(this.data);
+    this.projectsStoreService.removeProject(this.item);
     this.dialogRef.close(false);
   }
 }
