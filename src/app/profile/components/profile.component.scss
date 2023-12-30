@@ -15,14 +15,24 @@
 
     @media screen and (min-width: $breakpoint-tablet-large) {
       grid-template-columns: 2fr 7fr;
-      column-gap: 1rem;
     }
 
-    .profile-card {
+    @media screen and (min-width: $breakpoint-desktop-large) {
+      grid-template-columns: 1fr 5fr;
+    }
+
+    @media screen and (min-width: $breakpoint-desktop-extra-large) {
+      grid-template-columns: 1fr 6fr;
+    }
+
+    .personal-cards {
       display: none;
 
       @media screen and (min-width: $breakpoint-tablet-large) {
-        display: block;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        align-content: flex-start;
       }
     }
   }

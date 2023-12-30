@@ -1,3 +1,5 @@
+@import "src/styles/app-vars.scss";
+
 .user-card {
   padding: 0.5rem;
   position: relative;
@@ -11,12 +13,28 @@
     background-repeat: no-repeat;
     border-radius: 4px 4px 0 0;
     background-size: cover;
+
+    @media screen and (min-width: $breakpoint-tablet) {
+      height: 7rem;
+    }
+
+    @media screen and (min-width: $breakpoint-desktop-extra-large) {
+      height: 8rem;
+    }
   }
 
   .user-details {
     text-align: center;
     padding-top: 3.2rem;
     position: relative;
+
+    @media screen and (min-width: $breakpoint-tablet) {
+      padding-top: 4.2rem;
+    }
+
+    @media screen and (min-width: $breakpoint-desktop-extra-large) {
+      padding-top: 5rem;
+    }
 
     .user-image {
       height: 5rem;
@@ -61,6 +79,6 @@
   .actions {
     display: grid;
     justify-content: center;
-    margin-bottom: 1rem;
+    margin: 1rem 0;
   }
 }

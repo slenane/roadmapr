@@ -1,88 +1,74 @@
 @import "src/styles/app-vars.scss";
 
-.profile-main {
+.content {
   display: grid;
-  height: 95vh;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-right: 1rem;
+  margin-bottom: 2rem;
 
-  @media screen and (min-width: $breakpoint-tablet-large) {
-    height: 100vh;
+  .mobile-only-card {
+    display: block;
+
+    @media screen and (min-width: $breakpoint-tablet-large) {
+      display: none;
+    }
   }
 
-  .scroll {
-    overflow: auto;
+  .main {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1rem;
-    margin-bottom: 1rem;
 
-    .profile-card {
-      display: block;
-      margin-right: 1rem;
+    @media screen and (min-width: $breakpoint-desktop-extra-large) {
+      grid-template-columns: 2fr 1fr;
+    }
 
-      @media screen and (min-width: $breakpoint-tablet-large) {
-        display: none;
+    .profile-header {
+      border-bottom: 1px solid #ece9e7;
+
+      h1 {
+        font-size: 2rem;
+        font-weight: 500;
+      }
+
+      .profile-stack-icon {
+        @media screen and (min-width: $breakpoint-tablet-large) {
+          margin: 0 0.5rem;
+        }
       }
     }
 
-    mat-card {
+    .profile-body {
       display: grid;
       grid-template-columns: 1fr;
       gap: 1rem;
-      align-items: flex-start;
-      margin-right: 1rem;
-      margin-bottom: 2rem;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      font-weight: 400;
 
-      @media screen and (min-width: $breakpoint-tablet-large) {
-        grid-template-columns: 4fr 1fr;
-        gap: 2rem;
-      }
-
-      .profile-header {
-        border-bottom: 1px solid #ece9e7;
-
-        h1 {
-          font-size: 2rem;
-          font-weight: 500;
-        }
-        .profile-stack-icon {
-          @media screen and (min-width: $breakpoint-tablet-large) {
-            margin: 0 0.5rem;
-          }
-        }
-      }
-
-      .profile-body {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 1rem;
-        margin-top: 1rem;
+      .section-header {
         font-size: 0.9rem;
+        font-weight: 500;
+        letter-spacing: 0.05rem;
+        margin-bottom: 0.5rem;
+        text-transform: uppercase;
+      }
+
+      .label {
+        font-size: 0.8rem;
         font-weight: 400;
+      }
 
-        .section-header {
-          font-size: 0.9rem;
-          font-weight: 500;
-          letter-spacing: 0.05rem;
-          margin-bottom: 0.5rem;
-          text-transform: uppercase;
-        }
+      .value {
+        font-weight: 500;
+      }
 
-        .label {
-          font-size: 0.8rem;
-          font-weight: 400;
-        }
+      .profile-section {
+        margin-bottom: 0.5rem;
+      }
 
-        .value {
-          font-weight: 500;
-        }
-
-        .profile-section {
-          margin-bottom: 0.5rem;
-        }
-
-        .bio {
-          font-size: 1rem;
-        }
+      .bio {
+        font-size: 1rem;
       }
     }
   }
