@@ -1,3 +1,5 @@
+@import "src/styles/app-vars.scss";
+
 .roadmapr-update-header {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -26,25 +28,43 @@
 .mat-dialog-content {
   padding: 0 12px 0 24px;
 
+  .desktop-container {
+    display: none;
+  }
+
+  .mobile-container {
+    display: block;
+    overflow: auto;
+  }
+
+  @media screen and (min-width: $breakpoint-tablet-large) {
+    .desktop-container {
+      display: block;
+    }
+    .mobile-container {
+      display: none;
+    }
+  }
+
   .form-scroll {
     height: 28rem;
+  }
 
-    form {
+  form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-right: 1.5rem;
+
+    .grid-section {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      margin-right: 1.5rem;
+      width: 100%;
+      grid-template-columns: 1fr;
 
-      .grid-section {
+      .sub-grid {
         display: grid;
-        width: 100%;
-        grid-template-columns: 1fr;
-
-        .sub-grid {
-          display: grid;
-          grid-template-columns: auto auto;
-          grid-gap: 1rem;
-        }
+        grid-template-columns: auto auto;
+        grid-gap: 1rem;
       }
     }
   }
