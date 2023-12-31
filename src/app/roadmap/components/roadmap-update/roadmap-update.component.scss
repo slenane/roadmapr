@@ -18,15 +18,19 @@
       font-weight: 500;
       margin-bottom: 0;
     }
-
-    p {
-      font-weight: 300;
-    }
   }
 }
 
 .mat-dialog-content {
-  padding: 0 12px 0 24px;
+  padding: 0 12px;
+
+  p {
+    font-weight: 300;
+  }
+
+  @media screen and (min-width: $breakpoint-tablet-large) {
+    padding: 0 12px 0 24px;
+  }
 
   .desktop-container {
     display: none;
@@ -52,9 +56,13 @@
 
   form {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    margin-right: 1.5rem;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+
+    @media screen and (min-width: $breakpoint-tablet-large) {
+      grid-template-columns: 1fr 1fr;
+      margin-right: 1.5rem;
+    }
 
     .grid-section {
       display: grid;
@@ -71,7 +79,10 @@
 }
 
 .actions {
-  float: right;
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 0.5rem;
+  justify-content: flex-end;
 }
 
 .stack-card {

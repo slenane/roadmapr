@@ -9,10 +9,13 @@ app-menu {
 }
 
 .app-content-main {
-  display: grid;
-  grid-template-columns: 1fr;
   height: 100vh;
   width: 100vw;
+
+  @media screen and (min-width: $breakpoint-tablet-large) {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
 
   app-mobile-navigation {
     display: block;
@@ -53,10 +56,10 @@ app-menu {
 
 .main-content {
   overflow: auto;
-  margin-top: 4rem;
+  padding-top: 4rem;
 
   @media screen and (min-width: $breakpoint-tablet-large) {
     overflow: hidden;
-    margin-top: 0;
+    padding-top: 0;
   }
 }

@@ -12,7 +12,10 @@ import {
   MatDialog,
   MatDialogRef,
 } from "@angular/material/dialog";
-import { DEV_PATHS } from "src/app/shared/constants/dev-paths.constants";
+import {
+  DEV_PATHS,
+  IDeveloperPath,
+} from "src/app/shared/constants/dev-paths.constants";
 import { COUNTRY_LIST } from "src/app/shared/constants/country-list.constants";
 import { OnboardingPathQuizComponent } from "../onboarding-path-quiz/onboarding-path-quiz.component";
 import { MatStepper } from "@angular/material/stepper";
@@ -34,7 +37,7 @@ export class OnboardingBasicDetailsComponent implements OnInit {
   });
 
   public pathForm = new FormGroup({
-    pathCtrl: new FormControl("", Validators.required),
+    pathCtrl: new FormControl<IDeveloperPath | string>("", Validators.required),
   });
 
   @ViewChild("firstName") firstNameCtrl: ElementRef;
@@ -61,6 +64,7 @@ export class OnboardingBasicDetailsComponent implements OnInit {
       nationalityCtrl: this.data.nationality,
     });
 
+    console.log(this.data.path);
     this.pathForm.patchValue({
       pathCtrl: this.data.path,
     });
@@ -99,13 +103,14 @@ export class OnboardingBasicDetailsComponent implements OnInit {
 
   openPathQuiz() {
     const dialogRef = this.dialog.open(OnboardingPathQuizComponent, {
-      width: "50vw",
+      panelClass: "modal-class",
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
+        const path = this.DEV_PATHS.find((path) => path.name === result);
         this.pathForm.patchValue({
-          pathCtrl: result,
+          pathCtrl: path,
         });
       }
     });

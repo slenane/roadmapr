@@ -1,12 +1,28 @@
+@import "src/styles/app-vars.scss";
+
+.header {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
 .basic-details {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  column-gap: 1rem;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+
+  @media screen and (min-width: $breakpoint-tablet-large) {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 .path {
   display: grid;
   grid-template-columns: 1fr;
+
+  h2 {
+    font-size: 1.2rem;
+  }
 
   .quiz-link {
     color: #00bfd6;
