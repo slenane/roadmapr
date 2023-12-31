@@ -8,7 +8,7 @@
   </div>
 </div>
 <div mat-dialog-content>
-  <ng-scrollbar class="form-scroll">
+  <ng-scrollbar class="form-scroll desktop-container">
     <form [formGroup]="form">
       <mat-form-field appearance="outline" class="full-width-grid-item">
         <mat-label>{{ "FORMS.PATH" | translate }}</mat-label>
@@ -77,6 +77,76 @@
       </mat-card>
     </form>
   </ng-scrollbar>
+
+  <div class="mobile-container">
+    <form [formGroup]="form">
+      <mat-form-field appearance="outline" class="full-width-grid-item">
+        <mat-label>{{ "FORMS.PATH" | translate }}</mat-label>
+
+        <mat-select
+          #path
+          formControlName="pathCtrl"
+          [compareWith]="compareValues"
+        >
+          <mat-option *ngFor="let path of developerPaths" [value]="path">
+            <div class="type-option"> {{ path.name | translate }} </div>
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.controls.pathCtrl.invalid">{{
+          "FORMS.REQUIRED.PATH" | translate
+        }}</mat-error>
+      </mat-form-field>
+
+      <mat-card
+        class="stack-card"
+        [ngClass]="{ selected: selectedStack?.id === stack.type?.id }"
+        *ngFor="let stack of getStackListArray()"
+        (click)="selectStack(stack.type)"
+      >
+        <mat-card-header>
+          <mat-card-title>{{ stack?.title | translate }}</mat-card-title>
+
+          <div class="tech-stack">
+            <img
+              *ngFor="let tech of stack?.stack.core"
+              class="app-stack-icon"
+              matTooltip="{{ tech.title }}"
+              src="/assets/images/stack/{{ tech.name }}-original.svg"
+            />
+            <img
+              *ngFor="let tech of stack?.stack.choice"
+              class="app-stack-icon"
+              matTooltip="{{ tech.title }}"
+              src="/assets/images/stack/{{ tech.name }}-original.svg"
+            />
+          </div>
+        </mat-card-header>
+        <mat-card-content>
+          <p class="stack-description">
+            {{ stack?.description | translate }}
+          </p>
+        </mat-card-content>
+      </mat-card>
+      <mat-card
+        class="stack-card"
+        [ngClass]="{ selected: selectedStack?.id === customStack.type.id }"
+        (click)="selectStack(customStack.type)"
+      >
+        <mat-card-header>
+          <mat-card-title>{{ customStack.title | translate }}</mat-card-title>
+
+          <div class="custom-tech-stack">
+            <div class="custom-icon"></div>
+            <div class="custom-icon"></div>
+            <div class="custom-icon"></div>
+          </div>
+        </mat-card-header>
+        <mat-card-content>
+          <p [innerHTML]="customStack.description | translate"> </p>
+        </mat-card-content>
+      </mat-card>
+    </form>
+  </div>
 </div>
 
 <div mat-dialog-actions class="actions">

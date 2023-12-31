@@ -7,6 +7,24 @@
     height: 100vh;
   }
 
+  .desktop-container {
+    display: none;
+  }
+
+  .mobile-container {
+    display: block;
+    overflow: auto;
+  }
+
+  @media screen and (min-width: $breakpoint-tablet-large) {
+    .desktop-container {
+      display: block;
+    }
+    .mobile-container {
+      display: none;
+    }
+  }
+
   .profile-content {
     display: grid;
     grid-template-columns: 1fr;

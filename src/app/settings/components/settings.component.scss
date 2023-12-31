@@ -7,6 +7,25 @@
     height: 100vh;
   }
 
+  .desktop-container {
+    display: none;
+  }
+
+  .mobile-container {
+    display: block;
+    padding: 1rem;
+    overflow: auto;
+  }
+
+  @media screen and (min-width: $breakpoint-tablet-large) {
+    .desktop-container {
+      display: block;
+    }
+    .mobile-container {
+      display: none;
+    }
+  }
+
   .scroll {
     overflow: auto;
     display: grid;
@@ -20,73 +39,73 @@
       grid-template-columns: 2fr 1fr;
       margin-bottom: 0;
     }
+  }
 
-    .card-container {
-      display: grid;
+  .card-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    &.name-grid {
       grid-template-columns: 1fr;
-      gap: 1rem;
-    }
-
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-
-      &.name-grid {
-        grid-template-columns: 1fr;
-        justify-content: end;
-
-        @media screen and (min-width: $breakpoint-tablet-large) {
-          grid-template-columns: 1fr 1fr;
-          gap: 1rem;
-        }
-      }
-    }
-
-    .update-details-container {
-      display: grid;
-      align-items: center;
-      grid-template-columns: 1fr;
+      justify-content: end;
 
       @media screen and (min-width: $breakpoint-tablet-large) {
-        grid-template-columns: 1fr 20%;
+        grid-template-columns: 1fr 1fr;
         gap: 1rem;
       }
-
-      .actions {
-        display: flex;
-        column-gap: 0.5rem;
-        justify-content: flex-end;
-        align-items: center;
-      }
-
-      .update-details-button {
-        margin-bottom: 1.34375em;
-        padding: 0 3rem;
-        justify-self: center;
-      }
     }
+  }
 
-    .update-password-header {
-      display: grid;
-      grid-template-columns: auto auto;
-      justify-content: space-between;
-      align-items: center;
+  .update-details-container {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr;
+
+    @media screen and (min-width: $breakpoint-tablet-large) {
+      grid-template-columns: 1fr 20%;
       gap: 1rem;
-      margin: 1rem 0;
-
-      @media screen and (min-width: $breakpoint-tablet-large) {
-        justify-content: flex-start;
-      }
-
-      .update-password-text {
-        margin-right: 1rem;
-      }
     }
 
     .actions {
       display: flex;
       column-gap: 0.5rem;
       justify-content: flex-end;
+      align-items: center;
     }
+
+    .update-details-button {
+      margin-bottom: 1.34375em;
+      padding: 0 3rem;
+      justify-self: center;
+    }
+  }
+
+  .update-password-header {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin: 1rem 0;
+
+    @media screen and (min-width: $breakpoint-tablet-large) {
+      justify-content: flex-start;
+    }
+
+    .update-password-text {
+      margin-right: 1rem;
+    }
+  }
+
+  .actions {
+    display: flex;
+    column-gap: 0.5rem;
+    justify-content: flex-end;
   }
 }

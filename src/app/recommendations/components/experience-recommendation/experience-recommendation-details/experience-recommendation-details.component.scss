@@ -33,64 +33,82 @@
 .mat-dialog-content {
   padding: 0 12px 0 24px;
 
-  .form-scroll {
-    height: 27rem;
-    margin-bottom: 1rem;
+  .desktop-container {
+    display: none;
+  }
 
-    .body {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1rem;
-      margin-right: 1.5rem;
+  .mobile-container {
+    display: block;
+    overflow: auto;
+  }
 
-      @media screen and (min-width: $breakpoint-tablet-large) {
-        grid-template-columns: 1fr 3fr;
-      }
-
-      .column {
-        display: grid;
-        grid-template-columns: 1fr;
-        align-content: flex-start;
-        gap: 1rem;
-
-        .column-grid {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 1rem;
-
-          @media screen and (min-width: $breakpoint-tablet-large) {
-            grid-template-columns: 1fr;
-          }
-        }
-
-        &.description-column {
-          align-content: space-between;
-        }
-      }
-
-      .row {
-        .grid-item__title {
-          font-weight: 500;
-          padding-bottom: 0.2rem;
-        }
-
-        .item-value {
-          color: rgba(255, 255, 255, 0.7);
-        }
-      }
-
-      .education-stack {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.2rem;
-      }
+  @media screen and (min-width: $breakpoint-tablet-large) {
+    .desktop-container {
+      display: block;
+    }
+    .mobile-container {
+      display: none;
     }
   }
 
-  .mat-standard-chip {
-    min-height: 24px;
-    font-size: 0.8rem;
+  .form-scroll {
+    height: 27rem;
+    margin-bottom: 1rem;
   }
+
+  .body {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-right: 1.5rem;
+
+    @media screen and (min-width: $breakpoint-tablet-large) {
+      grid-template-columns: 1fr 3fr;
+    }
+
+    .column {
+      display: grid;
+      grid-template-columns: 1fr;
+      align-content: flex-start;
+      gap: 1rem;
+
+      .column-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+
+        @media screen and (min-width: $breakpoint-tablet-large) {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      &.description-column {
+        align-content: space-between;
+      }
+    }
+
+    .row {
+      .grid-item__title {
+        font-weight: 500;
+        padding-bottom: 0.2rem;
+      }
+
+      .item-value {
+        color: rgba(255, 255, 255, 0.7);
+      }
+    }
+
+    .education-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.2rem;
+    }
+  }
+}
+
+.mat-standard-chip {
+  min-height: 24px;
+  font-size: 0.8rem;
 }
 
 .body-actions {

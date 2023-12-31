@@ -7,7 +7,7 @@
     (onUpdate)="updateRoadmap($event)"
   ></app-roadmap-filters> -->
 
-  <ng-scrollbar>
+  <ng-scrollbar class="desktop-container">
     <div scrollViewport cdkScrollable>
       <div class="scroll">
         <div class="grid-container">
@@ -49,4 +49,41 @@
       </div>
     </div>
   </ng-scrollbar>
+
+  <div class="mobile-container">
+    <div class="grid-container">
+      <div class="grid">
+        <app-roadmap-overview
+          [roadmap]="roadmap"
+          [user]="user"
+          [stackList]="stackList"
+          (onUpdate)="updateRoadmap($event)"
+        ></app-roadmap-overview>
+
+        <app-roadmap-education
+          [data]="education"
+          [userStack]="userStack"
+          [stackList]="stackList"
+        ></app-roadmap-education>
+
+        <app-roadmap-stack
+          [stackList]="stackList"
+          [path]="roadmap.path"
+          [userStack]="userStack"
+          [stackItemConfig]="languageFilterConfig"
+          (onUpdate)="updateRoadmap($event)"
+        ></app-roadmap-stack>
+
+        <app-roadmap-experience
+          *ngIf="experience"
+          [experience]="experience"
+          [education]="education"
+        ></app-roadmap-experience>
+
+        <app-roadmap-projects [data]="projects"></app-roadmap-projects>
+
+        <app-roadmap-github [data]="github"></app-roadmap-github>
+      </div>
+    </div>
+  </div>
 </div>

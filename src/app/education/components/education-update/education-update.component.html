@@ -8,7 +8,7 @@
   </div>
 </div>
 <div mat-dialog-content>
-  <ng-scrollbar class="form-scroll">
+  <ng-scrollbar class="form-scroll desktop-container">
     <form [formGroup]="educationForm">
       <div class="grid-section">
         <mat-form-field appearance="outline">
@@ -188,6 +188,187 @@
       </div>
     </form>
   </ng-scrollbar>
+
+  <div class="mobile-container">
+    <form [formGroup]="educationForm">
+      <div class="grid-section">
+        <mat-form-field appearance="outline">
+          <mat-label>{{ "FORMS.TYPE" | translate }}</mat-label>
+          <mat-select
+            #type
+            formControlName="type"
+            [placeholder]="'FORMS.PLACEHOLDER.TYPE' | translate"
+          >
+            <mat-option value="book">
+              <img
+                src="/assets/images/icons/book.png"
+                class="app-education-type-icon"
+              />
+              {{ "EDUCATION.TYPES.BOOKS_SINGULAR" | translate }}
+            </mat-option>
+            <mat-option value="course">
+              <img
+                src="/assets/images/icons/course.png"
+                class="app-education-type-icon"
+              />
+              {{ "EDUCATION.TYPES.COURSES_SINGULAR" | translate }}
+            </mat-option>
+          </mat-select>
+          <mat-error
+            *ngIf="educationForm.controls.type?.hasError('required')"
+            >{{ "FORMS.REQUIRED.TYPE" | translate }}</mat-error
+          >
+          <mat-error *ngIf="educationForm.controls.type?.hasError('pattern')">{{
+            "FORMS.ERROR.EDUCATION_TYPE_INVALID" | translate
+          }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>{{ "FORMS.TITLE" | translate }}</mat-label>
+          <input #title matInput formControlName="title" />
+          <mat-error
+            *ngIf="educationForm.controls.title?.hasError('required')"
+            >{{ "FORMS.REQUIRED.TITLE" | translate }}</mat-error
+          >
+          <mat-error
+            *ngIf="
+              !educationForm.controls.title?.hasError('required') &&
+              educationForm.controls.title?.hasError('minlength')
+            "
+            >{{ "FORMS.ERROR.TITLE_INVALID" | translate }}</mat-error
+          >
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>
+            {{
+              selectedType === "course"
+                ? ("FORMS.INSTRUCTOR" | translate)
+                : ("FORMS.AUTHOR" | translate)
+            }}
+          </mat-label>
+          <input #author matInput formControlName="author" />
+          <mat-error
+            *ngIf="educationForm.controls.author?.hasError('required')"
+          >
+            {{
+              selectedType === "course"
+                ? ("FORMS.REQUIRED.INSTRUCTOR" | translate)
+                : ("FORMS.REQUIRED.AUTHOR" | translate)
+            }}
+          </mat-error>
+          <mat-error
+            *ngIf="
+              !educationForm.controls.author?.hasError('required') &&
+              educationForm.controls.title?.hasError('minlength')
+            "
+          >
+            {{
+              selectedType === "course"
+                ? ("FORMS.ERROR.INSTRUCTOR_INVALID" | translate)
+                : ("FORMS.ERROR.AUTHOR_INVALID" | translate)
+            }}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>{{ "FORMS.LINK" | translate }}</mat-label>
+          <input #link matInput formControlName="link" />
+          <mat-hint>{{ "FORMS.LINK_HINT" | translate }}</mat-hint>
+          <mat-error
+            *ngIf="educationForm.controls.link?.hasError('required')"
+            >{{ "FORMS.REQUIRED.LINK" | translate }}</mat-error
+          >
+          <mat-error
+            *ngIf="
+              !educationForm.controls.link?.hasError('required') &&
+              educationForm.controls.link?.hasError('pattern')
+            "
+            >{{ "FORMS.ERROR.LINK_INVALID" | translate }}</mat-error
+          >
+        </mat-form-field>
+      </div>
+
+      <div class="grid-section">
+        <div class="sub-grid">
+          <mat-form-field appearance="outline">
+            <mat-label>{{ "FORMS.DATES.START" | translate }}</mat-label>
+            <input
+              matInput
+              [matDatepicker]="startDate"
+              formControlName="startDate"
+            />
+            <mat-hint>{{ "FORMS.DATES.HINT" | translate }}</mat-hint>
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="startDate"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #startDate></mat-datepicker>
+            <mat-error
+              *ngIf="educationForm.controls.startDate?.hasError('required')"
+              >{{ "FORMS.REQUIRED.START_DATE" | translate }}</mat-error
+            >
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>{{ "FORMS.DATES.END" | translate }}</mat-label>
+            <input
+              matInput
+              [matDatepicker]="endDate"
+              formControlName="endDate"
+            />
+            <mat-hint>{{ "FORMS.DATES.HINT" | translate }}</mat-hint>
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="endDate"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #endDate></mat-datepicker>
+            <mat-error
+              *ngIf="educationForm.controls.endDate?.hasError('invalidDate')"
+              >{{ "FORMS.DATES.INVALID" | translate }}</mat-error
+            >
+          </mat-form-field>
+        </div>
+
+        <app-stack-selector
+          #stack
+          [data]="data && data.stack"
+          [type]="educationForm.value.type"
+        >
+        </app-stack-selector>
+
+        <mat-form-field appearance="outline" class="full-height">
+          <mat-label>{{ "FORMS.DESCRIPTION" | translate }}</mat-label>
+          <textarea
+            #description
+            matInput
+            formControlName="description"
+            rows="5"
+          ></textarea>
+        </mat-form-field>
+
+        <ng-container *ngIf="selectedType">
+          <mat-label>
+            {{
+              "EDUCATION.UPDATE.RECOMMEND"
+                | translate : { type: selectedType | titlecase }
+            }}
+          </mat-label>
+          <mat-radio-group
+            formControlName="isRecommended"
+            class="recommendation-options"
+          >
+            <mat-radio-button [value]="true">
+              {{ "ACTIONS.YES" | translate }}
+            </mat-radio-button>
+            <mat-radio-button [value]="false">
+              {{ "ACTIONS.NO" | translate }}
+            </mat-radio-button>
+          </mat-radio-group>
+        </ng-container>
+      </div>
+    </form>
+  </div>
 </div>
 
 <div mat-dialog-actions class="actions">

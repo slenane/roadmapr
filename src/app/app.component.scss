@@ -13,7 +13,6 @@ app-menu {
   grid-template-columns: 1fr;
   height: 100vh;
   width: 100vw;
-  overflow: hidden;
 
   app-mobile-navigation {
     display: block;
@@ -53,9 +52,11 @@ app-menu {
 }
 
 .main-content {
+  overflow: auto;
   margin-top: 4rem;
 
   @media screen and (min-width: $breakpoint-tablet-large) {
+    overflow: hidden;
     margin-top: 0;
   }
 }
