@@ -2,16 +2,17 @@
 
 .roadmap {
   height: 100vh;
+  max-width: 100vw;
   // display: grid;
   // grid-template-rows: auto 1fr;
 
-  app-roadmap-filters {
-    padding: 1rem;
-  }
+  // app-roadmap-filters {
+  //   padding: 1rem;
+  // }
 
   .scroll {
     overflow: auto;
-    padding: 1rem 1.5rem 1rem 1rem;
+    padding: 1rem 1.2rem 2rem 1rem;
     display: grid;
     grid-template-columns: 1fr;
     align-content: start;
@@ -20,10 +21,12 @@
     .grid-container {
       display: grid;
       align-content: start;
+      grid-template-columns: 1fr;
       gap: 1rem;
+      padding-bottom: 4rem;
 
-      @media screen and (min-width: $breakpoint-mobile) {
-        grid-template-columns: 1fr;
+      @media screen and (min-width: $breakpoint-tablet) {
+        padding-bottom: initial;
       }
 
       @media screen and (min-width: $breakpoint-tablet-large) {

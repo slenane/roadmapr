@@ -1,3 +1,5 @@
+@import "src/styles/app-vars.scss";
+
 .stack-card {
   mat-card-header {
     display: grid;
@@ -43,8 +45,12 @@
 
   .progress-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 1rem;
+
+    @media screen and (min-width: $breakpoint-tablet) {
+      grid-template-columns: 1fr 1fr;
+    }
 
     .list-title {
       font-size: 0.9rem;

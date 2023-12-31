@@ -51,3 +51,11 @@ app-menu {
     }
   }
 }
+
+.main-content {
+  margin-top: 4rem;
+
+  @media screen and (min-width: $breakpoint-tablet-large) {
+    margin-top: 0;
+  }
+}

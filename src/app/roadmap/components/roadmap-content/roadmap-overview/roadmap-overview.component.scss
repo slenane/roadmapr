@@ -1,7 +1,13 @@
+@import "src/styles/app-vars.scss";
+
 .roadmap-overview {
   display: grid;
-  grid-template-columns: 3fr 2fr 2fr;
+  grid-template-columns: 1fr 1fr;
   gap: 1rem;
+
+  @media screen and (min-width: $breakpoint-tablet) {
+    grid-template-columns: 3fr 2fr 2fr;
+  }
 
   .card {
     display: grid;
@@ -11,7 +17,12 @@
     align-items: center;
 
     &.user-card {
+      grid-column: span 2;
       grid-template-columns: auto 1fr auto;
+
+      @media screen and (min-width: $breakpoint-tablet) {
+        grid-column: span 1;
+      }
     }
 
     .icon {

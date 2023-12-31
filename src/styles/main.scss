@@ -59,9 +59,15 @@ app-root {
 
 .app-stack-icon {
   border-radius: 50%;
-  height: 1.2rem;
-  width: 1.2rem;
-  margin: 0 0.2rem;
+  height: 1rem;
+  width: 1rem;
+  margin: 0 0.1rem;
+
+  @media screen and (min-width: $breakpoint-tablet) {
+    margin: 0 0.2rem;
+    height: 1.2rem;
+    width: 1.2rem;
+  }
 }
 
 .app-stack-icon__large {
@@ -238,4 +244,17 @@ mat-form-field {
   @media screen and (min-width: $breakpoint-tablet-large) {
     min-width: 70vw;
   }
+}
+
+.mat-button-focus-overlay,
+.mat-button-ripple {
+  z-index: -1;
+}
+
+.mat-button-focus-overlay {
+  display: none;
+}
+
+.apexcharts-canvas {
+  margin: 0 auto !important;
 }

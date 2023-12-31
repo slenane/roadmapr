@@ -8,10 +8,12 @@
   >
   <mat-card-content *ngIf="data; else addGithub">
     <div class="bio-grid">
-      <img src="{{ data.avatar }}" class="avatar" alt="GitHub Avatar" />
-      <div>
-        <div>{{ data.name }}</div>
-        <div class="user-bio">{{ data.bio }}</div>
+      <div class="user">
+        <img src="{{ data.avatar }}" class="avatar" alt="GitHub Avatar" />
+        <div>
+          <div>{{ data.name }}</div>
+          <div class="user-bio">{{ data.bio }}</div>
+        </div>
       </div>
       <a target="_blank" href="{{ data.link }}">
         <button mat-raised-button color="primary">{{

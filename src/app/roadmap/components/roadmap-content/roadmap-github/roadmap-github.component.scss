@@ -1,3 +1,5 @@
+@import "src/styles/app-vars.scss";
+
 mat-card-title {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -19,33 +21,47 @@ mat-card-content {
 
   .bio-grid {
     display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
+    grid-template-columns: 1fr auto;
+    justify-content: space-between;
     margin: 0.5rem 0;
-    gap: 0.5rem;
 
-    .avatar {
-      height: 3rem;
-      width: 3rem;
-      border: 3px solid white;
-      border-radius: 50%;
-      object-fit: cover;
-    }
+    .user {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      gap: 0.5rem;
 
-    .user-bio {
-      color: rgba(255, 255, 255, 0.7);
+      .avatar {
+        height: 3rem;
+        width: 3rem;
+        border: 3px solid white;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .user-bio {
+        color: rgba(255, 255, 255, 0.7);
+      }
     }
   }
 
   .card-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 0.5rem;
+
+    @media screen and (min-width: $breakpoint-tablet) {
+      grid-template-columns: 1fr 1fr;
+    }
   }
 
   .github-chart {
     margin-bottom: 0.5rem;
-    width: 100%;
+    max-width: 80vw;
+
+    @media screen and (min-width: $breakpoint-tablet) {
+      width: 100%;
+    }
   }
 
   .recent-activity {
@@ -91,11 +107,15 @@ mat-card-content {
 
       .repo-details {
         display: grid;
-        grid-template-columns: 1fr auto;
+        grid-template-columns: 1fr;
         gap: 0.5rem;
         font-size: 0.9rem;
         align-items: center;
         justify-content: space-between;
+
+        @media screen and (min-width: $breakpoint-tablet) {
+          grid-template-columns: 1fr auto;
+        }
 
         .commits-title {
           font-size: 0.8rem;

@@ -1,3 +1,5 @@
+@import "src/styles/app-vars.scss";
+
 mat-card-title {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -17,15 +19,25 @@ mat-card-content {
   .grid {
     margin-top: 1.5rem;
     display: grid;
-    grid-template-columns: 3fr 1fr;
+    grid-template-columns: 1fr;
     gap: 0.5rem;
     position: relative;
     align-items: center;
 
+    @media screen and (min-width: $breakpoint-tablet) {
+      grid-template-columns: 3fr 1fr;
+      gap: 0.5rem;
+    }
+
     .card-container {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
       gap: 0.5rem;
+
+      @media screen and (min-width: $breakpoint-tablet) {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+      }
     }
 
     .chart-container {
@@ -38,6 +50,7 @@ mat-card-content {
         display: grid;
         justify-items: center;
         justify-content: center;
+        touch-action: auto !important;
 
         .percentage {
           position: absolute;
@@ -56,5 +69,16 @@ mat-card-content {
     margin: -1rem 0;
     height: 100%;
     width: 100%;
+  }
+
+  #chart {
+    max-width: 85vw;
+
+    @media screen and (min-width: $breakpoint-tablet) {
+      max-width: 90vw;
+      margin: -1rem 0;
+      height: 100%;
+      width: 100%;
+    }
   }
 }
