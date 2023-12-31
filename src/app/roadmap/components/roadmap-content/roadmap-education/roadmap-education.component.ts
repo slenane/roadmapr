@@ -8,7 +8,6 @@ import {
 } from "@angular/core";
 import { EducationItem } from "src/app/education/store/education.models";
 import { IStack } from "src/app/shared/constants/dev-paths.constants";
-
 import {
   ChartComponent,
   ApexAxisChartSeries,
@@ -17,7 +16,6 @@ import {
   ApexYAxis,
   ApexDataLabels,
   ApexStroke,
-  ApexResponsive,
 } from "ng-apexcharts";
 
 export type ChartOptions = {
@@ -54,9 +52,7 @@ export class RoadmapEducationComponent implements OnInit, OnChanges {
 
   constructor() {}
 
-  ngOnInit(): void {
-    this.setInitialValues();
-  }
+  ngOnInit(): void {}
 
   ngOnChanges(changes: SimpleChanges) {
     if (
@@ -253,6 +249,7 @@ export class RoadmapEducationComponent implements OnInit, OnChanges {
   }
 
   setInitialValues() {
+    console.log("PING");
     this.books = 0;
     this.courses = 0;
     this.inProgress = 0;

@@ -103,7 +103,7 @@ export class RoadmapProjectsComponent implements OnInit, OnChanges {
         },
       ],
       chart: {
-        height: 300,
+        height: 250,
         type: "radar",
         toolbar: {
           show: false,
