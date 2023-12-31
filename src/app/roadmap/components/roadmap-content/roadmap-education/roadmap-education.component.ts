@@ -249,7 +249,6 @@ export class RoadmapEducationComponent implements OnInit, OnChanges {
   }
 
   setInitialValues() {
-    console.log("PING");
     this.books = 0;
     this.courses = 0;
     this.inProgress = 0;

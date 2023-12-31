@@ -1,6 +1,11 @@
 <div class="header">Software Development Path Quiz</div>
 
-<mat-stepper [linear]="true" #stepper (selectionChange)="onStepChange($event)">
+<mat-stepper
+  [linear]="true"
+  #stepper
+  (selectionChange)="onStepChange($event)"
+  class="onboarding-form"
+>
   <mat-step [stepControl]="questionZeroForm">
     <form [formGroup]="questionZeroForm">
       <label id="questionZeroForm">{{ questions[0].question }}</label>

@@ -10,6 +10,7 @@ html,
 body {
   height: 100%;
   font-size: 14px;
+  overflow: hidden;
 }
 
 body {
@@ -193,6 +194,10 @@ mat-form-field {
   font-size: 12px !important;
 }
 
+.mat-menu-content {
+  padding: 8px;
+}
+
 .mat-step-label {
   min-width: 0 !important;
 }
@@ -225,14 +230,29 @@ mat-form-field {
 }
 
 .mat-horizontal-stepper-header-container {
-  margin: 0 5rem;
+  margin: 0;
+
+  @media screen and (min-width: $breakpoint-tablet-large) {
+    margin: 0 5rem;
+  }
 }
 
 .mobile-navigation-sidenav-container {
-  z-index: 99999 !important;
+  z-index: 9 !important;
 
   &.closed {
     z-index: 0 !important;
+  }
+}
+
+.onboarding-form {
+  .mat-horizontal-stepper-header,
+  .mat-horizontal-content-container {
+    padding: 0 !important;
+  }
+
+  .mat-radio-label {
+    white-space: normal !important;
   }
 }
 

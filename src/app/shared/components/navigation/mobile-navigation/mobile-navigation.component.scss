@@ -4,11 +4,12 @@ mat-toolbar {
   display: grid;
   grid-template-columns: 1fr auto;
   justify-content: space-between;
-  z-index: 1000 !important;
+  z-index: 100 !important;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
+  height: 4rem;
 
   .menu-brand {
     height: 1.5rem;

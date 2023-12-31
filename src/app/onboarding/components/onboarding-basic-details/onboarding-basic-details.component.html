@@ -1,9 +1,7 @@
-<mat-stepper [linear]="true" #stepper>
-  <mat-step [stepControl]="basicDetailsForm">
-    <ng-template matStepLabel>{{
-      "ONBOARDING.BASIC_DETAILS" | translate
-    }}</ng-template>
+<div class="header">{{ "ONBOARDING.BASIC_DETAILS" | translate }}</div>
 
+<mat-stepper [linear]="true" #stepper class="onboarding-form">
+  <mat-step [stepControl]="basicDetailsForm">
     <app-file-upload-profile-image
       class="full-width-grid-item"
       [data]="data.profileImage"
@@ -71,9 +69,6 @@
   </mat-step>
   <mat-step [stepControl]="pathForm">
     <form [formGroup]="pathForm" class="path">
-      <ng-template matStepLabel>{{
-        "ONBOARDING.DEVELOPMENT_PATH" | translate
-      }}</ng-template>
       <h2>{{ "ONBOARDING.DEVELOPMENT_PATH_SUB" | translate }}</h2>
       <p
         >{{ "ONBOARDING.DEVELOPMENT_PATH_MESSAGE_1" | translate }}
