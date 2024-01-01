@@ -266,6 +266,11 @@ mat-form-field {
 
   @media screen and (min-width: $breakpoint-tablet-large) {
     min-width: 70vw;
+    min-height: 50vh !important;
+  }
+
+  @media screen and (min-width: $breakpoint-desktop-large) {
+    min-height: 30vh !important;
   }
 }
 

@@ -44,7 +44,6 @@ export class FileUploadCoverImageComponent implements OnInit, OnChanges {
       if (image) {
         const formData = new FormData();
         formData.append("coverImage", image);
-        console.log(image);
 
         this.profileStoreService.updateCoverImage(formData);
       }
