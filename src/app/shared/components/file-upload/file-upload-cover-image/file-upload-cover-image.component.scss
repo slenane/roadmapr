@@ -20,6 +20,7 @@
     object-fit: cover;
     background-size: cover;
     border-radius: 4px 4px 0 0;
+    background-color: lightgrey;
 
     @media screen and (min-width: $breakpoint-tablet-large) {
       height: 8rem;

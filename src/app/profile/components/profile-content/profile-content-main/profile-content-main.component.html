@@ -35,6 +35,13 @@
                 [experience]="item"
               ></app-profile-content-experience>
             </ng-container>
+
+            <div
+              class="empty-section-message"
+              *ngIf="!user.experienceList.length"
+            >
+              {{ "PROFILE.EMPTY_SECTIONS.EXPERIENCE" | translate }}
+            </div>
           </div>
 
           <div class="profile-section">
@@ -47,6 +54,10 @@
                 [project]="item"
               ></app-profile-content-projects>
             </ng-container>
+
+            <div class="empty-section-message" *ngIf="!user.projectList.length">
+              {{ "PROFILE.EMPTY_SECTIONS.PROJECTS" | translate }}
+            </div>
           </div>
 
           <div class="profile-section">
@@ -59,6 +70,13 @@
                 [education]="item"
               ></app-profile-content-education>
             </ng-container>
+
+            <div
+              class="empty-section-message"
+              *ngIf="!user.educationList.length"
+            >
+              {{ "PROFILE.EMPTY_SECTIONS.EDUCATION" | translate }}
+            </div>
           </div>
         </div>
       </section>

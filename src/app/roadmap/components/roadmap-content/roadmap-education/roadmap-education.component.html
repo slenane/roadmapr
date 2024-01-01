@@ -14,7 +14,9 @@
           "
           [matTooltipShowDelay]="'500'"
         >
-          <div class="percentage">{{ completionRate }}%</div>
+          <div class="percentage"
+            >{{ completionRate }}{{ completionRate !== "N/A" ? "%" : "" }}</div
+          >
           <mat-progress-spinner
             class="roadmap-percentage-wheel"
             [mode]="'determinate'"

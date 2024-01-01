@@ -8,11 +8,9 @@
 />
 
 <div class="center">
-  <img
-    class="user-image"
-    [src]="image ? image : '/assets/images/cover-fallback.jpg'"
-    alt="Cover Image"
-  />
+  <img *ngIf="image" class="user-image" [src]="image" alt="Cover Image" />
+  <!-- FALLBACK COVER IMAGE -->
+  <div *ngIf="!image" class="user-image"></div>
 
   <div class="file-upload">
     <button mat-mini-fab color="primary" (click)="fileUpload.click()">

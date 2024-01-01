@@ -278,3 +278,9 @@ mat-form-field {
 .apexcharts-canvas {
   margin: 0 auto !important;
 }
+
+.mat-dialog-content {
+  @media screen and (min-width: $breakpoint-tablet-large) {
+    overflow: hidden !important;
+  }
+}
