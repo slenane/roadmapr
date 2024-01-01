@@ -160,7 +160,7 @@ export class RoadmapEducationComponent implements OnInit, OnChanges {
       const currentMonth = today.getMonth() - i;
       const adjustedMonth = (currentMonth + 12) % 12;
       const adjustedYear =
-        today.getFullYear() - Math.floor((today.getMonth() - i) / 12);
+        today.getFullYear() - Math.abs(Math.floor((today.getMonth() - i) / 12));
 
       const formattedDate = new Date(
         adjustedYear,
