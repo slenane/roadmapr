@@ -97,7 +97,8 @@ export class RoadmapExperienceComponent implements OnInit {
       dataLabels: {
         enabled: true,
         formatter: function (val, opts) {
-          return opts.w.globals.labels[opts.dataPointIndex];
+          const dataPointIndex = opts.dataPointIndex;
+          return opts.config.series[0].data?.[dataPointIndex].x || "";
         },
       },
       fill: {

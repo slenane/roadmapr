@@ -49,6 +49,7 @@ export class RoadmapProjectsComponent implements OnInit, OnChanges {
       changes.data &&
       changes.data.currentValue != changes.data.previousValue
     ) {
+      this.setInitialValues();
       this.generateData();
       this.generateChartData();
     }
@@ -122,5 +123,14 @@ export class RoadmapProjectsComponent implements OnInit, OnChanges {
       current.getMonth() === today.getMonth() &&
       current.getFullYear() === today.getFullYear()
     );
+  }
+
+  setInitialValues() {
+    this.personal = 0;
+    this.educational = 0;
+    this.personalTrend = 0;
+    this.educationalTrend = 0;
+    this.inProgress = 0;
+    this.completed = 0;
   }
 }

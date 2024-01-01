@@ -8,7 +8,7 @@ const BREAKPOINTS = [
   Breakpoints.XLarge,
 ];
 
-const MOBILE = [Breakpoints.XSmall, Breakpoints.Small, Breakpoints.Medium];
+const MOBILE = [Breakpoints.XSmall, Breakpoints.Small];
 
 export const MEDIA_QUERIES = {
   BREAKPOINTS,

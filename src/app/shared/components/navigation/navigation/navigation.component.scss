@@ -47,7 +47,8 @@
     width: 100%;
     height: 100%;
     display: grid;
-    align-content: space-around;
+    align-content: space-between;
+    padding: 3rem 0;
     overflow: hidden;
 
     .sidebar-content-1 {
