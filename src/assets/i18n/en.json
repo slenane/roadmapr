@@ -530,6 +530,14 @@
       "SKILLS_AND_INTERESTS": "Skills & Interests",
       "CONTACT_AND_SOCIAL": "Contact & Social",
       "MISSING_FIELDS": "Some Basic Information is missing, please ensure you have filled all required fields"
+    },
+    "EMPTY_SECTIONS": {
+      "EXPERIENCE": "Add experience to view experience history",
+      "PROJECTS": "Add projects to view project history",
+      "EDUCATION": "Add education items to view education history",
+      "LANGUAGES": "Add the languages you speak",
+      "PREVIOUS_EDUCATION": "Add previous education to view education history",
+      "INTERESTS": " Add personal and professional interests"
     }
   },
   "PROJECTS": {

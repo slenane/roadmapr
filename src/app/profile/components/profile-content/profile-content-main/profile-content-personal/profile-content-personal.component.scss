@@ -2,7 +2,7 @@
   font-size: 0.9rem;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem;
+  gap: 1rem;
   padding-right: 1rem;
 
   .section-header {
@@ -27,8 +27,28 @@
     display: block;
   }
 
+  .card-grid {
+    display: flex;
+    gap: 1rem;
+
+    .contact-link {
+      a {
+        text-decoration: none;
+      }
+    }
+
+    .social-image {
+      height: 1.5rem;
+    }
+  }
+
   .school {
     display: block;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 300;
+  }
+
+  .empty-section-message {
     color: rgba(255, 255, 255, 0.7);
     font-weight: 300;
   }

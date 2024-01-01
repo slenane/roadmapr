@@ -40,7 +40,7 @@ export class RoadmapEducationComponent implements OnInit, OnChanges {
   public completed: number;
   public bookTrend: number;
   public courseTrend: number;
-  public completionRate: number;
+  public completionRate: number | "N/A";
   public stackCoverage: number | "N/A" = "N/A";
   public chartOptions: ChartOptions;
 
@@ -86,7 +86,7 @@ export class RoadmapEducationComponent implements OnInit, OnChanges {
     this.completionRate =
       this.inProgress + this.completed !== 0
         ? Math.ceil((100 * this.completed) / (this.inProgress + this.completed))
-        : 0;
+        : "N/A";
   }
 
   getStackCoverage() {
