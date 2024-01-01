@@ -17,6 +17,8 @@ import { ExperienceItem } from "src/app/experience/store/experience.models";
 import { ProfileStoreService } from "src/app/profile/services/profile-store.service";
 import { profileInitialState } from "src/app/profile/store/profile.reducer";
 import { Profile } from "src/app/profile/store/profile.models";
+import { MEDIA_QUERIES } from "src/app/shared/constants/breakpoints.constants";
+import { BreakpointObserver } from "@angular/cdk/layout";
 
 @Component({
   selector: "app-roadmap",
@@ -25,6 +27,7 @@ import { Profile } from "src/app/profile/store/profile.models";
 })
 export class RoadmapComponent implements OnInit {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
+  public isMobileDevice = false;
   public user: Profile;
   public roadmap: Roadmap;
   public stack: any = {};
@@ -40,7 +43,8 @@ export class RoadmapComponent implements OnInit {
 
   constructor(
     private roadmapStoreService: RoadmapStoreService,
-    private profileStoreService: ProfileStoreService
+    private profileStoreService: ProfileStoreService,
+    private breakpointObserver: BreakpointObserver
   ) {}
 
   ngOnInit(): void {
@@ -66,6 +70,16 @@ export class RoadmapComponent implements OnInit {
         if (this.githubRemoved()) {
           this.removeGithubData();
         }
+      });
+
+    this.breakpointObserver
+      .observe(MEDIA_QUERIES.BREAKPOINTS)
+      .subscribe((result) => {
+        this.isMobileDevice = MEDIA_QUERIES.MOBILE.find(
+          (size) => result.breakpoints[size]
+        )
+          ? true
+          : false;
       });
   }
 

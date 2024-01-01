@@ -7,23 +7,8 @@
     height: 100vh;
   }
 
-  .desktop-container {
-    display: none;
-  }
-
   .mobile-container {
-    display: block;
     padding: 1rem;
-    overflow: auto;
-  }
-
-  @media screen and (min-width: $breakpoint-tablet-large) {
-    .desktop-container {
-      display: block;
-    }
-    .mobile-container {
-      display: none;
-    }
   }
 
   .scroll {

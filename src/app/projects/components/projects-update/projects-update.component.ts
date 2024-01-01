@@ -1,3 +1,4 @@
+import { BreakpointObserver } from "@angular/cdk/layout";
 import {
   Component,
   ElementRef,
@@ -9,6 +10,7 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { Subject } from "rxjs";
 import { StackSelectorComponent } from "src/app/shared/components/stack-selector/stack-selector.component";
+import { MEDIA_QUERIES } from "src/app/shared/constants/breakpoints.constants";
 import {
   dateRangeValidator,
   validLinkPattern,
@@ -21,6 +23,7 @@ import {
 })
 export class ProjectsUpdateComponent implements OnInit {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
+  public isMobileDevice = false;
   public updatingForm = false;
   public isUpdating: boolean = false;
   public projectForm = new FormGroup(
@@ -51,7 +54,8 @@ export class ProjectsUpdateComponent implements OnInit {
   constructor(
     private el: ElementRef,
     public dialogRef: MatDialogRef<ProjectsUpdateComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private breakpointObserver: BreakpointObserver
   ) {}
 
   ngOnInit(): void {
@@ -89,6 +93,16 @@ export class ProjectsUpdateComponent implements OnInit {
         type: this.data.type,
       });
     }
+
+    this.breakpointObserver
+      .observe(MEDIA_QUERIES.BREAKPOINTS)
+      .subscribe((result) => {
+        this.isMobileDevice = MEDIA_QUERIES.MOBILE.find(
+          (size) => result.breakpoints[size]
+        )
+          ? true
+          : false;
+      });
   }
 
   ngOnDestroy() {

@@ -10,6 +10,8 @@ import { DropListService } from "src/app/shared/services/drop-list.service";
 import { projectsInitialState } from "../store/projects.reducer";
 import { MatDialog } from "@angular/material/dialog";
 import { DropListDateComponent } from "src/app/shared/components/drop-list/drop-list-date/drop-list-date.component";
+import { MEDIA_QUERIES } from "src/app/shared/constants/breakpoints.constants";
+import { BreakpointObserver } from "@angular/cdk/layout";
 
 @Component({
   selector: "app-projects",
@@ -18,6 +20,7 @@ import { DropListDateComponent } from "src/app/shared/components/drop-list/drop-
 })
 export class ProjectsComponent implements OnInit, OnDestroy {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
+  public isMobileDevice = false;
   public selectedFilterType: null | string = null;
   public selectedFilterLanguage: null | string = null;
   public selectedView: "compact" | "expanded" = "compact";
@@ -41,7 +44,8 @@ export class ProjectsComponent implements OnInit, OnDestroy {
     private projectService: ProjectsService,
     private projectsStoreService: ProjectsStoreService,
     private dropListService: DropListService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private breakpointObserver: BreakpointObserver
   ) {}
 
   ngOnInit(): void {
@@ -56,6 +60,16 @@ export class ProjectsComponent implements OnInit, OnDestroy {
         this.projectsArray = this.projects.projectList;
         this.getProjectsConfig(this.projectsArray);
         this.getLanguageFilterData();
+      });
+
+    this.breakpointObserver
+      .observe(MEDIA_QUERIES.BREAKPOINTS)
+      .subscribe((result) => {
+        this.isMobileDevice = MEDIA_QUERIES.MOBILE.find(
+          (size) => result.breakpoints[size]
+        )
+          ? true
+          : false;
       });
   }
 
@@ -156,7 +170,7 @@ export class ProjectsComponent implements OnInit, OnDestroy {
         newItem,
         this.listsLastIndex
       );
-      this.projectsStoreService.createProject(item.id, item.data);
+      this.projectsStoreService.createProject(item.id, newItem);
     }
   }
 

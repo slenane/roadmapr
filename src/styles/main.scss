@@ -10,7 +10,10 @@ html,
 body {
   height: 100%;
   font-size: 14px;
-  overflow: hidden;
+
+  @media screen and (min-width: $breakpoint-desktop) {
+    overflow: hidden;
+  }
 }
 
 body {

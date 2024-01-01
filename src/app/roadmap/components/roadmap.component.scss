@@ -10,23 +10,8 @@
   //   padding: 1rem;
   // }
 
-  .desktop-container {
-    display: none;
-  }
-
   .mobile-container {
-    display: block;
-    overflow: auto;
     padding: 1rem;
-  }
-
-  @media screen and (min-width: $breakpoint-tablet-large) {
-    .desktop-container {
-      display: block;
-    }
-    .mobile-container {
-      display: none;
-    }
   }
 
   .scroll {

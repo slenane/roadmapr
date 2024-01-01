@@ -1,7 +1,7 @@
 <app-loading *ngIf="!settings"></app-loading>
 
 <div class="settings" *ngIf="settings">
-  <ng-scrollbar class="desktop-container">
+  <ng-scrollbar class="desktop-container" *ngIf="!isMobileDevice">
     <div scrollViewport cdkScrollable>
       <div class="scroll">
         <div class="card-container">
@@ -187,7 +187,7 @@
     </div>
   </ng-scrollbar>
 
-  <div class="mobile-container">
+  <div class="mobile-container" *ngIf="isMobileDevice">
     <div class="card-container">
       <mat-card>
         <h1>{{ "SETTINGS.ACCOUNT" | translate }}</h1>

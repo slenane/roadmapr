@@ -15,6 +15,8 @@ import { RecommendationsStoreService } from "src/app/recommendations/services/re
 import { RemoteJob } from "src/app/recommendations/store/recommendations.models";
 import { DropListDateComponent } from "src/app/shared/components/drop-list/drop-list-date/drop-list-date.component";
 import { MatDialog } from "@angular/material/dialog";
+import { BreakpointObserver } from "@angular/cdk/layout";
+import { MEDIA_QUERIES } from "src/app/shared/constants/breakpoints.constants";
 
 @Component({
   selector: "app-experience",
@@ -23,6 +25,7 @@ import { MatDialog } from "@angular/material/dialog";
 })
 export class ExperienceComponent implements OnInit {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
+  public isMobileDevice = false;
   public selectedFilterType: null | string = null;
   public selectedFilterLanguage: null | string = null;
   public selectedView: "compact" | "expanded" = "compact";
@@ -46,7 +49,8 @@ export class ExperienceComponent implements OnInit {
     private experienceStoreService: ExperienceStoreService,
     private recommendationsStoreService: RecommendationsStoreService,
     private dropListService: DropListService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private breakpointObserver: BreakpointObserver
   ) {}
 
   ngOnInit(): void {
@@ -72,6 +76,16 @@ export class ExperienceComponent implements OnInit {
       .subscribe((jobs: RemoteJob[]) => {
         this.opportunitiesFullArray = [...jobs];
         this.opportunities = [...this.opportunitiesFullArray].splice(0, 4);
+      });
+
+    this.breakpointObserver
+      .observe(MEDIA_QUERIES.BREAKPOINTS)
+      .subscribe((result) => {
+        this.isMobileDevice = MEDIA_QUERIES.MOBILE.find(
+          (size) => result.breakpoints[size]
+        )
+          ? true
+          : false;
       });
   }
 
@@ -99,6 +113,7 @@ export class ExperienceComponent implements OnInit {
   }
 
   sortItems(arr: any[]): any[] {
+    if (!arr.length) return [];
     return arr.sort((a: any, b: any): number => {
       if (a.position < b.position) return -1;
       else if (a.position > b.position) return 1;
@@ -168,7 +183,8 @@ export class ExperienceComponent implements OnInit {
         newItem,
         this.listsLastIndex
       );
-      this.experienceStoreService.createExperienceItem(item.id, item.data);
+
+      this.experienceStoreService.createExperienceItem(item.id, newItem);
     }
   }
 

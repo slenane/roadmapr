@@ -32,24 +32,6 @@
     padding: 0 12px 0 24px;
   }
 
-  .desktop-container {
-    display: none;
-  }
-
-  .mobile-container {
-    display: block;
-    overflow: auto;
-  }
-
-  @media screen and (min-width: $breakpoint-tablet-large) {
-    .desktop-container {
-      display: block;
-    }
-    .mobile-container {
-      display: none;
-    }
-  }
-
   .form-scroll {
     height: 25rem;
   }

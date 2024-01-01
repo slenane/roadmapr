@@ -14,6 +14,8 @@ import { RecommendationsStoreService } from "src/app/recommendations/services/re
 import { Recommendation } from "src/app/recommendations/store/recommendations.models";
 import { DropListDateComponent } from "src/app/shared/components/drop-list/drop-list-date/drop-list-date.component";
 import { MatDialog } from "@angular/material/dialog";
+import { BreakpointObserver } from "@angular/cdk/layout";
+import { MEDIA_QUERIES } from "src/app/shared/constants/breakpoints.constants";
 
 @Component({
   selector: "app-education",
@@ -22,6 +24,7 @@ import { MatDialog } from "@angular/material/dialog";
 })
 export class EducationComponent implements OnInit, OnDestroy {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
+  public isMobileDevice = false;
   public selectedFilterType: null | string = null;
   public selectedFilterLanguage: null | string = null;
   public selectedView: "compact" | "expanded" = "compact";
@@ -45,7 +48,8 @@ export class EducationComponent implements OnInit, OnDestroy {
     private educationStoreService: EducationStoreService,
     private recommendationsStoreService: RecommendationsStoreService,
     private dropListService: DropListService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private breakpointObserver: BreakpointObserver
   ) {}
 
   ngOnInit(): void {
@@ -70,6 +74,16 @@ export class EducationComponent implements OnInit, OnDestroy {
       )
       .subscribe((recommendations: Recommendation[]) => {
         this.recommendations = [...recommendations];
+      });
+
+    this.breakpointObserver
+      .observe(MEDIA_QUERIES.BREAKPOINTS)
+      .subscribe((result) => {
+        this.isMobileDevice = MEDIA_QUERIES.MOBILE.find(
+          (size) => result.breakpoints[size]
+        )
+          ? true
+          : false;
       });
   }
 

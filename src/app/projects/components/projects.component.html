@@ -17,7 +17,7 @@
     </app-drop-list-filters>
   </div>
 
-  <ng-scrollbar class="main-container">
+  <ng-scrollbar class="main-container" *ngIf="!isMobileDevice">
     <div scrollViewport cdkScrollable>
       <div class="scroll">
         <div cdkDropListGroup class="drag-container-groups">
@@ -122,7 +122,7 @@
     </div>
   </ng-scrollbar>
 
-  <div class="mobile-container">
+  <div class="mobile-container" *ngIf="isMobileDevice">
     <div class="drag-container-groups">
       <mat-tab-group #tabGroup animationDuration="0ms" [selectedIndex]="1">
         <mat-tab>
