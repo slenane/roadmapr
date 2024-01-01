@@ -46,10 +46,10 @@
   .progress-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1rem;
 
     @media screen and (min-width: $breakpoint-tablet) {
       grid-template-columns: 1fr 1fr;
+      gap: 1rem;
     }
 
     .list-title {

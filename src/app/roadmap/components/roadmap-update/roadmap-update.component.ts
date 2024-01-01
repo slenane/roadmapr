@@ -10,6 +10,8 @@ import {
   IDeveloperStack,
   IStack,
 } from "src/app/shared/constants/dev-paths.constants";
+import { MEDIA_QUERIES } from "src/app/shared/constants/breakpoints.constants";
+import { BreakpointObserver } from "@angular/cdk/layout";
 
 @Component({
   selector: "app-roadmap-update",
@@ -18,6 +20,7 @@ import {
 })
 export class RoadmapUpdateComponent implements OnInit {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
+  public isMobileDevice = false;
   public developerPaths: IDeveloperPath[] = DEV_PATHS;
   public developerStacks: IStack[] = DEV_STACKS;
   public customStack: IStack = CUSTOM_STACK;
@@ -38,7 +41,8 @@ export class RoadmapUpdateComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<RoadmapUpdateComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private breakpointObserver: BreakpointObserver
   ) {}
 
   ngOnInit(): void {
@@ -66,6 +70,16 @@ export class RoadmapUpdateComponent implements OnInit {
 
       this.selectedStack = this.data.stack;
     }
+
+    this.breakpointObserver
+      .observe(MEDIA_QUERIES.BREAKPOINTS)
+      .subscribe((result) => {
+        this.isMobileDevice = MEDIA_QUERIES.MOBILE.find(
+          (size) => result.breakpoints[size]
+        )
+          ? true
+          : false;
+      });
   }
 
   ngOnDestroy() {

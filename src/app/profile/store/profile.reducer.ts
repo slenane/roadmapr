@@ -29,7 +29,7 @@ export const profileInitialState: Profile = {
     professionalInterests: [],
     personalInterests: [],
   },
-  stack: [],
+  stackList: [],
   education: "",
   projects: "",
   experience: "",

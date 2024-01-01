@@ -12,7 +12,7 @@
           <p
             >{{ user.path.name | translate }}
             <img
-              *ngFor="let item of user.stack"
+              *ngFor="let item of user.stackList"
               class="app-stack-icon profile-stack-icon"
               src="/assets/images/stack/{{ item.name }}-original.svg"
               alt="Stack Icon"

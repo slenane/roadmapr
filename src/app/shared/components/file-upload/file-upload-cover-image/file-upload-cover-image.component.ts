@@ -32,8 +32,8 @@ export class FileUploadCoverImageComponent implements OnInit, OnChanges {
 
   onFileSelected(event: any) {
     const dialogRef = this.dialog.open(ImageCropperModalComponent, {
-      maxHeight: "80vh",
-      maxWidth: "80vw",
+      panelClass: "modal-class",
+      autoFocus: false,
       data: {
         image: event,
         type: "cover",
@@ -44,7 +44,6 @@ export class FileUploadCoverImageComponent implements OnInit, OnChanges {
       if (image) {
         const formData = new FormData();
         formData.append("coverImage", image);
-        console.log(image);
 
         this.profileStoreService.updateCoverImage(formData);
       }

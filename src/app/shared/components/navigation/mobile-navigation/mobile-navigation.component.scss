@@ -13,6 +13,7 @@ mat-toolbar {
 
   .menu-brand {
     height: 1.5rem;
+    cursor: pointer;
   }
 }
 
@@ -33,11 +34,12 @@ mat-toolbar {
 
     .sidebar-content {
       width: 100%;
-      height: auto;
+      height: calc(100% - 4rem);
       display: grid;
       align-content: flex-start;
       gap: 3rem;
       overflow: hidden;
+      margin-top: 4rem;
 
       .sidebar-option {
         font-size: 0.9rem;

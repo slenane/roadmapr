@@ -28,53 +28,35 @@
 .mat-dialog-content {
   padding: 0 12px 0 24px;
 
-  .desktop-container {
-    display: none;
-  }
-
-  .mobile-container {
-    display: block;
-    overflow: auto;
-  }
-
-  @media screen and (min-width: $breakpoint-tablet-large) {
-    .desktop-container {
-      display: block;
-    }
-    .mobile-container {
-      display: none;
-    }
-  }
-
   .form-scroll {
     height: 23rem;
   }
 
-    form {
+  form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-right: 1.5rem;
+
+    @media screen and (min-width: $breakpoint-tablet-large) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .grid-section {
       display: grid;
+      width: 100%;
       grid-template-columns: 1fr;
-      gap: 1rem;
-      margin-right: 1.5rem;
 
-      @media screen and (min-width: $breakpoint-tablet-large) {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .grid-section {
+      .sub-grid {
         display: grid;
-        width: 100%;
-        grid-template-columns: 1fr;
+        grid-template-columns: auto;
+        gap: 1rem;
 
-        .sub-grid {
-          display: grid;
-          grid-template-columns: auto;
-          gap: 1rem;
-
-          @media screen and (min-width: $breakpoint-tablet-large) {
-            grid-template-columns: auto auto;
-          }
+        @media screen and (min-width: $breakpoint-tablet-large) {
+          grid-template-columns: auto auto;
         }
       }
+    }
   }
 }
 

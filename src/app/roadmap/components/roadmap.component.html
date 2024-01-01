@@ -7,7 +7,7 @@
     (onUpdate)="updateRoadmap($event)"
   ></app-roadmap-filters> -->
 
-  <ng-scrollbar class="desktop-container">
+  <ng-scrollbar class="desktop-container" *ngIf="!isMobileDevice">
     <div scrollViewport cdkScrollable>
       <div class="scroll">
         <div class="grid-container">
@@ -50,7 +50,7 @@
     </div>
   </ng-scrollbar>
 
-  <div class="mobile-container">
+  <div class="mobile-container" *ngIf="isMobileDevice">
     <div class="grid-container">
       <div class="grid">
         <app-roadmap-overview

@@ -9,7 +9,7 @@
 <div mat-dialog-content>
   <p>{{ "ROADMAP.UPDATE.MESSAGE" | translate }}</p>
 
-  <ng-scrollbar class="form-scroll desktop-container">
+  <ng-scrollbar class="form-scroll desktop-container" *ngIf="!isMobileDevice">
     <form [formGroup]="form">
       <mat-form-field appearance="outline" class="full-width-grid-item">
         <mat-label>{{ "FORMS.PATH" | translate }}</mat-label>
@@ -79,7 +79,7 @@
     </form>
   </ng-scrollbar>
 
-  <div class="mobile-container">
+  <div class="mobile-container" *ngIf="isMobileDevice">
     <form [formGroup]="form">
       <mat-form-field appearance="outline" class="full-width-grid-item">
         <mat-label>{{ "FORMS.PATH" | translate }}</mat-label>

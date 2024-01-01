@@ -8,7 +8,7 @@
   </div>
 </div>
 <div mat-dialog-content>
-  <ng-scrollbar class="form-scroll desktop-container">
+  <ng-scrollbar class="form-scroll" *ngIf="!isMobileDevice">
     <form [formGroup]="experienceForm">
       <div class="grid-section">
         <mat-form-field appearance="outline">
@@ -158,7 +158,7 @@
     </form>
   </ng-scrollbar>
 
-  <div class="mobile-container">
+  <div class="mobile-container" *ngIf="isMobileDevice">
     <form [formGroup]="experienceForm">
       <div class="grid-section">
         <mat-form-field appearance="outline">
@@ -314,7 +314,7 @@
     "ACTIONS.CANCEL" | translate
   }}</button>
   <button
-    [disabled]="!experienceForm.valid || !stack.isStackValid()"
+    [disabled]="!experienceForm.valid || (stack && !stack.isStackValid())"
     mat-raised-button
     color="primary"
     (click)="onSaveClick()"

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { Component, HostListener, OnInit, ViewChild } from "@angular/core";
 import { Observable } from "rxjs";
 import { AuthStoreService } from "src/app/auth/services/auth-store.service";
 import { ThemeService } from "src/app/core/services/theme.service";
@@ -34,6 +34,19 @@ export class MobileNavigationComponent implements OnInit {
 
   logout(): void {
     this.authStoreService.logout();
+  }
+
+  @HostListener("document:click", ["$event"])
+  onDocumentClick(event: MouseEvent): void {
+    if (
+      this.opened &&
+      this.drawer &&
+      !this.drawer._elementRef.nativeElement.contains(event.target as Node)
+    ) {
+      this.drawer.toggle();
+      this.opened = false;
+      this.menuTimeout = setTimeout(() => (this.closed = true), 300);
+    }
   }
 
   toggleMenu() {

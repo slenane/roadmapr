@@ -8,7 +8,7 @@
   </div>
 </div>
 <div mat-dialog-content>
-  <ng-scrollbar class="form-scroll desktop-container">
+  <ng-scrollbar class="form-scroll desktop-container" *ngIf="!isMobileDevice">
     <form [formGroup]="projectForm">
       <div class="grid-section">
         <mat-form-field appearance="outline">
@@ -131,7 +131,7 @@
     </form>
   </ng-scrollbar>
 
-  <div class="mobile-container">
+  <div class="mobile-container" *ngIf="isMobileDevice">
     <form [formGroup]="projectForm">
       <div class="grid-section">
         <mat-form-field appearance="outline">
@@ -260,7 +260,7 @@
   }}</button>
   <button
     mat-raised-button
-    [disabled]="!projectForm.valid || !stack.isStackValid()"
+    [disabled]="!projectForm.valid || (stack && !stack.isStackValid())"
     color="primary"
     (click)="onSaveClick()"
     cdkFocusInitial

@@ -15,6 +15,8 @@ import { ProfileEditEducationComponent } from "./profile-edit-education/profile-
 import { ProfileEditInterestsComponent } from "./profile-edit-interests/profile-edit-interests.component";
 import { MatTabGroup } from "@angular/material/tabs";
 import { AlertsService } from "src/app/shared/services/alerts.service";
+import { BreakpointObserver } from "@angular/cdk/layout";
+import { MEDIA_QUERIES } from "src/app/shared/constants/breakpoints.constants";
 
 @Component({
   selector: "app-profile-edit",
@@ -22,6 +24,8 @@ import { AlertsService } from "src/app/shared/services/alerts.service";
   styleUrls: ["./profile-edit.component.scss"],
 })
 export class ProfileEditComponent implements OnInit {
+  public isMobileDevice = false;
+
   @Input() user: Profile;
   @Input() userId: string;
   @Output() editProfile: EventEmitter<any> = new EventEmitter();
@@ -35,10 +39,21 @@ export class ProfileEditComponent implements OnInit {
 
   constructor(
     private profileStoreService: ProfileStoreService,
-    private alertsService: AlertsService
+    private alertsService: AlertsService,
+    private breakpointObserver: BreakpointObserver
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.breakpointObserver
+      .observe(MEDIA_QUERIES.BREAKPOINTS)
+      .subscribe((result) => {
+        this.isMobileDevice = MEDIA_QUERIES.MOBILE.find(
+          (size) => result.breakpoints[size]
+        )
+          ? true
+          : false;
+      });
+  }
 
   onCancel() {
     this.editProfile.emit(false);

@@ -12,6 +12,8 @@ import { SettingsDeleteAccountComponent } from "./settings-delete-account/settin
 import { MatDialog } from "@angular/material/dialog";
 import { AlertsService } from "src/app/shared/services/alerts.service";
 import { settingsInitialState } from "../store/settings.reducer";
+import { BreakpointObserver } from "@angular/cdk/layout";
+import { MEDIA_QUERIES } from "src/app/shared/constants/breakpoints.constants";
 
 @Component({
   selector: "app-settings",
@@ -20,6 +22,7 @@ import { settingsInitialState } from "../store/settings.reducer";
 })
 export class SettingsComponent implements OnInit {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
+  public isMobileDevice = false;
   public settings: Settings;
   public languageOptions = LANGUAGE_OPTIONS;
   public themeOptions = THEME_OPTIONS;
@@ -56,7 +59,8 @@ export class SettingsComponent implements OnInit {
     private themeService: ThemeService,
     private translateService: TranslateService,
     private alertsService: AlertsService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private breakpointObserver: BreakpointObserver
   ) {}
 
   ngOnInit(): void {
@@ -77,6 +81,16 @@ export class SettingsComponent implements OnInit {
           );
         }
         this.updateForms();
+      });
+
+    this.breakpointObserver
+      .observe(MEDIA_QUERIES.BREAKPOINTS)
+      .subscribe((result) => {
+        this.isMobileDevice = MEDIA_QUERIES.MOBILE.find(
+          (size) => result.breakpoints[size]
+        )
+          ? true
+          : false;
       });
   }
 
@@ -172,7 +186,8 @@ export class SettingsComponent implements OnInit {
 
   deleteAccount(): void {
     const dialogRef = this.dialog.open(SettingsDeleteAccountComponent, {
-      minWidth: "50vw",
+      panelClass: "modal-class",
+      autoFocus: false,
     });
 
     dialogRef.afterClosed().subscribe((confirmed: any) => {

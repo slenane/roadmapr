@@ -1,7 +1,7 @@
 <app-loading *ngIf="!user"></app-loading>
 
 <div class="profile" *ngIf="user">
-  <ng-scrollbar *ngIf="!isEditing" class="desktop-container">
+  <ng-scrollbar *ngIf="!isEditing && !isMobileDevice" class="desktop-container">
     <div scrollViewport cdkScrollable>
       <div class="scroll">
         <div class="profile-content">
@@ -24,7 +24,7 @@
     </div>
   </ng-scrollbar>
 
-  <div *ngIf="!isEditing" class="mobile-container">
+  <div *ngIf="!isEditing && isMobileDevice" class="mobile-container">
     <div class="profile-content">
       <div class="personal-cards">
         <app-profile-content-card

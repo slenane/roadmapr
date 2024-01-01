@@ -28,7 +28,7 @@ export interface Profile {
     linkedIn: string;
     x: string;
   };
-  stack: StackItem[];
+  stackList: StackItem[];
   notifications: boolean;
   theme: "light" | "dark";
   preferredLanguage: string;

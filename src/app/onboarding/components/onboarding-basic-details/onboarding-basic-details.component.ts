@@ -104,6 +104,7 @@ export class OnboardingBasicDetailsComponent implements OnInit {
   openPathQuiz() {
     const dialogRef = this.dialog.open(OnboardingPathQuizComponent, {
       panelClass: "modal-class",
+      autoFocus: false,
     });
 
     dialogRef.afterClosed().subscribe((result) => {

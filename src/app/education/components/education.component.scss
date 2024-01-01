@@ -1,17 +1,1 @@
-@import "src/styles/app-vars.scss";
 
-.main-container {
-  display: none;
-
-  @media screen and (min-width: $breakpoint-tablet-large) {
-    display: block;
-  }
-}
-
-.mobile-container {
-  display: block;
-
-  @media screen and (min-width: $breakpoint-tablet-large) {
-    display: none;
-  }
-}
