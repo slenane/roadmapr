@@ -4,7 +4,6 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
-  margin-right: 1rem;
 
   .mobile-only-card {
     display: block;
@@ -26,8 +25,12 @@
       border-bottom: 1px solid #ece9e7;
 
       h1 {
-        font-size: 2rem;
+        font-size: 1.5rem;
         font-weight: 500;
+
+        @media screen and (min-width: $breakpoint-tablet-large) {
+          font-size: 2rem;
+        }
       }
 
       .profile-stack-icon {

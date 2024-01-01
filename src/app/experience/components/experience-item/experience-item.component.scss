@@ -10,10 +10,6 @@ mat-card {
     grid-template-columns: auto 1fr auto;
     justify-content: space-between;
 
-    @media screen and (min-width: $breakpoint-tablet-large) {
-      grid-template-columns: 2fr 1fr auto;
-    }
-
     mat-card-title {
       font-size: 1rem;
       display: grid;

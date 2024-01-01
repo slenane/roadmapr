@@ -44,6 +44,7 @@ export class RoadmapExperienceComponent implements OnInit {
   public freelanceTotalTime: { years: number; days: number };
   public professionalTotalTime: { years: number; days: number };
   public totalTime: number | "N/A";
+
   @Input() experience: ExperienceItem[];
   @Input() education: EducationItem[];
 
@@ -55,10 +56,19 @@ export class RoadmapExperienceComponent implements OnInit {
     private translate: TranslateService
   ) {}
 
-  ngOnInit(): void {
-    this.setInitialValues();
-    this.generateChart();
-    this.getTotalProfessionalTime();
+  ngOnInit(): void {}
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (
+      (changes.experience &&
+        changes.experience.currentValue != changes.experience.previousValue) ||
+      (changes.education &&
+        changes.education.currentValue != changes.education.previousValue)
+    ) {
+      this.setInitialValues();
+      this.generateChart();
+      this.getTotalProfessionalTime();
+    }
   }
 
   generateChart() {
