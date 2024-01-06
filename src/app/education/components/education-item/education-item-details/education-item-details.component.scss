@@ -2,14 +2,12 @@
 
 .content {
   position: relative;
-
-  .actions {
-    position: absolute;
-    top: -1.5rem;
-    right: -1.5rem;
-  }
-
   .header {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: center;
     margin-bottom: 1rem;
 
     .title {
@@ -17,6 +15,13 @@
         margin: 0;
         font-size: 1.2rem;
       }
+    }
+
+    .header-section {
+      display: grid;
+      grid-template-columns: auto auto;
+      justify-content: flex-end;
+      align-items: center;
     }
   }
 
@@ -26,7 +31,8 @@
     gap: 1rem;
 
     @media screen and (min-width: $breakpoint-tablet-large) {
-      grid-template-columns: 1fr 2fr;
+      grid-template-columns: auto 2fr;
+      column-gap: 2rem;
     }
 
     .column {
@@ -70,13 +76,14 @@
     .description-text {
       white-space: pre-line;
     }
+  }
 
-    .body-actions {
-      display: grid;
-      grid-template-columns: auto auto;
-      justify-content: end;
-      gap: 1rem;
-      margin-bottom: 1rem;
-    }
+  .actions {
+    grid-column: 1 /-1;
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: end;
+    gap: 1rem;
+    margin-bottom: 0;
   }
 }
