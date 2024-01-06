@@ -23,7 +23,7 @@ export class ExperienceRecommendationComponent implements OnInit {
 
   openRecommendationDetails() {
     this.dialog.open(ExperienceRecommendationDetailsComponent, {
-      panelClass: "modal-class",
+      panelClass: "modal-edit-class",
       data: { ...this.data },
       autoFocus: false,
     });

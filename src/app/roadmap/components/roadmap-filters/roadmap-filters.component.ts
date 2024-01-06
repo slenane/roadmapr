@@ -77,7 +77,7 @@ export class RoadmapFiltersComponent implements OnInit, OnChanges {
 
   editRoadmap() {
     const dialogRef = this.dialog.open(RoadmapUpdateComponent, {
-      panelClass: "modal-class",
+      panelClass: "modal-edit-class",
       autoFocus: false,
       data: {
         path: this.roadmap.path,

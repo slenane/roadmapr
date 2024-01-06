@@ -1,9 +1,25 @@
 <div class="content">
-  <div class="actions">
-    <button mat-button [matMenuTriggerFor]="menu"
+  <div class="header">
+    <h2 class="title" mat-dialog-title [innerHtml]="item.title"></h2>
+
+    <button class="mobile-options" mat-button [matMenuTriggerFor]="menu"
       ><span class="material-symbols-outlined">more_horiz</span></button
     >
 
+    <div class="header-section">
+      <div class="education-stack">
+        <img
+          *ngFor="let tech of item.stack"
+          class="app-stack-icon"
+          matTooltip="{{ tech.title }}"
+          src="/assets/images/stack/{{ tech.name }}-original.svg"
+        />
+      </div>
+
+      <button class="desktop-options" mat-button [matMenuTriggerFor]="menu"
+        ><span class="material-symbols-outlined">more_horiz</span></button
+      >
+    </div>
     <mat-menu #menu="matMenu">
       <button mat-menu-item (click)="editItem()">{{
         "ACTIONS.EDIT" | translate
@@ -14,74 +30,70 @@
     </mat-menu>
   </div>
 
-  <div class="header">
-    <div class="title">
-      <h2 [innerHTML]="item.title"></h2>
-    </div>
-  </div>
-
-  <div class="body">
+  <div class="body" mat-dialog-content>
     <div class="column">
-      <div class="column-grid">
-        <div class="row" *ngIf="item.startDate">
-          <div class="grid-item__title">{{
-            "FORMS.DATES.TIMELINE" | translate
-          }}</div>
-          <p class="item-value">
-            {{ item.startDate | date }} -
-            {{ (item.endDate | date) || ("FORMS.DATES.PRESENT" | translate) }}
-          </p>
-        </div>
-
-        <div class="row">
-          <div class="grid-item__title">{{ "FORMS.STACK" | translate }}</div>
-          <div class="education-stack">
-            <img
-              *ngFor="let tech of item.stack"
-              class="app-stack-icon__large"
-              matTooltip="{{ tech.title }}"
-              src="/assets/images/stack/{{ tech.name }}-original.svg"
-            />
-          </div>
-        </div>
+      <div class="row" *ngIf="item.startDate">
+        <div class="grid-item__title">{{
+          "FORMS.DATES.TIMELINE" | translate
+        }}</div>
+        <p class="item-value">
+          {{ item.startDate | date }} -
+          {{ (item.endDate | date) || ("FORMS.DATES.PRESENT" | translate) }}
+        </p>
       </div>
     </div>
 
     <div class="column description-column">
       <div class="row">
+        <div class="grid-item__title">{{ "FORMS.TAG_LINE" | translate }}</div>
+        <p
+          *ngIf="item.tagLine"
+          class="item-value"
+          [innerHtml]="item.tagLine"
+        ></p>
+        <p class="item-value" *ngIf="!item.tagLine">
+          {{ "FORMS.EMPTY.TAG_LINE" | translate }}
+        </p>
+      </div>
+
+      <div class="row">
         <div class="grid-item__title">{{
           "FORMS.DESCRIPTION" | translate
         }}</div>
         <p
+          *ngIf="item.description"
           class="item-value description-text"
-          [innerHTML]="item.description"
+          [innerHtml]="item.description"
         ></p>
+        <p class="item-value description-text" *ngIf="!item.description">
+          {{ "FORMS.EMPTY.DESCRIPTION_DID" | translate }}
+        </p>
       </div>
+    </div>
 
-      <div class="body-actions">
-        <a *ngIf="item.github" target="_blank" href="{{ item.github }}">
-          <button mat-raised-button class="github-button">
-            <img
-              class="github-icon"
-              src="/assets/images/stack/github-original.svg"
-              alt="Github Icon"
-            />
-            <span class="github-button__text">{{
-              "FORMS.GITHUB" | translate
-            }}</span></button
-          >
-        </a>
-        <a *ngIf="item.link" target="_blank" href="{{ item.link }}">
-          <button mat-raised-button cdkFocusInitial color="primary">{{
-            "FORMS.PROJECT_LINK" | translate
-          }}</button>
-        </a>
-        <a>
-          <button mat-raised-button color="default" (click)="onCancel()">{{
-            "ACTIONS.CLOSE" | translate
-          }}</button>
-        </a>
-      </div>
+    <div class="actions">
+      <a *ngIf="item.github" target="_blank" href="{{ item.github }}">
+        <button mat-raised-button class="github-button">
+          <img
+            class="github-icon"
+            src="/assets/images/stack/github-original.svg"
+            alt="Github Icon"
+          />
+          <span class="github-button__text">{{
+            "FORMS.GITHUB" | translate
+          }}</span></button
+        >
+      </a>
+      <a *ngIf="item.link" target="_blank" href="{{ item.link }}">
+        <button mat-raised-button cdkFocusInitial color="primary">{{
+          "FORMS.PROJECT_LINK" | translate
+        }}</button>
+      </a>
+      <a>
+        <button mat-raised-button color="default" (click)="onCancel()">{{
+          "ACTIONS.CLOSE" | translate
+        }}</button>
+      </a>
     </div>
   </div>
 </div>

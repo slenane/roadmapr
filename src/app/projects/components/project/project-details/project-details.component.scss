@@ -1,21 +1,52 @@
 @import "src/styles/app-vars.scss";
 
 .content {
-  position: relative;
-
-  .actions {
-    position: absolute;
-    top: -1.5rem;
-    right: -1.5rem;
-  }
-
   .header {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+    align-items: start;
     margin-bottom: 1rem;
 
+    @media screen and (min-width: $breakpoint-tablet) {
+      gap: 1rem;
+      align-items: center;
+      display: none;
+    }
+
+    .mobile-options {
+      display: block;
+
+      @media screen and (min-width: $breakpoint-tablet) {
+        display: none;
+      }
+    }
+
+    .desktop-options {
+      display: none;
+
+      @media screen and (min-width: $breakpoint-tablet) {
+        display: block;
+      }
+    }
+
     .title {
-      h2 {
-        margin: 0;
+      margin: 0;
+      font-size: 1.1rem;
+
+      @media screen and (min-width: $breakpoint-tablet) {
         font-size: 1.2rem;
+      }
+    }
+
+    .header-section {
+      display: grid;
+      grid-template-columns: auto;
+      align-items: center;
+
+      @media screen and (min-width: $breakpoint-tablet) {
+        grid-template-columns: auto auto;
+        justify-content: flex-end;
       }
     }
   }
@@ -26,7 +57,8 @@
     gap: 1rem;
 
     @media screen and (min-width: $breakpoint-tablet-large) {
-      grid-template-columns: 1fr 2fr;
+      grid-template-columns: auto 2fr;
+      column-gap: 2rem;
     }
 
     .column {
@@ -69,12 +101,14 @@
     .description-text {
       white-space: pre-line;
     }
+  }
 
-    .body-actions {
-      display: grid;
-      grid-template-columns: auto auto auto;
-      justify-content: end;
-      gap: 1rem;
-    }
+  .actions {
+    grid-column: 1 /-1;
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: end;
+    gap: 1rem;
+    margin-bottom: 0;
   }
 }

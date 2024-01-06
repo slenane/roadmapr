@@ -34,7 +34,7 @@ export class ExperienceItemDetailsComponent implements OnInit {
 
   editItem() {
     const dialogRef = this.dialog.open(ExperienceUpdateComponent, {
-      panelClass: "modal-class",
+      panelClass: "modal-edit-class",
       data: this.item,
       autoFocus: false,
     });

@@ -480,6 +480,11 @@
     "REMOVE": {
       "GITHUB": "Unlink GitHub Account"
     },
+    "EMPTY": {
+      "DESCRIPTION_LEARNED": "Add a summary of what you learned so you can include it in your job applications",
+      "DESCRIPTION_DID": "Add a summary of what you did so you can include it in your job applications",
+      "TAG_LINE": "Add a tagline that briefly summarizes the project"
+    },
     "UPDATE": {
       "EMAIL": "Update Email",
       "NAME": "Update Name",

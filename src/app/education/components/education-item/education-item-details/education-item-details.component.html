@@ -2,6 +2,10 @@
   <div class="header">
     <h2 class="title" mat-dialog-title [innerHtml]="item.title"></h2>
 
+    <button class="mobile-options" mat-button [matMenuTriggerFor]="menu"
+      ><span class="material-symbols-outlined">more_horiz</span></button
+    >
+
     <div class="header-section">
       <div class="education-stack">
         <img
@@ -12,7 +16,7 @@
         />
       </div>
 
-      <button mat-button [matMenuTriggerFor]="menu"
+      <button class="desktop-options" mat-button [matMenuTriggerFor]="menu"
         ><span class="material-symbols-outlined">more_horiz</span></button
       >
     </div>
@@ -61,9 +65,8 @@
           class="item-value description-text"
           [innerHtml]="item.description"
         ></p>
-        <p class="item-value description-text" *ngIf="!data.description">
-          Add a summary of the things you learned so you can include in your job
-          applications
+        <p class="item-value description-text" *ngIf="!item.description">
+          {{ "FORMS.EMPTY.DESCRIPTION_LEARNED" | translate }}
         </p>
       </div>
     </div>

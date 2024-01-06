@@ -163,7 +163,7 @@ export class RoadmapStackComponent implements OnInit {
 
   editRoadmap() {
     const dialogRef = this.dialog.open(RoadmapUpdateComponent, {
-      panelClass: "modal-class",
+      panelClass: "modal-edit-class",
       autoFocus: false,
       data: {
         path: this.path,

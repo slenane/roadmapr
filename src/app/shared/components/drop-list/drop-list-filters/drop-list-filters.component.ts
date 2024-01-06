@@ -84,17 +84,17 @@ export class DropListFiltersComponent implements OnInit, OnChanges {
 
     if (this.type === "EXPERIENCE.T")
       dialogRef = this.dialog.open(ExperienceUpdateComponent, {
-        panelClass: "modal-class",
+        panelClass: "modal-edit-class",
         autoFocus: false,
       });
     else if (this.type === "EDUCATION.T")
       dialogRef = this.dialog.open(EducationUpdateComponent, {
-        panelClass: "modal-class",
+        panelClass: "modal-edit-class",
         autoFocus: false,
       });
     else if (this.type === "PROJECTS.T") {
       dialogRef = this.dialog.open(ProjectsUpdateComponent, {
-        panelClass: "modal-class",
+        panelClass: "modal-edit-class",
         autoFocus: false,
       });
     } else {

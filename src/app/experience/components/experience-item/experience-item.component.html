@@ -43,14 +43,18 @@
         <div class="timeline_title">{{
           "FORMS.DATES.TIMELINE" | translate
         }}</div>
-        <p class="timeline_text"
+        <p class="timeline_text item-value"
           >{{ data.startDate | date }} -
           {{ (data.endDate | date) || ("FORMS.DATES.PRESENT" | translate) }}</p
         >
       </div>
 
-      <div class="description_title">{{ "FORMS.DESCRIPTION" | translate }}</div>
-      <p class="description" [innerHTML]="data.description"></p>
+      <div class="description" *ngIf="data.description">
+        <div class="description_title">{{
+          "FORMS.DESCRIPTION" | translate
+        }}</div>
+        <p class="item-value description" [innerHTML]="data.description"></p>
+      </div>
 
       <p class="actions">
         <a href="data.companyLink" *ngIf="data.companyLink">

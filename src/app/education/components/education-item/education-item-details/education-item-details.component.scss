@@ -1,27 +1,53 @@
 @import "src/styles/app-vars.scss";
 
 .content {
-  position: relative;
   .header {
     display: grid;
     grid-template-columns: auto auto;
     justify-content: space-between;
-    gap: 1rem;
-    align-items: center;
+    align-items: start;
     margin-bottom: 1rem;
 
+    @media screen and (min-width: $breakpoint-tablet) {
+      gap: 1rem;
+      align-items: center;
+      display: none;
+    }
+
+    .mobile-options {
+      display: block;
+
+      @media screen and (min-width: $breakpoint-tablet) {
+        display: none;
+      }
+    }
+
+    .desktop-options {
+      display: none;
+
+      @media screen and (min-width: $breakpoint-tablet) {
+        display: block;
+      }
+    }
+
     .title {
-      h2 {
-        margin: 0;
+      margin: 0;
+      font-size: 1.1rem;
+
+      @media screen and (min-width: $breakpoint-tablet) {
         font-size: 1.2rem;
       }
     }
 
     .header-section {
       display: grid;
-      grid-template-columns: auto auto;
-      justify-content: flex-end;
+      grid-template-columns: auto;
       align-items: center;
+
+      @media screen and (min-width: $breakpoint-tablet) {
+        grid-template-columns: auto auto;
+        justify-content: flex-end;
+      }
     }
   }
 

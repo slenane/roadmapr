@@ -56,7 +56,7 @@ export class RoadmapOverviewComponent implements OnInit, OnChanges {
 
   editRoadmap() {
     const dialogRef = this.dialog.open(RoadmapUpdateComponent, {
-      panelClass: "modal-class",
+      panelClass: "modal-edit-class",
       autoFocus: false,
       data: {
         path: this.user.path,
