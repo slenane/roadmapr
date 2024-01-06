@@ -57,12 +57,12 @@
           width: 100%;
           display: grid;
           justify-content: center;
-          align-content: center;
+          align-content: flex-start;
           text-align: center;
           padding: 2rem 1rem;
 
           @media screen and (min-width: $breakpoint-tablet-large) {
-            padding: 0 1rem;
+            padding: 3rem 1rem;
           }
 
           .material-symbols-outlined {
@@ -71,7 +71,7 @@
 
           .message-primary {
             font-weight: 500;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
           }
 
           .message-secondary {

@@ -11,10 +11,11 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 1rem;
-    margin: 1rem 0 1rem 1rem;
+    padding: 1rem;
 
     @media screen and (min-width: $breakpoint-tablet-large) {
       grid-template-columns: 2fr 7fr;
+      padding: 1rem 0 1rem 1rem;
     }
 
     @media screen and (min-width: $breakpoint-desktop-large) {

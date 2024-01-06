@@ -2,8 +2,6 @@
 
 * {
   box-sizing: border-box;
-  scrollbar-width: thin;
-  scrollbar-color: #f1f1f1 none;
 }
 
 html,
@@ -19,22 +17,6 @@ body {
 body {
   font-family: Mona Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
   margin: 0;
-
-  @media screen and (min-width: $breakpoint-desktop) {
-    ::-webkit-scrollbar {
-      width: 4px;
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background-color: #f1f1f1;
-      border-radius: 6px;
-    }
-
-    ::-webkit-scrollbar-track,
-    ::-webkit-scrollbar-corner {
-      background-color: none;
-    }
-  }
 }
 
 app-root {
