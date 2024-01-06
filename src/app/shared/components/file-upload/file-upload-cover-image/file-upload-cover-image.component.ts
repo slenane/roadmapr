@@ -32,7 +32,7 @@ export class FileUploadCoverImageComponent implements OnInit, OnChanges {
 
   onFileSelected(event: any) {
     const dialogRef = this.dialog.open(ImageCropperModalComponent, {
-      panelClass: "modal-class",
+      panelClass: "modal-edit-class",
       autoFocus: false,
       data: {
         image: event,

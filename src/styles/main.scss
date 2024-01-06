@@ -242,16 +242,38 @@ mat-form-field {
 }
 
 .modal-class {
-  min-width: 90vw;
+  min-width: 90vw !important;
   max-height: 90vh !important;
   overflow: auto;
 
   @media screen and (min-width: $breakpoint-tablet-large) {
-    min-width: 70vw;
+    width: 70vw !important;
+    min-height: 50vh !important;
+  }
+
+  @media screen and (min-width: $breakpoint-desktop) {
+    width: 50vw !important;
+    min-height: 40vh !important;
+  }
+
+  @media screen and (min-width: $breakpoint-desktop-large) {
+    width: 40vw !important;
+    min-height: 30vh !important;
+  }
+}
+
+.modal-edit-class {
+  min-width: 90vw !important;
+  max-height: 90vh !important;
+  overflow: auto;
+
+  @media screen and (min-width: $breakpoint-tablet-large) {
+    min-width: 70vw !important;
     min-height: 50vh !important;
   }
 
   @media screen and (min-width: $breakpoint-desktop-large) {
+    min-width: 40vw !important;
     min-height: 30vh !important;
   }
 }
