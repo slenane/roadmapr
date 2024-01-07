@@ -10,8 +10,8 @@
       alt="User Image"
     />
     <div class="content">
-      <div class="value">{{ user.firstName }} {{ user.lastName }}</div>
-      <div class="title">{{ user.path.name | translate }} </div>
+      <p class="value">{{ user.firstName }} {{ user.lastName }}</p>
+      <p class="title">{{ user.path.name | translate }} </p>
     </div>
     <button mat-raised-button color="primary" (click)="editRoadmap()"
       >Edit</button
@@ -19,36 +19,36 @@
   </mat-card>
 
   <mat-card class="card">
-    <div class="icon">
+    <div class="roadmap-icon">
       <span class="material-symbols-outlined alternate"> data_object </span>
     </div>
     <div class="content">
-      <div class="value"> {{ languages }}</div>
-      <div class="title">{{ "ROADMAP.LANGUAGES" | translate }}</div>
+      <p class="value"> {{ languages }}</p>
+      <p class="title">{{ "ROADMAP.LANGUAGES" | translate }}</p>
     </div>
   </mat-card>
 
   <mat-card class="card">
-    <div class="icon">
+    <div class="roadmap-icon">
       <span class="material-symbols-outlined alternate"> hourglass</span>
     </div>
     <div class="content">
-      <div class="value" *ngIf="time.years > 1">
+      <p class="value" *ngIf="time.years > 1">
         {{
           "ROADMAP.DATE_YEARS"
             | translate : { years: time.years, days: time.days }
         }}
-      </div>
-      <div class="value" *ngIf="time.years === 1">
+      </p>
+      <p class="value" *ngIf="time.years === 1">
         {{
           "ROADMAP.DATE_YEAR"
             | translate : { years: time.years, days: time.days }
         }}
-      </div>
-      <div class="value" *ngIf="time.years === 0">
+      </p>
+      <p class="value" *ngIf="time.years === 0">
         {{ "ROADMAP.DATE_DAYS" | translate : { days: time.days } }}
-      </div>
-      <div class="title">{{ "ROADMAP.TIME" | translate }}</div>
+      </p>
+      <p class="title">{{ "ROADMAP.TIME" | translate }}</p>
     </div>
   </mat-card>
 </div>

@@ -21,11 +21,8 @@
     </div>
   </div>
 
-  <div class="education-subtitle">
-    <span class="author">{{ education.author }}</span>
-    ({{ education.startDate | date }} -
-    {{
-      (education.endDate | date) || ("FORMS.DATES.PRESENT" | translate)
-    }})</div
+  <p class="education-subtitle"
+    >{{ education.author }} ({{ education.startDate | date }} -
+    {{ (education.endDate | date) || ("FORMS.DATES.PRESENT" | translate) }})</p
   >
 </div>

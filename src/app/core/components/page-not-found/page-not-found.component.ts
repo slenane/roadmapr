@@ -8,15 +8,15 @@ import { Observable } from "rxjs";
   styleUrls: ["./page-not-found.component.scss"],
 })
 export class PageNotFoundComponent implements OnInit {
-  public theme$: Observable<string>;
-  public currentTheme: string;
+  public theme$: Observable<"light" | "dark" | undefined>;
+  public currentTheme: "light" | "dark" | undefined;
 
   constructor(private themeService: ThemeService) {
     this.theme$ = this.themeService.selectedTheme;
   }
 
   ngOnInit(): void {
-    this.theme$.subscribe((theme: string) => {
+    this.theme$.subscribe((theme: "light" | "dark" | undefined) => {
       this.currentTheme = theme;
     });
   }

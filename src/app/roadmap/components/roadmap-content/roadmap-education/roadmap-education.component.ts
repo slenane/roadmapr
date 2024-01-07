@@ -19,7 +19,7 @@ import {
 } from "ng-apexcharts";
 
 export type ChartOptions = {
-  theme: { mode: "dark" };
+  theme: { mode: "light" | "dark" | undefined };
   series: ApexAxisChartSeries;
   chart: ApexChart;
   xaxis: ApexXAxis;
@@ -49,6 +49,7 @@ export class RoadmapEducationComponent implements OnInit, OnChanges {
   @Input() data: EducationItem[];
   @Input() userStack: IStack | undefined;
   @Input() stackList: any[];
+  @Input() theme: "light" | "dark" | undefined;
 
   constructor() {}
 
@@ -109,18 +110,18 @@ export class RoadmapEducationComponent implements OnInit, OnChanges {
 
     this.chartOptions = {
       theme: {
-        mode: "dark",
+        mode: this.theme,
       },
       series: [
         {
           name: "Courses",
           data: courseData,
-          color: "#00BBD4",
+          ...(this.theme === "dark" ? { color: "#00BBD4" } : {}),
         },
         {
           name: "Books",
           data: bookData,
-          color: "#00D4A6",
+          ...(this.theme === "dark" ? { color: "#00D4A6" } : {}),
         },
       ],
       chart: {

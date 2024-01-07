@@ -5,9 +5,7 @@
   (mouseleave)="hideRemoveButton()"
 >
   <mat-card-header>
-    <mat-card-title>
-      <span [innerHTML]="data.title"></span>
-    </mat-card-title>
+    <mat-card-title [innerHTML]="data.title"> </mat-card-title>
     <mat-card-subtitle [innerHTML]="data.author"> </mat-card-subtitle>
 
     <div
@@ -68,7 +66,8 @@
         matTooltip="{{ data.count }} users have taken this course"
         matTooltipShowDelay="500"
       >
-        {{ data.count }} <span class="material-symbols-outlined"> person </span>
+        {{ data.count }}
+        <span class="material-symbols-outlined icon"> person </span>
       </mat-chip>
       <mat-chip
         matTooltip="{{
@@ -77,7 +76,7 @@
         matTooltipShowDelay="500"
       >
         {{ (data.recommended / data.count) * 100 }}%
-        <span class="material-symbols-outlined"> recommend </span>
+        <span class="material-symbols-outlined icon"> recommend </span>
       </mat-chip>
     </mat-chip-list>
   </mat-card-content>

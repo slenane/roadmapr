@@ -1,6 +1,6 @@
 <div class="content">
   <div class="header">
-    <h2 class="role" mat-dialog-title [innerHtml]="item.role"></h2>
+    <div mat-dialog-title class="role" [innerHtml]="item.role"></div>
 
     <button class="mobile-options" mat-button [matMenuTriggerFor]="menu"
       ><span class="material-symbols-outlined">more_horiz</span></button
@@ -35,14 +35,14 @@
       <div class="column-grid">
         <div class="row">
           <div class="grid-item__title">{{ "FORMS.COMPANY" | translate }}</div>
-          <p class="item-value" [innerHTML]="item.company"></p>
+          <p [innerHTML]="item.company"></p>
         </div>
 
         <div class="row" *ngIf="item.startDate">
           <div class="grid-item__title">{{
             "FORMS.DATES.TIMELINE" | translate
           }}</div>
-          <p class="item-value">
+          <p>
             {{ item.startDate | date }} -
             {{ (item.endDate | date) || ("FORMS.DATES.PRESENT" | translate) }}
           </p>
@@ -57,10 +57,10 @@
         }}</div>
         <p
           *ngIf="item.description"
-          class="item-value description-text"
+          class="description-text"
           [innerHtml]="item.description"
         ></p>
-        <p class="item-value description-text" *ngIf="!item.description">
+        <p class="description-text" *ngIf="!item.description">
           {{ "FORMS.EMPTY.DESCRIPTION_DID" | translate }}
         </p>
       </div>

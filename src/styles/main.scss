@@ -197,7 +197,6 @@ mat-form-field {
   &.roadmap-percentage-wheel {
     transform: scale(0.8);
     box-shadow: 0 0 0 10px #e8e8e8 inset;
-    margin-bottom: 1rem;
     border-radius: 50%;
   }
 }
@@ -207,6 +206,10 @@ mat-form-field {
 }
 
 .snackbar {
+  &-success {
+    background-color: $dark-theme--sidebar--background !important;
+    color: $dark-theme--font--primary !important;
+  }
   &-error {
     background-color: red !important;
     color: white !important;
@@ -247,16 +250,19 @@ mat-form-field {
   overflow: auto;
 
   @media screen and (min-width: $breakpoint-tablet-large) {
+    min-width: 70vw !important;
     width: 70vw !important;
     min-height: 50vh !important;
   }
 
   @media screen and (min-width: $breakpoint-desktop) {
+    min-width: 50vw !important;
     width: 50vw !important;
     min-height: 40vh !important;
   }
 
   @media screen and (min-width: $breakpoint-desktop-large) {
+    min-width: 40vw !important;
     width: 40vw !important;
     min-height: 30vh !important;
   }
@@ -289,6 +295,10 @@ mat-form-field {
 
 .apexcharts-canvas {
   margin: 0 auto !important;
+}
+
+.mat-dialog-title {
+  margin: 0 !important;
 }
 
 .mat-dialog-content {

@@ -2,10 +2,10 @@
   <section>
     <h3 class="section-header">{{ "PROFILE.HEADERS.PERSONAL" | translate }}</h3>
     <div class="label">{{ "PROFILE.SUB_HEADERS.LOCATION" | translate }}</div>
-    <div class="value">{{ user.location.name | translate }}</div>
+    <p class="value">{{ user.location.name | translate }}</p>
 
     <div class="label">{{ "PROFILE.SUB_HEADERS.NATIONALITY" | translate }}</div>
-    <div class="value">{{ user.nationality.name | translate }}</div>
+    <p class="value">{{ user.nationality.name | translate }}</p>
 
     <div class="label">{{ "PROFILE.SUB_HEADERS.LANGUAGES" | translate }}</div>
     <div class="value">
@@ -105,9 +105,9 @@
 
     <ng-container *ngIf="user.interests.personalInterests.length">
       <div class="label">{{ "PROFILE.SUB_HEADERS.PERSONAL" | translate }}</div>
-      <div class="value">
+      <p class="value">
         {{ user.interests.personalInterests.join(", ") }}
-      </div>
+      </p>
     </ng-container>
 
     <div

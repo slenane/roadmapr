@@ -1,7 +1,7 @@
 export const NAVIGATION_OPTIONS = [
   {
     title: "ROADMAP.T",
-    image: "/assets/images/logo/roadmap-link.png",
+    logo: true,
     link: "/roadmap",
   },
   {

@@ -7,7 +7,7 @@
         (error)="handleImageError()"
         alt="Company Logo"
       />
-      <h2 [innerHTML]="data.position"></h2>
+      <div mat-dialog-title [innerHTML]="data.position"></div>
     </div>
   </div>
   <div mat-dialog-content>
@@ -19,14 +19,14 @@
               <div class="grid-item__title">{{
                 "FORMS.COMPANY" | translate
               }}</div>
-              <p class="item-value" [innerHTML]="data.company"></p>
+              <p [innerHTML]="data.company"></p>
             </div>
 
             <div class="row" *ngIf="data.salary">
               <div class="grid-item__title">{{
                 "RECOMMENDATIONS.SALARY" | translate
               }}</div>
-              <p class="item-value" [innerHTML]="data.salary"></p>
+              <p [innerHTML]="data.salary"></p>
             </div>
           </div>
 
@@ -35,7 +35,7 @@
               <div class="grid-item__title">{{
                 "RECOMMENDATIONS.LOCATION" | translate
               }}</div>
-              <p class="item-value">{{ location }}</p>
+              <p>{{ location }}</p>
             </div>
 
             <div class="row">
@@ -81,10 +81,7 @@
             <div class="grid-item__title">{{
               "FORMS.DESCRIPTION" | translate
             }}</div>
-            <p
-              class="item-value description-text"
-              [innerHTML]="description"
-            ></p>
+            <p class="description-text" [innerHTML]="description"></p>
           </div>
         </div>
       </div>
@@ -98,14 +95,14 @@
               <div class="grid-item__title">{{
                 "FORMS.COMPANY" | translate
               }}</div>
-              <p class="item-value" [innerHTML]="data.company"></p>
+              <p [innerHTML]="data.company"></p>
             </div>
 
             <div class="row" *ngIf="data.salary">
               <div class="grid-item__title">{{
                 "RECOMMENDATIONS.SALARY" | translate
               }}</div>
-              <p class="item-value" [innerHTML]="data.salary"></p>
+              <p [innerHTML]="data.salary"></p>
             </div>
           </div>
 
@@ -114,7 +111,7 @@
               <div class="grid-item__title">{{
                 "RECOMMENDATIONS.LOCATION" | translate
               }}</div>
-              <p class="item-value">{{ location }}</p>
+              <p>{{ location }}</p>
             </div>
 
             <div class="row">
@@ -160,10 +157,7 @@
             <div class="grid-item__title">{{
               "FORMS.DESCRIPTION" | translate
             }}</div>
-            <p
-              class="item-value description-text"
-              [innerHTML]="description"
-            ></p>
+            <p class="description-text" [innerHTML]="description"></p>
           </div>
         </div>
       </div>

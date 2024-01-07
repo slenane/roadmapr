@@ -1,8 +1,6 @@
 <mat-card class="recommendation" (click)="openRecommendationDetails()">
   <mat-card-header>
-    <mat-card-title>
-      <span [innerHTML]="data.position"></span>
-    </mat-card-title>
+    <mat-card-title [innerHTML]="data.position"></mat-card-title>
     <mat-card-subtitle [innerHTML]="data.company | titlecase">
     </mat-card-subtitle>
 

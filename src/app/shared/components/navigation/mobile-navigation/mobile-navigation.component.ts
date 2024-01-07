@@ -10,8 +10,8 @@ import { NAVIGATION_OPTIONS } from "src/app/shared/constants/navigation.constant
   styleUrls: ["./mobile-navigation.component.scss"],
 })
 export class MobileNavigationComponent implements OnInit {
-  public theme$: Observable<string>;
-  public currentTheme: string;
+  public theme$: Observable<"light" | "dark" | undefined>;
+  public currentTheme: "light" | "dark" | undefined;
   public options = NAVIGATION_OPTIONS;
   public opened: boolean;
   public menuTimeout: any;
@@ -27,7 +27,7 @@ export class MobileNavigationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.theme$.subscribe((theme: string) => {
+    this.theme$.subscribe((theme: "light" | "dark" | undefined) => {
       this.currentTheme = theme;
     });
   }

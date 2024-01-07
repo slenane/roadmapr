@@ -9,9 +9,74 @@
       color: $dark-theme--font--primary;
     }
 
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: $dark-theme--font--primary;
+    }
+
+    p,
+    span {
+      color: $dark-theme--font--secondary;
+    }
+
+    button,
+    .mat-button-wrapper {
+      color: white !important;
+    }
+
     .auth-container {
       background: $dark-theme--body--background;
       color: $dark-theme--font--primary;
+    }
+
+    .icon-card {
+      border: 1px solid $dark-theme--icon-card--border;
+    }
+
+    .roadmap-title-icon {
+      color: $dark-theme--font--primary;
+    }
+
+    .roadmap-icon {
+      .material-symbols-outlined {
+        background-color: $dark-theme--primary--mat-primary-color !important;
+      }
+    }
+
+    .stack-card {
+      border: 2px solid $dark-theme--icon-card--border;
+
+      &:hover {
+        border: 2px solid white;
+      }
+
+      &.selected {
+        border: 2px solid $dark-theme--primary--mat-primary-color;
+      }
+
+      .custom-icon {
+        background-color: $dark-theme--icon-card--border;
+      }
+    }
+
+    .featured-repo {
+      border: 1px solid $dark-theme--icon-card--border;
+      border-top: 3px solid $dark-theme--primary--mat-primary-color;
+    }
+
+    mat-card {
+      &.recommendation {
+        border-top: 3px solid $dark-theme--primary--mat-primary-color;
+
+        mat-chip {
+          background-color: $dark-theme--primary--mat-primary-color !important;
+          color: white !important;
+        }
+      }
     }
 
     .material-symbols-outlined {
@@ -87,6 +152,12 @@
         color: $dark-theme--font--tertiary !important;
       }
     }
+
+    .logo-svg {
+      path {
+        fill: white;
+      }
+    }
   }
 }
 
@@ -157,11 +228,82 @@
 @mixin light-theme--mixin--main() {
   body {
     background: $light-theme--body--background;
-    color: $light-theme--font--primary;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: $light-theme--font--primary;
+    }
+
+    p,
+    span {
+      color: $light-theme--font--secondary;
+    }
+
+    button {
+      .mat-button-wrapper {
+        color: white !important;
+      }
+
+      &.mat-default {
+        .mat-button-wrapper {
+          color: $light-theme--font--primary !important;
+        }
+      }
+    }
+
+    .mat-menu-item {
+      color: $light-theme--font--secondary !important;
+    }
 
     .auth-container {
       background: $light-theme--body--background;
       color: $light-theme--font--primary;
+    }
+
+    .icon-card {
+      border: 1px solid $light-theme--icon-card--border;
+    }
+
+    .roadmap-icon {
+      .material-symbols-outlined {
+        background-color: $light-theme--primary--mat-primary-color !important;
+      }
+    }
+
+    .stack-card {
+      border: 1px solid $light-theme--icon-card--border;
+
+      &:hover {
+        border: 1px solid grey;
+      }
+
+      &.selected {
+        border: 1px solid $light-theme--primary--mat-primary-color;
+      }
+
+      .custom-icon {
+        background-color: $light-theme--icon-card--border;
+      }
+    }
+
+    .featured-repo {
+      border: 1px solid $light-theme--icon-card--border;
+      border-top: 3px solid $light-theme--primary--mat-primary-color;
+    }
+
+    mat-card {
+      &.recommendation {
+        border-top: 3px solid $light-theme--primary--mat-primary-color;
+
+        mat-chip {
+          background-color: $light-theme--primary--mat-primary-color !important;
+          color: white !important;
+        }
+      }
     }
 
     .material-symbols-outlined {
@@ -178,6 +320,14 @@
       &.success {
         color: $light-theme--primary--mat-primary-color !important;
       }
+
+      &.icon {
+        color: white;
+      }
+
+      &.roadmap-title-icon {
+        color: $light-theme--font--primary;
+      }
     }
 
     .drag-group {
@@ -192,7 +342,7 @@
     }
 
     .provider-button {
-      background: lightgrey !important;
+      background: white !important;
 
       &__text {
         color: black !important;
@@ -213,12 +363,24 @@
   .sidebar-option {
     color: $light-theme--font--primary;
 
+    .logo-svg {
+      path {
+        fill: $light-theme--font--primary;
+      }
+    }
+
     &.is-active {
       color: $light-theme--font--tertiary;
       background-color: $light-theme--sidebar--background--active;
 
       .material-symbols-outlined {
         color: $light-theme--font--tertiary !important;
+      }
+
+      .logo-svg {
+        path {
+          fill: $light-theme--font--tertiary !important;
+        }
       }
     }
   }

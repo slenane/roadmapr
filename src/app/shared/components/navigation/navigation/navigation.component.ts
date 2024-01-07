@@ -10,9 +10,9 @@ import { NAVIGATION_OPTIONS } from "src/app/shared/constants/navigation.constant
   styleUrls: ["./navigation.component.scss"],
 })
 export class NavigationComponent implements OnInit {
-  public theme$: Observable<string>;
+  public theme$: Observable<"light" | "dark" | undefined>;
   public options = NAVIGATION_OPTIONS;
-  public currentTheme: string;
+  public currentTheme: "light" | "dark" | undefined;
   public navbarCollapsed: boolean = true;
   public displayLargeLogo: boolean = false;
 
@@ -26,7 +26,7 @@ export class NavigationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.theme$.subscribe((theme: string) => {
+    this.theme$.subscribe((theme: "light" | "dark" | undefined) => {
       this.currentTheme = theme;
     });
   }

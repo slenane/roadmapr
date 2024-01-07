@@ -53,18 +53,16 @@
             matTooltipPosition="right"
             >{{ option.icon }}</span
           >
-          <img
-            *ngIf="option.image"
+          <app-logo
+            *ngIf="option.logo"
             class="sidebar-image"
-            [src]="option.image"
-            alt="sidebar icon"
             #tooltip="matTooltip"
             matTooltipShowDelay="500"
             matTooltip="{{
               navbarCollapsed ? (option.title | translate) : null
             }}"
             matTooltipPosition="right"
-          />
+          ></app-logo>
           <span *ngIf="!navbarCollapsed">{{ option.title | translate }}</span>
         </a>
       </mat-nav-list>

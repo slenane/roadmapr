@@ -23,7 +23,7 @@ import { RoadmapService } from "src/app/roadmap/services/roadmap.service";
 import { TranslateService } from "@ngx-translate/core";
 
 export type ChartOptions = {
-  theme: { mode: "dark" };
+  theme: { mode: "light" | "dark" | undefined };
   series: ApexAxisChartSeries;
   chart: ApexChart;
   dataLabels: ApexDataLabels;
@@ -47,6 +47,7 @@ export class RoadmapExperienceComponent implements OnInit {
 
   @Input() experience: ExperienceItem[];
   @Input() education: EducationItem[];
+  @Input() theme: "light" | "dark" | undefined;
 
   @ViewChild("chart") chart: ChartComponent;
   public chartOptions: ChartOptions;
@@ -77,7 +78,7 @@ export class RoadmapExperienceComponent implements OnInit {
 
     this.chartOptions = {
       theme: {
-        mode: "dark",
+        mode: this.theme,
       },
       series: [
         {
@@ -156,7 +157,7 @@ export class RoadmapExperienceComponent implements OnInit {
       data.push({
         x: educationLabel,
         y: [startDate, endDate],
-        fillColor: "#00bcd4",
+        ...(this.theme === "dark" ? { fillColor: "#00bcd4" } : {}),
       });
     }
 
@@ -190,7 +191,9 @@ export class RoadmapExperienceComponent implements OnInit {
         freelance.push({
           x: freelanceLabel,
           y: [startDate, endDate],
-          fillColor: "#00D4A6",
+          ...(this.theme === "dark"
+            ? { fillColor: "#00D4A6" }
+            : { fillColor: "rgb(0, 227, 150)" }),
         });
 
         this.freelanceCount++;
@@ -198,7 +201,9 @@ export class RoadmapExperienceComponent implements OnInit {
         professional.push({
           x: professionalLabel,
           y: [startDate, endDate],
-          fillColor: "#00D4A6",
+          ...(this.theme === "dark"
+            ? { fillColor: "#00D4A6" }
+            : { fillColor: "rgb(0, 227, 150)" }),
         });
 
         this.professionalCount++;

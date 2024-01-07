@@ -69,16 +69,7 @@
 
 .stack-card {
   box-sizing: border-box;
-  border: 2px solid #7b7b7b;
   cursor: pointer;
-
-  &:hover {
-    border: 2px solid white;
-  }
-
-  &.selected {
-    border: 2px solid #00bcd4;
-  }
 
   mat-card-header {
     display: grid;
@@ -106,7 +97,6 @@
         border-radius: 50%;
         height: 1.2rem;
         width: 1.2rem;
-        background-color: #7b7b7b;
       }
     }
   }

@@ -11,8 +11,8 @@ import { ThemeService } from "src/app/core/services/theme.service";
   styleUrls: ["./redirect.component.scss"],
 })
 export class RedirectComponent implements OnInit {
-  public theme$: Observable<string>;
-  public currentTheme: string;
+  public theme$: Observable<"light" | "dark" | undefined>;
+  public currentTheme: "light" | "dark" | undefined;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -24,7 +24,7 @@ export class RedirectComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.theme$.subscribe((theme: string) => {
+    this.theme$.subscribe((theme: "light" | "dark" | undefined) => {
       this.currentTheme = theme;
     });
 

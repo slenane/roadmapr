@@ -12,14 +12,12 @@
     </div>
   </div>
 
-  <div class="experience-subtitle">
-    <span class="company">{{ experience.company }} </span>
+  <p class="experience-subtitle"
+    >{{ experience.company }}
 
     ({{ experience.startDate | date }} -
-    {{
-      (experience.endDate | date) || ("FORMS.DATES.PRESENT" | translate)
-    }})</div
+    {{ (experience.endDate | date) || ("FORMS.DATES.PRESENT" | translate) }})</p
   >
 
-  <div class="experience-description">{{ experience.description }}</div>
+  <p class="experience-description">{{ experience.description }}</p>
 </div>
