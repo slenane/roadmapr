@@ -12,9 +12,9 @@ import { TranslateService } from "@ngx-translate/core";
 })
 export class AppComponent implements OnInit {
   public authenticated$: Observable<boolean>;
-  public theme$: Observable<string>;
+  public theme$: Observable<"light" | "dark" | undefined>;
   public isRedirecting: boolean;
-  public currentTheme: string;
+  public currentTheme: "light" | "dark" | undefined;
   public navbarCollapsed: boolean = true;
 
   constructor(
@@ -29,7 +29,9 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.isRedirecting = this.location.path() === "/redirect" ? true : false;
-    this.theme$.subscribe((theme: string) => (this.currentTheme = theme));
+    this.theme$.subscribe(
+      (theme: "light" | "dark" | undefined) => (this.currentTheme = theme)
+    );
 
     const theme = window.localStorage.getItem("selected-theme");
     if (theme) this.themeService.updateTheme(theme);

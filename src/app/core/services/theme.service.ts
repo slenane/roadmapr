@@ -11,7 +11,7 @@ import { BehaviorSubject } from "rxjs";
   providedIn: "root",
 })
 export class ThemeService {
-  public theme = new BehaviorSubject<string>(DARK_THEME);
+  public theme = new BehaviorSubject<"light" | "dark" | undefined>(DARK_THEME);
 
   constructor(@Inject(DOCUMENT) private document: Document) {
     this.document.documentElement.classList.contains(LIGHT_THEME_CLASS)

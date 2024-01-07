@@ -23,6 +23,7 @@
               [data]="education"
               [userStack]="userStack"
               [stackList]="stackList"
+              [theme]="currentTheme"
             ></app-roadmap-education>
 
             <app-roadmap-stack
@@ -37,13 +38,20 @@
               *ngIf="experience"
               [experience]="experience"
               [education]="education"
+              [theme]="currentTheme"
             ></app-roadmap-experience>
           </div>
 
           <div class="grid">
-            <app-roadmap-projects [data]="projects"></app-roadmap-projects>
+            <app-roadmap-projects
+              [data]="projects"
+              [theme]="currentTheme"
+            ></app-roadmap-projects>
 
-            <app-roadmap-github [data]="github"></app-roadmap-github>
+            <app-roadmap-github
+              [data]="github"
+              [theme]="currentTheme"
+            ></app-roadmap-github>
           </div>
         </div>
       </div>
@@ -64,6 +72,7 @@
           [data]="education"
           [userStack]="userStack"
           [stackList]="stackList"
+          [theme]="currentTheme"
         ></app-roadmap-education>
 
         <app-roadmap-stack
@@ -78,11 +87,18 @@
           *ngIf="experience"
           [experience]="experience"
           [education]="education"
+          [theme]="currentTheme"
         ></app-roadmap-experience>
 
-        <app-roadmap-projects [data]="projects"></app-roadmap-projects>
+        <app-roadmap-projects
+          [data]="projects"
+          [theme]="currentTheme"
+        ></app-roadmap-projects>
 
-        <app-roadmap-github [data]="github"></app-roadmap-github>
+        <app-roadmap-github
+          [data]="github"
+          [theme]="currentTheme"
+        ></app-roadmap-github>
       </div>
     </div>
   </div>

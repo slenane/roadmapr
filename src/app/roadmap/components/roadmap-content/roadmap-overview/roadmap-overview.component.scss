@@ -25,9 +25,8 @@
       }
     }
 
-    .icon {
+    .roadmap-icon {
       .material-symbols-outlined {
-        background-color: #00bcd4;
         color: white;
         border-radius: 4px;
         padding: 0.5rem;
@@ -49,7 +48,7 @@
 
       .title {
         font-size: 0.9rem;
-        color: rgba(255, 255, 255, 0.7) !important;
+        margin-bottom: 0.2rem;
       }
 
       .value {

@@ -197,7 +197,6 @@ mat-form-field {
   &.roadmap-percentage-wheel {
     transform: scale(0.8);
     box-shadow: 0 0 0 10px #e8e8e8 inset;
-    margin-bottom: 1rem;
     border-radius: 50%;
   }
 }
@@ -207,6 +206,10 @@ mat-form-field {
 }
 
 .snackbar {
+  &-success {
+    background-color: $dark-theme--sidebar--background !important;
+    color: $dark-theme--font--primary !important;
+  }
   &-error {
     background-color: red !important;
     color: white !important;

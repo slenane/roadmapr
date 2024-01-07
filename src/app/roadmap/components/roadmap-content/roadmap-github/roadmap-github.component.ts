@@ -24,6 +24,7 @@ export class RoadmapGithubComponent implements OnInit, OnChanges {
   public updated: string;
 
   @Input() data: Github | undefined;
+  @Input() theme: "light" | "dark" | undefined;
 
   constructor(private authService: AuthService, private router: Router) {}
 

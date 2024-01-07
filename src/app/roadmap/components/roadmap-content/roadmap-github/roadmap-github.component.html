@@ -2,7 +2,11 @@
   <mat-card-title>
     <img
       class="github-icon"
-      src="/assets/images/stack/github-alternate.svg"
+      [src]="
+        theme === 'dark'
+          ? '/assets/images/stack/github-alternate.svg'
+          : '/assets/images/stack/github-original.svg'
+      "
       alt="Github Icon"
     />{{ "ROADMAP.GITHUB.T" | translate }}</mat-card-title
   >

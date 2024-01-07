@@ -50,7 +50,7 @@ export class OnboardingComponent implements OnInit {
 
   displayOnboardingSteps(user: any) {
     const dialogRef = this.dialog.open(OnboardingBasicDetailsComponent, {
-      panelClass: "modal-edit-class",
+      panelClass: "modal-class",
       data: {
         profileImage: user.profileImage,
         firstName: user.firstName,

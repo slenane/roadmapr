@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { RoadmapStoreService } from "../services/roadmap-store.service";
 import { filter, takeUntil } from "rxjs/operators";
-import { Subject } from "rxjs";
+import { Observable, Subject } from "rxjs";
 import { Github, Roadmap } from "../store/roadmap.models";
 import { roadmapInitialState } from "../store/roadmap.reducer";
 import {
@@ -19,6 +19,7 @@ import { profileInitialState } from "src/app/profile/store/profile.reducer";
 import { Profile } from "src/app/profile/store/profile.models";
 import { MEDIA_QUERIES } from "src/app/shared/constants/breakpoints.constants";
 import { BreakpointObserver } from "@angular/cdk/layout";
+import { ThemeService } from "src/app/core/services/theme.service";
 
 @Component({
   selector: "app-roadmap",
@@ -27,6 +28,8 @@ import { BreakpointObserver } from "@angular/cdk/layout";
 })
 export class RoadmapComponent implements OnInit {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
+  public theme$: Observable<"light" | "dark" | undefined>;
+  public currentTheme: "light" | "dark" | undefined;
   public isMobileDevice = false;
   public user: Profile;
   public roadmap: Roadmap;
@@ -44,8 +47,11 @@ export class RoadmapComponent implements OnInit {
   constructor(
     private roadmapStoreService: RoadmapStoreService,
     private profileStoreService: ProfileStoreService,
-    private breakpointObserver: BreakpointObserver
-  ) {}
+    private breakpointObserver: BreakpointObserver,
+    private themeService: ThemeService
+  ) {
+    this.theme$ = this.themeService.selectedTheme;
+  }
 
   ngOnInit(): void {
     this.getUser();
@@ -81,6 +87,10 @@ export class RoadmapComponent implements OnInit {
           ? true
           : false;
       });
+
+    this.theme$.subscribe((theme: "light" | "dark" | undefined) => {
+      this.currentTheme = theme;
+    });
   }
 
   getRoadmap() {
