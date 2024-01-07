@@ -39,12 +39,7 @@
             <span *ngIf="option.icon" class="material-symbols-outlined">{{
               option.icon
             }}</span>
-            <img
-              *ngIf="option.image"
-              class="sidebar-image"
-              [src]="option.image"
-              alt="sidebar icon"
-            />
+            <app-logo *ngIf="option.logo" class="sidebar-image"></app-logo>
             <span>{{ option.title | translate }}</span>
           </a>
         </mat-nav-list>

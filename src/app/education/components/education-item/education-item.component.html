@@ -4,9 +4,7 @@
   (mouseleave)="hidePin()"
 >
   <mat-card-header>
-    <mat-card-title>
-      <span [innerHTML]="data.title"></span>
-    </mat-card-title>
+    <mat-card-title [innerHTML]="data.title"> </mat-card-title>
     <mat-card-subtitle [innerHTML]="data.author"> </mat-card-subtitle>
 
     <div
@@ -44,7 +42,7 @@
         <div class="timeline_title">{{
           "FORMS.DATES.TIMELINE" | translate
         }}</div>
-        <p class="timeline_text item-value"
+        <p class="timeline_text"
           >{{ data.startDate | date }} -
           {{ (data.endDate | date) || ("FORMS.DATES.PRESENT" | translate) }}</p
         >
@@ -54,10 +52,7 @@
         <div class="description_title">{{
           "FORMS.DESCRIPTION" | translate
         }}</div>
-        <p
-          class="item-value description-text"
-          [innerHtml]="data.description"
-        ></p>
+        <p class="description-text" [innerHtml]="data.description"></p>
       </div>
 
       <div class="actions">

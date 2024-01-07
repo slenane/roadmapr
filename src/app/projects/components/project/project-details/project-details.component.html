@@ -1,6 +1,6 @@
 <div class="content">
   <div class="header">
-    <h2 class="title" mat-dialog-title [innerHtml]="item.title"></h2>
+    <div class="title" mat-dialog-title [innerHtml]="item.title"></div>
 
     <button class="mobile-options" mat-button [matMenuTriggerFor]="menu"
       ><span class="material-symbols-outlined">more_horiz</span></button
@@ -36,7 +36,7 @@
         <div class="grid-item__title">{{
           "FORMS.DATES.TIMELINE" | translate
         }}</div>
-        <p class="item-value">
+        <p>
           {{ item.startDate | date }} -
           {{ (item.endDate | date) || ("FORMS.DATES.PRESENT" | translate) }}
         </p>
@@ -46,12 +46,8 @@
     <div class="column description-column">
       <div class="row">
         <div class="grid-item__title">{{ "FORMS.TAG_LINE" | translate }}</div>
-        <p
-          *ngIf="item.tagLine"
-          class="item-value"
-          [innerHtml]="item.tagLine"
-        ></p>
-        <p class="item-value" *ngIf="!item.tagLine">
+        <p *ngIf="item.tagLine" [innerHtml]="item.tagLine"></p>
+        <p *ngIf="!item.tagLine">
           {{ "FORMS.EMPTY.TAG_LINE" | translate }}
         </p>
       </div>
@@ -62,10 +58,10 @@
         }}</div>
         <p
           *ngIf="item.description"
-          class="item-value description-text"
+          class="description-text"
           [innerHtml]="item.description"
         ></p>
-        <p class="item-value description-text" *ngIf="!item.description">
+        <p class="description-text" *ngIf="!item.description">
           {{ "FORMS.EMPTY.DESCRIPTION_DID" | translate }}
         </p>
       </div>

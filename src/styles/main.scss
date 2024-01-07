@@ -294,6 +294,10 @@ mat-form-field {
   margin: 0 auto !important;
 }
 
+.mat-dialog-title {
+  margin: 0 !important;
+}
+
 .mat-dialog-content {
   @media screen and (min-width: $breakpoint-tablet-large) {
     overflow: hidden !important;

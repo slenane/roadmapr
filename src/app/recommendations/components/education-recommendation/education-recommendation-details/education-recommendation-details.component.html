@@ -1,8 +1,6 @@
 <div class="content">
   <div class="header">
-    <div class="title">
-      <h2 [innerHTML]="data.title"></h2>
-    </div>
+    <div mat-dialog-title class="title" [innerHTML]="data.title"> </div>
   </div>
 
   <div class="body">
@@ -15,7 +13,7 @@
               data.type === "course" ? ("FORMS.INSTRUCTOR" | translate) : ""
             }}</div
           >
-          <p class="item-value" [innerHTML]="data.author"></p>
+          <p [innerHTML]="data.author"></p>
 
           <div class="row">
             <div class="grid-item__title">{{ "FORMS.STACK" | translate }}</div>
@@ -36,10 +34,7 @@
           <div class="grid-item__title">{{
             "FORMS.DESCRIPTION" | translate
           }}</div>
-          <p
-            class="item-value description-text"
-            [innerHTML]="data.description"
-          ></p>
+          <p class="description-text" [innerHTML]="data.description"></p>
         </div>
 
         <div class="body-actions">

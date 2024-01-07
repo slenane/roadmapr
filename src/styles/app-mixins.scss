@@ -106,6 +106,12 @@
         color: $dark-theme--font--tertiary !important;
       }
     }
+
+    .logo-svg {
+      path {
+        fill: white;
+      }
+    }
   }
 }
 
@@ -244,7 +250,7 @@
     }
 
     .provider-button {
-      background: lightgrey !important;
+      background: white !important;
 
       &__text {
         color: black !important;
@@ -265,12 +271,24 @@
   .sidebar-option {
     color: $light-theme--font--primary;
 
+    .logo-svg {
+      path {
+        fill: $light-theme--font--primary;
+      }
+    }
+
     &.is-active {
       color: $light-theme--font--tertiary;
       background-color: $light-theme--sidebar--background--active;
 
       .material-symbols-outlined {
         color: $light-theme--font--tertiary !important;
+      }
+
+      .logo-svg {
+        path {
+          fill: $light-theme--font--tertiary !important;
+        }
       }
     }
   }
