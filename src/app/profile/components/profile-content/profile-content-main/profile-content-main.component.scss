@@ -5,6 +5,10 @@
   grid-template-columns: 1fr;
   gap: 1rem;
 
+  @media screen and (min-width: $breakpoint-tablet-large) {
+    margin-right: 1rem;
+  }
+
   .mobile-only-card {
     display: block;
 
@@ -74,8 +78,7 @@
       }
 
       .empty-section-message {
-        color: rgba(255, 255, 255, 0.7);
-        font-weight: 300;
+        font-weight: 400;
       }
     }
   }

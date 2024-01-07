@@ -247,16 +247,19 @@ mat-form-field {
   overflow: auto;
 
   @media screen and (min-width: $breakpoint-tablet-large) {
+    min-width: 70vw !important;
     width: 70vw !important;
     min-height: 50vh !important;
   }
 
   @media screen and (min-width: $breakpoint-desktop) {
+    min-width: 50vw !important;
     width: 50vw !important;
     min-height: 40vh !important;
   }
 
   @media screen and (min-width: $breakpoint-desktop-large) {
+    min-width: 40vw !important;
     width: 40vw !important;
     min-height: 30vh !important;
   }

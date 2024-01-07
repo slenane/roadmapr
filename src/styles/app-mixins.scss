@@ -9,6 +9,25 @@
       color: $dark-theme--font--primary;
     }
 
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: $dark-theme--font--primary;
+    }
+
+    p,
+    span {
+      color: $dark-theme--font--secondary;
+    }
+
+    button,
+    .mat-button-wrapper {
+      color: white !important;
+    }
+
     .auth-container {
       background: $dark-theme--body--background;
       color: $dark-theme--font--primary;
@@ -157,7 +176,36 @@
 @mixin light-theme--mixin--main() {
   body {
     background: $light-theme--body--background;
-    color: $light-theme--font--primary;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: $light-theme--font--primary;
+    }
+
+    p,
+    span {
+      color: $light-theme--font--secondary;
+    }
+
+    button {
+      .mat-button-wrapper {
+        color: white !important;
+      }
+
+      &.mat-default {
+        .mat-button-wrapper {
+          color: $light-theme--font--primary !important;
+        }
+      }
+    }
+
+    .mat-menu-item {
+      color: $light-theme--font--secondary !important;
+    }
 
     .auth-container {
       background: $light-theme--body--background;
@@ -177,6 +225,10 @@
 
       &.success {
         color: $light-theme--primary--mat-primary-color !important;
+      }
+
+      &.icon {
+        color: white;
       }
     }
 

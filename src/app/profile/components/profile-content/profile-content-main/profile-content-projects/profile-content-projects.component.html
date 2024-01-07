@@ -12,11 +12,10 @@
     </div>
   </div>
 
-  <div class="project-subtitle">
-    <span class="project-title-tagline">{{ project.tagLine }}</span>
-    ({{ project.startDate | date }} -
+  <p class="project-subtitle"
+    >{{ project.tagLine }} ({{ project.startDate | date }} -
     {{ (project.endDate | date) || ("FORMS.DATES.PRESENT" | translate) }})
-  </div>
+  </p>
 
-  <div class="project-description">{{ project.description }}</div>
+  <p class="project-description">{{ project.description }}</p>
 </div>
