@@ -13,6 +13,7 @@ import {
   LANGUAGE_LIST,
   LANGUAGE_LEVELS,
 } from "src/app/shared/constants/languages.constants";
+import { TranslateService } from "@ngx-translate/core";
 
 @Component({
   selector: "app-profile-edit-languages",
@@ -20,7 +21,7 @@ import {
   styleUrls: ["./profile-edit-languages.component.scss"],
 })
 export class ProfileEditLanguagesComponent implements OnInit, OnChanges {
-  public LANGUAGE_LIST = LANGUAGE_LIST;
+  public sortedLanguageList = LANGUAGE_LIST;
   public LANGUAGE_LEVELS = LANGUAGE_LEVELS;
 
   public form = new FormGroup({
@@ -35,7 +36,9 @@ export class ProfileEditLanguagesComponent implements OnInit, OnChanges {
   @ViewChild("nationality") nationality: ElementRef;
   @ViewChild("path") path: ElementRef;
 
-  constructor() {}
+  constructor(private translateService: TranslateService) {
+    this.sortLanguages();
+  }
 
   ngOnInit(): void {}
 
@@ -73,5 +76,13 @@ export class ProfileEditLanguagesComponent implements OnInit, OnChanges {
 
   compareValues(a: any, b: any): boolean {
     return a && b && a.id === b.id;
+  }
+
+  sortLanguages() {
+    this.sortedLanguageList.sort((a: any, b: any) =>
+      this.translateService
+        .instant(a.name)
+        .localeCompare(this.translateService.instant(b.name))
+    );
   }
 }

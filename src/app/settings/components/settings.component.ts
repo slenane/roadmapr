@@ -205,6 +205,7 @@ export class SettingsComponent implements OnInit {
   }
 
   updateLanguage(value: any) {
+    location.reload();
     this.translateService.use(value);
     this.settingsStoreService.updateSettings(this.settings.userId, {
       preferredLanguage: this.appSettingsForm.value.languageCtrl,

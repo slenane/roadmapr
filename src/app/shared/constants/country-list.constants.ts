@@ -743,17 +743,10 @@ export const COUNTRY_LIST = [
     id: "SH",
     name: "COUNTRIES.SH",
   },
-  {
-    id: "KN",
-    name: "COUNTRIES.KN",
-  },
+
   {
     id: "LC",
     name: "COUNTRIES.LC",
-  },
-  {
-    id: "MF",
-    name: "COUNTRIES.MF",
   },
   {
     id: "PM",
@@ -860,6 +853,10 @@ export const COUNTRY_LIST = [
     name: "COUNTRIES.SE",
   },
   {
+    id: "SF",
+    name: "COUNTRIES.SF",
+  },
+  {
     id: "CH",
     name: "COUNTRIES.CH",
   },
@@ -936,8 +933,8 @@ export const COUNTRY_LIST = [
     name: "COUNTRIES.AE",
   },
   {
-    id: "GB",
-    name: "COUNTRIES.GB",
+    id: "EN",
+    name: "COUNTRIES.EN",
   },
   {
     id: "UM",
@@ -974,6 +971,10 @@ export const COUNTRY_LIST = [
   {
     id: "VI",
     name: "COUNTRIES.VI",
+  },
+  {
+    id: "WA",
+    name: "COUNTRIES.WA",
   },
   {
     id: "WF",

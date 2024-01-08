@@ -170,7 +170,12 @@
           <mat-label>
             {{
               "EDUCATION.UPDATE.RECOMMEND"
-                | translate : { type: selectedType | titlecase }
+                | translate
+                  : (selectedType === "book"
+                      ? { type: "EDUCATION.TYPES.BOOKS_SINGULAR" | translate }
+                      : {
+                          type: "EDUCATION.TYPES.COURSES_SINGULAR" | translate
+                        })
             }}
           </mat-label>
           <mat-radio-group
@@ -351,7 +356,12 @@
           <mat-label>
             {{
               "EDUCATION.UPDATE.RECOMMEND"
-                | translate : { type: selectedType | titlecase }
+                | translate
+                  : (selectedType === "book"
+                      ? { type: "EDUCATION.TYPES.BOOKS_SINGULAR" | translate }
+                      : {
+                          type: "EDUCATION.TYPES.COURSES_SINGULAR" | translate
+                        })
             }}
           </mat-label>
           <mat-radio-group
@@ -381,12 +391,24 @@
     (click)="onSaveClick()"
     [disabled]="!educationForm.valid || (stack && !stack.isStackValid())"
     cdkFocusInitial
-    >{{
-      isUpdating
-        ? ("ACTIONS.UPDATE_TYPE"
-          | translate : { type: (selectedType | titlecase) })
-        : ("ACTIONS.SAVE_TYPE"
-          | translate : { type: (selectedType | titlecase) })
-    }}</button
+  >
+    <div *ngIf="isUpdating">{{
+      "ACTIONS.UPDATE_TYPE"
+        | translate
+          : (selectedType === "book"
+              ? { type: "EDUCATION.TYPES.BOOKS_SINGULAR" | translate }
+              : {
+                  type: "EDUCATION.TYPES.COURSES_SINGULAR" | translate
+                })
+    }}</div>
+    <div *ngIf="!isUpdating">{{
+      "ACTIONS.SAVE_TYPE"
+        | translate
+          : (selectedType === "book"
+              ? { type: "EDUCATION.TYPES.BOOKS_SINGULAR" | translate }
+              : {
+                  type: "EDUCATION.TYPES.COURSES_SINGULAR" | translate
+                })
+    }}</div></button
   >
 </div>

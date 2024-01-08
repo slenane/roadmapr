@@ -19,6 +19,7 @@ import {
 import { COUNTRY_LIST } from "src/app/shared/constants/country-list.constants";
 import { OnboardingPathQuizComponent } from "../onboarding-path-quiz/onboarding-path-quiz.component";
 import { MatStepper } from "@angular/material/stepper";
+import { TranslateService } from "@ngx-translate/core";
 
 @Component({
   selector: "app-onboarding-basic-details",
@@ -26,7 +27,7 @@ import { MatStepper } from "@angular/material/stepper";
   styleUrls: ["./onboarding-basic-details.component.scss"],
 })
 export class OnboardingBasicDetailsComponent implements OnInit {
-  public COUNTRY_LIST = COUNTRY_LIST;
+  public sortedCountryList = COUNTRY_LIST;
   public DEV_PATHS = DEV_PATHS;
 
   public basicDetailsForm = new FormGroup({
@@ -53,8 +54,11 @@ export class OnboardingBasicDetailsComponent implements OnInit {
     private cdr: ChangeDetectorRef,
     public dialogRef: MatDialogRef<OnboardingBasicDetailsComponent>,
     public dialog: MatDialog,
-    @Inject(MAT_DIALOG_DATA) public data: any
-  ) {}
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private translateService: TranslateService
+  ) {
+    this.sortCountries();
+  }
 
   ngOnInit(): void {
     this.basicDetailsForm.patchValue({
@@ -119,5 +123,13 @@ export class OnboardingBasicDetailsComponent implements OnInit {
 
   compareValues(a: any, b: any): boolean {
     return a && b && a.id === b.id;
+  }
+
+  sortCountries() {
+    this.sortedCountryList.sort((a: any, b: any) =>
+      this.translateService
+        .instant(a.name)
+        .localeCompare(this.translateService.instant(b.name))
+    );
   }
 }

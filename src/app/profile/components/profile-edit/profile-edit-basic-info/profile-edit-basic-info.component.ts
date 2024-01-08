@@ -13,6 +13,7 @@ import { Profile } from "src/app/profile/store/profile.models";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { DEV_PATHS } from "src/app/shared/constants/dev-paths.constants";
 import { COUNTRY_LIST } from "src/app/shared/constants/country-list.constants";
+import { TranslateService } from "@ngx-translate/core";
 
 @Component({
   selector: "app-profile-edit-basic-info",
@@ -20,7 +21,7 @@ import { COUNTRY_LIST } from "src/app/shared/constants/country-list.constants";
   styleUrls: ["./profile-edit-basic-info.component.scss"],
 })
 export class ProfileEditBasicInfoComponent implements OnInit, OnChanges {
-  public COUNTRY_LIST = COUNTRY_LIST;
+  public sortedCountryList = COUNTRY_LIST;
   public DEV_PATHS = DEV_PATHS;
 
   public form = new FormGroup({
@@ -40,7 +41,9 @@ export class ProfileEditBasicInfoComponent implements OnInit, OnChanges {
   @ViewChild("nationality") nationality: ElementRef;
   @ViewChild("path") path: ElementRef;
 
-  constructor() {}
+  constructor(private translateService: TranslateService) {
+    this.sortCountries();
+  }
 
   ngOnInit(): void {}
 
@@ -86,5 +89,13 @@ export class ProfileEditBasicInfoComponent implements OnInit, OnChanges {
 
   compareValues(a: any, b: any): boolean {
     return a && b && a.id === b.id;
+  }
+
+  sortCountries() {
+    this.sortedCountryList.sort((a: any, b: any) =>
+      this.translateService
+        .instant(a.name)
+        .localeCompare(this.translateService.instant(b.name))
+    );
   }
 }
