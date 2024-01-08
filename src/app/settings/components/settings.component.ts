@@ -167,6 +167,7 @@ export class SettingsComponent implements OnInit {
     if (email !== this.settings.email) {
       this.settingsStoreService.updateEmail(this.settings.userId, {
         email,
+        preferredLanguage: this.translateService.currentLang,
       });
       this.toggleEmailUpdate();
     }

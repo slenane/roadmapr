@@ -6,6 +6,7 @@ import { Store } from "@ngrx/store";
 import * as authSelectors from "../../store/auth.selectors";
 import * as authActions from "../../store/auth.actions";
 import { Observable } from "rxjs";
+import { TranslateService } from "@ngx-translate/core";
 
 @Component({
   selector: "app-send-reset-password-email",
@@ -29,7 +30,8 @@ export class SendResetPasswordEmailComponent implements OnInit {
   constructor(
     private authStoreService: AuthStoreService,
     private location: Location,
-    private store: Store
+    private store: Store,
+    private translateService: TranslateService
   ) {
     this.sendResetPasswordEmailError$ = this.store.select(
       authSelectors.sendResetPasswordEmailError
@@ -47,7 +49,6 @@ export class SendResetPasswordEmailComponent implements OnInit {
       }
     });
     this.sendResetPasswordEmailSuccess$.subscribe((success) => {
-      console.log(success);
       if (success) this.onSendResetPasswordEmailSuccess();
     });
   }
@@ -56,7 +57,10 @@ export class SendResetPasswordEmailComponent implements OnInit {
     if (this.form.value.emailCtrl) {
       this.sendResetPasswordEmailPending = true;
       this.form.controls.emailCtrl.disable();
-      this.authStoreService.sendPasswordResetEmail(this.form.value.emailCtrl);
+      this.authStoreService.sendPasswordResetEmail({
+        email: this.form.value.emailCtrl,
+        preferredLanguage: this.translateService.currentLang,
+      });
     }
   }
 

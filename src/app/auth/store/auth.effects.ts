@@ -61,8 +61,8 @@ export class AuthEffects {
   sendResetPasswordEmail$ = createEffect((): any =>
     this.actions$.pipe(
       ofType(authActions.SendResetPasswordEmail),
-      switchMap(({ email }) =>
-        this.authService.sendResetPasswordEmail(email).pipe(
+      switchMap(({ body }) =>
+        this.authService.sendResetPasswordEmail(body).pipe(
           map(() => authActions.SendResetPasswordEmailSuccess()),
           catchError((error) => {
             this.alertsService.errorAlert(error.error);

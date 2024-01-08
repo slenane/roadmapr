@@ -69,7 +69,7 @@ export const RemoveGithubError = createAction(
 
 export const UpdateEmail = createAction(
   UPDATE_EMAIL,
-  props<{ id: string; email: any }>()
+  props<{ id: string; body: any }>()
 );
 
 export const UpdateEmailSuccess = createAction(UPDATE_EMAIL_SUCCESS);

@@ -12,6 +12,7 @@ import { Observable } from "rxjs";
 import { Store } from "@ngrx/store";
 import * as authSelectors from "../../store/auth.selectors";
 import * as authActions from "../../store/auth.actions";
+import { TranslateService } from "@ngx-translate/core";
 
 @Component({
   selector: "app-register",
@@ -48,7 +49,8 @@ export class RegisterComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private location: Location,
-    private store: Store
+    private store: Store,
+    private translateService: TranslateService
   ) {
     this.registrationError$ = this.store.select(
       authSelectors.registrationError
@@ -100,6 +102,7 @@ export class RegisterComponent implements OnInit {
         username: this.usernameUpdate.form.value.usernameCtrl,
         email: this.emailUpdate.form.value.emailCtrl,
         password: this.passwordForm.value.passwordCtrl,
+        preferredLanguage: this.translateService.currentLang,
       });
     }
   }

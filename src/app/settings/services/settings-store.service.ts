@@ -37,11 +37,11 @@ export class SettingsStoreService {
     });
   }
 
-  updateEmail(id: string, email: any) {
+  updateEmail(id: string, body: any) {
     this.store.dispatch({
       type: settingsActions.UPDATE_EMAIL,
       id,
-      email,
+      body,
     });
   }
 
