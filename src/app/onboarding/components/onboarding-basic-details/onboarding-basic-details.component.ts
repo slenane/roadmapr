@@ -68,7 +68,6 @@ export class OnboardingBasicDetailsComponent implements OnInit {
       nationalityCtrl: this.data.nationality,
     });
 
-    console.log(this.data.path);
     this.pathForm.patchValue({
       pathCtrl: this.data.path,
     });

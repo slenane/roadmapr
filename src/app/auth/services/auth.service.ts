@@ -40,9 +40,12 @@ export class AuthService {
       );
   }
 
-  public sendResetPasswordEmail(email: string): Observable<any> {
+  public sendResetPasswordEmail(body: {
+    email: string;
+    preferredLanguage: string;
+  }): Observable<any> {
     return this.apiService.get(
-      this.urlService.generate(API.AUTH_SEND_RESET_PASSWORD_EMAIL, email)
+      this.urlService.generate(API.AUTH_SEND_RESET_PASSWORD_EMAIL, body)
     );
   }
 

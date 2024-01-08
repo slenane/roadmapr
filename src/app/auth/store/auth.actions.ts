@@ -49,7 +49,7 @@ export const LoginError = createAction(LOGIN_ERROR);
 
 export const SendResetPasswordEmail = createAction(
   SEND_RESET_PASSWORD_EMAIL,
-  props<{ email: string }>()
+  props<{ body: { email: string; preferredLanguage: string } }>()
 );
 
 export const SendResetPasswordEmailSuccess = createAction(

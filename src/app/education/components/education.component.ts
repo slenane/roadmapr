@@ -73,7 +73,6 @@ export class EducationComponent implements OnInit, OnDestroy {
         takeUntil(this.ngUnsubscribe)
       )
       .subscribe((recommendations: Recommendation[]) => {
-        console.log(recommendations);
         this.recommendations = [...recommendations];
       });
 
@@ -162,7 +161,6 @@ export class EducationComponent implements OnInit, OnDestroy {
   }
 
   updateView(view: "compact" | "expanded") {
-    console.log(view);
     this.selectedView = view;
   }
 

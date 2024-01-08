@@ -74,7 +74,7 @@ export class SettingsEffects {
     this.actions$.pipe(
       ofType(settingsActions.UpdateEmail),
       switchMap((payload: any) =>
-        this.settingsService.updateEmail(payload.id, payload.email).pipe(
+        this.settingsService.updateEmail(payload.id, payload.body).pipe(
           map(({ successMessage, successValue }) => {
             this.alertsService.successAlert(successMessage, successValue);
             return settingsActions.UpdateEmailSuccess();

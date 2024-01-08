@@ -23,10 +23,10 @@ export class AuthStoreService {
     });
   }
 
-  sendPasswordResetEmail(email: string) {
+  sendPasswordResetEmail(body: { email: string; preferredLanguage: string }) {
     this.store.dispatch({
       type: authActions.SEND_RESET_PASSWORD_EMAIL,
-      email,
+      body,
     });
   }
 

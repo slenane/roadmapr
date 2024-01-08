@@ -35,11 +35,11 @@ export class SettingsService {
 
   public updateEmail(
     id: string,
-    email: string
+    body: any
   ): Observable<{ successMessage: string; successValue: string }> {
     return this.apiService.patch(
       this.urlService.generate(API.SETTINGS_UPDATE_EMAIL, id),
-      email
+      body
     );
   }
 
