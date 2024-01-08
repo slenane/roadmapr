@@ -36,29 +36,6 @@
         }}</div>
         <p class="description-text" [innerHTML]="data.description"></p>
       </div>
-
-      <div class="actions">
-        <a [href]="data.link" target="_blank" *ngIf="data.link">
-          <button
-            mat-raised-button
-            type="button"
-            class="provider-button"
-            [ngClass]="data.internal.provider"
-          >
-            <img
-              class="provider-icon"
-              *ngIf="data.internal.provider"
-              src="/assets/images/icons/{{ data.internal.provider }}.svg"
-            />
-
-            <span
-              *ngIf="!data.internal.provider"
-              class="provider-button__text"
-              >{{ "FORMS.LINK" | translate }}</span
-            >
-          </button>
-        </a>
-      </div>
     </div>
 
     <mat-chip-list class="chips">
@@ -79,5 +56,26 @@
         <span class="material-symbols-outlined icon"> recommend </span>
       </mat-chip>
     </mat-chip-list>
+
+    <div class="actions" *ngIf="selectedView === 'expanded'">
+      <a [href]="data.link" target="_blank" *ngIf="data.link">
+        <button
+          mat-raised-button
+          type="button"
+          class="provider-button"
+          [ngClass]="data.internal.provider"
+        >
+          <img
+            class="provider-icon"
+            *ngIf="data.internal.provider"
+            src="/assets/images/icons/{{ data.internal.provider }}.svg"
+          />
+
+          <span *ngIf="!data.internal.provider" class="provider-button__text">{{
+            "FORMS.LINK" | translate
+          }}</span>
+        </button>
+      </a>
+    </div>
   </mat-card-content>
 </mat-card>
