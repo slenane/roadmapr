@@ -32,6 +32,7 @@ export class EducationRecommendationComponent implements OnInit {
       EducationRecommendationDetailsComponent,
       {
         panelClass: "modal-class",
+        autoFocus: false,
         data: { ...this.data },
       }
     );

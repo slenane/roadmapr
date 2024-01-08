@@ -3,6 +3,7 @@
 mat-card {
   margin-bottom: 0.5rem;
   padding: 1rem 0 0.5rem;
+  cursor: pointer;
 
   mat-card-header {
     display: grid;
@@ -58,13 +59,6 @@ mat-card {
       .description {
         white-space: pre-line;
       }
-
-      .actions {
-        display: grid;
-        grid-template-columns: auto auto;
-        justify-content: end;
-        gap: 0.5rem;
-      }
     }
 
     mat-chip-list {
@@ -85,6 +79,14 @@ mat-card {
         min-height: 24px;
         font-size: 0.8rem;
       }
+    }
+
+    .actions {
+      display: grid;
+      grid-template-columns: auto auto;
+      justify-content: end;
+      gap: 0.5rem;
+      margin-top: 1rem;
     }
   }
 }
