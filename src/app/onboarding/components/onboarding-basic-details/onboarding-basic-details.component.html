@@ -32,7 +32,10 @@
           formControlName="locationCtrl"
           [compareWith]="compareValues"
         >
-          <mat-option *ngFor="let country of COUNTRY_LIST" [value]="country">
+          <mat-option
+            *ngFor="let country of sortedCountryList"
+            [value]="country"
+          >
             <div class="type-option"> {{ country.name | translate }} </div>
           </mat-option>
         </mat-select>
@@ -48,7 +51,10 @@
           formControlName="nationalityCtrl"
           [compareWith]="compareValues"
         >
-          <mat-option *ngFor="let country of COUNTRY_LIST" [value]="country">
+          <mat-option
+            *ngFor="let country of sortedCountryList"
+            [value]="country"
+          >
             <div class="type-option"> {{ country.name | translate }} </div>
           </mat-option>
         </mat-select>

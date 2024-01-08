@@ -13,7 +13,10 @@
         <mat-label>{{ "FORMS.LANGUAGE.T" | translate }}</mat-label>
 
         <mat-select formControlName="language" [compareWith]="compareValues">
-          <mat-option *ngFor="let language of LANGUAGE_LIST" [value]="language">
+          <mat-option
+            *ngFor="let language of sortedLanguageList"
+            [value]="language"
+          >
             <div class="type-option"> {{ language.name | translate }} </div>
           </mat-option>
         </mat-select>
