@@ -13,9 +13,9 @@
       <p class="value">{{ user.firstName }} {{ user.lastName }}</p>
       <p class="title">{{ user.path.name | translate }} </p>
     </div>
-    <button mat-raised-button color="primary" (click)="editRoadmap()"
-      >Edit</button
-    >
+    <button mat-raised-button color="primary" (click)="editRoadmap()">{{
+      "ACTIONS.EDIT" | translate
+    }}</button>
   </mat-card>
 
   <mat-card class="card">
