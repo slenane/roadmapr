@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { AuthStoreService } from "../../../auth/services/auth-store.service";
-import { AuthService } from "../../../auth/services/auth.service";
+import { AuthStoreService } from "../../services/auth-store.service";
+import { AuthService } from "../../services/auth.service";
 import { Observable } from "rxjs";
 import { ThemeService } from "src/app/core/services/theme.service";
 

@@ -1,14 +1,83 @@
-<mat-toolbar>
-  <img
-    class="menu-brand"
-    src="/assets/images/logo/logo-dark.png"
-    routerLink="/"
-    alt="roadmapr Logo"
-  />
+<div class="landing">
+  <mat-toolbar>
+    <img
+      class="menu-brand"
+      src="/assets/images/logo/logo-dark.png"
+      routerLink="/"
+      alt="roadmapr Logo"
+    />
 
-  <div class="navbar-option">
-    <button mat-raised-button color="primary" routerLink="/login"
-      >Log in</button
+    <div class="navbar-option">
+      <button mat-raised-button color="primary" routerLink="/login"
+        >Log in</button
+      >
+    </div>
+  </mat-toolbar>
+
+  <section class="grid grid-hero">
+    <div>
+      <h1>Your personal roadmap to a career in software development</h1>
+    </div>
+    <div>
+      <img class="hero" src="assets/images/landing/roadmap.webp" alt="" />
+    </div>
+  </section>
+
+  <section class="grid grid-left">
+    <div>
+      <img src="assets/images/landing/education.webp" alt="" />
+    </div>
+    <div>
+      <h2>Track and share your progress</h2>
+      <p
+        >Follow popular programming stacks to land that first job as quickly as
+        possible</p
+      >
+      <p
+        >Get recommendations from users who have secured a job with a similar
+        stack and location</p
+      >
+    </div>
+  </section>
+
+  <section class="grid grid-right">
+    <div>
+      <h2>Build your resume</h2>
+      <p
+        >Update your education, projects and experience to generate your
+        development resume</p
+      >
+    </div>
+    <div>
+      <img src="assets/images/landing/profile.webp" alt="" />
+    </div>
+  </section>
+
+  <!-- <section>
+    <p
+      >roadmapr is a free service that aims to grow the self-aught developer
+      community</p
     >
-  </div>
-</mat-toolbar>
+  </section> -->
+
+  <section class="call-to-action">
+    <h1>Start your journey to a new career today</h1>
+    <button mat-raised-button color="primary" routerLink="/register"
+      >Register</button
+    >
+  </section>
+
+  <footer>
+    <div>
+      <img
+        class="menu-brand"
+        src="/assets/images/logo/logo-dark.png"
+        routerLink="/"
+        alt="roadmapr Logo"
+      />
+    </div>
+    <div>
+      <small>©2023 roadmapr · All rights reserved.</small>
+    </div>
+  </footer>
+</div>

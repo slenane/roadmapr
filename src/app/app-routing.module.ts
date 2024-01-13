@@ -9,7 +9,6 @@ import { AuthGuardService } from "./auth-guard.service";
 import { Injectable } from "@angular/core";
 import { Title } from "@angular/platform-browser";
 import { TranslateService } from "@ngx-translate/core";
-import { RedirectComponent } from "./core/components/redirect/redirect.component";
 import { PageNotFoundComponent } from "./core/components/page-not-found/page-not-found.component";
 
 @Injectable()
@@ -37,11 +36,6 @@ const routes: Routes = [
   {
     path: "",
     loadChildren: () => import("./auth/auth.module").then((m) => m.AuthModule),
-  },
-  {
-    path: "redirect",
-    component: RedirectComponent,
-    title: "ROUTES.REDIRECT",
   },
   {
     path: "onboarding",

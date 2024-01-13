@@ -1,17 +1,93 @@
 @import "src/styles/app-vars.scss";
 
-mat-toolbar {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  background: transparent;
-  padding: 0.5rem 4rem;
-  display: grid;
-  grid-template-columns: 1fr auto;
+.landing {
+  height: 100vh;
+  max-width: 100vw;
+  overflow-y: auto;
+  padding: 0 5%;
 
-  .menu-brand {
-    height: 2rem;
-    cursor: pointer;
+  @media screen and (min-width: $breakpoint-desktop-large) {
+    padding: 0 15%;
+  }
+
+  mat-toolbar {
+    position: relative;
+    left: 0;
+    right: 0;
+    top: 0;
+    padding: 0;
+    background: transparent;
+    display: grid;
+    grid-template-columns: 1fr auto;
+
+    .menu-brand {
+      height: 2rem;
+      cursor: pointer;
+    }
+  }
+
+  section {
+    margin-bottom: 10rem;
+
+    @media screen and (min-width: $breakpoint-desktop-large) {
+      margin-bottom: 20rem;
+    }
+
+    &.grid {
+      display: grid;
+      align-items: center;
+      gap: 2rem;
+
+      &-hero {
+        grid-template-columns: auto 70%;
+        gap: 0;
+
+        @media screen and (min-width: $breakpoint-desktop-large) {
+          margin-top: 8rem;
+        }
+      }
+
+      &-right {
+        grid-template-columns: auto 65%;
+      }
+
+      &-left {
+        grid-template-columns: 65% auto;
+      }
+    }
+
+    &.call-to-action {
+      text-align: center;
+      padding: 0 25%;
+    }
+
+    img {
+      width: 100%;
+    }
+
+    h1 {
+      font-size: 3rem;
+      font-weight: 500;
+      line-height: normal;
+    }
+
+    h2 {
+      font-size: 2rem;
+      font-weight: 500;
+      line-height: normal;
+    }
+
+    p {
+      font-size: 1.2rem;
+      line-height: normal;
+    }
+  }
+
+  footer {
+    text-align: center;
+
+    .menu-brand {
+      height: 2rem;
+    }
   }
 }

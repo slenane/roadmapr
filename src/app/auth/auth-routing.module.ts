@@ -7,6 +7,7 @@ import { LogInComponent } from "./components/log-in/log-in.component";
 import { ResetPasswordComponent } from "./components/reset-password/reset-password.component";
 import { SendResetPasswordEmailComponent } from "./components/send-reset-password-email/send-reset-password-email.component";
 import { RegisterComponent } from "./components/register/register.component";
+import { RedirectComponent } from "./components/redirect/redirect.component";
 
 const routes: Routes = [
   {
@@ -41,6 +42,11 @@ const routes: Routes = [
     resolve: {
       url: ExtUrlResolverService,
     },
+  },
+  {
+    path: "redirect",
+    component: RedirectComponent,
+    title: "ROUTES.REDIRECT",
   },
 ];
 
