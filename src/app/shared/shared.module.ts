@@ -24,7 +24,6 @@ import { FileUploadCoverImageComponent } from "./components/file-upload/file-upl
 import { LoadingComponent } from "./components/loading/loading.component";
 import { NgScrollbarModule } from "ngx-scrollbar";
 import { UpdatePasswordInputsComponent } from "./components/forms/update-password/update-password-inputs/update-password-inputs.component";
-import { HomeMenuComponent } from "./components/home-menu/home-menu.component";
 import { DropListEmptyComponent } from "./components/drop-list/drop-list-empty/drop-list-empty.component";
 import { PathSelectorComponent } from "./components/path-selector/path-selector.component";
 import { DropListDateComponent } from "./components/drop-list/drop-list-date/drop-list-date.component";
@@ -47,7 +46,6 @@ import { LogoComponent } from "./components/logo/logo.component";
     FileUploadCoverImageComponent,
     LoadingComponent,
     UpdatePasswordInputsComponent,
-    HomeMenuComponent,
     DropListEmptyComponent,
     PathSelectorComponent,
     DropListDateComponent,
@@ -68,7 +66,6 @@ import { LogoComponent } from "./components/logo/logo.component";
     LoadingComponent,
     NgScrollbarModule,
     UpdatePasswordInputsComponent,
-    HomeMenuComponent,
     DropListEmptyComponent,
     MobileNavigationComponent,
     DropListFilterItemsComponent,

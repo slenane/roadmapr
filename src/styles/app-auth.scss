@@ -1,7 +1,7 @@
 .auth-container {
-  margin: 2rem;
-  border-radius: 4px;
-  padding: 10%;
+  width: 30rem;
+  margin: 2rem auto !important;
+  padding: 4rem 2rem !important;
   display: grid;
   text-align: center;
   align-content: center;
@@ -9,6 +9,7 @@
   .auth-brand {
     text-align: center;
     margin-bottom: 2rem;
+    cursor: pointer;
 
     img {
       height: 3rem;

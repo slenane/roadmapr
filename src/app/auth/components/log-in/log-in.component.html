@@ -1,9 +1,9 @@
-<div class="auth-container">
+<mat-card class="auth-container">
   <div class="auth-brand">
     <img
       class="menu-brand"
       src="/assets/images/logo/logo-dark.png"
-      routerLink="/roadmap"
+      routerLink="/"
       alt="roadmapr Logo"
     />
   </div>
@@ -11,8 +11,7 @@
   <div class="oauth-options">
     <button
       mat-raised-button
-      class="github"
-      color="github"
+      class="github-button"
       [disabled]="!authUrl"
       (click)="loginWithGithub()"
     >
@@ -21,14 +20,17 @@
         src="/assets/images/stack/github-original.svg"
         alt="Github Icon"
       />
-      <span>{{ "AUTH.O_AUTH.GITHUB_LOGIN" | translate }}</span>
-    </button>
+
+      <span class="github-button__text">{{
+        "AUTH.O_AUTH.GITHUB_LOGIN" | translate
+      }}</span></button
+    >
   </div>
 
   <div class="divider">
-    <span class="line"></span>
-    <span>{{ "GENERAL.OR" | translate }}</span>
-    <span class="line"></span>
+    <div class="line"></div>
+    <div>{{ "GENERAL.OR" | translate }}</div>
+    <div class="line"></div>
   </div>
 
   <form [formGroup]="form">
@@ -73,7 +75,7 @@
     </div>
 
     <div class="forgot-password-link">
-      <a (click)="showForgotPassword()"
+      <a routerLink="/send-reset-password-email"
         ><small>{{ "AUTH.LOG_IN.FORGOT_PASSWORD" | translate }}</small></a
       >
     </div>
@@ -94,9 +96,9 @@
     </div>
 
     <div>
-      <a class="auth-type-switch" (click)="showRegister()">{{
+      <a class="auth-type-switch" routerLink="/register">{{
         "AUTH.LOG_IN.NOT_REGISTERED" | translate
       }}</a>
     </div>
   </form>
-</div>
+</mat-card>

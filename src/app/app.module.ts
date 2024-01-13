@@ -29,7 +29,6 @@ import { LOGOUT } from "./auth/store/auth.actions";
 import { DELETE_ACCOUNT } from "./settings/store/settings.actions";
 import { TitleStrategy } from "@angular/router";
 import { OnboardingModule } from "./onboarding/onboarding.module";
-import { HomeModule } from "./home/home.module";
 import { RecommendationsModule } from "./recommendations/recommendations.module";
 
 export function clearState(reducer: ActionReducer<any>): ActionReducer<any> {
@@ -70,7 +69,6 @@ export const metaReducers: MetaReducer<any>[] = [clearState];
     }),
     AuthModule,
     CoreModule,
-    HomeModule,
     ExperienceModule,
     RoadmapModule,
     EducationModule,

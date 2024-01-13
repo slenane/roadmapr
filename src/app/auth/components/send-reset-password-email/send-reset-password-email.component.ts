@@ -83,8 +83,4 @@ export class SendResetPasswordEmailComponent implements OnInit {
     this.sendResetPasswordEmailSuccessful = false;
     this.form.controls.emailCtrl.enable();
   }
-
-  showLogin() {
-    this.location.replaceState("/login");
-  }
 }

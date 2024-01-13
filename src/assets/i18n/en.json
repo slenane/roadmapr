@@ -9,13 +9,14 @@
     "OR": "OR"
   },
   "ROUTES": {
-    "LOGIN": "roadmapr",
+    "LANDING": "roadmapr",
+    "LOGIN": "Log in | roadmapr",
+    "REGISTER": "Register | roadmapr",
     "BLOG": "Blog | roadmapr",
     "ABOUT": "About | roadmapr",
     "CONTACT": "Contact | roadmapr",
     "SEND_RESET_PASSWORD_EMAIL": "Send Reset Password Email | roadmapr",
     "RESET_PASSWORD": "Reset Password | roadmapr",
-    "REGISTER": "Register | roadmapr",
     "REDIRECT": "Redirecting... | roadmapr",
     "ROADMAP": "Roadmap | roadmapr",
     "EDUCATION": "Education | roadmapr",

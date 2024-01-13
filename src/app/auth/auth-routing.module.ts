@@ -1,52 +1,39 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { LandingComponent } from "./components/landing/landing.component";
-import { BlogComponent } from "./components/blog/blog.component";
-import { AboutComponent } from "./components/about/about.component";
-import { ContactComponent } from "./components/contact/contact.component";
 import { GitAuthComponent } from "src/app/auth/components/git-auth/git-auth.component";
 import { ExtUrlResolverService } from "src/app/auth/services/ext-url-resolver.service";
+import { LogInComponent } from "./components/log-in/log-in.component";
+import { ResetPasswordComponent } from "./components/reset-password/reset-password.component";
+import { SendResetPasswordEmailComponent } from "./components/send-reset-password-email/send-reset-password-email.component";
+import { RegisterComponent } from "./components/register/register.component";
 
 const routes: Routes = [
   {
     path: "",
     pathMatch: "full",
     component: LandingComponent,
+    title: "ROUTES.LANDING",
   },
   {
     path: "login",
-    component: LandingComponent,
+    component: LogInComponent,
     title: "ROUTES.LOGIN",
   },
   {
+    path: "register",
+    component: RegisterComponent,
+    title: "ROUTES.REGISTER",
+  },
+  {
     path: "send-reset-password-email",
-    component: LandingComponent,
+    component: SendResetPasswordEmailComponent,
     title: "ROUTES.SEND_RESET_PASSWORD_EMAIL",
   },
   {
     path: "reset-password",
-    component: LandingComponent,
+    component: ResetPasswordComponent,
     title: "ROUTES.RESET_PASSWORD",
-  },
-  {
-    path: "register",
-    component: LandingComponent,
-    title: "ROUTES.REGISTER",
-  },
-  {
-    path: "blog",
-    component: BlogComponent,
-    title: "ROUTES.BLOG",
-  },
-  {
-    path: "about",
-    component: AboutComponent,
-    title: "ROUTES.ABOUT",
-  },
-  {
-    path: "contact",
-    component: ContactComponent,
-    title: "ROUTES.CONTACT",
   },
   {
     path: "github-auth",
@@ -61,4 +48,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class HomeRoutingModule {}
+export class AuthRoutingModule {}

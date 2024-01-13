@@ -17,9 +17,12 @@ import { ExtUrlResolverService } from "./services/ext-url-resolver.service";
 import { CoreModule } from "../core/core.module";
 import { SendResetPasswordEmailComponent } from "./components/send-reset-password-email/send-reset-password-email.component";
 import { ResetPasswordComponent } from "./components/reset-password/reset-password.component";
+import { AuthRoutingModule } from "./auth-routing.module";
+import { LandingComponent } from "./components/landing/landing.component";
 
 @NgModule({
   declarations: [
+    LandingComponent,
     LogInComponent,
     RegisterComponent,
     GitAuthComponent,
@@ -43,6 +46,7 @@ import { ResetPasswordComponent } from "./components/reset-password/reset-passwo
     StoreModule.forFeature("auth", fromAuth.reducer),
     EffectsModule.forFeature([AuthEffects]),
     TranslateModule.forChild(),
+    AuthRoutingModule,
   ],
   providers: [ExtUrlResolverService, AuthService, AuthStoreService],
 })
