@@ -9,7 +9,7 @@ export class UrlService {
 
   public generate(endpoint: string, data?: any): string {
     const params = data ? data : "";
-    const url = environment.baseUrl + endpoint + params;
+    const url = environment.apiUrl + endpoint + params;
     return url;
   }
 }

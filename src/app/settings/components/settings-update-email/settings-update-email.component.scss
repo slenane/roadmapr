@@ -3,7 +3,7 @@
 .email-update-container {
   display: grid;
   grid-template-columns: 1fr;
-  justify-content: end;
+  justify-content: flex-end;
   gap: 1rem;
   align-items: center;
 
@@ -18,7 +18,7 @@
   .actions {
     display: flex;
     column-gap: 0.5rem;
-    justify-content: end;
+    justify-content: flex-end;
     align-items: center;
   }
 
