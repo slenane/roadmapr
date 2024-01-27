@@ -1,17 +1,19 @@
-<mat-card class="auth-container">
-  <div class="auth-brand">
-    <img
-      class="menu-brand"
-      [src]="
-        currentTheme === 'dark'
-          ? '/assets/images/logo/logo-dark.png'
-          : '/assets/images/logo/logo.png'
-      "
-      routerLink="/roadmap"
-      alt="roadmapr Logo"
-    />
-  </div>
+<div class="auth-container">
+  <mat-card class="auth-card">
+    <div class="auth-brand">
+      <img
+        class="menu-brand"
+        [src]="
+          currentTheme === 'dark'
+            ? '/assets/images/logo/logo-dark.png'
+            : '/assets/images/logo/logo.png'
+        "
+        routerLink="/roadmap"
+        alt="roadmapr Logo"
+      />
+    </div>
 
-  <h1>{{ "REDIRECTING.T" | translate }}</h1>
-  <p>{{ "REDIRECTING.PLEASE_WAIT" | translate }}</p>
-</mat-card>
+    <h1>{{ "REDIRECTING.T" | translate }}</h1>
+    <p>{{ "REDIRECTING.PLEASE_WAIT" | translate }}</p>
+  </mat-card>
+</div>

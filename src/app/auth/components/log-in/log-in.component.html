@@ -1,104 +1,108 @@
-<mat-card class="auth-container">
-  <div class="auth-brand">
-    <img
-      class="menu-brand"
-      src="/assets/images/logo/logo-dark.png"
-      routerLink="/"
-      alt="roadmapr Logo"
-    />
-  </div>
-
-  <div class="oauth-options">
-    <button
-      mat-raised-button
-      class="github-button"
-      [disabled]="!authUrl"
-      (click)="loginWithGithub()"
-    >
+<div class="auth-container">
+  <mat-card class="auth-card">
+    <div class="auth-brand">
       <img
-        class="github-icon"
-        src="/assets/images/stack/github-original.svg"
-        alt="Github Icon"
+        class="menu-brand"
+        src="/assets/images/logo/logo-dark.png"
+        routerLink="/"
+        alt="roadmapr Logo"
       />
-
-      <span class="github-button__text">{{
-        "AUTH.O_AUTH.GITHUB_LOGIN" | translate
-      }}</span></button
-    >
-  </div>
-
-  <div class="divider">
-    <div class="line"></div>
-    <div>{{ "GENERAL.OR" | translate }}</div>
-    <div class="line"></div>
-  </div>
-
-  <form [formGroup]="form">
-    <div class="form-group">
-      <mat-form-field appearance="outline">
-        <mat-label for="email">{{ "FORMS.EMAIL" | translate }}</mat-label>
-        <input
-          matInput
-          type="email"
-          [placeholder]="'FORMS.PLACEHOLDER.EMAIL' | translate"
-          name="email"
-          formControlName="emailCtrl"
-          required
-        />
-        <mat-error *ngIf="form.controls.emailCtrl?.hasError('required')">{{
-          "FORMS.REQUIRED.EMAIL" | translate
-        }}</mat-error>
-      </mat-form-field>
-    </div>
-    <div class="form-group">
-      <mat-form-field appearance="outline">
-        <mat-label for="password">{{ "FORMS.PASSWORD" | translate }}</mat-label>
-        <input
-          matInput
-          type="password"
-          [placeholder]="'FORMS.PLACEHOLDER.PASSWORD' | translate"
-          [type]="hidePassword ? 'password' : 'text'"
-          name="password"
-          formControlName="passwordCtrl"
-          required
-        />
-        <span
-          matSuffix
-          class="material-symbols-outlined hide-icon"
-          (click)="hidePassword = !hidePassword"
-          >{{ hidePassword ? "visibility_off" : "visibility" }}</span
-        >
-        <mat-error *ngIf="form.controls.passwordCtrl?.hasError('required')">{{
-          "FORMS.REQUIRED.PASSWORD" | translate
-        }}</mat-error>
-      </mat-form-field>
     </div>
 
-    <div class="forgot-password-link">
-      <a routerLink="/send-reset-password-email"
-        ><small>{{ "AUTH.LOG_IN.FORGOT_PASSWORD" | translate }}</small></a
-      >
-    </div>
-
-    <div class="form-action">
+    <div class="oauth-options">
       <button
         mat-raised-button
-        color="primary"
-        (click)="login()"
-        [disabled]="!form.valid"
+        class="github-button"
+        [disabled]="!authUrl"
+        (click)="loginWithGithub()"
       >
-        <span *ngIf="!loginPending">{{ "AUTH.LOG_IN.T" | translate }}</span>
+        <img
+          class="github-icon"
+          src="/assets/images/stack/github-original.svg"
+          alt="Github Icon"
+        />
 
-        <span class="auth-spinner" *ngIf="loginPending">
-          <mat-spinner matSuffix [diameter]="27"></mat-spinner>
-        </span>
-      </button>
+        <span class="github-button__text">{{
+          "AUTH.O_AUTH.GITHUB_LOGIN" | translate
+        }}</span></button
+      >
     </div>
 
-    <div>
-      <a class="auth-type-switch" routerLink="/register">{{
-        "AUTH.LOG_IN.NOT_REGISTERED" | translate
-      }}</a>
+    <div class="divider">
+      <div class="line"></div>
+      <div>{{ "GENERAL.OR" | translate }}</div>
+      <div class="line"></div>
     </div>
-  </form>
-</mat-card>
+
+    <form [formGroup]="form">
+      <div class="form-group">
+        <mat-form-field appearance="outline">
+          <mat-label for="email">{{ "FORMS.EMAIL" | translate }}</mat-label>
+          <input
+            matInput
+            type="email"
+            [placeholder]="'FORMS.PLACEHOLDER.EMAIL' | translate"
+            name="email"
+            formControlName="emailCtrl"
+            required
+          />
+          <mat-error *ngIf="form.controls.emailCtrl?.hasError('required')">{{
+            "FORMS.REQUIRED.EMAIL" | translate
+          }}</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field appearance="outline">
+          <mat-label for="password">{{
+            "FORMS.PASSWORD" | translate
+          }}</mat-label>
+          <input
+            matInput
+            type="password"
+            [placeholder]="'FORMS.PLACEHOLDER.PASSWORD' | translate"
+            [type]="hidePassword ? 'password' : 'text'"
+            name="password"
+            formControlName="passwordCtrl"
+            required
+          />
+          <span
+            matSuffix
+            class="material-symbols-outlined hide-icon"
+            (click)="hidePassword = !hidePassword"
+            >{{ hidePassword ? "visibility_off" : "visibility" }}</span
+          >
+          <mat-error *ngIf="form.controls.passwordCtrl?.hasError('required')">{{
+            "FORMS.REQUIRED.PASSWORD" | translate
+          }}</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="forgot-password-link">
+        <a routerLink="/send-reset-password-email"
+          ><small>{{ "AUTH.LOG_IN.FORGOT_PASSWORD" | translate }}</small></a
+        >
+      </div>
+
+      <div class="form-action">
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="login()"
+          [disabled]="!form.valid"
+        >
+          <span *ngIf="!loginPending">{{ "AUTH.LOG_IN.T" | translate }}</span>
+
+          <span class="auth-spinner" *ngIf="loginPending">
+            <mat-spinner matSuffix [diameter]="27"></mat-spinner>
+          </span>
+        </button>
+      </div>
+
+      <div>
+        <a class="auth-type-switch" routerLink="/register">{{
+          "AUTH.LOG_IN.NOT_REGISTERED" | translate
+        }}</a>
+      </div>
+    </form>
+  </mat-card>
+</div>
