@@ -1,0 +1,119 @@
+<div class="landing" #landing>
+  <mat-toolbar class="landing-navigation" [ngClass]="{ scrolling: scrolling }">
+    <img
+      class="menu-brand"
+      src="/assets/images/logo/logo-dark.png"
+      routerLink="/"
+      alt="roadmapr Logo"
+    />
+
+    <div class="navbar-option">
+      <button mat-raised-button color="primary" routerLink="/login">{{
+        "AUTH.LOG_IN.T" | translate
+      }}</button>
+    </div>
+  </mat-toolbar>
+
+  <section class="grid grid-hero">
+    <div>
+      <h1>{{ "LANDING.TAGLINE" | translate }}</h1>
+    </div>
+    <div>
+      <img
+        class="hero"
+        src="assets/images/landing/roadmap{{
+          userLanguage !== 'en' ? '-' + userLanguage : ''
+        }}.webp"
+        alt="Roadmapr Roadmap"
+      />
+    </div>
+  </section>
+
+  <section class="description">
+    <h2>{{ "LANDING.DESCRIPTION.T" | translate }}</h2>
+    <p>{{ "LANDING.DESCRIPTION.P1" | translate }}</p>
+    <p>{{ "LANDING.DESCRIPTION.P2" | translate }}</p>
+  </section>
+
+  <section class="grid grid-left">
+    <div>
+      <img
+        src="assets/images/landing/education{{
+          userLanguage !== 'en' ? '-' + userLanguage : ''
+        }}.webp"
+        alt="Roadmapr education, projects and experience sections"
+      />
+    </div>
+    <div>
+      <h2>{{ "LANDING.EDUCATION.T" | translate }}</h2>
+      <p>{{ "LANDING.EDUCATION.P1" | translate }}</p>
+      <p>{{ "LANDING.EDUCATION.P2" | translate }}</p>
+      <p>{{ "LANDING.EDUCATION.P3" | translate }}</p>
+    </div>
+  </section>
+
+  <section class="grid grid-right">
+    <div>
+      <h2>{{ "LANDING.RESUME.T" | translate }}</h2>
+      <p>{{ "LANDING.RESUME.P1" | translate }}</p>
+      <p>{{ "LANDING.RESUME.P2" | translate }}</p>
+      <p>{{ "LANDING.RESUME.P3" | translate }}</p>
+    </div>
+    <div>
+      <img
+        src="assets/images/landing/profile{{
+          userLanguage !== 'en' ? '-' + userLanguage : ''
+        }}.webp"
+        alt="Roadmapr user profile"
+      />
+    </div>
+  </section>
+
+  <section class="grid grid-left">
+    <div>
+      <img
+        src="assets/images/landing/roadmap-right{{
+          userLanguage !== 'en' ? '-' + userLanguage : ''
+        }}.webp"
+        alt="Roadmapr Roadmap"
+      />
+    </div>
+    <div>
+      <h2>{{ "LANDING.ROADMAP.T" | translate }}</h2>
+      <p>{{ "LANDING.ROADMAP.P1" | translate }}</p>
+      <p>{{ "LANDING.ROADMAP.P2" | translate }}</p>
+      <p>{{ "LANDING.ROADMAP.P3" | translate }}</p>
+    </div>
+  </section>
+
+  <section class="call-to-action">
+    <h2>{{ "LANDING.CTA.T" | translate }}</h2>
+    <button
+      mat-raised-button
+      color="primary"
+      class="register-button"
+      routerLink="/register"
+      >{{ "LANDING.CTA.BUTTON" | translate }}</button
+    >
+  </section>
+
+  <footer>
+    <div class="grid-left">
+      <div>
+        <a href="mailto:info@roadmapr.dev">{{
+          "LANDING.FOOTER.CONTACT" | translate
+        }}</a>
+      </div>
+      <div>
+        <a href="/privacy-policy">{{
+          "LANDING.FOOTER.PRIVACY" | translate
+        }}</a></div
+      >
+    </div>
+    <div class="grid-right">
+      <p>{{
+        "LANDING.FOOTER.COPYRIGHT" | translate : { value: currentYear }
+      }}</p>
+    </div>
+  </footer>
+</div>

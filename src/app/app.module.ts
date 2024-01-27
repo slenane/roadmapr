@@ -11,7 +11,6 @@ import {
 } from "@angular/common/http";
 import { MaterialModule } from "./material/material.module";
 import { SharedModule } from "./shared/shared.module";
-import { AuthGuardService } from "./auth-guard.service";
 import { EffectsModule } from "@ngrx/effects";
 import { ActionReducer, MetaReducer, StoreModule } from "@ngrx/store";
 import { CoreModule } from "./core/core.module";
@@ -29,7 +28,6 @@ import { LOGOUT } from "./auth/store/auth.actions";
 import { DELETE_ACCOUNT } from "./settings/store/settings.actions";
 import { TitleStrategy } from "@angular/router";
 import { OnboardingModule } from "./onboarding/onboarding.module";
-import { HomeModule } from "./home/home.module";
 import { RecommendationsModule } from "./recommendations/recommendations.module";
 
 export function clearState(reducer: ActionReducer<any>): ActionReducer<any> {
@@ -70,7 +68,6 @@ export const metaReducers: MetaReducer<any>[] = [clearState];
     }),
     AuthModule,
     CoreModule,
-    HomeModule,
     ExperienceModule,
     RoadmapModule,
     EducationModule,
@@ -89,10 +86,7 @@ export const metaReducers: MetaReducer<any>[] = [clearState];
     MaterialModule,
     SharedModule,
   ],
-  providers: [
-    AuthGuardService,
-    { provide: TitleStrategy, useClass: CustomTitleStrategy },
-  ],
+  providers: [{ provide: TitleStrategy, useClass: CustomTitleStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

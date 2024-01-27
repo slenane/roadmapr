@@ -1,0 +1,169 @@
+@import "src/styles/app-vars.scss";
+
+.landing {
+  height: 100vh;
+  max-width: 100vw;
+  overflow-y: auto;
+  padding: 0 5%;
+
+  @media screen and (min-width: $breakpoint-desktop-large) {
+    padding: 0 15%;
+  }
+
+  &-navigation {
+    position: sticky;
+    top: 0;
+    padding: 0;
+    background: transparent;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    margin-bottom: 1rem;
+    transition: background-color 0.5s ease;
+
+    .menu-brand {
+      height: 2rem;
+      cursor: pointer;
+    }
+
+    &.scrolling {
+      background: linear-gradient(
+        to bottom,
+        rgba(48, 48, 48, 1),
+        rgba(48, 48, 48, 0.8) 90%
+      );
+    }
+  }
+
+  section {
+    margin-bottom: 10rem;
+
+    @media screen and (min-width: $breakpoint-desktop-large) {
+      margin-bottom: 20rem;
+    }
+
+    &.grid {
+      display: grid;
+      align-items: center;
+      gap: 2rem;
+
+      &-hero {
+        gap: 4rem;
+        margin-top: 5rem;
+
+        @media screen and (min-width: $breakpoint-tablet) {
+          grid-template-columns: auto 70%;
+          gap: 1rem;
+          margin-top: 0;
+        }
+
+        @media screen and (min-width: $breakpoint-desktop-large) {
+          margin-top: 8rem;
+        }
+      }
+
+      &-right {
+        div:nth-child(1) {
+          order: 2;
+        }
+        div:nth-child(2) {
+          order: 1;
+        }
+
+        @media screen and (min-width: $breakpoint-tablet) {
+          grid-template-columns: auto 60%;
+
+          div:nth-child(1) {
+            order: 1;
+          }
+          div:nth-child(2) {
+            order: 2;
+          }
+        }
+      }
+
+      &-left {
+        @media screen and (min-width: $breakpoint-tablet) {
+          grid-template-columns: 60% auto;
+        }
+      }
+    }
+
+    &.description {
+      text-align: justify;
+
+      @media screen and (min-width: $breakpoint-tablet) {
+        padding: 0 26%;
+      }
+
+      h2 {
+        text-align: center;
+      }
+    }
+
+    &.call-to-action {
+      text-align: center;
+
+      @media screen and (min-width: $breakpoint-tablet) {
+        padding: 0 25%;
+      }
+
+      .register-button {
+        height: 4rem;
+      }
+    }
+
+    img {
+      width: 100%;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 500;
+      line-height: normal;
+
+      @media screen and (min-width: $breakpoint-tablet) {
+        font-size: 3rem;
+      }
+    }
+
+    h2 {
+      font-weight: 500;
+      line-height: normal;
+
+      @media screen and (min-width: $breakpoint-tablet) {
+        font-size: 2rem;
+      }
+    }
+
+    p {
+      line-height: normal;
+
+      @media screen and (min-width: $breakpoint-tablet) {
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  footer {
+    padding: 1rem 0;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    justify-content: space-between;
+
+    .grid-left {
+      display: grid;
+      grid-template-columns: auto auto;
+      justify-content: flex-start;
+      gap: 2rem;
+
+      a {
+        color: lightgray;
+        text-decoration: none;
+
+        &:hover {
+          color: white;
+        }
+      }
+    }
+  }
+}

@@ -1,9 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { AuthStoreService } from "../../../auth/services/auth-store.service";
-import { AuthService } from "../../../auth/services/auth.service";
+import { AuthStoreService } from "../../services/auth-store.service";
+import { AuthService } from "../../services/auth.service";
 import { Observable } from "rxjs";
 import { ThemeService } from "src/app/core/services/theme.service";
+import { TranslateService } from "@ngx-translate/core";
 
 @Component({
   selector: "app-redirect",
@@ -18,7 +19,8 @@ export class RedirectComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private authService: AuthService,
     private authStoreService: AuthStoreService,
-    private themeService: ThemeService
+    private themeService: ThemeService,
+    private translateService: TranslateService
   ) {
     this.theme$ = this.themeService.selectedTheme;
   }
@@ -27,6 +29,14 @@ export class RedirectComponent implements OnInit {
     this.theme$.subscribe((theme: "light" | "dark" | undefined) => {
       this.currentTheme = theme;
     });
+
+    const browserLanguage = navigator.language.split("-")[0];
+    const language =
+      browserLanguage === "es" || browserLanguage === "pt"
+        ? browserLanguage
+        : "en";
+
+    this.translateService.use(language);
 
     this.activatedRoute.queryParamMap.subscribe({
       next: (github: any) => {

@@ -141,7 +141,7 @@ export class AuthEffects {
           map(() => {
             this.authService.clearUserData();
             this.themeService.updateTheme(DARK_THEME);
-            this.router.navigateByUrl(ROUTES.LOGIN);
+            this.router.navigateByUrl("/");
             return authActions.LogoutSuccess();
           }),
           catchError((error) => {

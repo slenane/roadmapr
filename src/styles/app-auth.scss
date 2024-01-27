@@ -1,71 +1,85 @@
+@import "src/styles/app-vars.scss";
+
 .auth-container {
-  margin: 2rem;
-  border-radius: 4px;
-  padding: 10%;
+  height: 90vh;
   display: grid;
-  text-align: center;
-  align-content: center;
+  align-items: center;
 
-  .auth-brand {
-    text-align: center;
-    margin-bottom: 2rem;
-
-    img {
-      height: 3rem;
-    }
-  }
-
-  .hide {
-    display: none;
-  }
-
-  .oauth-options {
-    .github {
-      img {
-        height: 1.75rem;
-        width: 1.75rem;
-        margin-right: 0.25rem;
-      }
-    }
-  }
-
-  .divider {
+  .auth-card {
+    margin: auto 5% !important;
+    padding: 2rem 1rem !important;
     display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    gap: 0.5rem;
-    font-size: 10px;
-    padding: 0 10%;
-    margin: 1rem 0;
+    text-align: center;
+    align-content: center;
 
-    .line {
-      margin-bottom: 10px;
+    @media screen and (min-width: $breakpoint-tablet) {
+      width: 30rem;
+      margin: 2rem auto !important;
+      padding: 4rem 2rem !important;
     }
-  }
 
-  .mat-form-field {
-    width: 100%;
-  }
+    .auth-brand {
+      text-align: center;
+      margin-bottom: 2rem;
+      cursor: pointer;
 
-  .form-action {
-    margin-bottom: 1rem;
-    button {
-      width: 100%;
-      font-size: 16px;
-
-      .auth-spinner {
-        display: grid;
-        justify-content: center;
-        text-align: center;
-        padding: 5px;
+      img {
+        height: 3rem;
       }
     }
-  }
 
-  .auth-type-switch {
-    cursor: pointer;
-  }
+    .hide {
+      display: none;
+    }
 
-  .email-verification-sent {
-    margin-bottom: 1rem;
+    .oauth-options {
+      .github {
+        img {
+          height: 1.75rem;
+          width: 1.75rem;
+          margin-right: 0.25rem;
+        }
+      }
+    }
+
+    .divider {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 0.5rem;
+      font-size: 10px;
+      padding: 0 10%;
+      margin: 1rem 0;
+
+      .line {
+        margin-bottom: 10px;
+      }
+    }
+
+    .mat-form-field {
+      width: 100%;
+    }
+
+    .form-action {
+      margin-bottom: 1rem;
+      button {
+        width: 100%;
+        font-size: 16px;
+
+        .auth-spinner {
+          display: grid;
+          justify-content: center;
+          text-align: center;
+          padding: 5px;
+        }
+      }
+    }
+
+    .auth-type-switch {
+      cursor: pointer;
+    }
+
+    .email-verification-sent {
+      margin-bottom: 1rem;
+    }
   }
 }

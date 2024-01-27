@@ -1,5 +1,5 @@
 <div class="auth-container">
-  <div class="auth-card">
+  <mat-card class="auth-card">
     <div class="auth-brand">
       <img
         class="menu-brand"
@@ -13,13 +13,7 @@
       />
     </div>
 
-    <h1>{{ "PAGE_NOT_FOUND.T" | translate }}</h1>
-    <h2>{{ "PAGE_NOT_FOUND.SUB" | translate }}</h2>
-    <p>{{ "PAGE_NOT_FOUND.NOT_FOUND" | translate }}</p>
-    <a href="/roadmap">
-      <button mat-raised-button color="primary">{{
-        "PAGE_NOT_FOUND.HOME" | translate
-      }}</button>
-    </a>
-  </div>
+    <h1>{{ "REDIRECTING.T" | translate }}</h1>
+    <p>{{ "REDIRECTING.PLEASE_WAIT" | translate }}</p>
+  </mat-card>
 </div>

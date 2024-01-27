@@ -134,8 +134,4 @@ export class RegisterComponent implements OnInit {
       });
     }
   }
-
-  showLogin() {
-    this.location.replaceState("/login");
-  }
 }

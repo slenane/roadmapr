@@ -18,8 +18,7 @@
       color: $dark-theme--font--primary;
     }
 
-    p,
-    span {
+    p {
       color: $dark-theme--font--secondary;
     }
 
@@ -28,9 +27,8 @@
       color: white !important;
     }
 
-    .auth-container {
-      background: $dark-theme--body--background;
-      color: $dark-theme--font--primary;
+    span {
+      color: inherit;
     }
 
     .icon-card {
@@ -238,8 +236,7 @@
       color: $light-theme--font--primary;
     }
 
-    p,
-    span {
+    p {
       color: $light-theme--font--secondary;
     }
 
@@ -255,13 +252,12 @@
       }
     }
 
-    .mat-menu-item {
-      color: $light-theme--font--secondary !important;
+    span {
+      color: inherit;
     }
 
-    .auth-container {
-      background: $light-theme--body--background;
-      color: $light-theme--font--primary;
+    .mat-menu-item {
+      color: $light-theme--font--secondary !important;
     }
 
     .icon-card {
