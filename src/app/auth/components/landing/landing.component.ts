@@ -9,6 +9,7 @@ import { TranslateService } from "@ngx-translate/core";
 export class LandingComponent implements OnInit {
   public scrolling = false;
   public currentYear: number;
+  public userLanguage: "en" | "pt" | "es" = "en";
 
   @ViewChild("landing") landing: ElementRef;
 
@@ -30,12 +31,12 @@ export class LandingComponent implements OnInit {
 
   setUserLanguage() {
     const browserLanguage = navigator.language.split("-")[0];
-    const language =
+    this.userLanguage =
       browserLanguage === "es" || browserLanguage === "pt"
         ? browserLanguage
         : "en";
 
-    this.translateService.use(language);
+    this.translateService.use(this.userLanguage);
   }
 
   onScroll(event: Event): void {

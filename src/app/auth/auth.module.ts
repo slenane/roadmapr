@@ -19,6 +19,7 @@ import { SendResetPasswordEmailComponent } from "./components/send-reset-passwor
 import { ResetPasswordComponent } from "./components/reset-password/reset-password.component";
 import { AuthRoutingModule } from "./auth-routing.module";
 import { LandingComponent } from "./components/landing/landing.component";
+import { AuthGuard } from "./services/auth.guard";
 
 @NgModule({
   declarations: [
@@ -48,6 +49,6 @@ import { LandingComponent } from "./components/landing/landing.component";
     TranslateModule.forChild(),
     AuthRoutingModule,
   ],
-  providers: [ExtUrlResolverService, AuthService, AuthStoreService],
+  providers: [ExtUrlResolverService, AuthService, AuthStoreService, AuthGuard],
 })
 export class AuthModule {}

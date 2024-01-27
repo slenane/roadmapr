@@ -5,7 +5,7 @@ import {
   RouterStateSnapshot,
   TitleStrategy,
 } from "@angular/router";
-import { AuthGuardService } from "./auth-guard.service";
+import { AuthGuard } from "./auth/services/auth.guard";
 import { Injectable } from "@angular/core";
 import { Title } from "@angular/platform-browser";
 import { TranslateService } from "@ngx-translate/core";
@@ -39,56 +39,56 @@ const routes: Routes = [
   },
   {
     path: "onboarding",
+    canActivate: [AuthGuard],
     loadChildren: () =>
       import("./onboarding/onboarding.module").then((m) => m.OnboardingModule),
-    canActivate: [AuthGuardService],
   },
   {
     path: "roadmap",
+    canActivate: [AuthGuard],
     loadChildren: () =>
       import("./roadmap/roadmap.module").then((m) => m.RoadmapModule),
-    canActivate: [AuthGuardService],
   },
   {
     path: "education",
+    canActivate: [AuthGuard],
     loadChildren: () =>
       import("./education/education.module").then((m) => m.EducationModule),
-    canActivate: [AuthGuardService],
   },
   {
     path: "projects",
+    canActivate: [AuthGuard],
     loadChildren: () =>
       import("./projects/projects.module").then((m) => m.ProjectsModule),
-    canActivate: [AuthGuardService],
   },
   {
     path: "experience",
+    canActivate: [AuthGuard],
     loadChildren: () =>
       import("./experience/experience.module").then((m) => m.ExperienceModule),
-    canActivate: [AuthGuardService],
   },
   {
     path: "profile",
+    canActivate: [AuthGuard],
     loadChildren: () =>
       import("./profile/profile.module").then((m) => m.ProfileModule),
-    canActivate: [AuthGuardService],
   },
   {
     path: "settings",
+    canActivate: [AuthGuard],
     loadChildren: () =>
       import("./settings/settings.module").then((m) => m.SettingsModule),
-    canActivate: [AuthGuardService],
   },
   {
-    path: "page-not-found",
+    path: "**",
     component: PageNotFoundComponent,
     title: "ROUTES.PAGE_NOT_FOUND",
   },
-  { path: "**", pathMatch: "full", redirectTo: "/page-not-found" },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
+  providers: [AuthGuard],
 })
 export class AppRoutingModule {}

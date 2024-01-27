@@ -11,7 +11,6 @@ import {
 } from "@angular/common/http";
 import { MaterialModule } from "./material/material.module";
 import { SharedModule } from "./shared/shared.module";
-import { AuthGuardService } from "./auth-guard.service";
 import { EffectsModule } from "@ngrx/effects";
 import { ActionReducer, MetaReducer, StoreModule } from "@ngrx/store";
 import { CoreModule } from "./core/core.module";
@@ -87,10 +86,7 @@ export const metaReducers: MetaReducer<any>[] = [clearState];
     MaterialModule,
     SharedModule,
   ],
-  providers: [
-    AuthGuardService,
-    { provide: TitleStrategy, useClass: CustomTitleStrategy },
-  ],
+  providers: [{ provide: TitleStrategy, useClass: CustomTitleStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

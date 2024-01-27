@@ -15,6 +15,7 @@ export class AppComponent implements OnInit {
   public theme$: Observable<"light" | "dark" | undefined>;
   public isRedirecting: boolean;
   public currentTheme: "light" | "dark" | undefined;
+  public isAuthenticated: boolean;
   public navbarCollapsed: boolean = true;
 
   constructor(
@@ -32,6 +33,9 @@ export class AppComponent implements OnInit {
     this.theme$.subscribe(
       (theme: "light" | "dark" | undefined) => (this.currentTheme = theme)
     );
+    this.authenticated$.subscribe(
+      (authenticated: boolean) => (this.isAuthenticated = authenticated)
+    );
 
     const theme = localStorage.getItem("selected-theme");
     if (theme) this.themeService.updateTheme(theme);
@@ -45,15 +49,17 @@ export class AppComponent implements OnInit {
 
   @HostListener("window:unload", ["$event"])
   unloadHandler(event: Event) {
-    if (this.currentTheme) {
-      localStorage.setItem("selected-theme", this.currentTheme);
-    }
+    if (this.isAuthenticated) {
+      if (this.currentTheme) {
+        localStorage.setItem("selected-theme", this.currentTheme);
+      }
 
-    if (this.translateService.currentLang) {
-      localStorage.setItem(
-        "preferred-language",
-        this.translateService.currentLang
-      );
+      if (this.translateService.currentLang) {
+        localStorage.setItem(
+          "preferred-language",
+          this.translateService.currentLang
+        );
+      }
     }
   }
 }
