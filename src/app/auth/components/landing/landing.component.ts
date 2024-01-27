@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
+import { TranslateService } from "@ngx-translate/core";
 
 @Component({
   selector: "app-landing",
@@ -11,10 +12,11 @@ export class LandingComponent implements OnInit {
 
   @ViewChild("landing") landing: ElementRef;
 
-  constructor() {}
+  constructor(private translateService: TranslateService) {}
 
   ngOnInit(): void {
     this.currentYear = new Date().getFullYear();
+    this.setUserLanguage();
   }
 
   ngAfterViewInit() {
@@ -24,6 +26,16 @@ export class LandingComponent implements OnInit {
         this.onScroll.bind(this)
       );
     }
+  }
+
+  setUserLanguage() {
+    const browserLanguage = navigator.language.split("-")[0];
+    const language =
+      browserLanguage === "es" || browserLanguage === "pt"
+        ? browserLanguage
+        : "en";
+
+    this.translateService.use(language);
   }
 
   onScroll(event: Event): void {

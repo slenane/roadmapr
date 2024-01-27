@@ -48,7 +48,7 @@
 
       &-hero {
         grid-template-columns: auto 70%;
-        gap: 0;
+        gap: 1rem;
 
         @media screen and (min-width: $breakpoint-desktop-large) {
           margin-top: 8rem;

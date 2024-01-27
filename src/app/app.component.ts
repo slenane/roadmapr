@@ -33,9 +33,9 @@ export class AppComponent implements OnInit {
       (theme: "light" | "dark" | undefined) => (this.currentTheme = theme)
     );
 
-    const theme = window.localStorage.getItem("selected-theme");
+    const theme = localStorage.getItem("selected-theme");
     if (theme) this.themeService.updateTheme(theme);
-    const preferredLanguage = window.localStorage.getItem("preferred-language");
+    const preferredLanguage = localStorage.getItem("preferred-language");
     if (preferredLanguage) this.translateService.use(preferredLanguage);
   }
 
@@ -46,11 +46,11 @@ export class AppComponent implements OnInit {
   @HostListener("window:unload", ["$event"])
   unloadHandler(event: Event) {
     if (this.currentTheme) {
-      window.localStorage.setItem("selected-theme", this.currentTheme);
+      localStorage.setItem("selected-theme", this.currentTheme);
     }
 
     if (this.translateService.currentLang) {
-      window.localStorage.setItem(
+      localStorage.setItem(
         "preferred-language",
         this.translateService.currentLang
       );

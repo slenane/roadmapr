@@ -9,7 +9,8 @@
     "OR": "O"
   },
   "ROUTES": {
-    "LOGIN": "roadmapr",
+    "LANDING": "roadmapr",
+    "LOGIN": "Iniciar sesión | roadmapr",
     "BLOG": "Blog | roadmapr",
     "ABOUT": "Acerca | roadmapr",
     "CONTACT": "Contacto | roadmapr",
@@ -250,6 +251,41 @@
         "PASSWORDS_MATCH": "La nueva contraseña no debe ser la misma que la contraseña actual",
         "CURRENT_PASSWORD_INCORRECT": "La contraseña actual es incorrecta, por favor, inténtelo de nuevo"
       }
+    }
+  },
+  "LANDING": {
+    "TAGLINE": "Tu roadmap personal hacia una carrera en desarrollo de software",
+    "DESCRIPTION": {
+      "T": "¿Qué es roadmapr?",
+      "P1": "roadmapr es un servicio gratuito creado por desarrolladores autodidactas que tiene como objetivo hacer crecer la comunidad de desarrolladores autodidactas.",
+      "P2": "Como desarrollador autodidacta, puede ser difícil saber si estás en el camino correcto. Por eso desarrollamos una plataforma para rastrear y compartir tu progreso mientras recibes recomendaciones de usuarios en tu país que se han convertido en desarrolladores profesionales."
+    },
+    "EDUCATION": {
+      "T": "Rastrea y comparte tu progreso",
+      "P1": "Construye tu roadmap personal agregando tu educación, proyectos y experiencia laboral para obtener una imagen completa de tu progreso.",
+      "P2": "Recibe recomendaciones de usuarios que han asegurado posiciones con una pila tecnológica y ubicación similares.",
+      "P3": "Consulta las últimas oportunidades de trabajo remoto para ayudarte a mantenerte enfocado en tu objetivo."
+    },
+    "RESUME": {
+      "T": "Crea tu currículum",
+      "P1": "Visualiza tu progreso en un formato de currículum, facilitando la solicitud de empleo.",
+      "P2": "Agrega descripciones a cada elemento para recordar fácilmente lo que aprendiste cuando llegue el momento de una entrevista.",
+      "P3": "Destácate entre otros candidatos incluyendo todos los cursos que has tomado y los proyectos que has construido."
+    },
+    "ROADMAP": {
+      "T": "Visualiza tu progreso en tiempo real",
+      "P1": "Selecciona una pila de programación y desarrolla tus habilidades para asegurar una posición como desarrollador profesional.",
+      "P2": "Rastrea tu progreso, obtén información sobre el tipo de desarrollador que eres e identifica áreas de mejora.",
+      "P3": "Integra tu cuenta de GitHub para monitorear tus repositorios y contribuciones de manera fluida."
+    },
+    "CTA": {
+      "T": "Comienza tu viaje hacia una carrera en desarrollo de software hoy",
+      "BUTTON": "Regístrate gratis"
+    },
+    "FOOTER": {
+      "CONTACT": "Ponte en contacto",
+      "PRIVACY": "Política de privacidad",
+      "COPYRIGHT": "©roadmapr {{value}}"
     }
   },
   "AUTH": {
@@ -495,14 +531,6 @@
       "UPDATE_DATES": "Actualizar Fechas"
     }
   },
-  "LANDING": {
-    "SECTIONS": {
-      "HOME": "Inicio",
-      "BLOG": "Blog",
-      "ABOUT": "Acerca de",
-      "CONTACT": "Contacto"
-    }
-  },
   "PROFILE": {
     "T": "Perfil",
     "EDIT": "Editar Perfil",
@@ -649,8 +677,8 @@
     "GITHUB": {
       "T": "GitHub",
       "ACCOUNT": "Cuenta de GitHub: ",
-      "MESSAGE": "Consulta información actualizada de GitHub en tu hoja de ruta",
-      "LINK_MESSAGE": "Vincula tu cuenta de GitHub para mostrar información actualizada de GitHub en tu hoja de ruta",
+      "MESSAGE": "Consulta información actualizada de GitHub en tu roadmap",
+      "LINK_MESSAGE": "Vincula tu cuenta de GitHub para mostrar información actualizada de GitHub en tu roadmap",
       "UNLINK_ERROR": "Debes agregar una contraseña antes de poder desvincular tu cuenta de GitHub"
     }
   },
