@@ -89,10 +89,9 @@
     }
 
     &.description {
-      text-align: justify;
-
       @media screen and (min-width: $breakpoint-tablet) {
         padding: 0 26%;
+        text-align: justify;
       }
 
       h2 {
