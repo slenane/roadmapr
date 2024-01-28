@@ -9,6 +9,10 @@ import {
   HttpClientModule,
   HttpClientXsrfModule,
 } from "@angular/common/http";
+import {
+  NgxGoogleAnalyticsModule,
+  NgxGoogleAnalyticsRouterModule,
+} from "ngx-google-analytics";
 import { MaterialModule } from "./material/material.module";
 import { SharedModule } from "./shared/shared.module";
 import { EffectsModule } from "@ngrx/effects";
@@ -79,6 +83,8 @@ export const metaReducers: MetaReducer<any>[] = [clearState];
     HttpClientModule,
     HttpClientXsrfModule,
     BrowserModule,
+    NgxGoogleAnalyticsModule.forRoot("G-PXREST6SEL"),
+    NgxGoogleAnalyticsRouterModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,

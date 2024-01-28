@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: "https://www.roadmapr.dev/api",
+  apiUrl: "https://www.roadmapr.dev",
 };
