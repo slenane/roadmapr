@@ -1,94 +1,92 @@
 @import "src/styles/app-vars.scss";
 
-.active-stack {
-  mat-card-header {
+mat-card-header {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  justify-content: space-between;
+
+  mat-card-title {
+    font-size: 1rem;
     display: grid;
-    grid-template-columns: 1fr 2fr;
-    justify-content: space-between;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 0.5rem;
 
-    mat-card-title {
-      font-size: 1rem;
-      display: grid;
-      grid-template-columns: auto 1fr;
-      align-items: center;
-      gap: 0.5rem;
-
-      .roadmap-title-icon {
-        font-size: 1.3rem;
-        margin-bottom: 0.1rem;
-      }
-    }
-
-    mat-card-subtitle {
-      font-size: 1rem;
-      margin-bottom: 0;
-    }
-
-    .tech-stack {
-      text-align: end;
-    }
-
-    .custom-tech-stack {
-      display: grid;
-      grid-template-columns: auto auto auto auto auto;
-      justify-content: end;
-      gap: 0.2rem;
-
-      .custom-icon {
-        border-radius: 50%;
-        height: 1.2rem;
-        width: 1.2rem;
-        background-color: #7b7b7b;
-      }
+    .roadmap-title-icon {
+      font-size: 1.3rem;
+      margin-bottom: 0.1rem;
     }
   }
 
-  .progress-grid {
-    display: grid;
-    grid-template-columns: 1fr;
+  mat-card-subtitle {
+    font-size: 1rem;
+    margin-bottom: 0;
+  }
 
-    @media screen and (min-width: $breakpoint-tablet) {
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
+  .tech-stack {
+    text-align: end;
+  }
+
+  .custom-tech-stack {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    justify-content: end;
+    gap: 0.2rem;
+
+    .custom-icon {
+      border-radius: 50%;
+      height: 1.2rem;
+      width: 1.2rem;
+      background-color: #7b7b7b;
+    }
+  }
+}
+
+.progress-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+
+  @media screen and (min-width: $breakpoint-tablet) {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .list-title {
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.05rem;
+    text-align: center;
+  }
+
+  .stack-progress {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 1rem;
+    margin-bottom: 0.8rem;
+    align-items: center;
+
+    .stack-icon {
+      height: 1.2rem;
+      width: 1.2rem;
     }
 
-    .list-title {
+    .count {
       font-size: 0.9rem;
-      font-weight: 500;
-      letter-spacing: 0.05rem;
-      text-align: center;
-    }
-
-    .stack-progress {
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      gap: 1rem;
-      margin-bottom: 0.8rem;
-      align-items: center;
-
-      .stack-icon {
-        height: 1.2rem;
-        width: 1.2rem;
-      }
-
-      .count {
-        font-size: 0.9rem;
-        color: #e8e8e8;
-      }
+      color: #e8e8e8;
     }
   }
+}
 
-  .custom-stack-empty-message {
-    text-align: center;
-    margin: 2rem;
-  }
+.custom-stack-empty-message {
+  text-align: center;
+  margin: 2rem;
+}
 
-  .select-stack-message {
-    text-align: center;
-    margin: 1rem 3rem;
-  }
+.select-stack-message {
+  text-align: center;
+  margin: 1rem 3rem;
+}
 
-  .actions {
-    text-align: right;
-  }
+.actions {
+  text-align: right;
 }
