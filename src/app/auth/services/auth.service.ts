@@ -26,6 +26,13 @@ export class AuthService {
     );
   }
 
+  public resendRegisterEmail(user: User): Observable<any> {
+    return this.apiService.post(
+      this.urlService.generate(API.AUTH_REGISTER_RESEND_EMAIL),
+      user
+    );
+  }
+
   public login(user: User): Observable<any> {
     return this.apiService
       .post(this.urlService.generate(API.AUTH_LOGIN), user)

@@ -120,17 +120,27 @@
       </p>
 
       <p>{{ "AUTH.REGISTER.VERIFY_EMAIL_MESSAGE_2" | translate }}</p>
-      <button
-        mat-raised-button
-        color="primary"
-        [disabled]="!resendEmailReady"
-        (click)="register()"
-        >{{
-          resendEmailReady
-            ? ("AUTH.REGISTER.VERIFY_EMAIL_RESEND" | translate)
-            : resendEmailTimeout
-        }}</button
-      >
+
+      <div class="form-action">
+        <button
+          mat-raised-button
+          color="primary"
+          [disabled]="!resendEmailReady || registrationPending"
+          (click)="resendEmail()"
+        >
+          <span *ngIf="!registrationPending">
+            {{
+              resendEmailReady
+                ? ("AUTH.REGISTER.VERIFY_EMAIL_RESEND" | translate)
+                : resendEmailTimeout
+            }}
+          </span>
+
+          <span class="auth-spinner" *ngIf="registrationPending">
+            <mat-spinner matSuffix [diameter]="27"></mat-spinner>
+          </span>
+        </button>
+      </div>
     </div>
   </mat-card>
 </div>

@@ -33,6 +33,20 @@ const authReducer = createReducer(
       registrationError: true,
     };
   }),
+  on(authActions.ResendRegisterEmailSuccess, (state) => {
+    return {
+      ...state,
+      registrationSuccess: true,
+      registrationError: null,
+    };
+  }),
+  on(authActions.ResendRegisterEmailError, (state) => {
+    return {
+      ...state,
+      registrationSuccess: null,
+      registrationError: true,
+    };
+  }),
   on(authActions.clearRegistrationError, (state) => {
     return {
       ...state,

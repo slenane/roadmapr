@@ -2,6 +2,7 @@ import { props, createAction } from "@ngrx/store";
 import { TokenResponse, User } from "./auth.models";
 
 export const REGISTER = "[Auth] Register";
+export const RESEND_REGISTER_EMAIL = "[Auth] Resend Register Email";
 export const LOGIN = "[Auth] Login";
 export const SEND_RESET_PASSWORD_EMAIL = "[Auth] Send Reset Password Email";
 export const RESET_PASSWORD = "[Auth] Reset Password";
@@ -10,6 +11,9 @@ export const GITHUB_UPDATE_EXISTING_USER = "[Auth] GitHub update existing user";
 export const LOGOUT = "[Auth] Log out";
 const REGISTER_SUCCESS = "[Auth] Registered Successfully",
   REGISTER_ERROR = "[Auth] Registration Error",
+  RESEND_REGISTER_EMAIL_SUCCESS =
+    "[Auth] Resend Registration Email Successfully",
+  RESEND_REGISTER_EMAIL_ERROR = "[Auth] Resend Registration Email Error",
   REGISTER_CLEAR_ERROR = "[Auth] Clear Registration Error",
   LOGIN_SUCCESS = "[Auth] Logged In Successfully",
   LOGIN_ERROR = "[Auth] Log In Error",
@@ -35,6 +39,19 @@ export const Register = createAction(REGISTER, props<{ userDetails: User }>());
 export const RegisterSuccess = createAction(REGISTER_SUCCESS);
 
 export const RegisterError = createAction(REGISTER_ERROR);
+
+export const ResendRegisterEmail = createAction(
+  RESEND_REGISTER_EMAIL,
+  props<{ userDetails: User }>()
+);
+
+export const ResendRegisterEmailSuccess = createAction(
+  RESEND_REGISTER_EMAIL_SUCCESS
+);
+
+export const ResendRegisterEmailError = createAction(
+  RESEND_REGISTER_EMAIL_ERROR
+);
 
 export const clearRegistrationError = createAction(REGISTER_CLEAR_ERROR);
 

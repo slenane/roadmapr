@@ -110,6 +110,7 @@ export class RegisterComponent implements OnInit {
   onRegisterSuccess() {
     this.registrationPending = false;
     this.registrationSuccessful = true;
+    this.resendEmailReady = false;
     this.resendEmailTimeout = 60;
 
     const resendInterval = setInterval(() => {
@@ -133,5 +134,13 @@ export class RegisterComponent implements OnInit {
         queryParams: { url: this.authUrl },
       });
     }
+  }
+
+  resendEmail() {
+    this.registrationPending = true;
+    this.store.dispatch(authActions.clearRegistrationError());
+    this.authStoreService.resendRegisterEmail({
+      email: this.emailUpdate.form.value.emailCtrl,
+    });
   }
 }

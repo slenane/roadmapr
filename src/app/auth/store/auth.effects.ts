@@ -39,6 +39,21 @@ export class AuthEffects {
     )
   );
 
+  resendRegisterEmail$ = createEffect((): any =>
+    this.actions$.pipe(
+      ofType(authActions.ResendRegisterEmail),
+      switchMap(({ userDetails }) =>
+        this.authService.resendRegisterEmail(userDetails).pipe(
+          map(() => authActions.ResendRegisterEmailSuccess()),
+          catchError((error) => {
+            this.alertsService.errorAlert(error.error);
+            return of(authActions.ResendRegisterEmailError());
+          })
+        )
+      )
+    )
+  );
+
   login$ = createEffect((): any =>
     this.actions$.pipe(
       ofType(authActions.Login),

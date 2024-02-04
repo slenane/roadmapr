@@ -16,6 +16,13 @@ export class AuthStoreService {
     });
   }
 
+  resendRegisterEmail(userDetails: any) {
+    this.store.dispatch({
+      type: authActions.RESEND_REGISTER_EMAIL,
+      userDetails,
+    });
+  }
+
   login(userDetails: any) {
     this.store.dispatch({
       type: authActions.LOGIN,
