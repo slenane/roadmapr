@@ -40,6 +40,7 @@
 
     <mat-chip-list class="chips">
       <mat-chip
+        *ngIf="data.count && data.count > 20"
         matTooltip="{{ data.count }} users have taken this course"
         matTooltipShowDelay="500"
       >

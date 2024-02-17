@@ -51,9 +51,10 @@ export class AppComponent implements OnInit {
     this.theme$.subscribe(
       (theme: "light" | "dark" | undefined) => (this.currentTheme = theme)
     );
-    this.authenticated$.subscribe(
-      (authenticated: boolean) => (this.isAuthenticated = authenticated)
-    );
+    this.authenticated$.subscribe((authenticated: boolean) => {
+      this.isAuthenticated = authenticated;
+      if (authenticated) this.cookieService.destroy();
+    });
 
     const theme = localStorage.getItem("selected-theme");
     if (theme) this.themeService.updateTheme(theme);
@@ -63,7 +64,7 @@ export class AppComponent implements OnInit {
       : this.translateService.use("en");
 
     // COOKIE CONSENT
-    this.translateService //
+    this.translateService
       .get([
         "PRIVACY_POLICY.COOKIE_CONSENT.MESSAGE",
         "PRIVACY_POLICY.COOKIE_CONSENT.ACCEPT",
