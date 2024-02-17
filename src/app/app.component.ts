@@ -1,6 +1,6 @@
 import { Component, HostListener, OnInit } from "@angular/core";
 import { AuthService } from "./auth/services/auth.service";
-import { Observable } from "rxjs";
+import { Observable, Subscription } from "rxjs";
 import { ThemeService } from "./core/services/theme.service";
 import { Location } from "@angular/common";
 import { TranslateService } from "@ngx-translate/core";
@@ -18,6 +18,9 @@ export class AppComponent implements OnInit {
   public currentTheme: "light" | "dark" | undefined;
   public isAuthenticated: boolean;
   public navbarCollapsed: boolean = true;
+
+  private initializedSubscription!: Subscription;
+  private statusChangeSubscription!: Subscription;
 
   constructor(
     public authService: AuthService,
@@ -76,10 +79,29 @@ export class AppComponent implements OnInit {
           this.cookieService.init?.(config);
         }
       });
+
+    this.initializedSubscription = this.cookieService.initialized$.subscribe(
+      () => {
+        const consentCookie = document.cookie.includes("cookie_consent");
+        if (consentCookie) this.cookieService.destroy?.();
+      }
+    );
+
+    this.statusChangeSubscription = this.cookieService.statusChange$.subscribe(
+      () => {
+        document.cookie =
+          "cookie_consent=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/";
+      }
+    );
   }
 
   collapseNavbar(value: any) {
     this.navbarCollapsed = value;
+  }
+
+  ngOnDestroy() {
+    this.initializedSubscription.unsubscribe();
+    this.statusChangeSubscription.unsubscribe();
   }
 
   @HostListener("window:unload", ["$event"])

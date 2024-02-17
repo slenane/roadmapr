@@ -27,8 +27,6 @@
 
     .navbar-options {
       display: grid;
-      grid-template-columns: auto auto;
-      gap: 1rem;
     }
 
     .register-button {
@@ -36,6 +34,11 @@
     }
 
     @media screen and (min-width: $breakpoint-tablet) {
+      .navbar-options {
+        grid-template-columns: auto auto;
+        gap: 1rem;
+      }
+
       .register-button {
         display: block;
       }
