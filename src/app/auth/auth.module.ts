@@ -20,6 +20,7 @@ import { ResetPasswordComponent } from "./components/reset-password/reset-passwo
 import { AuthRoutingModule } from "./auth-routing.module";
 import { LandingComponent } from "./components/landing/landing.component";
 import { AuthGuard } from "./services/auth.guard";
+import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { AuthGuard } from "./services/auth.guard";
     GitAuthComponent,
     SendResetPasswordEmailComponent,
     ResetPasswordComponent,
+    PrivacyPolicyComponent,
   ],
   exports: [
     LogInComponent,

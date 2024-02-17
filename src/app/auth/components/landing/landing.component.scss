@@ -31,6 +31,16 @@
       gap: 1rem;
     }
 
+    .register-button {
+      display: none;
+    }
+
+    @media screen and (min-width: $breakpoint-tablet) {
+      .register-button {
+        display: block;
+      }
+    }
+
     &.scrolling {
       background: linear-gradient(
         to bottom,

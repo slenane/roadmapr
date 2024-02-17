@@ -1,4 +1,5 @@
 const LANDING = "",
+  PRIVACY_POLICY = "/privacy-policy",
   LOGIN = "/login",
   REGISTER = "/register",
   REDIRECT = "/redirect",
@@ -14,6 +15,7 @@ const LANDING = "",
 
 export const ROUTES: any = {
   LANDING,
+  PRIVACY_POLICY,
   LOGIN,
   REGISTER,
   REDIRECT,

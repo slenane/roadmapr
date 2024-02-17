@@ -1,0 +1,60 @@
+<div class="landing" #landing>
+  <mat-toolbar class="landing-navigation" [ngClass]="{ scrolling: scrolling }">
+    <img
+      class="menu-brand"
+      src="/assets/images/logo/logo-dark.png"
+      routerLink="/"
+      alt="roadmapr Logo"
+    />
+
+    <div class="navbar-options">
+      <button
+        class="register-button"
+        mat-raised-button
+        color="default"
+        routerLink="/register"
+        >{{ "AUTH.REGISTER.T" | translate }}</button
+      >
+      <button mat-raised-button color="primary" routerLink="/login">{{
+        "AUTH.LOG_IN.T" | translate
+      }}</button>
+    </div>
+  </mat-toolbar>
+
+  <div class="privacy-policy">
+    <h1>{{ "PRIVACY_POLICY.TITLE" | translate }}</h1>
+    <p>{{ "PRIVACY_POLICY.DESCRIPTION" | translate }}</p>
+
+    <h2>{{ "PRIVACY_POLICY.INFORMATION_WE_COLLECT.TITLE" | translate }}</h2>
+    <p>{{ "PRIVACY_POLICY.INFORMATION_WE_COLLECT.DESCRIPTION" | translate }}</p>
+
+    <h2>{{
+      "PRIVACY_POLICY.HOW_WE_USE_YOUR_INFORMATION.TITLE" | translate
+    }}</h2>
+    <p>{{
+      "PRIVACY_POLICY.HOW_WE_USE_YOUR_INFORMATION.DESCRIPTION" | translate
+    }}</p>
+
+    <h2>{{ "PRIVACY_POLICY.SHARING_YOUR_INFORMATION.TITLE" | translate }}</h2>
+    <p>{{
+      "PRIVACY_POLICY.SHARING_YOUR_INFORMATION.DESCRIPTION" | translate
+    }}</p>
+
+    <h2>{{ "PRIVACY_POLICY.DATA_RETENTION.TITLE" | translate }}</h2>
+    <p>{{ "PRIVACY_POLICY.DATA_RETENTION.DESCRIPTION" | translate }}</p>
+
+    <h2>{{ "PRIVACY_POLICY.SECURITY.TITLE" | translate }}</h2>
+    <p>{{ "PRIVACY_POLICY.SECURITY.DESCRIPTION" | translate }}</p>
+
+    <h2>{{ "PRIVACY_POLICY.YOUR_RIGHTS.TITLE" | translate }}</h2>
+    <p>{{ "PRIVACY_POLICY.YOUR_RIGHTS.DESCRIPTION" | translate }}</p>
+
+    <h2>{{ "PRIVACY_POLICY.CHANGES_TO_POLICY.TITLE" | translate }}</h2>
+    <p>{{ "PRIVACY_POLICY.CHANGES_TO_POLICY.DESCRIPTION" | translate }}</p>
+
+    <h2>{{ "PRIVACY_POLICY.CONTACT_US.TITLE" | translate }}</h2>
+    <p>{{ "PRIVACY_POLICY.CONTACT_US.DESCRIPTION" | translate }}</p>
+
+    <p>{{ "PRIVACY_POLICY.AGREEMENT" | translate }}</p>
+  </div>
+</div>

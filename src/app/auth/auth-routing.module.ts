@@ -9,6 +9,7 @@ import { SendResetPasswordEmailComponent } from "./components/send-reset-passwor
 import { RegisterComponent } from "./components/register/register.component";
 import { RedirectComponent } from "./components/redirect/redirect.component";
 import { AuthGuard } from "./services/auth.guard";
+import { PrivacyPolicyComponent } from "./components/privacy-policy/privacy-policy.component";
 
 const routes: Routes = [
   {
@@ -16,6 +17,15 @@ const routes: Routes = [
     pathMatch: "full",
     component: LandingComponent,
     title: "ROUTES.LANDING",
+    canActivate: [AuthGuard],
+    data: {
+      preAuthRoute: true,
+    },
+  },
+  {
+    path: "privacy-policy",
+    component: PrivacyPolicyComponent,
+    title: "ROUTES.PRIVACY_POLICY",
     canActivate: [AuthGuard],
     data: {
       preAuthRoute: true,
