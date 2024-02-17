@@ -567,7 +567,13 @@
       "TITLE": "8. Entre em Contato",
       "DESCRIPTION": "Para obter mais informações sobre nossas práticas de privacidade, se tiver dúvidas ou se desejar fazer uma reclamação, entre em contato conosco por e-mail em info@roadmapr.com."
     },
-    "AGREEMENT": "Ao usar o roadmapr, você concorda com a coleta e o uso de informações de acordo com esta política."
+    "AGREEMENT": "Ao usar o roadmapr, você concorda com a coleta e o uso de informações de acordo com esta política.",
+    "COOKIE_CONSENT": {
+      "MESSAGE": "Este site usa cookies para garantir que você obtenha a melhor experiência em nosso site.",
+      "LEARN_MORE": "Saiba mais",
+      "ACCEPT": "Entendi!",
+      "PRIVACY_POLICY": "Política de Privacidade"
+    }
   },
   "PROFILE": {
     "T": "Perfil",

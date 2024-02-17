@@ -33,6 +33,10 @@ import { DELETE_ACCOUNT } from "./settings/store/settings.actions";
 import { TitleStrategy } from "@angular/router";
 import { OnboardingModule } from "./onboarding/onboarding.module";
 import { RecommendationsModule } from "./recommendations/recommendations.module";
+import {
+  NgcCookieConsentModule,
+} from "ngx-cookieconsent";
+import { cookieConfig } from "./core/constants/cookie-consent.constants";
 
 export function clearState(reducer: ActionReducer<any>): ActionReducer<any> {
   return function (state, action) {
@@ -91,6 +95,7 @@ export const metaReducers: MetaReducer<any>[] = [clearState];
     ReactiveFormsModule,
     MaterialModule,
     SharedModule,
+    NgcCookieConsentModule.forRoot(cookieConfig),
   ],
   providers: [{ provide: TitleStrategy, useClass: CustomTitleStrategy }],
   bootstrap: [AppComponent],

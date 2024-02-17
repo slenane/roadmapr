@@ -567,7 +567,13 @@
       "TITLE": "8. Contáctenos",
       "DESCRIPTION": "Para obtener más información sobre nuestras prácticas de privacidad, si tiene preguntas o si desea presentar una queja, contáctenos por correo electrónico a info@roadmapr.com."
     },
-    "AGREEMENT": "Al utilizar roadmapr, acepta la recopilación y el uso de información de acuerdo con esta política."
+    "AGREEMENT": "Al utilizar roadmapr, acepta la recopilación y el uso de información de acuerdo con esta política.",
+    "COOKIE_CONSENT": {
+      "MESSAGE": "Este sitio web utiliza cookies para garantizar que obtenga la mejor experiencia en nuestro sitio web.",
+      "LEARN_MORE": "Saber más",
+      "ACCEPT": "¡Entendido!",
+      "PRIVACY_POLICY": "Política de privacidad"
+    }
   },
   "PROFILE": {
     "T": "Perfil",

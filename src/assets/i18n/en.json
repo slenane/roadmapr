@@ -567,7 +567,13 @@
       "TITLE": "8. Contact Us",
       "DESCRIPTION": "For more information about our privacy practices, if you have questions, or if you would like to make a complaint, please contact us by email at info@roadmapr.com."
     },
-    "AGREEMENT": "By using roadmapr, you agree to the collection and use of information in accordance with this policy."
+    "AGREEMENT": "By using roadmapr, you agree to the collection and use of information in accordance with this policy.",
+    "COOKIE_CONSENT": {
+      "MESSAGE": "This website uses cookies to ensure you get the best experience on our website.",
+      "LEARN_MORE": "Learn more",
+      "ACCEPT": "Got it!",
+      "PRIVACY_POLICY": "Privacy Policy"
+    }
   },
   "PROFILE": {
     "T": "Profile",
