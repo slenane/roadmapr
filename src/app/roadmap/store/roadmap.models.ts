@@ -19,7 +19,7 @@ export interface Github {
   followers: number;
   following: number;
   reposUrl: string;
-  featuredRepo: {
+  featuredRepo?: {
     createdAt: Date;
     updatedAt: Date;
     link: string;

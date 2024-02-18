@@ -46,7 +46,8 @@ export class RoadmapGithubComponent implements OnInit, OnChanges {
 
   getStackList() {
     this.languages = this.stack.filter((item: StackItem) => {
-      const repoLanguages = this.data?.featuredRepo.languages;
+      const repoLanguages =
+        this.data?.featuredRepo && this.data?.featuredRepo.languages;
       const itemTitleLower = item.title.toLowerCase();
 
       if (repoLanguages) {
