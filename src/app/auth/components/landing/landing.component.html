@@ -1,25 +1,5 @@
-<div class="landing" #landing>
-  <mat-toolbar class="landing-navigation" [ngClass]="{ scrolling: scrolling }">
-    <img
-      class="menu-brand"
-      src="/assets/images/logo/logo-dark.png"
-      routerLink="/"
-      alt="roadmapr Logo"
-    />
-
-    <div class="navbar-options">
-      <button
-        class="register-button"
-        mat-raised-button
-        color="default"
-        routerLink="/register"
-        >{{ "AUTH.REGISTER.T" | translate }}</button
-      >
-      <button mat-raised-button color="primary" routerLink="/login">{{
-        "AUTH.LOG_IN.T" | translate
-      }}</button>
-    </div>
-  </mat-toolbar>
+<div class="landing">
+  <app-home-navigation></app-home-navigation>
 
   <section class="grid grid-hero">
     <div>

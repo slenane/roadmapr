@@ -1,0 +1,107 @@
+@import "src/styles/app-vars.scss";
+
+.explore {
+  height: 100vh;
+  max-width: 100vw;
+  overflow-y: auto;
+  padding: 0 5%;
+
+  .section-title {
+    text-align: center;
+    h2 {
+      font-size: 2rem;
+    }
+  }
+
+  .career-selection {
+    margin-bottom: 2rem;
+
+    .career {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1rem;
+
+      &-path {
+        cursor: pointer;
+        text-align: center;
+
+        &:hover {
+          border: 1px solid white;
+        }
+
+        &.selected {
+          border: 1px solid $dark-theme--primary--mat-primary-color;
+        }
+
+        .icons {
+          margin: 2rem 0;
+          display: grid;
+          gap: 0.5rem;
+          grid-template-columns: repeat(3, 1fr);
+
+          i {
+            font-size: 3rem;
+          }
+        }
+
+        .title {
+          font-size: 1.5rem;
+          margin: 2rem 0;
+        }
+      }
+    }
+  }
+
+  .stack-selection {
+    margin-bottom: 2rem;
+
+    .explore-stack {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+
+      .explore-stack-card {
+        box-sizing: border-box;
+        cursor: pointer;
+
+        &:hover {
+          border: 1px solid white;
+        }
+
+        &.selected {
+          border: 1px solid $dark-theme--primary--mat-primary-color;
+        }
+
+        mat-card-header {
+          display: grid;
+          grid-template-columns: 1fr 2fr;
+          justify-content: space-between;
+
+          mat-card-title {
+            font-size: 1rem;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            align-items: center;
+          }
+
+          .tech-stack {
+            text-align: end;
+          }
+
+          .custom-tech-stack {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            justify-content: end;
+            gap: 0.2rem;
+
+            .custom-icon {
+              border-radius: 50%;
+              height: 1.2rem;
+              width: 1.2rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}

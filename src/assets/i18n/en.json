@@ -10,6 +10,7 @@
   },
   "ROUTES": {
     "LANDING": "roadmapr - your roadmap to a career in software development",
+    "EXPLORE": "Explore | roadmapr",
     "PRIVACY_POLICY": "Privacy Policy | roadmapr",
     "LOGIN": "Log in | roadmapr",
     "REGISTER": "Register | roadmapr",
@@ -290,6 +291,7 @@
     }
   },
   "AUTH": {
+    "LOG_IN_REGISTER": "Sign up / Log in",
     "LOG_IN": {
       "T": "Log In",
       "FORGOT_PASSWORD": "Forgot Password?",

@@ -38,6 +38,11 @@ const routes: Routes = [
     loadChildren: () => import("./auth/auth.module").then((m) => m.AuthModule),
   },
   {
+    path: "explore",
+    loadChildren: () =>
+      import("./explore/explore.module").then((m) => m.ExploreModule),
+  },
+  {
     path: "onboarding",
     canActivate: [AuthGuard],
     loadChildren: () =>

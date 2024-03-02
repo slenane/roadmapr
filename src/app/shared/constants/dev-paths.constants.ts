@@ -39,6 +39,34 @@ export interface IDeveloperStacks {
   [key: string]: IStack[];
 }
 
+export const DEV_PATH_ICONS: { [key: string]: any } = {
+  "PATHS.TITLES.FRONTEND": [
+    "devicon-angularjs-plain",
+    "devicon-react-original",
+    "devicon-vuejs-plain",
+  ],
+  "PATHS.TITLES.BACKEND": [
+    "devicon-django-plain",
+    "devicon-dotnetcore-plain",
+    "devicon-laravel-original",
+  ],
+  "PATHS.TITLES.FULL_STACK": [
+    "devicon-angularjs-plain",
+    "devicon-nodejs-plain-wordmark",
+    "devicon-mongodb-plain",
+  ],
+  "PATHS.TITLES.GAME": [
+    "devicon-unrealengine-original",
+    "devicon-unity-plain",
+    "devicon-godot-plain",
+  ],
+  "PATHS.TITLES.MOBILE": [
+    "devicon-ionic-original",
+    "devicon-flutter-plain",
+    "devicon-react-original",
+  ],
+};
+
 export const DEV_PATHS: IDeveloperPath[] = [
   { id: 0, name: "PATHS.TITLES.FRONTEND" },
   { id: 1, name: "PATHS.TITLES.BACKEND" },
