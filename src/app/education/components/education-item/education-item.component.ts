@@ -45,6 +45,8 @@ export class EducationItemComponent implements OnInit, OnChanges {
       }
       if (this.data?.pinned) this.isPinned = true;
     }
+
+    console.log(this.data, this.sortedStack);
   }
 
   sortStack(stack: any) {

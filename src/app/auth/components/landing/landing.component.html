@@ -1,106 +1,166 @@
 <div class="landing">
   <app-home-navigation></app-home-navigation>
+  <div class="bg-shapes">
+    <div class="element"></div>
+    <div class="element-2"></div>
+    <div class="element-3"></div>
+    <div class="element-4"></div>
+    <div class="element-5"></div>
+    <div class="element-6"></div>
+  </div>
 
-  <section class="grid grid-hero">
-    <div>
-      <h1>{{ "LANDING.TAGLINE" | translate }}</h1>
-    </div>
-    <div>
-      <img
+  <main>
+    <section class="grid grid-hero">
+      <div class="title">
+        <span class="bubble">Welcome to roadmapr</span>
+        <!-- <h1>{{ "LANDING.TAGLINE" | translate }}</h1> -->
+        <h1
+          >Your personal <span class="highlight">roadmap</span> to a career in
+          software development</h1
+        >
+      </div>
+      <div>
+        <img
+          class="hero"
+          src="assets/images/landing/test.png"
+          alt="Roadmapr Roadmap"
+        />
+        <!-- <img
         class="hero"
         src="assets/images/landing/roadmap{{
           userLanguage !== 'en' ? '-' + userLanguage : ''
         }}.webp"
         alt="Roadmapr Roadmap"
-      />
-    </div>
-  </section>
+      /> -->
+      </div>
+    </section>
 
-  <section class="description">
-    <h2>{{ "LANDING.DESCRIPTION.T" | translate }}</h2>
-    <p>{{ "LANDING.DESCRIPTION.P1" | translate }}</p>
-    <p>{{ "LANDING.DESCRIPTION.P2" | translate }}</p>
-  </section>
+    <section class="description">
+      <h2>What is <span class="highlight">roadmapr</span>?</h2>
+      <!-- <h2>{{ "LANDING.DESCRIPTION.T" | translate }}</h2> -->
+      <!-- <p>{{ "LANDING.DESCRIPTION.P1" | translate }}</p>
+      <p>{{ "LANDING.DESCRIPTION.P2" | translate }}</p> -->
+      <div class="cards">
+        <mat-card>
+          <h3 class="description-title">
+            Free-to-use platform for self-taught developers
+          </h3>
+          <p class="description-body">
+            Learning to code should be free and accessible to all.
+          </p>
+          <button mat-raised-button color="primary" routerLink="/register">{{
+            "AUTH.REGISTER.T" | translate
+          }}</button>
+        </mat-card>
+        <mat-card>
+          <h3 class="description-title"> Organize and track your progress </h3>
+          <p class="description-body">
+            Stay motivated and on the right track
+          </p>
+        </mat-card>
+        <mat-card>
+          <h3 class="description-title"> Receive recommendations </h3>
+          <p class="description-body"> Follow in the footsteps of others </p>
+          <button mat-raised-button color="primary" routerLink="/explore"
+            >Explore</button
+          >
+        </mat-card>
+        <mat-card>
+          <h3 class="description-title"> Share your achievements </h3>
+          <p class="description-body">
+            Expand your resume to become a professional developer
+          </p>
+        </mat-card>
+      </div>
+    </section>
 
-  <section class="grid grid-left">
-    <div>
-      <img
-        src="assets/images/landing/education{{
-          userLanguage !== 'en' ? '-' + userLanguage : ''
-        }}.webp"
-        alt="Roadmapr education, projects and experience sections"
-      />
-    </div>
-    <div>
-      <h2>{{ "LANDING.EDUCATION.T" | translate }}</h2>
-      <p>{{ "LANDING.EDUCATION.P1" | translate }}</p>
-      <p>{{ "LANDING.EDUCATION.P2" | translate }}</p>
-      <p>{{ "LANDING.EDUCATION.P3" | translate }}</p>
-    </div>
-  </section>
+    <section class="organize">
+      <div class="title">
+        <h2>Organize and track</h2>
+        <p>Manage your learning to stay motivated and speed up your learning</p>
+      </div>
+      <app-demo-drop-list></app-demo-drop-list>
+    </section>
 
-  <section class="grid grid-right">
-    <div>
-      <h2>{{ "LANDING.RESUME.T" | translate }}</h2>
-      <p>{{ "LANDING.RESUME.P1" | translate }}</p>
-      <p>{{ "LANDING.RESUME.P2" | translate }}</p>
-      <p>{{ "LANDING.RESUME.P3" | translate }}</p>
-    </div>
-    <div>
-      <img
-        src="assets/images/landing/profile{{
-          userLanguage !== 'en' ? '-' + userLanguage : ''
-        }}.webp"
-        alt="Roadmapr user profile"
-      />
-    </div>
-  </section>
+    <section class="visualize">
+      <h2>Visualize your progress</h2>
 
-  <section class="grid grid-left">
-    <div>
-      <img
-        src="assets/images/landing/roadmap-right{{
-          userLanguage !== 'en' ? '-' + userLanguage : ''
-        }}.webp"
-        alt="Roadmapr Roadmap"
-      />
-    </div>
-    <div>
-      <h2>{{ "LANDING.ROADMAP.T" | translate }}</h2>
-      <p>{{ "LANDING.ROADMAP.P1" | translate }}</p>
-      <p>{{ "LANDING.ROADMAP.P2" | translate }}</p>
-      <p>{{ "LANDING.ROADMAP.P3" | translate }}</p>
-    </div>
-  </section>
+      <div class="grid-left">
+        <app-demo-radar-chart></app-demo-radar-chart>
+        <p class="description"> What kind of developer are you? </p>
+      </div>
+      <div class="grid-right">
+        <p class="description"> Trends Trends Trends Trends Trends Trends </p>
+        <app-demo-area-chart></app-demo-area-chart>
+      </div>
+    </section>
 
-  <section class="call-to-action">
-    <h2>{{ "LANDING.CTA.T" | translate }}</h2>
-    <button
-      mat-raised-button
-      color="primary"
-      class="register-button"
-      routerLink="/register"
-      >{{ "LANDING.CTA.BUTTON" | translate }}</button
-    >
-  </section>
-
-  <footer>
-    <div class="grid-left">
+    <section class="grid grid-right">
       <div>
-        <a href="mailto:info@roadmapr.dev">{{
-          "LANDING.FOOTER.CONTACT" | translate
-        }}</a>
+        <h2>{{ "LANDING.RESUME.T" | translate }}</h2>
+        <p>{{ "LANDING.RESUME.P1" | translate }}</p>
+        <p>{{ "LANDING.RESUME.P2" | translate }}</p>
+        <p>{{ "LANDING.RESUME.P3" | translate }}</p>
       </div>
       <div>
-        <a href="/privacy-policy">{{
-          "LANDING.FOOTER.PRIVACY" | translate
-        }}</a></div
+        <img
+          src="assets/images/landing/profile{{
+            userLanguage !== 'en' ? '-' + userLanguage : ''
+          }}.webp"
+          alt="Roadmapr user profile"
+        />
+      </div>
+    </section>
+
+    <section class="grid grid-left">
+      <div>
+        <img
+          src="assets/images/landing/roadmap-right{{
+            userLanguage !== 'en' ? '-' + userLanguage : ''
+          }}.webp"
+          alt="Roadmapr Roadmap"
+        />
+      </div>
+      <div>
+        <h2>{{ "LANDING.ROADMAP.T" | translate }}</h2>
+        <p>{{ "LANDING.ROADMAP.P1" | translate }}</p>
+        <p>{{ "LANDING.ROADMAP.P2" | translate }}</p>
+        <p>{{ "LANDING.ROADMAP.P3" | translate }}</p>
+      </div>
+    </section>
+
+    <section class="call-to-action">
+      <h2>{{ "LANDING.CTA.T" | translate }}</h2>
+      <button
+        mat-raised-button
+        color="primary"
+        class="register-button"
+        routerLink="/register"
+        >{{ "LANDING.CTA.BUTTON" | translate }}</button
       >
-    </div>
-    <div class="grid-right">
-      <p>{{
-        "LANDING.FOOTER.COPYRIGHT" | translate : { value: currentYear }
-      }}</p>
-    </div>
-  </footer>
+    </section>
+
+    <footer>
+      <img src="assets/images/logo/logo-icon-dark-hollow.png" alt="" />
+      <div class="grid">
+        <div class="grid-left">
+          <div>
+            <a href="mailto:info@roadmapr.dev">{{
+              "LANDING.FOOTER.CONTACT" | translate
+            }}</a>
+          </div>
+          <div>
+            <a href="/privacy-policy">{{
+              "LANDING.FOOTER.PRIVACY" | translate
+            }}</a></div
+          >
+        </div>
+        <div class="grid-right">
+          <p>{{
+            "LANDING.FOOTER.COPYRIGHT" | translate : { value: currentYear }
+          }}</p>
+        </div>
+      </div>
+    </footer>
+  </main>
 </div>

@@ -4,139 +4,393 @@
   height: 100vh;
   max-width: 100vw;
   overflow-y: auto;
-  padding: 0 5%;
+  overflow-x: hidden;
 
-  @media screen and (min-width: $breakpoint-desktop-large) {
-    padding: 0 15%;
+  .bg-shapes {
+    position: relative;
+
+    .element {
+      position: absolute;
+      height: 200px;
+      width: 200px;
+      border-radius: 50%;
+      background-color: #00d4a6;
+      top: 12rem;
+      left: -100px;
+      z-index: 0;
+    }
+
+    .element-2 {
+      position: absolute;
+      height: 400px;
+      width: 400px;
+      border-radius: 50%;
+      background-color: $dark-theme--primary--mat-primary-color;
+      top: 25rem;
+      right: -200px;
+      z-index: 0;
+    }
+
+    .element-3 {
+      position: absolute;
+      height: 300px;
+      width: 300px;
+      border-radius: 50%;
+      background-color: #00d4a6;
+      top: 83rem;
+      left: -75px;
+      z-index: 0;
+    }
+
+    .element-4 {
+      position: absolute;
+      height: 100px;
+      width: 100px;
+      border-radius: 50%;
+      background-color: $dark-theme--primary--mat-primary-color;
+      top: 115rem;
+      right: -30px;
+      z-index: 0;
+    }
+
+    .element-5 {
+      position: absolute;
+      height: 200px;
+      width: 200px;
+      border-radius: 50%;
+      background-color: #00d4a6;
+      top: 160rem;
+      left: -100px;
+      z-index: 3;
+    }
+
+    .element-6 {
+      position: absolute;
+      height: 250px;
+      width: 250px;
+      border-radius: 50%;
+      background-color: $dark-theme--primary--mat-primary-color;
+      top: 190rem;
+      right: -150px;
+      z-index: 3;
+    }
   }
 
-  section {
-    margin-bottom: 10rem;
+  main {
+    section {
+      margin-bottom: 15rem;
+      padding: 0 5%;
 
-    @media screen and (min-width: $breakpoint-desktop-large) {
-      margin-bottom: 20rem;
-    }
-
-    &.grid {
-      display: grid;
-      align-items: center;
-      gap: 2rem;
-
-      &-hero {
-        gap: 4rem;
-        margin-top: 5rem;
-
-        @media screen and (min-width: $breakpoint-tablet) {
-          grid-template-columns: auto 70%;
-          gap: 1rem;
-          margin-top: 0;
-        }
-
-        @media screen and (min-width: $breakpoint-desktop-large) {
-          margin-top: 8rem;
-        }
+      @media screen and (min-width: $breakpoint-desktop-large) {
+        padding: 0 15%;
       }
 
-      &-right {
-        div:nth-child(1) {
-          order: 2;
-        }
-        div:nth-child(2) {
-          order: 1;
-        }
+      @media screen and (min-width: $breakpoint-desktop-large) {
+        margin-bottom: 20rem;
+      }
 
-        @media screen and (min-width: $breakpoint-tablet) {
-          grid-template-columns: auto 60%;
+      &.grid {
+        display: grid;
+        align-items: center;
+        gap: 2rem;
 
-          div:nth-child(1) {
-            order: 1;
+        &-hero {
+          // gap: 4rem;
+          margin-top: 5rem;
+          text-align: center;
+          position: relative;
+          z-index: 100;
+
+          .title {
+            padding: 0 5%;
+
+            .bubble {
+              background-color: #424242;
+              border-radius: 8px;
+              color: white;
+              padding: 6px 12px;
+              font-weight: 500;
+            }
+
+            h1 {
+              margin-top: 1rem;
+              font-size: 5rem;
+              font-weight: 400;
+              margin-bottom: 4rem;
+
+              .highlight {
+                // color: $dark-theme--primary--mat-primary-color;
+                background-image: linear-gradient(
+                  -225deg,
+                  #00d4a6 0%,
+                  #018b9d 29%,
+                  #19efc1 67%,
+                  #00bcd4 100%
+                );
+                background-size: auto auto;
+                background-clip: border-box;
+                background-size: 200% auto;
+                color: #fff;
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                animation: textclip 3s linear infinite;
+                display: inline-block;
+              }
+              @keyframes textclip {
+                to {
+                  background-position: 200% center;
+                }
+              }
+            }
           }
-          div:nth-child(2) {
+
+          img {
+            width: 70%;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+          }
+
+          @media screen and (min-width: $breakpoint-tablet) {
+            // grid-template-columns: auto 70%;
+            gap: 1rem;
+            // margin-top: 0;
+          }
+
+          @media screen and (min-width: $breakpoint-desktop-large) {
+            margin-top: 8rem;
+          }
+        }
+
+        &-right {
+          div:nth-child(1) {
             order: 2;
           }
+          div:nth-child(2) {
+            order: 1;
+          }
+
+          @media screen and (min-width: $breakpoint-tablet) {
+            grid-template-columns: auto 60%;
+
+            div:nth-child(1) {
+              order: 1;
+            }
+            div:nth-child(2) {
+              order: 2;
+            }
+          }
+        }
+
+        &-left {
+          @media screen and (min-width: $breakpoint-tablet) {
+            grid-template-columns: 60% auto;
+          }
         }
       }
 
-      &-left {
+      &.description {
+        position: relative;
+        z-index: 10;
+        // @media screen and (min-width: $breakpoint-tablet) {
+        //   padding: 0 26%;
+        //   text-align: justify;
+        // }
+
+        h2 {
+          font-size: 4rem;
+          font-weight: 400;
+
+          .highlight {
+            background-image: linear-gradient(
+              -225deg,
+              #00d4a6 0%,
+              #018b9d 29%,
+              #19efc1 67%,
+              #00bcd4 100%
+            );
+            background-size: auto auto;
+            background-clip: border-box;
+            background-size: 200% auto;
+            color: #fff;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: textclip 3s linear infinite;
+            display: inline-block;
+          }
+          @keyframes textclip {
+            to {
+              background-position: 200% center;
+            }
+          }
+        }
+
+        .cards {
+          display: flex;
+          flex-direction: row;
+          gap: 1rem;
+
+          mat-card {
+            padding: 2rem;
+            height: 20rem;
+            transition: width 0.5s ease-in-out;
+            width: 400px;
+
+            .description {
+              &-title {
+                font-size: 2rem;
+                font-weight: 500;
+                margin-bottom: 1rem;
+                line-height: normal;
+              }
+
+              &-body {
+                font-size: 1rem;
+                display: none;
+              }
+            }
+
+            button {
+              display: none;
+            }
+
+            &:first-of-type,
+            &:hover {
+              width: 600px;
+
+              .description {
+                &-body {
+                  display: block;
+                }
+              }
+              button {
+                display: block;
+              }
+            }
+          }
+        }
+      }
+
+      &.organize {
+        position: relative;
+        z-index: 10;
+
+        .title {
+          display: grid;
+          grid-template-columns: auto auto;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 1rem;
+
+          h2 {
+            font-size: 4rem;
+            font-weight: 400;
+          }
+
+          p {
+            font-weight: 300;
+          }
+        }
+      }
+
+      &.visualize {
+        background-color: #424242;
+        position: relative;
+        z-index: 1;
+        padding: 1rem 5%;
+
+        @media screen and (min-width: $breakpoint-desktop-large) {
+          padding: 1rem 15%;
+        }
+
+        h2 {
+          font-size: 4rem;
+          font-weight: 400;
+        }
+
+        .grid-left {
+          display: grid;
+          grid-template-columns: 40% 1fr;
+          align-items: center;
+        }
+        .grid-right {
+          display: grid;
+          grid-template-columns: 1fr 60%;
+          align-items: center;
+        }
+      }
+
+      &.call-to-action {
+        text-align: center;
+
         @media screen and (min-width: $breakpoint-tablet) {
-          grid-template-columns: 60% auto;
+          padding: 0 25%;
+        }
+
+        .register-button {
+          height: 4rem;
         }
       }
-    }
 
-    &.description {
-      @media screen and (min-width: $breakpoint-tablet) {
-        padding: 0 26%;
-        text-align: justify;
+      img {
+        width: 100%;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        font-weight: 500;
+        line-height: normal;
+
+        @media screen and (min-width: $breakpoint-tablet) {
+          font-size: 3rem;
+        }
       }
 
       h2 {
-        text-align: center;
+        font-weight: 500;
+        line-height: normal;
+
+        @media screen and (min-width: $breakpoint-tablet) {
+          font-size: 2rem;
+        }
+      }
+
+      p {
+        line-height: normal;
+
+        @media screen and (min-width: $breakpoint-tablet) {
+          font-size: 1.2rem;
+        }
       }
     }
 
-    &.call-to-action {
+    footer {
+      padding: 1rem 5%;
       text-align: center;
 
-      @media screen and (min-width: $breakpoint-tablet) {
-        padding: 0 25%;
+      img {
+        height: 3rem;
       }
 
-      .register-button {
-        height: 4rem;
-      }
-    }
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        justify-content: space-between;
 
-    img {
-      width: 100%;
-    }
+        &-left {
+          display: grid;
+          grid-template-columns: auto auto;
+          justify-content: flex-start;
+          gap: 2rem;
 
-    h1 {
-      font-size: 2.5rem;
-      font-weight: 500;
-      line-height: normal;
+          a {
+            color: lightgray;
+            text-decoration: none;
 
-      @media screen and (min-width: $breakpoint-tablet) {
-        font-size: 3rem;
-      }
-    }
-
-    h2 {
-      font-weight: 500;
-      line-height: normal;
-
-      @media screen and (min-width: $breakpoint-tablet) {
-        font-size: 2rem;
-      }
-    }
-
-    p {
-      line-height: normal;
-
-      @media screen and (min-width: $breakpoint-tablet) {
-        font-size: 1.2rem;
-      }
-    }
-  }
-
-  footer {
-    padding: 1rem 0;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    justify-content: space-between;
-
-    .grid-left {
-      display: grid;
-      grid-template-columns: auto auto;
-      justify-content: flex-start;
-      gap: 2rem;
-
-      a {
-        color: lightgray;
-        text-decoration: none;
-
-        &:hover {
-          color: white;
+            &:hover {
+              color: white;
+            }
+          }
         }
       }
     }

@@ -6,6 +6,11 @@
   height: 95vh;
   gap: 1rem;
 
+  &.demo {
+    display: block;
+    height: auto;
+  }
+
   @media screen and (min-width: $breakpoint-tablet-large) {
     height: 100vh;
   }

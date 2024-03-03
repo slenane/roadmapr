@@ -73,8 +73,7 @@
         }
 
         mat-card-header {
-          display: grid;
-          grid-template-columns: 1fr 2fr;
+          display: flex;
           justify-content: space-between;
 
           mat-card-title {
