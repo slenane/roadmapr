@@ -37,7 +37,7 @@
       width: 300px;
       border-radius: 50%;
       background-color: #00d4a6;
-      top: 83rem;
+      top: 90rem;
       left: -75px;
       z-index: 0;
     }
@@ -48,7 +48,7 @@
       width: 100px;
       border-radius: 50%;
       background-color: $dark-theme--primary--mat-primary-color;
-      top: 115rem;
+      top: 119rem;
       right: -30px;
       z-index: 0;
     }
@@ -59,20 +59,42 @@
       width: 200px;
       border-radius: 50%;
       background-color: #00d4a6;
-      top: 160rem;
+      top: 166rem;
       left: -100px;
       z-index: 3;
     }
 
     .element-6 {
       position: absolute;
-      height: 250px;
-      width: 250px;
+      height: 50px;
+      width: 50px;
       border-radius: 50%;
       background-color: $dark-theme--primary--mat-primary-color;
-      top: 190rem;
-      right: -150px;
+      top: 184rem;
+      right: -25px;
       z-index: 3;
+    }
+
+    .element-7 {
+      position: absolute;
+      height: 100px;
+      width: 100px;
+      border-radius: 50%;
+      background-color: #00d4a6;
+      top: 209rem;
+      left: -50px;
+      z-index: 0;
+    }
+
+    .element-8 {
+      position: absolute;
+      height: 300px;
+      width: 300px;
+      border-radius: 50%;
+      background-color: $dark-theme--primary--mat-primary-color;
+      top: 218rem;
+      right: -76px;
+      z-index: 0;
     }
   }
 
@@ -298,38 +320,240 @@
         background-color: #424242;
         position: relative;
         z-index: 1;
-        padding: 1rem 5%;
+        padding: 2rem 5%;
 
         @media screen and (min-width: $breakpoint-desktop-large) {
           padding: 1rem 15%;
         }
 
-        h2 {
-          font-size: 4rem;
-          font-weight: 400;
+        .title {
+          display: grid;
+          grid-template-columns: auto auto;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 1rem;
+
+          h2 {
+            font-size: 4rem;
+            font-weight: 400;
+          }
+
+          p {
+            font-weight: 300;
+          }
         }
 
-        .grid-left {
+        .grid {
           display: grid;
           grid-template-columns: 40% 1fr;
-          align-items: center;
+          text-align: center;
+
+          .description {
+            font-size: 1.5rem;
+            line-height: normal;
+          }
         }
-        .grid-right {
+      }
+
+      &.profile {
+        position: relative;
+        z-index: 10;
+
+        .title {
           display: grid;
-          grid-template-columns: 1fr 60%;
+          grid-template-columns: auto auto;
+          justify-content: space-between;
           align-items: center;
+          margin-bottom: 1rem;
+          gap: 2rem;
+
+          h2 {
+            font-size: 4rem;
+            font-weight: 400;
+          }
+
+          p {
+            font-weight: 300;
+          }
+        }
+
+        .user-cards {
+          padding: 2rem 0;
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 2rem;
+
+          .user-card-text {
+            margin: auto 0;
+            font-size: 1.5rem;
+            line-height: normal;
+          }
+
+          .user-card {
+            padding: 0.5rem;
+            position: relative;
+
+            .header {
+              position: absolute;
+              left: 0;
+              right: 0;
+              top: 0;
+              height: 6rem;
+              background-repeat: no-repeat;
+              border-radius: 4px 4px 0 0;
+              background-size: cover;
+            }
+
+            .user-details {
+              text-align: center;
+              padding-top: 3.2rem;
+              position: relative;
+
+              .user-image {
+                height: 5rem;
+                width: 5rem;
+                border: 3px solid white;
+                border-radius: 50%;
+                object-fit: cover;
+              }
+
+              .user-name {
+                font-size: 1.1rem;
+                font-weight: 500;
+                margin: 1rem auto 0.5;
+              }
+
+              .user-path {
+                font-size: 0.9rem;
+              }
+
+              .user-location {
+                font-size: 0.9rem;
+                margin: 1rem;
+                margin-bottom: 2.5rem;
+              }
+            }
+
+            .card-header {
+              text-align: center;
+            }
+
+            .trophy {
+              display: none;
+            }
+
+            &:nth-of-type(1) {
+              animation: bounce1 10s infinite;
+            }
+
+            @keyframes bounce1 {
+              0% {
+                bottom: 0;
+              }
+              5% {
+                bottom: 1rem;
+              }
+              10% {
+                bottom: 0;
+              }
+              100% {
+                bottom: 0;
+              }
+            }
+
+            &:nth-of-type(2) {
+              animation: bounce3 10s infinite;
+
+              @keyframes bounce3 {
+                0% {
+                  bottom: 0;
+                }
+                10% {
+                  bottom: 0;
+                }
+                15% {
+                  bottom: 2rem;
+                }
+                95% {
+                  bottom: 2rem;
+                }
+                100% {
+                  bottom: 0;
+                }
+              }
+
+              .trophy {
+                display: inline-block;
+                font-size: 2rem;
+                box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+                  0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+                  0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+                position: absolute;
+                top: 13rem;
+                right: 1rem;
+                border-radius: 50%;
+                padding: 0.5rem;
+                background: -webkit-linear-gradient(0.25turn, #00d4a6, #00bcd4);
+                animation: opacity 10s infinite;
+
+                @keyframes opacity {
+                  0% {
+                    opacity: 0;
+                  }
+                  10% {
+                    opacity: 0;
+                  }
+                  15% {
+                    opacity: 1;
+                  }
+                  95% {
+                    opacity: 1;
+                  }
+                  100% {
+                    opacity: 0;
+                  }
+                }
+              }
+            }
+
+            &:nth-of-type(3) {
+              animation: bounce2 10s infinite;
+            }
+
+            @keyframes bounce2 {
+              0% {
+                bottom: 0;
+              }
+              5% {
+                bottom: 0;
+              }
+              10% {
+                bottom: 1rem;
+              }
+              15% {
+                bottom: 0;
+              }
+              100% {
+                bottom: 0;
+              }
+            }
+          }
         }
       }
 
       &.call-to-action {
         text-align: center;
+        h2 {
+          font-size: 4rem;
+          font-weight: 400;
+        }
 
         @media screen and (min-width: $breakpoint-tablet) {
-          padding: 0 25%;
+          padding: 2rem 14%;
         }
 
         .register-button {
-          height: 4rem;
+          height: 3rem;
         }
       }
 

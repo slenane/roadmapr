@@ -118,7 +118,7 @@ export class DemoAreaChartComponent implements OnInit {
   ngOnInit(): void {
     setInterval(() => {
       this.updateChartData();
-    }, 3000);
+    }, 4000);
   }
 
   updateChartData() {

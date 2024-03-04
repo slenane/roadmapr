@@ -60,7 +60,7 @@ export class DemoRadarChartComponent implements OnInit {
   ngOnInit(): void {
     setInterval(() => {
       this.updateChartData();
-    }, 5000);
+    }, 4000);
   }
 
   updateChartData(): void {

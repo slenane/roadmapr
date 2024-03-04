@@ -10,7 +10,12 @@
         id="todo"
         (cdkDropListDropped)="drop($event)"
       >
-        <div *ngFor="let data of todo" class="drag-group-item" cdkDrag>
+        <div
+          *ngFor="let data of todo"
+          class="drag-group-item"
+          cdkDrag
+          (cdkDragStarted)="pauseAutoMove()"
+        >
           <mat-card (click)="openItemDetails()">
             <mat-card-header>
               <mat-card-title [innerHTML]="data.title"> </mat-card-title>
@@ -42,7 +47,12 @@
         id="inProgress"
         (cdkDropListDropped)="drop($event)"
       >
-        <div *ngFor="let data of inProgress" class="drag-group-item" cdkDrag>
+        <div
+          *ngFor="let data of inProgress"
+          class="drag-group-item"
+          cdkDrag
+          (cdkDragStarted)="pauseAutoMove()"
+        >
           <mat-card (click)="openItemDetails()">
             <mat-card-header>
               <mat-card-title [innerHTML]="data.title"> </mat-card-title>
@@ -72,7 +82,12 @@
         id="done"
         (cdkDropListDropped)="drop($event)"
       >
-        <div *ngFor="let data of done" class="drag-group-item" cdkDrag>
+        <div
+          *ngFor="let data of done"
+          class="drag-group-item"
+          cdkDrag
+          (cdkDragStarted)="pauseAutoMove()"
+        >
           <mat-card (click)="openItemDetails()">
             <mat-card-header>
               <mat-card-title [innerHTML]="data.title"> </mat-card-title>

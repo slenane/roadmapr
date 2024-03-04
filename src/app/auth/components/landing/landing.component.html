@@ -7,6 +7,8 @@
     <div class="element-4"></div>
     <div class="element-5"></div>
     <div class="element-6"></div>
+    <div class="element-7"></div>
+    <div class="element-8"></div>
   </div>
 
   <main>
@@ -83,49 +85,61 @@
     </section>
 
     <section class="visualize">
-      <h2>Visualize your progress</h2>
+      <div class="title">
+        <h2>View progress in real time</h2>
+        <p>Stay motivated</p>
+      </div>
 
-      <div class="grid-left">
+      <div class="grid">
         <app-demo-radar-chart></app-demo-radar-chart>
-        <p class="description"> What kind of developer are you? </p>
-      </div>
-      <div class="grid-right">
-        <p class="description"> Trends Trends Trends Trends Trends Trends </p>
         <app-demo-area-chart></app-demo-area-chart>
+        <div class="description"> What kind of developer are you? </div>
+        <div class="description">
+          Track your progress throughout the year and see how you are trending
+        </div>
       </div>
     </section>
 
-    <section class="grid grid-right">
-      <div>
-        <h2>{{ "LANDING.RESUME.T" | translate }}</h2>
-        <p>{{ "LANDING.RESUME.P1" | translate }}</p>
-        <p>{{ "LANDING.RESUME.P2" | translate }}</p>
-        <p>{{ "LANDING.RESUME.P3" | translate }}</p>
+    <section class="profile">
+      <div class="title">
+        <h2>Build your resume</h2>
+        <p
+          >Stand out from the competition by building your developer CV from day
+          one.</p
+        >
       </div>
-      <div>
-        <img
-          src="assets/images/landing/profile{{
-            userLanguage !== 'en' ? '-' + userLanguage : ''
-          }}.webp"
-          alt="Roadmapr user profile"
-        />
-      </div>
-    </section>
 
-    <section class="grid grid-left">
-      <div>
-        <img
-          src="assets/images/landing/roadmap-right{{
-            userLanguage !== 'en' ? '-' + userLanguage : ''
-          }}.webp"
-          alt="Roadmapr Roadmap"
-        />
-      </div>
-      <div>
-        <h2>{{ "LANDING.ROADMAP.T" | translate }}</h2>
-        <p>{{ "LANDING.ROADMAP.P1" | translate }}</p>
-        <p>{{ "LANDING.ROADMAP.P2" | translate }}</p>
-        <p>{{ "LANDING.ROADMAP.P3" | translate }}</p>
+      <div class="user-cards">
+        <div class="user-card-text">
+          Stand out from other candidates by including all the courses you have
+          taken and the projects you have built.
+        </div>
+        <mat-card
+          *ngFor="let user of demoUsers; let i = index"
+          class="user-card"
+        >
+          <div
+            class="header"
+            [ngStyle]="{
+              backgroundImage: 'url(' + user.coverImage + ')',
+              backgroundSize: 'cover !important'
+            }"
+          >
+          </div>
+          <div class="user-details">
+            <img
+              class="user-image"
+              [src]="user.profileImage"
+              alt="User Image"
+            />
+            <div class="user-name"
+              >{{ user.firstName }} {{ user.lastName }}</div
+            >
+            <div class="user-path">{{ user.path.name | translate }}</div>
+            <p class="user-location">{{ user.location.name | translate }}</p>
+          </div>
+          <span class="material-symbols-outlined trophy"> trophy </span>
+        </mat-card>
       </div>
     </section>
 
@@ -136,7 +150,7 @@
         color="primary"
         class="register-button"
         routerLink="/register"
-        >{{ "LANDING.CTA.BUTTON" | translate }}</button
+        >{{ "AUTH.REGISTER.T" | translate }}</button
       >
     </section>
 
