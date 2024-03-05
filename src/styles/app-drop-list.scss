@@ -9,6 +9,10 @@
   &.demo {
     display: block;
     height: auto;
+
+    .drag-group-items {
+      min-height: 320px !important;
+    }
   }
 
   @media screen and (min-width: $breakpoint-tablet-large) {

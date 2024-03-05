@@ -5,11 +5,46 @@ import {
 } from "@angular/cdk/drag-drop";
 import { Component, OnInit } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
+import {
+  trigger,
+  transition,
+  style,
+  animate,
+  keyframes,
+} from "@angular/animations";
 
 @Component({
   selector: "app-demo-drop-list",
   templateUrl: "./demo-drop-list.component.html",
   styleUrls: ["./demo-drop-list.component.scss"],
+  animations: [
+    trigger("wobble", [
+      transition("void => *", [
+        animate(
+          ".7s ease",
+          keyframes([
+            style({
+              transform: "translate3d(0%, 0, 0) rotate3d(0, 0, 1, -2deg)",
+              offset: 0.05,
+            }),
+            style({
+              transform: "translate3d(0%, 0, 0) rotate3d(0, 0, 1, 2deg)",
+              offset: 0.2,
+            }),
+            style({
+              transform: "translate3d(0%, 0, 0) rotate3d(0, 0, 1, -1deg)",
+              offset: 0.4,
+            }),
+            style({
+              transform: "translate3d(0%, 0, 0) rotate3d(0, 0, 1, 1deg)",
+              offset: 0.6,
+            }),
+            style({ transform: "none", offset: 1 }),
+          ])
+        ),
+      ]),
+    ]),
+  ],
 })
 export class DemoDropListComponent implements OnInit {
   public todo: any[];
@@ -18,7 +53,6 @@ export class DemoDropListComponent implements OnInit {
 
   movePaused: boolean = false;
   interval: any;
-  pauseTimeout: any;
 
   constructor(public dialog: MatDialog) {}
 
@@ -26,7 +60,7 @@ export class DemoDropListComponent implements OnInit {
     this.resetItems();
     this.interval = setInterval(() => {
       this.moveItems();
-    }, 5000);
+    }, 4000);
   }
 
   openItemDetails() {
@@ -78,11 +112,13 @@ export class DemoDropListComponent implements OnInit {
     if (this.inProgress.length === 0) return;
 
     const itemIndex = 0; // Move the first item from inProgress to done
-    transferArrayItem(this.inProgress, this.done, itemIndex, this.done.length);
 
-    if (this.done.length === 6) {
+    if (this.done.length === 4) {
       this.resetItems();
+      return;
     }
+
+    transferArrayItem(this.inProgress, this.done, itemIndex, this.done.length);
   }
 
   moveItemFromTodoToInProgress() {
@@ -99,6 +135,24 @@ export class DemoDropListComponent implements OnInit {
 
   resetItems() {
     this.todo = [
+      {
+        title: "Eloquent JavaScript",
+        startDate: "2023-08-31T22:00:00.000Z",
+        endDate: "2023-10-03T22:00:00.000Z",
+        author: "Marijn Haverbeke",
+        link: "https://www.amazon.com/Eloquent-JavaScript-3rd-Introduction-Programming/dp/1593279507/",
+        description: "",
+        stack: [
+          {
+            title: "JavaScript",
+            name: "javascript",
+            type: "full-stack",
+          },
+        ],
+        status: "done",
+        position: 0,
+        type: "book",
+      },
       {
         title: "NodeJS - The Complete Guide",
         startDate: null,
@@ -157,11 +211,13 @@ export class DemoDropListComponent implements OnInit {
         type: "book",
       },
       {
-        title: "JavaScript: The Definitive Guide",
-        startDate: null,
+        title: "JavaScript30 - 30 Day Vanilla JS Coding Challenge",
+        startDate: {
+          $date: "2023-01-31T23:00:00.000Z",
+        },
         endDate: null,
-        author: "David Flanagan",
-        link: "https://www.amazon.com/JavaScript-Definitive-Most-Used-Programming-Language/dp/1491952024/",
+        author: "Wes Bos",
+        link: "https://javascript30.com/",
         description: "",
         stack: [
           {
@@ -170,9 +226,9 @@ export class DemoDropListComponent implements OnInit {
             type: "full-stack",
           },
         ],
-        status: "todo",
-        position: 2,
-        type: "book",
+        status: "inProgress",
+        position: 1,
+        type: "course",
       },
     ];
     this.inProgress = [
@@ -222,33 +278,15 @@ export class DemoDropListComponent implements OnInit {
         type: "course",
       },
       {
-        title: "JavaScript30 - 30 Day Vanilla JS Coding Challenge",
+        title: "JavaScript Algorithms and Data Structures",
         startDate: {
-          $date: "2023-01-31T23:00:00.000Z",
+          $date: "2023-06-05T22:00:00.000Z",
         },
-        endDate: null,
-        author: "Wes Bos",
-        link: "https://javascript30.com/",
-        description: "",
-        stack: [
-          {
-            title: "JavaScript",
-            name: "javascript",
-            type: "full-stack",
-          },
-        ],
-        status: "inProgress",
-        position: 1,
-        type: "course",
-      },
-    ];
-    this.done = [
-      {
-        title: "Eloquent JavaScript",
-        startDate: "2023-08-31T22:00:00.000Z",
-        endDate: "2023-10-03T22:00:00.000Z",
-        author: "Marijn Haverbeke",
-        link: "https://www.amazon.com/Eloquent-JavaScript-3rd-Introduction-Programming/dp/1593279507/",
+        endDate: {
+          $date: "2024-01-13T11:58:00.981Z",
+        },
+        author: "freeCodeCamp",
+        link: "https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/",
         description: "",
         stack: [
           {
@@ -258,9 +296,11 @@ export class DemoDropListComponent implements OnInit {
           },
         ],
         status: "done",
-        position: 0,
-        type: "book",
+        position: 2,
+        type: "course",
       },
+    ];
+    this.done = [
       {
         title: "The Web Developer Bootcamp",
         startDate: "2023-03-31T22:00:00.000Z",
@@ -302,28 +342,6 @@ export class DemoDropListComponent implements OnInit {
         ],
         status: "done",
         position: 1,
-        type: "course",
-      },
-      {
-        title: "JavaScript Algorithms and Data Structures",
-        startDate: {
-          $date: "2023-06-05T22:00:00.000Z",
-        },
-        endDate: {
-          $date: "2024-01-13T11:58:00.981Z",
-        },
-        author: "freeCodeCamp",
-        link: "https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/",
-        description: "",
-        stack: [
-          {
-            title: "JavaScript",
-            name: "javascript",
-            type: "full-stack",
-          },
-        ],
-        status: "done",
-        position: 2,
         type: "course",
       },
     ];
