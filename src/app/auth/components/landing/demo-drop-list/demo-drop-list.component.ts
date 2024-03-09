@@ -63,20 +63,6 @@ export class DemoDropListComponent implements OnInit {
     }, 4000);
   }
 
-  openItemDetails() {
-    // this.dialog.open(EducationItemDetailsComponent, {
-    // data: {
-    //   item: {
-    //     ...this.data,
-    //     stack: this.sortedStack,
-    //   },
-    //   listsLastIndex: this.listsLastIndex,
-    // },
-    //   panelClass: "modal-class",
-    //   autoFocus: false,
-    // });
-  }
-
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(

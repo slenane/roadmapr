@@ -42,8 +42,9 @@ export class DemoRadarChartComponent implements OnInit {
       },
     ],
     chart: {
-      height: 250,
+      height: 350,
       type: "radar",
+      background: "transparent",
       toolbar: {
         show: false,
       },

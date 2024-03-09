@@ -23,8 +23,8 @@ import { AuthGuard } from "./services/auth.guard";
 import { PrivacyPolicyComponent } from "./components/privacy-policy/privacy-policy.component";
 import { DemoDropListComponent } from "./components/landing/demo-drop-list/demo-drop-list.component";
 import { NgApexchartsModule } from "ng-apexcharts";
-import { DemoRadarChartComponent } from './components/landing/demo-radar-chart/demo-radar-chart.component';
-import { DemoAreaChartComponent } from './components/landing/demo-area-chart/demo-area-chart.component';
+import { DemoRadarChartComponent } from "./components/landing/demo-radar-chart/demo-radar-chart.component";
+import { DemoStackComponent } from "./components/landing/demo-stack/demo-stack.component";
 
 @NgModule({
   declarations: [
@@ -37,7 +37,7 @@ import { DemoAreaChartComponent } from './components/landing/demo-area-chart/dem
     PrivacyPolicyComponent,
     DemoDropListComponent,
     DemoRadarChartComponent,
-    DemoAreaChartComponent,
+    DemoStackComponent,
   ],
   exports: [
     LogInComponent,

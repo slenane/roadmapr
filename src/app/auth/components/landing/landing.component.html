@@ -14,11 +14,11 @@
   <main>
     <section class="grid grid-hero">
       <div class="title">
-        <span class="bubble">Welcome to roadmapr</span>
-        <!-- <h1>{{ "LANDING.TAGLINE" | translate }}</h1> -->
+        <span class="bubble">{{ "LANDING.WELCOME" | translate }}</span>
         <h1
-          >Your personal <span class="highlight">roadmap</span> to a career in
-          software development</h1
+          >{{ "LANDING.TAGLINE_1" | translate
+          }}<span class="highlight">{{ "LANDING.TAGLINE_2" | translate }}</span
+          >{{ "LANDING.TAGLINE_3" | translate }}</h1
         >
       </div>
       <div>
@@ -27,50 +27,53 @@
           src="assets/images/landing/roadmapr.webp"
           alt="Roadmapr Roadmap"
         />
-        <!-- <img
-        class="hero"
-        src="assets/images/landing/roadmap{{
-          userLanguage !== 'en' ? '-' + userLanguage : ''
-        }}.webp"
-        alt="Roadmapr Roadmap"
-      /> -->
       </div>
     </section>
 
     <section class="description">
-      <h2>What is <span class="highlight">roadmapr</span>?</h2>
-      <!-- <h2>{{ "LANDING.DESCRIPTION.T" | translate }}</h2> -->
-      <!-- <p>{{ "LANDING.DESCRIPTION.P1" | translate }}</p>
-      <p>{{ "LANDING.DESCRIPTION.P2" | translate }}</p> -->
+      <h2
+        >{{ "LANDING.DESCRIPTION.T_1" | translate
+        }}<span class="highlight">{{
+          "LANDING.DESCRIPTION.T_2" | translate
+        }}</span
+        >{{ "LANDING.DESCRIPTION.T_3" | translate }}</h2
+      >
       <div class="cards">
         <mat-card>
           <h3 class="description-title">
-            Free-to-use platform for self-taught developers
+            {{ "LANDING.DESCRIPTION.B1_1" | translate }}
           </h3>
           <p class="description-body">
-            Learning to code should be free and accessible to all.
+            {{ "LANDING.DESCRIPTION.B1_2" | translate }}
           </p>
-          <button mat-raised-button color="primary" routerLink="/register">{{
-            "AUTH.REGISTER.T" | translate
-          }}</button>
+          <div class="description-actions">
+            <button mat-raised-button color="primary" routerLink="/register">{{
+              "AUTH.REGISTER.T" | translate
+            }}</button>
+          </div>
         </mat-card>
         <mat-card>
-          <h3 class="description-title"> Organize and track your progress </h3>
+          <h3 class="description-title">
+            {{ "LANDING.DESCRIPTION.B2_1" | translate }}
+          </h3>
           <p class="description-body">
-            Stay motivated and on the right track
+            {{ "LANDING.DESCRIPTION.B2_2" | translate }}
           </p>
         </mat-card>
         <mat-card>
-          <h3 class="description-title"> Receive recommendations </h3>
-          <p class="description-body"> Follow in the footsteps of others </p>
-          <button mat-raised-button color="primary" routerLink="/explore"
-            >Explore</button
-          >
+          <h3 class="description-title">
+            {{ "LANDING.DESCRIPTION.B3_1" | translate }}
+          </h3>
+          <p class="description-body">
+            {{ "LANDING.DESCRIPTION.B3_2" | translate }}
+          </p>
         </mat-card>
         <mat-card>
-          <h3 class="description-title"> Share your achievements </h3>
+          <h3 class="description-title">
+            {{ "LANDING.DESCRIPTION.B4_1" | translate }}
+          </h3>
           <p class="description-body">
-            Expand your resume to become a professional developer
+            {{ "LANDING.DESCRIPTION.B4_2" | translate }}
           </p>
         </mat-card>
       </div>
@@ -78,41 +81,42 @@
 
     <section class="organize">
       <div class="title">
-        <h2>Organize and track</h2>
-        <p>Manage your learning to stay motivated and speed up your learning</p>
+        <h2>{{ "LANDING.ORGANIZE.T" | translate }}</h2>
+        <p>{{ "LANDING.ORGANIZE.P" | translate }}</p>
       </div>
       <app-demo-drop-list></app-demo-drop-list>
     </section>
 
     <section class="visualize">
       <div class="title">
-        <h2>View progress in real time</h2>
-        <p>Stay motivated</p>
+        <h2>{{ "LANDING.VISUALIZE.T" | translate }}</h2>
+        <p>{{ "LANDING.VISUALIZE.P" | translate }}</p>
       </div>
 
       <div class="grid">
-        <app-demo-radar-chart></app-demo-radar-chart>
-        <app-demo-area-chart></app-demo-area-chart>
-        <div class="description"> What kind of developer are you? </div>
         <div class="description">
-          Track your progress throughout the year and see how you are trending
+          {{ "LANDING.VISUALIZE.P1" | translate }}
+        </div>
+        <app-demo-stack></app-demo-stack>
+      </div>
+      <div class="grid grid-2">
+        <app-demo-radar-chart></app-demo-radar-chart>
+        <div class="description">
+          {{ "LANDING.VISUALIZE.P2" | translate }}
+          <p>{{ "LANDING.VISUALIZE.P3" | translate }}</p>
         </div>
       </div>
     </section>
 
     <section class="profile">
       <div class="title">
-        <h2>Build your resume</h2>
-        <p
-          >Stand out from the competition by building your developer CV from day
-          one.</p
-        >
+        <h2>{{ "LANDING.RESUME.T" | translate }}</h2>
+        <p>{{ "LANDING.RESUME.P1" | translate }}</p>
       </div>
 
       <div class="user-cards">
         <div class="user-card-text">
-          Stand out from other candidates by including all the courses you have
-          taken and the projects you have built.
+          {{ "LANDING.RESUME.P2" | translate }}
         </div>
         <mat-card
           *ngFor="let user of demoUsers; let i = index"
