@@ -437,7 +437,6 @@
 
           @media screen and (min-width: $breakpoint-tablet-large) {
             grid-template-columns: 1fr 60%;
-            gap: 0;
 
             app-demo-stack {
               order: 2;

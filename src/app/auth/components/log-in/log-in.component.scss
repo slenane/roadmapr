@@ -78,19 +78,35 @@
       }
     }
 
-    @media screen and (min-width: $breakpoint-desktop-large) {
+    @media screen and (min-width: $breakpoint-desktop-extra-large) {
       &-1 {
         top: 2rem;
         height: 75px;
         width: 75px;
-        left: 40rem;
+        left: 50rem;
       }
 
       &-2 {
         top: 16rem;
         height: 300px;
         width: 300px;
-        right: 33rem;
+        right: 43rem;
+      }
+    }
+
+    @media screen and (min-width: $breakpoint-desktop-4k) {
+      &-1 {
+        top: 2rem;
+        height: 75px;
+        width: 75px;
+        left: 72rem;
+      }
+
+      &-2 {
+        top: 16rem;
+        height: 300px;
+        width: 300px;
+        right: 60rem;
       }
     }
   }
