@@ -20,7 +20,11 @@ import { ResetPasswordComponent } from "./components/reset-password/reset-passwo
 import { AuthRoutingModule } from "./auth-routing.module";
 import { LandingComponent } from "./components/landing/landing.component";
 import { AuthGuard } from "./services/auth.guard";
-import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
+import { PrivacyPolicyComponent } from "./components/privacy-policy/privacy-policy.component";
+import { DemoDropListComponent } from "./components/landing/demo-drop-list/demo-drop-list.component";
+import { NgApexchartsModule } from "ng-apexcharts";
+import { DemoRadarChartComponent } from "./components/landing/demo-radar-chart/demo-radar-chart.component";
+import { DemoStackComponent } from "./components/landing/demo-stack/demo-stack.component";
 
 @NgModule({
   declarations: [
@@ -31,6 +35,9 @@ import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-poli
     SendResetPasswordEmailComponent,
     ResetPasswordComponent,
     PrivacyPolicyComponent,
+    DemoDropListComponent,
+    DemoRadarChartComponent,
+    DemoStackComponent,
   ],
   exports: [
     LogInComponent,
@@ -50,6 +57,7 @@ import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-poli
     EffectsModule.forFeature([AuthEffects]),
     TranslateModule.forChild(),
     AuthRoutingModule,
+    NgApexchartsModule,
   ],
   providers: [ExtUrlResolverService, AuthService, AuthStoreService, AuthGuard],
 })

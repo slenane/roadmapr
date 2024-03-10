@@ -6,6 +6,19 @@
   height: 95vh;
   gap: 1rem;
 
+  &.demo {
+    display: block;
+    height: auto;
+
+    .drag-group-items {
+      min-height: 340px !important;
+    }
+
+    .mobile-container {
+      padding: 0 !important;
+    }
+  }
+
   @media screen and (min-width: $breakpoint-tablet-large) {
     height: 100vh;
   }

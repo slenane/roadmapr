@@ -1,0 +1,108 @@
+<div class="explore">
+  <app-home-navigation></app-home-navigation>
+
+  <div class="career-selection">
+    <div class="section-title">
+      <h2>Choose Development Path</h2>
+    </div>
+
+    <div class="career">
+      <mat-card
+        *ngFor="let path of DEV_PATHS"
+        class="career-path"
+        [ngClass]="{ selected: selectedPath && selectedPath.id === path.id }"
+        (click)="selectDevPath(path)"
+      >
+        <div class="icons">
+          <i
+            *ngFor="let icon of DEV_PATH_ICONS[path.name]"
+            class="{{ icon }}"
+          ></i>
+        </div>
+        <div class="title">{{ path.name | translate }}</div>
+      </mat-card>
+    </div>
+  </div>
+
+  <div *ngIf="selectedPath" class="stack-selection">
+    <div class="section-title">
+      <h2>Choose Stack</h2>
+    </div>
+
+    <div class="explore-stack">
+      <mat-card
+        class="explore-stack-card"
+        [ngClass]="{
+          selected: selectedStack && selectedStack.id === stack.type.id
+        }"
+        *ngFor="let stack of getStackListArray()"
+        (click)="selectStack(stack.type)"
+      >
+        <mat-card-header>
+          <mat-card-title>{{ stack?.title | translate }}</mat-card-title>
+
+          <div class="tech-stack">
+            <img
+              *ngFor="let tech of stack?.stack.core"
+              class="app-stack-icon"
+              matTooltip="{{ tech.title }}"
+              src="/assets/images/stack/{{ tech.name }}-original.svg"
+            />
+            <img
+              *ngFor="let tech of stack?.stack.choice"
+              class="app-stack-icon"
+              matTooltip="{{ tech.title }}"
+              src="/assets/images/stack/{{ tech.name }}-original.svg"
+            />
+          </div>
+        </mat-card-header>
+        <mat-card-content>
+          <p class="stack-description">
+            {{ stack?.description | translate }}
+          </p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
+  <div *ngIf="selectedStack" class="stack-selection">
+    <div class="section-title">
+      <h2>Recommendations</h2>
+    </div>
+
+    <!-- <div class="explore-stack">
+      <mat-card
+        class="explore-stack-card"
+        [ngClass]="{
+          selected: selectedStack && selectedStack.id === stack.type.id
+        }"
+        *ngFor="let stack of getStackListArray()"
+        (click)="selectStack(stack.type)"
+      >
+        <mat-card-header>
+          <mat-card-title>{{ stack?.title | translate }}</mat-card-title>
+
+          <div class="tech-stack">
+            <img
+              *ngFor="let tech of stack?.stack.core"
+              class="app-stack-icon"
+              matTooltip="{{ tech.title }}"
+              src="/assets/images/stack/{{ tech.name }}-original.svg"
+            />
+            <img
+              *ngFor="let tech of stack?.stack.choice"
+              class="app-stack-icon"
+              matTooltip="{{ tech.title }}"
+              src="/assets/images/stack/{{ tech.name }}-original.svg"
+            />
+          </div>
+        </mat-card-header>
+        <mat-card-content>
+          <p class="stack-description">
+            {{ stack?.description | translate }}
+          </p>
+        </mat-card-content>
+      </mat-card>
+    </div> -->
+  </div>
+</div>

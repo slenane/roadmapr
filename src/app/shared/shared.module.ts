@@ -30,6 +30,7 @@ import { DropListDateComponent } from "./components/drop-list/drop-list-date/dro
 import { MobileNavigationComponent } from "./components/navigation/mobile-navigation/mobile-navigation.component";
 import { DropListFilterItemsComponent } from "./components/drop-list/drop-list-filters/drop-list-filter-items/drop-list-filter-items.component";
 import { LogoComponent } from "./components/logo/logo.component";
+import { HomeNavigationComponent } from "./components/navigation/home-navigation/home-navigation.component";
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { LogoComponent } from "./components/logo/logo.component";
     MobileNavigationComponent,
     DropListFilterItemsComponent,
     LogoComponent,
+    HomeNavigationComponent,
   ],
   exports: [
     NavigationComponent,
@@ -70,6 +72,7 @@ import { LogoComponent } from "./components/logo/logo.component";
     MobileNavigationComponent,
     DropListFilterItemsComponent,
     LogoComponent,
+    HomeNavigationComponent,
   ],
   imports: [
     CommonModule,

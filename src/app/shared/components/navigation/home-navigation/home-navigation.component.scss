@@ -1,0 +1,43 @@
+@import "src/styles/app-vars.scss";
+
+.home-navigation {
+  padding: 0 5%;
+  position: sticky;
+  top: 0;
+  z-index: 10000;
+  background: linear-gradient(
+    to bottom,
+    rgba(48, 48, 48, 1),
+    rgba(48, 48, 48, 0.8) 90%
+  );
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 2rem;
+  margin-bottom: 1rem;
+  transition: background-color 0.5s ease;
+
+  @media screen and (min-width: $breakpoint-desktop-large) {
+    padding: 0 15%;
+  }
+
+  .menu-brand {
+    height: 2rem;
+    cursor: pointer;
+  }
+
+  .navbar-routes {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .auth-routes {
+    display: flex;
+    gap: 1rem;
+  }
+
+  a {
+    text-decoration: none;
+    font-size: 1rem;
+  }
+}

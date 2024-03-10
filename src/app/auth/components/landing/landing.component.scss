@@ -4,184 +4,590 @@
   height: 100vh;
   max-width: 100vw;
   overflow-y: auto;
-  padding: 0 5%;
+  overflow-x: hidden;
 
-  @media screen and (min-width: $breakpoint-desktop-large) {
-    padding: 0 15%;
-  }
+  main {
+    section {
+      margin-bottom: 5rem;
+      padding: 0 5%;
 
-  &-navigation {
-    position: sticky;
-    top: 0;
-    padding: 0;
-    background: #303030;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    margin-bottom: 1rem;
-    transition: background-color 0.5s ease;
-
-    .menu-brand {
-      height: 2rem;
-      cursor: pointer;
-    }
-
-    .navbar-options {
-      display: grid;
-    }
-
-    .register-button {
-      display: none;
-    }
-
-    @media screen and (min-width: $breakpoint-tablet) {
-      .navbar-options {
-        grid-template-columns: auto auto;
-        gap: 1rem;
+      @media screen and (min-width: $breakpoint-tablet) {
+        margin-bottom: 15rem;
       }
 
-      .register-button {
-        display: block;
+      @media screen and (min-width: $breakpoint-desktop-large) {
+        padding: 0 15%;
+        margin-bottom: 20rem;
       }
-    }
 
-    &.scrolling {
-      background: linear-gradient(
-        to bottom,
-        rgba(48, 48, 48, 1),
-        rgba(48, 48, 48, 0.8) 90%
-      );
-    }
-  }
+      .title {
+        display: grid;
+        grid-template-columns: auto;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
 
-  section {
-    margin-bottom: 10rem;
+        @media screen and (min-width: $breakpoint-desktop) {
+          grid-template-columns: auto auto;
+          gap: 2rem;
+        }
 
-    @media screen and (min-width: $breakpoint-desktop-large) {
-      margin-bottom: 20rem;
-    }
+        h2 {
+          font-size: 2rem;
+          font-weight: 400;
 
-    &.grid {
-      display: grid;
-      align-items: center;
-      gap: 2rem;
+          @media screen and (min-width: $breakpoint-tablet) {
+            font-size: 4rem;
+          }
+        }
 
-      &-hero {
-        gap: 4rem;
-        margin-top: 5rem;
+        p {
+          font-weight: 300;
+        }
+      }
 
-        @media screen and (min-width: $breakpoint-tablet) {
-          grid-template-columns: auto 70%;
+      &.grid {
+        display: grid;
+        align-items: center;
+        gap: 2rem;
+
+        &-hero {
+          margin-top: 2rem;
+          position: relative;
+          z-index: 100;
+
+          @media screen and (min-width: $breakpoint-tablet) {
+            margin-top: 3rem;
+            text-align: center;
+          }
+
+          @media screen and (min-width: $breakpoint-desktop) {
+            margin-top: 5rem;
+          }
+
+          .hero-title {
+            @media screen and (min-width: $breakpoint-tablet) {
+              padding: 0 5%;
+            }
+
+            .bubble {
+              background-color: #424242;
+              border-radius: 8px;
+              color: white;
+              padding: 6px 12px;
+              font-weight: 500;
+            }
+
+            h1 {
+              margin-top: 1rem;
+              font-size: 2.2rem;
+              font-weight: 400;
+              margin-bottom: 1rem;
+
+              @media screen and (min-width: $breakpoint-tablet) {
+                margin-bottom: 3rem;
+                font-size: 4rem;
+              }
+
+              @media screen and (min-width: $breakpoint-desktop) {
+                margin-bottom: 4rem;
+                font-size: 5rem;
+              }
+            }
+          }
+
+          img {
+            width: 100%;
+            border-radius: 4px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+            @media screen and (min-width: $breakpoint-tablet) {
+              width: 70%;
+            }
+          }
+
+          @media screen and (min-width: $breakpoint-tablet) {
+            gap: 1rem;
+          }
+
+          @media screen and (min-width: $breakpoint-desktop-large) {
+            margin-top: 8rem;
+          }
+        }
+      }
+
+      &.description {
+        position: relative;
+        z-index: 10;
+
+        .cards {
+          display: grid;
+          grid-template-columns: 1fr;
           gap: 1rem;
-          margin-top: 0;
+
+          @media screen and (min-width: $breakpoint-tablet) {
+            grid-template-columns: repeat(2, 1fr);
+          }
+
+          @media screen and (min-width: $breakpoint-desktop) {
+            grid-template-columns: repeat(4, 1fr);
+          }
+
+          mat-card {
+            padding: 2rem;
+
+            .description {
+              &-title {
+                font-size: 1.5rem;
+                font-weight: 500;
+                margin-bottom: 1rem;
+                line-height: normal;
+
+                @media screen and (min-width: $breakpoint-desktop) {
+                  font-size: 2rem;
+                }
+              }
+
+              &-body {
+                font-size: 1rem;
+              }
+
+              &-actions {
+                display: none;
+
+                @media screen and (min-width: $breakpoint-desktop) {
+                  display: flex;
+                  justify-content: flex-end;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      &.organize {
+        position: relative;
+        z-index: 10;
+      }
+
+      &.visualize {
+        position: relative;
+        z-index: 1;
+
+        @media screen and (min-width: $breakpoint-desktop) {
+          margin-bottom: 13rem;
         }
 
         @media screen and (min-width: $breakpoint-desktop-large) {
-          margin-top: 8rem;
+          padding: 1rem 15%;
+        }
+
+        .grid {
+          display: grid;
+          align-items: center;
+          gap: 1rem;
+
+          @media screen and (min-width: $breakpoint-tablet-large) {
+            grid-template-columns: 1fr 60%;
+
+            app-demo-stack {
+              order: 2;
+            }
+            .description {
+              order: 1;
+            }
+          }
+
+          .description {
+            font-size: 1.2rem;
+            font-weight: 300;
+            line-height: normal;
+
+            p {
+              padding-top: 0.5rem;
+              font-size: 1rem;
+            }
+
+            @media screen and (min-width: $breakpoint-desktop) {
+              font-size: 2rem;
+              p {
+                font-size: 1.5rem;
+              }
+            }
+          }
+
+          &.grid-2 {
+            margin-top: 1rem;
+            justify-items: center;
+            gap: 0;
+
+            .description {
+              margin-top: -2rem;
+            }
+
+            @media screen and (min-width: $breakpoint-tablet) {
+              justify-items: unset;
+            }
+
+            @media screen and (min-width: $breakpoint-desktop) {
+              margin-top: 0;
+              gap: 1rem;
+
+              .description {
+                margin-top: 0;
+              }
+            }
+          }
         }
       }
 
-      &-right {
-        div:nth-child(1) {
-          order: 2;
+      &.profile {
+        position: relative;
+        z-index: 10;
+
+        .user-cards {
+          padding: 1rem 0 1.5rem;
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 0.5rem;
+
+          @media screen and (min-width: $breakpoint-tablet) {
+            gap: 1rem;
+          }
+
+          @media screen and (min-width: $breakpoint-desktop) {
+            padding: 2rem 0;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+          }
+
+          .user-card-text {
+            margin: auto 0;
+            font-size: 2rem;
+            font-weight: 300;
+            line-height: normal;
+            display: none;
+            @media screen and (min-width: $breakpoint-desktop) {
+              display: block;
+            }
+          }
+
+          .user-card {
+            padding: 0.5rem;
+            position: relative;
+
+            .header {
+              position: absolute;
+              left: 0;
+              right: 0;
+              top: 0;
+              height: 2.5rem;
+              background-repeat: no-repeat;
+              border-radius: 4px 4px 0 0;
+              background-size: cover;
+
+              @media screen and (min-width: $breakpoint-tablet) {
+                height: 6rem;
+              }
+            }
+
+            .user-details {
+              text-align: center;
+              padding-top: 1rem;
+              position: relative;
+
+              @media screen and (min-width: $breakpoint-tablet) {
+                padding-top: 3.2rem;
+              }
+
+              .user-image {
+                height: 2rem;
+                width: 2rem;
+                border: 1px solid white;
+                border-radius: 50%;
+                object-fit: cover;
+
+                @media screen and (min-width: $breakpoint-tablet) {
+                  height: 5rem;
+                  width: 5rem;
+                }
+              }
+
+              .user-name {
+                font-size: 0.5rem;
+                font-weight: 500;
+                margin: 0;
+
+                @media screen and (min-width: $breakpoint-tablet) {
+                  font-size: 1rem;
+                  margin: 1rem auto 0.5rem;
+                }
+              }
+
+              .user-path {
+                font-size: 0.5rem;
+
+                @media screen and (min-width: $breakpoint-tablet) {
+                  font-size: 0.9rem;
+                }
+              }
+
+              .user-location {
+                font-size: 0.5rem;
+                margin: 0;
+
+                @media screen and (min-width: $breakpoint-tablet) {
+                  font-size: 0.9rem;
+                  margin: 1rem;
+                  margin-bottom: 2.5rem;
+                }
+              }
+            }
+
+            .card-header {
+              text-align: center;
+            }
+
+            .trophy {
+              display: none;
+            }
+
+            &:nth-of-type(1) {
+              animation: bounce1 8s infinite;
+            }
+
+            @keyframes bounce1 {
+              0% {
+                bottom: 0;
+              }
+              5% {
+                bottom: 1rem;
+              }
+              10% {
+                bottom: 0;
+              }
+              100% {
+                bottom: 0;
+              }
+            }
+
+            &:nth-of-type(2) {
+              animation: bounce3 8s infinite;
+
+              @keyframes bounce3 {
+                0% {
+                  bottom: 0;
+                }
+                10% {
+                  bottom: 0;
+                }
+                15% {
+                  bottom: 1.5rem;
+                }
+                95% {
+                  bottom: 1.5rem;
+                }
+                100% {
+                  bottom: 0;
+                }
+              }
+
+              @media screen and (min-width: $breakpoint-tablet) {
+                @keyframes bounce3 {
+                  0% {
+                    bottom: 0;
+                  }
+                  10% {
+                    bottom: 0;
+                  }
+                  15% {
+                    bottom: 2rem;
+                  }
+                  95% {
+                    bottom: 2rem;
+                  }
+                  100% {
+                    bottom: 0;
+                  }
+                }
+              }
+
+              .trophy {
+                display: inline-block;
+                font-size: 1rem;
+                box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+                  0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+                  0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+                position: absolute;
+                bottom: 0.5rem;
+                right: 0.5rem;
+                border-radius: 50%;
+                padding: 0.2rem;
+                background: -webkit-linear-gradient(0.25turn, #00d4a6, #00bcd4);
+                animation: opacity 8s infinite;
+
+                @media screen and (min-width: $breakpoint-tablet) {
+                  font-size: 2rem;
+                  padding: 0.5rem;
+                }
+
+                @keyframes opacity {
+                  0% {
+                    opacity: 0;
+                  }
+                  10% {
+                    opacity: 0;
+                  }
+                  15% {
+                    opacity: 1;
+                  }
+                  95% {
+                    opacity: 1;
+                  }
+                  100% {
+                    opacity: 0;
+                  }
+                }
+              }
+            }
+
+            &:nth-of-type(3) {
+              animation: bounce2 8s infinite;
+            }
+
+            @keyframes bounce2 {
+              0% {
+                bottom: 0;
+              }
+              5% {
+                bottom: 0;
+              }
+              10% {
+                bottom: 1rem;
+              }
+              15% {
+                bottom: 0;
+              }
+              100% {
+                bottom: 0;
+              }
+            }
+          }
         }
-        div:nth-child(2) {
-          order: 1;
+
+        .user-card-text-mobile {
+          font-size: 1.2rem;
+          font-weight: 300;
+          display: block;
+
+          @media screen and (min-width: $breakpoint-desktop) {
+            display: none;
+          }
         }
+      }
+
+      &.call-to-action {
+        text-align: center;
+
+        h2 {
+          font-size: 2rem;
+          font-weight: 400;
+
+          @media screen and (min-width: $breakpoint-desktop) {
+            font-size: 4rem;
+          }
+        }
+
+        margin: 15rem 0;
+        @media screen and (min-width: $breakpoint-tablet) {
+          padding: 0 14%;
+        }
+
+        .register-button {
+          height: 3rem;
+        }
+      }
+
+      img {
+        width: 100%;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        font-weight: 500;
+        line-height: normal;
 
         @media screen and (min-width: $breakpoint-tablet) {
-          grid-template-columns: auto 60%;
-
-          div:nth-child(1) {
-            order: 1;
-          }
-          div:nth-child(2) {
-            order: 2;
-          }
+          font-size: 3rem;
         }
-      }
-
-      &-left {
-        @media screen and (min-width: $breakpoint-tablet) {
-          grid-template-columns: 60% auto;
-        }
-      }
-    }
-
-    &.description {
-      @media screen and (min-width: $breakpoint-tablet) {
-        padding: 0 26%;
-        text-align: justify;
       }
 
       h2 {
-        text-align: center;
+        font-weight: 500;
+        line-height: normal;
+
+        @media screen and (min-width: $breakpoint-tablet) {
+          font-size: 2rem;
+        }
+      }
+
+      p {
+        line-height: normal;
+
+        @media screen and (min-width: $breakpoint-tablet) {
+          font-size: 1.2rem;
+        }
       }
     }
 
-    &.call-to-action {
-      text-align: center;
+    footer {
+      padding: 1rem 5%;
 
-      @media screen and (min-width: $breakpoint-tablet) {
-        padding: 0 25%;
-      }
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        justify-content: space-between;
 
-      .register-button {
-        height: 4rem;
-      }
-    }
+        &-left {
+          display: grid;
+          grid-template-columns: auto auto;
+          justify-content: flex-start;
+          gap: 2rem;
 
-    img {
-      width: 100%;
-    }
+          a {
+            color: lightgray;
+            text-decoration: none;
 
-    h1 {
-      font-size: 2.5rem;
-      font-weight: 500;
-      line-height: normal;
-
-      @media screen and (min-width: $breakpoint-tablet) {
-        font-size: 3rem;
-      }
-    }
-
-    h2 {
-      font-weight: 500;
-      line-height: normal;
-
-      @media screen and (min-width: $breakpoint-tablet) {
-        font-size: 2rem;
-      }
-    }
-
-    p {
-      line-height: normal;
-
-      @media screen and (min-width: $breakpoint-tablet) {
-        font-size: 1.2rem;
+            &:hover {
+              color: white;
+            }
+          }
+        }
       }
     }
   }
 
-  footer {
-    padding: 1rem 0;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    justify-content: space-between;
-
-    .grid-left {
-      display: grid;
-      grid-template-columns: auto auto;
-      justify-content: flex-start;
-      gap: 2rem;
-
-      a {
-        color: lightgray;
-        text-decoration: none;
-
-        &:hover {
-          color: white;
-        }
-      }
+  .highlight {
+    background-image: linear-gradient(
+      -225deg,
+      #00d4a6 0%,
+      #018b9d 29%,
+      #19efc1 67%,
+      #00bcd4 100%
+    );
+    background-size: auto auto;
+    background-clip: border-box;
+    background-size: 200% auto;
+    color: #fff;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textclip 3s linear infinite;
+    display: inline-block;
+  }
+  @keyframes textclip {
+    to {
+      background-position: 200% center;
     }
   }
 }

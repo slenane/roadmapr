@@ -1,0 +1,224 @@
+<div class="drag-container demo">
+  <div cdkDropListGroup class="drag-container-groups" *ngIf="!isMobileDevice">
+    <div class="drag-group">
+      <h2 class="drag-group-title">{{ "GENERAL.STATUS.TO_DO" | translate }}</h2>
+      <div
+        cdkDropList
+        #todoList="cdkDropList"
+        [cdkDropListData]="todo"
+        class="drag-group-items"
+        id="todo"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div
+          *ngFor="let data of todo"
+          class="drag-group-item"
+          cdkDrag
+          (cdkDragStarted)="pauseAutoMove()"
+          [@wobble]
+        >
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title [innerHTML]="data.title"> </mat-card-title>
+              <mat-card-subtitle [innerHTML]="data.author"> </mat-card-subtitle>
+
+              <div class="education-stack">
+                <img
+                  *ngFor="let tech of data.stack"
+                  class="app-stack-icon"
+                  matTooltip="{{ tech.title }}"
+                  src="/assets/images/stack/{{ tech.name }}-original.svg"
+                />
+              </div>
+            </mat-card-header>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+
+    <div class="drag-group">
+      <h2 class="drag-group-title">{{
+        "GENERAL.STATUS.IN_PROGRESS" | translate
+      }}</h2>
+      <div
+        cdkDropList
+        #inProgressList="cdkDropList"
+        [cdkDropListData]="inProgress"
+        class="drag-group-items"
+        id="inProgress"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div
+          *ngFor="let data of inProgress"
+          class="drag-group-item"
+          cdkDrag
+          (cdkDragStarted)="pauseAutoMove()"
+          [@wobble]
+        >
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title [innerHTML]="data.title"> </mat-card-title>
+              <mat-card-subtitle [innerHTML]="data.author"> </mat-card-subtitle>
+
+              <div class="education-stack">
+                <img
+                  *ngFor="let tech of data.stack"
+                  class="app-stack-icon"
+                  matTooltip="{{ tech.title }}"
+                  src="/assets/images/stack/{{ tech.name }}-original.svg"
+                />
+              </div>
+            </mat-card-header>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+
+    <div class="drag-group">
+      <h2 class="drag-group-title">{{ "GENERAL.STATUS.DONE" | translate }}</h2>
+      <div
+        cdkDropList
+        #doneList="cdkDropList"
+        [cdkDropListData]="done"
+        class="drag-group-items"
+        id="done"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div
+          *ngFor="let data of done"
+          class="drag-group-item"
+          cdkDrag
+          (cdkDragStarted)="pauseAutoMove()"
+          [@wobble]
+        >
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title [innerHTML]="data.title"> </mat-card-title>
+              <mat-card-subtitle [innerHTML]="data.author"> </mat-card-subtitle>
+
+              <div class="education-stack">
+                <img
+                  *ngFor="let tech of data.stack"
+                  class="app-stack-icon"
+                  matTooltip="{{ tech.title }}"
+                  src="/assets/images/stack/{{ tech.name }}-original.svg"
+                />
+              </div>
+            </mat-card-header>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mobile-container" *ngIf="isMobileDevice">
+    <div class="drag-container-groups">
+      <mat-tab-group #tabGroup animationDuration="0ms" [selectedIndex]="1">
+        <mat-tab>
+          <ng-template mat-tab-label>
+            {{ "GENERAL.STATUS.TO_DO" | translate }}
+          </ng-template>
+          <div class="drag-group">
+            <div
+              cdkDropList
+              #todoList="cdkDropList"
+              [cdkDropListData]="todo"
+              class="drag-group-items"
+              id="todo"
+              (cdkDropListDropped)="drop($event)"
+            >
+              <div *ngFor="let data of todo" class="drag-group-item">
+                <mat-card>
+                  <mat-card-header>
+                    <mat-card-title [innerHTML]="data.title"> </mat-card-title>
+                    <mat-card-subtitle [innerHTML]="data.author">
+                    </mat-card-subtitle>
+
+                    <div class="education-stack">
+                      <img
+                        *ngFor="let tech of data.stack"
+                        class="app-stack-icon"
+                        matTooltip="{{ tech.title }}"
+                        src="/assets/images/stack/{{ tech.name }}-original.svg"
+                      />
+                    </div>
+                  </mat-card-header>
+                </mat-card>
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+
+        <mat-tab>
+          <ng-template mat-tab-label>
+            {{ "GENERAL.STATUS.IN_PROGRESS" | translate }}
+          </ng-template>
+          <div class="drag-group">
+            <div
+              cdkDropList
+              #inProgressList="cdkDropList"
+              [cdkDropListData]="inProgress"
+              class="drag-group-items"
+              id="inProgress"
+              (cdkDropListDropped)="drop($event)"
+            >
+              <div *ngFor="let data of inProgress" class="drag-group-item">
+                <mat-card>
+                  <mat-card-header>
+                    <mat-card-title [innerHTML]="data.title"> </mat-card-title>
+                    <mat-card-subtitle [innerHTML]="data.author">
+                    </mat-card-subtitle>
+
+                    <div class="education-stack">
+                      <img
+                        *ngFor="let tech of data.stack"
+                        class="app-stack-icon"
+                        matTooltip="{{ tech.title }}"
+                        src="/assets/images/stack/{{ tech.name }}-original.svg"
+                      />
+                    </div>
+                  </mat-card-header>
+                </mat-card>
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+
+        <mat-tab>
+          <ng-template mat-tab-label>
+            {{ "GENERAL.STATUS.DONE" | translate }}
+          </ng-template>
+          <div class="drag-group">
+            <div
+              cdkDropList
+              #doneList="cdkDropList"
+              [cdkDropListData]="done"
+              class="drag-group-items"
+              id="done"
+              (cdkDropListDropped)="drop($event)"
+            >
+              <div *ngFor="let data of done" class="drag-group-item">
+                <mat-card>
+                  <mat-card-header>
+                    <mat-card-title [innerHTML]="data.title"> </mat-card-title>
+                    <mat-card-subtitle [innerHTML]="data.author">
+                    </mat-card-subtitle>
+
+                    <div class="education-stack">
+                      <img
+                        *ngFor="let tech of data.stack"
+                        class="app-stack-icon"
+                        matTooltip="{{ tech.title }}"
+                        src="/assets/images/stack/{{ tech.name }}-original.svg"
+                      />
+                    </div>
+                  </mat-card-header>
+                </mat-card>
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>
