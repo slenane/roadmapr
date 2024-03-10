@@ -1,3 +1,53 @@
+@import "src/styles/app-vars.scss";
+
+.bg-shapes {
+  position: relative;
+
+  .bg-element {
+    position: absolute;
+    border-radius: 50%;
+    z-index: 0;
+
+    &-green {
+      background-color: #00d4a6;
+    }
+
+    &-blue {
+      background-color: $dark-theme--primary--mat-primary-color;
+    }
+
+    &-1 {
+      top: 2rem;
+      height: 75px;
+      width: 75px;
+      left: -25px;
+    }
+
+    &-2 {
+      top: 17rem;
+      height: 300px;
+      width: 300px;
+      right: -100px;
+    }
+
+    @media screen and (min-width: $breakpoint-desktop) {
+      &-1 {
+        top: 2rem;
+        height: 75px;
+        width: 75px;
+        left: 30rem;
+      }
+
+      &-2 {
+        top: 16rem;
+        height: 300px;
+        width: 300px;
+        right: 25rem;
+      }
+    }
+  }
+}
+
 .forgot-password-link {
   text-align: end;
   cursor: pointer;

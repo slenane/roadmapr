@@ -72,10 +72,10 @@
       }
 
       &-8 {
-        top: 203rem;
-        height: 200px;
-        width: 200px;
-        right: -100px;
+        top: 211rem;
+        height: 100px;
+        width: 100px;
+        right: -50px;
       }
 
       @media screen and (min-width: $breakpoint-desktop) {
@@ -108,28 +108,28 @@
         }
 
         &-5 {
-          top: 183rem;
+          top: 189rem;
           height: 200px;
           width: 200px;
           left: -100px;
         }
 
         &-6 {
-          top: 170rem;
+          top: 171rem;
           height: 400px;
           width: 400px;
-          right: -25px;
+          right: -100px;
         }
 
         &-7 {
-          top: 235rem;
+          top: 234rem;
           height: 100px;
           width: 100px;
           left: -50px;
         }
 
         &-8 {
-          top: 245rem;
+          top: 244rem;
           height: 300px;
           width: 300px;
           right: -76px;
@@ -361,7 +361,7 @@
             @media screen and (min-width: $breakpoint-desktop) {
               font-size: 2rem;
               p {
-                font-size: 1.8rem;
+                font-size: 1.5rem;
               }
             }
           }
