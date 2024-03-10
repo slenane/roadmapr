@@ -377,7 +377,7 @@
           align-items: center;
           gap: 1rem;
 
-          @media screen and (min-width: $breakpoint-desktop) {
+          @media screen and (min-width: $breakpoint-tablet-large) {
             grid-template-columns: 1fr 60%;
             gap: 0;
 

@@ -46,19 +46,35 @@
       }
     }
 
+    @media screen and (min-width: $breakpoint-tablet-large) {
+      &-1 {
+        top: 2rem;
+        height: 75px;
+        width: 75px;
+        left: 17rem;
+      }
+
+      &-2 {
+        top: 20rem;
+        height: 300px;
+        width: 300px;
+        right: 6rem;
+      }
+    }
+
     @media screen and (min-width: $breakpoint-desktop) {
       &-1 {
         top: 2rem;
         height: 75px;
         width: 75px;
-        left: 30rem;
+        left: 25rem;
       }
 
       &-2 {
         top: 16rem;
         height: 300px;
         width: 300px;
-        right: 25rem;
+        right: 15rem;
       }
     }
   }
