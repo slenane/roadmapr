@@ -16,6 +16,10 @@
   margin-bottom: 1rem;
   transition: background-color 0.5s ease;
 
+  @media screen and (min-width: $breakpoint-desktop-large) {
+    padding: 0 15%;
+  }
+
   .menu-brand {
     height: 2rem;
     cursor: pointer;

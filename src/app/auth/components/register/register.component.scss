@@ -77,5 +77,21 @@
         right: 15rem;
       }
     }
+
+    @media screen and (min-width: $breakpoint-desktop-large) {
+      &-1 {
+        top: 2rem;
+        height: 75px;
+        width: 75px;
+        left: 40rem;
+      }
+
+      &-2 {
+        top: 16rem;
+        height: 300px;
+        width: 300px;
+        right: 33rem;
+      }
+    }
   }
 }

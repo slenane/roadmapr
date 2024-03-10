@@ -193,6 +193,64 @@
           right: -76px;
         }
       }
+
+      @media screen and (min-width: $breakpoint-desktop-large) {
+        &-1 {
+          top: 12rem;
+          height: 200px;
+          width: 200px;
+          left: -100px;
+        }
+
+        &-2 {
+          top: 25rem;
+          height: 400px;
+          width: 400px;
+          right: -200px;
+        }
+
+        &-3 {
+          top: 96rem;
+          height: 300px;
+          width: 300px;
+          left: -75px;
+        }
+
+        &-4 {
+          top: 118rem;
+          height: 100px;
+          width: 100px;
+          right: -30px;
+        }
+
+        &-5 {
+          top: 163rem;
+          height: 200px;
+          width: 200px;
+          left: -100px;
+        }
+
+        &-6 {
+          top: 191rem;
+          height: 400px;
+          width: 400px;
+          right: -100px;
+        }
+
+        &-7 {
+          top: 234rem;
+          height: 100px;
+          width: 100px;
+          left: -50px;
+        }
+
+        &-8 {
+          top: 267rem;
+          height: 300px;
+          width: 300px;
+          right: -76px;
+        }
+      }
     }
   }
 
