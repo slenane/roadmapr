@@ -26,9 +26,11 @@
     <div class="progress-grid">
       <div class="progress-grid-section">
         <ng-container *ngFor="let tech of stackGridOne">
-          <div *ngIf="tech.first && showStackSubHeaders" class="list-title">{{
-            tech.list | uppercase
-          }}</div>
+          <div
+            *ngIf="tech.first && showStackSubHeaders && !isMobileDevice"
+            class="list-title"
+            >{{ tech.list | uppercase }}</div
+          >
 
           <div class="stack-progress">
             <img
@@ -46,7 +48,7 @@
         </ng-container>
       </div>
 
-      <div class="progress-grid-section">
+      <div class="progress-grid-section" *ngIf="!isMobileDevice">
         <ng-container *ngFor="let tech of stackGridTwo">
           <div *ngIf="tech.first" class="list-title">{{
             tech.list | uppercase

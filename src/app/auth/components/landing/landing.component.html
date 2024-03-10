@@ -1,19 +1,19 @@
 <div class="landing">
   <app-home-navigation></app-home-navigation>
   <div class="bg-shapes">
-    <div class="element"></div>
-    <div class="element-2"></div>
-    <div class="element-3"></div>
-    <div class="element-4"></div>
-    <div class="element-5"></div>
-    <div class="element-6"></div>
-    <div class="element-7"></div>
-    <div class="element-8"></div>
+    <div class="bg-element bg-element-green bg-element-1"></div>
+    <div class="bg-element bg-element-blue bg-element-2"></div>
+    <div class="bg-element bg-element-green bg-element-3"></div>
+    <div class="bg-element bg-element-blue bg-element-4"></div>
+    <div class="bg-element bg-element-green bg-element-5"></div>
+    <div class="bg-element bg-element-blue bg-element-6"></div>
+    <div class="bg-element bg-element-green bg-element-7"></div>
+    <div class="bg-element bg-element-blue bg-element-8"></div>
   </div>
 
   <main>
     <section class="grid grid-hero">
-      <div class="title">
+      <div class="hero-title">
         <span class="bubble">{{ "LANDING.WELCOME" | translate }}</span>
         <h1
           >{{ "LANDING.TAGLINE_1" | translate
@@ -31,13 +31,15 @@
     </section>
 
     <section class="description">
-      <h2
-        >{{ "LANDING.DESCRIPTION.T_1" | translate
-        }}<span class="highlight">{{
-          "LANDING.DESCRIPTION.T_2" | translate
-        }}</span
-        >{{ "LANDING.DESCRIPTION.T_3" | translate }}</h2
-      >
+      <div class="title">
+        <h2
+          >{{ "LANDING.DESCRIPTION.T_1" | translate
+          }}<span class="highlight">{{
+            "LANDING.DESCRIPTION.T_2" | translate
+          }}</span
+          >{{ "LANDING.DESCRIPTION.T_3" | translate }}</h2
+        >
+      </div>
       <div class="cards">
         <mat-card>
           <h3 class="description-title">
@@ -94,16 +96,17 @@
       </div>
 
       <div class="grid">
+        <app-demo-stack></app-demo-stack>
         <div class="description">
           {{ "LANDING.VISUALIZE.P1" | translate }}
+          <p>{{ "LANDING.VISUALIZE.P2" | translate }}</p>
         </div>
-        <app-demo-stack></app-demo-stack>
       </div>
       <div class="grid grid-2">
         <app-demo-radar-chart></app-demo-radar-chart>
         <div class="description">
-          {{ "LANDING.VISUALIZE.P2" | translate }}
-          <p>{{ "LANDING.VISUALIZE.P3" | translate }}</p>
+          {{ "LANDING.VISUALIZE.P3" | translate }}
+          <p>{{ "LANDING.VISUALIZE.P4" | translate }}</p>
         </div>
       </div>
     </section>
@@ -145,6 +148,10 @@
           <span class="material-symbols-outlined trophy"> trophy </span>
         </mat-card>
       </div>
+
+      <div class="user-card-text-mobile">
+        {{ "LANDING.RESUME.P2" | translate }}
+      </div>
     </section>
 
     <section class="call-to-action">
@@ -159,7 +166,6 @@
     </section>
 
     <footer>
-      <img src="assets/images/logo/logo-icon-dark-hollow.png" alt="" />
       <div class="grid">
         <div class="grid-left">
           <div>

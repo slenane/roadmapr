@@ -1,4 +1,6 @@
+import { BreakpointObserver } from "@angular/cdk/layout";
 import { Component, OnInit } from "@angular/core";
+import { MEDIA_QUERIES } from "src/app/shared/constants/breakpoints.constants";
 import { IStack } from "src/app/shared/constants/dev-paths.constants";
 
 @Component({
@@ -9,6 +11,7 @@ import { IStack } from "src/app/shared/constants/dev-paths.constants";
 export class DemoStackComponent implements OnInit {
   public stackGridOne: any[] = [];
   public stackGridTwo: any[] = [];
+  public isMobileDevice = false;
   public activeStack: IStack = {
     type: {
       id: 10,
@@ -329,7 +332,7 @@ export class DemoStackComponent implements OnInit {
     },
   };
 
-  constructor() {}
+  constructor(private breakpointObserver: BreakpointObserver) {}
 
   ngOnInit(): void {
     this.resetLists();
@@ -339,6 +342,16 @@ export class DemoStackComponent implements OnInit {
       this.resetLists();
       this.increaseCounts(this.stackListInitial, this.stackListFinal);
     }, 50000);
+
+    this.breakpointObserver
+      .observe(MEDIA_QUERIES.BREAKPOINTS)
+      .subscribe((result) => {
+        this.isMobileDevice = MEDIA_QUERIES.MOBILE.find(
+          (size) => result.breakpoints[size]
+        )
+          ? true
+          : false;
+      });
   }
 
   getPercentageValue(number: number): number {

@@ -281,8 +281,9 @@
       "T": "Real-time progress",
       "P": "Stay motivated through hitting milestones on your development path.",
       "P1": "Follow popular tech stacks to ensure you are building a balanced roadmap that will lead to a successful career.",
-      "P2": "Gain insights into the type of developer you are and where you need to improve.",
-      "P3": "We combine education, projects and work experience to give you a full picture of your skillset."
+      "P2": "Or create your own custom path based on what you are find most interesting.",
+      "P3": "Gain insights into the type of developer you are and where you need to improve.",
+      "P4": "We combine education, projects and work experience to give you a full picture of your skillset."
     },
     "RESUME": {
       "T": "Build your resume",

@@ -1,3 +1,4 @@
+import { BreakpointObserver } from "@angular/cdk/layout";
 import { Component, OnInit, ViewChild } from "@angular/core";
 import {
   ApexAxisChartSeries,
@@ -5,6 +6,7 @@ import {
   ApexXAxis,
   ChartComponent,
 } from "ng-apexcharts";
+import { MEDIA_QUERIES } from "src/app/shared/constants/breakpoints.constants";
 
 type ChartOptions = {
   fill: { colors?: string[] };
@@ -20,6 +22,8 @@ type ChartOptions = {
   styleUrls: ["./demo-radar-chart.component.scss"],
 })
 export class DemoRadarChartComponent implements OnInit {
+  public isMobileDevice = false;
+
   public chartValues = [
     [1, 2, 5, 3],
     [7, 2, 1, 1],
@@ -42,7 +46,7 @@ export class DemoRadarChartComponent implements OnInit {
       },
     ],
     chart: {
-      height: 350,
+      height: 300,
       type: "radar",
       background: "transparent",
       toolbar: {
@@ -56,12 +60,35 @@ export class DemoRadarChartComponent implements OnInit {
 
   @ViewChild("chart") chart: ChartComponent;
 
-  constructor() {}
+  constructor(private breakpointObserver: BreakpointObserver) {}
 
   ngOnInit(): void {
-    setInterval(() => {
-      this.updateChartData();
-    }, 4000);
+    this.updateChartData();
+    setInterval(() => {}, 4000);
+
+    this.breakpointObserver
+      .observe(MEDIA_QUERIES.BREAKPOINTS)
+      .subscribe((result) => {
+        this.isMobileDevice = MEDIA_QUERIES.MOBILE.find(
+          (size) => result.breakpoints[size]
+        )
+          ? true
+          : false;
+
+        if (this.isMobileDevice) {
+          this.chartOptions = {
+            ...this.chartOptions,
+            chart: {
+              ...this.chartOptions.chart,
+              height: 250,
+            },
+          };
+        }
+
+        setInterval(() => {
+          this.updateChartData();
+        }, 4000);
+      });
   }
 
   updateChartData(): void {

@@ -12,6 +12,8 @@ import {
   animate,
   keyframes,
 } from "@angular/animations";
+import { BreakpointObserver } from "@angular/cdk/layout";
+import { MEDIA_QUERIES } from "src/app/shared/constants/breakpoints.constants";
 
 @Component({
   selector: "app-demo-drop-list",
@@ -50,17 +52,33 @@ export class DemoDropListComponent implements OnInit {
   public todo: any[];
   public inProgress: any[];
   public done: any[];
+  public isMobileDevice = false;
 
   movePaused: boolean = false;
   interval: any;
 
-  constructor(public dialog: MatDialog) {}
+  constructor(private breakpointObserver: BreakpointObserver) {}
 
   ngOnInit(): void {
     this.resetItems();
-    this.interval = setInterval(() => {
-      this.moveItems();
-    }, 4000);
+
+    this.breakpointObserver
+      .observe(MEDIA_QUERIES.BREAKPOINTS)
+      .subscribe((result) => {
+        this.isMobileDevice = MEDIA_QUERIES.MOBILE.find(
+          (size) => result.breakpoints[size]
+        )
+          ? true
+          : false;
+
+        if (this.isMobileDevice) {
+          this.pauseAutoMove();
+        } else {
+          this.interval = setInterval(() => {
+            this.moveItems();
+          }, 4000);
+        }
+      });
   }
 
   drop(event: CdkDragDrop<string[]>) {

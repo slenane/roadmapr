@@ -9,106 +9,173 @@
   .bg-shapes {
     position: relative;
 
-    .element {
+    .bg-element {
       position: absolute;
-      height: 200px;
-      width: 200px;
       border-radius: 50%;
-      background-color: #00d4a6;
-      top: 12rem;
-      left: -100px;
       z-index: 0;
-    }
 
-    .element-2 {
-      position: absolute;
-      height: 400px;
-      width: 400px;
-      border-radius: 50%;
-      background-color: $dark-theme--primary--mat-primary-color;
-      top: 25rem;
-      right: -200px;
-      z-index: 0;
-    }
+      &-green {
+        background-color: #00d4a6;
+      }
 
-    .element-3 {
-      position: absolute;
-      height: 300px;
-      width: 300px;
-      border-radius: 50%;
-      background-color: #00d4a6;
-      top: 88rem;
-      left: -75px;
-      z-index: 0;
-    }
+      &-blue {
+        background-color: $dark-theme--primary--mat-primary-color;
+      }
 
-    .element-4 {
-      position: absolute;
-      height: 100px;
-      width: 100px;
-      border-radius: 50%;
-      background-color: $dark-theme--primary--mat-primary-color;
-      top: 118rem;
-      right: -30px;
-      z-index: 0;
-    }
+      &-1 {
+        top: 12rem;
+        height: 75px;
+        width: 75px;
+        left: -25px;
+      }
 
-    .element-5 {
-      position: absolute;
-      height: 200px;
-      width: 200px;
-      border-radius: 50%;
-      background-color: #00d4a6;
-      top: 183rem;
-      left: -100px;
-      z-index: 0;
-    }
+      &-2 {
+        top: 21rem;
+        height: 200px;
+        width: 200px;
+        right: -100px;
+      }
 
-    .element-6 {
-      position: absolute;
-      height: 400px;
-      width: 400px;
-      border-radius: 50%;
-      background-color: $dark-theme--primary--mat-primary-color;
-      top: 170rem;
-      right: -25px;
-      z-index: 0;
-    }
+      &-3 {
+        top: 45rem;
+        height: 200px;
+        width: 200px;
+        left: -100px;
+      }
 
-    .element-7 {
-      position: absolute;
-      height: 100px;
-      width: 100px;
-      border-radius: 50%;
-      background-color: #00d4a6;
-      top: 235rem;
-      left: -50px;
-      z-index: 0;
-    }
+      &-4 {
+        top: 83rem;
+        height: 100px;
+        width: 100px;
+        right: -30px;
+      }
 
-    .element-8 {
-      position: absolute;
-      height: 300px;
-      width: 300px;
-      border-radius: 50%;
-      background-color: $dark-theme--primary--mat-primary-color;
-      top: 245rem;
-      right: -76px;
-      z-index: 0;
+      &-5 {
+        top: 106rem;
+        height: 200px;
+        width: 200px;
+        left: -100px;
+      }
+
+      &-6 {
+        top: 147rem;
+        height: 200px;
+        width: 200px;
+        right: -100px;
+      }
+
+      &-7 {
+        top: 171rem;
+        height: 50px;
+        width: 50px;
+        left: -25px;
+      }
+
+      &-8 {
+        top: 203rem;
+        height: 200px;
+        width: 200px;
+        right: -100px;
+      }
+
+      @media screen and (min-width: $breakpoint-desktop) {
+        &-1 {
+          top: 12rem;
+          height: 200px;
+          width: 200px;
+          left: -100px;
+        }
+
+        &-2 {
+          top: 25rem;
+          height: 400px;
+          width: 400px;
+          right: -200px;
+        }
+
+        &-3 {
+          top: 88rem;
+          height: 300px;
+          width: 300px;
+          left: -75px;
+        }
+
+        &-4 {
+          top: 118rem;
+          height: 100px;
+          width: 100px;
+          right: -30px;
+        }
+
+        &-5 {
+          top: 183rem;
+          height: 200px;
+          width: 200px;
+          left: -100px;
+        }
+
+        &-6 {
+          top: 170rem;
+          height: 400px;
+          width: 400px;
+          right: -25px;
+        }
+
+        &-7 {
+          top: 235rem;
+          height: 100px;
+          width: 100px;
+          left: -50px;
+        }
+
+        &-8 {
+          top: 245rem;
+          height: 300px;
+          width: 300px;
+          right: -76px;
+        }
+      }
     }
   }
 
   main {
     section {
-      margin-bottom: 15rem;
+      margin-bottom: 5rem;
       padding: 0 5%;
 
-      @media screen and (min-width: $breakpoint-desktop-large) {
-        padding: 0 15%;
+      @media screen and (min-width: $breakpoint-desktop) {
+        margin-bottom: 15rem;
       }
 
       @media screen and (min-width: $breakpoint-desktop-large) {
+        padding: 0 15%;
         margin-bottom: 20rem;
+      }
+
+      .title {
+        display: grid;
+        grid-template-columns: auto;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+
+        @media screen and (min-width: $breakpoint-desktop) {
+          grid-template-columns: auto auto;
+          gap: 2rem;
+        }
+
+        h2 {
+          font-size: 2rem;
+          font-weight: 400;
+
+          @media screen and (min-width: $breakpoint-desktop) {
+            font-size: 4rem;
+          }
+        }
+
+        p {
+          font-weight: 300;
+        }
       }
 
       &.grid {
@@ -117,14 +184,19 @@
         gap: 2rem;
 
         &-hero {
-          // gap: 4rem;
-          margin-top: 5rem;
-          text-align: center;
+          margin-top: 2rem;
           position: relative;
           z-index: 100;
 
-          .title {
-            padding: 0 5%;
+          @media screen and (min-width: $breakpoint-desktop) {
+            margin-top: 5rem;
+            text-align: center;
+          }
+
+          .hero-title {
+            @media screen and (min-width: $breakpoint-desktop) {
+              padding: 0 5%;
+            }
 
             .bubble {
               background-color: #424242;
@@ -136,40 +208,25 @@
 
             h1 {
               margin-top: 1rem;
-              font-size: 5rem;
+              font-size: 2.2rem;
               font-weight: 400;
-              margin-bottom: 4rem;
+              margin-bottom: 1rem;
 
-              .highlight {
-                background-image: linear-gradient(
-                  -225deg,
-                  #00d4a6 0%,
-                  #018b9d 29%,
-                  #19efc1 67%,
-                  #00bcd4 100%
-                );
-                background-size: auto auto;
-                background-clip: border-box;
-                background-size: 200% auto;
-                color: #fff;
-                background-clip: text;
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                animation: textclip 3s linear infinite;
-                display: inline-block;
-              }
-              @keyframes textclip {
-                to {
-                  background-position: 200% center;
-                }
+              @media screen and (min-width: $breakpoint-desktop) {
+                margin-bottom: 4rem;
+                font-size: 5rem;
               }
             }
           }
 
           img {
-            width: 70%;
+            width: 100%;
             border-radius: 4px;
             box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+            @media screen and (min-width: $breakpoint-desktop) {
+              width: 70%;
+            }
           }
 
           @media screen and (min-width: $breakpoint-tablet) {
@@ -212,49 +269,32 @@
         position: relative;
         z-index: 10;
 
-        h2 {
-          font-size: 4rem;
-          font-weight: 400;
-
-          .highlight {
-            background-image: linear-gradient(
-              -225deg,
-              #00d4a6 0%,
-              #018b9d 29%,
-              #19efc1 67%,
-              #00bcd4 100%
-            );
-            background-size: auto auto;
-            background-clip: border-box;
-            background-size: 200% auto;
-            color: #fff;
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: textclip 3s linear infinite;
-            display: inline-block;
-          }
-          @keyframes textclip {
-            to {
-              background-position: 200% center;
-            }
-          }
-        }
-
         .cards {
           display: grid;
-          grid-template-columns: repeat(4, 1fr);
+          grid-template-columns: 1fr;
           gap: 1rem;
+
+          @media screen and (min-width: $breakpoint-desktop) {
+            grid-template-columns: repeat(4, 1fr);
+          }
 
           mat-card {
             padding: 2rem;
 
+            @media screen and (min-width: $breakpoint-desktop) {
+              padding: 2rem;
+            }
+
             .description {
               &-title {
-                font-size: 2rem;
+                font-size: 1.5rem;
                 font-weight: 500;
                 margin-bottom: 1rem;
                 line-height: normal;
+
+                @media screen and (min-width: $breakpoint-desktop) {
+                  font-size: 2rem;
+                }
               }
 
               &-body {
@@ -262,8 +302,12 @@
               }
 
               &-actions {
-                display: flex;
-                justify-content: flex-end;
+                display: none;
+
+                @media screen and (min-width: $breakpoint-desktop) {
+                  display: flex;
+                  justify-content: flex-end;
+                }
               }
             }
           }
@@ -273,68 +317,70 @@
       &.organize {
         position: relative;
         z-index: 10;
-
-        .title {
-          display: grid;
-          grid-template-columns: auto auto;
-          justify-content: space-between;
-          align-items: center;
-          margin-bottom: 1rem;
-
-          h2 {
-            font-size: 4rem;
-            font-weight: 400;
-          }
-
-          p {
-            font-weight: 300;
-          }
-        }
       }
 
       &.visualize {
         position: relative;
         z-index: 1;
-        margin-bottom: 13rem;
+
+        @media screen and (min-width: $breakpoint-desktop) {
+          margin-bottom: 13rem;
+        }
 
         @media screen and (min-width: $breakpoint-desktop-large) {
           padding: 1rem 15%;
         }
 
-        .title {
-          display: grid;
-          grid-template-columns: auto auto;
-          justify-content: space-between;
-          align-items: center;
-          margin-bottom: 1rem;
-
-          h2 {
-            font-size: 4rem;
-            font-weight: 400;
-          }
-
-          p {
-            font-weight: 300;
-          }
-        }
-
         .grid {
           display: grid;
-          grid-template-columns: 1fr 60%;
           align-items: center;
+          gap: 1rem;
+
+          @media screen and (min-width: $breakpoint-desktop) {
+            grid-template-columns: 1fr 60%;
+            gap: 0;
+
+            app-demo-stack {
+              order: 2;
+            }
+            .description {
+              order: 1;
+            }
+          }
 
           .description {
-            font-size: 2rem;
+            font-size: 1.2rem;
             font-weight: 300;
             line-height: normal;
+
+            p {
+              padding-top: 0.5rem;
+              font-size: 1rem;
+            }
+
+            @media screen and (min-width: $breakpoint-desktop) {
+              font-size: 2rem;
+              p {
+                font-size: 1.8rem;
+              }
+            }
           }
 
           &.grid-2 {
+            margin-top: 1rem;
             justify-items: center;
+            gap: 0;
 
             .description {
-              p {
-                padding-top: 0.5rem;
+              margin-top: -2rem;
+            }
+
+            @media screen and (min-width: $breakpoint-desktop) {
+              margin-top: 0;
+              gap: 1rem;
+
+              .description {
+                margin-top: 0;
               }
             }
           }
@@ -345,35 +391,27 @@
         position: relative;
         z-index: 10;
 
-        .title {
-          display: grid;
-          grid-template-columns: auto auto;
-          justify-content: space-between;
-          align-items: center;
-          margin-bottom: 1rem;
-          gap: 2rem;
-
-          h2 {
-            font-size: 4rem;
-            font-weight: 400;
-          }
-
-          p {
-            font-weight: 300;
-          }
-        }
-
         .user-cards {
-          padding: 2rem 0;
+          padding: 1rem 0 1.5rem;
           display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 2rem;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 0.5rem;
+
+          @media screen and (min-width: $breakpoint-desktop) {
+            padding: 2rem 0;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+          }
 
           .user-card-text {
             margin: auto 0;
             font-size: 2rem;
             font-weight: 300;
             line-height: normal;
+            display: none;
+            @media screen and (min-width: $breakpoint-desktop) {
+              display: block;
+            }
           }
 
           .user-card {
@@ -385,39 +423,66 @@
               left: 0;
               right: 0;
               top: 0;
-              height: 6rem;
+              height: 2.5rem;
               background-repeat: no-repeat;
               border-radius: 4px 4px 0 0;
               background-size: cover;
+
+              @media screen and (min-width: $breakpoint-desktop) {
+                height: 6rem;
+              }
             }
 
             .user-details {
               text-align: center;
-              padding-top: 3.2rem;
+              padding-top: 1rem;
               position: relative;
 
+              @media screen and (min-width: $breakpoint-desktop) {
+                padding-top: 3.2rem;
+              }
+
               .user-image {
-                height: 5rem;
-                width: 5rem;
-                border: 3px solid white;
+                height: 2rem;
+                width: 2rem;
+                border: 1px solid white;
                 border-radius: 50%;
                 object-fit: cover;
+
+                @media screen and (min-width: $breakpoint-desktop) {
+                  height: 5rem;
+                  width: 5rem;
+                }
               }
 
               .user-name {
-                font-size: 1.1rem;
+                font-size: 0.5rem;
                 font-weight: 500;
-                margin: 1rem auto 0.5;
+                margin: 0;
+
+                @media screen and (min-width: $breakpoint-desktop) {
+                  font-size: 1rem;
+                  margin: 1rem auto 0.5rem;
+                }
               }
 
               .user-path {
-                font-size: 0.9rem;
+                font-size: 0.5rem;
+
+                @media screen and (min-width: $breakpoint-desktop) {
+                  font-size: 0.9rem;
+                }
               }
 
               .user-location {
-                font-size: 0.9rem;
-                margin: 1rem;
-                margin-bottom: 2.5rem;
+                font-size: 0.5rem;
+                margin: 0;
+
+                @media screen and (min-width: $breakpoint-desktop) {
+                  font-size: 0.9rem;
+                  margin: 1rem;
+                  margin-bottom: 2.5rem;
+                }
               }
             }
 
@@ -459,29 +524,54 @@
                   bottom: 0;
                 }
                 15% {
-                  bottom: 2rem;
+                  bottom: 1.5rem;
                 }
                 95% {
-                  bottom: 2rem;
+                  bottom: 1.5rem;
                 }
                 100% {
                   bottom: 0;
                 }
               }
 
+              @media screen and (min-width: $breakpoint-desktop) {
+                @keyframes bounce3 {
+                  0% {
+                    bottom: 0;
+                  }
+                  10% {
+                    bottom: 0;
+                  }
+                  15% {
+                    bottom: 2rem;
+                  }
+                  95% {
+                    bottom: 2rem;
+                  }
+                  100% {
+                    bottom: 0;
+                  }
+                }
+              }
+
               .trophy {
                 display: inline-block;
-                font-size: 2rem;
+                font-size: 1rem;
                 box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
                   0px 1px 1px 0px rgba(0, 0, 0, 0.14),
                   0px 1px 3px 0px rgba(0, 0, 0, 0.12);
                 position: absolute;
-                top: 13rem;
-                right: 1rem;
+                bottom: 0.5rem;
+                right: 0.5rem;
                 border-radius: 50%;
-                padding: 0.5rem;
+                padding: 0.2rem;
                 background: -webkit-linear-gradient(0.25turn, #00d4a6, #00bcd4);
                 animation: opacity 8s infinite;
+
+                @media screen and (min-width: $breakpoint-desktop) {
+                  font-size: 2rem;
+                  padding: 0.5rem;
+                }
 
                 @keyframes opacity {
                   0% {
@@ -526,19 +616,33 @@
             }
           }
         }
+
+        .user-card-text-mobile {
+          font-size: 1.2rem;
+          font-weight: 300;
+          display: block;
+
+          @media screen and (min-width: $breakpoint-desktop) {
+            display: none;
+          }
+        }
       }
 
       &.call-to-action {
         text-align: center;
 
         h2 {
-          font-size: 4rem;
+          font-size: 2rem;
           font-weight: 400;
+
+          @media screen and (min-width: $breakpoint-desktop) {
+            font-size: 4rem;
+          }
         }
 
+        margin: 15rem 0;
         @media screen and (min-width: $breakpoint-tablet) {
           padding: 0 14%;
-          margin: 15rem 0;
         }
 
         .register-button {
@@ -580,11 +684,6 @@
 
     footer {
       padding: 1rem 5%;
-      text-align: center;
-
-      img {
-        height: 3rem;
-      }
 
       .grid {
         display: grid;
@@ -607,6 +706,30 @@
           }
         }
       }
+    }
+  }
+
+  .highlight {
+    background-image: linear-gradient(
+      -225deg,
+      #00d4a6 0%,
+      #018b9d 29%,
+      #19efc1 67%,
+      #00bcd4 100%
+    );
+    background-size: auto auto;
+    background-clip: border-box;
+    background-size: 200% auto;
+    color: #fff;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textclip 3s linear infinite;
+    display: inline-block;
+  }
+  @keyframes textclip {
+    to {
+      background-position: 200% center;
     }
   }
 }

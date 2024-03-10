@@ -13,6 +13,10 @@
     .drag-group-items {
       min-height: 320px !important;
     }
+
+    .mobile-container {
+      padding: 0 !important;
+    }
   }
 
   @media screen and (min-width: $breakpoint-tablet-large) {
