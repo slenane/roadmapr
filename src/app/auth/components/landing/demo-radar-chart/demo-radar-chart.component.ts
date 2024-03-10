@@ -1,4 +1,4 @@
-import { BreakpointObserver } from "@angular/cdk/layout";
+import { BreakpointObserver, Breakpoints } from "@angular/cdk/layout";
 import { Component, OnInit, ViewChild } from "@angular/core";
 import {
   ApexAxisChartSeries,
@@ -69,9 +69,7 @@ export class DemoRadarChartComponent implements OnInit {
     this.breakpointObserver
       .observe(MEDIA_QUERIES.BREAKPOINTS)
       .subscribe((result) => {
-        this.isMobileDevice = MEDIA_QUERIES.MOBILE.find(
-          (size) => result.breakpoints[size]
-        )
+        this.isMobileDevice = result.breakpoints[Breakpoints.XSmall]
           ? true
           : false;
 

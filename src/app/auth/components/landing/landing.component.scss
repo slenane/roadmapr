@@ -78,6 +78,64 @@
         right: -50px;
       }
 
+      @media screen and (min-width: $breakpoint-tablet) {
+        &-1 {
+          top: 15rem;
+          height: 75px;
+          width: 75px;
+          left: -25px;
+        }
+
+        &-2 {
+          top: 32rem;
+          height: 200px;
+          width: 200px;
+          right: -100px;
+        }
+
+        &-3 {
+          top: 68rem;
+          height: 200px;
+          width: 200px;
+          left: -100px;
+        }
+
+        &-4 {
+          top: 83rem;
+          height: 100px;
+          width: 100px;
+          right: -30px;
+        }
+
+        &-5 {
+          top: 122rem;
+          height: 200px;
+          width: 200px;
+          left: -100px;
+        }
+
+        &-6 {
+          top: 178rem;
+          height: 200px;
+          width: 200px;
+          right: -100px;
+        }
+
+        &-7 {
+          top: 171rem;
+          height: 50px;
+          width: 50px;
+          left: -25px;
+        }
+
+        &-8 {
+          top: 261rem;
+          height: 100px;
+          width: 100px;
+          right: -50px;
+        }
+      }
+
       @media screen and (min-width: $breakpoint-desktop) {
         &-1 {
           top: 12rem;
@@ -143,7 +201,7 @@
       margin-bottom: 5rem;
       padding: 0 5%;
 
-      @media screen and (min-width: $breakpoint-desktop) {
+      @media screen and (min-width: $breakpoint-tablet) {
         margin-bottom: 15rem;
       }
 
@@ -168,7 +226,7 @@
           font-size: 2rem;
           font-weight: 400;
 
-          @media screen and (min-width: $breakpoint-desktop) {
+          @media screen and (min-width: $breakpoint-tablet) {
             font-size: 4rem;
           }
         }
@@ -188,13 +246,17 @@
           position: relative;
           z-index: 100;
 
-          @media screen and (min-width: $breakpoint-desktop) {
-            margin-top: 5rem;
+          @media screen and (min-width: $breakpoint-tablet) {
+            margin-top: 3rem;
             text-align: center;
           }
 
+          @media screen and (min-width: $breakpoint-desktop) {
+            margin-top: 5rem;
+          }
+
           .hero-title {
-            @media screen and (min-width: $breakpoint-desktop) {
+            @media screen and (min-width: $breakpoint-tablet) {
               padding: 0 5%;
             }
 
@@ -212,6 +274,11 @@
               font-weight: 400;
               margin-bottom: 1rem;
 
+              @media screen and (min-width: $breakpoint-tablet) {
+                margin-bottom: 3rem;
+                font-size: 4rem;
+              }
+
               @media screen and (min-width: $breakpoint-desktop) {
                 margin-bottom: 4rem;
                 font-size: 5rem;
@@ -224,7 +291,7 @@
             border-radius: 4px;
             box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
-            @media screen and (min-width: $breakpoint-desktop) {
+            @media screen and (min-width: $breakpoint-tablet) {
               width: 70%;
             }
           }
@@ -235,32 +302,6 @@
 
           @media screen and (min-width: $breakpoint-desktop-large) {
             margin-top: 8rem;
-          }
-        }
-
-        &-right {
-          div:nth-child(1) {
-            order: 2;
-          }
-          div:nth-child(2) {
-            order: 1;
-          }
-
-          @media screen and (min-width: $breakpoint-tablet) {
-            grid-template-columns: auto 60%;
-
-            div:nth-child(1) {
-              order: 1;
-            }
-            div:nth-child(2) {
-              order: 2;
-            }
-          }
-        }
-
-        &-left {
-          @media screen and (min-width: $breakpoint-tablet) {
-            grid-template-columns: 60% auto;
           }
         }
       }
@@ -274,16 +315,16 @@
           grid-template-columns: 1fr;
           gap: 1rem;
 
+          @media screen and (min-width: $breakpoint-tablet) {
+            grid-template-columns: repeat(2, 1fr);
+          }
+
           @media screen and (min-width: $breakpoint-desktop) {
             grid-template-columns: repeat(4, 1fr);
           }
 
           mat-card {
             padding: 2rem;
-
-            @media screen and (min-width: $breakpoint-desktop) {
-              padding: 2rem;
-            }
 
             .description {
               &-title {
@@ -375,6 +416,10 @@
               margin-top: -2rem;
             }
 
+            @media screen and (min-width: $breakpoint-tablet) {
+              justify-items: unset;
+            }
+
             @media screen and (min-width: $breakpoint-desktop) {
               margin-top: 0;
               gap: 1rem;
@@ -396,6 +441,10 @@
           display: grid;
           grid-template-columns: repeat(3, 1fr);
           gap: 0.5rem;
+
+          @media screen and (min-width: $breakpoint-tablet) {
+            gap: 1rem;
+          }
 
           @media screen and (min-width: $breakpoint-desktop) {
             padding: 2rem 0;
@@ -428,7 +477,7 @@
               border-radius: 4px 4px 0 0;
               background-size: cover;
 
-              @media screen and (min-width: $breakpoint-desktop) {
+              @media screen and (min-width: $breakpoint-tablet) {
                 height: 6rem;
               }
             }
@@ -438,7 +487,7 @@
               padding-top: 1rem;
               position: relative;
 
-              @media screen and (min-width: $breakpoint-desktop) {
+              @media screen and (min-width: $breakpoint-tablet) {
                 padding-top: 3.2rem;
               }
 
@@ -449,7 +498,7 @@
                 border-radius: 50%;
                 object-fit: cover;
 
-                @media screen and (min-width: $breakpoint-desktop) {
+                @media screen and (min-width: $breakpoint-tablet) {
                   height: 5rem;
                   width: 5rem;
                 }
@@ -460,7 +509,7 @@
                 font-weight: 500;
                 margin: 0;
 
-                @media screen and (min-width: $breakpoint-desktop) {
+                @media screen and (min-width: $breakpoint-tablet) {
                   font-size: 1rem;
                   margin: 1rem auto 0.5rem;
                 }
@@ -469,7 +518,7 @@
               .user-path {
                 font-size: 0.5rem;
 
-                @media screen and (min-width: $breakpoint-desktop) {
+                @media screen and (min-width: $breakpoint-tablet) {
                   font-size: 0.9rem;
                 }
               }
@@ -478,7 +527,7 @@
                 font-size: 0.5rem;
                 margin: 0;
 
-                @media screen and (min-width: $breakpoint-desktop) {
+                @media screen and (min-width: $breakpoint-tablet) {
                   font-size: 0.9rem;
                   margin: 1rem;
                   margin-bottom: 2.5rem;
@@ -534,7 +583,7 @@
                 }
               }
 
-              @media screen and (min-width: $breakpoint-desktop) {
+              @media screen and (min-width: $breakpoint-tablet) {
                 @keyframes bounce3 {
                   0% {
                     bottom: 0;
@@ -568,7 +617,7 @@
                 background: -webkit-linear-gradient(0.25turn, #00d4a6, #00bcd4);
                 animation: opacity 8s infinite;
 
-                @media screen and (min-width: $breakpoint-desktop) {
+                @media screen and (min-width: $breakpoint-tablet) {
                   font-size: 2rem;
                   padding: 0.5rem;
                 }

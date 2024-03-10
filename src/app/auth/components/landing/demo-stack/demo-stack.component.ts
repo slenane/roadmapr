@@ -1,4 +1,4 @@
-import { BreakpointObserver } from "@angular/cdk/layout";
+import { BreakpointObserver, Breakpoints } from "@angular/cdk/layout";
 import { Component, OnInit } from "@angular/core";
 import { MEDIA_QUERIES } from "src/app/shared/constants/breakpoints.constants";
 import { IStack } from "src/app/shared/constants/dev-paths.constants";
@@ -346,9 +346,7 @@ export class DemoStackComponent implements OnInit {
     this.breakpointObserver
       .observe(MEDIA_QUERIES.BREAKPOINTS)
       .subscribe((result) => {
-        this.isMobileDevice = MEDIA_QUERIES.MOBILE.find(
-          (size) => result.breakpoints[size]
-        )
+        this.isMobileDevice = result.breakpoints[Breakpoints.XSmall]
           ? true
           : false;
       });

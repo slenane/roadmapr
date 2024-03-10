@@ -30,6 +30,22 @@
       right: -100px;
     }
 
+    @media screen and (min-width: $breakpoint-tablet) {
+      &-1 {
+        top: 2rem;
+        height: 75px;
+        width: 75px;
+        left: 10rem;
+      }
+
+      &-2 {
+        top: 20rem;
+        height: 300px;
+        width: 300px;
+        right: 4rem;
+      }
+    }
+
     @media screen and (min-width: $breakpoint-desktop) {
       &-1 {
         top: 2rem;
