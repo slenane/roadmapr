@@ -1,126 +1,190 @@
-<div class="landing" #landing>
-  <mat-toolbar class="landing-navigation" [ngClass]="{ scrolling: scrolling }">
-    <img
-      class="menu-brand"
-      src="/assets/images/logo/logo-dark.png"
-      routerLink="/"
-      alt="roadmapr Logo"
-    />
+<div class="landing">
+  <app-home-navigation></app-home-navigation>
+  <div class="bg-shapes">
+    <div class="bg-element bg-element-green bg-element-1"></div>
+    <div class="bg-element bg-element-blue bg-element-2"></div>
+    <div class="bg-element bg-element-green bg-element-3"></div>
+    <div class="bg-element bg-element-blue bg-element-4"></div>
+    <div class="bg-element bg-element-green bg-element-5"></div>
+    <div class="bg-element bg-element-blue bg-element-6"></div>
+    <div class="bg-element bg-element-green bg-element-7"></div>
+    <div class="bg-element bg-element-blue bg-element-8"></div>
+  </div>
 
-    <div class="navbar-options">
+  <main>
+    <section class="grid grid-hero">
+      <div class="hero-title">
+        <span class="bubble">{{ "LANDING.WELCOME" | translate }}</span>
+        <h1
+          >{{ "LANDING.TAGLINE_1" | translate
+          }}<span class="highlight">{{ "LANDING.TAGLINE_2" | translate }}</span
+          >{{ "LANDING.TAGLINE_3" | translate }}</h1
+        >
+      </div>
+      <div>
+        <img
+          class="hero"
+          src="assets/images/landing/roadmapr.webp"
+          alt="Roadmapr Roadmap"
+        />
+      </div>
+    </section>
+
+    <section class="description">
+      <div class="title">
+        <h2
+          >{{ "LANDING.DESCRIPTION.T_1" | translate
+          }}<span class="highlight">{{
+            "LANDING.DESCRIPTION.T_2" | translate
+          }}</span
+          >{{ "LANDING.DESCRIPTION.T_3" | translate }}</h2
+        >
+      </div>
+      <div class="cards">
+        <mat-card>
+          <h3 class="description-title">
+            {{ "LANDING.DESCRIPTION.B1_1" | translate }}
+          </h3>
+          <p class="description-body">
+            {{ "LANDING.DESCRIPTION.B1_2" | translate }}
+          </p>
+          <div class="description-actions">
+            <button mat-raised-button color="primary" routerLink="/register">{{
+              "AUTH.REGISTER.T" | translate
+            }}</button>
+          </div>
+        </mat-card>
+        <mat-card>
+          <h3 class="description-title">
+            {{ "LANDING.DESCRIPTION.B2_1" | translate }}
+          </h3>
+          <p class="description-body">
+            {{ "LANDING.DESCRIPTION.B2_2" | translate }}
+          </p>
+        </mat-card>
+        <mat-card>
+          <h3 class="description-title">
+            {{ "LANDING.DESCRIPTION.B3_1" | translate }}
+          </h3>
+          <p class="description-body">
+            {{ "LANDING.DESCRIPTION.B3_2" | translate }}
+          </p>
+        </mat-card>
+        <mat-card>
+          <h3 class="description-title">
+            {{ "LANDING.DESCRIPTION.B4_1" | translate }}
+          </h3>
+          <p class="description-body">
+            {{ "LANDING.DESCRIPTION.B4_2" | translate }}
+          </p>
+        </mat-card>
+      </div>
+    </section>
+
+    <section class="organize">
+      <div class="title">
+        <h2>{{ "LANDING.ORGANIZE.T" | translate }}</h2>
+        <p>{{ "LANDING.ORGANIZE.P" | translate }}</p>
+      </div>
+      <app-demo-drop-list></app-demo-drop-list>
+    </section>
+
+    <section class="visualize">
+      <div class="title">
+        <h2>{{ "LANDING.VISUALIZE.T" | translate }}</h2>
+        <p>{{ "LANDING.VISUALIZE.P" | translate }}</p>
+      </div>
+
+      <div class="grid">
+        <app-demo-stack></app-demo-stack>
+        <div class="description">
+          {{ "LANDING.VISUALIZE.P1" | translate }}
+          <p>{{ "LANDING.VISUALIZE.P2" | translate }}</p>
+        </div>
+      </div>
+      <div class="grid grid-2">
+        <app-demo-radar-chart></app-demo-radar-chart>
+        <div class="description">
+          {{ "LANDING.VISUALIZE.P3" | translate }}
+          <p>{{ "LANDING.VISUALIZE.P4" | translate }}</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="profile">
+      <div class="title">
+        <h2>{{ "LANDING.RESUME.T" | translate }}</h2>
+        <p>{{ "LANDING.RESUME.P1" | translate }}</p>
+      </div>
+
+      <div class="user-cards">
+        <div class="user-card-text">
+          {{ "LANDING.RESUME.P2" | translate }}
+        </div>
+        <mat-card
+          *ngFor="let user of demoUsers; let i = index"
+          class="user-card"
+        >
+          <div
+            class="header"
+            [ngStyle]="{
+              backgroundImage: 'url(' + user.coverImage + ')',
+              backgroundSize: 'cover !important'
+            }"
+          >
+          </div>
+          <div class="user-details">
+            <img
+              class="user-image"
+              [src]="user.profileImage"
+              alt="User Image"
+            />
+            <div class="user-name"
+              >{{ user.firstName }} {{ user.lastName }}</div
+            >
+            <div class="user-path">{{ user.path.name | translate }}</div>
+            <p class="user-location">{{ user.location.name | translate }}</p>
+          </div>
+          <span class="material-symbols-outlined trophy"> trophy </span>
+        </mat-card>
+      </div>
+
+      <div class="user-card-text-mobile">
+        {{ "LANDING.RESUME.P2" | translate }}
+      </div>
+    </section>
+
+    <section class="call-to-action">
+      <h2>{{ "LANDING.CTA.T" | translate }}</h2>
       <button
-        class="register-button"
         mat-raised-button
-        color="default"
+        color="primary"
+        class="register-button"
         routerLink="/register"
         >{{ "AUTH.REGISTER.T" | translate }}</button
       >
-      <button mat-raised-button color="primary" routerLink="/login">{{
-        "AUTH.LOG_IN.T" | translate
-      }}</button>
-    </div>
-  </mat-toolbar>
+    </section>
 
-  <section class="grid grid-hero">
-    <div>
-      <h1>{{ "LANDING.TAGLINE" | translate }}</h1>
-    </div>
-    <div>
-      <img
-        class="hero"
-        src="assets/images/landing/roadmap{{
-          userLanguage !== 'en' ? '-' + userLanguage : ''
-        }}.webp"
-        alt="Roadmapr Roadmap"
-      />
-    </div>
-  </section>
-
-  <section class="description">
-    <h2>{{ "LANDING.DESCRIPTION.T" | translate }}</h2>
-    <p>{{ "LANDING.DESCRIPTION.P1" | translate }}</p>
-    <p>{{ "LANDING.DESCRIPTION.P2" | translate }}</p>
-  </section>
-
-  <section class="grid grid-left">
-    <div>
-      <img
-        src="assets/images/landing/education{{
-          userLanguage !== 'en' ? '-' + userLanguage : ''
-        }}.webp"
-        alt="Roadmapr education, projects and experience sections"
-      />
-    </div>
-    <div>
-      <h2>{{ "LANDING.EDUCATION.T" | translate }}</h2>
-      <p>{{ "LANDING.EDUCATION.P1" | translate }}</p>
-      <p>{{ "LANDING.EDUCATION.P2" | translate }}</p>
-      <p>{{ "LANDING.EDUCATION.P3" | translate }}</p>
-    </div>
-  </section>
-
-  <section class="grid grid-right">
-    <div>
-      <h2>{{ "LANDING.RESUME.T" | translate }}</h2>
-      <p>{{ "LANDING.RESUME.P1" | translate }}</p>
-      <p>{{ "LANDING.RESUME.P2" | translate }}</p>
-      <p>{{ "LANDING.RESUME.P3" | translate }}</p>
-    </div>
-    <div>
-      <img
-        src="assets/images/landing/profile{{
-          userLanguage !== 'en' ? '-' + userLanguage : ''
-        }}.webp"
-        alt="Roadmapr user profile"
-      />
-    </div>
-  </section>
-
-  <section class="grid grid-left">
-    <div>
-      <img
-        src="assets/images/landing/roadmap-right{{
-          userLanguage !== 'en' ? '-' + userLanguage : ''
-        }}.webp"
-        alt="Roadmapr Roadmap"
-      />
-    </div>
-    <div>
-      <h2>{{ "LANDING.ROADMAP.T" | translate }}</h2>
-      <p>{{ "LANDING.ROADMAP.P1" | translate }}</p>
-      <p>{{ "LANDING.ROADMAP.P2" | translate }}</p>
-      <p>{{ "LANDING.ROADMAP.P3" | translate }}</p>
-    </div>
-  </section>
-
-  <section class="call-to-action">
-    <h2>{{ "LANDING.CTA.T" | translate }}</h2>
-    <button
-      mat-raised-button
-      color="primary"
-      class="register-button"
-      routerLink="/register"
-      >{{ "LANDING.CTA.BUTTON" | translate }}</button
-    >
-  </section>
-
-  <footer>
-    <div class="grid-left">
-      <div>
-        <a href="mailto:info@roadmapr.dev">{{
-          "LANDING.FOOTER.CONTACT" | translate
-        }}</a>
+    <footer>
+      <div class="grid">
+        <div class="grid-left">
+          <div>
+            <a href="mailto:info@roadmapr.dev">{{
+              "LANDING.FOOTER.CONTACT" | translate
+            }}</a>
+          </div>
+          <div>
+            <a href="/privacy-policy">{{
+              "LANDING.FOOTER.PRIVACY" | translate
+            }}</a></div
+          >
+        </div>
+        <div class="grid-right">
+          <p>{{
+            "LANDING.FOOTER.COPYRIGHT" | translate : { value: currentYear }
+          }}</p>
+        </div>
       </div>
-      <div>
-        <a href="/privacy-policy">{{
-          "LANDING.FOOTER.PRIVACY" | translate
-        }}</a></div
-      >
-    </div>
-    <div class="grid-right">
-      <p>{{
-        "LANDING.FOOTER.COPYRIGHT" | translate : { value: currentYear }
-      }}</p>
-    </div>
-  </footer>
+    </footer>
+  </main>
 </div>

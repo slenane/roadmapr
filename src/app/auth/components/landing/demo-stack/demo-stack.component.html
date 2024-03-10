@@ -1,0 +1,74 @@
+<mat-card class="active-stack">
+  <mat-card-header>
+    <mat-card-title
+      ><span class="material-symbols-outlined roadmap-title-icon">
+        data_object
+      </span>
+      {{ activeStack.title | translate }}
+    </mat-card-title>
+
+    <div class="tech-stack">
+      <img
+        *ngFor="let tech of activeStack.stack?.core"
+        class="app-stack-icon"
+        matTooltip="{{ tech.title }}"
+        src="/assets/images/stack/{{ tech.name }}-original.svg"
+      />
+      <img
+        *ngFor="let tech of activeStack.stack?.choice"
+        class="app-stack-icon"
+        matTooltip="{{ tech.title }}"
+        src="/assets/images/stack/{{ tech.name }}-original.svg"
+      />
+    </div>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="progress-grid">
+      <div class="progress-grid-section">
+        <ng-container *ngFor="let tech of stackGridOne">
+          <div
+            *ngIf="tech.first && showStackSubHeaders && !isMobileDevice"
+            class="list-title"
+            >{{ tech.list | uppercase }}</div
+          >
+
+          <div class="stack-progress">
+            <img
+              class="stack-icon"
+              matTooltip="{{ tech.title }}"
+              src="/assets/images/stack/{{ tech.name }}-original.svg"
+            />
+            <mat-progress-bar
+              mode="determinate"
+              style="height: 5"
+              [value]="tech.percentage"
+            ></mat-progress-bar>
+            <div class="count" [textContent]="roundDown(tech.count)"> </div>
+          </div>
+        </ng-container>
+      </div>
+
+      <div class="progress-grid-section" *ngIf="!isMobileDevice">
+        <ng-container *ngFor="let tech of stackGridTwo">
+          <div *ngIf="tech.first" class="list-title">{{
+            tech.list | uppercase
+          }}</div>
+
+          <div class="stack-progress">
+            <img
+              class="stack-icon"
+              matTooltip="{{ tech.title }}"
+              src="/assets/images/stack/{{ tech.name }}-original.svg"
+            />
+            <mat-progress-bar
+              mode="determinate"
+              style="height: 5"
+              [value]="tech.percentage"
+            ></mat-progress-bar>
+            <div class="count" [textContent]="roundDown(tech.count)"> </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

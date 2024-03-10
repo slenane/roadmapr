@@ -1,0 +1,7 @@
+@import "src/styles/app-vars.scss";
+
+#chart {
+  @media screen and (min-width: $breakpoint-desktop-large) {
+    width: 30rem;
+  }
+}

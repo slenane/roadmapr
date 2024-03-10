@@ -1,0 +1,21 @@
+<mat-toolbar class="home-navigation">
+  <img
+    class="menu-brand"
+    src="/assets/images/logo/logo-dark.png"
+    routerLink="/"
+    alt="roadmapr Logo"
+  />
+
+  <div class="navbar-routes">
+    <!-- <a routerLink="/explore">Explore</a>
+    <a routerLink="/explore">Blog</a>
+    <a routerLink="/explore">About</a> -->
+  </div>
+
+  <div class="auth-routes">
+    <a routerLink="/login">{{ "AUTH.LOG_IN.T" | translate }}</a>
+    <button mat-raised-button color="primary" routerLink="/register">{{
+      "AUTH.REGISTER.T" | translate
+    }}</button>
+  </div>
+</mat-toolbar>
