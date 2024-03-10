@@ -1,0 +1,247 @@
+.bg-shapes {
+  position: relative;
+
+  .bg-element {
+    position: absolute;
+    border-radius: 50%;
+    z-index: 0;
+
+    &-green {
+      background-color: #00d4a6;
+    }
+
+    &-blue {
+      background-color: $dark-theme--primary--mat-primary-color;
+    }
+
+    &-1 {
+      top: 12rem;
+      height: 75px;
+      width: 75px;
+      left: -25px;
+    }
+
+    &-2 {
+      top: 21rem;
+      height: 200px;
+      width: 200px;
+      right: -100px;
+    }
+
+    &-3 {
+      top: 45rem;
+      height: 200px;
+      width: 200px;
+      left: -100px;
+    }
+
+    &-4 {
+      top: 83rem;
+      height: 100px;
+      width: 100px;
+      right: -30px;
+    }
+
+    &-5 {
+      top: 106rem;
+      height: 200px;
+      width: 200px;
+      left: -100px;
+    }
+
+    &-6 {
+      top: 147rem;
+      height: 200px;
+      width: 200px;
+      right: -100px;
+    }
+
+    &-7 {
+      top: 171rem;
+      height: 50px;
+      width: 50px;
+      left: -25px;
+    }
+
+    &-8 {
+      top: 211rem;
+      height: 100px;
+      width: 100px;
+      right: -50px;
+    }
+
+    @media screen and (min-width: $breakpoint-tablet) {
+      &-1 {
+        top: 15rem;
+        height: 75px;
+        width: 75px;
+        left: -25px;
+      }
+
+      &-2 {
+        top: 32rem;
+        height: 200px;
+        width: 200px;
+        right: -100px;
+      }
+
+      &-3 {
+        top: 68rem;
+        height: 200px;
+        width: 200px;
+        left: -100px;
+      }
+
+      &-4 {
+        top: 83rem;
+        height: 100px;
+        width: 100px;
+        right: -30px;
+      }
+
+      &-5 {
+        top: 122rem;
+        height: 200px;
+        width: 200px;
+        left: -100px;
+      }
+
+      &-6 {
+        top: 178rem;
+        height: 200px;
+        width: 200px;
+        right: -100px;
+      }
+
+      &-7 {
+        top: 171rem;
+        height: 50px;
+        width: 50px;
+        left: -25px;
+      }
+
+      &-8 {
+        top: 261rem;
+        height: 100px;
+        width: 100px;
+        right: -50px;
+      }
+    }
+
+    @media screen and (min-width: $breakpoint-desktop) {
+      &-1 {
+        top: 12rem;
+        height: 200px;
+        width: 200px;
+        left: -100px;
+      }
+
+      &-2 {
+        top: 25rem;
+        height: 400px;
+        width: 400px;
+        right: -200px;
+      }
+
+      &-3 {
+        top: 88rem;
+        height: 300px;
+        width: 300px;
+        left: -75px;
+      }
+
+      &-4 {
+        top: 118rem;
+        height: 100px;
+        width: 100px;
+        right: -30px;
+      }
+
+      &-5 {
+        top: 189rem;
+        height: 200px;
+        width: 200px;
+        left: -100px;
+      }
+
+      &-6 {
+        top: 171rem;
+        height: 400px;
+        width: 400px;
+        right: -100px;
+      }
+
+      &-7 {
+        top: 234rem;
+        height: 100px;
+        width: 100px;
+        left: -50px;
+      }
+
+      &-8 {
+        top: 244rem;
+        height: 300px;
+        width: 300px;
+        right: -76px;
+      }
+    }
+
+    @media screen and (min-width: $breakpoint-desktop-large) {
+      &-1 {
+        top: 12rem;
+        height: 200px;
+        width: 200px;
+        left: -100px;
+      }
+
+      &-2 {
+        top: 25rem;
+        height: 400px;
+        width: 400px;
+        right: -200px;
+      }
+
+      &-3 {
+        top: 96rem;
+        height: 300px;
+        width: 300px;
+        left: -75px;
+      }
+
+      &-4 {
+        top: 118rem;
+        height: 100px;
+        width: 100px;
+        right: -30px;
+      }
+
+      &-5 {
+        top: 163rem;
+        height: 200px;
+        width: 200px;
+        left: -100px;
+      }
+
+      &-6 {
+        top: 191rem;
+        height: 400px;
+        width: 400px;
+        right: -100px;
+      }
+
+      &-7 {
+        top: 234rem;
+        height: 100px;
+        width: 100px;
+        left: -50px;
+      }
+
+      &-8 {
+        top: 267rem;
+        height: 300px;
+        width: 300px;
+        right: -76px;
+      }
+    }
+  }
+}
