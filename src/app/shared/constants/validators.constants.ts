@@ -4,7 +4,7 @@ import { AbstractControl, ValidationErrors, ValidatorFn } from "@angular/forms";
 export const validateConfirmPattern = "SETTINGS.DELETE.CONFIRM | translate";
 
 export const validPasswordPattern =
-  /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[^\w\s])[a-zA-Z0-9\S]{6,20}$/;
+  /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{6,20}$/;
 
 export const validUsernamePattern = /^[^\s]{3,20}$/;
 
