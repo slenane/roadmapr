@@ -12,12 +12,14 @@
         *ngFor="let tech of activeStack.stack?.core"
         class="app-stack-icon"
         matTooltip="{{ tech.title }}"
+        alt="Stack icon"
         src="/assets/images/stack/{{ tech.name }}-original.svg"
       />
       <img
         *ngFor="let tech of activeStack.stack?.choice"
         class="app-stack-icon"
         matTooltip="{{ tech.title }}"
+        alt="Stack icon"
         src="/assets/images/stack/{{ tech.name }}-original.svg"
       />
     </div>
@@ -36,6 +38,7 @@
             <img
               class="stack-icon"
               matTooltip="{{ tech.title }}"
+              alt="Stack icon"
               src="/assets/images/stack/{{ tech.name }}-original.svg"
             />
             <mat-progress-bar
@@ -58,6 +61,7 @@
             <img
               class="stack-icon"
               matTooltip="{{ tech.title }}"
+              alt="Stack icon"
               src="/assets/images/stack/{{ tech.name }}-original.svg"
             />
             <mat-progress-bar
