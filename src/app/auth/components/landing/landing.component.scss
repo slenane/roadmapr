@@ -539,28 +539,28 @@
         }
       }
     }
+  }
 
-    footer {
-      padding: 1rem 5%;
+  footer {
+    padding: 1rem 5%;
 
-      .grid {
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      justify-content: space-between;
+
+      &-left {
         display: grid;
-        grid-template-columns: 1fr auto;
-        justify-content: space-between;
+        grid-template-columns: auto auto;
+        justify-content: flex-start;
+        gap: 2rem;
 
-        &-left {
-          display: grid;
-          grid-template-columns: auto auto;
-          justify-content: flex-start;
-          gap: 2rem;
+        a {
+          color: lightgray;
+          text-decoration: none;
 
-          a {
-            color: lightgray;
-            text-decoration: none;
-
-            &:hover {
-              color: white;
-            }
+          &:hover {
+            color: white;
           }
         }
       }

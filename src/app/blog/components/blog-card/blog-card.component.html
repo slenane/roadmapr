@@ -1,0 +1,24 @@
+<mat-card class="blog-card" (click)="openBlog.emit(data.id)">
+  <div class="card-image">
+    <img mat-card-image [src]="data.image" alt="Blog post image" />
+  </div>
+
+  <mat-card-title>{{ data.title }}</mat-card-title>
+  <mat-card-content>
+    <p>
+      {{ data.blurb }}
+    </p>
+  </mat-card-content>
+
+  <div class="blog-card-info">
+    <div
+      mat-card-avatar
+      class="avatar"
+      [ngStyle]="{
+        backgroundImage: 'url(' + data.authorImage + ')'
+      }"
+    ></div>
+    <p class="author">{{ data.author }}</p>
+    <p class="date">{{ data.date }} </p>
+  </div>
+</mat-card>

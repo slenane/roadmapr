@@ -46,14 +46,14 @@
     }
 
     .stack-card {
-      border: 2px solid $dark-theme--icon-card--border;
+      outline: 2px solid $dark-theme--icon-card--border;
 
       &:hover {
-        border: 2px solid white;
+        outline: 2px solid white;
       }
 
       &.selected {
-        border: 2px solid $dark-theme--primary--mat-primary-color;
+        outline: 2px solid $dark-theme--primary--mat-primary-color;
       }
 
       .custom-icon {
@@ -271,14 +271,14 @@
     }
 
     .stack-card {
-      border: 1px solid $light-theme--icon-card--border;
+      outline: 1px solid $light-theme--icon-card--border;
 
       &:hover {
-        border: 1px solid grey;
+        outline: 1px solid grey;
       }
 
       &.selected {
-        border: 1px solid $light-theme--primary--mat-primary-color;
+        outline: 1px solid $light-theme--primary--mat-primary-color;
       }
 
       .custom-icon {

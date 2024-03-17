@@ -1,0 +1,50 @@
+@import "src/styles/app-vars.scss";
+
+.blog {
+  height: 100vh;
+  max-width: 100vw;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  main {
+    padding: 0 5%;
+
+    @media screen and (min-width: $breakpoint-desktop-large) {
+      padding: 0 15%;
+    }
+
+    .contribute {
+      margin: 2rem 0;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+    }
+  }
+
+  footer {
+    margin-top: 3rem;
+    padding: 1rem 5%;
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      justify-content: space-between;
+
+      &-left {
+        display: grid;
+        grid-template-columns: auto auto;
+        justify-content: flex-start;
+        gap: 2rem;
+
+        a {
+          color: lightgray;
+          text-decoration: none;
+
+          &:hover {
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,69 @@
+<div class="blog">
+  <app-home-navigation></app-home-navigation>
+  <header>
+    <div class="header-grid">
+      <div class="header-image">
+        <img [src]="blog.image" alt="Blog image" />
+      </div>
+      <div class="header-text">
+        <h1>{{ blog.title }}</h1>
+        <p>{{ blog.blurb }}</p>
+
+        <div class="author">
+          <div class="image">
+            <img [src]="blog.authorImage" alt="Author Image" />
+          </div>
+          <div class="text">
+            <p class="name">{{ blog.author }}</p>
+            <p class="date">Posted on {{ blog.date }}</p>
+          </div>
+        </div>
+
+        <div class="category">
+          <p>Category:</p>
+          <p class="category-bubble">{{ blog.category }}</p>
+        </div>
+        <div class="tags">
+          <p>Tags:</p>
+          <p class="tags-bubble" *ngFor="let tag of blog.tags">{{ tag }}</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <mat-card class="contribute">
+        <div class="text">
+          <h2>We want to hear from you.</h2>
+          <p
+            >The roadmapr blog is open for contributions, we want to hear about
+            your journey</p
+          >
+        </div>
+        <button mat-raised-button color="primary">Contribute</button>
+      </mat-card>
+    </section>
+  </main>
+  <footer>
+    <div class="grid">
+      <div class="grid-left">
+        <div>
+          <a href="mailto:info@roadmapr.dev">{{
+            "LANDING.FOOTER.CONTACT" | translate
+          }}</a>
+        </div>
+        <div>
+          <a href="/privacy-policy">{{
+            "LANDING.FOOTER.PRIVACY" | translate
+          }}</a></div
+        >
+      </div>
+      <div class="grid-right">
+        <p>{{
+          "LANDING.FOOTER.COPYRIGHT" | translate : { value: currentYear }
+        }}</p>
+      </div>
+    </div>
+  </footer>
+</div>

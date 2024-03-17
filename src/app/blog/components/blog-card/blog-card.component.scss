@@ -1,0 +1,38 @@
+@import "src/styles/app-vars.scss";
+
+mat-card {
+  &:hover {
+    cursor: pointer;
+    outline: 2px solid $dark-theme--primary--mat-primary-color;
+  }
+
+  .card-image {
+    padding: 1rem;
+    .mat-card-image {
+      border-radius: 4px;
+    }
+  }
+
+  mat-card-title {
+    line-height: normal;
+  }
+
+  .blog-card-info {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: flex-end;
+    gap: 0.5rem;
+
+    .avatar {
+      background-size: cover !important;
+    }
+
+    .author {
+      font-weight: 500;
+      color: white;
+    }
+    .date {
+      color: white;
+    }
+  }
+}

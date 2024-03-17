@@ -38,6 +38,10 @@ const routes: Routes = [
     loadChildren: () => import("./auth/auth.module").then((m) => m.AuthModule),
   },
   {
+    path: "blog",
+    loadChildren: () => import("./blog/blog.module").then((m) => m.BlogModule),
+  },
+  {
     path: "explore",
     loadChildren: () =>
       import("./explore/explore.module").then((m) => m.ExploreModule),
